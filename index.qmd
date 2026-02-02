@@ -1,0 +1,48 @@
+# Bienvenida {.unnumbered}
+
+Bienvenido a la documentación de la asignatura **Geomática General** (Código 2020764) de la Maestría en Geomática de la Universidad Nacional de Colombia, Sede Bogotá.
+
+Este recurso sirve como guía teórico-práctica para el estudio de los principios fundamentales de la Geomática y el desarrollo de habilidades en el análisis de datos espaciales.
+
+## Objetivos de la asignatura {.unnumbered}
+
+El curso busca que el estudiante sea capaz de:
+
+* **Entender** los conceptos y principios fundamentales de la Geomática, su importancia y aplicaciones.
+* **Conocer y aplicar** procedimientos digitales para el almacenamiento, manejo y análisis de datos espaciales.
+* **Desarrollar aplicaciones** que integren la Geomática como apoyo para la solución de problemas técnicos y científicos.
+
+## Estructura del curso {.unnumbered}
+
+El contenido está organizado en cuatro componentes principales:
+
+1.  **Fundamentos**: Avances de la disciplina y fundamentos geodésicos/cartográficos.
+2.  **Estructura de Datos**: Sistemas de Información Geográfica (SIG), Sensores Remotos, Navegación Satelital y Modelos Digitales de Elevación (MDE).
+3.  **Presentación de Información**: Cartografía Digital y diseño de productos temáticos.
+4.  **Aplicaciones**: Socialización y sustentación del proyecto final.
+
+## Metodología y Evaluación {.unnumbered}
+
+El curso se desarrolla mediante exposiciones magistrales, talleres técnicos y lecturas dirigidas bajo un enfoque de **Open Science**, fomentando el uso de repositorios y flujos de trabajo reproducibles. 
+
+La evaluación se distribuye de la siguiente manera:
+
+* **Talleres teórico-prácticos**: 60%.
+* **Trabajo final**: 40%.
+
+## Herramientas y Entorno de Trabajo {.unnumbered}
+
+Para el desarrollo de las prácticas, utilizaremos un stack tecnológico moderno:
+
+* **Software SIG**: QGIS y ArcGIS Pro.
+* **Entornos de Desarrollo**: VS Code, Docker Desktop (para contenedores unificados), Jupyter Lab y Quarto.
+* **Plataformas Cloud**: Google Earth Engine (GEE).
+
+::: {.callout-important}
+## Nota sobre el material
+Este material ha sido diseñado para facilitar la transición de la teoría a la implementación práctica, priorizando el uso de herramientas de código abierto y estándares internacionales.
+:::
+
+---
+**Institución:** Universidad Nacional de Colombia  
+**Programa:** Maestría en Geomática

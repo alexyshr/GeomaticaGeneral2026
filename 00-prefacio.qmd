@@ -1,0 +1,37 @@
+# Prefacio {.unnumbered}
+
+Este documento constituye el material de apoyo principal para la asignatura **Geomática General** de la Maestría en Geomática de la Universidad Nacional de Colombia. 
+
+En la era de la información geoespacial masiva, la Geomática ha dejado de ser una simple técnica de recolección de datos para convertirse en una ciencia integradora. Este libro busca cerrar la brecha entre la teoría geoespacial clásica y las tecnologías modernas de procesamiento de datos, utilizando herramientas que garantizan la precisión y la eficiencia en el análisis del territorio.
+
+## Filosofía del curso: Ciencia Abierta y Reproducibilidad {.unnumbered}
+
+Este curso adopta un enfoque de **Ciencia Abierta (Open Science)**. No nos limitamos a enseñar el uso de una herramienta específica, sino que buscamos que el estudiante comprenda los procesos subyacentes y pueda replicarlos de forma transparente. Para lograrlo, nos apoyamos en sistemas de publicación científica modernos como **Quarto** [@posit2024quarto] y entornos controlados.
+
+Nuestro enfoque prioriza:
+* **Transparencia**: Todo el código, datos y metodologías son accesibles.
+* **Reproducibilidad**: Utilizamos contenedores **Docker** [@docker2025] para garantizar que los análisis funcionen con las mismas versiones de librerías en cualquier plataforma.
+* **Independencia tecnológica**: Nos centramos en los estándares internacionales (OGC) y motores geoespaciales básicos (GDAL, PROJ, GEOS).
+
+## Dimensiones de la Geomática Moderna {.unnumbered}
+
+La Geomática integra diversas disciplinas que el estudiante debe dominar para abordar problemas complejos. Este material cubre los fundamentos técnicos y teóricos de:
+
+* **Sistemas de Información Geográfica (SIG)**: Entendidos como el marco para la definición, desarrollo y aplicación de componentes espaciales [@ali2020geographic].
+* **Cartografía**: Desde la teoría hasta la práctica moderna en el diseño y elaboración de mapas [@anthamatten2020make].
+* **Teledetección Espacial**: Los principios físicos y fundamentos de la observación de la Tierra desde el espacio [@chuvieco1990fundamentos].
+* **Sistemas de Navegación Satelital**: Tecnologías y sistemas actuales para el posicionamiento global [@xie2021satellite].
+* **Modelos Digitales de Elevación (MDE)**: Métodos de interpolación, teoría y aplicaciones prácticas para el análisis del relieve [@fallas2007modelos].
+
+## Datos de Colombia como eje central {.unnumbered}
+
+La teoría es universal, pero la práctica es local. Todos los ejercicios de este curso están diseñados utilizando datos reales del contexto colombiano, aprovechando los servicios del **IGAC** y el **DANE**, y asegurando el uso correcto de los Sistemas de Referencia de Coordenadas basados en el origen nacional **MAGNA-SIRGAS**.
+
+## Estructura de la documentación {.unnumbered}
+
+Para facilitar el aprendizaje, esta guía está organizada siguiendo el cronograma oficial de la materia. Los bloques de código y procedimientos están diseñados para ser probados y adaptados por el estudiante en entornos de desarrollo profesionales como **VS Code** o **Jupyter Lab**.
+
+::: {.callout-note}
+## Nota para el Estudiante
+Este recurso es dinámico. Se recomienda seguir las instrucciones de configuración de entorno descritas en los capítulos introductorios para asegurar que todos los ejercicios prácticos se ejecuten correctamente sin conflictos de dependencias.
+:::

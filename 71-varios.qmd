@@ -1,0 +1,341 @@
+---
+title: "Temas por Charlar"
+subtitle: "Asunto: varios"
+author: "Alexys H. Rodríguez-Avellaneda Ph.D."
+format:
+  revealjs:
+    theme: simple
+    slide-number: true
+    transition: fade
+    incremental: true
+    center: true
+---
+
+## Enfoque Open Science
+
+- Material presentado por profesor
+    - Diapositivas
+    - Código
+    - Teoría
+    - Archivos de configuración
+- Material de los estudiantes
+- HTML, PDF
+- GitHub
+
+🚫 Evitar guardar su trabajo en los discos duros.
+
+---
+
+## Clase de Hoy: Instalación y uso básico de Herramientas
+
+
+- 1. Contenedores Docker
+- 2. VSCode
+- 3. Git
+- 4. Docker Desktop
+- 5. Jupyter Lab
+- 6. VSCode
+- 7. Archivos Quarto: HTML & PDF
+- 8. QGIS 1 (instalación)
+- 9. QGIS 2 (instalación)
+- 10. Chequeo ArcGIS Pro
+
+
+---
+
+
+## Contenido - Syllabus (Semana 2)
+
+Parte 1: **Fundamentos **
+
+Teoría:
+
+- 1. Avances y Tendencias de la Geomática
+
+Ejercicios:
+
+- Acceder a Geoportales y Bases de Datos
+
+Trabajo Independiente:
+
+- Lectura: Capítulo 1: Geomatics.(Gomarasca, 2009)
+
+
+---
+
+## Contenido - Syllabus (Semana 3 y 4)
+
+Parte 1: **Fundamentos **
+
+Teoría:
+
+- 2. Fundamentos Geodésicos y Cartográficos
+    - Elipsoide, geoide, datum, sistemas de coordenadas, escala, tipos de mapas, exactitud y precisión
+
+Ejercicios:
+
+- Establecer los diferentes orígenes para Colombia y origen único nacional
+- Determinar escala de una fotografía aérea.
+
+---
+
+## Contenido - Syllabus (Semana 3 y 4)
+
+Parte 1: **Fundamentos **
+
+Trabajo Independiente:
+
+- Exploración portales web de proyecciones cartográficas.
+    - Map-Project (Jung, 2023).
+    - The True Size (Talmage & Maneice, 2023)
+- Lectura: 
+    - Escala (Demmattê et al., 2002; João, 2002; Poggio, Gimona, & Brewer, 2013)
+    - Sistemas de Referencia (Islas & Angelo, 2000)
+    - Cartografía. (Anthamatten, 2020)
+
+---
+
+
+## Contenido - Syllabus (Semana 5 y 6: **SIG**)
+
+Parte 2: **Estructuras de Datos Espaciales**
+
+Teoría:
+
+- 3. Estructura de los datos e información espacial
+- 4. Modelo de datos Vector
+- 5. Modelo de datos Raster
+- 6. Operaciones de los modelos de datos
+
+---
+
+## Contenido - Syllabus (Semana 5 y 6: **SIG**)
+
+Parte 2: **Estructuras de Datos Espaciales**
+
+Ejercicios:
+
+- Búsqueda y descarga de modelos de datos (Vector y Raster).
+- Captura de información (GDB o GeoPackage).
+
+Trabajo Independiente:
+
+- Captura de información de una zona de interés.
+- Presentar propuesta de **trabajo final**
+- Libros Guía SIG (Longley et al., 2011; Shellito, 2020; Wise, 2014)
+
+---
+
+## Contenido - Syllabus (Semana 7 a 9: **Sensores Remotos**)
+
+Parte 2: **Estructuras de Datos Espaciales**
+
+Teoría:
+
+- 7. ¿Qué es percepción remota?.
+- 8. Componentes.
+- 9. Ventajas y limitaciones.
+- 10. Características de las imágenes.
+- 11. Fases del proceso de interpretación.
+- 12. Correcciones.
+- 13. Nivel de referencia.
+- 14. Reglas y métodos de interpretación.
+- 15. ¿Cómo se identifican los objetos? 
+
+---
+
+## Contenido - Syllabus (Semana 7 a 9: **Sensores Remotos**)
+
+Parte 2: **Estructuras de Datos Espaciales**
+
+
+Ejercicios:
+
+- Revisión de Metadatos de productos de sensores remotos
+- Introducción a Google Earth Engine (GEE)
+- Revisión de Catalogo de datos de GEE
+- Composición de productos de sensores remotos
+- Cálculo de índices de productos de sensores remotos
+- Selección, recorte y descarga de imágenes de GEE
+- Análisis de datos Lidar
+
+---
+
+## Contenido - Syllabus (Semana 7 a 9: **Sensores Remotos**)
+
+Parte 2: **Estructuras de Datos Espaciales**
+
+Trabajo independiente:
+
+- Exploración: QGIS y SNAP
+- Libros Sensores Remotos 
+    - Chuvieco, 2020; 
+    - De Grandi & De Grandi, 2021; 
+    - Dong & Chen, 2018; 
+    - Campbell et al., 2022; 
+    - Melo & Camacho, 2005
+
+---
+
+## Contenido - Syllabus (Semana 10: **Navegación Satelital**)
+
+Parte 2: **Estructuras de Datos Espaciales**
+
+Teoría:
+
+- 16. ¿Qué es un sistema de navegación satelital?.
+- 17. Tipos de sistemas de navegación satelital.
+- 18. Tipos de levantamientos de información.
+- 19. Fuentes de error.
+
+---
+
+## Contenido - Syllabus (Semana 10: **Navegación Satelital**)
+
+Parte 2: **Estructuras de Datos Espaciales**
+
+Ejercicios:
+
+- Creación de formularios para captura de información de campo con sistemas de
+navegación satelital.
+
+Trabajo independiente:
+
+- Crear un formulario (¿?)
+- Libros sistemas de navegación: 
+    - Borre et al., 2022; 
+    - NovAtel , 2015; 
+    - Ogaja, 2022
+
+---
+
+## Contenido - Syllabus (Semana 11: **Asesoría**)
+
+Parte 2: **Estructuras de Datos Espaciales**
+
+Teoría:
+- ...
+
+Ejercicios:
+- ...
+
+---
+
+## Contenido - Syllabus (Semana 12 y 13: **MDE**)
+
+Parte 2: **Estructuras de Datos Espaciales**
+
+Teoría:
+
+- 20. ¿Qué es un Modelo Digital de Elevación (MDE)?.
+- 21. Creación.
+- 22. Parámetros derivados.
+- 23. Aplicaciones.
+
+---
+
+## Contenido - Syllabus (Semana 12 y 13: **MDE**)
+
+Parte 2: **Estructuras de Datos Espaciales**
+
+Ejercicios prácticos:
+
+- Creación.
+- Comparación de MDE (diferentes resoluciones).
+- Derivar parámetros.
+- Aplicaciones de los MDE.
+
+Trabajo independiente:
+
+- Lectura: Definiciones y conceptos de MDE. (Florinsky, 2012; Guth et al., 2021).
+
+---
+
+## Contenido - Syllabus (Semana 14: **Cartografía Digital**)
+
+Parte 3: **Presentación de la Información Espacial**
+
+Teoría:
+
+- 24. Contexto espacial.
+- 25. Elementos de la cartografía.
+- 26. Fuentes de entrada.
+- 27. Edición, estructuración y procesamiento.
+- 28. Modelos del catálogo de datos.
+- 29. Diseño de la cartografía Básica
+- 30. Diseño de la cartografía Temática
+- 31. Generalización
+- 32. Metadatos - definición.
+- 33. Metadatos - estructuración.
+
+---
+
+## Contenido - Syllabus (Semana 14: **Cartografía Digital**)
+
+Parte 3: **Presentación de la Información Espacial**
+
+Ejercicios prácticos:
+
+- Estructural un proyecto de cartografía digital
+
+Trabajo independiente:
+
+- Lectura: Cartografía digital
+    - Kraak & Ormeling, 2021; 
+    - Parker & Toms, 2022; 
+    - Peterson, 2023;
+    - Slocum et al., 2022
+
+---
+
+## Contenido - Syllabus (Semana 15 y 16: **Proyecto Final**)
+
+Parte 4: **Aplicaciones de la Geomática**
+
+Tópicos:
+
+- 34. ¿Por qué socializar los resultados de una investigación?
+
+Ejercicios prácticos:
+
+- Sustentación.
+
+---
+
+## Contenido - Syllabus (**Evaluación**)
+
+- Talleres teórico-prácticos (60%)
+- Trabajo final (40%)
+
+## Contenido - Syllabus (**Metodología**)
+
+- 1. Exposiciones del Profesor.
+    - Teoría.
+    - Práctica.
+- 2. Talleres.
+- 3. Lecturas.
+- 6. Trabajo Final.
+
+👉 Necesitamos concretarlo y asignar porcentajes específicos.
+
+---
+
+## Propuestas de Estudiantes para el Curso
+
+🎯 Tienes la palabra.
+
+---
+
+## Temas para Proyecto Final
+
+- 1. ...
+- 2. ...
+
+---
+
+## Paquetes o comandos faltantes en Dockerfile
+
+- `apt-get update && apt-get install -y fonts-symbola`
+- Julia: `FileIO`, `ImageIO`
+
+---

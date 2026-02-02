@@ -1,0 +1,39 @@
+# Introducción a Entornos de Desarrollo {#intro-entornos}
+
+## Estrategia de Trabajo: Arquitectura Híbrida
+
+Para el desarrollo de la asignatura **Geomática General**, adoptaremos un enfoque que equilibra la potencia del software de escritorio con el rigor de la reproducibilidad. Esta estructura garantiza competencias tanto en la gestión de datos tradicional como en el análisis moderno.
+
+### Comparativa de Entornos
+
+| Criterio | **Opción A: Contenedor (Docker)** | **Opción B: Nativo (QGIS)** | **Opción C: Nativo (ArcGIS Pro)** |
+| --- | --- | --- | --- |
+| **Tecnología** | Docker y JupyterLab. | QGIS (OSGeo4W) / Pixi (GEE). | ArcGIS Pro. |
+| **Uso Principal** | Bases de Datos y Ciencia de Datos. | Automatización y Cloud Computing. | Geoprocesamiento con ArcPy. |
+| **Ventaja** | Entorno reproducible. | Integración con GEE y Plugins. | Herramientas comerciales líderes. |
+| **Lenguajes** | Python, R y Julia (Disponibles). | Python (PyQGIS). | Python (Conda/ArcPy). |
+
+### Secuencia Didáctica y Uso de Entornos
+
+El curso progresa desde la gestión estructural de la información hacia la automatización en entornos especializados:
+
+1.  **Fase de Fundamentos y Bases de Datos**: Se utiliza la **Opción A (Docker)** para el aprendizaje de **PostGIS**. Esto permite manejar la lógica de bases de datos espaciales en un entorno controlado.
+2.  **Fase de Extensibilidad y Cloud Computing**: Se utiliza la **Opción B (QGIS)**. Esta opción se divide en dos rutas según la necesidad:
+    * **B1 (Estándar)**: Instalación vía **OSGeo4W** para automatización clásica con PyQGIS.
+    * **B2 (Avanzada)**: Uso de **Pixi** para habilitar el plugin de **Google Earth Engine (GEE)**, integrando procesamiento en la nube directamente en el SIG.
+3.  **Fase de Extensibilidad Comercial**: Se utiliza la **Opción C (ArcGIS Pro)** para procesos de geoprocesamiento avanzado y flujos de trabajo profesionales de ESRI utilizando ArcPy.
+
+### Propósito según el Escenario
+
+* **Usa la Opción A**: Para talleres de SQL espacial y gestión de datos masivos de forma independiente al sistema operativo.
+* **Usa la Opción B**: Para tareas que requieran la interfaz de QGIS. Es la opción ideal cuando necesites integrar catálogos de datos satelitales globales mediante el plugin de GEE.
+* **Usa la Opción C**: Para análisis complejos que aprovechan el ecosistema de ArcGIS, por ejemplo herramientas de teledetección específicas de ESRI.
+
+## Decisiones de Diseño del Entorno
+
+La elección de **Docker** como núcleo inicial responde a la necesidad de transparencia y reproducibilidad. Por otro lado, la evolución de la **Opción B** hacia el uso de gestores de entornos como Pixi responde a la necesidad de integrar herramientas de vanguardia como **Google Earth Engine** sin comprometer la estabilidad del sistema. Finalmente, el uso de **ArcGIS Pro** asegura que el estudiante domine las herramientas estándar de la industria comercial.
+
+::: {.callout-tip}
+## Sobre el uso de GEE en QGIS
+La Opción B ahora permite no solo trabajar localmente, sino extender el poder del SIG al catálogo de datos de Earth Engine, facilitando el análisis de series temporales y datos Sentinel/Landsat desde la interfaz de QGIS.
+:::
