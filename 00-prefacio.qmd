@@ -29,7 +29,7 @@ La teoría es universal, pero la práctica es local. Todos los ejercicios de est
 
 ## Estructura de la documentación {.unnumbered}
 
-Para facilitar el aprendizaje, esta guía está organizada siguiendo el cronograma oficial de la materia. Los bloques de código y procedimientos están diseñados para ser probados y adaptados por el estudiante en entornos de desarrollo profesionales como **VS Code** o **Jupyter Lab**.
+Para facilitar el aprendizaje, esta guía está organizada siguiendo el cronograma oficial de la materia. Los bloques de código y procedimientos están diseñados para ser probados y adaptados por el estudiante en entornos de desarrollo profesionales como **VSCode** o **Jupyter Lab**.
 
 ::: {.callout-note}
 ## Nota para el Estudiante

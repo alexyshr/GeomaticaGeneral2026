@@ -1,0 +1,1264 @@
+---
+format:
+  revealjs:
+    theme: simple
+    width: 1600
+    height: 900
+    margin: 0.05
+    slide-number: true
+    transition: fade
+    center: true
+---
+
+# {background-color="#f8f9fa"}
+
+::: {style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; text-align: center; color: #2c3e50; font-family: sans-serif; padding: 20px;"}
+
+[ {{< fa earth-americas >}} ]{style="font-size: 3.5em; color: #3498db; margin-bottom: 15px;"}
+
+[AVANCES Y TENDENCIAS]{style="font-size: 2.2em; font-weight: 800; letter-spacing: 2px; line-height: 1.2; display: block;"}
+[DE LA GEOMÁTICA]{style="font-size: 2.2em; font-weight: 800; letter-spacing: 2px; line-height: 1.2; display: block; margin-top: -5px;"}
+
+[Fundamentos, Disciplinas y Evolución hacia la Inteligencia Territorial]{style="font-size: 1em; color: #3498db; margin-top: 15px; font-weight: 400;"}
+
+::: {style="width: 100px; height: 3px; background: #2c3e50; margin: 25px auto;"}
+:::
+
+[**Alexys H. Rodríguez-Avellaneda Ph.D.**]{style="font-size: 1.2em; font-weight: bold;"}
+<!-- <br>[Especialista en Geotecnologías]{style="font-size: 0.9em; color: #7f8c8d;"} -->
+
+::: {style="margin-top: 40px; font-size: 0.7em; color: #bdc3c7; letter-spacing: 1px;"}
+FEBRERO 2026 | BOGOTÁ, COLOMBIA
+:::
+
+:::
+
+# {background-color="#2c3e50"}
+
+::: {style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; text-align: center; color: white;"}
+[ {{< fa layer-group >}} ]{style="font-size: 5em; margin-bottom: 30px; opacity: 0.9;"}
+
+[I. El Escenario]{style="font-size: 2.5em; font-weight: 800; letter-spacing: 4px; text-transform: uppercase;"}
+
+[El Ecosistema de la Geomática Moderna]{style="font-size: 1.2em; color: #3498db; margin-top: 20px; font-weight: 300;"}
+
+::: {style="width: 150px; height: 4px; background: #3498db; margin-top: 40px;"}
+:::
+:::
+
+
+## ¿Qué es la Geomática?
+
+La **Geomática** es la disciplina que integra la ciencia y la tecnología para gestionar el ciclo de vida del dato espacial mediante seis acciones clave:
+
+::: {style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 30px; text-align: center;"}
+
+::: {style="padding: 15px; border: 1px solid #f0f0f0; border-radius: 10px;"}
+[ {{< fa satellite-dish >}} ]{style="color: transparent; -webkit-text-stroke: 1.5px #2c3e50; font-size: 2.5em;"}
+<br>**Capturar**
+:::
+
+::: {style="padding: 15px; border: 1px solid #f0f0f0; border-radius: 10px;"}
+[ {{< fa gear >}} ]{style="color: transparent; -webkit-text-stroke: 1.5px #16a085; font-size: 2.5em;"}
+<br>**Tratar**
+:::
+
+::: {style="padding: 15px; border: 1px solid #f0f0f0; border-radius: 10px;"}
+[ {{< fa database >}} ]{style="color: transparent; -webkit-text-stroke: 1.5px #e67e22; font-size: 2.5em;"}
+<br>**Gestionar**
+:::
+
+::: {style="padding: 15px; border: 1px solid #f0f0f0; border-radius: 10px;"}
+[ {{< fa magnifying-glass-chart >}} ]{style="color: transparent; -webkit-text-stroke: 1.5px #8e44ad; font-size: 2.5em;"}
+<br>**Analizar**
+:::
+
+::: {style="padding: 15px; border: 1px solid #f0f0f0; border-radius: 10px;"}
+[ {{< fa eye >}} ]{style="color: transparent; -webkit-text-stroke: 1.5px #c0392b; font-size: 2.5em;"}
+<br>**Interpretar**
+:::
+
+::: {style="padding: 15px; border: 1px solid #f0f0f0; border-radius: 10px;"}
+[ {{< fa hand-pointer >}} ]{style="color: transparent; -webkit-text-stroke: 1.5px #27ae60; font-size: 2.5em;"}
+<br>**Utilizar**
+:::
+
+:::
+
+---
+
+### El objeto de estudio
+
+::: {style="background-color: #f8f9fa; padding: 25px; border-left: 6px solid #c0392b; border-radius: 5px; margin-top: 40px;"}
+[ {{< fa location-dot >}} ]{style="color: transparent; -webkit-text-stroke: 2px #c0392b; font-size: 1.5em; vertical-align: middle;"} **Información Geoespacial:** Datos relacionados con ubicaciones específicas en la Tierra (coordenadas, atributos y tiempo).
+:::
+
+::: {style="margin-top: 30px; text-align: center; font-style: italic; color: #7f8c8d; font-size: 1.3em;"}
+> "Es la ciencia y la tecnología de la información espacial."
+:::
+
+
+
+## El Proceso Geomático
+
+La geomática integra un flujo de trabajo sistemático para transformar la realidad física en conocimiento digital.
+
+::: {style="display: flex; justify-content: space-between; align-items: stretch; gap: 15px; margin-top: 40px;"}
+
+::: {.fragment style="flex: 1; padding: 20px; border: 1px solid #e0e0e0; border-radius: 15px; background: #fafafa; text-align: center;"}
+[ {{< fa satellite-dish >}} ]{style="color: transparent; -webkit-text-stroke: 1.5px #2c3e50; font-size: 3em;"}
+
+### [Adquisición]{style="color: #2c3e50; font-size: 0.9em;"}
+
+::: {style="text-align: left; font-size: 0.7em;"}
+* **Captura:** Obtención de datos brutos (campo, sensores).
+* **Tratamiento:** Procesamiento, limpieza y georreferenciación.
+:::
+:::
+
+::: {.fragment style="flex: 1; padding: 20px; border: 1px solid #e0e0e0; border-radius: 15px; background: #fafafa; text-align: center;"}
+[ {{< fa microchip >}} ]{style="color: transparent; -webkit-text-stroke: 1.5px #27ae60; font-size: 3em;"}
+
+### [Inteligencia]{style="color: #27ae60; font-size: 0.9em;"}
+
+::: {style="text-align: left; font-size: 0.7em;"}
+* **Analizar:** Procesamiento estadístico y espacial complejo.
+* **Interpretación:** Extracción de patrones y significado real.
+:::
+:::
+
+::: {.fragment style="flex: 1; padding: 20px; border: 1px solid #e0e0e0; border-radius: 15px; background: #fafafa; text-align: center;"}
+[ {{< fa map-location-dot >}} ]{style="color: transparent; -webkit-text-stroke: 1.5px #e67e22; font-size: 3em;"}
+
+### [Gestión]{style="color: #e67e22; font-size: 0.9em;"}
+
+::: {style="text-align: left; font-size: 0.7em;"}
+* **Gestionar:** Almacenamiento en bases de datos y arquitecturas SIG.
+* **Utilizar:** Aplicación final en la toma de decisiones.
+:::
+:::
+
+:::
+
+
+
+::: {style="text-align: center; margin-top: 50px; font-style: italic; color: #7f8c8d;"}
+> "De la captura del dato a la sabiduría del territorio."
+:::
+
+
+## Geomática - Palabras más usadas
+
+::: {style="position: relative; width: 100%; height: 500px; font-weight: bold;"}
+
+::: {.fragment style="position: absolute; top: 10%; left: 5%; font-size: 4em; color: #1a5276; z-index: 10;"}
+SIG
+:::
+
+::: {.fragment style="position: absolute; top: 65%; left: 35%; font-size: 3.2em; color: #2e86c1; z-index: 10;"}
+Sensores Remotos
+:::
+
+::: {.fragment style="position: absolute; top: 5%; left: 55%; font-size: 1.4em; color: #e67e22;"}
+Mapas
+:::
+
+::: {.fragment style="position: absolute; top: 20%; left: 35%; font-size: 1.8em; color: #16a085;"}
+Información Geográfica
+:::
+
+::: {.fragment style="position: absolute; top: 15%; left: 80%; font-size: 1.5em; color: #8e44ad;"}
+Fotogrametría
+:::
+
+::: {.fragment style="position: absolute; top: 40%; left: 10%; font-size: 1.6em; color: #d35400;"}
+GNSS
+:::
+
+::: {.fragment style="position: absolute; top: 55%; left: 65%; font-size: 2em; color: #2c3e50;"}
+Geodesia
+:::
+
+::: {.fragment style="position: absolute; top: 5%; left: 20%; font-size: 1.1em; color: #7f8c8d;"}
+Big Data
+:::
+
+::: {.fragment style="position: absolute; top: 90%; left: 5%; font-size: 1.5em; color: #b9b929;"}
+Bases de datos espaciales
+:::
+
+::: {.fragment style="position: absolute; top: 90%; left: 80%; font-size: 1.4em; color: #d35400;"}
+Coordenadas
+:::
+
+::: {.fragment style="position: absolute; top: 30%; left: 88%; font-size: 1.2em; color: #7f8c8d;"}
+Capas
+:::
+
+::: {.fragment style="position: absolute; top: 53%; left: 0%; font-size: 2.1em; color: #27ae60;"}
+Análisis espacial
+:::
+
+::: {.fragment style="position: absolute; top: 45%; left: 80%; font-size: 1.3em; color: #c0392b;"}
+Geoprocesamiento
+:::
+
+:::
+
+## Palabras Clave: El ADN de la Geomática
+
+Conceptos fundamentales que definen el campo actual, organizados por su rol en el flujo de trabajo.
+
+::: {style="display: flex; justify-content: center; gap: 10px; margin-top: 30px;"}
+
+::: {style="flex: 1; padding: 10px; border: 1.2px solid #16a085; border-radius: 12px; text-align: center;"}
+[ {{< fa camera-retro >}} ]{style="color: transparent; -webkit-text-stroke: 1.2px #16a085; font-size: 2.2em;"}
+<br>[**Captura**]{style="color: #16a085; font-size: 0.8em;"}
+
+::: {style="font-size: 0.5em; text-align: left; margin-top: 8px;"}
+* Sensores Remotos
+* Drones (UAV)
+* Escáner Láser
+:::
+:::
+
+::: {style="flex: 1; padding: 10px; border: 1.2px solid #e67e22; border-radius: 12px; text-align: center;"}
+[ {{< fa database >}} ]{style="color: transparent; -webkit-text-stroke: 1.2px #e67e22; font-size: 2.2em;"}
+<br>[**Datos**]{style="color: #e67e22; font-size: 0.8em;"}
+
+::: {style="font-size: 0.5em; text-align: left; margin-top: 8px;"}
+* Coordenadas
+* Big Data
+* DB Espaciales
+:::
+:::
+
+::: {style="flex: 1; padding: 10px; border: 1.2px solid #2980b9; border-radius: 12px; text-align: center;"}
+[ {{< fa network-wired >}} ]{style="color: transparent; -webkit-text-stroke: 1.2px #2980b9; font-size: 2.2em;"}
+<br>[**Sistemas**]{style="color: #2980b9; font-size: 0.8em;"}
+
+::: {style="font-size: 0.5em; text-align: left; margin-top: 8px;"}
+* SIG (GIS)
+* GNSS
+* IDE
+:::
+:::
+
+::: {style="flex: 1; padding: 10px; border: 1.2px solid #8e44ad; border-radius: 12px; text-align: center;"}
+[ {{< fa magnifying-glass-chart >}} ]{style="color: transparent; -webkit-text-stroke: 1.2px #8e44ad; font-size: 2.2em;"}
+<br>[**Análisis**]{style="color: #8e44ad; font-size: 0.8em;"}
+
+::: {style="font-size: 0.5em; text-align: left; margin-top: 8px;"}
+* Análisis Espacial
+* Geoestadística
+* **GeoIA**
+:::
+:::
+
+::: {style="flex: 1; padding: 10px; border: 1.2px solid #c0392b; border-radius: 12px; text-align: center;"}
+[ {{< fa map-location-dot >}} ]{style="color: transparent; -webkit-text-stroke: 1.2px #c0392b; font-size: 2.2em;"}
+<br>[**Visuliz.**]{style="color: #c0392b; font-size: 0.8em;"}
+
+::: {style="font-size: 0.5em; text-align: left; margin-top: 8px;"}
+* Webmapping
+* Visores
+* Cartografía
+:::
+:::
+
+:::
+
+
+---
+
+::: {style="margin-top: 40px; text-align: center; border: 1px dashed #bdc3c7; padding: 10px; border-radius: 10px; font-size: 0.8em;"}
+La integración de estos **cinco pilares** define el perfil del profesional de la Geomática moderna.
+:::
+
+## El Ecosistema de la Geomática Moderna
+
+La convergencia entre el saber científico, las herramientas digitales y la inteligencia territorial.
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin-top: 30px;"}
+
+::: {style="border-top: 2px solid #2c3e50; padding-top: 20px;"}
+[ {{< fa graduation-cap >}} ]{style="color: transparent; -webkit-text-stroke: 1.5px #2c3e50; font-size: 2.2em;"}
+
+### [Ciencias Base]{style="color: #2c3e50; font-size: 0.85em; margin-top: 10px; display: block;"}
+[Fundamento teórico.]{style="font-size: 0.55em; color: #7f8c8d;"}
+
+<ul style="font-size: 0.6em; line-height: 1.5; color: #34495e; margin-top: 15px;">
+  <li class="fragment">Topografía y Geodesia</li>
+  <li class="fragment">Cartografía y SIG</li>
+  <li class="fragment">Fotogrametría</li>
+  <li class="fragment">Teledetección</li>
+  <li class="fragment">Estadística Espacial</li>
+</ul>
+:::
+
+::: {style="border-top: 2px solid #e67e22; padding-top: 20px;"}
+[ {{< fa microchip >}} ]{style="color: transparent; -webkit-text-stroke: 1.5px #e67e22; font-size: 2.2em;"}
+
+### [Herramientas]{style="color: #e67e22; font-size: 0.85em; margin-top: 10px; display: block;"}
+[Captura y gestión.]{style="font-size: 0.55em; color: #7f8c8d;"}
+
+<ul style="font-size: 0.6em; line-height: 1.5; color: #34495e; margin-top: 15px;">
+  <li class="fragment">GNSS / GPS Precisión</li>
+  <li class="fragment">Drones y LiDAR</li>
+  <li class="fragment">Escáner Láser 3D</li>
+  <li class="fragment">**Cloud Computing**</li>
+  <li class="fragment">IoT / Sensores</li>
+</ul>
+:::
+
+::: {style="border-top: 2px solid #8e44ad; padding-top: 20px;"}
+[ {{< fa rocket >}} ]{style="color: transparent; -webkit-text-stroke: 1.5px #8e44ad; font-size: 2.2em;"}
+
+### [La Frontera]{style="color: #8e44ad; font-size: 0.85em; margin-top: 10px; display: block;"}
+[Innovación y GeoIA.]{style="font-size: 0.55em; color: #7f8c8d;"}
+
+<ul style="font-size: 0.6em; line-height: 1.5; color: #34495e; margin-top: 15px;">
+  <li class="fragment">**Smart Cities**</li>
+  <li class="fragment">**Gemelo Digital / BIM**</li>
+  <li class="fragment">Realidad Aumentada</li>
+  <li class="fragment">VGI / Datos Ciudadanos</li>
+  <li class="fragment">**GeoIA** (IA Espacial)</li>
+</ul>
+:::
+
+:::
+
+
+
+---
+
+::: {style="text-align: center; margin-top: 35px; font-style: italic; color: #7f8c8d; font-size: 0.8em; border-top: 1px solid #eee; padding-top: 10px;"}
+"La Geomática es el punto de unión entre el Mundo Físico, el Modelo Digital y la IA."
+:::
+
+
+##
+
+::: {style="text-align: center; display: flex; justify-content: center; align-items: center; height: 100%;"}
+![](/images/que_es_geomatica.png){width="90%" fig-align="center" style="border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 1px solid #eee;"}
+:::
+
+
+# {background-color="#e67e22"}
+
+::: {style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; text-align: center; color: white;"}
+[ {{< fa gear >}} ]{style="font-size: 5em; margin-bottom: 30px; opacity: 0.9;"}
+
+[II. El Motor Técnico]{style="font-size: 2.5em; font-weight: 800; letter-spacing: 4px; text-transform: uppercase;"}
+
+[Ciencias Base y Herramientas de Captura]{style="font-size: 1.2em; color: #2c3e50; margin-top: 20px; font-weight: 300;"}
+
+::: {style="width: 150px; height: 4px; background: #2c3e50; margin-top: 40px;"}
+:::
+:::
+
+## Topografía y Geodesia
+
+::: {style="border-left: 6px solid #2c3e50; padding: 12px; background: rgba(44, 62, 80, 0.02); border-radius: 0 15px 15px 0; margin-top: -10px;"}
+
+[ {{< fa earth-americas >}} ]{style="color: transparent; -webkit-text-stroke: 1.8px #2c3e50; font-size: 1.8em; float: right;"}
+
+### [La Ciencia de la Medición]{style="color: #2c3e50; font-size: 1em; display: block; margin-bottom: 5px;"}
+
+<ul style="font-size: 0.8em; line-height: 1.4; color: #34495e; margin-bottom: 0;">
+  <li class="fragment">**Geometría Terrestre:** Determinación de coordenadas $X, Y, Z$.</li>
+  <li class="fragment">**Marcos de Referencia:** Implementación de sistemas de coordenadas (Datum).</li>
+  <li class="fragment">**Modelado del Geoide:** Estudio de las irregularidades gravitatorias.</li>
+  <li class="fragment">**Escala Local y Global:** Desde el levantamiento de un lote hasta el país.</li>
+</ul>
+:::
+
+
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 15px;"}
+
+::: {.callout-note appearance="simple" style="font-size: 0.85em; margin: 0; border-left: 3px solid #2c3e50; background-color: #f8f9fa; padding: 10px;"}
+**Topografía:** "Es la ciencia que estudia el conjunto de principios y procedimientos que tienen por objeto la representación gráfica de la superficie terrestre, con sus formas y detalles, tanto naturales como artificiales" — **Wikipedia**.
+:::
+
+::: {.callout-note appearance="simple" style="font-size: 0.85em; margin: 0; border-left: 3px solid #2c3e50; background-color: #f8f9fa; padding: 10px;"}
+**Geodesia:** "Es la ciencia que estudia la forma y dimensiones de la Tierra. Esto incluye la determinación del campo gravitatorio externo y la superficie del fondo oceánico, considerando la curvatura terrestre" — **Wikipedia**.
+:::
+
+:::
+
+::: {style="text-align: center; margin-top: 15px; font-style: italic; color: #7f8c8d; font-size: 0.8em; border-top: 1px solid #eee; padding-top: 8px;"}
+"Sin una base geodésica, los mapas no son más que dibujos."
+:::
+
+## Cartografía y SIG
+
+::: {style="border-left: 6px solid #2980b9; padding: 12px; background: rgba(41, 128, 185, 0.02); border-radius: 0 15px 15px 0; margin-top: -10px;"}
+
+[ {{< fa map-location-dot >}} ]{style="color: transparent; -webkit-text-stroke: 1.8px #2980b9; font-size: 1.8em; float: right;"}
+
+### [El Cerebro del Análisis Territorial]{style="color: #2980b9; font-size: 1em; display: block; margin-bottom: 5px;"}
+
+<ul style="font-size: 0.8em; line-height: 1.4; color: #34495e; margin-bottom: 0;">
+  <li class="fragment">**Modelado:** Abstracción y simplificación de la realidad en capas.</li>
+  <li class="fragment">**Gestión de Atributos:** Conexión entre la geometría y la información alfanumérica.</li>
+  <li class="fragment">**Interoperabilidad:** Capacidad de integrar datos de diversas fuentes y formatos.</li>
+  <li class="fragment">**Visualización:** Comunicación de fenómenos espaciales mediante variables visuales.</li>
+</ul>
+:::
+
+
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 15px;"}
+
+::: {.callout-note appearance="simple" style="font-size: 0.85em; margin: 0; border-left: 3px solid #2980b9; background-color: #f1f7fb; padding: 10px;"}
+**Cartografía:** "Es la ciencia, arte y técnica de representar la superficie terrestre en un plano. Se encarga de la concepción, producción, difusión y estudio de los mapas en todas sus formas" — **Wikipedia**.
+:::
+
+::: {.callout-note appearance="simple" style="font-size: 0.85em; margin: 0; border-left: 3px solid #2980b9; background-color: #f1f7fb; padding: 10px;"}
+**SIG / GIS:** "Es un conjunto de herramientas que integra componentes (hardware, software, datos) que permiten la organización, almacenamiento y análisis de grandes cantidades de datos georreferenciados" — **Wikipedia**.
+:::
+
+:::
+
+::: {style="text-align: center; margin-top: 15px; font-style: italic; color: #7f8c8d; font-size: 0.8em; border-top: 1px solid #eee; padding-top: 8px;"}
+"La cartografía es el lenguaje; el SIG es el pensamiento que lo genera."
+:::
+
+
+## SIG Tradicionales: Esencia y Concepto
+
+Para comprender la base de la geomática, debemos diferenciar el medio (el software) de la esencia (el modelo de datos).
+
+::: {style="display: flex; gap: 20px; margin-top: 40px;"}
+
+::: {style="flex: 1; padding: 25px; border: 1.5px solid #2c3e50; border-radius: 20px; background: rgba(44, 62, 80, 0.02); text-align: center;"}
+[ {{< fa clone >}} ]{style="color: transparent; -webkit-text-stroke: 1.8px #2c3e50; font-size: 3em;"}
+<br>[**Representación**]{style="color: #2c3e50; font-weight: bold; display: block; margin-top: 15px;"}
+[Es un modelo abstracto y simplificado de la complejidad del mundo real.]{style="font-size: 0.7em; display: block; margin-top: 10px;"}
+:::
+
+::: {style="flex: 1; padding: 25px; border: 1.5px solid #c0392b; border-radius: 20px; background: rgba(192, 57, 43, 0.02); text-align: center;"}
+[ {{< fa circle-xmark >}} ]{style="color: transparent; -webkit-text-stroke: 1.8px #c0392b; font-size: 3em;"}
+<br>[**El Error Común**]{style="color: #c0392b; font-weight: bold; display: block; margin-top: 15px;"}
+[Reducir el SIG únicamente al **Software**. El software es solo la herramienta de operación.]{style="font-size: 0.7em; display: block; margin-top: 10px;"}
+:::
+
+::: {style="flex: 1; padding: 25px; border: 1.5px solid #2980b9; border-radius: 20px; background: rgba(41, 128, 185, 0.02); text-align: center;"}
+[ {{< fa diagram-project >}} ]{style="color: transparent; -webkit-text-stroke: 1.8px #2980b9; font-size: 3em;"}
+<br>[**Enfoque de SI**]{style="color: #2980b9; font-weight: bold; display: block; margin-top: 15px;"}
+[Un Sistema de Información especializado con un **modelo de datos** orientado al espacio.]{style="font-size: 0.7em; display: block; margin-top: 10px;"}
+:::
+
+:::
+
+
+## SIG Tradicionales: Capacidades y Alcance
+
+Estructura técnica basada en el procesamiento de datos y la geometría discreta.
+
+<br>
+
+::: {style="border-left: 5px solid #2b8ec0; padding-left: 20px; margin-bottom: 25px;"}
+[ {{< fa gears >}} ]{style="color: transparent; -webkit-text-stroke: 1.5px #2b8ec0; font-size: 2em; float: left; margin-right: 15px;"}
+**Capacidades Técnicas:** Sistema de bases de datos con indexación espacial y un conjunto de operaciones para manipular, consultar y realizar análisis rápidos de proximidad.
+:::
+
+::: {style="border-left: 5px solid #5fc02b; padding-left: 20px; margin-bottom: 25px;"}
+[ {{< fa draw-polygon >}} ]{style="color: transparent; -webkit-text-stroke: 1.5px #5fc02b; font-size: 2em; float: left; margin-right: 15px;"}
+**Modelo de Datos:** Representación del territorio mediante geometrías discretas.
+<br>
+[• **Puntos** (Nodos) &nbsp; • **Líneas** (Arcos) &nbsp; • **Áreas** (Polígonos)]{style="font-size: 0.8em; color: #34495e; margin-left: 45px;"}
+:::
+
+
+
+::: {.fragment style="margin-top: 40px; background: rgba(192, 57, 43, 0.05); padding: 15px; border-radius: 10px; border: 1px dashed #c0392b; text-align: center;"}
+### [ {{< fa circle-exclamation >}} ]{style="color: #c0392b;"} La Limitación Histórica
+[El mapa como **producto final**.]{style="color: #c0392b; font-weight: bold;"} 
+<br>
+[El proceso terminaba en la cartografía estática, sin capacidad de análisis dinámico en tiempo real.]{style="font-size: 0.7em; color: #34495e;"}
+:::
+
+
+##
+
+::: {style="text-align: center; display: flex; justify-content: center; align-items: center; height: 100%;"}
+![](/images/SIG_modelo_de_datos.png){width="90%" fig-align="center" style="border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 1px solid #eee;"}
+:::
+
+
+## Fotogrametría y Teledetección
+
+::: {style="border-left: 6px solid #16a085; padding: 12px; background: rgba(22, 160, 133, 0.02); border-radius: 0 15px 15px 0; margin-top: -10px;"}
+
+[ {{< fa camera-retro >}} ]{style="color: transparent; -webkit-text-stroke: 1.8px #16a085; font-size: 1.8em; float: right;"}
+
+### [Percepción Remota]{style="color: #16a085; font-size: 1em; display: block; margin-bottom: 5px;"}
+
+<ul style="font-size: 0.8em; line-height: 1.4; color: #34495e; margin-bottom: 0;">
+  <li class="fragment">**Visión 3D:** Reconstrucción de la realidad a partir de pares estereoscópicos.</li>
+  <li class="fragment">**Análisis Multiespectral:** Ver lo invisible al ojo humano (salud vegetal, agua).</li>
+  <li class="fragment">**Satélites:** Monitoreo global, continuo y multitemporal del planeta.</li>
+  <li class="fragment">**Resolución:** Calidad espacial, temporal, espectral y radiométrica.</li>
+</ul>
+:::
+
+
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 15px;"}
+
+::: {.callout-note appearance="simple" style="font-size: 0.85em; margin: 0; border-left: 3px solid #16a085; background-color: #f8fcfb; padding: 10px;"}
+**Fotogrametría:** "Técnica cuyo objeto es estudiar y definir con precisión la forma, dimensiones y posición en el espacio de un objeto, utilizando medidas hechas sobre fotografías" — **Wikipedia**.
+:::
+
+::: {.callout-note appearance="simple" style="font-size: 0.85em; margin: 0; border-left: 3px solid #16a085; background-color: #f8fcfb; padding: 10px;"}
+**Teledetección:** "Adquisición de información de un objeto o fenómeno, usando instrumentos de grabación o escaneo que no están en contacto directo (aviones, satélites, boyas)" — **Wikipedia**.
+:::
+
+:::
+
+
+::: {style="text-align: center; margin-top: 15px; font-style: italic; color: #7f8c8d; font-size: 0.8em; border-top: 1px solid #eee; padding-top: 8px;"}
+"Medir el mundo sin necesidad de tocar el terreno."
+:::
+
+## GNSS / GPS de Precisión
+
+::: {style="border-left: 6px solid #e67e22; padding: 12px; background: rgba(230, 126, 34, 0.02); border-radius: 0 15px 15px 0; margin-top: -10px;"}
+
+[ {{< fa satellite >}} ]{style="color: transparent; -webkit-text-stroke: 1.8px #e67e22; font-size: 1.8em; float: right;"}
+
+### [Posicionamiento y Sincronización Global]{style="color: #e67e22; font-size: 1em; display: block; margin-bottom: 5px;"}
+
+<ul style="font-size: 0.8em; line-height: 1.4; color: #34495e; margin-bottom: 0;">
+  <li class="fragment">**Multiconstelación:** Integración de señales GPS, GLONASS, Galileo y BeiDou.</li>
+  <li class="fragment">**Métodos Diferenciales:** Uso de RTK y Ntrip para precisiones milimétricas.</li>
+  <li class="fragment">**Georreferenciación:** Asignación de coordenadas únicas en marcos de referencia mundiales.</li>
+  <li class="fragment">**Navegación vs. Precisión:** Diferencia crítica entre sensores de consumo y equipos geodésicos.</li>
+</ul>
+:::
+
+
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 15px;"}
+
+::: {.callout-note appearance="simple" style="font-size: 0.85em; margin: 0; border-left: 3px solid #e67e22; background-color: #fff9f4; padding: 10px;"}
+**GNSS:** "Es el nombre genérico que engloba a los sistemas que proporcionan posicionamiento geoespacial autónomo con cobertura global. Permite a pequeños receptores electrónicos determinar su ubicación con gran precisión" — **Wikipedia**.
+:::
+
+::: {.callout-note appearance="simple" style="font-size: 0.85em; margin: 0; border-left: 3px solid #e67e22; background-color: #fff9f4; padding: 10px;"}
+**GPS:** "El Sistema de Posicionamiento Global (GPS) es un sistema que permite determinar en toda la Tierra la posición de cualquier objeto con una precisión de hasta centímetros (usando GPS diferencial), aunque lo común son unos pocos metros" — **Wikipedia**.
+:::
+
+:::
+
+::: {style="text-align: center; margin-top: 15px; font-style: italic; color: #7f8c8d; font-size: 0.8em; border-top: 1px solid #eee; padding-top: 8px;"}
+"La coordenada es el ancla que une el mundo digital con la realidad física."
+:::
+
+
+## Drones y LiDAR
+
+::: {style="border-left: 6px solid #d35400; padding: 12px; background: rgba(211, 84, 0, 0.02); border-radius: 0 15px 15px 0; margin-top: -10px;"}
+
+[ {{< fa drone >}} ]{style="color: transparent; -webkit-text-stroke: 1.8px #d35400; font-size: 1.8em; float: right;"}
+
+### [Sistemas de Captura Aérea Dinámica]{style="color: #d35400; font-size: 1em; display: block; margin-bottom: 5px;"}
+
+<ul style="font-size: 0.8em; line-height: 1.4; color: #34495e; margin-bottom: 0;">
+  <li class="fragment">**Plataformas UAV/RPAS:** Flexibilidad para vuelos a baja altura y gran detalle.</li>
+  <li class="fragment">**Sensores Activos:** El LiDAR emite su propia energía para medir distancias.</li>
+  <li class="fragment">**Productos Derivados:** Nubes de puntos masivas, Ortomosaicos y Modelos 3D.</li>
+  <li class="fragment">**Modelado (DSM / DTM / DEM):** Capacidad de "filtrar" la vegetación para ver el terreno real.</li>
+</ul>
+:::
+
+
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 15px;"}
+
+::: {.callout-note appearance="simple" style="font-size: 0.85em; margin: 0; border-left: 3px solid #d35400; background-color: #fdf5f2; padding: 10px;"}
+**Dron (UAV):** "Aeronave que vuela sin tripulación a bordo. En Geomática, actúa como plataforma aerotransportada para sensores fotogramétricos, LiDAR o cámaras multiespectrales" — **Wikipedia**.
+:::
+
+::: {.callout-note appearance="simple" style="font-size: 0.85em; margin: 0; border-left: 3px solid #d35400; background-color: #fdf5f2; padding: 10px;"}
+**LiDAR:** "Tecnología activa de teledetección óptica que utiliza pulsos de luz láser para medir distancias. Al registrar el tiempo que tarda cada pulso en rebotar y volver al sensor, genera nubes de puntos 3D con coordenadas precisas (X, Y, Z) de la superficie y los objetos." — **Wikipedia**.
+:::
+
+:::
+
+::: {style="text-align: center; margin-top: 15px; font-style: italic; color: #7f8c8d; font-size: 0.8em; border-top: 1px solid #eee; padding-top: 8px;"}
+"Del píxel a la nube de puntos: la reconstrucción total del entorno en alta resolución."
+:::
+
+## Escáner Láser 3D (TLS)
+
+[**TLS:** Terrestrial Laser Scanning]{style="font-size: 0.7em; color: #7f8c8d; display: block; margin-top: -15px; margin-bottom: 10px;"}
+
+::: {style="border-left: 6px solid #d35400; padding: 12px; background: rgba(211, 84, 0, 0.02); border-radius: 0 15px 15px 0;"}
+
+[ {{< fa tower-observation >}} ]{style="color: transparent; -webkit-text-stroke: 1.8px #d35400; font-size: 1.8em; float: right;"}
+
+### [Captura Estática de Ultra-Alta Resolución]{style="color: #d35400; font-size: 1em; display: block; margin-bottom: 5px;"}
+
+<ul style="font-size: 0.8em; line-height: 1.4; color: #34495e; margin-bottom: 0;">
+  <li class="fragment">**Estacionamiento Fijo:** Máxima estabilidad para precisiones milimétricas.</li>
+  <li class="fragment">**Barrido 360°:** Captura integral de la geometría de una escena desde un punto.</li>
+  <li class="fragment">**Ingeniería Reversa:** Generación de modelos "As-Built" de alta fidelidad.</li>
+  <li class="fragment">**Documentación Patrimonial:** Clonación digital de estructuras y monumentos.</li>
+</ul>
+:::
+
+
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 15px;"}
+
+::: {.callout-note appearance="simple" style="font-size: 0.85em; margin: 0; border-left: 3px solid #d35400; background-color: #fdf5f2; padding: 10px;"}
+**Escáner Láser 3D:** "Dispositivo que analiza un objeto o escena del mundo real para recolectar datos sobre su forma y, a veces, su apariencia (color). Se utiliza para construir modelos digitales tridimensionales" — **Wikipedia**.
+:::
+
+::: {.callout-note appearance="simple" style="font-size: 0.85em; margin: 0; border-left: 3px solid #d35400; background-color: #fdf5f2; padding: 10px;"}
+**TLS:** "El Escaneo Láser Terrestre (Terrestrial Laser Scanning) es un método de levantamiento que utiliza un haz de luz láser para medir con precisión superficies complejas desde una posición fija en tierra" — **Wikipedia**.
+:::
+
+:::
+
+::: {style="text-align: center; margin-top: 15px; font-style: italic; color: #7f8c8d; font-size: 0.8em; border-top: 1px solid #eee; padding-top: 8px;"}
+"La realidad física convertida en geometría digital con precisión milimétrica."
+:::
+
+
+## Cloud Computing y Big Data
+
+[**Infraestructura:** IaaS / PaaS / SaaS | **Datos:** Volumen, Velocidad, Variedad]{style="font-size: 0.7em; color: #7f8c8d; display: block; margin-top: -15px; margin-bottom: 10px;"}
+
+::: {style="border-left: 6px solid #34495e; padding: 12px; background: rgba(52, 73, 94, 0.02); border-radius: 0 15px 15px 0;"}
+
+[ {{< fa cloud >}} ]{style="color: transparent; -webkit-text-stroke: 1.8px #34495e; font-size: 1.8em; float: right;"}
+
+### [El Salto a la Infraestructura Distribuida]{style="color: #34495e; font-size: 1em; display: block; margin-bottom: 5px;"}
+
+<ul style="font-size: 0.8em; line-height: 1.4; color: #34495e; margin-bottom: 0;">
+  <li class="fragment">**Escalabilidad On-Demand:** Capacidad de aumentar potencia de cálculo según la necesidad del proyecto.</li>
+  <li class="fragment">**Almacenamiento de Objetos:** Uso de *buckets* (S3, Cloud Storage) para alojar petabytes de imágenes.</li>
+  <li class="fragment">**Serverless Computing:** Ejecución de algoritmos sin gestionar servidores físicos (Lambda, Google Functions).</li>
+  <li class="fragment">**Ecosistema Cloud-Native**: Almacenamiento en COG/Zarr e indexación mediante STAC para descubrimiento eficiente.</li>
+</ul>
+:::
+
+
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 15px;"}
+
+::: {.callout-note appearance="simple" style="font-size: 0.85em; margin: 0; border-left: 3px solid #34495e; background-color: #f4f6f7; padding: 10px;"}
+**Cloud Computing:** "Es la disponibilidad bajo demanda de recursos de computación (servidores, almacenamiento). En Geomática, las nubes de **AWS**, **Google Cloud** y **Azure** eliminan la barrera del hardware local" — **Wikipedia/Propio**.
+:::
+
+::: {.callout-note appearance="simple" style="font-size: 0.85em; margin: 0; border-left: 3px solid #34495e; background-color: #f4f6f7; padding: 10px;"}
+**Google Earth Engine (GEE):** "Es una plataforma específica (PaaS) de análisis geoespacial que funciona sobre la infraestructura de Google Cloud. Permite el procesamiento masivo de datos satelitales a escala planetaria" — **Wikipedia**.
+:::
+
+:::
+
+::: {style="text-align: center; margin-top: 15px; font-style: italic; color: #7f8c8d; font-size: 0.8em; border-top: 1px solid #eee; padding-top: 8px;"}
+"La nube no es solo el lugar donde guardas los datos, es donde los transformas."
+:::
+
+## IoT y Sensores Georreferenciados
+
+[**Monitoreo en Tiempo Real:** Redes de sensores, Actuadores y Edge Computing]{style="font-size: 0.7em; color: #7f8c8d; display: block; margin-top: -15px; margin-bottom: 10px;"}
+
+::: {style="border-left: 6px solid #27ae60; padding: 12px; background: rgba(39, 174, 96, 0.02); border-radius: 0 15px 15px 0;"}
+
+[ {{< fa microchip >}} ]{style="color: transparent; -webkit-text-stroke: 1.8px #27ae60; font-size: 1.8em; float: right;"}
+
+### [El Pulso del Territorio en Tiempo Real]{style="color: #27ae60; font-size: 1em; display: block; margin-bottom: 5px;"}
+
+<ul style="font-size: 0.8em; line-height: 1.4; color: #34495e; margin-bottom: 0;">
+  <li class="fragment">**Ubicuidad:** Despliegue masivo de nodos sensores en ciudades, agricultura e industria.</li>
+  <li class="fragment">**Geolocalización del Dato:** Cada flujo de información posee una estampa de tiempo y posición.</li>
+  <li class="fragment">**Baja Latencia:** Transmisión inmediata para sistemas de alerta temprana (inundaciones, sismos).</li>
+  <li class="fragment">**Edge Computing:** Capacidad de realizar geoprocesamiento básico dentro del mismo sensor.</li>
+</ul>
+:::
+
+
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 15px;"}
+
+::: {.callout-note appearance="simple" style="font-size: 0.85em; margin: 0; border-left: 3px solid #27ae60; background-color: #f4fcf7; padding: 10px;"}
+**Internet de las Cosas (IoT):** "Red de objetos físicos que llevan incorporados sensores o software con el fin de conectar e intercambiar datos con otros dispositivos a través de Internet" — **Wikipedia**.
+:::
+
+::: {.callout-note appearance="simple" style="font-size: 0.85em; margin: 0; border-left: 3px solid #27ae60; background-color: #f4fcf7; padding: 10px;"}
+**Edge Computing:** "Modelo de computación distribuida que acerca el procesamiento y el almacenamiento de datos a la fuente donde se generan (el sensor), mejorando los tiempos de respuesta" — **Wikipedia**.
+:::
+
+:::
+
+::: {style="text-align: center; margin-top: 15px; font-style: italic; color: #7f8c8d; font-size: 0.8em; border-top: 1px solid #eee; padding-top: 8px;"}
+"La Geomática pasa de cartografiar el pasado a monitorear el presente vivo."
+:::
+
+
+
+# {background-color="#34495e"}
+
+::: {style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; text-align: center; color: white;"}
+[ {{< fa database >}} ]{style="font-size: 5em; margin-bottom: 30px; opacity: 0.9;"}
+
+[III. El Marco de Gestión]{style="font-size: 2.5em; font-weight: 800; letter-spacing: 4px; text-transform: uppercase;"}
+
+[Ciclo de Vida del Dato e Infraestructuras (IDE)]{style="font-size: 1.2em; color: #1abc9c; margin-top: 20px; font-weight: 300;"}
+
+::: {style="width: 150px; height: 4px; background: #1abc9c; margin-top: 40px;"}
+:::
+:::
+
+## Ciclo de Vida del Dato Geoespacial
+
+::: {style="text-align: left; font-size: 0.9em; margin-bottom: 20px; color: #2c3e50;"}
+$$Dato \xrightarrow{\text{Procesamiento}} Información \xrightarrow{\text{Análisis}} Conocimiento$$
+:::
+
+::: {style="font-size: 0.75em;"}
+
+::: {.fragment style="background: rgba(44, 62, 80, 0.03); padding: 15px; border-left: 6px solid #2c3e50; margin-bottom: 8px; border-radius: 0 10px 10px 0;"}
+[ {{< fa satellite-dish >}} ]{style="color: transparent; -webkit-text-stroke: 1.8px #2c3e50; font-size: 1.5em; vertical-align: middle; margin-right: 10px;"} **1. Adquisición (Dato Bruto)**
+Captura mediante sensores (GNSS, LiDAR, Imágenes).
+*Ejemplo:* Coordenadas $X, Y, Z$ de puntos de calor en un bosque.
+:::
+
+::: {.fragment style="background: rgba(39, 174, 96, 0.03); padding: 15px; border-left: 6px solid #27ae60; margin-bottom: 8px; border-radius: 0 10px 10px 0;"}
+[ {{< fa database >}} ]{style="color: transparent; -webkit-text-stroke: 1.8px #27ae60; font-size: 1.5em; vertical-align: middle; margin-right: 10px;"} **2. Gestión y Tratamiento**
+Almacenamiento en Geodatabases y limpieza de errores.
+*Ejemplo:* Base de datos espacial de focos de incendio activos.
+:::
+
+::: {.fragment style="background: rgba(230, 126, 34, 0.03); padding: 15px; border-left: 6px solid #e67e22; margin-bottom: 8px; border-radius: 0 10px 10px 0;"}
+[ {{< fa chart-line >}} ]{style="color: transparent; -webkit-text-stroke: 1.8px #e67e22; font-size: 1.5em; vertical-align: middle; margin-right: 10px;"} **3. Análisis e Interpretación (Información)**
+Modelado y geoprocesamiento para hallar patrones.
+*Ejemplo:* Mapa de velocidad de propagación del fuego.
+:::
+
+::: {.fragment style="background: rgba(192, 57, 43, 0.03); padding: 15px; border-left: 6px solid #c0392b; margin-bottom: 8px; border-radius: 0 10px 10px 0;"}
+[ {{< fa eye >}} ]{style="color: transparent; -webkit-text-stroke: 1.8px #c0392b; font-size: 1.5em; vertical-align: middle; margin-right: 10px;"} **4. Visualización y Uso (Conocimiento)**
+Mapas y tableros para la toma de decisiones.
+*Ejemplo:* **Decisión:** Priorización de despliegue de brigadas.
+:::
+
+:::
+
+## IDE: El Enfoque en el Intercambio
+
+La **Geomática** evoluciona hacia la estandarización. Ya no basta con tener el dato; hay que saber compartirlo.
+
+::: columns
+::: {.column width="60%"}
+* **Rol Geomático:** Implementación de estándares **OGC** e **ISO**.
+* **Interoperabilidad:** Romper los "silos" de información para que los datos fluyan entre instituciones.
+* **Meta:** "Preguntar una vez, usar muchas veces".
+:::
+
+::: {.column style="width=40%; text-align: center; opacity: 0.7;"}
+[{{< fa handshake-angle size=2x >}}]{style="color: transparent; -webkit-text-stroke: 3px #e67e22; font-size: 3em;"}
+<br>
+[**Infraestructura de Datos Espaciales**]{style="font-size: 0.6em; color: #7f8c8d;"}
+:::
+:::
+
+
+## IDE: La "Internet" de la Información Geográfica
+
+Una **Infraestructura de Datos Espaciales (IDE)** no es un software, es un ecosistema de acuerdos y tecnologías para que los datos fluyan sin barreras.
+
+::: {style="display: flex; justify-content: space-around; text-align: center; margin-top: 40px;"}
+
+::: {.fragment style="flex: 1; padding: 20px; border-right: 3px dashed #bdc3c7;"}
+### [EL PROBLEMA]{style="color: #c0392b; font-size: 0.7em;"}
+[{{< fa boxes-stacked size=1x >}}]{style="color: transparent; -webkit-text-stroke: 3px #c0392b; font-size: 3em;"}
+[**"Silos" de Información**]{style="display: block; margin-top: 15px; font-weight: bold; color: #2c3e50;"}
+[Datos aislados, duplicados y en formatos incompatibles. Cada organismo es una isla.]{style="display: block; font-size: 0.6em; margin-top: 10px;"}
+:::
+
+::: {.fragment style="flex: 1; padding: 20px;"}
+### [EL MOTOR (IDE)]{style="color: #e67e22; font-size: 0.7em;"}
+[{{< fa handshake-angle size=1x >}}]{style="color: transparent; -webkit-text-stroke: 3px #e67e22; font-size: 3em;"}
+[**Estándares y Acuerdos**]{style="display: block; margin-top: 15px; font-weight: bold; color: #2c3e50;"}
+[Reglas comunes (OGC, ISO) que actúan como un "lenguaje universal" para que las máquinas se entiendan.]{style="display: block; font-size: 0.6em; margin-top: 10px;"}
+:::
+
+::: {.fragment style="flex: 1; padding: 20px; border-left: 3px dashed #bdc3c7;"}
+### [EL RESULTADO]{style="color: #27ae60; font-size: 0.7em;"}
+[{{< fa network-wired size=1x >}}]{style="color: transparent; -webkit-text-stroke: 3px #27ae60; font-size: 3em;"}
+[**Interoperabilidad**]{style="display: block; margin-top: 15px; font-weight: bold; color: #2c3e50;"}
+[Capacidad de combinar datos de diferentes fuentes en tiempo real. Acceso ubicuo y reutilización.]{style="display: block; font-size: 0.6em; margin-top: 10px;"}
+:::
+
+:::
+
+::: {.fragment style="text-align: center; margin-top: 30px; font-size: 1.2em; color: #2980b9;"}
+**Objetivo:** "Preguntar una vez, usar muchas veces."
+:::
+
+
+# {background-color="#7f8c8d"}
+
+::: {style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; text-align: center; color: white;"}
+[ {{< fa timeline >}} ]{style="font-size: 5em; margin-bottom: 30px; opacity: 0.9;"}
+
+[IV. La Evolución]{style="font-size: 2.5em; font-weight: 800; letter-spacing: 4px; text-transform: uppercase;"}
+
+[De la Cartografía a la Inteligencia Territorial]{style="font-size: 1.2em; color: #ecf0f1; margin-top: 20px; font-weight: 300;"}
+
+::: {style="width: 150px; height: 4px; background: #ecf0f1; margin-top: 40px;"}
+:::
+:::
+
+## De la Cartografía a la Inteligencia Territorial
+
+El paradigma ha evolucionado: dejamos de **dibujar** el territorio para empezar a **simularlo** y **predecirlo** mediante tecnología.
+
+::: {style="display: flex; justify-content: space-between; align-items: stretch; gap: 10px; margin-top: 40px;"}
+
+::: {.fragment style="flex: 1; padding: 15px; border: 1.5px solid #34495e; border-radius: 15px; background: rgba(52, 73, 94, 0.02); text-align: center;"}
+[ {{< fa map-location-dot >}} ]{style="color: transparent; -webkit-text-stroke: 1.8px #34495e; font-size: 2.5em;"}
+<br>[**SIG Tradicional**]{style="color: #34495e; font-size: 0.8em; display: block; margin-top: 10px;"}
+[El mapa como **producto final**. Estático y descriptivo.]{style="font-size: 0.55em; display: block; margin-top: 10px;"}
+:::
+
+::: {.fragment style="flex: 1; padding: 15px; border: 1.5px solid #2980b9; border-radius: 15px; background: rgba(41, 128, 185, 0.02); text-align: center;"}
+[ {{< fa network-wired >}} ]{style="color: transparent; -webkit-text-stroke: 1.8px #2980b9; font-size: 2.5em;"}
+<br>[**IDE**]{style="color: #2980b9; font-size: 0.8em; display: block; margin-top: 10px;"}
+[Interoperabilidad. El dato se **comparte** bajo estándares (OGC).]{style="font-size: 0.55em; display: block; margin-top: 10px;"}
+:::
+
+::: {.fragment style="flex: 1; padding: 15px; border: 1.5px solid #16a085; border-radius: 15px; background: rgba(22, 160, 133, 0.02); text-align: center;"}
+[ {{< fa city >}} ]{style="color: transparent; -webkit-text-stroke: 1.8px #16a085; font-size: 2.5em;"}
+<br>[**Smart Cities**]{style="color: #16a085; font-size: 0.8em; display: block; margin-top: 10px;"}
+[Integración de **sensores e IoT**. Gestión urbana en tiempo real.]{style="font-size: 0.55em; display: block; margin-top: 10px;"}
+:::
+
+::: {.fragment style="flex: 1; padding: 15px; border: 1.5px solid #e67e22; border-radius: 15px; background: rgba(230, 126, 34, 0.02); text-align: center;"}
+[ {{< fa cube >}} ]{style="color: transparent; -webkit-text-stroke: 1.8px #e67e22; font-size: 2.5em;"}
+<br>[**Gemelo Digital**]{style="color: #e67e22; font-size: 0.8em; display: block; margin-top: 10px;"}
+[Modelado dinámico y **multidimensional ($n\text{-D}$)**. Sincronización física.]{style="font-size: 0.55em; display: block; margin-top: 10px;"}
+:::
+
+::: {.fragment style="flex: 1; padding: 15px; border: 1.5px solid #c0392b; border-radius: 15px; background: rgba(192, 57, 43, 0.02); text-align: center;"}
+[ {{< fa brain >}} ]{style="color: transparent; -webkit-text-stroke: 1.8px #c0392b; font-size: 2.5em;"}
+<br>[**Int. Territorial**]{style="color: #c0392b; font-size: 0.8em; display: block; margin-top: 10px;"}
+[**GeoIA** y analítica avanzada para la **prospectiva**.]{style="font-size: 0.55em; display: block; margin-top: 10px;"}
+:::
+
+:::
+
+::: {style="margin-top: 60px; border-top: 1px solid #eee; padding-top: 15px; font-size: 0.5em; color: #7f8c8d; text-align: center;"}
+**Fuente:** [Alvaro Anguix - Blog gvSIG (Enero 2026)](https://blog.gvsig.org/2026/01/13/del-gemelo-digital-a-la-inteligencia-territorial-una-evolucion-natural-de-la-geomatica/)
+:::
+
+
+# {background-color="#3498db"}
+
+::: {style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; text-align: center; color: white;"}
+[ {{< fa rocket >}} ]{style="font-size: 5em; margin-bottom: 30px; opacity: 0.9;"}
+
+[V. La Frontera Aplicada]{style="font-size: 2.5em; font-weight: 800; letter-spacing: 4px; text-transform: uppercase;"}
+
+[Nuevas Tecnologías y Casos de Uso]{style="font-size: 1.2em; color: #2c3e50; margin-top: 20px; font-weight: 300;"}
+
+::: {style="width: 150px; height: 4px; background: #2c3e50; margin-top: 40px;"}
+:::
+:::
+
+## Smart Cities: El Sistema Nervioso
+
+[**Gestión Proactiva:** Del plano estático al organismo vivo en tiempo real]{style="font-size: 0.7em; color: #7f8c8d; display: block; margin-top: -15px; margin-bottom: 10px;"}
+
+::: {style="border-left: 6px solid #3498db; padding: 12px; background: rgba(52, 152, 219, 0.02); border-radius: 0 15px 15px 0;"}
+
+[ {{< fa tower-broadcast >}} ]{style="color: transparent; -webkit-text-stroke: 1.8px #3498db; font-size: 1.8em; float: right;"}
+
+### [La Geomática como Plataforma de Integración]{style="color: #3498db; font-size: 1em; display: block; margin-bottom: 5px;"}
+
+<ul style="font-size: 0.8em; line-height: 1.4; color: #34495e; margin-bottom: 0;">
+  <li class="fragment">**Sensoramiento e IoT:** Los sensores georreferenciados capturan el pulso urbano.</li>
+  <li class="fragment">**Flujos Dinámicos:** Visualización de tráfico, energía y personas en vivo.</li>
+  <li class="fragment">**Operación del Hoy:** Pasamos de mapas del pasado a sistemas de gestión del presente.</li>
+</ul>
+:::
+
+
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 15px;"}
+
+::: {.callout-note appearance="simple" style="font-size: 0.85em; margin: 0; border-left: 3px solid #9b59b6; background-color: #f5f0f6; padding: 10px;"}
+**Movilidad Inteligente:** "Optimización de rutas y transporte autónomo basado en redes viales digitales dinámicas que reaccionan a la demanda real" — **Propio**.
+:::
+
+::: {.callout-note appearance="simple" style="font-size: 0.85em; margin: 0; border-left: 3px solid #2ecc71; background-color: #f0f9f4; padding: 10px;"}
+**Gestión Ambiental:** "Monitoreo de islas de calor, ruido y calidad del aire integrados directamente en el SIG municipal para salud pública" — **Propio**.
+:::
+
+:::
+
+::: {style="text-align: center; margin-top: 15px; font-style: italic; color: #7f8c8d; font-size: 0.8em; border-top: 1px solid #eee; padding-top: 8px;"}
+"La ciudad deja de ser un plano estático para convertirse en un flujo constante."
+:::
+
+## Smart Cities: Tecnología y Definición
+
+[**Infraestructura Digital:** IoT, Geofencing e Interoperabilidad]{style="font-size: 0.7em; color: #7f8c8d; display: block; margin-top: -15px; margin-bottom: 10px;"}
+
+::: {style="border-left: 6px solid #3498db; padding: 12px; background: rgba(52, 152, 219, 0.02); border-radius: 0 15px 15px 0;"}
+
+[ {{< fa city >}} ]{style="color: transparent; -webkit-text-stroke: 1.8px #3498db; font-size: 1.8em; float: right;"}
+
+### [El Territorio como Organismo Conectado]{style="color: #3498db; font-size: 1em; display: block; margin-bottom: 5px;"}
+
+<ul style="font-size: 0.8em; line-height: 1.4; color: #34495e; margin-bottom: 0;">
+  <li class="fragment">**Sensoramiento e IoT:** Los datos "saben" dónde están para dar contexto a la ciudad.</li>
+  <li class="fragment">**Geofencing:** Perímetros virtuales que disparan acciones automáticas al cruzar límites.</li>
+  <li class="fragment">**Resiliencia Urbana:** Capacidad de respuesta inmediata ante eventos críticos o emergencias.</li>
+  <li class="fragment">**Flujos Dinámicos:** Visualización masiva de tráfico, energía y personas en vivo.</li>
+</ul>
+:::
+
+
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 15px;"}
+
+::: {.callout-note appearance="simple" style="font-size: 0.82em; margin: 0; border-left: 3px solid #3498db; background-color: #f1f7fc; padding: 10px;"}
+**Smart City:** "Aquella que utiliza el potencial de la tecnología para promover un desarrollo sostenible y mejorar la calidad de vida" — **Wikipedia**.
+:::
+
+::: {.callout-note appearance="simple" style="font-size: 0.82em; margin: 0; border-left: 3px solid #3498db; background-color: #f1f7fc; padding: 10px;"}
+**Geofencing:** "Servicio que utiliza datos espaciales para activar una acción cuando un dispositivo entra en un límite geográfico" — **Wikipedia**.
+:::
+
+:::
+
+::: {style="text-align: center; margin-top: 15px; font-style: italic; color: #7f8c8d; font-size: 0.8em; border-top: 1px solid #eee; padding-top: 8px;"}
+"La ciudad deja de ser un plano estático para convertirse en un flujo constante."
+:::
+
+
+## Gemelo Digital: El Enfoque en la Simulación
+
+La **Geomática** alcanza su mayor nivel de detalle físico. Creamos una réplica exacta del territorio en el mundo virtual para ensayar el futuro.
+
+::: {style="display: flex; justify-content: space-around; align-items: center; margin-top: 40px; padding: 20px; background: rgba(230, 126, 34, 0.03); border-radius: 20px;"}
+
+::: {style="text-align: center;"}
+[ {{< fa cube >}} ]{style="color: transparent; -webkit-text-stroke: 2.5px #e67e22; font-size: 3.5em;"}
+<br>[**MUNDO FÍSICO**]{style="font-size: 0.8em; font-weight: bold; color: #2c3e50;"}
+:::
+
+::: {style="text-align: center;"}
+[ {{< fa arrows-left-right >}} ]{style="font-size: 2.5em; color: #bdc3c7;"}
+<br>[**DATOS EN VIVO**]{style="font-size: 0.6em; color: #7f8c8d;"}
+:::
+
+::: {style="text-align: center;"}
+[ {{< fa display >}} ]{style="color: transparent; -webkit-text-stroke: 2.5px #2980b9; font-size: 3.5em;"}
+<br>[**RÉPLICA DIGITAL**]{style="font-size: 0.8em; font-weight: bold; color: #2c3e50;"}
+:::
+
+:::
+
+
+
+<ul style="font-size: 0.85em; line-height: 1.6; color: #34495e; margin-top: 30px;">
+  <li>**Modelado Multidimensional:** Integración de nubes de puntos, fotogrametría y BIM ($4D \rightarrow 7D$).</li>
+  <li>**Dinámica Evolutiva:** No es un mapa estático; es un modelo que permite predecir comportamientos físicos.</li>
+</ul>
+
+
+## Gemelo Digital y BIM Territorial
+
+[**Escalas:** De la infraestructura al territorio inteligente | **Contexto:** Geomática Global]{style="font-size: 0.7em; color: #7f8c8d; display: block; margin-top: -15px; margin-bottom: 10px;"}
+
+::: {style="border-left: 6px solid #e67e22; padding: 12px; background: rgba(230, 126, 34, 0.02); border-radius: 0 15px 15px 0;"}
+
+[ {{< fa earth-americas >}} ]{style="color: transparent; -webkit-text-stroke: 1.8px #e67e22; font-size: 1.8em; float: right;"}
+
+### [Sincronización de la Realidad Geográfica]{style="color: #e67e22; font-size: 1em; display: block; margin-bottom: 5px;"}
+
+<ul style="font-size: 0.8em; line-height: 1.4; color: #34495e; margin-bottom: 0;">
+  <li class="fragment">**Fusión SIG+BIM:** Integración del activo individual con su contexto geográfico y ambiental.</li>
+  <li class="fragment">**Gemelo Territorial:** Réplicas de cuencas, bosques o redes de servicios para simulación de riesgos.</li>
+  <li class="fragment">**Flujo Bidireccional:** El modelo recibe datos (sensores) y permite actuar (actuadores) sobre el terreno.</li>
+</ul>
+:::
+
+
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 15px;"}
+
+::: {.callout-note appearance="simple" style="font-size: 0.85em; margin: 0; border-left: 3px solid #e67e22; background-color: #fdf6f1; padding: 10px;"}
+**Escala Territorial:** "Gestiona la complejidad de sistemas interconectados: redes de energía, hidrografía y dinámicas urbanas" — **Propio**.
+:::
+
+::: {.callout-note appearance="simple" style="font-size: 0.85em; margin: 0; border-left: 3px solid #e67e22; background-color: #fdf6f1; padding: 10px;"}
+**Planificación:** Permite la toma de decisiones inmersiva sobre un modelo virtual antes de cualquier intervención física.
+:::
+
+:::
+
+## Gemelo Digital en la Industria AEC
+
+[**Metodología:** Gestión 7D | **Industria:** Architecture, Engineering & Construction]{style="font-size: 0.7em; color: #7f8c8d; display: block; margin-top: -15px; margin-bottom: 10px;"}
+
+::: {style="border-left: 6px solid #e67e22; padding: 12px; background: rgba(230, 126, 34, 0.02); border-radius: 0 15px 15px 0;"}
+
+[ {{< fa building-columns >}} ]{style="color: transparent; -webkit-text-stroke: 1.8px #e67e22; font-size: 1.8em; float: right;"}
+
+### [Ciclo de Vida y Gestión del Activo]{style="color: #e67e22; font-size: 1em; display: block; margin-bottom: 5px;"}
+
+<ul style="font-size: 0.8em; line-height: 1.4; color: #34495e; margin-bottom: 0;">
+  <li class="fragment">**Colaboración AEC:** Integración de flujos de trabajo entre arquitectura, ingeniería y construcción.</li>
+  <li class="fragment">**Mantenimiento Predictivo:** Uso de IoT para anticipar fallas en la infraestructura operativa.</li>
+  <li class="fragment">**As-Built Digital:** Entrega de un clon digital exacto del activo para su gestión a largo plazo.</li>
+</ul>
+:::
+
+
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 15px;"}
+
+::: {.callout-note appearance="simple" style="font-size: 0.85em; margin: 0; border-left: 3px solid #e67e22; background-color: #fdf6f1; padding: 10px;"}
+**BIM:** "Metodología colaborativa que centraliza toda la información de un proyecto en un modelo digital" — **Wikipedia**.
+:::
+
+::: {.callout-note appearance="simple" style="font-size: 0.85em; margin: 0; border-left: 3px solid #e67e22; background-color: #fdf6f1; padding: 10px;"}
+**Dimensiones:** "**4D** (Tiempo), **5D** (Costo), **6D** (Sostenibilidad) y **7D** (Gestión de Activos/Mantenimiento)" — **Propio**.
+:::
+
+:::
+
+## Realidad Aumentada Geoespacial
+
+[**Visualización In-Situ:** Información invisible superpuesta al mundo físico]{style="font-size: 0.7em; color: #7f8c8d; display: block; margin-top: -15px; margin-bottom: 10px;"}
+
+::: {style="border-left: 6px solid #16a085; padding: 12px; background: rgba(22, 160, 133, 0.02); border-radius: 0 15px 15px 0;"}
+
+[ {{< fa eye >}} ]{style="color: transparent; -webkit-text-stroke: 1.8px #16a085; font-size: 1.8em; float: right;"}
+
+### [El Mapa sin Papel ni Pantalla]{style="color: #16a085; font-size: 1em; display: block; margin-bottom: 5px;"}
+
+<ul style="font-size: 0.8em; line-height: 1.4; color: #34495e; margin-bottom: 0;">
+  <li class="fragment">**Visualización de Redes:** Ver tuberías y cables subterráneos directamente sobre la calle.</li>
+  <li class="fragment">**Proyectos Futuros:** Visualizar un edificio o puente en su ubicación real antes de la obra.</li>
+  <li class="fragment">**Guiado de Precisión:** Capas SIG superpuestas al paisaje mediante móviles o cascos AR.</li>
+  <li class="fragment">**Navegación Indoor:** Posicionamiento y guía dentro de infraestructuras complejas.</li>
+</ul>
+:::
+
+
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 15px;"}
+
+::: {.callout-note appearance="simple" style="font-size: 0.85em; margin: 0; border-left: 3px solid #16a085; background-color: #f1f8f7; padding: 10px;"}
+**Realidad Aumentada:** "Tecnología que permite superponer elementos virtuales sobre nuestra visión de la realidad, integrando datos en tiempo real" — **Wikipedia**.
+:::
+
+::: {.callout-note appearance="simple" style="font-size: 0.85em; margin: 0; border-left: 3px solid #16a085; background-color: #f1f8f7; padding: 10px;"}
+**Interacción Espacial:** "Es la capacidad del usuario para manipular y visualizar datos geográficos directamente en el entorno físico que lo rodea" — **Propio**.
+:::
+
+:::
+
+::: {style="text-align: center; margin-top: 15px; font-style: italic; color: #7f8c8d; font-size: 0.8em; border-top: 1px solid #eee; padding-top: 8px;"}
+"La AR elimina la barrera entre el mapa de la oficina y la realidad del terreno."
+:::
+
+## VGI: Cartografía Social
+
+[**Democratización del Dato:** Neogeografía y Ciencia Ciudadana]{style="font-size: 0.7em; color: #7f8c8d; display: block; margin-top: -15px; margin-bottom: 10px;"}
+
+::: {style="border-left: 6px solid #f1c40f; padding: 12px; background: rgba(241, 196, 15, 0.02); border-radius: 0 15px 15px 0;"}
+
+[ {{< fa users >}} ]{style="color: transparent; -webkit-text-stroke: 1.8px #f1c40f; font-size: 1.8em; float: right;"}
+
+### [El Ciudadano como Sensor Activo]{style="color: #d4ac0d; font-size: 1em; display: block; margin-bottom: 5px;"}
+
+<ul style="font-size: 0.8em; line-height: 1.4; color: #34495e; margin-bottom: 0;">
+  <li class="fragment">**OpenStreetMap:** La mayor base de datos geográfica colaborativa y libre del planeta.</li>
+  <li class="fragment">**Crowdsourcing:** Recopilación de datos masivos mediante la participación ciudadana.</li>
+  <li class="fragment">**Validación en Campo:** Millones de usuarios corrigiendo y actualizando la realidad local.</li>
+  <li class="fragment">**Neogeografía:** El uso de herramientas geográficas por parte de no expertos.</li>
+</ul>
+:::
+
+
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 15px;"}
+
+::: {.callout-note appearance="simple" style="font-size: 0.85em; margin: 0; border-left: 3px solid #f1c40f; background-color: #fefef2; padding: 10px;"}
+**VGI:** "La Información Geográfica Voluntaria es el uso de herramientas web para crear y difundir información proporcionada voluntariamente por personas" — **Wikipedia**.
+:::
+
+::: {.callout-note appearance="simple" style="font-size: 0.85em; margin: 0; border-left: 3px solid #f1c40f; background-color: #fefef2; padding: 10px;"}
+**Crowdsourcing:** "Consiste en externalizar tareas que realizaba un empleado o contratista a un grupo numeroso de personas o una comunidad" — **Wikipedia**.
+:::
+
+:::
+
+::: {style="text-align: center; margin-top: 15px; font-style: italic; color: #7f8c8d; font-size: 0.8em; border-top: 1px solid #eee; padding-top: 8px;"}
+"La inteligencia colectiva es hoy el sensor más potente del territorio."
+:::
+
+
+# {background-color="#c0392b"}
+
+::: {style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; text-align: center; color: white;"}
+[ {{< fa brain >}} ]{style="font-size: 5em; margin-bottom: 30px; opacity: 0.9;"}
+
+[VI. La Cúspide]{style="font-size: 2.5em; font-weight: 800; letter-spacing: 4px; text-transform: uppercase;"}
+
+[GeoIA e Inteligencia Territorial]{style="font-size: 1.2em; color: #f1c40f; margin-top: 20px; font-weight: 300;"}
+
+::: {style="width: 150px; height: 4px; background: #f1c40f; margin-top: 40px;"}
+:::
+:::
+
+## GeoIA: AI + Geografía
+
+[**Automatización masiva:** Machine Learning, Computer Vision y Analítica Predictiva]{style="font-size: 0.7em; color: #7f8c8d; display: block; margin-top: -15px; margin-bottom: 10px;"}
+
+::: {style="border-left: 6px solid #8e44ad; padding: 12px; background: rgba(142, 68, 173, 0.02); border-radius: 0 15px 15px 0;"}
+
+[ {{< fa brain >}} ]{style="color: transparent; -webkit-text-stroke: 1.8px #8e44ad; font-size: 1.8em; float: right;"}
+
+### [El Cerebro del Análisis Espacial]{style="color: #8e44ad; font-size: 1em; display: block; margin-bottom: 5px;"}
+
+<ul style="font-size: 0.8em; line-height: 1.4; color: #34495e; margin-bottom: 0;">
+  <li class="fragment">**Extracción Automática:** Identificación de objetos (casas, vías, cultivos) en imágenes.</li>
+  <li class="fragment">**Modelado Predictivo:** Algoritmos que predicen la propagación de incendios o inundaciones.</li>
+  <li class="fragment">**Deep Learning:** Redes neuronales aplicadas al procesamiento de nubes de puntos y píxeles.</li>
+  <li class="fragment">**Minería de Datos:** Descubrimiento de patrones ocultos en bases de datos espaciales masivas.</li>
+</ul>
+:::
+
+
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 15px;"}
+
+::: {.callout-note appearance="simple" style="font-size: 0.85em; margin: 0; border-left: 3px solid #8e44ad; background-color: #f9f4fb; padding: 10px;"}
+**GeoIA:** "Es una disciplina emergente que utiliza métodos de inteligencia artificial, como el aprendizaje profundo, para facilitar la resolución de problemas en las geociencias" — **Wikipedia**.
+:::
+
+::: {.callout-note appearance="simple" style="font-size: 0.85em; margin: 0; border-left: 3px solid #8e44ad; background-color: #f9f4fb; padding: 10px;"}
+**Machine Learning:** "Es el campo de la inteligencia artificial que dota a las computadoras de la capacidad de aprender de los datos espaciales sin ser programadas explícitamente" — **Wikipedia**.
+:::
+
+:::
+
+::: {style="text-align: center; margin-top: 15px; font-style: italic; color: #7f8c8d; font-size: 0.8em; border-top: 1px solid #eee; padding-top: 8px;"}
+"La GeoIA transforma el '¿qué pasó?' en '¿qué pasará?'."
+:::
+
+
+## Inteligencia Territorial: El Enfoque Predictivo
+
+[**Evolución:** Del modelo estático a la sabiduría del territorio | **Ciclo:** Observar → Anticipar]{style="font-size: 0.7em; color: #7f8c8d; display: block; margin-top: -15px; margin-bottom: 10px;"}
+
+::: {.callout-tip appearance="simple" style="border-left: 5px solid #c0392b; background-color: rgba(192, 57, 43, 0.02); font-size: 0.85em;"}
+### La Sinergia Final
+El valor no reside en el modelo o en el visor, sino en la capacidad de **transformar** información geoespacial en **conocimiento** para reducir la incertidumbre.
+:::
+
+::: {style="display: flex; justify-content: space-around; align-items: center; margin-top: 40px;"}
+
+::: {style="text-align: center;"}
+[ {{< fa earth-americas >}} ]{style="color: transparent; -webkit-text-stroke: 2px #2c3e50; font-size: 3.5em;"}
+<br>[**GEOMÁTICA**]{style="font-size: 0.8em; color: #2c3e50; letter-spacing: 2px;"}
+:::
+
+[ {{< fa plus >}} ]{style="font-size: 2em; color: #bdc3c7; opacity: 0.6;"}
+
+::: {style="text-align: center;"}
+[ {{< fa brain >}} ]{style="color: transparent; -webkit-text-stroke: 2px #c0392b; font-size: 3.5em;"}
+<br>[**I. ARTIFICIAL**]{style="font-size: 0.8em; color: #c0392b; letter-spacing: 2px;"}
+:::
+
+[ {{< fa equals >}} ]{style="font-size: 2em; color: #bdc3c7; opacity: 0.6;"}
+
+::: {style="text-align: center; padding: 20px; border: 2px dashed #c0392b; border-radius: 20px; background: rgba(192, 57, 43, 0.03);"}
+[**INTELIGENCIA TERRITORIAL**]{style="color: #2c3e50; font-size: 1.4em; font-weight: 900;"}
+<br>
+[La era de la decisión asistida]{style="font-size: 0.8em; color: #7f8c8d; font-style: italic;"}
+:::
+
+:::
+
+
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 30px;"}
+::: {.callout-note appearance="simple" style="font-size: 0.85em; margin: 0; border-left: 3px solid #2c3e50;"}
+**Gestión Reactiva:** Esperar a que el evento ocurra para analizar sus consecuencias en el mapa.
+:::
+::: {.callout-note appearance="simple" style="font-size: 0.85em; margin: 0; border-left: 3px solid #c0392b;"}
+**Gestión Anticipatoria:** Interpretar patrones masivos para decidir antes de que el impacto suceda.
+:::
+:::
+
+## Inteligencia Territorial: Del Visor a la Acción
+
+[**Aplicaciones de Alto Impacto:** Gestión de Emergencias, Clima y Planificación]{style="font-size: 0.7em; color: #7f8c8d; display: block; margin-top: -15px; margin-bottom: 10px;"}
+
+::: {style="border-left: 6px solid #c0392b; padding: 12px; background: rgba(192, 57, 43, 0.02); border-radius: 0 15px 15px 0;"}
+
+[ {{< fa route >}} ]{style="color: transparent; -webkit-text-stroke: 1.8px #c0392b; font-size: 1.8em; float: right;"}
+
+### [Objetivos de la Inteligencia Territorial]{style="color: #c0392b; font-size: 1em; display: block; margin-bottom: 5px;"}
+
+<ul style="font-size: 0.85em; line-height: 1.6; color: #34495e; margin-bottom: 0;">
+  <li class="fragment">**Anticipar escenarios:** Modelar el "qué pasaría si..." con precisión algorítmica.</li>
+  <li class="fragment">**Evaluar impactos:** Medir consecuencias antes de ejecutar una obra o política.</li>
+  <li class="fragment">**Priorizar actuaciones:** Decidir dónde es más crítico invertir recursos públicos.</li>
+  <li class="fragment">**Instrumento de Gestión:** La tecnología deja de ser el fin y se convierte en el medio.</li>
+</ul>
+:::
+
+
+
+::: {style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px;"}
+
+::: {.callout-note appearance="simple" style="font-size: 0.85em; margin: 0; border-left: 3px solid #c0392b; background-color: #fefaf9; padding: 10px;"}
+**Reto del Cambio Climático:** La IT permite adaptar los territorios mediante la simulación de riesgos multitemporales.
+:::
+
+::: {.callout-note appearance="simple" style="font-size: 0.85em; margin: 0; border-left: 3px solid #c0392b; background-color: #fefaf9; padding: 10px;"}
+**Gobernanza:** Poner la información espacial al servicio de quienes deciden para generar mayor respaldo social.
+:::
+
+:::
+
+# {background-color="#f8f9fa"}
+
+::: {style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; text-align: center; color: #2c3e50; font-family: sans-serif; padding: 20px;"}
+
+[ {{< fa comments >}} ]{style="font-size: 4em; margin-bottom: 15px; color: #c0392b;"}
+
+[¿PREGUNTAS?]{style="font-size: 2.8em; font-weight: 800; letter-spacing: 3px;"}
+
+[Hacia una Inteligencia Territorial Colectiva]{style="font-size: 1.1em; color: #c0392b; margin-top: 10px; font-weight: 400;"}
+
+::: {style="width: 100px; height: 3px; background: #2c3e50; margin: 25px auto;"}
+:::
+
+::: {style="font-size: 1em; line-height: 1.6; color: #34495e;"}
+**Alexys H. Rodríguez-Avellaneda Ph.D.**
+<br>[ {{< fa envelope >}} ]{style="color: #c0392b;"} geocorp@geocorp.co
+<!-- <br>[ {{< fa envelope >}} ]{style="color: #c0392b;"} alexyshr@gmail.com -->
+<br>[ {{< fa brands linkedin >}} ]{style="color: #c0392b;"} in/alexyshr
+<br>[ {{< fa globe >}} ]{style="color: #c0392b;"} https://geocorp.co/
+:::
+
+::: {style="margin-top: 50px; font-size: 1.2em; font-weight: 300; color: #bdc3c7; letter-spacing: 4px;"}
+¡MUCHAS GRACIAS!
+:::
+
+:::

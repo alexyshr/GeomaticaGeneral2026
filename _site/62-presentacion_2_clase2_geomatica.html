@@ -1,0 +1,2147 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.550">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Geomática General - 8&nbsp; ¿Qué es la Geomática?</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./63-presentacion_3_clase2_syllabus_evaluacion.html" rel="next">
+<link href="./61-presentacion_1_clase1_varios.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/quarto-contrib/fontawesome6-6.7.2/all.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/fontawesome6-6.7.2/latex-fontsize.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Sin resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./61-presentacion_1_clase1_varios.html">Presentaciones</a></li><li class="breadcrumb-item"><a href="./62-presentacion_2_clase2_geomatica.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">¿Qué es la Geomática?</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Geomática General</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Buscar"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bienvenida</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./00-prefacio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prefacio</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Instalación y Entornos</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-introduccion-entornos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introducción a Entornos de Desarrollo</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-guia_instalacion_A_docker.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Guía de Instalación. Opción A: Docker</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-guia_instalacion_B_qgis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Guía de Instalación. Opción B: QGIS y PyQGIS</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-guia_instalacion_C_ArcGIS.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Guía de Instalación. Opción C: ArcGIS Pro/ArcPy</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Prácticas</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./41-practica_1_clase2_visualizacion_dinamica.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Visualización y Mapas Dinámicos</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./42-practica_2_clase2_geoportales.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">🌐 Geoportales y Servicios Web</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Presentaciones</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./61-presentacion_1_clase1_varios.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Temas por Charlar</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./62-presentacion_2_clase2_geomatica.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">¿Qué es la Geomática?</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./63-presentacion_3_clase2_syllabus_evaluacion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Geomática General</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">Apéndices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./81-infraestructura_instalada.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Infraestructura Instalada</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./82-quarto.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Quarto: Orquestación y Configuración</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./83-docker_desktop.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Docker: Gestión de Contenedores e Imágenes</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./84-git_github.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Git y GitHub: Sincronización Local-Remota</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./85-vscode.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Visual Studio Code: Extensiones e Interfaz</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./86-windows.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Temas técnicos sobre Windows</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./87-linux_ubuntu.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">G</span>&nbsp; <span class="chapter-title">Temas Técnicos sobre Linux</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./88-python.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">H</span>&nbsp; <span class="chapter-title">Adicionales Sobre Python</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./89-r.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">I</span>&nbsp; <span class="chapter-title">Adicionales Sobre R</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./90-julia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">J</span>&nbsp; <span class="chapter-title">Adicionales Sobre Julia</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./98-errata.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">K</span>&nbsp; <span class="chapter-title">Errata</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./99-referencias.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Referencias Bibliográficas</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Tabla de Contenidos</h2>
+   
+  <ul>
+  <li><a href="#el-objeto-de-estudio" id="toc-el-objeto-de-estudio" class="nav-link active" data-scroll-target="#el-objeto-de-estudio">El objeto de estudio</a></li>
+  <li><a href="#el-proceso-geomático" id="toc-el-proceso-geomático" class="nav-link" data-scroll-target="#el-proceso-geomático"><span class="header-section-number">8.1</span> El Proceso Geomático</a></li>
+  <li><a href="#geomática---palabras-más-usadas" id="toc-geomática---palabras-más-usadas" class="nav-link" data-scroll-target="#geomática---palabras-más-usadas"><span class="header-section-number">8.2</span> Geomática - Palabras más usadas</a></li>
+  <li><a href="#palabras-clave-el-adn-de-la-geomática" id="toc-palabras-clave-el-adn-de-la-geomática" class="nav-link" data-scroll-target="#palabras-clave-el-adn-de-la-geomática"><span class="header-section-number">8.3</span> Palabras Clave: El ADN de la Geomática</a></li>
+  <li><a href="#el-ecosistema-de-la-geomática-moderna" id="toc-el-ecosistema-de-la-geomática-moderna" class="nav-link" data-scroll-target="#el-ecosistema-de-la-geomática-moderna"><span class="header-section-number">8.4</span> El Ecosistema de la Geomática Moderna</a></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"><span class="header-section-number">8.5</span> </a></li>
+  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1"><span class="header-section-number">9</span> </a>
+  <ul class="collapse">
+  <li><a href="#topografía-y-geodesia" id="toc-topografía-y-geodesia" class="nav-link" data-scroll-target="#topografía-y-geodesia"><span class="header-section-number">9.1</span> Topografía y Geodesia</a></li>
+  <li><a href="#cartografía-y-sig" id="toc-cartografía-y-sig" class="nav-link" data-scroll-target="#cartografía-y-sig"><span class="header-section-number">9.2</span> Cartografía y SIG</a></li>
+  <li><a href="#sig-tradicionales-esencia-y-concepto" id="toc-sig-tradicionales-esencia-y-concepto" class="nav-link" data-scroll-target="#sig-tradicionales-esencia-y-concepto"><span class="header-section-number">9.3</span> SIG Tradicionales: Esencia y Concepto</a></li>
+  <li><a href="#sig-tradicionales-capacidades-y-alcance" id="toc-sig-tradicionales-capacidades-y-alcance" class="nav-link" data-scroll-target="#sig-tradicionales-capacidades-y-alcance"><span class="header-section-number">9.4</span> SIG Tradicionales: Capacidades y Alcance</a>
+  <ul class="collapse">
+  <li><a href="#la-limitación-histórica" id="toc-la-limitación-histórica" class="nav-link" data-scroll-target="#la-limitación-histórica"><span style="color: #c0392b;"><i class="fa-solid fa-circle-exclamation" aria-label="circle-exclamation"></i></span> La Limitación Histórica</a></li>
+  </ul></li>
+  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2"><span class="header-section-number">9.5</span> </a></li>
+  <li><a href="#fotogrametría-y-teledetección" id="toc-fotogrametría-y-teledetección" class="nav-link" data-scroll-target="#fotogrametría-y-teledetección"><span class="header-section-number">9.6</span> Fotogrametría y Teledetección</a></li>
+  <li><a href="#gnss-gps-de-precisión" id="toc-gnss-gps-de-precisión" class="nav-link" data-scroll-target="#gnss-gps-de-precisión"><span class="header-section-number">9.7</span> GNSS / GPS de Precisión</a></li>
+  <li><a href="#drones-y-lidar" id="toc-drones-y-lidar" class="nav-link" data-scroll-target="#drones-y-lidar"><span class="header-section-number">9.8</span> Drones y LiDAR</a></li>
+  <li><a href="#escáner-láser-3d-tls" id="toc-escáner-láser-3d-tls" class="nav-link" data-scroll-target="#escáner-láser-3d-tls"><span class="header-section-number">9.9</span> Escáner Láser 3D (TLS)</a></li>
+  <li><a href="#cloud-computing-y-big-data" id="toc-cloud-computing-y-big-data" class="nav-link" data-scroll-target="#cloud-computing-y-big-data"><span class="header-section-number">9.10</span> Cloud Computing y Big Data</a></li>
+  <li><a href="#iot-y-sensores-georreferenciados" id="toc-iot-y-sensores-georreferenciados" class="nav-link" data-scroll-target="#iot-y-sensores-georreferenciados"><span class="header-section-number">9.11</span> IoT y Sensores Georreferenciados</a></li>
+  </ul></li>
+  <li><a href="#section-3" id="toc-section-3" class="nav-link" data-scroll-target="#section-3"><span class="header-section-number">10</span> </a>
+  <ul class="collapse">
+  <li><a href="#ciclo-de-vida-del-dato-geoespacial" id="toc-ciclo-de-vida-del-dato-geoespacial" class="nav-link" data-scroll-target="#ciclo-de-vida-del-dato-geoespacial"><span class="header-section-number">10.1</span> Ciclo de Vida del Dato Geoespacial</a></li>
+  <li><a href="#ide-el-enfoque-en-el-intercambio" id="toc-ide-el-enfoque-en-el-intercambio" class="nav-link" data-scroll-target="#ide-el-enfoque-en-el-intercambio"><span class="header-section-number">10.2</span> IDE: El Enfoque en el Intercambio</a></li>
+  <li><a href="#ide-la-internet-de-la-información-geográfica" id="toc-ide-la-internet-de-la-información-geográfica" class="nav-link" data-scroll-target="#ide-la-internet-de-la-información-geográfica"><span class="header-section-number">10.3</span> IDE: La “Internet” de la Información Geográfica</a></li>
+  </ul></li>
+  <li><a href="#section-4" id="toc-section-4" class="nav-link" data-scroll-target="#section-4"><span class="header-section-number">11</span> </a>
+  <ul class="collapse">
+  <li><a href="#de-la-cartografía-a-la-inteligencia-territorial" id="toc-de-la-cartografía-a-la-inteligencia-territorial" class="nav-link" data-scroll-target="#de-la-cartografía-a-la-inteligencia-territorial"><span class="header-section-number">11.1</span> De la Cartografía a la Inteligencia Territorial</a></li>
+  </ul></li>
+  <li><a href="#section-5" id="toc-section-5" class="nav-link" data-scroll-target="#section-5"><span class="header-section-number">12</span> </a>
+  <ul class="collapse">
+  <li><a href="#smart-cities-el-sistema-nervioso" id="toc-smart-cities-el-sistema-nervioso" class="nav-link" data-scroll-target="#smart-cities-el-sistema-nervioso"><span class="header-section-number">12.1</span> Smart Cities: El Sistema Nervioso</a></li>
+  <li><a href="#smart-cities-tecnología-y-definición" id="toc-smart-cities-tecnología-y-definición" class="nav-link" data-scroll-target="#smart-cities-tecnología-y-definición"><span class="header-section-number">12.2</span> Smart Cities: Tecnología y Definición</a></li>
+  <li><a href="#gemelo-digital-el-enfoque-en-la-simulación" id="toc-gemelo-digital-el-enfoque-en-la-simulación" class="nav-link" data-scroll-target="#gemelo-digital-el-enfoque-en-la-simulación"><span class="header-section-number">12.3</span> Gemelo Digital: El Enfoque en la Simulación</a></li>
+  <li><a href="#gemelo-digital-y-bim-territorial" id="toc-gemelo-digital-y-bim-territorial" class="nav-link" data-scroll-target="#gemelo-digital-y-bim-territorial"><span class="header-section-number">12.4</span> Gemelo Digital y BIM Territorial</a></li>
+  <li><a href="#gemelo-digital-en-la-industria-aec" id="toc-gemelo-digital-en-la-industria-aec" class="nav-link" data-scroll-target="#gemelo-digital-en-la-industria-aec"><span class="header-section-number">12.5</span> Gemelo Digital en la Industria AEC</a></li>
+  <li><a href="#realidad-aumentada-geoespacial" id="toc-realidad-aumentada-geoespacial" class="nav-link" data-scroll-target="#realidad-aumentada-geoespacial"><span class="header-section-number">12.6</span> Realidad Aumentada Geoespacial</a></li>
+  <li><a href="#vgi-cartografía-social" id="toc-vgi-cartografía-social" class="nav-link" data-scroll-target="#vgi-cartografía-social"><span class="header-section-number">12.7</span> VGI: Cartografía Social</a></li>
+  </ul></li>
+  <li><a href="#section-6" id="toc-section-6" class="nav-link" data-scroll-target="#section-6"><span class="header-section-number">13</span> </a>
+  <ul class="collapse">
+  <li><a href="#geoia-ai-geografía" id="toc-geoia-ai-geografía" class="nav-link" data-scroll-target="#geoia-ai-geografía"><span class="header-section-number">13.1</span> GeoIA: AI + Geografía</a></li>
+  <li><a href="#inteligencia-territorial-el-enfoque-predictivo" id="toc-inteligencia-territorial-el-enfoque-predictivo" class="nav-link" data-scroll-target="#inteligencia-territorial-el-enfoque-predictivo"><span class="header-section-number">13.2</span> Inteligencia Territorial: El Enfoque Predictivo</a></li>
+  <li><a href="#inteligencia-territorial-del-visor-a-la-acción" id="toc-inteligencia-territorial-del-visor-a-la-acción" class="nav-link" data-scroll-target="#inteligencia-territorial-del-visor-a-la-acción"><span class="header-section-number">13.3</span> Inteligencia Territorial: Del Visor a la Acción</a></li>
+  </ul></li>
+  <li><a href="#section-7" id="toc-section-7" class="nav-link" data-scroll-target="#section-7"><span class="header-section-number">14</span> </a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./61-presentacion_1_clase1_varios.html">Presentaciones</a></li><li class="breadcrumb-item"><a href="./62-presentacion_2_clase2_geomatica.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">¿Qué es la Geomática?</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">¿Qué es la Geomática?</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; text-align: center; color: #2c3e50; font-family: sans-serif; padding: 20px;">
+<p><span style="font-size: 3.5em; color: #3498db; margin-bottom: 15px;"><i class="fa-solid fa-earth-americas" aria-label="earth-americas"></i></span></p>
+<p><span style="font-size: 2.2em; font-weight: 800; letter-spacing: 2px; line-height: 1.2; display: block;">AVANCES Y TENDENCIAS</span> <span style="font-size: 2.2em; font-weight: 800; letter-spacing: 2px; line-height: 1.2; display: block; margin-top: -5px;">DE LA GEOMÁTICA</span></p>
+<p><span style="font-size: 1em; color: #3498db; margin-top: 15px; font-weight: 400;">Fundamentos, Disciplinas y Evolución hacia la Inteligencia Territorial</span></p>
+<div style="width: 100px; height: 3px; background: #2c3e50; margin: 25px auto;">
+
+</div>
+<p><span style="font-size: 1.2em; font-weight: bold;"><strong>Alexys H. Rodríguez-Avellaneda Ph.D.</strong></span> <!-- <br>[Especialista en Geotecnologías]{style="font-size: 0.9em; color: #7f8c8d;"} --></p>
+<div style="margin-top: 40px; font-size: 0.7em; color: #bdc3c7; letter-spacing: 1px;">
+<p>FEBRERO 2026 | BOGOTÁ, COLOMBIA</p>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; text-align: center; color: white;">
+<p><span style="font-size: 5em; margin-bottom: 30px; opacity: 0.9;"><i class="fa-solid fa-layer-group" aria-label="layer-group"></i></span></p>
+<p><span style="font-size: 2.5em; font-weight: 800; letter-spacing: 4px; text-transform: uppercase;">I. El Escenario</span></p>
+<p><span style="font-size: 1.2em; color: #3498db; margin-top: 20px; font-weight: 300;">El Ecosistema de la Geomática Moderna</span></p>
+<div style="width: 150px; height: 4px; background: #3498db; margin-top: 40px;">
+
+</div>
+</div>
+<p>La <strong>Geomática</strong> es la disciplina que integra la ciencia y la tecnología para gestionar el ciclo de vida del dato espacial mediante seis acciones clave:</p>
+<div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 30px; text-align: center;">
+<div style="padding: 15px; border: 1px solid #f0f0f0; border-radius: 10px;">
+<p><span style="color: transparent; -webkit-text-stroke: 1.5px #2c3e50; font-size: 2.5em;"><i class="fa-solid fa-satellite-dish" aria-label="satellite-dish"></i></span> <br><strong>Capturar</strong></p>
+</div>
+<div style="padding: 15px; border: 1px solid #f0f0f0; border-radius: 10px;">
+<p><span style="color: transparent; -webkit-text-stroke: 1.5px #16a085; font-size: 2.5em;"><i class="fa-solid fa-gear" aria-label="gear"></i></span> <br><strong>Tratar</strong></p>
+</div>
+<div style="padding: 15px; border: 1px solid #f0f0f0; border-radius: 10px;">
+<p><span style="color: transparent; -webkit-text-stroke: 1.5px #e67e22; font-size: 2.5em;"><i class="fa-solid fa-database" aria-label="database"></i></span> <br><strong>Gestionar</strong></p>
+</div>
+<div style="padding: 15px; border: 1px solid #f0f0f0; border-radius: 10px;">
+<p><span style="color: transparent; -webkit-text-stroke: 1.5px #8e44ad; font-size: 2.5em;"><i class="fa-solid fa-magnifying-glass-chart" aria-label="magnifying-glass-chart"></i></span> <br><strong>Analizar</strong></p>
+</div>
+<div style="padding: 15px; border: 1px solid #f0f0f0; border-radius: 10px;">
+<p><span style="color: transparent; -webkit-text-stroke: 1.5px #c0392b; font-size: 2.5em;"><i class="fa-solid fa-eye" aria-label="eye"></i></span> <br><strong>Interpretar</strong></p>
+</div>
+<div style="padding: 15px; border: 1px solid #f0f0f0; border-radius: 10px;">
+<p><span style="color: transparent; -webkit-text-stroke: 1.5px #27ae60; font-size: 2.5em;"><i class="fa-solid fa-hand-pointer" aria-label="hand-pointer"></i></span> <br><strong>Utilizar</strong></p>
+</div>
+</div>
+<hr>
+<section id="el-objeto-de-estudio" class="level3">
+<h3 class="anchored" data-anchor-id="el-objeto-de-estudio">El objeto de estudio</h3>
+<div style="background-color: #f8f9fa; padding: 25px; border-left: 6px solid #c0392b; border-radius: 5px; margin-top: 40px;">
+<p><span style="color: transparent; -webkit-text-stroke: 2px #c0392b; font-size: 1.5em; vertical-align: middle;"><i class="fa-solid fa-location-dot" aria-label="location-dot"></i></span> <strong>Información Geoespacial:</strong> Datos relacionados con ubicaciones específicas en la Tierra (coordenadas, atributos y tiempo).</p>
+</div>
+<div style="margin-top: 30px; text-align: center; font-style: italic; color: #7f8c8d; font-size: 1.3em;">
+<blockquote class="blockquote">
+<p>“Es la ciencia y la tecnología de la información espacial.”</p>
+</blockquote>
+</div>
+</section>
+<section id="el-proceso-geomático" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="el-proceso-geomático"><span class="header-section-number">8.1</span> El Proceso Geomático</h2>
+<p>La geomática integra un flujo de trabajo sistemático para transformar la realidad física en conocimiento digital.</p>
+<div style="display: flex; justify-content: space-between; align-items: stretch; gap: 15px; margin-top: 40px;">
+<div class="fragment" style="flex: 1; padding: 20px; border: 1px solid #e0e0e0; border-radius: 15px; background: #fafafa; text-align: center;">
+<p><span style="color: transparent; -webkit-text-stroke: 1.5px #2c3e50; font-size: 3em;"><i class="fa-solid fa-satellite-dish" aria-label="satellite-dish"></i></span></p>
+<section id="adquisición" class="level3">
+<h3 class="anchored" data-anchor-id="adquisición"><span style="color: #2c3e50; font-size: 0.9em;">Adquisición</span></h3>
+<div style="text-align: left; font-size: 0.7em;">
+<ul>
+<li><strong>Captura:</strong> Obtención de datos brutos (campo, sensores).</li>
+<li><strong>Tratamiento:</strong> Procesamiento, limpieza y georreferenciación.</li>
+</ul>
+</div>
+</section>
+</div>
+<div class="fragment" style="flex: 1; padding: 20px; border: 1px solid #e0e0e0; border-radius: 15px; background: #fafafa; text-align: center;">
+<p><span style="color: transparent; -webkit-text-stroke: 1.5px #27ae60; font-size: 3em;"><i class="fa-solid fa-microchip" aria-label="microchip"></i></span></p>
+<section id="inteligencia" class="level3">
+<h3 class="anchored" data-anchor-id="inteligencia"><span style="color: #27ae60; font-size: 0.9em;">Inteligencia</span></h3>
+<div style="text-align: left; font-size: 0.7em;">
+<ul>
+<li><strong>Analizar:</strong> Procesamiento estadístico y espacial complejo.</li>
+<li><strong>Interpretación:</strong> Extracción de patrones y significado real.</li>
+</ul>
+</div>
+</section>
+</div>
+<div class="fragment" style="flex: 1; padding: 20px; border: 1px solid #e0e0e0; border-radius: 15px; background: #fafafa; text-align: center;">
+<p><span style="color: transparent; -webkit-text-stroke: 1.5px #e67e22; font-size: 3em;"><i class="fa-solid fa-map-location-dot" aria-label="map-location-dot"></i></span></p>
+<section id="gestión" class="level3">
+<h3 class="anchored" data-anchor-id="gestión"><span style="color: #e67e22; font-size: 0.9em;">Gestión</span></h3>
+<div style="text-align: left; font-size: 0.7em;">
+<ul>
+<li><strong>Gestionar:</strong> Almacenamiento en bases de datos y arquitecturas SIG.</li>
+<li><strong>Utilizar:</strong> Aplicación final en la toma de decisiones.</li>
+</ul>
+</div>
+</section>
+</div>
+</div>
+<div style="text-align: center; margin-top: 50px; font-style: italic; color: #7f8c8d;">
+<blockquote class="blockquote">
+<p>“De la captura del dato a la sabiduría del territorio.”</p>
+</blockquote>
+</div>
+</section>
+<section id="geomática---palabras-más-usadas" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="geomática---palabras-más-usadas"><span class="header-section-number">8.2</span> Geomática - Palabras más usadas</h2>
+<div style="position: relative; width: 100%; height: 500px; font-weight: bold;">
+<div class="fragment" style="position: absolute; top: 10%; left: 5%; font-size: 4em; color: #1a5276; z-index: 10;">
+<p>SIG</p>
+</div>
+<div class="fragment" style="position: absolute; top: 65%; left: 35%; font-size: 3.2em; color: #2e86c1; z-index: 10;">
+<p>Sensores Remotos</p>
+</div>
+<div class="fragment" style="position: absolute; top: 5%; left: 55%; font-size: 1.4em; color: #e67e22;">
+<p>Mapas</p>
+</div>
+<div class="fragment" style="position: absolute; top: 20%; left: 35%; font-size: 1.8em; color: #16a085;">
+<p>Información Geográfica</p>
+</div>
+<div class="fragment" style="position: absolute; top: 15%; left: 80%; font-size: 1.5em; color: #8e44ad;">
+<p>Fotogrametría</p>
+</div>
+<div class="fragment" style="position: absolute; top: 40%; left: 10%; font-size: 1.6em; color: #d35400;">
+<p>GNSS</p>
+</div>
+<div class="fragment" style="position: absolute; top: 55%; left: 65%; font-size: 2em; color: #2c3e50;">
+<p>Geodesia</p>
+</div>
+<div class="fragment" style="position: absolute; top: 5%; left: 20%; font-size: 1.1em; color: #7f8c8d;">
+<p>Big Data</p>
+</div>
+<div class="fragment" style="position: absolute; top: 90%; left: 5%; font-size: 1.5em; color: #b9b929;">
+<p>Bases de datos espaciales</p>
+</div>
+<div class="fragment" style="position: absolute; top: 90%; left: 80%; font-size: 1.4em; color: #d35400;">
+<p>Coordenadas</p>
+</div>
+<div class="fragment" style="position: absolute; top: 30%; left: 88%; font-size: 1.2em; color: #7f8c8d;">
+<p>Capas</p>
+</div>
+<div class="fragment" style="position: absolute; top: 53%; left: 0%; font-size: 2.1em; color: #27ae60;">
+<p>Análisis espacial</p>
+</div>
+<div class="fragment" style="position: absolute; top: 45%; left: 80%; font-size: 1.3em; color: #c0392b;">
+<p>Geoprocesamiento</p>
+</div>
+</div>
+</section>
+<section id="palabras-clave-el-adn-de-la-geomática" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="palabras-clave-el-adn-de-la-geomática"><span class="header-section-number">8.3</span> Palabras Clave: El ADN de la Geomática</h2>
+<p>Conceptos fundamentales que definen el campo actual, organizados por su rol en el flujo de trabajo.</p>
+<div style="display: flex; justify-content: center; gap: 10px; margin-top: 30px;">
+<div style="flex: 1; padding: 10px; border: 1.2px solid #16a085; border-radius: 12px; text-align: center;">
+<p><span style="color: transparent; -webkit-text-stroke: 1.2px #16a085; font-size: 2.2em;"><i class="fa-solid fa-camera-retro" aria-label="camera-retro"></i></span> <br><span style="color: #16a085; font-size: 0.8em;"><strong>Captura</strong></span></p>
+<div style="font-size: 0.5em; text-align: left; margin-top: 8px;">
+<ul>
+<li>Sensores Remotos</li>
+<li>Drones (UAV)</li>
+<li>Escáner Láser</li>
+</ul>
+</div>
+</div>
+<div style="flex: 1; padding: 10px; border: 1.2px solid #e67e22; border-radius: 12px; text-align: center;">
+<p><span style="color: transparent; -webkit-text-stroke: 1.2px #e67e22; font-size: 2.2em;"><i class="fa-solid fa-database" aria-label="database"></i></span> <br><span style="color: #e67e22; font-size: 0.8em;"><strong>Datos</strong></span></p>
+<div style="font-size: 0.5em; text-align: left; margin-top: 8px;">
+<ul>
+<li>Coordenadas</li>
+<li>Big Data</li>
+<li>DB Espaciales</li>
+</ul>
+</div>
+</div>
+<div style="flex: 1; padding: 10px; border: 1.2px solid #2980b9; border-radius: 12px; text-align: center;">
+<p><span style="color: transparent; -webkit-text-stroke: 1.2px #2980b9; font-size: 2.2em;"><i class="fa-solid fa-network-wired" aria-label="network-wired"></i></span> <br><span style="color: #2980b9; font-size: 0.8em;"><strong>Sistemas</strong></span></p>
+<div style="font-size: 0.5em; text-align: left; margin-top: 8px;">
+<ul>
+<li>SIG (GIS)</li>
+<li>GNSS</li>
+<li>IDE</li>
+</ul>
+</div>
+</div>
+<div style="flex: 1; padding: 10px; border: 1.2px solid #8e44ad; border-radius: 12px; text-align: center;">
+<p><span style="color: transparent; -webkit-text-stroke: 1.2px #8e44ad; font-size: 2.2em;"><i class="fa-solid fa-magnifying-glass-chart" aria-label="magnifying-glass-chart"></i></span> <br><span style="color: #8e44ad; font-size: 0.8em;"><strong>Análisis</strong></span></p>
+<div style="font-size: 0.5em; text-align: left; margin-top: 8px;">
+<ul>
+<li>Análisis Espacial</li>
+<li>Geoestadística</li>
+<li><strong>GeoIA</strong></li>
+</ul>
+</div>
+</div>
+<div style="flex: 1; padding: 10px; border: 1.2px solid #c0392b; border-radius: 12px; text-align: center;">
+<p><span style="color: transparent; -webkit-text-stroke: 1.2px #c0392b; font-size: 2.2em;"><i class="fa-solid fa-map-location-dot" aria-label="map-location-dot"></i></span> <br><span style="color: #c0392b; font-size: 0.8em;"><strong>Visuliz.</strong></span></p>
+<div style="font-size: 0.5em; text-align: left; margin-top: 8px;">
+<ul>
+<li>Webmapping</li>
+<li>Visores</li>
+<li>Cartografía</li>
+</ul>
+</div>
+</div>
+</div>
+<hr>
+<div style="margin-top: 40px; text-align: center; border: 1px dashed #bdc3c7; padding: 10px; border-radius: 10px; font-size: 0.8em;">
+<p>La integración de estos <strong>cinco pilares</strong> define el perfil del profesional de la Geomática moderna.</p>
+</div>
+</section>
+<section id="el-ecosistema-de-la-geomática-moderna" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="el-ecosistema-de-la-geomática-moderna"><span class="header-section-number">8.4</span> El Ecosistema de la Geomática Moderna</h2>
+<p>La convergencia entre el saber científico, las herramientas digitales y la inteligencia territorial.</p>
+<div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin-top: 30px;">
+<div style="border-top: 2px solid #2c3e50; padding-top: 20px;">
+<p><span style="color: transparent; -webkit-text-stroke: 1.5px #2c3e50; font-size: 2.2em;"><i class="fa-solid fa-graduation-cap" aria-label="graduation-cap"></i></span></p>
+<section id="ciencias-base" class="level3">
+<h3 class="anchored" data-anchor-id="ciencias-base"><span style="color: #2c3e50; font-size: 0.85em; margin-top: 10px; display: block;">Ciencias Base</span></h3>
+<p><span style="font-size: 0.55em; color: #7f8c8d;">Fundamento teórico.</span></p>
+<ul style="font-size: 0.6em; line-height: 1.5; color: #34495e; margin-top: 15px;">
+<li class="fragment">
+Topografía y Geodesia
+</li>
+<li class="fragment">
+Cartografía y SIG
+</li>
+<li class="fragment">
+Fotogrametría
+</li>
+<li class="fragment">
+Teledetección
+</li>
+<li class="fragment">
+Estadística Espacial
+</li>
+</ul>
+</section>
+</div>
+<div style="border-top: 2px solid #e67e22; padding-top: 20px;">
+<p><span style="color: transparent; -webkit-text-stroke: 1.5px #e67e22; font-size: 2.2em;"><i class="fa-solid fa-microchip" aria-label="microchip"></i></span></p>
+<section id="herramientas" class="level3">
+<h3 class="anchored" data-anchor-id="herramientas"><span style="color: #e67e22; font-size: 0.85em; margin-top: 10px; display: block;">Herramientas</span></h3>
+<p><span style="font-size: 0.55em; color: #7f8c8d;">Captura y gestión.</span></p>
+<ul style="font-size: 0.6em; line-height: 1.5; color: #34495e; margin-top: 15px;">
+<li class="fragment">
+GNSS / GPS Precisión
+</li>
+<li class="fragment">
+Drones y LiDAR
+</li>
+<li class="fragment">
+Escáner Láser 3D
+</li>
+<li class="fragment">
+<strong>Cloud Computing</strong>
+</li>
+<li class="fragment">
+IoT / Sensores
+</li>
+</ul>
+</section>
+</div>
+<div style="border-top: 2px solid #8e44ad; padding-top: 20px;">
+<p><span style="color: transparent; -webkit-text-stroke: 1.5px #8e44ad; font-size: 2.2em;"><i class="fa-solid fa-rocket" aria-label="rocket"></i></span></p>
+<section id="la-frontera" class="level3">
+<h3 class="anchored" data-anchor-id="la-frontera"><span style="color: #8e44ad; font-size: 0.85em; margin-top: 10px; display: block;">La Frontera</span></h3>
+<p><span style="font-size: 0.55em; color: #7f8c8d;">Innovación y GeoIA.</span></p>
+<ul style="font-size: 0.6em; line-height: 1.5; color: #34495e; margin-top: 15px;">
+<li class="fragment">
+<strong>Smart Cities</strong>
+</li>
+<li class="fragment">
+<strong>Gemelo Digital / BIM</strong>
+</li>
+<li class="fragment">
+Realidad Aumentada
+</li>
+<li class="fragment">
+VGI / Datos Ciudadanos
+</li>
+<li class="fragment">
+<strong>GeoIA</strong> (IA Espacial)
+</li>
+</ul>
+</section>
+</div>
+</div>
+<hr>
+<div style="text-align: center; margin-top: 35px; font-style: italic; color: #7f8c8d; font-size: 0.8em; border-top: 1px solid #eee; padding-top: 10px;">
+<p>“La Geomática es el punto de unión entre el Mundo Físico, el Modelo Digital y la IA.”</p>
+</div>
+</section>
+<section id="section" class="level2" data-number="8.5">
+<h2 data-number="8.5" class="anchored" data-anchor-id="section"><span class="header-section-number">8.5</span> </h2>
+<div style="text-align: center; display: flex; justify-content: center; align-items: center; height: 100%;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/que_es_geomatica.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 1px solid #eee;;width:90.0%"></p>
+</figure>
+</div>
+</div>
+</section>
+<section id="section-1" class="level1" data-background-color="#e67e22" data-number="9">
+<h1 data-background-color="#e67e22" data-number="9"><span class="header-section-number">9</span> </h1>
+<div style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; text-align: center; color: white;">
+<p><span style="font-size: 5em; margin-bottom: 30px; opacity: 0.9;"><i class="fa-solid fa-gear" aria-label="gear"></i></span></p>
+<p><span style="font-size: 2.5em; font-weight: 800; letter-spacing: 4px; text-transform: uppercase;">II. El Motor Técnico</span></p>
+<p><span style="font-size: 1.2em; color: #2c3e50; margin-top: 20px; font-weight: 300;">Ciencias Base y Herramientas de Captura</span></p>
+<div style="width: 150px; height: 4px; background: #2c3e50; margin-top: 40px;">
+
+</div>
+</div>
+<section id="topografía-y-geodesia" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="topografía-y-geodesia"><span class="header-section-number">9.1</span> Topografía y Geodesia</h2>
+<div style="border-left: 6px solid #2c3e50; padding: 12px; background: rgba(44, 62, 80, 0.02); border-radius: 0 15px 15px 0; margin-top: -10px;">
+<p><span style="color: transparent; -webkit-text-stroke: 1.8px #2c3e50; font-size: 1.8em; float: right;"><i class="fa-solid fa-earth-americas" aria-label="earth-americas"></i></span></p>
+<section id="la-ciencia-de-la-medición" class="level3">
+<h3 class="anchored" data-anchor-id="la-ciencia-de-la-medición"><span style="color: #2c3e50; font-size: 1em; display: block; margin-bottom: 5px;">La Ciencia de la Medición</span></h3>
+<ul style="font-size: 0.8em; line-height: 1.4; color: #34495e; margin-bottom: 0;">
+<li class="fragment">
+<strong>Geometría Terrestre:</strong> Determinación de coordenadas <span class="math inline">\(X, Y, Z\)</span>.
+</li>
+<li class="fragment">
+<strong>Marcos de Referencia:</strong> Implementación de sistemas de coordenadas (Datum).
+</li>
+<li class="fragment">
+<strong>Modelado del Geoide:</strong> Estudio de las irregularidades gravitatorias.
+</li>
+<li class="fragment">
+<strong>Escala Local y Global:</strong> Desde el levantamiento de un lote hasta el país.
+</li>
+</ul>
+</section>
+</div>
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 15px;">
+<div class="callout callout-style-simple callout-note" style="font-size: 0.85em; margin: 0; border-left: 3px solid #2c3e50; background-color: #f8f9fa; padding: 10px;">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Topografía:</strong> “Es la ciencia que estudia el conjunto de principios y procedimientos que tienen por objeto la representación gráfica de la superficie terrestre, con sus formas y detalles, tanto naturales como artificiales” — <strong>Wikipedia</strong>.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note" style="font-size: 0.85em; margin: 0; border-left: 3px solid #2c3e50; background-color: #f8f9fa; padding: 10px;">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Geodesia:</strong> “Es la ciencia que estudia la forma y dimensiones de la Tierra. Esto incluye la determinación del campo gravitatorio externo y la superficie del fondo oceánico, considerando la curvatura terrestre” — <strong>Wikipedia</strong>.</p>
+</div>
+</div>
+</div>
+</div>
+<div style="text-align: center; margin-top: 15px; font-style: italic; color: #7f8c8d; font-size: 0.8em; border-top: 1px solid #eee; padding-top: 8px;">
+<p>“Sin una base geodésica, los mapas no son más que dibujos.”</p>
+</div>
+</section>
+<section id="cartografía-y-sig" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="cartografía-y-sig"><span class="header-section-number">9.2</span> Cartografía y SIG</h2>
+<div style="border-left: 6px solid #2980b9; padding: 12px; background: rgba(41, 128, 185, 0.02); border-radius: 0 15px 15px 0; margin-top: -10px;">
+<p><span style="color: transparent; -webkit-text-stroke: 1.8px #2980b9; font-size: 1.8em; float: right;"><i class="fa-solid fa-map-location-dot" aria-label="map-location-dot"></i></span></p>
+<section id="el-cerebro-del-análisis-territorial" class="level3">
+<h3 class="anchored" data-anchor-id="el-cerebro-del-análisis-territorial"><span style="color: #2980b9; font-size: 1em; display: block; margin-bottom: 5px;">El Cerebro del Análisis Territorial</span></h3>
+<ul style="font-size: 0.8em; line-height: 1.4; color: #34495e; margin-bottom: 0;">
+<li class="fragment">
+<strong>Modelado:</strong> Abstracción y simplificación de la realidad en capas.
+</li>
+<li class="fragment">
+<strong>Gestión de Atributos:</strong> Conexión entre la geometría y la información alfanumérica.
+</li>
+<li class="fragment">
+<strong>Interoperabilidad:</strong> Capacidad de integrar datos de diversas fuentes y formatos.
+</li>
+<li class="fragment">
+<strong>Visualización:</strong> Comunicación de fenómenos espaciales mediante variables visuales.
+</li>
+</ul>
+</section>
+</div>
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 15px;">
+<div class="callout callout-style-simple callout-note" style="font-size: 0.85em; margin: 0; border-left: 3px solid #2980b9; background-color: #f1f7fb; padding: 10px;">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Cartografía:</strong> “Es la ciencia, arte y técnica de representar la superficie terrestre en un plano. Se encarga de la concepción, producción, difusión y estudio de los mapas en todas sus formas” — <strong>Wikipedia</strong>.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note" style="font-size: 0.85em; margin: 0; border-left: 3px solid #2980b9; background-color: #f1f7fb; padding: 10px;">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>SIG / GIS:</strong> “Es un conjunto de herramientas que integra componentes (hardware, software, datos) que permiten la organización, almacenamiento y análisis de grandes cantidades de datos georreferenciados” — <strong>Wikipedia</strong>.</p>
+</div>
+</div>
+</div>
+</div>
+<div style="text-align: center; margin-top: 15px; font-style: italic; color: #7f8c8d; font-size: 0.8em; border-top: 1px solid #eee; padding-top: 8px;">
+<p>“La cartografía es el lenguaje; el SIG es el pensamiento que lo genera.”</p>
+</div>
+</section>
+<section id="sig-tradicionales-esencia-y-concepto" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="sig-tradicionales-esencia-y-concepto"><span class="header-section-number">9.3</span> SIG Tradicionales: Esencia y Concepto</h2>
+<p>Para comprender la base de la geomática, debemos diferenciar el medio (el software) de la esencia (el modelo de datos).</p>
+<div style="display: flex; gap: 20px; margin-top: 40px;">
+<div style="flex: 1; padding: 25px; border: 1.5px solid #2c3e50; border-radius: 20px; background: rgba(44, 62, 80, 0.02); text-align: center;">
+<p><span style="color: transparent; -webkit-text-stroke: 1.8px #2c3e50; font-size: 3em;"><i class="fa-solid fa-clone" aria-label="clone"></i></span> <br><span style="color: #2c3e50; font-weight: bold; display: block; margin-top: 15px;"><strong>Representación</strong></span> <span style="font-size: 0.7em; display: block; margin-top: 10px;">Es un modelo abstracto y simplificado de la complejidad del mundo real.</span></p>
+</div>
+<div style="flex: 1; padding: 25px; border: 1.5px solid #c0392b; border-radius: 20px; background: rgba(192, 57, 43, 0.02); text-align: center;">
+<p><span style="color: transparent; -webkit-text-stroke: 1.8px #c0392b; font-size: 3em;"><i class="fa-solid fa-circle-xmark" aria-label="circle-xmark"></i></span> <br><span style="color: #c0392b; font-weight: bold; display: block; margin-top: 15px;"><strong>El Error Común</strong></span> <span style="font-size: 0.7em; display: block; margin-top: 10px;">Reducir el SIG únicamente al <strong>Software</strong>. El software es solo la herramienta de operación.</span></p>
+</div>
+<div style="flex: 1; padding: 25px; border: 1.5px solid #2980b9; border-radius: 20px; background: rgba(41, 128, 185, 0.02); text-align: center;">
+<p><span style="color: transparent; -webkit-text-stroke: 1.8px #2980b9; font-size: 3em;"><i class="fa-solid fa-diagram-project" aria-label="diagram-project"></i></span> <br><span style="color: #2980b9; font-weight: bold; display: block; margin-top: 15px;"><strong>Enfoque de SI</strong></span> <span style="font-size: 0.7em; display: block; margin-top: 10px;">Un Sistema de Información especializado con un <strong>modelo de datos</strong> orientado al espacio.</span></p>
+</div>
+</div>
+</section>
+<section id="sig-tradicionales-capacidades-y-alcance" class="level2" data-number="9.4">
+<h2 data-number="9.4" class="anchored" data-anchor-id="sig-tradicionales-capacidades-y-alcance"><span class="header-section-number">9.4</span> SIG Tradicionales: Capacidades y Alcance</h2>
+<p>Estructura técnica basada en el procesamiento de datos y la geometría discreta.</p>
+<p><br></p>
+<div style="border-left: 5px solid #2b8ec0; padding-left: 20px; margin-bottom: 25px;">
+<p><span style="color: transparent; -webkit-text-stroke: 1.5px #2b8ec0; font-size: 2em; float: left; margin-right: 15px;"><i class="fa-solid fa-gears" aria-label="gears"></i></span> <strong>Capacidades Técnicas:</strong> Sistema de bases de datos con indexación espacial y un conjunto de operaciones para manipular, consultar y realizar análisis rápidos de proximidad.</p>
+</div>
+<div style="border-left: 5px solid #5fc02b; padding-left: 20px; margin-bottom: 25px;">
+<p><span style="color: transparent; -webkit-text-stroke: 1.5px #5fc02b; font-size: 2em; float: left; margin-right: 15px;"><i class="fa-solid fa-draw-polygon" aria-label="draw-polygon"></i></span> <strong>Modelo de Datos:</strong> Representación del territorio mediante geometrías discretas. <br> <span style="font-size: 0.8em; color: #34495e; margin-left: 45px;">• <strong>Puntos</strong> (Nodos) &nbsp; • <strong>Líneas</strong> (Arcos) &nbsp; • <strong>Áreas</strong> (Polígonos)</span></p>
+</div>
+<div class="fragment" style="margin-top: 40px; background: rgba(192, 57, 43, 0.05); padding: 15px; border-radius: 10px; border: 1px dashed #c0392b; text-align: center;">
+<section id="la-limitación-histórica" class="level3">
+<h3 class="anchored" data-anchor-id="la-limitación-histórica"><span style="color: #c0392b;"><i class="fa-solid fa-circle-exclamation" aria-label="circle-exclamation"></i></span> La Limitación Histórica</h3>
+<p><span style="color: #c0392b; font-weight: bold;">El mapa como <strong>producto final</strong>.</span> <br> <span style="font-size: 0.7em; color: #34495e;">El proceso terminaba en la cartografía estática, sin capacidad de análisis dinámico en tiempo real.</span></p>
+</section>
+</div>
+</section>
+<section id="section-2" class="level2" data-number="9.5">
+<h2 data-number="9.5" class="anchored" data-anchor-id="section-2"><span class="header-section-number">9.5</span> </h2>
+<div style="text-align: center; display: flex; justify-content: center; align-items: center; height: 100%;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/SIG_modelo_de_datos.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 1px solid #eee;;width:90.0%"></p>
+</figure>
+</div>
+</div>
+</section>
+<section id="fotogrametría-y-teledetección" class="level2" data-number="9.6">
+<h2 data-number="9.6" class="anchored" data-anchor-id="fotogrametría-y-teledetección"><span class="header-section-number">9.6</span> Fotogrametría y Teledetección</h2>
+<div style="border-left: 6px solid #16a085; padding: 12px; background: rgba(22, 160, 133, 0.02); border-radius: 0 15px 15px 0; margin-top: -10px;">
+<p><span style="color: transparent; -webkit-text-stroke: 1.8px #16a085; font-size: 1.8em; float: right;"><i class="fa-solid fa-camera-retro" aria-label="camera-retro"></i></span></p>
+<section id="percepción-remota" class="level3">
+<h3 class="anchored" data-anchor-id="percepción-remota"><span style="color: #16a085; font-size: 1em; display: block; margin-bottom: 5px;">Percepción Remota</span></h3>
+<ul style="font-size: 0.8em; line-height: 1.4; color: #34495e; margin-bottom: 0;">
+<li class="fragment">
+<strong>Visión 3D:</strong> Reconstrucción de la realidad a partir de pares estereoscópicos.
+</li>
+<li class="fragment">
+<strong>Análisis Multiespectral:</strong> Ver lo invisible al ojo humano (salud vegetal, agua).
+</li>
+<li class="fragment">
+<strong>Satélites:</strong> Monitoreo global, continuo y multitemporal del planeta.
+</li>
+<li class="fragment">
+<strong>Resolución:</strong> Calidad espacial, temporal, espectral y radiométrica.
+</li>
+</ul>
+</section>
+</div>
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 15px;">
+<div class="callout callout-style-simple callout-note" style="font-size: 0.85em; margin: 0; border-left: 3px solid #16a085; background-color: #f8fcfb; padding: 10px;">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Fotogrametría:</strong> “Técnica cuyo objeto es estudiar y definir con precisión la forma, dimensiones y posición en el espacio de un objeto, utilizando medidas hechas sobre fotografías” — <strong>Wikipedia</strong>.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note" style="font-size: 0.85em; margin: 0; border-left: 3px solid #16a085; background-color: #f8fcfb; padding: 10px;">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Teledetección:</strong> “Adquisición de información de un objeto o fenómeno, usando instrumentos de grabación o escaneo que no están en contacto directo (aviones, satélites, boyas)” — <strong>Wikipedia</strong>.</p>
+</div>
+</div>
+</div>
+</div>
+<div style="text-align: center; margin-top: 15px; font-style: italic; color: #7f8c8d; font-size: 0.8em; border-top: 1px solid #eee; padding-top: 8px;">
+<p>“Medir el mundo sin necesidad de tocar el terreno.”</p>
+</div>
+</section>
+<section id="gnss-gps-de-precisión" class="level2" data-number="9.7">
+<h2 data-number="9.7" class="anchored" data-anchor-id="gnss-gps-de-precisión"><span class="header-section-number">9.7</span> GNSS / GPS de Precisión</h2>
+<div style="border-left: 6px solid #e67e22; padding: 12px; background: rgba(230, 126, 34, 0.02); border-radius: 0 15px 15px 0; margin-top: -10px;">
+<p><span style="color: transparent; -webkit-text-stroke: 1.8px #e67e22; font-size: 1.8em; float: right;"><i class="fa-solid fa-satellite" aria-label="satellite"></i></span></p>
+<section id="posicionamiento-y-sincronización-global" class="level3">
+<h3 class="anchored" data-anchor-id="posicionamiento-y-sincronización-global"><span style="color: #e67e22; font-size: 1em; display: block; margin-bottom: 5px;">Posicionamiento y Sincronización Global</span></h3>
+<ul style="font-size: 0.8em; line-height: 1.4; color: #34495e; margin-bottom: 0;">
+<li class="fragment">
+<strong>Multiconstelación:</strong> Integración de señales GPS, GLONASS, Galileo y BeiDou.
+</li>
+<li class="fragment">
+<strong>Métodos Diferenciales:</strong> Uso de RTK y Ntrip para precisiones milimétricas.
+</li>
+<li class="fragment">
+<strong>Georreferenciación:</strong> Asignación de coordenadas únicas en marcos de referencia mundiales.
+</li>
+<li class="fragment">
+<strong>Navegación vs.&nbsp;Precisión:</strong> Diferencia crítica entre sensores de consumo y equipos geodésicos.
+</li>
+</ul>
+</section>
+</div>
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 15px;">
+<div class="callout callout-style-simple callout-note" style="font-size: 0.85em; margin: 0; border-left: 3px solid #e67e22; background-color: #fff9f4; padding: 10px;">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>GNSS:</strong> “Es el nombre genérico que engloba a los sistemas que proporcionan posicionamiento geoespacial autónomo con cobertura global. Permite a pequeños receptores electrónicos determinar su ubicación con gran precisión” — <strong>Wikipedia</strong>.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note" style="font-size: 0.85em; margin: 0; border-left: 3px solid #e67e22; background-color: #fff9f4; padding: 10px;">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>GPS:</strong> “El Sistema de Posicionamiento Global (GPS) es un sistema que permite determinar en toda la Tierra la posición de cualquier objeto con una precisión de hasta centímetros (usando GPS diferencial), aunque lo común son unos pocos metros” — <strong>Wikipedia</strong>.</p>
+</div>
+</div>
+</div>
+</div>
+<div style="text-align: center; margin-top: 15px; font-style: italic; color: #7f8c8d; font-size: 0.8em; border-top: 1px solid #eee; padding-top: 8px;">
+<p>“La coordenada es el ancla que une el mundo digital con la realidad física.”</p>
+</div>
+</section>
+<section id="drones-y-lidar" class="level2" data-number="9.8">
+<h2 data-number="9.8" class="anchored" data-anchor-id="drones-y-lidar"><span class="header-section-number">9.8</span> Drones y LiDAR</h2>
+<div style="border-left: 6px solid #d35400; padding: 12px; background: rgba(211, 84, 0, 0.02); border-radius: 0 15px 15px 0; margin-top: -10px;">
+<p><span style="color: transparent; -webkit-text-stroke: 1.8px #d35400; font-size: 1.8em; float: right;"><i class="fa-solid fa-drone" aria-label="drone"></i></span></p>
+<section id="sistemas-de-captura-aérea-dinámica" class="level3">
+<h3 class="anchored" data-anchor-id="sistemas-de-captura-aérea-dinámica"><span style="color: #d35400; font-size: 1em; display: block; margin-bottom: 5px;">Sistemas de Captura Aérea Dinámica</span></h3>
+<ul style="font-size: 0.8em; line-height: 1.4; color: #34495e; margin-bottom: 0;">
+<li class="fragment">
+<strong>Plataformas UAV/RPAS:</strong> Flexibilidad para vuelos a baja altura y gran detalle.
+</li>
+<li class="fragment">
+<strong>Sensores Activos:</strong> El LiDAR emite su propia energía para medir distancias.
+</li>
+<li class="fragment">
+<strong>Productos Derivados:</strong> Nubes de puntos masivas, Ortomosaicos y Modelos 3D.
+</li>
+<li class="fragment">
+<strong>Modelado (DSM / DTM / DEM):</strong> Capacidad de “filtrar” la vegetación para ver el terreno real.
+</li>
+</ul>
+</section>
+</div>
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 15px;">
+<div class="callout callout-style-simple callout-note" style="font-size: 0.85em; margin: 0; border-left: 3px solid #d35400; background-color: #fdf5f2; padding: 10px;">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Dron (UAV):</strong> “Aeronave que vuela sin tripulación a bordo. En Geomática, actúa como plataforma aerotransportada para sensores fotogramétricos, LiDAR o cámaras multiespectrales” — <strong>Wikipedia</strong>.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note" style="font-size: 0.85em; margin: 0; border-left: 3px solid #d35400; background-color: #fdf5f2; padding: 10px;">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>LiDAR:</strong> “Tecnología activa de teledetección óptica que utiliza pulsos de luz láser para medir distancias. Al registrar el tiempo que tarda cada pulso en rebotar y volver al sensor, genera nubes de puntos 3D con coordenadas precisas (X, Y, Z) de la superficie y los objetos.” — <strong>Wikipedia</strong>.</p>
+</div>
+</div>
+</div>
+</div>
+<div style="text-align: center; margin-top: 15px; font-style: italic; color: #7f8c8d; font-size: 0.8em; border-top: 1px solid #eee; padding-top: 8px;">
+<p>“Del píxel a la nube de puntos: la reconstrucción total del entorno en alta resolución.”</p>
+</div>
+</section>
+<section id="escáner-láser-3d-tls" class="level2" data-number="9.9">
+<h2 data-number="9.9" class="anchored" data-anchor-id="escáner-láser-3d-tls"><span class="header-section-number">9.9</span> Escáner Láser 3D (TLS)</h2>
+<p><span style="font-size: 0.7em; color: #7f8c8d; display: block; margin-top: -15px; margin-bottom: 10px;"><strong>TLS:</strong> Terrestrial Laser Scanning</span></p>
+<div style="border-left: 6px solid #d35400; padding: 12px; background: rgba(211, 84, 0, 0.02); border-radius: 0 15px 15px 0;">
+<p><span style="color: transparent; -webkit-text-stroke: 1.8px #d35400; font-size: 1.8em; float: right;"><i class="fa-solid fa-tower-observation" aria-label="tower-observation"></i></span></p>
+<section id="captura-estática-de-ultra-alta-resolución" class="level3">
+<h3 class="anchored" data-anchor-id="captura-estática-de-ultra-alta-resolución"><span style="color: #d35400; font-size: 1em; display: block; margin-bottom: 5px;">Captura Estática de Ultra-Alta Resolución</span></h3>
+<ul style="font-size: 0.8em; line-height: 1.4; color: #34495e; margin-bottom: 0;">
+<li class="fragment">
+<strong>Estacionamiento Fijo:</strong> Máxima estabilidad para precisiones milimétricas.
+</li>
+<li class="fragment">
+<strong>Barrido 360°:</strong> Captura integral de la geometría de una escena desde un punto.
+</li>
+<li class="fragment">
+<strong>Ingeniería Reversa:</strong> Generación de modelos “As-Built” de alta fidelidad.
+</li>
+<li class="fragment">
+<strong>Documentación Patrimonial:</strong> Clonación digital de estructuras y monumentos.
+</li>
+</ul>
+</section>
+</div>
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 15px;">
+<div class="callout callout-style-simple callout-note" style="font-size: 0.85em; margin: 0; border-left: 3px solid #d35400; background-color: #fdf5f2; padding: 10px;">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Escáner Láser 3D:</strong> “Dispositivo que analiza un objeto o escena del mundo real para recolectar datos sobre su forma y, a veces, su apariencia (color). Se utiliza para construir modelos digitales tridimensionales” — <strong>Wikipedia</strong>.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note" style="font-size: 0.85em; margin: 0; border-left: 3px solid #d35400; background-color: #fdf5f2; padding: 10px;">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>TLS:</strong> “El Escaneo Láser Terrestre (Terrestrial Laser Scanning) es un método de levantamiento que utiliza un haz de luz láser para medir con precisión superficies complejas desde una posición fija en tierra” — <strong>Wikipedia</strong>.</p>
+</div>
+</div>
+</div>
+</div>
+<div style="text-align: center; margin-top: 15px; font-style: italic; color: #7f8c8d; font-size: 0.8em; border-top: 1px solid #eee; padding-top: 8px;">
+<p>“La realidad física convertida en geometría digital con precisión milimétrica.”</p>
+</div>
+</section>
+<section id="cloud-computing-y-big-data" class="level2" data-number="9.10">
+<h2 data-number="9.10" class="anchored" data-anchor-id="cloud-computing-y-big-data"><span class="header-section-number">9.10</span> Cloud Computing y Big Data</h2>
+<p><span style="font-size: 0.7em; color: #7f8c8d; display: block; margin-top: -15px; margin-bottom: 10px;"><strong>Infraestructura:</strong> IaaS / PaaS / SaaS | <strong>Datos:</strong> Volumen, Velocidad, Variedad</span></p>
+<div style="border-left: 6px solid #34495e; padding: 12px; background: rgba(52, 73, 94, 0.02); border-radius: 0 15px 15px 0;">
+<p><span style="color: transparent; -webkit-text-stroke: 1.8px #34495e; font-size: 1.8em; float: right;"><i class="fa-solid fa-cloud" aria-label="cloud"></i></span></p>
+<section id="el-salto-a-la-infraestructura-distribuida" class="level3">
+<h3 class="anchored" data-anchor-id="el-salto-a-la-infraestructura-distribuida"><span style="color: #34495e; font-size: 1em; display: block; margin-bottom: 5px;">El Salto a la Infraestructura Distribuida</span></h3>
+<ul style="font-size: 0.8em; line-height: 1.4; color: #34495e; margin-bottom: 0;">
+<li class="fragment">
+<strong>Escalabilidad On-Demand:</strong> Capacidad de aumentar potencia de cálculo según la necesidad del proyecto.
+</li>
+<li class="fragment">
+<strong>Almacenamiento de Objetos:</strong> Uso de <em>buckets</em> (S3, Cloud Storage) para alojar petabytes de imágenes.
+</li>
+<li class="fragment">
+<strong>Serverless Computing:</strong> Ejecución de algoritmos sin gestionar servidores físicos (Lambda, Google Functions).
+</li>
+<li class="fragment">
+<strong>Ecosistema Cloud-Native</strong>: Almacenamiento en COG/Zarr e indexación mediante STAC para descubrimiento eficiente.
+</li>
+</ul>
+</section>
+</div>
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 15px;">
+<div class="callout callout-style-simple callout-note" style="font-size: 0.85em; margin: 0; border-left: 3px solid #34495e; background-color: #f4f6f7; padding: 10px;">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Cloud Computing:</strong> “Es la disponibilidad bajo demanda de recursos de computación (servidores, almacenamiento). En Geomática, las nubes de <strong>AWS</strong>, <strong>Google Cloud</strong> y <strong>Azure</strong> eliminan la barrera del hardware local” — <strong>Wikipedia/Propio</strong>.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note" style="font-size: 0.85em; margin: 0; border-left: 3px solid #34495e; background-color: #f4f6f7; padding: 10px;">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Google Earth Engine (GEE):</strong> “Es una plataforma específica (PaaS) de análisis geoespacial que funciona sobre la infraestructura de Google Cloud. Permite el procesamiento masivo de datos satelitales a escala planetaria” — <strong>Wikipedia</strong>.</p>
+</div>
+</div>
+</div>
+</div>
+<div style="text-align: center; margin-top: 15px; font-style: italic; color: #7f8c8d; font-size: 0.8em; border-top: 1px solid #eee; padding-top: 8px;">
+<p>“La nube no es solo el lugar donde guardas los datos, es donde los transformas.”</p>
+</div>
+</section>
+<section id="iot-y-sensores-georreferenciados" class="level2" data-number="9.11">
+<h2 data-number="9.11" class="anchored" data-anchor-id="iot-y-sensores-georreferenciados"><span class="header-section-number">9.11</span> IoT y Sensores Georreferenciados</h2>
+<p><span style="font-size: 0.7em; color: #7f8c8d; display: block; margin-top: -15px; margin-bottom: 10px;"><strong>Monitoreo en Tiempo Real:</strong> Redes de sensores, Actuadores y Edge Computing</span></p>
+<div style="border-left: 6px solid #27ae60; padding: 12px; background: rgba(39, 174, 96, 0.02); border-radius: 0 15px 15px 0;">
+<p><span style="color: transparent; -webkit-text-stroke: 1.8px #27ae60; font-size: 1.8em; float: right;"><i class="fa-solid fa-microchip" aria-label="microchip"></i></span></p>
+<section id="el-pulso-del-territorio-en-tiempo-real" class="level3">
+<h3 class="anchored" data-anchor-id="el-pulso-del-territorio-en-tiempo-real"><span style="color: #27ae60; font-size: 1em; display: block; margin-bottom: 5px;">El Pulso del Territorio en Tiempo Real</span></h3>
+<ul style="font-size: 0.8em; line-height: 1.4; color: #34495e; margin-bottom: 0;">
+<li class="fragment">
+<strong>Ubicuidad:</strong> Despliegue masivo de nodos sensores en ciudades, agricultura e industria.
+</li>
+<li class="fragment">
+<strong>Geolocalización del Dato:</strong> Cada flujo de información posee una estampa de tiempo y posición.
+</li>
+<li class="fragment">
+<strong>Baja Latencia:</strong> Transmisión inmediata para sistemas de alerta temprana (inundaciones, sismos).
+</li>
+<li class="fragment">
+<strong>Edge Computing:</strong> Capacidad de realizar geoprocesamiento básico dentro del mismo sensor.
+</li>
+</ul>
+</section>
+</div>
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 15px;">
+<div class="callout callout-style-simple callout-note" style="font-size: 0.85em; margin: 0; border-left: 3px solid #27ae60; background-color: #f4fcf7; padding: 10px;">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Internet de las Cosas (IoT):</strong> “Red de objetos físicos que llevan incorporados sensores o software con el fin de conectar e intercambiar datos con otros dispositivos a través de Internet” — <strong>Wikipedia</strong>.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note" style="font-size: 0.85em; margin: 0; border-left: 3px solid #27ae60; background-color: #f4fcf7; padding: 10px;">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Edge Computing:</strong> “Modelo de computación distribuida que acerca el procesamiento y el almacenamiento de datos a la fuente donde se generan (el sensor), mejorando los tiempos de respuesta” — <strong>Wikipedia</strong>.</p>
+</div>
+</div>
+</div>
+</div>
+<div style="text-align: center; margin-top: 15px; font-style: italic; color: #7f8c8d; font-size: 0.8em; border-top: 1px solid #eee; padding-top: 8px;">
+<p>“La Geomática pasa de cartografiar el pasado a monitorear el presente vivo.”</p>
+</div>
+</section>
+</section>
+<section id="section-3" class="level1" data-background-color="#34495e" data-number="10">
+<h1 data-background-color="#34495e" data-number="10"><span class="header-section-number">10</span> </h1>
+<div style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; text-align: center; color: white;">
+<p><span style="font-size: 5em; margin-bottom: 30px; opacity: 0.9;"><i class="fa-solid fa-database" aria-label="database"></i></span></p>
+<p><span style="font-size: 2.5em; font-weight: 800; letter-spacing: 4px; text-transform: uppercase;">III. El Marco de Gestión</span></p>
+<p><span style="font-size: 1.2em; color: #1abc9c; margin-top: 20px; font-weight: 300;">Ciclo de Vida del Dato e Infraestructuras (IDE)</span></p>
+<div style="width: 150px; height: 4px; background: #1abc9c; margin-top: 40px;">
+
+</div>
+</div>
+<section id="ciclo-de-vida-del-dato-geoespacial" class="level2" data-number="10.1">
+<h2 data-number="10.1" class="anchored" data-anchor-id="ciclo-de-vida-del-dato-geoespacial"><span class="header-section-number">10.1</span> Ciclo de Vida del Dato Geoespacial</h2>
+<div style="text-align: left; font-size: 0.9em; margin-bottom: 20px; color: #2c3e50;">
+<p><span class="math display">\[Dato \xrightarrow{\text{Procesamiento}} Información \xrightarrow{\text{Análisis}} Conocimiento\]</span></p>
+</div>
+<div style="font-size: 0.75em;">
+<div class="fragment" style="background: rgba(44, 62, 80, 0.03); padding: 15px; border-left: 6px solid #2c3e50; margin-bottom: 8px; border-radius: 0 10px 10px 0;">
+<p><span style="color: transparent; -webkit-text-stroke: 1.8px #2c3e50; font-size: 1.5em; vertical-align: middle; margin-right: 10px;"><i class="fa-solid fa-satellite-dish" aria-label="satellite-dish"></i></span> <strong>1. Adquisición (Dato Bruto)</strong> Captura mediante sensores (GNSS, LiDAR, Imágenes). <em>Ejemplo:</em> Coordenadas <span class="math inline">\(X, Y, Z\)</span> de puntos de calor en un bosque.</p>
+</div>
+<div class="fragment" style="background: rgba(39, 174, 96, 0.03); padding: 15px; border-left: 6px solid #27ae60; margin-bottom: 8px; border-radius: 0 10px 10px 0;">
+<p><span style="color: transparent; -webkit-text-stroke: 1.8px #27ae60; font-size: 1.5em; vertical-align: middle; margin-right: 10px;"><i class="fa-solid fa-database" aria-label="database"></i></span> <strong>2. Gestión y Tratamiento</strong> Almacenamiento en Geodatabases y limpieza de errores. <em>Ejemplo:</em> Base de datos espacial de focos de incendio activos.</p>
+</div>
+<div class="fragment" style="background: rgba(230, 126, 34, 0.03); padding: 15px; border-left: 6px solid #e67e22; margin-bottom: 8px; border-radius: 0 10px 10px 0;">
+<p><span style="color: transparent; -webkit-text-stroke: 1.8px #e67e22; font-size: 1.5em; vertical-align: middle; margin-right: 10px;"><i class="fa-solid fa-chart-line" aria-label="chart-line"></i></span> <strong>3. Análisis e Interpretación (Información)</strong> Modelado y geoprocesamiento para hallar patrones. <em>Ejemplo:</em> Mapa de velocidad de propagación del fuego.</p>
+</div>
+<div class="fragment" style="background: rgba(192, 57, 43, 0.03); padding: 15px; border-left: 6px solid #c0392b; margin-bottom: 8px; border-radius: 0 10px 10px 0;">
+<p><span style="color: transparent; -webkit-text-stroke: 1.8px #c0392b; font-size: 1.5em; vertical-align: middle; margin-right: 10px;"><i class="fa-solid fa-eye" aria-label="eye"></i></span> <strong>4. Visualización y Uso (Conocimiento)</strong> Mapas y tableros para la toma de decisiones. <em>Ejemplo:</em> <strong>Decisión:</strong> Priorización de despliegue de brigadas.</p>
+</div>
+</div>
+</section>
+<section id="ide-el-enfoque-en-el-intercambio" class="level2" data-number="10.2">
+<h2 data-number="10.2" class="anchored" data-anchor-id="ide-el-enfoque-en-el-intercambio"><span class="header-section-number">10.2</span> IDE: El Enfoque en el Intercambio</h2>
+<p>La <strong>Geomática</strong> evoluciona hacia la estandarización. Ya no basta con tener el dato; hay que saber compartirlo.</p>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li><strong>Rol Geomático:</strong> Implementación de estándares <strong>OGC</strong> e <strong>ISO</strong>.</li>
+<li><strong>Interoperabilidad:</strong> Romper los “silos” de información para que los datos fluyan entre instituciones.</li>
+<li><strong>Meta:</strong> “Preguntar una vez, usar muchas veces”.</li>
+</ul>
+</div><div class="column" style="width=40%; text-align: center; opacity: 0.7;">
+<p><span style="color: transparent; -webkit-text-stroke: 3px #e67e22; font-size: 3em;"><i class="fa-solid fa-handshake-angle fa-2x" aria-label="handshake-angle"></i></span> <br> <span style="font-size: 0.6em; color: #7f8c8d;"><strong>Infraestructura de Datos Espaciales</strong></span></p>
+</div>
+</div>
+</section>
+<section id="ide-la-internet-de-la-información-geográfica" class="level2" data-number="10.3">
+<h2 data-number="10.3" class="anchored" data-anchor-id="ide-la-internet-de-la-información-geográfica"><span class="header-section-number">10.3</span> IDE: La “Internet” de la Información Geográfica</h2>
+<p>Una <strong>Infraestructura de Datos Espaciales (IDE)</strong> no es un software, es un ecosistema de acuerdos y tecnologías para que los datos fluyan sin barreras.</p>
+<div style="display: flex; justify-content: space-around; text-align: center; margin-top: 40px;">
+<div class="fragment" style="flex: 1; padding: 20px; border-right: 3px dashed #bdc3c7;">
+<section id="el-problema" class="level3">
+<h3 class="anchored" data-anchor-id="el-problema"><span style="color: #c0392b; font-size: 0.7em;">EL PROBLEMA</span></h3>
+<p><span style="color: transparent; -webkit-text-stroke: 3px #c0392b; font-size: 3em;"><i class="fa-solid fa-boxes-stacked fa-1x" aria-label="boxes-stacked"></i></span> <span style="display: block; margin-top: 15px; font-weight: bold; color: #2c3e50;"><strong>“Silos” de Información</strong></span> <span style="display: block; font-size: 0.6em; margin-top: 10px;">Datos aislados, duplicados y en formatos incompatibles. Cada organismo es una isla.</span></p>
+</section>
+</div>
+<div class="fragment" style="flex: 1; padding: 20px;">
+<section id="el-motor-ide" class="level3">
+<h3 class="anchored" data-anchor-id="el-motor-ide"><span style="color: #e67e22; font-size: 0.7em;">EL MOTOR (IDE)</span></h3>
+<p><span style="color: transparent; -webkit-text-stroke: 3px #e67e22; font-size: 3em;"><i class="fa-solid fa-handshake-angle fa-1x" aria-label="handshake-angle"></i></span> <span style="display: block; margin-top: 15px; font-weight: bold; color: #2c3e50;"><strong>Estándares y Acuerdos</strong></span> <span style="display: block; font-size: 0.6em; margin-top: 10px;">Reglas comunes (OGC, ISO) que actúan como un “lenguaje universal” para que las máquinas se entiendan.</span></p>
+</section>
+</div>
+<div class="fragment" style="flex: 1; padding: 20px; border-left: 3px dashed #bdc3c7;">
+<section id="el-resultado" class="level3">
+<h3 class="anchored" data-anchor-id="el-resultado"><span style="color: #27ae60; font-size: 0.7em;">EL RESULTADO</span></h3>
+<p><span style="color: transparent; -webkit-text-stroke: 3px #27ae60; font-size: 3em;"><i class="fa-solid fa-network-wired fa-1x" aria-label="network-wired"></i></span> <span style="display: block; margin-top: 15px; font-weight: bold; color: #2c3e50;"><strong>Interoperabilidad</strong></span> <span style="display: block; font-size: 0.6em; margin-top: 10px;">Capacidad de combinar datos de diferentes fuentes en tiempo real. Acceso ubicuo y reutilización.</span></p>
+</section>
+</div>
+</div>
+<div class="fragment" style="text-align: center; margin-top: 30px; font-size: 1.2em; color: #2980b9;">
+<p><strong>Objetivo:</strong> “Preguntar una vez, usar muchas veces.”</p>
+</div>
+</section>
+</section>
+<section id="section-4" class="level1" data-background-color="#7f8c8d" data-number="11">
+<h1 data-background-color="#7f8c8d" data-number="11"><span class="header-section-number">11</span> </h1>
+<div style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; text-align: center; color: white;">
+<p><span style="font-size: 5em; margin-bottom: 30px; opacity: 0.9;"><i class="fa-solid fa-timeline" aria-label="timeline"></i></span></p>
+<p><span style="font-size: 2.5em; font-weight: 800; letter-spacing: 4px; text-transform: uppercase;">IV. La Evolución</span></p>
+<p><span style="font-size: 1.2em; color: #ecf0f1; margin-top: 20px; font-weight: 300;">De la Cartografía a la Inteligencia Territorial</span></p>
+<div style="width: 150px; height: 4px; background: #ecf0f1; margin-top: 40px;">
+
+</div>
+</div>
+<section id="de-la-cartografía-a-la-inteligencia-territorial" class="level2" data-number="11.1">
+<h2 data-number="11.1" class="anchored" data-anchor-id="de-la-cartografía-a-la-inteligencia-territorial"><span class="header-section-number">11.1</span> De la Cartografía a la Inteligencia Territorial</h2>
+<p>El paradigma ha evolucionado: dejamos de <strong>dibujar</strong> el territorio para empezar a <strong>simularlo</strong> y <strong>predecirlo</strong> mediante tecnología.</p>
+<div style="display: flex; justify-content: space-between; align-items: stretch; gap: 10px; margin-top: 40px;">
+<div class="fragment" style="flex: 1; padding: 15px; border: 1.5px solid #34495e; border-radius: 15px; background: rgba(52, 73, 94, 0.02); text-align: center;">
+<p><span style="color: transparent; -webkit-text-stroke: 1.8px #34495e; font-size: 2.5em;"><i class="fa-solid fa-map-location-dot" aria-label="map-location-dot"></i></span> <br><span style="color: #34495e; font-size: 0.8em; display: block; margin-top: 10px;"><strong>SIG Tradicional</strong></span> <span style="font-size: 0.55em; display: block; margin-top: 10px;">El mapa como <strong>producto final</strong>. Estático y descriptivo.</span></p>
+</div>
+<div class="fragment" style="flex: 1; padding: 15px; border: 1.5px solid #2980b9; border-radius: 15px; background: rgba(41, 128, 185, 0.02); text-align: center;">
+<p><span style="color: transparent; -webkit-text-stroke: 1.8px #2980b9; font-size: 2.5em;"><i class="fa-solid fa-network-wired" aria-label="network-wired"></i></span> <br><span style="color: #2980b9; font-size: 0.8em; display: block; margin-top: 10px;"><strong>IDE</strong></span> <span style="font-size: 0.55em; display: block; margin-top: 10px;">Interoperabilidad. El dato se <strong>comparte</strong> bajo estándares (OGC).</span></p>
+</div>
+<div class="fragment" style="flex: 1; padding: 15px; border: 1.5px solid #16a085; border-radius: 15px; background: rgba(22, 160, 133, 0.02); text-align: center;">
+<p><span style="color: transparent; -webkit-text-stroke: 1.8px #16a085; font-size: 2.5em;"><i class="fa-solid fa-city" aria-label="city"></i></span> <br><span style="color: #16a085; font-size: 0.8em; display: block; margin-top: 10px;"><strong>Smart Cities</strong></span> <span style="font-size: 0.55em; display: block; margin-top: 10px;">Integración de <strong>sensores e IoT</strong>. Gestión urbana en tiempo real.</span></p>
+</div>
+<div class="fragment" style="flex: 1; padding: 15px; border: 1.5px solid #e67e22; border-radius: 15px; background: rgba(230, 126, 34, 0.02); text-align: center;">
+<p><span style="color: transparent; -webkit-text-stroke: 1.8px #e67e22; font-size: 2.5em;"><i class="fa-solid fa-cube" aria-label="cube"></i></span> <br><span style="color: #e67e22; font-size: 0.8em; display: block; margin-top: 10px;"><strong>Gemelo Digital</strong></span> <span style="font-size: 0.55em; display: block; margin-top: 10px;">Modelado dinámico y <strong>multidimensional (<span class="math inline">\(n\text{-D}\)</span>)</strong>. Sincronización física.</span></p>
+</div>
+<div class="fragment" style="flex: 1; padding: 15px; border: 1.5px solid #c0392b; border-radius: 15px; background: rgba(192, 57, 43, 0.02); text-align: center;">
+<p><span style="color: transparent; -webkit-text-stroke: 1.8px #c0392b; font-size: 2.5em;"><i class="fa-solid fa-brain" aria-label="brain"></i></span> <br><span style="color: #c0392b; font-size: 0.8em; display: block; margin-top: 10px;"><strong>Int. Territorial</strong></span> <span style="font-size: 0.55em; display: block; margin-top: 10px;"><strong>GeoIA</strong> y analítica avanzada para la <strong>prospectiva</strong>.</span></p>
+</div>
+</div>
+<div style="margin-top: 60px; border-top: 1px solid #eee; padding-top: 15px; font-size: 0.5em; color: #7f8c8d; text-align: center;">
+<p><strong>Fuente:</strong> <a href="https://blog.gvsig.org/2026/01/13/del-gemelo-digital-a-la-inteligencia-territorial-una-evolucion-natural-de-la-geomatica/">Alvaro Anguix - Blog gvSIG (Enero 2026)</a></p>
+</div>
+</section>
+</section>
+<section id="section-5" class="level1" data-background-color="#3498db" data-number="12">
+<h1 data-background-color="#3498db" data-number="12"><span class="header-section-number">12</span> </h1>
+<div style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; text-align: center; color: white;">
+<p><span style="font-size: 5em; margin-bottom: 30px; opacity: 0.9;"><i class="fa-solid fa-rocket" aria-label="rocket"></i></span></p>
+<p><span style="font-size: 2.5em; font-weight: 800; letter-spacing: 4px; text-transform: uppercase;">V. La Frontera Aplicada</span></p>
+<p><span style="font-size: 1.2em; color: #2c3e50; margin-top: 20px; font-weight: 300;">Nuevas Tecnologías y Casos de Uso</span></p>
+<div style="width: 150px; height: 4px; background: #2c3e50; margin-top: 40px;">
+
+</div>
+</div>
+<section id="smart-cities-el-sistema-nervioso" class="level2" data-number="12.1">
+<h2 data-number="12.1" class="anchored" data-anchor-id="smart-cities-el-sistema-nervioso"><span class="header-section-number">12.1</span> Smart Cities: El Sistema Nervioso</h2>
+<p><span style="font-size: 0.7em; color: #7f8c8d; display: block; margin-top: -15px; margin-bottom: 10px;"><strong>Gestión Proactiva:</strong> Del plano estático al organismo vivo en tiempo real</span></p>
+<div style="border-left: 6px solid #3498db; padding: 12px; background: rgba(52, 152, 219, 0.02); border-radius: 0 15px 15px 0;">
+<p><span style="color: transparent; -webkit-text-stroke: 1.8px #3498db; font-size: 1.8em; float: right;"><i class="fa-solid fa-tower-broadcast" aria-label="tower-broadcast"></i></span></p>
+<section id="la-geomática-como-plataforma-de-integración" class="level3">
+<h3 class="anchored" data-anchor-id="la-geomática-como-plataforma-de-integración"><span style="color: #3498db; font-size: 1em; display: block; margin-bottom: 5px;">La Geomática como Plataforma de Integración</span></h3>
+<ul style="font-size: 0.8em; line-height: 1.4; color: #34495e; margin-bottom: 0;">
+<li class="fragment">
+<strong>Sensoramiento e IoT:</strong> Los sensores georreferenciados capturan el pulso urbano.
+</li>
+<li class="fragment">
+<strong>Flujos Dinámicos:</strong> Visualización de tráfico, energía y personas en vivo.
+</li>
+<li class="fragment">
+<strong>Operación del Hoy:</strong> Pasamos de mapas del pasado a sistemas de gestión del presente.
+</li>
+</ul>
+</section>
+</div>
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 15px;">
+<div class="callout callout-style-simple callout-note" style="font-size: 0.85em; margin: 0; border-left: 3px solid #9b59b6; background-color: #f5f0f6; padding: 10px;">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Movilidad Inteligente:</strong> “Optimización de rutas y transporte autónomo basado en redes viales digitales dinámicas que reaccionan a la demanda real” — <strong>Propio</strong>.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note" style="font-size: 0.85em; margin: 0; border-left: 3px solid #2ecc71; background-color: #f0f9f4; padding: 10px;">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Gestión Ambiental:</strong> “Monitoreo de islas de calor, ruido y calidad del aire integrados directamente en el SIG municipal para salud pública” — <strong>Propio</strong>.</p>
+</div>
+</div>
+</div>
+</div>
+<div style="text-align: center; margin-top: 15px; font-style: italic; color: #7f8c8d; font-size: 0.8em; border-top: 1px solid #eee; padding-top: 8px;">
+<p>“La ciudad deja de ser un plano estático para convertirse en un flujo constante.”</p>
+</div>
+</section>
+<section id="smart-cities-tecnología-y-definición" class="level2" data-number="12.2">
+<h2 data-number="12.2" class="anchored" data-anchor-id="smart-cities-tecnología-y-definición"><span class="header-section-number">12.2</span> Smart Cities: Tecnología y Definición</h2>
+<p><span style="font-size: 0.7em; color: #7f8c8d; display: block; margin-top: -15px; margin-bottom: 10px;"><strong>Infraestructura Digital:</strong> IoT, Geofencing e Interoperabilidad</span></p>
+<div style="border-left: 6px solid #3498db; padding: 12px; background: rgba(52, 152, 219, 0.02); border-radius: 0 15px 15px 0;">
+<p><span style="color: transparent; -webkit-text-stroke: 1.8px #3498db; font-size: 1.8em; float: right;"><i class="fa-solid fa-city" aria-label="city"></i></span></p>
+<section id="el-territorio-como-organismo-conectado" class="level3">
+<h3 class="anchored" data-anchor-id="el-territorio-como-organismo-conectado"><span style="color: #3498db; font-size: 1em; display: block; margin-bottom: 5px;">El Territorio como Organismo Conectado</span></h3>
+<ul style="font-size: 0.8em; line-height: 1.4; color: #34495e; margin-bottom: 0;">
+<li class="fragment">
+<strong>Sensoramiento e IoT:</strong> Los datos “saben” dónde están para dar contexto a la ciudad.
+</li>
+<li class="fragment">
+<strong>Geofencing:</strong> Perímetros virtuales que disparan acciones automáticas al cruzar límites.
+</li>
+<li class="fragment">
+<strong>Resiliencia Urbana:</strong> Capacidad de respuesta inmediata ante eventos críticos o emergencias.
+</li>
+<li class="fragment">
+<strong>Flujos Dinámicos:</strong> Visualización masiva de tráfico, energía y personas en vivo.
+</li>
+</ul>
+</section>
+</div>
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 15px;">
+<div class="callout callout-style-simple callout-note" style="font-size: 0.82em; margin: 0; border-left: 3px solid #3498db; background-color: #f1f7fc; padding: 10px;">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Smart City:</strong> “Aquella que utiliza el potencial de la tecnología para promover un desarrollo sostenible y mejorar la calidad de vida” — <strong>Wikipedia</strong>.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note" style="font-size: 0.82em; margin: 0; border-left: 3px solid #3498db; background-color: #f1f7fc; padding: 10px;">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Geofencing:</strong> “Servicio que utiliza datos espaciales para activar una acción cuando un dispositivo entra en un límite geográfico” — <strong>Wikipedia</strong>.</p>
+</div>
+</div>
+</div>
+</div>
+<div style="text-align: center; margin-top: 15px; font-style: italic; color: #7f8c8d; font-size: 0.8em; border-top: 1px solid #eee; padding-top: 8px;">
+<p>“La ciudad deja de ser un plano estático para convertirse en un flujo constante.”</p>
+</div>
+</section>
+<section id="gemelo-digital-el-enfoque-en-la-simulación" class="level2" data-number="12.3">
+<h2 data-number="12.3" class="anchored" data-anchor-id="gemelo-digital-el-enfoque-en-la-simulación"><span class="header-section-number">12.3</span> Gemelo Digital: El Enfoque en la Simulación</h2>
+<p>La <strong>Geomática</strong> alcanza su mayor nivel de detalle físico. Creamos una réplica exacta del territorio en el mundo virtual para ensayar el futuro.</p>
+<div style="display: flex; justify-content: space-around; align-items: center; margin-top: 40px; padding: 20px; background: rgba(230, 126, 34, 0.03); border-radius: 20px;">
+<div style="text-align: center;">
+<p><span style="color: transparent; -webkit-text-stroke: 2.5px #e67e22; font-size: 3.5em;"><i class="fa-solid fa-cube" aria-label="cube"></i></span> <br><span style="font-size: 0.8em; font-weight: bold; color: #2c3e50;"><strong>MUNDO FÍSICO</strong></span></p>
+</div>
+<div style="text-align: center;">
+<p><span style="font-size: 2.5em; color: #bdc3c7;"><i class="fa-solid fa-arrows-left-right" aria-label="arrows-left-right"></i></span> <br><span style="font-size: 0.6em; color: #7f8c8d;"><strong>DATOS EN VIVO</strong></span></p>
+</div>
+<div style="text-align: center;">
+<p><span style="color: transparent; -webkit-text-stroke: 2.5px #2980b9; font-size: 3.5em;"><i class="fa-solid fa-display" aria-label="display"></i></span> <br><span style="font-size: 0.8em; font-weight: bold; color: #2c3e50;"><strong>RÉPLICA DIGITAL</strong></span></p>
+</div>
+</div>
+<ul style="font-size: 0.85em; line-height: 1.6; color: #34495e; margin-top: 30px;">
+<li>
+<strong>Modelado Multidimensional:</strong> Integración de nubes de puntos, fotogrametría y BIM (<span class="math inline">\(4D \rightarrow 7D\)</span>).
+</li>
+<li>
+<strong>Dinámica Evolutiva:</strong> No es un mapa estático; es un modelo que permite predecir comportamientos físicos.
+</li>
+</ul>
+</section>
+<section id="gemelo-digital-y-bim-territorial" class="level2" data-number="12.4">
+<h2 data-number="12.4" class="anchored" data-anchor-id="gemelo-digital-y-bim-territorial"><span class="header-section-number">12.4</span> Gemelo Digital y BIM Territorial</h2>
+<p><span style="font-size: 0.7em; color: #7f8c8d; display: block; margin-top: -15px; margin-bottom: 10px;"><strong>Escalas:</strong> De la infraestructura al territorio inteligente | <strong>Contexto:</strong> Geomática Global</span></p>
+<div style="border-left: 6px solid #e67e22; padding: 12px; background: rgba(230, 126, 34, 0.02); border-radius: 0 15px 15px 0;">
+<p><span style="color: transparent; -webkit-text-stroke: 1.8px #e67e22; font-size: 1.8em; float: right;"><i class="fa-solid fa-earth-americas" aria-label="earth-americas"></i></span></p>
+<section id="sincronización-de-la-realidad-geográfica" class="level3">
+<h3 class="anchored" data-anchor-id="sincronización-de-la-realidad-geográfica"><span style="color: #e67e22; font-size: 1em; display: block; margin-bottom: 5px;">Sincronización de la Realidad Geográfica</span></h3>
+<ul style="font-size: 0.8em; line-height: 1.4; color: #34495e; margin-bottom: 0;">
+<li class="fragment">
+<strong>Fusión SIG+BIM:</strong> Integración del activo individual con su contexto geográfico y ambiental.
+</li>
+<li class="fragment">
+<strong>Gemelo Territorial:</strong> Réplicas de cuencas, bosques o redes de servicios para simulación de riesgos.
+</li>
+<li class="fragment">
+<strong>Flujo Bidireccional:</strong> El modelo recibe datos (sensores) y permite actuar (actuadores) sobre el terreno.
+</li>
+</ul>
+</section>
+</div>
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 15px;">
+<div class="callout callout-style-simple callout-note" style="font-size: 0.85em; margin: 0; border-left: 3px solid #e67e22; background-color: #fdf6f1; padding: 10px;">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Escala Territorial:</strong> “Gestiona la complejidad de sistemas interconectados: redes de energía, hidrografía y dinámicas urbanas” — <strong>Propio</strong>.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note" style="font-size: 0.85em; margin: 0; border-left: 3px solid #e67e22; background-color: #fdf6f1; padding: 10px;">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Planificación:</strong> Permite la toma de decisiones inmersiva sobre un modelo virtual antes de cualquier intervención física.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="gemelo-digital-en-la-industria-aec" class="level2" data-number="12.5">
+<h2 data-number="12.5" class="anchored" data-anchor-id="gemelo-digital-en-la-industria-aec"><span class="header-section-number">12.5</span> Gemelo Digital en la Industria AEC</h2>
+<p><span style="font-size: 0.7em; color: #7f8c8d; display: block; margin-top: -15px; margin-bottom: 10px;"><strong>Metodología:</strong> Gestión 7D | <strong>Industria:</strong> Architecture, Engineering &amp; Construction</span></p>
+<div style="border-left: 6px solid #e67e22; padding: 12px; background: rgba(230, 126, 34, 0.02); border-radius: 0 15px 15px 0;">
+<p><span style="color: transparent; -webkit-text-stroke: 1.8px #e67e22; font-size: 1.8em; float: right;"><i class="fa-solid fa-building-columns" aria-label="building-columns"></i></span></p>
+<section id="ciclo-de-vida-y-gestión-del-activo" class="level3">
+<h3 class="anchored" data-anchor-id="ciclo-de-vida-y-gestión-del-activo"><span style="color: #e67e22; font-size: 1em; display: block; margin-bottom: 5px;">Ciclo de Vida y Gestión del Activo</span></h3>
+<ul style="font-size: 0.8em; line-height: 1.4; color: #34495e; margin-bottom: 0;">
+<li class="fragment">
+<strong>Colaboración AEC:</strong> Integración de flujos de trabajo entre arquitectura, ingeniería y construcción.
+</li>
+<li class="fragment">
+<strong>Mantenimiento Predictivo:</strong> Uso de IoT para anticipar fallas en la infraestructura operativa.
+</li>
+<li class="fragment">
+<strong>As-Built Digital:</strong> Entrega de un clon digital exacto del activo para su gestión a largo plazo.
+</li>
+</ul>
+</section>
+</div>
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 15px;">
+<div class="callout callout-style-simple callout-note" style="font-size: 0.85em; margin: 0; border-left: 3px solid #e67e22; background-color: #fdf6f1; padding: 10px;">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>BIM:</strong> “Metodología colaborativa que centraliza toda la información de un proyecto en un modelo digital” — <strong>Wikipedia</strong>.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note" style="font-size: 0.85em; margin: 0; border-left: 3px solid #e67e22; background-color: #fdf6f1; padding: 10px;">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Dimensiones:</strong> “<strong>4D</strong> (Tiempo), <strong>5D</strong> (Costo), <strong>6D</strong> (Sostenibilidad) y <strong>7D</strong> (Gestión de Activos/Mantenimiento)” — <strong>Propio</strong>.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="realidad-aumentada-geoespacial" class="level2" data-number="12.6">
+<h2 data-number="12.6" class="anchored" data-anchor-id="realidad-aumentada-geoespacial"><span class="header-section-number">12.6</span> Realidad Aumentada Geoespacial</h2>
+<p><span style="font-size: 0.7em; color: #7f8c8d; display: block; margin-top: -15px; margin-bottom: 10px;"><strong>Visualización In-Situ:</strong> Información invisible superpuesta al mundo físico</span></p>
+<div style="border-left: 6px solid #16a085; padding: 12px; background: rgba(22, 160, 133, 0.02); border-radius: 0 15px 15px 0;">
+<p><span style="color: transparent; -webkit-text-stroke: 1.8px #16a085; font-size: 1.8em; float: right;"><i class="fa-solid fa-eye" aria-label="eye"></i></span></p>
+<section id="el-mapa-sin-papel-ni-pantalla" class="level3">
+<h3 class="anchored" data-anchor-id="el-mapa-sin-papel-ni-pantalla"><span style="color: #16a085; font-size: 1em; display: block; margin-bottom: 5px;">El Mapa sin Papel ni Pantalla</span></h3>
+<ul style="font-size: 0.8em; line-height: 1.4; color: #34495e; margin-bottom: 0;">
+<li class="fragment">
+<strong>Visualización de Redes:</strong> Ver tuberías y cables subterráneos directamente sobre la calle.
+</li>
+<li class="fragment">
+<strong>Proyectos Futuros:</strong> Visualizar un edificio o puente en su ubicación real antes de la obra.
+</li>
+<li class="fragment">
+<strong>Guiado de Precisión:</strong> Capas SIG superpuestas al paisaje mediante móviles o cascos AR.
+</li>
+<li class="fragment">
+<strong>Navegación Indoor:</strong> Posicionamiento y guía dentro de infraestructuras complejas.
+</li>
+</ul>
+</section>
+</div>
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 15px;">
+<div class="callout callout-style-simple callout-note" style="font-size: 0.85em; margin: 0; border-left: 3px solid #16a085; background-color: #f1f8f7; padding: 10px;">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Realidad Aumentada:</strong> “Tecnología que permite superponer elementos virtuales sobre nuestra visión de la realidad, integrando datos en tiempo real” — <strong>Wikipedia</strong>.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note" style="font-size: 0.85em; margin: 0; border-left: 3px solid #16a085; background-color: #f1f8f7; padding: 10px;">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Interacción Espacial:</strong> “Es la capacidad del usuario para manipular y visualizar datos geográficos directamente en el entorno físico que lo rodea” — <strong>Propio</strong>.</p>
+</div>
+</div>
+</div>
+</div>
+<div style="text-align: center; margin-top: 15px; font-style: italic; color: #7f8c8d; font-size: 0.8em; border-top: 1px solid #eee; padding-top: 8px;">
+<p>“La AR elimina la barrera entre el mapa de la oficina y la realidad del terreno.”</p>
+</div>
+</section>
+<section id="vgi-cartografía-social" class="level2" data-number="12.7">
+<h2 data-number="12.7" class="anchored" data-anchor-id="vgi-cartografía-social"><span class="header-section-number">12.7</span> VGI: Cartografía Social</h2>
+<p><span style="font-size: 0.7em; color: #7f8c8d; display: block; margin-top: -15px; margin-bottom: 10px;"><strong>Democratización del Dato:</strong> Neogeografía y Ciencia Ciudadana</span></p>
+<div style="border-left: 6px solid #f1c40f; padding: 12px; background: rgba(241, 196, 15, 0.02); border-radius: 0 15px 15px 0;">
+<p><span style="color: transparent; -webkit-text-stroke: 1.8px #f1c40f; font-size: 1.8em; float: right;"><i class="fa-solid fa-users" aria-label="users"></i></span></p>
+<section id="el-ciudadano-como-sensor-activo" class="level3">
+<h3 class="anchored" data-anchor-id="el-ciudadano-como-sensor-activo"><span style="color: #d4ac0d; font-size: 1em; display: block; margin-bottom: 5px;">El Ciudadano como Sensor Activo</span></h3>
+<ul style="font-size: 0.8em; line-height: 1.4; color: #34495e; margin-bottom: 0;">
+<li class="fragment">
+<strong>OpenStreetMap:</strong> La mayor base de datos geográfica colaborativa y libre del planeta.
+</li>
+<li class="fragment">
+<strong>Crowdsourcing:</strong> Recopilación de datos masivos mediante la participación ciudadana.
+</li>
+<li class="fragment">
+<strong>Validación en Campo:</strong> Millones de usuarios corrigiendo y actualizando la realidad local.
+</li>
+<li class="fragment">
+<strong>Neogeografía:</strong> El uso de herramientas geográficas por parte de no expertos.
+</li>
+</ul>
+</section>
+</div>
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 15px;">
+<div class="callout callout-style-simple callout-note" style="font-size: 0.85em; margin: 0; border-left: 3px solid #f1c40f; background-color: #fefef2; padding: 10px;">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>VGI:</strong> “La Información Geográfica Voluntaria es el uso de herramientas web para crear y difundir información proporcionada voluntariamente por personas” — <strong>Wikipedia</strong>.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note" style="font-size: 0.85em; margin: 0; border-left: 3px solid #f1c40f; background-color: #fefef2; padding: 10px;">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Crowdsourcing:</strong> “Consiste en externalizar tareas que realizaba un empleado o contratista a un grupo numeroso de personas o una comunidad” — <strong>Wikipedia</strong>.</p>
+</div>
+</div>
+</div>
+</div>
+<div style="text-align: center; margin-top: 15px; font-style: italic; color: #7f8c8d; font-size: 0.8em; border-top: 1px solid #eee; padding-top: 8px;">
+<p>“La inteligencia colectiva es hoy el sensor más potente del territorio.”</p>
+</div>
+</section>
+</section>
+<section id="section-6" class="level1" data-background-color="#c0392b" data-number="13">
+<h1 data-background-color="#c0392b" data-number="13"><span class="header-section-number">13</span> </h1>
+<div style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; text-align: center; color: white;">
+<p><span style="font-size: 5em; margin-bottom: 30px; opacity: 0.9;"><i class="fa-solid fa-brain" aria-label="brain"></i></span></p>
+<p><span style="font-size: 2.5em; font-weight: 800; letter-spacing: 4px; text-transform: uppercase;">VI. La Cúspide</span></p>
+<p><span style="font-size: 1.2em; color: #f1c40f; margin-top: 20px; font-weight: 300;">GeoIA e Inteligencia Territorial</span></p>
+<div style="width: 150px; height: 4px; background: #f1c40f; margin-top: 40px;">
+
+</div>
+</div>
+<section id="geoia-ai-geografía" class="level2" data-number="13.1">
+<h2 data-number="13.1" class="anchored" data-anchor-id="geoia-ai-geografía"><span class="header-section-number">13.1</span> GeoIA: AI + Geografía</h2>
+<p><span style="font-size: 0.7em; color: #7f8c8d; display: block; margin-top: -15px; margin-bottom: 10px;"><strong>Automatización masiva:</strong> Machine Learning, Computer Vision y Analítica Predictiva</span></p>
+<div style="border-left: 6px solid #8e44ad; padding: 12px; background: rgba(142, 68, 173, 0.02); border-radius: 0 15px 15px 0;">
+<p><span style="color: transparent; -webkit-text-stroke: 1.8px #8e44ad; font-size: 1.8em; float: right;"><i class="fa-solid fa-brain" aria-label="brain"></i></span></p>
+<section id="el-cerebro-del-análisis-espacial" class="level3">
+<h3 class="anchored" data-anchor-id="el-cerebro-del-análisis-espacial"><span style="color: #8e44ad; font-size: 1em; display: block; margin-bottom: 5px;">El Cerebro del Análisis Espacial</span></h3>
+<ul style="font-size: 0.8em; line-height: 1.4; color: #34495e; margin-bottom: 0;">
+<li class="fragment">
+<strong>Extracción Automática:</strong> Identificación de objetos (casas, vías, cultivos) en imágenes.
+</li>
+<li class="fragment">
+<strong>Modelado Predictivo:</strong> Algoritmos que predicen la propagación de incendios o inundaciones.
+</li>
+<li class="fragment">
+<strong>Deep Learning:</strong> Redes neuronales aplicadas al procesamiento de nubes de puntos y píxeles.
+</li>
+<li class="fragment">
+<strong>Minería de Datos:</strong> Descubrimiento de patrones ocultos en bases de datos espaciales masivas.
+</li>
+</ul>
+</section>
+</div>
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 15px;">
+<div class="callout callout-style-simple callout-note" style="font-size: 0.85em; margin: 0; border-left: 3px solid #8e44ad; background-color: #f9f4fb; padding: 10px;">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>GeoIA:</strong> “Es una disciplina emergente que utiliza métodos de inteligencia artificial, como el aprendizaje profundo, para facilitar la resolución de problemas en las geociencias” — <strong>Wikipedia</strong>.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note" style="font-size: 0.85em; margin: 0; border-left: 3px solid #8e44ad; background-color: #f9f4fb; padding: 10px;">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Machine Learning:</strong> “Es el campo de la inteligencia artificial que dota a las computadoras de la capacidad de aprender de los datos espaciales sin ser programadas explícitamente” — <strong>Wikipedia</strong>.</p>
+</div>
+</div>
+</div>
+</div>
+<div style="text-align: center; margin-top: 15px; font-style: italic; color: #7f8c8d; font-size: 0.8em; border-top: 1px solid #eee; padding-top: 8px;">
+<p>“La GeoIA transforma el ‘¿qué pasó?’ en ‘¿qué pasará?’.”</p>
+</div>
+</section>
+<section id="inteligencia-territorial-el-enfoque-predictivo" class="level2" data-number="13.2">
+<h2 data-number="13.2" class="anchored" data-anchor-id="inteligencia-territorial-el-enfoque-predictivo"><span class="header-section-number">13.2</span> Inteligencia Territorial: El Enfoque Predictivo</h2>
+<p><span style="font-size: 0.7em; color: #7f8c8d; display: block; margin-top: -15px; margin-bottom: 10px;"><strong>Evolución:</strong> Del modelo estático a la sabiduría del territorio | <strong>Ciclo:</strong> Observar → Anticipar</span></p>
+<div class="callout callout-style-simple callout-tip callout-titled" style="border-left: 5px solid #c0392b; background-color: rgba(192, 57, 43, 0.02); font-size: 0.85em;">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+La Sinergia Final
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>El valor no reside en el modelo o en el visor, sino en la capacidad de <strong>transformar</strong> información geoespacial en <strong>conocimiento</strong> para reducir la incertidumbre.</p>
+</div>
+</div>
+<div style="display: flex; justify-content: space-around; align-items: center; margin-top: 40px;">
+<div style="text-align: center;">
+<p><span style="color: transparent; -webkit-text-stroke: 2px #2c3e50; font-size: 3.5em;"><i class="fa-solid fa-earth-americas" aria-label="earth-americas"></i></span> <br><span style="font-size: 0.8em; color: #2c3e50; letter-spacing: 2px;"><strong>GEOMÁTICA</strong></span></p>
+</div>
+<p><span style="font-size: 2em; color: #bdc3c7; opacity: 0.6;"><i class="fa-solid fa-plus" aria-label="plus"></i></span></p>
+<div style="text-align: center;">
+<p><span style="color: transparent; -webkit-text-stroke: 2px #c0392b; font-size: 3.5em;"><i class="fa-solid fa-brain" aria-label="brain"></i></span> <br><span style="font-size: 0.8em; color: #c0392b; letter-spacing: 2px;"><strong>I. ARTIFICIAL</strong></span></p>
+</div>
+<p><span style="font-size: 2em; color: #bdc3c7; opacity: 0.6;"><i class="fa-solid fa-equals" aria-label="equals"></i></span></p>
+<div style="text-align: center; padding: 20px; border: 2px dashed #c0392b; border-radius: 20px; background: rgba(192, 57, 43, 0.03);">
+<p><span style="color: #2c3e50; font-size: 1.4em; font-weight: 900;"><strong>INTELIGENCIA TERRITORIAL</strong></span> <br> <span style="font-size: 0.8em; color: #7f8c8d; font-style: italic;">La era de la decisión asistida</span></p>
+</div>
+</div>
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 30px;">
+<div class="callout callout-style-simple callout-note" style="font-size: 0.85em; margin: 0; border-left: 3px solid #2c3e50;">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Gestión Reactiva:</strong> Esperar a que el evento ocurra para analizar sus consecuencias en el mapa.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note" style="font-size: 0.85em; margin: 0; border-left: 3px solid #c0392b;">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Gestión Anticipatoria:</strong> Interpretar patrones masivos para decidir antes de que el impacto suceda.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="inteligencia-territorial-del-visor-a-la-acción" class="level2" data-number="13.3">
+<h2 data-number="13.3" class="anchored" data-anchor-id="inteligencia-territorial-del-visor-a-la-acción"><span class="header-section-number">13.3</span> Inteligencia Territorial: Del Visor a la Acción</h2>
+<p><span style="font-size: 0.7em; color: #7f8c8d; display: block; margin-top: -15px; margin-bottom: 10px;"><strong>Aplicaciones de Alto Impacto:</strong> Gestión de Emergencias, Clima y Planificación</span></p>
+<div style="border-left: 6px solid #c0392b; padding: 12px; background: rgba(192, 57, 43, 0.02); border-radius: 0 15px 15px 0;">
+<p><span style="color: transparent; -webkit-text-stroke: 1.8px #c0392b; font-size: 1.8em; float: right;"><i class="fa-solid fa-route" aria-label="route"></i></span></p>
+<section id="objetivos-de-la-inteligencia-territorial" class="level3">
+<h3 class="anchored" data-anchor-id="objetivos-de-la-inteligencia-territorial"><span style="color: #c0392b; font-size: 1em; display: block; margin-bottom: 5px;">Objetivos de la Inteligencia Territorial</span></h3>
+<ul style="font-size: 0.85em; line-height: 1.6; color: #34495e; margin-bottom: 0;">
+<li class="fragment">
+<strong>Anticipar escenarios:</strong> Modelar el “qué pasaría si…” con precisión algorítmica.
+</li>
+<li class="fragment">
+<strong>Evaluar impactos:</strong> Medir consecuencias antes de ejecutar una obra o política.
+</li>
+<li class="fragment">
+<strong>Priorizar actuaciones:</strong> Decidir dónde es más crítico invertir recursos públicos.
+</li>
+<li class="fragment">
+<strong>Instrumento de Gestión:</strong> La tecnología deja de ser el fin y se convierte en el medio.
+</li>
+</ul>
+</section>
+</div>
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px;">
+<div class="callout callout-style-simple callout-note" style="font-size: 0.85em; margin: 0; border-left: 3px solid #c0392b; background-color: #fefaf9; padding: 10px;">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Reto del Cambio Climático:</strong> La IT permite adaptar los territorios mediante la simulación de riesgos multitemporales.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note" style="font-size: 0.85em; margin: 0; border-left: 3px solid #c0392b; background-color: #fefaf9; padding: 10px;">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Gobernanza:</strong> Poner la información espacial al servicio de quienes deciden para generar mayor respaldo social.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="section-7" class="level1" data-background-color="#f8f9fa" data-number="14">
+<h1 data-background-color="#f8f9fa" data-number="14"><span class="header-section-number">14</span> </h1>
+<div style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; text-align: center; color: #2c3e50; font-family: sans-serif; padding: 20px;">
+<p><span style="font-size: 4em; margin-bottom: 15px; color: #c0392b;"><i class="fa-solid fa-comments" aria-label="comments"></i></span></p>
+<p><span style="font-size: 2.8em; font-weight: 800; letter-spacing: 3px;">¿PREGUNTAS?</span></p>
+<p><span style="font-size: 1.1em; color: #c0392b; margin-top: 10px; font-weight: 400;">Hacia una Inteligencia Territorial Colectiva</span></p>
+<div style="width: 100px; height: 3px; background: #2c3e50; margin: 25px auto;">
+
+</div>
+<div style="font-size: 1em; line-height: 1.6; color: #34495e;">
+<p><strong>Alexys H. Rodríguez-Avellaneda Ph.D.</strong> <br><span style="color: #c0392b;"><i class="fa-solid fa-envelope" aria-label="envelope"></i></span> geocorp@geocorp.co <!-- <br>[  ]{style="color: #c0392b;"} alexyshr@gmail.com --> <br><span style="color: #c0392b;"><i class="fa-brands fa-linkedin" aria-label="linkedin"></i></span> in/alexyshr <br><span style="color: #c0392b;"><i class="fa-solid fa-globe" aria-label="globe"></i></span> https://geocorp.co/</p>
+</div>
+<div style="margin-top: 50px; font-size: 1.2em; font-weight: 300; color: #bdc3c7; letter-spacing: 4px;">
+<p>¡MUCHAS GRACIAS!</p>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copiado");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copiado");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./61-presentacion_1_clase1_varios.html" class="pagination-link" aria-label="Temas por Charlar">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Temas por Charlar</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./63-presentacion_3_clase2_syllabus_evaluacion.html" class="pagination-link" aria-label="Geomática General">
+        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Geomática General</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

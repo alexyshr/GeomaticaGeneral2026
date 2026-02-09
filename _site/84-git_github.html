@@ -1,0 +1,1322 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.550">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Geomática General - Apéndice D — Git y GitHub: Sincronización Local-Remota</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./85-vscode.html" rel="next">
+<link href="./83-docker_desktop.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Sin resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./81-infraestructura_instalada.html">Apéndices</a></li><li class="breadcrumb-item"><a href="./84-git_github.html"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Git y GitHub: Sincronización Local-Remota</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Geomática General</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Buscar"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bienvenida</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./00-prefacio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prefacio</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Instalación y Entornos</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-introduccion-entornos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introducción a Entornos de Desarrollo</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-guia_instalacion_A_docker.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Guía de Instalación. Opción A: Docker</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-guia_instalacion_B_qgis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Guía de Instalación. Opción B: QGIS y PyQGIS</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-guia_instalacion_C_ArcGIS.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Guía de Instalación. Opción C: ArcGIS Pro/ArcPy</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Prácticas</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./41-practica_1_clase2_visualizacion_dinamica.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Visualización y Mapas Dinámicos</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./42-practica_2_clase2_geoportales.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">🌐 Geoportales y Servicios Web</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Presentaciones</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./61-presentacion_1_clase1_varios.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Temas por Charlar</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./62-presentacion_2_clase2_geomatica.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">¿Qué es la Geomática?</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./63-presentacion_3_clase2_syllabus_evaluacion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Geomática General</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">Apéndices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./81-infraestructura_instalada.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Infraestructura Instalada</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./82-quarto.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Quarto: Orquestación y Configuración</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./83-docker_desktop.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Docker: Gestión de Contenedores e Imágenes</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./84-git_github.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Git y GitHub: Sincronización Local-Remota</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./85-vscode.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Visual Studio Code: Extensiones e Interfaz</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./86-windows.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Temas técnicos sobre Windows</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./87-linux_ubuntu.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">G</span>&nbsp; <span class="chapter-title">Temas Técnicos sobre Linux</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./88-python.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">H</span>&nbsp; <span class="chapter-title">Adicionales Sobre Python</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./89-r.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">I</span>&nbsp; <span class="chapter-title">Adicionales Sobre R</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./90-julia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">J</span>&nbsp; <span class="chapter-title">Adicionales Sobre Julia</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./98-errata.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">K</span>&nbsp; <span class="chapter-title">Errata</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./99-referencias.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Referencias Bibliográficas</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Tabla de Contenidos</h2>
+   
+  <ul>
+  <li><a href="#sec-git-terminal" id="toc-sec-git-terminal" class="nav-link active" data-scroll-target="#sec-git-terminal"><span class="header-section-number">D.1</span> Control de versiones - flujo de trabajo en PowerShell</a></li>
+  <li><a href="#sec-git-diagnostico" id="toc-sec-git-diagnostico" class="nav-link" data-scroll-target="#sec-git-diagnostico"><span class="header-section-number">D.2</span> Diagnóstico de archivos “invisibles” o errores de rastreo</a></li>
+  <li><a href="#subír-el-contenido-carpeta-local-hacia-github" id="toc-subír-el-contenido-carpeta-local-hacia-github" class="nav-link" data-scroll-target="#subír-el-contenido-carpeta-local-hacia-github"><span class="header-section-number">D.3</span> Subír el contenido (carpeta local hacia GitHub)</a></li>
+  <li><a href="#sec-ssh-github" id="toc-sec-ssh-github" class="nav-link" data-scroll-target="#sec-ssh-github"><span class="header-section-number">D.4</span> Autenticación segura SSH - Windows</a>
+  <ul class="collapse">
+  <li><a href="#requisito-previo-creación-de-cuenta-en-github" id="toc-requisito-previo-creación-de-cuenta-en-github" class="nav-link" data-scroll-target="#requisito-previo-creación-de-cuenta-en-github">Requisito previo: creación de cuenta en GitHub</a></li>
+  <li><a href="#requisito-previo-instalación-de-git" id="toc-requisito-previo-instalación-de-git" class="nav-link" data-scroll-target="#requisito-previo-instalación-de-git">Requisito previo: instalación de Git</a></li>
+  <li><a href="#preparación-del-entorno-local" id="toc-preparación-del-entorno-local" class="nav-link" data-scroll-target="#preparación-del-entorno-local">Preparación del entorno local</a></li>
+  <li><a href="#gestión-de-llaves-ssh-en-windows" id="toc-gestión-de-llaves-ssh-en-windows" class="nav-link" data-scroll-target="#gestión-de-llaves-ssh-en-windows">Gestión de llaves SSH en Windows</a></li>
+  <li><a href="#registro-de-la-identidad-en-github" id="toc-registro-de-la-identidad-en-github" class="nav-link" data-scroll-target="#registro-de-la-identidad-en-github">Registro de la identidad en GitHub</a></li>
+  <li><a href="#activación-del-agente-ssh-del-sistema" id="toc-activación-del-agente-ssh-del-sistema" class="nav-link" data-scroll-target="#activación-del-agente-ssh-del-sistema">Activación del agente SSH del sistema</a></li>
+  <li><a href="#verificación-de-la-autenticación" id="toc-verificación-de-la-autenticación" class="nav-link" data-scroll-target="#verificación-de-la-autenticación">Verificación de la autenticación</a></li>
+  </ul></li>
+  <li><a href="#sec-ssh-linux" id="toc-sec-ssh-linux" class="nav-link" data-scroll-target="#sec-ssh-linux"><span class="header-section-number">D.5</span> Autenticación segura SSH - Linux (Docker)</a>
+  <ul class="collapse">
+  <li><a href="#preparación-del-entorno-global" id="toc-preparación-del-entorno-global" class="nav-link" data-scroll-target="#preparación-del-entorno-global">Preparación del Entorno Global</a></li>
+  <li><a href="#gestión-de-llaves-ssh-algoritmo-ed25519" id="toc-gestión-de-llaves-ssh-algoritmo-ed25519" class="nav-link" data-scroll-target="#gestión-de-llaves-ssh-algoritmo-ed25519">Gestión de llaves SSH (Algoritmo Ed25519)</a></li>
+  <li><a href="#registro-de-identidad-en-github" id="toc-registro-de-identidad-en-github" class="nav-link" data-scroll-target="#registro-de-identidad-en-github">Registro de Identidad en GitHub</a></li>
+  <li><a href="#activación-del-agente-ssh" id="toc-activación-del-agente-ssh" class="nav-link" data-scroll-target="#activación-del-agente-ssh">Activación del Agente SSH</a></li>
+  <li><a href="#verificación-final" id="toc-verificación-final" class="nav-link" data-scroll-target="#verificación-final">Verificación Final</a></li>
+  </ul></li>
+  <li><a href="#sec-vinculacion-clase" id="toc-sec-vinculacion-clase" class="nav-link" data-scroll-target="#sec-vinculacion-clase"><span class="header-section-number">D.6</span> Descargar contenido (GitHub hacia carpeta local)</a>
+  <ul class="collapse">
+  <li><a href="#opción-a-sincronizar-mediante-ssh-recomendado" id="toc-opción-a-sincronizar-mediante-ssh-recomendado" class="nav-link" data-scroll-target="#opción-a-sincronizar-mediante-ssh-recomendado">Opción A: sincronizar mediante SSH (recomendado)</a></li>
+  <li><a href="#opción-b-sincronizar-mediante-https" id="toc-opción-b-sincronizar-mediante-https" class="nav-link" data-scroll-target="#opción-b-sincronizar-mediante-https">Opción B: sincronizar mediante HTTPS</a></li>
+  </ul></li>
+  <li><a href="#notas-de-flujo-de-trabajo" id="toc-notas-de-flujo-de-trabajo" class="nav-link" data-scroll-target="#notas-de-flujo-de-trabajo"><span class="header-section-number">D.7</span> Notas de flujo de trabajo</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./81-infraestructura_instalada.html">Apéndices</a></li><li class="breadcrumb-item"><a href="./84-git_github.html"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Git y GitHub: Sincronización Local-Remota</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span id="git-ref" class="quarto-section-identifier">Apéndice D — Git y GitHub: Sincronización Local-Remota</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="sec-git-terminal" class="level2" data-number="D.1">
+<h2 data-number="D.1" class="anchored" data-anchor-id="sec-git-terminal"><span class="header-section-number">D.1</span> Control de versiones - flujo de trabajo en PowerShell</h2>
+<p>Para gestionar el repositorio de forma robusta y tener control total sobre el historial de cambios, utilice la siguiente secuencia de comandos desde la terminal del contenedor:</p>
+<div id="tbl-git-terminal" class="quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-git-terminal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabla&nbsp;D.1: Comandos esenciales para la gestión de Git en terminal
+</figcaption>
+<div aria-describedby="tbl-git-terminal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Acción</th>
+<th style="text-align: left;">Comando</th>
+<th style="text-align: left;">Propósito</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Verificar estado</strong></td>
+<td style="text-align: left;"><code>git status</code></td>
+<td style="text-align: left;">Muestra la “verdad absoluta” local: archivos modificados o listos para commit.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Sincronizar índices</strong></td>
+<td style="text-align: left;"><code>git remote update</code></td>
+<td style="text-align: left;">Consulta el servidor para saber si hay cambios nuevos en la nube sin descargarlos aún.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Preparar cambios</strong></td>
+<td style="text-align: left;"><code>git add .</code></td>
+<td style="text-align: left;">Agrega todos los cambios detectados al área de preparación (<em>Staging</em>).</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Confirmar versión</strong></td>
+<td style="text-align: left;"><code>git commit -m "mensaje"</code></td>
+<td style="text-align: left;">Crea un punto de control permanente en el historial local.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Enviar al remoto</strong></td>
+<td style="text-align: left;"><code>git push</code></td>
+<td style="text-align: left;">Sube los <em>commits</em> locales al servidor (GitHub).</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Actualizar local</strong></td>
+<td style="text-align: left;"><code>git pull</code></td>
+<td style="text-align: left;">Descarga y fusiona los cambios del servidor en su entorno de trabajo.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Ver historial</strong></td>
+<td style="text-align: left;"><code>git log --oneline</code></td>
+<td style="text-align: left;">Muestra un resumen simplificado de la línea de tiempo del proyecto.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</section>
+<section id="sec-git-diagnostico" class="level2" data-number="D.2">
+<h2 data-number="D.2" class="anchored" data-anchor-id="sec-git-diagnostico"><span class="header-section-number">D.2</span> Diagnóstico de archivos “invisibles” o errores de rastreo</h2>
+<p>Si ha modificado un archivo pero este no aparece listado tras ejecutar <code>git status</code>, las causas técnicas suelen ser las siguientes:</p>
+<ol type="1">
+<li><strong>Interferencia de Repositorios Anidados:</strong> Si clonó una carpeta que ya contenía un directorio <code>.git</code>, el repositorio principal la tratará como un objeto opaco (submódulo) y no rastreará sus archivos internos.
+<ul>
+<li><strong>Solución:</strong> Verifique la presencia de carpetas ocultas con <code>ls -a</code> y elimine la carpeta <code>.git</code> interna si desea que el repositorio raíz tome el control: <code>rm -rf nombre_carpeta/.git</code>.</li>
+</ul></li>
+<li><strong>Filtros en el archivo <code>.gitignore</code>:</strong> El archivo puede tener reglas que excluyan carpetas enteras por nombre o extensión.
+<ul>
+<li><strong>Verificación:</strong> Use el comando <code>git status --ignored</code> para listar todos los archivos que Git está omitiendo deliberadamente.</li>
+</ul></li>
+<li><strong>Estado del sistema de archivos:</strong> Git opera sobre los datos escritos en el disco duro. Asegúrese de que el editor de texto haya guardado efectivamente los cambios en el archivo físico antes de consultar el estado.</li>
+</ol>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Persistencia de Credenciales
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Si la terminal le solicita usuario y contraseña en cada <code>push</code> o <code>pull</code>, puede configurar Git para que recuerde sus credenciales temporalmente en la memoria del contenedor con el siguiente comando: <code>git config --global credential.helper cache</code></p>
+</div>
+</div>
+</section>
+<section id="subír-el-contenido-carpeta-local-hacia-github" class="level2" data-number="D.3">
+<h2 data-number="D.3" class="anchored" data-anchor-id="subír-el-contenido-carpeta-local-hacia-github"><span class="header-section-number">D.3</span> Subír el contenido (carpeta local hacia GitHub)</h2>
+<p>Si ya tiene sus archivos en Windows y quiere subirlos a un repositorio recién creado en GitHub:</p>
+<ol type="1">
+<li><strong>Instalar Git</strong></li>
+</ol>
+<ul>
+<li><strong>Descarga</strong>: Acceda a <a href="https://git-scm.com/download/win">git-scm.com/download/win</a>.</li>
+<li><strong>Instalación</strong>: Ejecute el instalador manteniendo las opciones por defecto; asegúrese de que la opción <strong>“Git from the command line and also from 3rd-party software”</strong> esté activa.</li>
+<li><strong>Verificación</strong>: Ejecute <code>git --version</code> en una terminal para confirmar la instalación.</li>
+</ul>
+<ol start="2" type="1">
+<li><p><strong>Crear una cuenta en GitHub</strong></p></li>
+<li><p><strong>Abrir Terminal en la carpeta local:</strong></p></li>
+<li><p><strong>Incicializar Git</strong> en la carpeta local:</p></li>
+</ol>
+<div class="sourceCode" id="cb1"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>git init</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="5" type="1">
+<li>Ver el <strong>estado actual</strong> del repositorio Git:</li>
+</ol>
+<div class="sourceCode" id="cb2"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>git status</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="6" type="1">
+<li><strong>Archivo <code>.gitignore</code></strong>: Crear un archivo de texto <code>.gitignore</code> para indicarle a Git los archivos y carperas que nunca deben ser registrados con Git cuando se use el comando <code>git add</code> (siguiente item del procedimiento). Estos archivos que pueden estar en la raíz de la carpeta o dentro de otras sub-carpetas no se registrarán automáticamente cuando ejecute el comando <code>git add .</code> (ver <a href="ancla-git_add_punto">mas adelante</a>). Sin embargo puede forzar una carpeta o algunos tipos de archivos que estén marcados para ignorar dentro del <code>.gitignore</code> (ver <a href="ancla-git_add_minus_f">mas adelante</a>).</li>
+</ol>
+<pre class="text"><code>.quarto/
+_freeze/
+.ipynb_checkpoints/
+__pycache__/
+notebooks/
+scripts/
+data/</code></pre>
+<ol start="7" type="1">
+<li><strong>Registrar (add)</strong> el archivo <code>.gitignore</code> con Git:</li>
+</ol>
+<div class="sourceCode" id="cb4"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>git add <span class="op">.</span><span class="fu">gitignore</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="8" type="1">
+<li>Revise nuevamente el <strong>estátus</strong> y verifique cambios. Puede incluir el listado de los ignorados:</li>
+</ol>
+<div class="sourceCode" id="cb5"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>git status <span class="op">--</span>ignored</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="9" type="1">
+<li><strong>Salvar (commit)</strong> el archivo en Git (local). Note que en el comando, el texto “<em>Archivo .gitignore</em>” es un comentario que describe lo que está salvando:</li>
+</ol>
+<div class="sourceCode" id="cb6"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>git commit <span class="op">-</span>m <span class="st">"Archivo .gitignore"</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="10" type="1">
+<li>Cambiar al nombre de <strong>rama (branch)</strong> a <strong>principal (main)</strong>. Pueden haber diferentes ramas con diferentes versiones del mismo archivo. Para cambiar a <strong>main</strong>:</li>
+</ol>
+<div class="sourceCode" id="cb7"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>git branch <span class="op">-</span>M main</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="11" type="1">
+<li><strong>Conectar</strong> el repositorio local (Git) con nuestro repositorio en GitHub.</li>
+</ol>
+<p>Para conectar Git con GitHub, puede hacerlo con SSH (debe realizar el proceso de instalación de llaves <a href="#sec-ssh-github" class="quarto-xref"><span>Sección D.4</span></a>) o con HTTPS (debe generar un PAT desde <code>github.com</code> que usará como clave de autenticación). En este caso usaremos HTTPS.</p>
+<p>Cree un nuevo repositorio en GitHub y copie la url HTTP del repositorio. Es algo como: <code>https://github.com/usuario/repositorio.git</code></p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>git remote add origin https<span class="op">://</span>github<span class="op">.</span><span class="fu">com</span><span class="op">/</span>usuario<span class="op">/</span>repositorio<span class="op">.</span><span class="fu">git</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="12" type="1">
+<li>Procedimiento para <strong>generar el PAT</strong> (Personal Access Token) en GitHub.com {#ancla-github_pat}</li>
+</ol>
+<ul>
+<li>En lugar de escribir tu contraseña cuando el terminal te la pida, debes pegar un token generado en tu cuenta.</li>
+<li>Ve a tu cuenta de GitHub.com: <code>Settings</code> &gt; <code>Developer settings</code> &gt; <code>Personal access tokens</code> &gt; <code>Tokens (classic)</code>.</li>
+<li>Genera un nuevo token <strong>con el permiso repo activado.</strong></li>
+<li>Copia el token (no lo volverás a ver).</li>
+</ul>
+<ol start="13" type="1">
+<li><strong>Subir (push)</strong> la información guardada localmente en Git a nuestro repositorio en GitHub:</li>
+</ol>
+<div class="sourceCode" id="cb9"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>git push <span class="op">-</span>u origin main   </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Cuanto solicite el password use el PAT/token generado previamente en github.com</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Puedes ver el estatus <code>git status</code> y realizar un procedimiento similar para registrar (<code>add</code>), salvar (<code>commit</code>) y subir (<code>push</code>) mas archivos. Otras opciones de Git se describen a continuación:</p>
+<ul>
+<li>Registrar archivos específicos con Git (local):</li>
+</ul>
+<div class="sourceCode" id="cb10"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>git add file1 file2 <span class="op">...</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><strong>Forzar archivos</strong> y/o carpetas que están marcados para ignorar (bandera <code>-f</code>): el comando a continuación sincronizará con Git toda la carpeta <code>_site/site_libs/</code> y su contenido, así contenga archivos o carpetas marcados para ignorar en <code>.gitignore</code>. {#ancla-git_add_minus_f}</li>
+</ul>
+<div class="sourceCode" id="cb11"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>git add <span class="op">-</span>f _site<span class="op">/</span>site_libs<span class="op">/</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Registrar <strong>todos los archivos y carpetas</strong> disponibles y sin registrar, sin embargo todos los archivos y carpetas dentro de <code>.gitignore</code> no serán tenidos en cuenta {#ancla-git_add_punto}:</li>
+</ul>
+<div class="sourceCode" id="cb12"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>git add <span class="op">.</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><p>En <strong>resumen</strong> estos son los comandos que comúnmente usarás para mentener sincronizados tus archivos con Git y tu Git con GitHub, es decir el proceso de subir (push) archivos a la nube.</p>
+<ul>
+<li><code>git add</code> (agregar archivos a Git)</li>
+<li><code>git commit</code> (guardar archivos en Git)</li>
+<li><code>git push</code> (subir archivos a GitHub)</li>
+</ul></li>
+<li><p>Los otros comandos vistos solo se ejecutan <strong>una vez</strong> o de acuerdo con <strong>necesitades específicas</strong>:</p>
+<ul>
+<li><code>git init</code> (una vez)</li>
+<li><code>git remote add origin</code> (una vez)</li>
+<li><code>git branch -M main</code> (lo debes usar para cambiar a main en caso de tener múltiples ramas)</li>
+</ul></li>
+</ul>
+</section>
+<section id="sec-ssh-github" class="level2" data-number="D.4">
+<h2 data-number="D.4" class="anchored" data-anchor-id="sec-ssh-github"><span class="header-section-number">D.4</span> Autenticación segura SSH - Windows</h2>
+<p>La autenticación mediante SSH permite interactuar con GitHub de forma segura sin necesidad de ingresar credenciales manualmente en cada operación. Siga este procedimiento detallado para configurar su acceso.</p>
+<section id="requisito-previo-creación-de-cuenta-en-github" class="level3">
+<h3 class="anchored" data-anchor-id="requisito-previo-creación-de-cuenta-en-github">Requisito previo: creación de cuenta en GitHub</h3>
+<p>El correo que use para crear esta cuenta <strong>debe ser el mismo correo</strong> usado para crear las llaves SSH para conexión automática.</p>
+</section>
+<section id="requisito-previo-instalación-de-git" class="level3">
+<h3 class="anchored" data-anchor-id="requisito-previo-instalación-de-git">Requisito previo: instalación de Git</h3>
+<p>Es indispensable que su sistema operativo cuente con el motor de Git antes de iniciar la configuración:</p>
+</section>
+<section id="preparación-del-entorno-local" class="level3">
+<h3 class="anchored" data-anchor-id="preparación-del-entorno-local">Preparación del entorno local</h3>
+<ul>
+<li><strong>Navegación</strong>: Diríjase mediante el Explorador de Archivos a la carpeta raíz de su proyecto (ejemplo: carpeta <code>ID Unal</code>).</li>
+<li><strong>Terminal</strong>: Abra una ventana de PowerShell en esa ubicación (clic derecho -&gt; <strong>“Abrir en Terminal”</strong>).</li>
+<li><strong>Inicialización</strong>: Prepare el repositorio local mediante el comando:</li>
+</ul>
+<div class="sourceCode" id="cb13"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>git init</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="gestión-de-llaves-ssh-en-windows" class="level3">
+<h3 class="anchored" data-anchor-id="gestión-de-llaves-ssh-en-windows">Gestión de llaves SSH en Windows</h3>
+<p><strong>SSH</strong> (<em>Secure Shell</em>) es un protocolo de red diseñado para el acceso, administración y transferencia de datos entre un equipo local y un servidor remoto mediante un canal cifrado. En nuestro flujo de trabajo, implementamos el algoritmo <strong>Ed25519</strong>, un estándar de vanguardia basado en criptografía de curva elíptica (EdDSA). Este método no solo ofrece un nivel de seguridad superior frente a ataques de fuerza bruta, sino que permite una <strong>autenticación transparente y sin contraseña</strong>, actuando como un “pasaporte digital” que vincula de forma única su estación de trabajo con GitHub.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+¿Por qué Ed25519?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A diferencia de los estándares antiguos (como RSA), <strong>Ed25519</strong> genera llaves más cortas, rápidas y significativamente más seguras, optimizando la latencia en cada comunicación con el repositorio.</p>
+</div>
+</div>
+<ul>
+<li><strong>Comprobación de llaves existentes</strong>: Verifique si su usuario ya posee llaves configuradas:</li>
+</ul>
+<div class="sourceCode" id="cb14"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="op">~/.</span><span class="fu">ssh</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>* Si el directorio está vacío o solo contiene `known_hosts`, proceda a generar una nueva.
+* Si visualiza los archivos `id_ed25519` e `id_ed25519.pub`, puede saltar al paso de registro en GitHub.</code></pre>
+<ul>
+<li><strong>Generación de llaves</strong>: Cree un par de llaves seguras utilizando el algoritmo Ed25519:</li>
+</ul>
+<p>El correo que use en el siguiente paso, <strong>debe</strong> ser el correo con el que creó la cuenta de GitHub: “su_correo@domimio.com”</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>ssh-keygen <span class="op">-</span>t ed25519 <span class="op">-</span>C <span class="st">"su_correo@domimio.com"</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>* **Nota**: Presione `ENTER` en todas las solicitudes para aceptar las rutas por defecto y no asignar una *passphrase*.</code></pre>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Seguridad de la Identidad
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>La <strong>llave pública</strong> (<code>id_ed25519.pub</code>) es la que se entrega a GitHub, mientras que la <strong>llave privada</strong> (<code>id_ed25519</code>) funciona como su sello personal secreto y nunca debe salir de su equipo.</p>
+</div>
+</div>
+</section>
+<section id="registro-de-la-identidad-en-github" class="level3">
+<h3 class="anchored" data-anchor-id="registro-de-la-identidad-en-github">Registro de la identidad en GitHub</h3>
+<ul>
+<li><strong>Copiar la firma pública</strong>: Obtenga el contenido de su llave para registrarla:</li>
+</ul>
+<div class="sourceCode" id="cb18"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> <span class="va">$env</span><span class="op">:</span><span class="va">USERPROFILE</span>\<span class="op">.</span><span class="fu">ssh</span>\id_ed25519<span class="op">.</span><span class="fu">pub</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>*Seleccione y copie toda la cadena de texto resultante.*</code></pre>
+<ul>
+<li><strong>Configuración en la plataforma</strong>:
+<ul>
+<li>Acceda a su cuenta en <a href="https://github.com">GitHub.com</a>.</li>
+<li>Entre a <strong>Settings</strong> -&gt; <strong>SSH and GPG keys</strong>.</li>
+<li>Seleccione <strong>New SSH key</strong>.</li>
+<li>Asigne el título <code>Windows-UNAL-2025</code>, pegue el contenido en el campo <strong>Key</strong> y presione <strong>Add SSH key</strong>.</li>
+</ul></li>
+</ul>
+</section>
+<section id="activación-del-agente-ssh-del-sistema" class="level3">
+<h3 class="anchored" data-anchor-id="activación-del-agente-ssh-del-sistema">Activación del agente SSH del sistema</h3>
+<p>Para que Windows gestione su identidad de forma transparente, debe habilitar el servicio correspondiente:</p>
+<ul>
+<li><strong>Modo Administrador</strong>: Cierre su terminal actual y abra una nueva sesión de <strong>PowerShell como Administrador</strong>.</li>
+<li><strong>Habilitar Servicio</strong>: Ejecute los siguientes comandos para automatizar el arranque del agente:</li>
+</ul>
+<div class="sourceCode" id="cb20"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Set-Service</span> ssh-agent <span class="op">-</span>StartupType Automatic</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Start-Service</span> ssh-agent</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><strong>Cargar la llave privada</strong>: Registre su llave en el agente activo:</li>
+</ul>
+<div class="sourceCode" id="cb21"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>ssh-add <span class="va">$env</span><span class="op">:</span><span class="va">USERPROFILE</span>\<span class="op">.</span><span class="fu">ssh</span>\id_ed25519</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="verificación-de-la-autenticación" class="level3">
+<h3 class="anchored" data-anchor-id="verificación-de-la-autenticación">Verificación de la autenticación</h3>
+<ul>
+<li><strong>Prueba de conexión</strong>: Compruebe que el túnel de comunicación con los servidores de GitHub funciona correctamente:</li>
+</ul>
+<div class="sourceCode" id="cb22"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>ssh <span class="op">-</span>T git@github<span class="op">.</span><span class="fu">com</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><strong>Resultado esperado</strong>: Si la configuración es exitosa, recibirá un mensaje similar a: <code>Hi usuario! You've successfully authenticated, but GitHub does not provide shell access.</code></li>
+</ul>
+<section id="túnel-ssh-activo-y-configurado" class="level4 callout-success">
+<h4 class="anchored" data-anchor-id="túnel-ssh-activo-y-configurado">¡Túnel SSH Activo y Configurado!</h4>
+<p>Has establecido una identidad digital segura entre tu equipo y GitHub. A partir de este momento, la comunicación para sincronizar tus repositorios será transparente y automática.</p>
+<ul>
+<li><strong>Identidad Permanente</strong>: Esta configuración se realiza <strong>una sola vez</strong> por computador; tu “firma digital” ya reside en el sistema.</li>
+<li><strong>Adiós a las Interrupciones</strong>: GitHub ya no solicitará tu usuario, contraseña o tokens personales de acceso en cada operación.</li>
+<li><strong>Compatibilidad Total</strong>: Esta llave es reconocida automáticamente por <strong>PowerShell</strong>, <strong>VSCode</strong>, <strong>Positron</strong>, <strong>RStudio</strong> y cualquier otra terminal científica que utilices.</li>
+<li><strong>Seguridad de Grado Profesional</strong>: Tus envíos (<code>push</code>) viajan ahora por un canal cifrado bajo el estándar Ed25519.</li>
+</ul>
+</section>
+</section>
+</section>
+<section id="sec-ssh-linux" class="level2" data-number="D.5">
+<h2 data-number="D.5" class="anchored" data-anchor-id="sec-ssh-linux"><span class="header-section-number">D.5</span> Autenticación segura SSH - Linux (Docker)</h2>
+<p>La autenticación mediante <strong>SSH</strong> permite interactuar con GitHub de forma segura sin ingresar credenciales manualmente. En contenedores Docker, esto soluciona errores de validación SSL y facilita el uso de extensiones de Quarto.</p>
+<section id="preparación-del-entorno-global" class="level3">
+<h3 class="anchored" data-anchor-id="preparación-del-entorno-global">Preparación del Entorno Global</h3>
+<p>Antes de generar las llaves, configura tu identidad de Git y verifica que el contenedor tenga salida a internet.</p>
+<ul>
+<li><strong>Configurar identidad</strong>:</li>
+</ul>
+<div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.email <span class="st">"correo@dominio.com"</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.name <span class="st">"usuario_github"</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><strong>Verificar conexión</strong>:</li>
+</ul>
+<div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-I</span> https://github.com</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Advertencia
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Si recibes el error * “Could not resolve host”*, revisa la configuración de red de tu contenedor.</p>
+</div>
+</div>
+</section>
+<section id="gestión-de-llaves-ssh-algoritmo-ed25519" class="level3">
+<h3 class="anchored" data-anchor-id="gestión-de-llaves-ssh-algoritmo-ed25519">Gestión de llaves SSH (Algoritmo Ed25519)</h3>
+<p>Implementamos <strong>Ed25519</strong>, el estándar actual por su seguridad y velocidad.</p>
+<ul>
+<li><strong>Comprobar llaves existentes</strong>:</li>
+</ul>
+<div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-la</span> ~/.ssh</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><strong>Generar nueva llave</strong>: Ejecuta el comando y presiona <code>ENTER</code> en todas las solicitudes (sin contraseña).</li>
+</ul>
+<div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-keygen</span> <span class="at">-t</span> ed25519 <span class="at">-C</span> <span class="st">"alexyshr@gmail.com"</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Nota
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>La <strong>llave pública</strong> (<code>id_ed25519.pub</code>) se registra en GitHub; la <strong>llave privada</strong> (<code>id_ed25519</code>) es tu firma secreta.</p>
+</div>
+</div>
+</section>
+<section id="registro-de-identidad-en-github" class="level3">
+<h3 class="anchored" data-anchor-id="registro-de-identidad-en-github">Registro de Identidad en GitHub</h3>
+<ol type="1">
+<li><strong>Visualizar y copiar la llave pública</strong>:</li>
+</ol>
+<div class="sourceCode" id="cb27"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> ~/.ssh/id_ed25519.pub</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="2" type="1">
+<li><strong>Configurar en la web</strong>:
+<ul>
+<li>Ve a <strong>Settings</strong> -&gt; <strong>SSH and GPG keys</strong> en tu cuenta de GitHub.</li>
+<li>Haz clic en <strong>New SSH key</strong>.</li>
+<li>Título: <code>Docker-RStudio-Geomatica</code>.</li>
+<li>Pega el contenido y guarda.</li>
+</ul></li>
+</ol>
+</section>
+<section id="activación-del-agente-ssh" class="level3">
+<h3 class="anchored" data-anchor-id="activación-del-agente-ssh">Activación del Agente SSH</h3>
+<p>Para que el sistema use tu llave automáticamente, inicia el agente y regístrala:</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Iniciar agente</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="bu">eval</span> <span class="st">"</span><span class="va">$(</span><span class="fu">ssh-agent</span> <span class="at">-s</span><span class="va">)</span><span class="st">"</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Cargar la llave privada</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-add</span> ~/.ssh/id_ed25519</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="verificación-final" class="level3">
+<h3 class="anchored" data-anchor-id="verificación-final">Verificación Final</h3>
+<p>Comprueba que el túnel de comunicación funciona correctamente:</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> <span class="at">-T</span> git@github.com</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Resultado esperado</strong>: &gt; <code>Hi usuario_github! You've successfully authenticated, but GitHub does not provide shell access.</code></p>
+<section id="configuración-exitosa" class="level4 callout-success">
+<h4 class="anchored" data-anchor-id="configuración-exitosa">¡Configuración Exitosa!</h4>
+<p>Tu contenedor ahora es un entorno de confianza para GitHub. Comandos como <code>quarto add</code> o <code>git push</code> funcionarán de forma transparente.</p>
+</section>
+</section>
+</section>
+<section id="sec-vinculacion-clase" class="level2" data-number="D.6">
+<h2 data-number="D.6" class="anchored" data-anchor-id="sec-vinculacion-clase"><span class="header-section-number">D.6</span> Descargar contenido (GitHub hacia carpeta local)</h2>
+<p>Para explicar este procedimiento, usaremos el repositorio GitHub con el material de la clase. Los contenidos de la clase están en <code>https://github.com/alexyshr/ProgramacionSIG2026.git</code> (HTTPS) o <code>git@github.com:alexyshr/ProgramacionSIG2026.git</code> (SSH). La elección de uno de estos dos protocolos (HTTPS o SSH), depende de si ha configurado su identidad digital, ver <a href="#sec-ssh-github" class="quarto-xref"><span>Sección D.4</span></a>.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+¡Advertencia sobre la Estructura de Carpetas!
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Es fundamental para el orden del curso que el repositorio con los contenidos de la clase se conecte a una <strong>carpeta independiente</strong>.</p>
+<p><strong>No sincronice estos archivos dentro de su carpeta local con los contenedores <code>ID UNAL</code></strong>. Mantener directorios separados garantiza que sus ejercicios personales y los materiales de lectura del profesor no se mezclen, evitando errores de sobreescritura y conflictos de Git al realizar actualizaciones del material.</p>
+</div>
+</div>
+<section id="opción-a-sincronizar-mediante-ssh-recomendado" class="level3">
+<h3 class="anchored" data-anchor-id="opción-a-sincronizar-mediante-ssh-recomendado">Opción A: sincronizar mediante SSH (recomendado)</h3>
+<p>Utilice este método si ya configuró sus llaves siguiendo los pasos de la <a href="#sec-ssh-github" class="quarto-xref"><span>Sección D.4</span></a>.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Url SSH del Repositorio para la Clase
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><a href="git@github.com:alexyshr/ProgramacionSIG2026.git"><code>git@github.com:alexyshr/ProgramacionSIG2026.git</code></a></p>
+</div>
+</div>
+<ul>
+<li><strong>Vincular el repositorio remoto</strong>: Si ya inicializó su carpeta local (no la de sus contenedores Docker) con <code>git init</code>, ejecute el siguiente comando para establecer el origen:</li>
+</ul>
+<div class="sourceCode" id="cb30"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>git remote add origin git@github<span class="op">.</span><span class="fu">com</span><span class="op">:</span>alexyshr<span class="op">/</span>ProgramacionSIG2026<span class="op">.</span><span class="fu">git</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><strong>Descargar el contenido (Pull)</strong>: Para traer los archivos del servidor a su computadora por primera vez:</li>
+</ul>
+<div class="sourceCode" id="cb31"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>git pull origin main</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><strong>Verificación de estado</strong>: Confirme que la carpeta local está sincronizada correctamente:</li>
+</ul>
+<div class="sourceCode" id="cb32"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>git status</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>*Resultado esperado: `On branch main. Your branch is up to date. working tree clean.`*</code></pre>
+</section>
+<section id="opción-b-sincronizar-mediante-https" class="level3">
+<h3 class="anchored" data-anchor-id="opción-b-sincronizar-mediante-https">Opción B: sincronizar mediante HTTPS</h3>
+<p>Utilice este método si aún no ha configurado llaves SSH o prefiere una descarga rápida. A diferencia del método anterior, este suele solicitar un <strong>Personal Access Token (PAT)</strong> (ver <a href="ancla-github_pat">líneas arriba</a>) para realizar operaciones de subida (<em>push</em>).</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Url HTTPS del Repositorio para la Clase
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><a href="https://github.com/alexyshr/ProgramacionSIG2026.git"><code>https://github.com/alexyshr/ProgramacionSIG2026.git</code></a></p>
+</div>
+</div>
+<section id="opción-b-1-descarga-rápida-mediante-git-clone" class="level4">
+<h4 class="anchored" data-anchor-id="opción-b-1-descarga-rápida-mediante-git-clone">Opción B-1: Descarga rápida mediante <code>git clone</code></h4>
+<p>Este comando descarga el repositorio completo y crea automáticamente una subcarpeta con el nombre del proyecto:</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>git clone https<span class="op">://</span>github<span class="op">.</span><span class="fu">com</span><span class="op">/</span>alexyshr<span class="op">/</span>ProgramacionSIG2026<span class="op">.</span><span class="fu">git</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="sec-git-sync-existente" class="level4">
+<h4 class="anchored" data-anchor-id="sec-git-sync-existente">Opción B-2: Sincronizar repositorio GitHub a carpeta existente</h4>
+<p>Utilice este procedimiento si usted ya creó una carpeta localmente (por ejemplo, <code>ProgramacionSIG2026</code>) y desea vincularla al repositorio oficial de GitHub para recibir actualizaciones sin perder sus archivos actuales.</p>
+<p>Ejecute los siguientes comandos desde la terminal dentro de su carpeta de trabajo:</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Iniciar el repositorio localmente</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> init</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Vincular la carpeta local con el servidor de GitHub</span></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote add origin https://github.com/alexyshr/ProgramacionSIG2026.git</span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Asegurar que la rama principal se llame 'main'</span></span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch <span class="at">-M</span> main</span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Sincronizar (traer los archivos del servidor)</span></span>
+<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Usamos --allow-unrelated-histories para permitir la fusión de carpetas  </span></span>
+<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a><span class="co"># que no "nacieron" del mismo commit original.</span></span>
+<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull origin main <span class="at">--allow-unrelated-histories</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Manejo de conflictos en el primer pull
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Al ejecutar el <code>git pull</code> en una carpeta existente, es posible que Git le pida resolver conflictos si usted tiene archivos con el mismo nombre que los del repositorio (ej. un <code>README.md</code> genérico).</p>
+<p>Si desea forzar que sus archivos locales sean sobrescritos por los del repositorio oficial, puede usar: <code>git fetch --all</code> <code>git reset --hard origin/main</code></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Verificación de la conexión
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Para confirmar que su carpeta quedó bien vinculada, ejecute: <code>git remote -v</code></p>
+<p>Debería ver la URL de su repositorio tanto para <code>fetch</code> como para <code>push</code>.</p>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="notas-de-flujo-de-trabajo" class="level2" data-number="D.7">
+<h2 data-number="D.7" class="anchored" data-anchor-id="notas-de-flujo-de-trabajo"><span class="header-section-number">D.7</span> Notas de flujo de trabajo</h2>
+<ul>
+<li><strong>Persistencia</strong>: Una vez clonado o vinculado el repositorio, Git recordará la ruta del servidor (ya sea SSH o HTTPS). No es necesario repetir los comandos de <code>remote add</code> en sesiones futuras.</li>
+<li><strong>Seguridad</strong>: Si opta por HTTPS, recuerde que GitHub ya no acepta contraseñas básicas por terminal; deberá generar un PAT (Personal Access Token) en la configuración de su cuenta. Por esta razón, se recomienda priorizar el uso de <strong>SSH</strong>.</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Siguiente Paso
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Con el repositorio sincronizado y el contenedor de Docker activo (como se vio en la <a href="02-guia_instalacion_A_docker.html#sec-infraestructura" class="quarto-xref"><span>Sección 2.2</span></a>), ya puede comenzar a trabajar en sus archivos <code>.qmd</code> y ver los cambios reflejados en tiempo real.</p>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copiado");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copiado");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./83-docker_desktop.html" class="pagination-link" aria-label="Docker: Gestión de Contenedores e Imágenes">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Docker: Gestión de Contenedores e Imágenes</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./85-vscode.html" class="pagination-link" aria-label="Visual Studio Code: Extensiones e Interfaz">
+        <span class="nav-page-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Visual Studio Code: Extensiones e Interfaz</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

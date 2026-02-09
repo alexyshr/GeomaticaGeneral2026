@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.550">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Geomática General - Apéndice I — Adicionales Sobre R</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./90-julia.html" rel="next">
+<link href="./88-python.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Sin resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./81-infraestructura_instalada.html">Apéndices</a></li><li class="breadcrumb-item"><a href="./89-r.html"><span class="chapter-number">I</span>&nbsp; <span class="chapter-title">Adicionales Sobre R</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Geomática General</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Buscar"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bienvenida</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./00-prefacio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prefacio</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Instalación y Entornos</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-introduccion-entornos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introducción a Entornos de Desarrollo</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-guia_instalacion_A_docker.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Guía de Instalación. Opción A: Docker</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-guia_instalacion_B_qgis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Guía de Instalación. Opción B: QGIS y PyQGIS</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-guia_instalacion_C_ArcGIS.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Guía de Instalación. Opción C: ArcGIS Pro/ArcPy</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Prácticas</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./41-practica_1_clase2_visualizacion_dinamica.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Visualización y Mapas Dinámicos</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./42-practica_2_clase2_geoportales.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">🌐 Geoportales y Servicios Web</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Presentaciones</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./61-presentacion_1_clase1_varios.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Temas por Charlar</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./62-presentacion_2_clase2_geomatica.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">¿Qué es la Geomática?</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./63-presentacion_3_clase2_syllabus_evaluacion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Geomática General</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">Apéndices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./81-infraestructura_instalada.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Infraestructura Instalada</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./82-quarto.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Quarto: Orquestación y Configuración</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./83-docker_desktop.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Docker: Gestión de Contenedores e Imágenes</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./84-git_github.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Git y GitHub: Sincronización Local-Remota</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./85-vscode.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Visual Studio Code: Extensiones e Interfaz</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./86-windows.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Temas técnicos sobre Windows</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./87-linux_ubuntu.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">G</span>&nbsp; <span class="chapter-title">Temas Técnicos sobre Linux</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./88-python.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">H</span>&nbsp; <span class="chapter-title">Adicionales Sobre Python</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./89-r.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">I</span>&nbsp; <span class="chapter-title">Adicionales Sobre R</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./90-julia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">J</span>&nbsp; <span class="chapter-title">Adicionales Sobre Julia</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./98-errata.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">K</span>&nbsp; <span class="chapter-title">Errata</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./99-referencias.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Referencias Bibliográficas</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Tabla de Contenidos</h2>
+   
+  <ul>
+  <li><a href="#versiones-instaladas-del-software" id="toc-versiones-instaladas-del-software" class="nav-link active" data-scroll-target="#versiones-instaladas-del-software"><span class="header-section-number">I.1</span> Versiones instaladas del software</a></li>
+  <li><a href="#sec-httpgd-config" id="toc-sec-httpgd-config" class="nav-link" data-scroll-target="#sec-httpgd-config"><span class="header-section-number">I.2</span> Visualización interactiva con <code>httpgd</code></a>
+  <ul class="collapse">
+  <li><a href="#inicio-del-servidor-gráfico" id="toc-inicio-del-servidor-gráfico" class="nav-link" data-scroll-target="#inicio-del-servidor-gráfico">Inicio del servidor gráfico</a></li>
+  <li><a href="#resolución-de-conflictos-el-fix-del-puerto" id="toc-resolución-de-conflictos-el-fix-del-puerto" class="nav-link" data-scroll-target="#resolución-de-conflictos-el-fix-del-puerto">Resolución de conflictos (el “fix” del puerto)</a></li>
+  <li><a href="#formas-de-ver-sus-gráficos" id="toc-formas-de-ver-sus-gráficos" class="nav-link" data-scroll-target="#formas-de-ver-sus-gráficos">Formas de ver sus gráficos</a></li>
+  <li><a href="#verificación-de-salud" id="toc-verificación-de-salud" class="nav-link" data-scroll-target="#verificación-de-salud">Verificación de salud</a></li>
+  <li><a href="#sec-repl-concept" id="toc-sec-repl-concept" class="nav-link" data-scroll-target="#sec-repl-concept">El Entorno interactivo (REPL) y motores gráficos</a></li>
+  <li><a href="#el-rol-crítico-de-httpgd-en-r" id="toc-el-rol-crítico-de-httpgd-en-r" class="nav-link" data-scroll-target="#el-rol-crítico-de-httpgd-en-r">El rol crítico de <code>httpgd</code> en R</a></li>
+  </ul></li>
+  <li><a href="#sec-interoperabilidad" id="toc-sec-interoperabilidad" class="nav-link" data-scroll-target="#sec-interoperabilidad"><span class="header-section-number">I.3</span> Paquetes para comunicación con Julia y Python</a>
+  <ul class="collapse">
+  <li><a href="#el-rol-de-knitr" id="toc-el-rol-de-knitr" class="nav-link" data-scroll-target="#el-rol-de-knitr">El rol de <code>knitr</code></a></li>
+  <li><a href="#transición-técnica-de-juliacall-a-juliaconnector" id="toc-transición-técnica-de-juliacall-a-juliaconnector" class="nav-link" data-scroll-target="#transición-técnica-de-juliacall-a-juliaconnector">Transición técnica: De <code>JuliaCall</code> a <code>JuliaConnectoR</code></a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./81-infraestructura_instalada.html">Apéndices</a></li><li class="breadcrumb-item"><a href="./89-r.html"><span class="chapter-number">I</span>&nbsp; <span class="chapter-title">Adicionales Sobre R</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Apéndice I — Adicionales Sobre R</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="versiones-instaladas-del-software" class="level2" data-number="I.1">
+<h2 data-number="I.1" class="anchored" data-anchor-id="versiones-instaladas-del-software"><span class="header-section-number">I.1</span> Versiones instaladas del software</h2>
+<p>Versiones que deben quedar instaladas en el sistema R:</p>
+<table class="table">
+<colgroup>
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 30%">
+<col style="width: 43%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Software</th>
+<th style="text-align: left;">Tipo</th>
+<th style="text-align: left;">Versión</th>
+<th style="text-align: left;">Comando (desde terminal)</th>
+<th style="text-align: left;">Comando (desde R)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>R</code></td>
+<td style="text-align: left;">Lenguaje</td>
+<td style="text-align: left;">4.5.2</td>
+<td style="text-align: left;"><code>R --version</code></td>
+<td style="text-align: left;"><code>R.version.string</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>GEOS</code></td>
+<td style="text-align: left;">Librería sistema</td>
+<td style="text-align: left;">3.12.1</td>
+<td style="text-align: left;"><code>geos-config --version</code></td>
+<td style="text-align: left;"><code>sf::sf_extSoftVersion()["GEOS"]</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>GDAL</code></td>
+<td style="text-align: left;">Librería sistema</td>
+<td style="text-align: left;">3.8.4</td>
+<td style="text-align: left;"><code>gdalinfo --version</code></td>
+<td style="text-align: left;"><code>sf::sf_extSoftVersion()["GDAL"]</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>PROJ</code></td>
+<td style="text-align: left;">Librería sistema</td>
+<td style="text-align: left;">9.4.0</td>
+<td style="text-align: left;">(no aplica / no disponible)</td>
+<td style="text-align: left;"><code>sf::sf_extSoftVersion()["PROJ"]</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>sf</code></td>
+<td style="text-align: left;">Paquete</td>
+<td style="text-align: left;">1.0.23</td>
+<td style="text-align: left;"><code>R -q -e "packageVersion('sf')"</code></td>
+<td style="text-align: left;"><code>packageVersion("sf")</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>terra</code></td>
+<td style="text-align: left;">Paquete</td>
+<td style="text-align: left;">1.8.86</td>
+<td style="text-align: left;"><code>R -q -e "packageVersion('terra')"</code></td>
+<td style="text-align: left;"><code>packageVersion("terra")</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>stars</code></td>
+<td style="text-align: left;">Paquete</td>
+<td style="text-align: left;">0.7.0</td>
+<td style="text-align: left;"><code>R -q -e "packageVersion('stars')"</code></td>
+<td style="text-align: left;"><code>packageVersion("stars")</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="sec-httpgd-config" class="level2" data-number="I.2">
+<h2 data-number="I.2" class="anchored" data-anchor-id="sec-httpgd-config"><span class="header-section-number">I.2</span> Visualización interactiva con <code>httpgd</code></h2>
+<p>Dado que nuestro entorno Docker es “headless” (sin monitor propio), utilizamos <strong><code>httpgd</code></strong> como un servidor gráfico intermedio. Este paquete captura las señales de dibujo de R y las sirve a través de una URL que VSCode puede renderizar.</p>
+<section id="inicio-del-servidor-gráfico" class="level3">
+<h3 class="anchored" data-anchor-id="inicio-del-servidor-gráfico">Inicio del servidor gráfico</h3>
+<p>Cada vez que inicie una nueva sesión de R, debe despertar al servidor manualmente:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Inicia el motor gráfico</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>httpgd<span class="sc">::</span><span class="fu">hgd</span>()</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Verifica el estado y el puerto asignado</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>httpgd<span class="sc">::</span><span class="fu">hgd_details</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="resolución-de-conflictos-el-fix-del-puerto" class="level3">
+<h3 class="anchored" data-anchor-id="resolución-de-conflictos-el-fix-del-puerto">Resolución de conflictos (el “fix” del puerto)</h3>
+<p>En nuestro contenedor, el puerto estándar para gráficos está mapeado al <strong>8787</strong>. Si al ejecutar <code>hgd_details()</code> nota que el sistema asignó un puerto aleatorio o si el visor aparece en blanco, fuerce la conexión con la siguiente “receta”:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Forzar host y puerto para compatibilidad con Docker</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>httpgd<span class="sc">::</span><span class="fu">hgd</span>(<span class="at">host =</span> <span class="st">"0.0.0.0"</span>, <span class="at">port =</span> <span class="dv">8787</span>, <span class="at">token =</span> <span class="cn">FALSE</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="formas-de-ver-sus-gráficos" class="level3">
+<h3 class="anchored" data-anchor-id="formas-de-ver-sus-gráficos">Formas de ver sus gráficos</h3>
+<p>Una vez el servidor está corriendo, tiene dos caminos para visualizar sus mapas:</p>
+<table class="table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Método</th>
+<th style="text-align: left;">Comando / Acción</th>
+<th style="text-align: left;">Ventaja</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Visor Interno</strong></td>
+<td style="text-align: left;"><code>Ctrl + Shift + P</code> -&gt; <strong>Open httpgd viewer</strong></td>
+<td style="text-align: left;">Mantiene todo dentro de una pestaña de VSCode.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Navegador Externo</strong></td>
+<td style="text-align: left;"><code>httpgd::hgd_browse()</code></td>
+<td style="text-align: left;">Ideal si trabaja con dos monitores para ver mapas en pantalla completa.</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+¿Por qué <code>token = FALSE</code>?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Dentro del entorno seguro del contenedor, desactivamos el <em>token</em> para facilitar la conexión inmediata entre el servidor de R y el visor de VSCode sin que el firewall interno bloquee la petición por falta de credenciales.</p>
+</div>
+</div>
+</section>
+<section id="verificación-de-salud" class="level3">
+<h3 class="anchored" data-anchor-id="verificación-de-salud">Verificación de salud</h3>
+<p>Si después de iniciar el servidor intenta graficar algo (ej: <code>plot(1:10)</code>) y no ve nada, ejecute <code>httpgd::hgd_details()</code>. Asegúrese de que: 1. <strong>URL</strong>: Apunte a <code>http://0.0.0.0:8787</code>. 2. <strong>Status</strong>: Indique que está escuchando (<em>listening</em>).</p>
+</section>
+<section id="sec-repl-concept" class="level3">
+<h3 class="anchored" data-anchor-id="sec-repl-concept">El Entorno interactivo (REPL) y motores gráficos</h3>
+<p>En el desarrollo científico, el <strong>REPL</strong> (<em>Read-Eval-Print Loop</em>) es la consola interactiva que permite la “programación exploratoria”. Es el ciclo donde el sistema <strong>lee</strong> su instrucción, la <strong>evalúa</strong> mediante el motor correspondiente, <strong>imprime</strong> el resultado y queda en un <strong>bucle</strong> a la espera del siguiente comando.</p>
+<p>En nuestro laboratorio políglota, la identidad visual del REPL es su brújula para saber en qué lenguaje está operando:</p>
+<table class="table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Lenguaje</th>
+<th style="text-align: left;">¿Cómo se ve el REPL?</th>
+<th style="text-align: left;">Características en este curso</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>R</strong></td>
+<td style="text-align: left;"><code>&gt;</code></td>
+<td style="text-align: left;">Consola estándar para procesos geoespaciales con <code>sf</code> o <code>terra</code>.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Julia</strong></td>
+<td style="text-align: left;"><code>julia&gt;</code></td>
+<td style="text-align: left;">Entorno de alto rendimiento con modos de ayuda (<code>?</code>) y terminal (<code>;</code>).</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Python</strong></td>
+<td style="text-align: left;"><code>&gt;&gt;&gt;</code></td>
+<td style="text-align: left;">Consola básica; se recomienda el uso de <strong>IPython</strong> para interactividad.</td>
+</tr>
+</tbody>
+</table>
+<p>La experiencia interactiva y el soporte gráfico dentro de <strong>VSCode</strong> dependen de la combinación entre el motor de ejecución y el dispositivo gráfico configurado en el contenedor:</p>
+<table class="table">
+<colgroup>
+<col style="width: 19%">
+<col style="width: 19%">
+<col style="width: 19%">
+<col style="width: 19%">
+<col style="width: 23%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Lenguaje</th>
+<th style="text-align: left;">Acceso / Contexto</th>
+<th style="text-align: left;">Motor de Ejecución</th>
+<th style="text-align: left;">Dispositivo Gráfico</th>
+<th style="text-align: center;">Soporte Inline</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>R</strong></td>
+<td style="text-align: left;">Nativo (Estático)</td>
+<td style="text-align: left;">R Extension</td>
+<td style="text-align: left;">VSCode Plots (Pane)</td>
+<td style="text-align: center;">✅</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>R</strong></td>
+<td style="text-align: left;">Nativo (Interactivo)</td>
+<td style="text-align: left;">R Extension</td>
+<td style="text-align: left;"><strong>httpgd</strong></td>
+<td style="text-align: center;">✅</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Julia</strong></td>
+<td style="text-align: left;">Nativo (REPL)</td>
+<td style="text-align: left;">VSCodeServer</td>
+<td style="text-align: left;">VSCode Plots (Pane)</td>
+<td style="text-align: center;">✅</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Julia</strong></td>
+<td style="text-align: left;">Interop (R-Bridge)</td>
+<td style="text-align: left;"><code>JuliaConnectoR</code></td>
+<td style="text-align: left;"><strong>httpgd</strong> (vía R)</td>
+<td style="text-align: center;">✅</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Python</strong></td>
+<td style="text-align: left;">Interop (R-Bridge)</td>
+<td style="text-align: left;"><code>reticulate</code></td>
+<td style="text-align: left;">R Device (<strong>httpgd</strong>)</td>
+<td style="text-align: center;">❌ / ⚠️</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Python</strong></td>
+<td style="text-align: left;">Nativo (Jupyter)</td>
+<td style="text-align: left;">Jupyter kernel</td>
+<td style="text-align: left;">Jupyter Viewer</td>
+<td style="text-align: center;">✅</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="el-rol-crítico-de-httpgd-en-r" class="level3">
+<h3 class="anchored" data-anchor-id="el-rol-crítico-de-httpgd-en-r">El rol crítico de <code>httpgd</code> en R</h3>
+<p>Para R, no basta con tener la extensión instalada. El paquete <strong><code>httpgd</code></strong> actúa como un servidor web interno que captura los gráficos generados en el contenedor y los “proyecta” en VSCode.</p>
+<ul>
+<li><strong>¿Por qué lo usamos?</strong> Los dispositivos gráficos tradicionales (como <code>X11</code> o <code>windows()</code>) no funcionan dentro de un contenedor Docker (<em>headless</em>). <code>httpgd</code> soluciona esto convirtiendo cada mapa en un elemento interactivo SVG/HTML renderizable.</li>
+<li><strong>Activación</strong>: Siempre debe iniciar su sesión de R ejecutando <code>httpgd::hgd()</code> para abrir este canal de comunicación.</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="sec-interoperabilidad" class="level2" data-number="I.3">
+<h2 data-number="I.3" class="anchored" data-anchor-id="sec-interoperabilidad"><span class="header-section-number">I.3</span> Paquetes para comunicación con Julia y Python</h2>
+<p>Para que este ecosistema funcione, R actúa como el “director de orquesta” utilizando un motor de ejecución y una serie de puentes que permiten la comunicación fluida de datos entre lenguajes.</p>
+<table class="table">
+<colgroup>
+<col style="width: 23%">
+<col style="width: 23%">
+<col style="width: 23%">
+<col style="width: 29%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Lenguaje / Función</th>
+<th style="text-align: left;">Paquete en R</th>
+<th style="text-align: left;">Motor / Propósito</th>
+<th style="text-align: center;">Estado</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Renderizado</strong></td>
+<td style="text-align: left;"><strong><code>knitr</code></strong></td>
+<td style="text-align: left;">Motor maestro que orquesta la ejecución de celdas en el documento</td>
+<td style="text-align: center;">✅</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Julia</strong></td>
+<td style="text-align: left;"><code>JuliaConnectoR</code></td>
+<td style="text-align: left;">Comunicación funcional estable con el kernel de Julia</td>
+<td style="text-align: center;">✅</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Python</strong></td>
+<td style="text-align: left;"><code>reticulate</code></td>
+<td style="text-align: left;">Interoperabilidad de objetos y ejecución de Python</td>
+<td style="text-align: center;">✅</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>LSP (Soporte)</strong></td>
+<td style="text-align: left;"><code>languageserver</code></td>
+<td style="text-align: left;">Autocompletado, IntelliSense y ayuda en tiempo real</td>
+<td style="text-align: center;">✅</td>
+</tr>
+</tbody>
+</table>
+<section id="el-rol-de-knitr" class="level3">
+<h3 class="anchored" data-anchor-id="el-rol-de-knitr">El rol de <code>knitr</code></h3>
+<p>Mientras que los paquetes actúan como puentes técnicos, <strong><code>knitr</code></strong> es el encargado de leer el archivo <code>.qmd</code>, enviar las instrucciones a los motores respectivos y capturar los resultados (tablas, mapas, gráficos) para integrarlos en el documento final. Sin <code>knitr</code>, la integración políglota de Quarto no sería posible.</p>
+</section>
+<section id="transición-técnica-de-juliacall-a-juliaconnector" class="level3">
+<h3 class="anchored" data-anchor-id="transición-técnica-de-juliacall-a-juliaconnector">Transición técnica: De <code>JuliaCall</code> a <code>JuliaConnectoR</code></h3>
+<p>En el diseño de este entorno, se tomó la decisión técnica de descartar el paquete <code>JuliaCall</code> en favor de <strong><code>JuliaConnectoR</code></strong>:</p>
+<ol type="1">
+<li><strong>El Problema</strong>: <code>JuliaCall</code> presentaba inestabilidades al gestionar dependencias dinámicas compartidas (como <code>libcurl</code> o <code>libstdc++</code>) dentro del contenedor, causando cierres inesperados (<em>crashes</em>) de la sesión de R.</li>
+<li><strong>La Sustitución</strong>: Se seleccionó <strong><code>JuliaConnectoR</code></strong> por su arquitectura más limpia, que no interfiere con el entorno de Julia ya configurado en el sistema operativo.</li>
+<li><strong>La Solución</strong>: La integración se resolvió mediante una “inyección” de código en el archivo <code>Rprofile.site</code>, configurando automáticamente la ruta del ejecutable en <code>$Sys.BINDIR$</code> y definiendo las funciones maestras <strong><code>j_eval()</code></strong> y <strong><code>j_plot()</code></strong>.</li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+🧠 Regla de Oro del Curso
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><strong>Julia y R</strong>: Se operan de manera totalmente <strong>interactiva</strong> en VSCode (envío de líneas con <code>Ctrl+Enter</code>).</li>
+<li><strong>Python vía reticulate</strong>: Se utiliza primordialmente para el <strong>renderizado (vía knitr)</strong> de informes finales. Para una programación interactiva pura en Python, se recomienda el uso de los <strong>Jupyter kernels</strong>.</li>
+</ol>
+</div>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copiado");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copiado");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./88-python.html" class="pagination-link" aria-label="Adicionales Sobre Python">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">H</span>&nbsp; <span class="chapter-title">Adicionales Sobre Python</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./90-julia.html" class="pagination-link" aria-label="Adicionales Sobre Julia">
+        <span class="nav-page-text"><span class="chapter-number">J</span>&nbsp; <span class="chapter-title">Adicionales Sobre Julia</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

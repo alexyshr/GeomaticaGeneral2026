@@ -35,7 +35,7 @@ La evaluación se distribuye de la siguiente manera:
 Para el desarrollo de las prácticas, utilizaremos un stack tecnológico moderno:
 
 * **Software SIG**: QGIS y ArcGIS Pro.
-* **Entornos de Desarrollo**: VS Code, Docker Desktop (para contenedores unificados), Jupyter Lab y Quarto.
+* **Entornos de Desarrollo**: VSCode, Docker Desktop (para contenedores unificados), Jupyter Lab y Quarto.
 * **Plataformas Cloud**: Google Earth Engine (GEE).
 
 ::: {.callout-important}

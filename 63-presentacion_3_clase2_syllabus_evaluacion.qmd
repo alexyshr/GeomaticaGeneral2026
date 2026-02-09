@@ -1,0 +1,76 @@
+---
+title: "Geomática General"
+subtitle: "Presentación del Curso y Syllabus 2025"
+author: "Alexys H. Rodríguez-Avellaneda Ph.D."
+format:
+  revealjs:
+    theme: simple
+    width: 1600      # Aumenta el ancho base
+    height: 900      # Ajusta la altura para relación 16:9
+    margin: 0.05     # Reduce los márgenes laterales (el estándar es 0.1)
+    slide-number: true
+    transition: fade    
+    incremental: true
+    center: true
+---
+
+
+## Syllabus Oficial 2025
+
+- Nos regiremos por el programa oficial actualizado al 31 de marzo de 2025.
+- El documento guía es: **"Programa asignatura_Geomática General_2025.pdf"**.
+- Pueden encontrar este PDF en nuestro repositorio de **GitHub**.
+- Contenido del Syllabus: Presentado la primer semana.
+
+## Herramientas y Lenguajes
+
+- **Enfoque Multitool:** 
+  - Prácticas principales en **R** y **QGIS**, **ArcGIS Pro**, **GEE**
+- **Soporte adicional:** 
+    - Uso de **Python** para ejemplos específicos de procesamiento.
+    - Integración con **Google Earth Engine**.
+- **Entorno:** Docker, VSCode y Jupyter Lab.
+
+
+## Cronograma y Evaluación
+
+- **Duración:** 16 semanas de actividades.
+- **Semanas 1-10:** Desarrollo de talleres teórico-prácticos.
+    - Se asignarán máximo **8 trabajos** para la casa.
+    - Todos con el mismo peso en porcentaje.
+- **Semanas 10-16:** Enfoque en el **Proyecto Final**.
+- **Semana 5:** Fecha límite para presentar la **propuesta** del proyecto final.
+
+
+## Calificaciones
+
+| Actividad | Porcentaje | Descripción |
+|-----------|------------|-------------|
+| **Talleres** | 60% | Aspectos teórico-prácticos (semanas 1-10) |
+| **Proyecto Final** | 40% | Aplicación integrada de la geomática |
+
+
+## Dinámica de Trabajo
+
+- **Grupos:** Se permite trabajar en parejas (máximo 2 personas). Algunos talleres serán individuales.
+- **Transparencia:** El informe final debe detallar explícitamente la **participación de cada integrante**.
+- **Compromiso:** Queremos asegurar que todos los miembros contribuyan equitativamente al desarrollo metodológico/conceptual/técnico.
+
+
+## Filosofía Open Science
+
+- **Entregables:** Todo el trabajo debe gestionarse en repositorios de **GitHub**.
+- **Formatos:** Uso de archivos Quarto (**QMD**) para generar salidas en **HTML** y **PDF**.
+- **Reproducibilidad:** El código, la teoría y los datos deben estar debidamente organizados.
+- **Presentación:** Sustentación proyecto final (semanas 15 y 16) o presentación en LatinGeo (por definirse). 
+
+## Oportunidad: LatinGeo
+
+- Los trabajos finales pueden postularse a la **Conferencia LatinGeo**.
+- **Requisito:** Incluir lenguajes de programación (**Python, R o Julia**) en la metodología.
+- **Incentivo:** Una participación satisfactoria en la conferencia puede subir la nota final hasta en un **20%**.
+
+
+## Entrega de Propuesta: Proyecto Final
+
+- Semana 5

@@ -1,0 +1,92 @@
+# 🌐 Geoportales y Servicios Web {#sec-geoportales-intro}
+
+## 📖 Introducción a los Datos Abiertos {#sec-geoportales-datos-abiertos}
+
+En la Geomática moderna, la tendencia es el **consumo de servicios web**. Esto garantiza trabajar con información oficial y actualizada sin saturar el almacenamiento local. Según el enfoque de **Open Science**, es vital usar herramientas que permitan la reproducibilidad y el acceso libre a la información, evitando el almacenamiento aislado en discos duros locales.
+
+Para esta sesión, utilizaremos como guía técnica los recursos de **Rodolfo Franco**:
+
+* 🔗 **Geoservicios en Colombia:** [rodolfofrancoweb.com/geodata/geoservicios-colombia/](https://rodolfofrancoweb.com/geodata/geoservicios-colombia/)
+* 🔗 **Geoportales y Datos Abiertos:** [rodolfofrancoweb.com/sig/geoportales_datos_abiertos_e_ides/geoservicios/](https://rodolfofrancoweb.com/sig/geoportales_datos_abiertos_e_ides/geoservicios/)
+
+---
+
+## 📂 Formatos de Datos Comunes {#sec-geoportales-formatos-descrip}
+
+Además del acceso a servicios, los Geoportales permiten la descarga de archivos físicos para procesamiento local. Es vital distinguir entre las estructuras de los modelos de datos.
+
+### 📍 Comparativa de Formatos Vectoriales
+Representan la realidad mediante puntos, líneas y polígonos asociados a una tabla de atributos.
+
+| Formato | Tipo | Características Técnicas | Uso Recomendado |
+|---------|------|--------------------------|-----------------|
+| **GeoPackage (.gpkg)** | Vector/Raster | Estándar abierto basado en SQLite. Almacena múltiples capas en **un solo archivo**. | **El estándar moderno.** Recomendado para QGIS y ArcGIS Pro. |
+| **Shapefile (.shp)** | Vector | Formato "multi-archivo" (mínimo `.shp`, `.shx`, `.dbf`). Límite de 2GB y nombres cortos. | Uso legado. Muy común pero técnicamente limitado. |
+| **GeoJSON (.geojson)** | Vector | Formato basado en texto (JSON). Ligero y legible para humanos. | Visualización web y programación. |
+| **File Geodatabase (.gdb)** | Vector/Raster | Formato propietario de ESRI. Estructura de carpetas optimizada. | Proyectos complejos dentro del ecosistema ArcGIS. |
+
+### 🗺️ Comparativa de Formatos Raster
+Representan la realidad mediante una cuadrícula de celdas o píxeles (elevación, reflectancia, etc.).
+
+| Formato | Tipo | Características Técnicas | Uso Recomendado |
+|---------|------|--------------------------|-----------------|
+| **GeoTIFF (.tif)** | Raster | Archivo TIFF con georreferenciación. Soporta múltiples bandas. | **Estándar universal** para imágenes y MDE. |
+| **Cloud Optimized GeoTIFF (COG)** | Raster | Diseñado para lectura eficiente desde servidores en la nube sin descarga completa. | Análisis masivo en la nube (Google Earth Engine). |
+| **ASCII Grid (.asc)** | Raster | Formato de texto simple. Fácil de leer pero ineficiente. | Intercambio con software de modelado antiguo. |
+
+---
+
+## 🛠️ Estándares de Interoperabilidad OGC {#sec-geoportales-ogc-detallado}
+
+La **Open Geospatial Consortium (OGC)** establece estándares para que la información geográfica sea intercambiable entre diferentes plataformas.
+
+### Principales Servicios Web Geográficos
+
+* 🖼️ **WMS (Web Map Service):** Transmite **mapas renderizados** como imágenes. No permite editar ni realizar cálculos sobre los valores originales.
+* 📐 **WFS (Web Feature Service):** Entrega **entidades vectoriales** con geometría y atributos. Permite análisis espacial y cambio de simbología local.
+* 🏔️ **WCS (Web Coverage Service):** Entrega **coberturas raster** con valores científicos originales. Indispensable para análisis con MDE.
+* ⚡ **WMTS (Web Map Tile Service):** Basado en **teselas (tiles)** pre-generadas. Extremadamente rápido para navegación web.
+
+---
+
+## 📍 Introducción a Sistemas de Coordenadas {#sec-geoportales-coordenadas}
+
+### Coordenadas Geográficas vs. Planas {#sec-geoportales-tipos-coords}
+
+* 🌍 **Sistemas Geográficos:** Expresan la posición en grados sobre un elipsoide. Ejemplo: **WGS84 (EPSG: 4326)**.
+* 📐 **Sistemas Planos (Proyectados):** Proyectan la curvatura terrestre sobre un plano usando metros. Permiten cálculos de área y distancia precisos.
+
+### 🇨🇴 El Contexto en Colombia {#sec-geoportales-coordenadas-col}
+
+1.  ⏳ **Orígenes Anteriores (MAGNA-SIRGAS):** Se utilizaban 5 orígenes (Bogotá, Este, Este-Este, Oeste y Oeste-Oeste). Antes existía el sistema ARENA.
+2.  🎯 **Origen Nacional Único (EPSG: 9377):** Estándar actual. Unifica todo el país en un solo origen central para evitar rupturas de coordenadas.
+3.  🏢 **Orígenes Locales:** Ciudades como Bogotá o Medellín mantienen parámetros específicos para obras de alta precisión local.
+
+### 🚀 Proyección "al vuelo" (On-the-fly) {#sec-geoportales-otf}
+
+Tanto en QGIS como en ArcGIS Pro, el software realiza una **proyección al vuelo** para que datos en diferentes sistemas coincidan visualmente en pantalla sin alterar los archivos originales.
+
+---
+
+## 📝 Práctica: Conexión y Navegación {#sec-geoportales-paso-paso}
+
+**Objetivo:** Integrar datos locales y servicios remotos para validar la interoperabilidad de la información geográfica colombiana.
+
+### 📤 Entregable
+Cargar en GitHub un archivo **QMD** (renderizado en **HTML** y **PDF**) con:
+
+1.  **Tabla de Fuentes:** Detalle de URL, nombre de archivo local y sistema de coordenadas (debe incluir 1 WMS, 1 WFS, 1 WCS, 1 Shapefile y 1 GeoTIFF).
+2.  **Productos Cartográficos:** Dos mapas en PDF (uno de QGIS y otro de ArcGIS Pro).
+
+### ❓ Cuestionario de Análisis
+* ¿Qué archivos/servicios permiten la edición de geometrías directamente?
+* ¿Cuáles permiten acceso a la tabla de atributos? Describa tres campos de uno de ellos.
+* ¿En qué casos fue posible cambiar la simbología desde el software cliente?
+* ¿Por qué es preferible usar un **WFS** sobre un **Shapefile** descargado en proyectos a largo plazo?
+
+---
+
+## 👥 Modalidad de Trabajo {#sec-geoportales-modalidad}
+
+* 👤 **Tipo de actividad:** Individual.
+* 🤝 **Colaboración:** Se fomenta el apoyo mutuo en la búsqueda de URLs y errores, pero los productos digitales y el análisis deben ser de autoría propia.

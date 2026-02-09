@@ -390,7 +390,7 @@ RUN find /root/.julia/artifacts -name "libssl.so*" -exec ln -sf /usr/lib/x86_64-
 # Precompilación total de Julia
 # ------------------------------------------------------------
 # Garantiza arranque instantáneo en:
-# - VS Code
+# - VSCode
 # - Jupyter
 # - IJulia
 # ============================================================
@@ -408,7 +408,7 @@ ENV JULIA_NUM_THREADS=auto
 # 10. CONFIGURACIÓN MAESTRA Rprofile.site
 # ------------------------------------------------------------
 # Este archivo se ejecuta automáticamente cada vez que inicia R.
-# Centraliza la integración R ↔ Julia ↔ Python ↔ VS Code.
+# Centraliza la integración R ↔ Julia ↔ Python ↔ VSCode.
 #
 # Build 47.42:
 # - Control de DPI, tamaño y fuentes
@@ -529,7 +529,7 @@ library(grid)
 if (interactive()) {
 
   # ==========================================================
-  # Visor gráfico httpgd (VS Code / navegador)
+  # Visor gráfico httpgd (VSCode / navegador)
   # ----------------------------------------------------------
   # Permite gráficos interactivos persistentes
   # ==========================================================
@@ -701,7 +701,7 @@ swap=32GB   # Memoria de intercambio para evitar el cierre de contenedores
 
 ::: {.callout-tip}
 ### Importante
-Si desea verificar si estos cambios surtieron efecto dentro de su laboratorio, puede ejecutar el comando `free -h` en la terminal de Jupyter o VS Code. Esto le mostrará la memoria total y el espacio de Swap disponible tal como se configuró en el [Anexo de Referencia Técnica](#swap-ref).
+Si desea verificar si estos cambios surtieron efecto dentro de su laboratorio, puede ejecutar el comando `free -h` en la terminal de Jupyter o VSCode. Esto le mostrará la memoria total y el espacio de Swap disponible tal como se configuró en el [Anexo de Referencia Técnica](#swap-ref).
 :::
 
 2.  **Organización de Archivos**: Copie los archivos `docker-compose.yml` y `Dockerfile` dentro de su carpeta de trabajo (nombrada con su ID de correo UNAL).
@@ -732,25 +732,25 @@ docker logs contenedor_sig_unal
 7.  **Localización de Archivos y Persistencia**: En el contenedor, su carpeta de Windows se encuentra vinculada a la ruta **/home/rstudio/work**. 
     * Cualquier archivo guardado en esa ruta dentro de Jupyter aparecerá en su carpeta de Windows.
     * Se recomienda organizar su trabajo en las subcarpetas: `notebooks`, `scripts`, y `data`.
-    * La carpeta `imagenes` (provista para las guías Quarto) debe residir también en esta ruta para un renderizado correcto.
+    * La carpeta `imágenes` (provista para las guías Quarto) debe residir también en esta ruta para un renderizado correcto.
 
-8.  **Acceso y Configuración en VS Code**: 
+8.  **Acceso y Configuración en VSCode**: 
 
-    Para una experiencia de desarrollo profesional, conecte VS Code directamente al contenedor:
+    Para una experiencia de desarrollo profesional, conecte VSCode directamente al contenedor:
     * Ejecute `Ctrl + Shift + P` y seleccione **Dev Containers: Attach to Running Container...**.
     * Seleccione el contenedor **`contenedor_sig_unal`**.
     * **Extensiones**: Una vez conectado "dentro" del contenedor, debe habilitar/instalar las extensiones de **R**, **Julia**, **Python** y **Quarto** en la sección *'Install in Container'*.
 
     * **Inicialización del Visor Gráfico** (Solo la primera vez por sesión)
     
-    Para que los gráficos de R (y los puentes de Python/Julia) se visualicen correctamente en VS Code, debe inicializar el dispositivo gráfico. En su terminal de R, ejecute:
+    Para que los gráficos de R (y los puentes de Python/Julia) se visualicen correctamente en VSCode, debe inicializar el dispositivo gráfico. En su terminal de R, ejecute:
 
     ```r
     # Lanza el servidor de gráficos httpgd
     httpgd::hgd()
     ```
 
-    * **Acceso al Visor**: VS Code debería abrir automáticamente una pestaña con el visor. Si esto no sucede o prefiere usar su navegador externo (Chrome/Edge), acceda a la dirección: **`http://127.0.0.1:8788`**.
+    * **Acceso al Visor**: VSCode debería abrir automáticamente una pestaña con el visor. Si esto no sucede o prefiere usar su navegador externo (Chrome/Edge), acceda a la dirección: **`http://127.0.0.1:8788`**.
     * **Nota sobre Puertos**: Aunque el comando en R pueda imprimir una URL interna con el puerto `8787` o un token aleatorio, **ignore esa dirección**. Gracias a nuestro archivo `docker-compose.yml`, el puerto **8788** de su Windows está "cableado" permanentemente al visor, eliminando la necesidad de buscar tokens o puertos dinámicos.
 
 9.  **Accesos posteriores**: Para sesiones futuras, ya no requiere el comando `build`. Solo ejecute:
