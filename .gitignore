@@ -2,8 +2,8 @@
 _freeze/
 .ipynb_checkpoints/
 __pycache__/
-*.pdf
-*.html
 notebooks/
 scripts/
 data/
+/.quarto/
+.Rhistory
