@@ -1,6 +1,6 @@
 ---
-title: "Geomática General"
-subtitle: "Presentación del Curso y Syllabus 2025"
+title: "Presentación del Curso y Syllabus 2025"
+subtitle: "Geomática General"
 author: "Alexys H. Rodríguez-Avellaneda Ph.D."
 format:
   revealjs:

@@ -26,14 +26,17 @@ book:
       chapters:
         - 41-practica_1_clase2_visualizacion_dinamica.qmd
         - 42-practica_2_clase2_geoportales.qmd
+        - 43-practica_3_clase3_coordenadas.qmd
     - part: "Presentaciones"        
       chapters:
         - 61-presentacion_1_clase1_varios.qmd
         - 62-presentacion_2_clase2_geomatica.qmd
         - 63-presentacion_3_clase2_syllabus_evaluacion.qmd
+        - 64-presentacion_4_clase3_coordenadas.qmd
   # APÉNDICES (aparecen después de los capítulos)
   appendices:
-    - 81-infraestructura_instalada.qmd
+    - 80-instalacion_herramientas.qmd
+    - 81-uso_infraestructura_instalada.qmd
     - 82-quarto.qmd
     - 83-docker_desktop.qmd
     - 84-git_github.qmd
@@ -43,6 +46,9 @@ book:
     - 88-python.qmd
     - 89-r.qmd
     - 90-julia.qmd
+    - 91-qgis.qmd
+    - 92-arcgispro.qmd
+    - 93-postgresql.qmd
     - 98-errata.qmd              # Apéndice B: Erratas
     - 99-referencias.qmd         # Apéndice C: Referencias bibliográficas
     # IMPORTANTE: Este archivo crea la sección de referencias al final

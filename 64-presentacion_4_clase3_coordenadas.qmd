@@ -1,0 +1,661 @@
+---
+title: "Sistemas de Coordenadas"
+subtitle: "Geomática General"
+author: "Alexys H. Rodríguez-Avellaneda Ph.D."
+format:
+  revealjs:
+    theme: simple
+    width: 1600      # Aumenta el ancho base
+    height: 900      # Ajusta la altura para relación 16:9
+    margin: 0.05     # Reduce los márgenes laterales (el estándar es 0.1)
+    slide-number: true
+    transition: fade    
+    incremental: true
+    center: true
+---
+
+## Mapa
+
+Representa objetos geográficos y otros fenómenos espaciales mostrando gráficamente su localización y atributos.
+
+
+![](images/sistemas_coordenadas/tierra_mapa.jpg){fig-align="center"}
+
+---
+
+## Elementos del Mapa
+
+- Punto
+- Línea
+- Área
+
+![](images/sistemas_coordenadas/image2.png){fig-align="center"}
+
+---
+
+## ¿Qué es la georreferenciación?
+
+Los datos se referencian a sitios sobre la superficie terrestre mediante:
+
+- Sistema de coordenadas geográficas
+- Sistema de coordenadas proyectadas
+
+![](images/sistemas_coordenadas/image3.png){fig-align="center"}
+
+---
+
+## La Forma de la Tierra
+
+¿Cómo es realmente la Tierra?
+
+::: {layout-ncol=4}
+![](images/sistemas_coordenadas/image4.jpeg){style="width: 100%; height: 200px; object-fit: contain; border: 1px solid #eee;"}
+
+![](images/sistemas_coordenadas/mapa_tierra.jpg){style="width: 100%; height: 200px; object-fit: contain; border: 1px solid #eee;"}
+
+![](images/sistemas_coordenadas/image6.png){style="width: 100%; height: 200px; object-fit: contain; border: 1px solid #eee;"}
+
+![](images/sistemas_coordenadas/mapa_tierra.png){style="width: 100%; height: 200px; object-fit: contain; border: 1px solid #eee;"}
+:::
+
+---
+
+## La tierra y su representación
+
+::: {.columns}
+
+::: {.column width="45%"}
+- **Geoide:** La forma física real (superficie de igual gravedad).
+  - Elíptico
+  - Imperfecto
+- **Elipsoide o Esferoide:** Modelo matemático que mejor se ajusta para cálculos.
+  - Simplifica cálculos espaciales
+- **Datum:** Un esferoide alineado con un punto conocido.
+- **Coordenadas Geográficas:** Medidas en longitud y latitud con origen en el ecuador y el meridiano principal.
+:::
+
+::: {.column width="55%"}
+![](images/sistemas_coordenadas/geoide_elipsoide.png){fig-align="right" width="100%"}
+:::
+
+:::
+
+---
+
+## El Geoide
+
+Superficie en la que todos sus puntos experimentan la misma atracción gravitatoria, siendo esta equivalente a la experimentada al nivel del mar. 
+
+*Esta superficie no es regular, contiene ondulaciones que alteran los cálculos.*
+
+![](images/sistemas_coordenadas/image8.jpeg){fig-align="center"}
+
+---
+
+## Conceptos de Datum
+
+::: {.columns}
+
+::: {.column width="65%"}
+### {{< fa earth-americas >}} ¿Qué es un Datum?
+Sistema de referencia geográfica basado en un **modelo elipsoidal** que representa la superficie de la tierra.
+
+::: {.fragment}
+#### {{< fa map-pin >}} Datum Local
+Sistemas basados en elipsoides **no-geocéntricos**, ajustados a la superficie del geoide de un territorio específico.
+
+* **Bogotá Observatory (“ARENA”)** – Colombia
+* **Aratu / SAD69** – Brasil
+* **PSAD56** – Perú
+* **NAD27** – EE.UU. / GoM
+:::
+
+::: {.fragment}
+#### {{< fa center-focus-strong >}} Datum Geocéntrico
+Basado en elipsoides cuyo origen de cooordenadas **coincide con el centro de masa de la Tierra**.
+
+* **Estándar internacional:** WGS 1984 (GRS80)
+* **Regional:** SIRGAS / MAGNA-SIRGAS
+:::
+:::
+
+::: {.column width="35%"}
+![Visualización de la orientación del Datum](images/sistemas_coordenadas/datum.png){fig-align="center"}
+:::
+
+:::
+
+
+## Sistema de Coordenadas Geográficas
+
+- **Medidas:** Esféricas.
+- **Origen:** (0,0) -> (Primer Meridiano, Ecuador)
+- **Latitud:** -90° a 90°.
+- **Longitud:** -180° a 180°.
+
+![](images/sistemas_coordenadas/image9.png){fig-align="center"}
+
+---
+
+##
+
+
+![](images/sistemas_coordenadas/Paralelos-y-meriidianos.png){fig-align="center"}
+
+---
+
+## Esferoide o Elipsoide
+
+- Definido por el eje semimayor (**a**) y el eje semimenor (**b**).
+- **Aplanamiento:** $f = (a - b) / a$ (diferencia en longitud entre los dos ejes).
+- **WGS 1984 (Parámetros):** (Sistema Geodético Mundial - 1984)
+    - Elipsoide GRS80 (Geodetic Reference System 1980) 
+    - $a = 6378137.0$ m
+    - $1/f = 298.257223563$
+
+::: {layout="[[1, 2]]"}
+![](images/sistemas_coordenadas/elipsoide.png){style="width: 100%; height: 350px; object-fit: contain;"}
+
+![](images/sistemas_coordenadas/ejes_elipsoide.png){style="width: 100%; height: 350px; object-fit: contain; transform: scale(1.2);"}
+:::
+
+---
+
+## Geoide - Esferoide o Elipsoide - Datum
+
+![](images/sistemas_coordenadas/datum_elipsoide_geoide.png){fig-align="center"}
+
+---
+
+
+## Datums y Conversión
+
+Marco de referencia para medir sitios sobre la superficie terrestre:
+
+- **Local:** Ej. NAD27 (Elipsoide Clarke 1866).
+- **Geocéntrico:** Ej. NAD83 / WGS84 (Elipsoide GRS80).
+
+![](images/sistemas_coordenadas/datums_conversion_datums.png){fig-align="center"}
+
+---
+
+## Georeferenciación de Puntos
+
+* Los puntos sobre  la tierra se referencian a un datum
+* Para el mismo punto, diferentes datums tienen diferentes valores de coordenadas
+
+
+![](images/sistemas_coordenadas/referenciacion_puntos.png){fig-align="center"}
+
+---
+
+## Sistema de Coordenadas Proyectado
+
+::: {.columns}
+
+::: {.column width="50%"}
+<br>
+
+- Coordenadas en cuadrícula cartesiana.
+- Unidades: **metros**, pies, etc.
+- ¿Medir área o longitud? (¡No en geográficas!).
+- Convierte coordenadas **esféricas** a **planas**.
+- **Distorsión (FADD):** 
+    - Forma, 
+    - Área, 
+    - Distancia y 
+    - Dirección.
+
+:::
+
+::: {.column width="50%" style="text-align: center;"}
+![](images/sistemas_coordenadas/cproyectadas.png){width="50%" style="margin-bottom: 20px;"}
+
+![](images/sistemas_coordenadas/cproyectadas3.png){width="50%"}
+:::
+
+:::
+
+## Sistema de Coordenadas Proyectado
+
+- La ventaja de un sistema plano es que la medida de la longitud, ángulos y áreas son constantes en las dos dimensiones
+
+![](images/sistemas_coordenadas/plano_cartesiano.png){fig-align="center"}
+
+---
+
+## Conceptos de proyecciones
+
+![](images/sistemas_coordenadas/proyeccion_cilindrica.png){fig-align="center"}
+
+---
+
+## Conceptos de proyecciones
+
+::: {style="text-align: center;"}
+
+::: {.fragment fragment-index=1}
+La superficie superior de la tierra.
+:::
+
+::: {.fragment fragment-index=2}
+$\downarrow$
+:::
+
+![](images/sistemas_coordenadas/image15.png){width="50%" fig-align="center"}
+
+::: {.fragment fragment-index=3}
+$\uparrow$
+:::
+
+::: {.fragment fragment-index=4}
+Tiene que llenar esta superficie del mapa.
+:::
+
+:::
+
+<br>
+
+::: {.fragment fragment-index=5}
+> Por lo tanto, mucha de la superficie de la tierra tiene que ser representada mas pequeña que la realidad.
+:::
+
+---
+
+## ¿Qué se afecta al proyectar?
+
+
+![](images/sistemas_coordenadas/que_se_afecta_proyectando.png){fig-align="center"}
+
+---
+
+## Clasificación de Proyecciones
+
+<br><br>
+
+::: {style="display: flex; justify-content: center; align-items: center; height: 60%;"}
+
+| Tipo | Preserva | Ejemplo |
+|:---:|:---:|:---:|
+| [**Conforme**]{.fragment fragment-index=1} | [{{< fa object-group >}} Forma]{.fragment fragment-index=1} | [Lambert Conformal Conic]{.fragment fragment-index=1} |
+| [**Equiarea**]{.fragment fragment-index=2} | [{{< fa chart-area >}} Área]{.fragment fragment-index=2} | [Albers Equal Area Conic]{.fragment fragment-index=2} |
+| [**Equidistante**]{.fragment fragment-index=3} | [{{< fa ruler-horizontal >}} Distancia]{.fragment fragment-index=3} | [Equidistant Conic]{.fragment fragment-index=3} |
+| [**Azimutal**]{.fragment fragment-index=4} | [{{< fa compass >}} Dirección]{.fragment fragment-index=4} | [Lambert Azimuthal]{.fragment fragment-index=4} |
+
+:::
+
+## Tipos de Proyección
+
+- **Cilíndrica** (El cilindro envuelve la esfera)
+- **Cónica** (El cono se asienta sobre la esfera)
+- **Plana / Azimutal** (Un plano toca un punto de la esfera)
+
+
+::: {layout-ncol=3}
+![](images/sistemas_coordenadas/image20.png){style="width: 100%; height: 200px; object-fit: contain; border: 1px solid #eee;"}
+
+![](images/sistemas_coordenadas/image22.png){style="width: 100%; height: 200px; object-fit: contain; border: 1px solid #eee;"}
+
+![](images/sistemas_coordenadas/image24.png){style="width: 100%; height: 200px; object-fit: contain; border: 1px solid #eee;"}
+
+:::
+
+::: {layout-ncol=3}
+![](images/sistemas_coordenadas/image21.png){style="width: 100%; height: 200px; object-fit: contain; border: 1px solid #eee;"}
+
+![](images/sistemas_coordenadas/image23.png){style="width: 100%; height: 200px; object-fit: contain; border: 1px solid #eee;"}
+
+![](images/sistemas_coordenadas/image25.png){style="width: 100%; height: 200px; object-fit: contain; border: 1px solid #eee;"}
+
+:::
+
+---
+
+## Proyección Conforme
+
+![Miller Cilíndrica](images/sistemas_coordenadas/image16.png){fig-align="center"}
+
+---
+
+
+## Proyección de Áreas Iguales
+
+![Igual Área Cilíndrica](images/sistemas_coordenadas/image17.png){fig-align="center"}
+
+---
+
+## Proyección Equidistante
+
+![Sinusoidal](images/sistemas_coordenadas/image18.png){fig-align="center"}
+
+---
+
+## Proyecciones de verdadera dirección
+
+![Ortográfica](images/sistemas_coordenadas/image19.png){fig-align="center"}
+
+---
+
+## Proyecciones cónicas
+
+1. Paralelo estándar
+2. Meridiano central
+
+::: {layout-ncol=3}
+![](images/sistemas_coordenadas/image26.png){style="width: 100%; height: 200px; object-fit: contain; border: 1px solid #eee;"}
+
+![](images/sistemas_coordenadas/image27.png){style="width: 100%; height: 200px; object-fit: contain; border: 1px solid #eee;"}
+
+![](images/sistemas_coordenadas/image28.png){style="width: 100%; height: 200px; object-fit: contain; border: 1px solid #eee;"}
+
+:::
+
+## Proyecciones cilíndricas
+
+
+::: {layout-ncol=3}
+![Normal](images/sistemas_coordenadas/image29.png){style="width: 100%; height: 200px; object-fit: contain; border: 1px solid #eee;"}
+
+![Transversa](images/sistemas_coordenadas/image30.png){style="width: 100%; height: 200px; object-fit: contain; border: 1px solid #eee;"}
+
+![Oblicua](images/sistemas_coordenadas/image31.png){style="width: 100%; height: 200px; object-fit: contain; border: 1px solid #eee;"}
+
+:::
+
+---
+
+## Universal Transversa de Mercator (UTM)
+
+Es una de las proyecciones cilíndricas más utilizadas globalmente para cartografía de escala media y grande.
+
+![](images/sistemas_coordenadas/image32.png){width="100%" fig-align="center"}
+
+
+---
+
+## Sistema de Coordenadas UTM
+
+::: {style="text-align: center; margin-top: 20px;"}
+
+::: {.fragment fragment-index=1}
+### Columnas: Zonas UTM (Longitud)
+{{< fa database >}} 60 zonas de 6° cada una.
+:::
+
+
+![](images/sistemas_coordenadas/utm_colombia.png){width="55%" fig-align="center"}
+
+
+::: {.fragment fragment-index=4}
+### Filas: Bandas de Latitud
+{{< fa grip-lines >}} 20 bandas de 8° (C a X).
+:::
+
+:::
+
+::: {.fragment fragment-index=5}
+> **Nota para Colombia:** Nos ubicamos en las zonas **17, 18 y 19** y en las bandas de latitud **N** (Norte) y **P** (más al norte).
+:::
+
+---
+
+## Proyecciones planas
+
+
+::: {layout-ncol=3}
+![Polar](images/sistemas_coordenadas/image33.png){style="width: 100%; height: 200px; object-fit: contain; border: 1px solid #eee;"}
+
+![Ecuatorial](images/sistemas_coordenadas/image34.png){style="width: 100%; height: 200px; object-fit: contain; border: 1px solid #eee;"}
+
+![Oblicua](images/sistemas_coordenadas/image35.png){style="width: 100%; height: 200px; object-fit: contain; border: 1px solid #eee;"}
+
+:::
+
+## Parámetros de Proyección
+
+::: {style="text-align: center; margin-top: 1em;"}
+::: {.columns}
+
+::: {.column width="33%" .fragment}
+### {{< fa ruler-combined >}} LINEALES
+*Unidades de medida*
+
+- Falso Este
+- Falso Norte
+- Altura
+:::
+
+::: {.column width="33%" .fragment}
+### {{< fa compass >}} ANGULARES
+*Unidades sexagesimales*
+
+- Azimuth
+- Meridiano Central
+- Longitud de Origen
+- Paralelo Central
+- Latitud de Origen
+:::
+
+::: {.column width="33%" .fragment}
+### {{< fa expand >}} SIN UNIDADES
+*Relaciones matemáticas*
+
+- Factor de escala
+:::
+
+:::
+:::
+
+---
+
+## Explicación de Parámetros
+
+::: {.panel-tabset}
+
+### {{< fa ruler-combined >}} Lineales
+- **Falso Este/Norte:** Valores constantes sumados a las coordenadas para que siempre sean positivas. En Colombia (Origen Nacional), se usa **5,000,000 m**.
+- **Altura:** Define el plano de elevación sobre el cual se proyectan los datos.
+
+### {{< fa compass >}} Angulares
+- **Meridiano Central / Longitud de Origen:** La línea vertical de longitud que es el eje central de la proyección.
+- **Latitud de Origen / Paralelo Central:** La línea horizontal que define el origen de las coordenadas Y.
+- **Azimuth:** Ángulo de rotación de la proyección respecto al Norte.
+
+### {{< fa expand >}} Sin Unidades
+- **Factor de escala:** Determina cuánto se reduce o amplía la escala en el meridiano central para minimizar la distorsión en los bordes. Por ejemplo, en UTM es **0.9996**.
+:::
+
+> **Nota** Estos parámetros aseguran que las mediciones en el mapa coincidan lo mejor posible con el terreno real.
+
+## Componentes de un sistema de coordenadas proyectado
+
+![Tiene Ambos: GCS + PCS](images/sistemas_coordenadas/componentes_proyectado.png){fig-align="center"}
+
+
+
+## Sistema de Referencia Colombiano
+
+* Pre-MAGNA-SIRGAS (ARENA)
+- **Datum Bogotá** (1941).
+- Elipsoide Internacional de 1924 (Hayford)
+- Proyección Gauss–Krüger (cilíndrica - transversa - conforme)
+
+* MAGNA-SIRGAS
+- **SIRGAS:** Sistema de Referencia Geocéntrico para las Américas.
+- **MAGNA:** Marco Geocéntrico Nacional de Referencia.
+- 60 estaciones GPS de cubrimiento nacional.
+
+
+## El Origen: Observatorio Astronómico
+
+::: {.columns}
+
+::: {.column width="50%"}
+**Punto de Referencia:**
+Pilastra Sur del Observatorio Astronómico de Bogotá.
+
+**Coordenadas Geográficas (GCS):**
+
+- **Latitud (N):** 4° 35’ 56.57”
+- **Longitud (W):** 74° 04’ 51.30”
+
+**Falsos Orígenes (Gauss-Krüger):**
+
+- **Falso Norte:** 1,000,000 m N
+- **Falso Este:** 1,000,000 m E
+:::
+
+::: {.column width="50%"}
+![6 orígenes](images/sistemas_coordenadas/image39.png){fig-align="center" width="100%"}
+:::
+
+:::
+
+
+---
+
+## Sistema de Referencia Colombiano - MAGNA-SIRGAS
+
+::: {style="font-size: 0.85em;"}
+
+Debido a los avances científicos y tecnológicos de la Geodesia (especialmente GPS), el **IGAC** reemplazó el antiguo *Datum Bogotá* por un sistema moderno y compatible a nivel internacional.
+
+---
+
+::: {.columns}
+
+::: {.column width="50%"}
+### {{< fa globe >}} Referencia Global
+* **WGS84:** Implementado por el Departamento de Defensa de EE. UU. (Serie WGS60, 66, 72 y 84).
+* **ITRS:** Sistema Internacional de Referencia Terrestre con origen en el centro de masas de la Tierra.
+:::
+
+::: {.column width="50%"}
+### {{< fa tower-broadcast >}} Red Nacional
+* **SIRGAS:** Sistema de Referencia Geocéntrico para las Américas. Red de estaciones GPS de alta precisión.
+* **MAGNA:** Marco Geocéntrico Nacional de Referencia. Es la densificación de SIRGAS en Colombia.
+:::
+
+:::
+
+::: {.callout-note}
+## MAGNA-SIRGAS
+Es el sistema oficial que garantiza que la cartografía colombiana sea totalmente compatible con las tecnologías de posicionamiento global modernas.
+:::
+
+:::
+
+## SIRGAS: Sistema de Referencia Geocéntrico para las Américas
+
+![](images/sistemas_coordenadas/sirgas.png){fig-align="center"}
+
+
+## El Sistema Gauss-Krüger en Colombia
+
+::: {.columns}
+
+::: {.column width="60%"}
+### ¿Cómo funcionaba?
+* **Seis Cilindros:** El país se dividió en 6 fajas transversales cada 3° de longitud: 68°, 71°, 74°, 77°, 80° y 83° W.
+* **Zona Insular:** La **sexta faja (83° W)** no suele aparecer en los mapas continentales, pero es la que cubre a San Andrés y Providencia.
+* **Origen Bogotá:** El meridiano central principal es el de **74° W** (Observatorio de Bogotá).
+* **Parámetros:** Para evitar números negativos, cada zona usaba un **Falso Este y Norte de 1,000,000 m**.
+:::
+
+::: {.column width="40%"}
+![Sistema de 6 fajas](images/sistemas_coordenadas/origenes_colombia.png){fig-align="center"}
+:::
+
+:::
+
+---
+
+## El Gran Problema del Sistema Antiguo
+
+::: {style="text-align: center; margin-top: 1.5em;"}
+
+### ¿Por qué tuvimos que cambiar?
+
+::: {.fragment .strike}
+**Coordenadas Repetidas**
+:::
+
+::: {.fragment}
+Como cada una de las 6 fajas empezaba a contar desde **1,000,000 m**, una misma coordenada (ej: *X=1,100,000 ; Y=1,000,000*) podía existir en **6 lugares diferentes** de Colombia.
+:::
+
+::: {.fragment}
+{{< fa triangle-exclamation >}} **Confusión total:** Si no especificabas a qué zona pertenecía el dato, el punto podía caer en el Chocó o en el Vichada.
+:::
+
+:::
+
+> **Próxima Diapositiva:** Veremos cómo el **Origen Nacional Único** solucionó esto "estirando" un solo cilindro para todo el país.
+
+## El Nuevo Origen Nacional (EPSG:9377)
+
+::: {.columns}
+
+::: {.column width="60%"}
+### Unificación de las 6 fajas
+Para resolver el caos de las coordenadas repetidas, el IGAC definió un **único origen** para todo el país:
+
+* **Meridiano Central:** Se fijó oficialmente en **73° W** (simplificando el antiguo origen de la faja de Bogotá).
+* **Latitud de Origen:** Se mantiene el paralelo del Observatorio (**4° 35’ 46.32” N**).
+* **El gran cambio (Falsos):** * **Norte:** 2,000,000 m
+    * **Este:** 5,000,000 m
+:::
+
+::: {.column width="40%"}
+![](images/sistemas_coordenadas/image_origen_nacional.jpg){fig-align="center"}
+
+
+:::
+
+:::
+
+---
+
+## ¿Por qué 5,000,000 en el Este?
+
+::: {style="text-align: center; margin-top: 1em;"}
+
+### Adiós a la confusión
+
+Al usar **5,000,000**, nos aseguramos de que:
+
+1.  **Distinción inmediata:** Si una coordenada empieza por 5 millones, *sabes* que es el nuevo sistema. Si empieza por 1 millón, es el sistema viejo.
+2.  **Sin repeticiones:** El número es lo suficientemente grande para que toda la extensión de Colombia (desde el Amazonas hasta el Chocó) quepa en un solo plano sin cruzar el cero ni repetir coordenadas de otras fajas.
+:::
+
+> **Dato Curioso:** Este sistema permite que un solo mapa de Colombia sea "continuo", eliminando las molestas costuras que se formaban entre las 6 fajas antiguas. Mas información [acá](https://origen.igac.gov.co/)
+
+
+## Guía de Referencia EPSG: Colombia
+
+::: {style="font-size: 0.65em; line-height: 1.2;"}
+
+| Sistema / Faja | Código EPSG | Meridiano Central | Estado |
+|:---|:---:|:---:|:---:|
+| **WGS 84** | **4326** | - | Global |
+| **MAGNA-SIRGAS** | **4686** | - | Nacional |
+| [**Origen Nacional**]{style="color: #2c3e50; font-weight: bold;"} | [**9377**]{style="color: #c0392b; font-weight: bold;"} | **73° W** | **ACTUAL** |
+| Central (Bogotá) | 3116 | 74° 04' W | Histórico |
+| Este Central | 3117 | 73° 04' W | Histórico |
+| Este | 3118 | 71° 04' W | Histórico |
+| Oeste | 3115 | 75° 04' W | Histórico |
+| Oeste Oeste | 3114 | 77° 04' W | Histórico |
+| Datum Bogotá | 4218 | - | ARENA |
+
+:::
+
+::: {style="font-size: 0.7em; margin-top: 10px;"}
+::: {.callout-tip}
+## Herramientas Oficiales IGAC
+[**origen.igac.gov.co/herramientas.html**](https://origen.igac.gov.co/herramientas.html)
+:::
+:::
+
+::: {.footer style="font-size: 0.5em;"}
+Nota: Los códigos 21894-21899 corresponden a la realización antigua (Datum Bogotá 1975).
+:::

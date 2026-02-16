@@ -1,0 +1,1470 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="64-presentacion_4_clase3_coordenadas_files/libs/clipboard/clipboard.min.js"></script>
+<script src="64-presentacion_4_clase3_coordenadas_files/libs/quarto-html/tabby.min.js"></script>
+<script src="64-presentacion_4_clase3_coordenadas_files/libs/quarto-html/popper.min.js"></script>
+<script src="64-presentacion_4_clase3_coordenadas_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="64-presentacion_4_clase3_coordenadas_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="64-presentacion_4_clase3_coordenadas_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="64-presentacion_4_clase3_coordenadas_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="64-presentacion_4_clase3_coordenadas_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="64-presentacion_4_clase3_coordenadas_files/libs/quarto-contrib/fontawesome6-6.7.2/all.min.css" rel="stylesheet">
+<link href="64-presentacion_4_clase3_coordenadas_files/libs/quarto-contrib/fontawesome6-6.7.2/latex-fontsize.css" rel="stylesheet"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.4.550">
+
+  <meta name="author" content="Alexys H. Rodríguez-Avellaneda Ph.D.">
+  <title>Geomática General</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="64-presentacion_4_clase3_coordenadas_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="64-presentacion_4_clase3_coordenadas_files/libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="64-presentacion_4_clase3_coordenadas_files/libs/revealjs/dist/theme/quarto.css">
+  <link href="64-presentacion_4_clase3_coordenadas_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="64-presentacion_4_clase3_coordenadas_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="64-presentacion_4_clase3_coordenadas_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="64-presentacion_4_clase3_coordenadas_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+
+  .callout {
+    margin-top: 1em;
+    margin-bottom: 1em;  
+    border-radius: .25rem;
+  }
+
+  .callout.callout-style-simple { 
+    padding: 0em 0.5em;
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+    display: flex;
+  }
+
+  .callout.callout-style-default {
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+  }
+
+  .callout .callout-body-container {
+    flex-grow: 1;
+  }
+
+  .callout.callout-style-simple .callout-body {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-style-default .callout-body {
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-titled.callout-style-simple .callout-body {
+    margin-top: 0.2em;
+  }
+
+  .callout:not(.callout-titled) .callout-body {
+      display: flex;
+  }
+
+  .callout:not(.no-icon).callout-titled.callout-style-simple .callout-content {
+    padding-left: 1.6em;
+  }
+
+  .callout.callout-titled .callout-header {
+    padding-top: 0.2em;
+    margin-bottom: -0.2em;
+  }
+
+  .callout.callout-titled .callout-title  p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+    
+  .callout.callout-titled.callout-style-simple .callout-content  p {
+    margin-top: 0;
+  }
+
+  .callout.callout-titled.callout-style-default .callout-content  p {
+    margin-top: 0.7em;
+  }
+
+  .callout.callout-style-simple div.callout-title {
+    border-bottom: none;
+    font-size: .9rem;
+    font-weight: 600;
+    opacity: 75%;
+  }
+
+  .callout.callout-style-default  div.callout-title {
+    border-bottom: none;
+    font-weight: 600;
+    opacity: 85%;
+    font-size: 0.9rem;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-default div.callout-content {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-simple .callout-icon::before {
+    height: 1rem;
+    width: 1rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 1rem 1rem;
+  }
+
+  .callout.callout-style-default .callout-icon::before {
+    height: 0.9rem;
+    width: 0.9rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 0.9rem 0.9rem;
+  }
+
+  .callout-title {
+    display: flex
+  }
+    
+  .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  .callout.no-icon::before {
+    display: none !important;
+  }
+
+  .callout.callout-titled .callout-body > .callout-content > :last-child {
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
+  }
+
+  .callout.callout-titled .callout-icon::before {
+    margin-top: .5rem;
+    padding-right: .5rem;
+  }
+
+  .callout:not(.callout-titled) .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  /* Callout Types */
+
+  div.callout-note {
+    border-left-color: #4582ec !important;
+  }
+
+  div.callout-note .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEU0lEQVRYCcVXTWhcVRQ+586kSUMMxkyaElstCto2SIhitS5Ek8xUKV2poatCcVHtUlFQk8mbaaziwpWgglJwVaquitBOfhQXFlqlzSJpFSpIYyXNjBNiTCck7x2/8/LeNDOZxDuEkgOXe++553zfefee+/OYLOXFk3+1LLrRdiO81yNqZ6K9cG0P3MeFaMIQjXssE8Z1JzLO9ls20MBZX7oG8w9GxB0goaPrW5aNMp1yOZIa7Wv6o2ykpLtmAPs/vrG14Z+6d4jpbSKuhdcSyq9wGMPXjonwmESXrriLzFGOdDBLB8Y6MNYBu0dRokSygMA/mrun8MGFN3behm6VVAwg4WR3i6FvYK1T7MHo9BK7ydH+1uurECoouk5MPRyVSBrBHMYwVobG2aOXM07sWrn5qgB60rc6mcwIDJtQrnrEr44kmy+UO9r0u9O5/YbkS9juQckLed3DyW2XV/qWBBB3ptvI8EUY3I9p/67OW+g967TNr3Sotn3IuVlfMLVnsBwH4fsnebJvyGm5GeIUA3jljERmrv49SizPYuq+z7c2H/jlGC+Ghhupn/hcapqmcudB9jwJ/3jvnvu6vu5lVzF1fXyZuZZ7U8nRmVzytvT+H3kilYvH09mLWrQdwFSsFEsxFVs5fK7A0g8gMZjbif4ACpKbjv7gNGaD8bUrlk8x+KRflttr22JEMRUbTUwwDQScyzPgedQHZT0xnx7ujw2jfVfExwYHwOsDTjLdJ2ebmeQIlJ7neo41s/DrsL3kl+W2lWvAga0tR3zueGr6GL78M3ifH0rGXrBC2aAR8uYcIA5gwV8zIE8onoh8u0Fca/ciF7j1uOzEnqcIm59sEXoGc0+z6+H45V1CvAvHcD7THztu669cnp+L0okAeIc6zjbM/24LgGM1gZk7jnRu1aQWoU9sfUOuhrmtaPIO3YY1KLLWZaEO5TKUbMY5zx8W9UJ6elpLwKXbsaZ4EFl7B4bMtDv0iRipKoDQT2sNQI9b1utXFdYisi+wzZ/ri/1m7QfDgEuvgUUEIJPq3DhX/5DWNqIXDOweC2wvIR90Oq3lDpdMIgD2r0dXvGdsEW5H6x6HLRJYU7C69VefO1x8Gde1ZFSJLfWS1jbCnhtOPxmpfv2LXOA2Xk2tvnwKKPFuZ/oRmwBwqRQDcKNeVQkYcOjtWVBuM/JuYw5b6isojIkYxyYAFn5K7ZBF10fea52y8QltAg6jnMqNHFBmGkQ1j+U43HMi2xMar1Nv0zGsf1s8nUsmUtPOOrbFIR8bHFDMB5zL13Gmr/kGlCkUzedTzzmzsaJXhYawnA3UmARpiYj5ooJZiUoxFRtK3X6pgNPv+IZVPcnwbOl6f+aBaO1CNvPW9n9LmCp01nuSaTRF2YxHqZ8DYQT6WsXT+RD6eUztwYLZ8rM+rcPxamv1VQzFUkzFXvkiVrySGQgJNvXHJAxiU3/NwiC03rSf05VBaPtu/Z7/B8Yn/w7eguloAAAAAElFTkSuQmCC');
+  }
+
+  div.callout-note.callout-style-default .callout-title {
+    background-color: #dae6fb
+  }
+
+  div.callout-important {
+    border-left-color: #d9534f !important;
+  }
+
+  div.callout-important .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEKklEQVRYCcVXTWhcVRS+575MJym48A+hSRFr00ySRQhURRfd2HYjk2SSTokuBCkU2o0LoSKKraKIBTcuFCoidGFD08nkBzdREbpQ1EDNIv8qSGMFUboImMSZd4/f9zJv8ibJMC8xJQfO3HPPPef7zrvvvnvviIkpC9nsw0UttFunbUhpFzFtarSd6WJkStVMw5xyVqYTvkwfzuf/5FgtkVoB0729j1rjXwThS7Vio+Mo6DNnvLfahoZ+i/o32lULuJ3NNiz7q6+pyAUkJaFF6JwaM2lUJlV0MlnQn5aTRbEu0SEqHUa0A4AdiGuB1kFXRfVyg5d87+Dg4DL6m2TLAub60ilj7A1Ec4odSAc8X95sHh7+ZRPCFo6Fnp7HfU/fBng/hi10CjCnWnJjsxvDNxWw0NfV6Rv5GgP3I3jGWXumdTD/3cbEOP2ZbOZp69yniG3FQ9z1jD7bnBu9Fc2tKGC2q+uAJOQHBDRiZX1x36o7fWBs7J9ownbtO+n0/qWkvW7UPIfc37WgT6ZGR++EOJyeQDSb9UB+DZ1G6DdLDzyS+b/kBCYGsYgJbSQHuThGKRcw5xdeQf8YdNHsc6ePXrlSYMBuSIAFTGAtQo+VuALo4BX83N190NWZWbynBjhOHsmNfFWLeL6v+ynsA58zDvvAC8j5PkbOcXCMg2PZFk3q8MjI7WAG/Dp9AwP7jdGBOOQkAvlFUB+irtm16I1Zw9YBcpGTGXYmk3kQIC/Cds55l+iMI3jqhjAuaoe+am2Jw5GT3Nbz3CkE12NavmzN5+erJW7046n/CH1RO/RVa8lBLozXk9uqykkGAyRXLWlLv5jyp4RFsG5vGVzpDLnIjTWgnRy2Rr+tDKvRc7Y8AyZq10jj8DqXdnIRNtFZb+t/ZRtXcDiVnzpqx8mPcDWxgARUqx0W1QB9MeUZiNrV4qP+Ehc+BpNgATsTX8ozYKL2NtFYAHc84fG7ndxUPr+AR/iQSns7uSUufAymwDOb2+NjK27lEFocm/EE2WpyIy/Hi66MWuMKJn8RvxIcj87IM5Vh9663ziW36kR0HNenXuxmfaD8JC7tfKbrhFr7LiZCrMjrzTeGx+PmkosrkNzW94ObzwocJ7A1HokLolY+AvkTiD/q1H0cN48c5EL8Crkttsa/AXQVDmutfyku0E7jShx49XqV3MFK8IryDhYVbj7Sj2P2eBxwcXoe8T8idsKKPRcnZw1b+slFTubwUwhktrfnAt7J++jwQtLZcm3sr9LQrjRzz6cfMv9aLvgmnAGvpoaGLxM4mAEaLV7iAzQ3oU0IvD5x9ix3yF2RAAuYAOO2f7PEFWCXZ4C9Pb2UsgDeVnFSpbFK7/IWu7TPTvBqzbGdCHOJQSxiEjt6IyZmxQyEJHv6xyQsYk//moVFsN2zP6fRImjfq7/n/wFDguUQFNEwugAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-important.callout-style-default .callout-title {
+    background-color: #f7dddc
+  }
+
+  div.callout-warning {
+    border-left-color: #f0ad4e !important;
+  }
+
+  div.callout-warning .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAETklEQVRYCeVWW2gcVRg+58yaTUnizqbipZeX4uWhBEniBaoUX1Ioze52t7sRq6APio9V9MEaoWlVsFasRq0gltaAPuxms8lu0gcviE/FFOstVbSIxgcv6SU7EZqmdc7v9+9mJtNks51NTUH84ed889/PP+cmxP+d5FIbMJmNbpREu4WUkiTtCicKny0l1pIKmBzovF2S+hIJHX8iEu3hZJ5lNZGqyRrGSIQpq15AzF28jgpeY6yk6GVdrfFqdrD6Iw+QlB8g0YS2g7dyQmXM/IDhBhT0UCiRf59lfqmmDvzRt6kByV/m4JjtzuaujMUM2c5Z2d6JdKrRb3K2q6mA+oYVz8JnDdKPmmNthzkAk/lN63sYPgevrguc72aZX/L9C6x09GYyxBgCX4NlvyGUHOKELlm5rXeR1kchuChJt4SSwyddZRXgvwMGvYo4QSlk3/zkHD8UHxwVJA6zjZZqP8v8kK8OWLnIZtLyCAJagYC4rTGW/9Pqj92N/c+LUaAj27movwbi19tk/whRCIE7Q9vyI6yvRpftAKVTdUjOW40X3h5OXsKCdmFcx0xlLJoSuQngnrJe7Kcjm4OMq9FlC7CMmScQANuNvjfP3PjGXDBaUQmbp296S5L4DrpbrHN1T87ZVEZVCzg1FF0Ft+dKrlLukI+/c9ENo+TvlTDbYFvuKPtQ9+l052rXrgKoWkDAFnvh0wTOmYn8R5f4k/jN/fZiCM1tQx9jQQ4ANhqG4hiL0qIFTGViG9DKB7GYzgubnpofgYRwO+DFjh0Zin2m4b/97EDkXkc+f6xYAPX0KK2I/7fUQuwzuwo/L3AkcjugPNixC8cHf0FyPjWlItmLxWw4Ou9YsQCr5fijMGoD/zpdRy95HRysyXA74MWOnscpO4j2y3HAVisw85hX5+AFBRSHt4ShfLFkIMXTqyKFc46xdzQM6XbAi702a7sy04J0+feReMFKp5q9esYLCqAZYw/k14E/xcLLsFElaornTuJB0svMuJINy8xkIYuL+xPAlWRceH6+HX7THJ0djLUom46zREu7tTkxwmf/FdOZ/sh6Q8qvEAiHpm4PJ4a/doJe0gH1t+aHRgCzOvBvJedEK5OFE5jpm4AGP2a8Dxe3gGJ/pAutug9Gp6he92CsSsWBaEcxGx0FHytmIpuqGkOpldqNYQK8cSoXvd+xLxXADw0kf6UkJNFtdo5MOgaLjiQOQHcn+A6h5NuL2s0qsC2LOM75PcF3yr5STuBSAcGG+meA14K/CI21HcS4LBT6tv0QAh8Dr5l93AhZzG5ZJ4VxAqdZUEl9z7WJ4aN+svMvwHHL21UKTd1mqvChH7/Za5xzXBBKrUcB0TQ+Ulgkfbi/H/YT5EptrGzsEK7tR1B7ln9BBwckYfMiuSqklSznIuoIIOM42MQO+QnduCoFCI0bpkzjCjddHPN/F+2Yu+sd9bKNpVwHhbS3LluK/0zgfwD0xYI5dXuzlQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-warning.callout-style-default .callout-title {
+    background-color: #fcefdc
+  }
+
+  div.callout-tip {
+    border-left-color: #02b875 !important;
+  }
+
+  div.callout-tip .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAADr0lEQVRYCe1XTWgTQRj9ZjZV8a9SPIkKgj8I1bMHsUWrqYLVg4Ue6v9BwZOxSYsIerFao7UiUryIqJcqgtpimhbBXoSCVxUFe9CTiogUrUp2Pt+3aUI2u5vdNh4dmMzOzHvvezuz8xNFM0mjnbXaNu1MvFWRXkXEyE6aYOYJpdW4IXuA4r0fo8qqSMDBU0v1HJUgVieAXxzCsdE/YJTdFcVIZQNMyhruOMJKXYFoLfIfIvVIMWdsrd+Rpd86ZmyzzjJmLStqRn0v8lzkb4rVIXvnpScOJuAn2ACC65FkPzEdEy4TPWRLJ2h7z4cArXzzaOdKlbOvKKX25Wl00jSnrwVxAg3o4dRxhO13RBSdNvH0xSARv3adTXbBdTf64IWO2vH0LT+cv4GR1DJt+DUItaQogeBX/chhbTBxEiZ6gftlDNXTrvT7co4ub5A6gp9HIcHvzTa46OS5fBeP87Qm0fQkr4FsYgVQ7Qg+ZayaDg9jhg1GkWj8RG6lkeSacrrHgDaxdoBiZPg+NXV/KifMuB6//JmYH4CntVEHy/keA6x4h4CU5oFy8GzrBS18cLJMXcljAKB6INjWsRcuZBWVaS3GDrqB7rdapVIeA+isQ57Eev9eCqzqOa81CY05VLd6SamW2wA2H3SiTbnbSxmzfp7WtKZkqy4mdyAlGx7ennghYf8voqp9cLSgKdqNfa6RdRsAAkPwRuJZNbpByn+RrJi1RXTwdi8RQF6ymDwGMAtZ6TVE+4uoKh+MYkcLsT0Hk8eAienbiGdjJHZTpmNjlbFJNKDVAp2fJlYju6IreQxQ08UJDNYdoLSl6AadO+fFuCQqVMB1NJwPm69T04Wv5WhfcWyfXQB+wXRs1pt+nCknRa0LVzSA/2B+a9+zQJadb7IyyV24YAxKp2Jqs3emZTuNnKxsah+uabKbMk7CbTgJx/zIgQYErIeTKRQ9yD9wxVof5YolPHqaWo7TD6tJlh7jQnK5z2n3+fGdggIOx2kaa2YI9QWarc5Ce1ipNWMKeSG4DysFF52KBmTNMmn5HqCFkwy34rDg05gDwgH3bBi+sgFhN/e8QvRn8kbamCOhgrZ9GJhFDgfcMHzFb6BAtjKpFhzTjwv1KCVuxHvCbsSiEz4CANnj84cwHdFXAbAOJ4LTSAawGWFn5tDhLMYz6nWeU2wJfIhmIJBefcd/A5FWQWGgrWzyORZ3Q6HuV+Jf0Bj+BTX69fm1zWgK7By1YTXchFDORywnfQ7GpzOo6S+qECrsx2ifVQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-tip.callout-style-default .callout-title {
+    background-color: #ccf1e3
+  }
+
+  div.callout-caution {
+    border-left-color: #fd7e14 !important;
+  }
+
+  div.callout-caution .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAACV0lEQVRYCdVWzWoUQRCuqp2ICBLJXgITZL1EfQDBW/bkzUMUD7klD+ATSHBEfAIfQO+iXsWDxJsHL96EHAwhgzlkg8nBg25XWb0zIb0zs9muYYWkoKeru+vn664fBqElyZNuyh167NXJ8Ut8McjbmEraKHkd7uAnAFku+VWdb3reSmRV8PKSLfZ0Gjn3a6Xlcq9YGb6tADjn+lUfTXtVmaZ1KwBIvFI11rRXlWlatwIAAv2asaa9mlB9wwygiDX26qaw1yYPzFXg2N1GgG0FMF8Oj+VIx7E/03lHx8UhvYyNZLN7BwSPgekXXLribw7w5/c8EF+DBK5idvDVYtEEwMeYefjjLAdEyQ3M9nfOkgnPTEkYU+sxMq0BxNR6jExrAI31H1rzvLEfRIdgcv1XEdj6QTQAS2wtstEALLG1yEZ3QhH6oDX7ExBSFEkFINXH98NTrme5IOaaA7kIfiu2L8A3qhH9zRbukdCqdsA98TdElyeMe5BI8Rs2xHRIsoTSSVFfCFCWGPn9XHb4cdobRIWABNf0add9jakDjQJpJ1bTXOJXnnRXHRf+dNL1ZV1MBRCXhMbaHqGI1JkKIL7+i8uffuP6wVQAzO7+qVEbF6NbS0LJureYcWXUUhH66nLR5rYmva+2tjRFtojkM2aD76HEGAD3tPtKM309FJg5j/K682ywcWJ3PASCcycH/22u+Bh7Aa0ehM2Fu4z0SAE81HF9RkB21c5bEn4Dzw+/qNOyXr3DCTQDMBOdhi4nAgiFDGCinIa2owCEChUwD8qzd03PG+qdW/4fDzjUMcE1ZpIAAAAASUVORK5CYII=');
+  }
+
+  div.callout-caution.callout-style-default .callout-title {
+    background-color: #ffe5d0
+  }
+
+  </style>
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Geomática General</h1>
+  <p class="subtitle">Sistemas de Coordenadas</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Alexys H. Rodríguez-Avellaneda Ph.D. 
+</div>
+</div>
+</div>
+
+</section>
+<section id="mapa" class="slide level2 center">
+<h2>Mapa</h2>
+<p>Representa objetos geográficos y otros fenómenos espaciales mostrando gráficamente su localización y atributos.</p>
+
+<img data-src="images/sistemas_coordenadas/tierra_mapa.jpg" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="elementos-del-mapa" class="slide level2 center">
+<h2>Elementos del Mapa</h2>
+<ul>
+<li class="fragment">Punto</li>
+<li class="fragment">Línea</li>
+<li class="fragment">Área</li>
+</ul>
+
+<img data-src="images/sistemas_coordenadas/image2.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="qué-es-la-georreferenciación" class="slide level2 center">
+<h2>¿Qué es la georreferenciación?</h2>
+<p>Los datos se referencian a sitios sobre la superficie terrestre mediante:</p>
+<ul>
+<li class="fragment">Sistema de coordenadas geográficas</li>
+<li class="fragment">Sistema de coordenadas proyectadas</li>
+</ul>
+
+<img data-src="images/sistemas_coordenadas/image3.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="la-forma-de-la-tierra" class="slide level2 center">
+<h2>La Forma de la Tierra</h2>
+<p>¿Cómo es realmente la Tierra?</p>
+<div class="quarto-layout-panel" data-layout-ncol="4">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<p><img data-src="images/sistemas_coordenadas/image4.jpeg" style="width: 100%; height: 200px; object-fit: contain; border: 1px solid #eee;"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<p><img data-src="images/sistemas_coordenadas/mapa_tierra.jpg" style="width: 100%; height: 200px; object-fit: contain; border: 1px solid #eee;"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<p><img data-src="images/sistemas_coordenadas/image6.png" style="width: 100%; height: 200px; object-fit: contain; border: 1px solid #eee;"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<p><img data-src="images/sistemas_coordenadas/mapa_tierra.png" style="width: 100%; height: 200px; object-fit: contain; border: 1px solid #eee;"></p>
+</div>
+</div>
+</div>
+</section>
+<section id="la-tierra-y-su-representación" class="slide level2 center">
+<h2>La tierra y su representación</h2>
+<div class="columns">
+<div class="column" style="width:45%;">
+<ul>
+<li class="fragment"><strong>Geoide:</strong> La forma física real (superficie de igual gravedad).
+<ul>
+<li class="fragment">Elíptico</li>
+<li class="fragment">Imperfecto</li>
+</ul></li>
+<li class="fragment"><strong>Elipsoide o Esferoide:</strong> Modelo matemático que mejor se ajusta para cálculos.
+<ul>
+<li class="fragment">Simplifica cálculos espaciales</li>
+</ul></li>
+<li class="fragment"><strong>Datum:</strong> Un esferoide alineado con un punto conocido.</li>
+<li class="fragment"><strong>Coordenadas Geográficas:</strong> Medidas en longitud y latitud con origen en el ecuador y el meridiano principal.</li>
+</ul>
+</div><div class="column" style="width:55%;">
+<div class="quarto-figure quarto-figure-right">
+<figure>
+<p><img data-src="images/sistemas_coordenadas/geoide_elipsoide.png" class="quarto-figure quarto-figure-right" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="el-geoide" class="slide level2 center">
+<h2>El Geoide</h2>
+<p>Superficie en la que todos sus puntos experimentan la misma atracción gravitatoria, siendo esta equivalente a la experimentada al nivel del mar.</p>
+<p><em>Esta superficie no es regular, contiene ondulaciones que alteran los cálculos.</em></p>
+
+<img data-src="images/sistemas_coordenadas/image8.jpeg" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="conceptos-de-datum" class="slide level2 center">
+<h2>Conceptos de Datum</h2>
+<div class="columns">
+<div class="column" style="width:65%;">
+<h3 id="qué-es-un-datum"><i class="fa-solid fa-earth-americas" aria-label="earth-americas"></i> ¿Qué es un Datum?</h3>
+<p>Sistema de referencia geográfica basado en un <strong>modelo elipsoidal</strong> que representa la superficie de la tierra.</p>
+<div class="fragment">
+<!-- -->
+<h4 id="datum-local"><i class="fa-solid fa-map-pin" aria-label="map-pin"></i> Datum Local</h4>
+<p>Sistemas basados en elipsoides <strong>no-geocéntricos</strong>, ajustados a la superficie del geoide de un territorio específico.</p>
+<ul>
+<li class="fragment"><strong>Bogotá Observatory (“ARENA”)</strong> – Colombia</li>
+<li class="fragment"><strong>Aratu / SAD69</strong> – Brasil</li>
+<li class="fragment"><strong>PSAD56</strong> – Perú</li>
+<li class="fragment"><strong>NAD27</strong> – EE.UU. / GoM</li>
+</ul>
+</div>
+<div class="fragment">
+<!-- -->
+<h4 id="datum-geocéntrico"><i class="fa-solid fa-center-focus-strong" aria-label="center-focus-strong"></i> Datum Geocéntrico</h4>
+<p>Basado en elipsoides cuyo origen de cooordenadas <strong>coincide con el centro de masa de la Tierra</strong>.</p>
+<ul>
+<li class="fragment"><strong>Estándar internacional:</strong> WGS 1984 (GRS80)</li>
+<li class="fragment"><strong>Regional:</strong> SIRGAS / MAGNA-SIRGAS</li>
+</ul>
+</div>
+</div><div class="column" style="width:35%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/sistemas_coordenadas/datum.png" class="quarto-figure quarto-figure-center"></p>
+<figcaption>Visualización de la orientación del Datum</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="sistema-de-coordenadas-geográficas" class="slide level2 center">
+<h2>Sistema de Coordenadas Geográficas</h2>
+<ul>
+<li class="fragment"><strong>Medidas:</strong> Esféricas.</li>
+<li class="fragment"><strong>Origen:</strong> (0,0) -&gt; (Primer Meridiano, Ecuador)</li>
+<li class="fragment"><strong>Latitud:</strong> -90° a 90°.</li>
+<li class="fragment"><strong>Longitud:</strong> -180° a 180°.</li>
+</ul>
+
+<img data-src="images/sistemas_coordenadas/image9.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="section" class="slide level2 center">
+<h2></h2>
+
+<img data-src="images/sistemas_coordenadas/Paralelos-y-meriidianos.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="esferoide-o-elipsoide" class="slide level2 center">
+<h2>Esferoide o Elipsoide</h2>
+<ul>
+<li class="fragment">Definido por el eje semimayor (<strong>a</strong>) y el eje semimenor (<strong>b</strong>).</li>
+<li class="fragment"><strong>Aplanamiento:</strong> <span class="math inline">\(f = (a - b) / a\)</span> (diferencia en longitud entre los dos ejes).</li>
+<li class="fragment"><strong>WGS 1984 (Parámetros):</strong> (Sistema Geodético Mundial - 1984)
+<ul>
+<li class="fragment">Elipsoide GRS80 (Geodetic Reference System 1980)</li>
+<li class="fragment"><span class="math inline">\(a = 6378137.0\)</span> m</li>
+<li class="fragment"><span class="math inline">\(1/f = 298.257223563\)</span></li>
+</ul></li>
+</ul>
+<div class="quarto-layout-panel" data-layout="[[1, 2]]">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><img data-src="images/sistemas_coordenadas/elipsoide.png" style="width: 100%; height: 350px; object-fit: contain;"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 66.7%;justify-content: center;">
+<p><img data-src="images/sistemas_coordenadas/ejes_elipsoide.png" style="width: 100%; height: 350px; object-fit: contain; transform: scale(1.2);"></p>
+</div>
+</div>
+</div>
+</section>
+<section id="geoide---esferoide-o-elipsoide---datum" class="slide level2 center">
+<h2>Geoide - Esferoide o Elipsoide - Datum</h2>
+
+<img data-src="images/sistemas_coordenadas/datum_elipsoide_geoide.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="datums-y-conversión" class="slide level2 center">
+<h2>Datums y Conversión</h2>
+<p>Marco de referencia para medir sitios sobre la superficie terrestre:</p>
+<ul>
+<li class="fragment"><strong>Local:</strong> Ej. NAD27 (Elipsoide Clarke 1866).</li>
+<li class="fragment"><strong>Geocéntrico:</strong> Ej. NAD83 / WGS84 (Elipsoide GRS80).</li>
+</ul>
+
+<img data-src="images/sistemas_coordenadas/datums_conversion_datums.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="georeferenciación-de-puntos" class="slide level2 center">
+<h2>Georeferenciación de Puntos</h2>
+<ul>
+<li class="fragment">Los puntos sobre la tierra se referencian a un datum</li>
+<li class="fragment">Para el mismo punto, diferentes datums tienen diferentes valores de coordenadas</li>
+</ul>
+
+<img data-src="images/sistemas_coordenadas/referenciacion_puntos.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="sistema-de-coordenadas-proyectado" class="slide level2 center">
+<h2>Sistema de Coordenadas Proyectado</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><br></p>
+<ul>
+<li class="fragment">Coordenadas en cuadrícula cartesiana.</li>
+<li class="fragment">Unidades: <strong>metros</strong>, pies, etc.</li>
+<li class="fragment">¿Medir área o longitud? (¡No en geográficas!).</li>
+<li class="fragment">Convierte coordenadas <strong>esféricas</strong> a <strong>planas</strong>.</li>
+<li class="fragment"><strong>Distorsión (FADD):</strong>
+<ul>
+<li class="fragment">Forma,</li>
+<li class="fragment">Área,</li>
+<li class="fragment">Distancia y</li>
+<li class="fragment">Dirección.</li>
+</ul></li>
+</ul>
+</div><div class="column" style="text-align: center;">
+<p><img data-src="images/sistemas_coordenadas/cproyectadas.png" style="margin-bottom: 20px;;width:50.0%"></p>
+<p><img data-src="images/sistemas_coordenadas/cproyectadas3.png" style="width:50.0%"></p>
+</div>
+</div>
+</section>
+<section id="sistema-de-coordenadas-proyectado-1" class="slide level2 center">
+<h2>Sistema de Coordenadas Proyectado</h2>
+<ul>
+<li class="fragment">La ventaja de un sistema plano es que la medida de la longitud, ángulos y áreas son constantes en las dos dimensiones</li>
+</ul>
+
+<img data-src="images/sistemas_coordenadas/plano_cartesiano.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="conceptos-de-proyecciones" class="slide level2 center">
+<h2>Conceptos de proyecciones</h2>
+
+<img data-src="images/sistemas_coordenadas/proyeccion_cilindrica.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="conceptos-de-proyecciones-1" class="slide level2 center">
+<h2>Conceptos de proyecciones</h2>
+<div style="text-align: center;">
+<div class="fragment" data-fragment-index="1">
+<p>La superficie superior de la tierra.</p>
+</div>
+<div class="fragment" data-fragment-index="2">
+<p><span class="math inline">\(\downarrow\)</span></p>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/sistemas_coordenadas/image15.png" class="quarto-figure quarto-figure-center" style="width:50.0%"></p>
+</figure>
+</div>
+<div class="fragment" data-fragment-index="3">
+<p><span class="math inline">\(\uparrow\)</span></p>
+</div>
+<div class="fragment" data-fragment-index="4">
+<p>Tiene que llenar esta superficie del mapa.</p>
+</div>
+</div>
+<p><br></p>
+<div class="fragment" data-fragment-index="5">
+<blockquote>
+<p>Por lo tanto, mucha de la superficie de la tierra tiene que ser representada mas pequeña que la realidad.</p>
+</blockquote>
+</div>
+</section>
+<section id="qué-se-afecta-al-proyectar" class="slide level2 center">
+<h2>¿Qué se afecta al proyectar?</h2>
+
+<img data-src="images/sistemas_coordenadas/que_se_afecta_proyectando.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="clasificación-de-proyecciones" class="slide level2 center">
+<h2>Clasificación de Proyecciones</h2>
+<p><br><br></p>
+<div style="display: flex; justify-content: center; align-items: center; height: 60%;">
+<table>
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Tipo</th>
+<th style="text-align: center;">Preserva</th>
+<th style="text-align: center;">Ejemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="fragment" data-fragment-index="1"><strong>Conforme</strong></span></td>
+<td style="text-align: center;"><span class="fragment" data-fragment-index="1"><i class="fa-solid fa-object-group" aria-label="object-group"></i> Forma</span></td>
+<td style="text-align: center;"><span class="fragment" data-fragment-index="1">Lambert Conformal Conic</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="fragment" data-fragment-index="2"><strong>Equiarea</strong></span></td>
+<td style="text-align: center;"><span class="fragment" data-fragment-index="2"><i class="fa-solid fa-chart-area" aria-label="chart-area"></i> Área</span></td>
+<td style="text-align: center;"><span class="fragment" data-fragment-index="2">Albers Equal Area Conic</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="fragment" data-fragment-index="3"><strong>Equidistante</strong></span></td>
+<td style="text-align: center;"><span class="fragment" data-fragment-index="3"><i class="fa-solid fa-ruler-horizontal" aria-label="ruler-horizontal"></i> Distancia</span></td>
+<td style="text-align: center;"><span class="fragment" data-fragment-index="3">Equidistant Conic</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="fragment" data-fragment-index="4"><strong>Azimutal</strong></span></td>
+<td style="text-align: center;"><span class="fragment" data-fragment-index="4"><i class="fa-solid fa-compass" aria-label="compass"></i> Dirección</span></td>
+<td style="text-align: center;"><span class="fragment" data-fragment-index="4">Lambert Azimuthal</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="tipos-de-proyección" class="slide level2 center">
+<h2>Tipos de Proyección</h2>
+<ul>
+<li class="fragment"><strong>Cilíndrica</strong> (El cilindro envuelve la esfera)</li>
+<li class="fragment"><strong>Cónica</strong> (El cono se asienta sobre la esfera)</li>
+<li class="fragment"><strong>Plana / Azimutal</strong> (Un plano toca un punto de la esfera)</li>
+</ul>
+<div class="quarto-layout-panel" data-layout-ncol="3">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><img data-src="images/sistemas_coordenadas/image20.png" style="width: 100%; height: 200px; object-fit: contain; border: 1px solid #eee;"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><img data-src="images/sistemas_coordenadas/image22.png" style="width: 100%; height: 200px; object-fit: contain; border: 1px solid #eee;"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><img data-src="images/sistemas_coordenadas/image24.png" style="width: 100%; height: 200px; object-fit: contain; border: 1px solid #eee;"></p>
+</div>
+</div>
+</div>
+<div class="quarto-layout-panel" data-layout-ncol="3">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><img data-src="images/sistemas_coordenadas/image21.png" style="width: 100%; height: 200px; object-fit: contain; border: 1px solid #eee;"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><img data-src="images/sistemas_coordenadas/image23.png" style="width: 100%; height: 200px; object-fit: contain; border: 1px solid #eee;"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><img data-src="images/sistemas_coordenadas/image25.png" style="width: 100%; height: 200px; object-fit: contain; border: 1px solid #eee;"></p>
+</div>
+</div>
+</div>
+</section>
+<section id="proyección-conforme" class="slide level2 center">
+<h2>Proyección Conforme</h2>
+
+<img data-src="images/sistemas_coordenadas/image16.png" class="quarto-figure quarto-figure-center r-stretch"><p class="caption">Miller Cilíndrica</p></section>
+<section id="proyección-de-áreas-iguales" class="slide level2 center">
+<h2>Proyección de Áreas Iguales</h2>
+
+<img data-src="images/sistemas_coordenadas/image17.png" class="quarto-figure quarto-figure-center r-stretch"><p class="caption">Igual Área Cilíndrica</p></section>
+<section id="proyección-equidistante" class="slide level2 center">
+<h2>Proyección Equidistante</h2>
+
+<img data-src="images/sistemas_coordenadas/image18.png" class="quarto-figure quarto-figure-center r-stretch"><p class="caption">Sinusoidal</p></section>
+<section id="proyecciones-de-verdadera-dirección" class="slide level2 center">
+<h2>Proyecciones de verdadera dirección</h2>
+
+<img data-src="images/sistemas_coordenadas/image19.png" class="quarto-figure quarto-figure-center r-stretch"><p class="caption">Ortográfica</p></section>
+<section id="proyecciones-cónicas" class="slide level2 center">
+<h2>Proyecciones cónicas</h2>
+<ol type="1">
+<li class="fragment">Paralelo estándar</li>
+<li class="fragment">Meridiano central</li>
+</ol>
+<div class="quarto-layout-panel" data-layout-ncol="3">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><img data-src="images/sistemas_coordenadas/image26.png" style="width: 100%; height: 200px; object-fit: contain; border: 1px solid #eee;"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><img data-src="images/sistemas_coordenadas/image27.png" style="width: 100%; height: 200px; object-fit: contain; border: 1px solid #eee;"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><img data-src="images/sistemas_coordenadas/image28.png" style="width: 100%; height: 200px; object-fit: contain; border: 1px solid #eee;"></p>
+</div>
+</div>
+</div>
+</section>
+<section id="proyecciones-cilíndricas" class="slide level2 center">
+<h2>Proyecciones cilíndricas</h2>
+<div class="quarto-layout-panel" data-layout-ncol="3">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center" style="width: 100%; height: 200px; object-fit: contain; border: 1px solid #eee;">
+<figure>
+<p><img data-src="images/sistemas_coordenadas/image29.png"></p>
+<figcaption>Normal</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center" style="width: 100%; height: 200px; object-fit: contain; border: 1px solid #eee;">
+<figure>
+<p><img data-src="images/sistemas_coordenadas/image30.png"></p>
+<figcaption>Transversa</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center" style="width: 100%; height: 200px; object-fit: contain; border: 1px solid #eee;">
+<figure>
+<p><img data-src="images/sistemas_coordenadas/image31.png"></p>
+<figcaption>Oblicua</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="universal-transversa-de-mercator-utm" class="slide level2 center">
+<h2>Universal Transversa de Mercator (UTM)</h2>
+<p>Es una de las proyecciones cilíndricas más utilizadas globalmente para cartografía de escala media y grande.</p>
+
+<img data-src="images/sistemas_coordenadas/image32.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<section id="sistema-de-coordenadas-utm" class="slide level2 center">
+<h2>Sistema de Coordenadas UTM</h2>
+<div style="text-align: center; margin-top: 20px;">
+<div class="fragment" data-fragment-index="1">
+<!-- -->
+<h3 id="columnas-zonas-utm-longitud">Columnas: Zonas UTM (Longitud)</h3>
+<p><i class="fa-solid fa-database" aria-label="database"></i> 60 zonas de 6° cada una.</p>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/sistemas_coordenadas/utm_colombia.png" class="quarto-figure quarto-figure-center" style="width:55.0%"></p>
+</figure>
+</div>
+<div class="fragment" data-fragment-index="4">
+<!-- -->
+<h3 id="filas-bandas-de-latitud">Filas: Bandas de Latitud</h3>
+<p><i class="fa-solid fa-grip-lines" aria-label="grip-lines"></i> 20 bandas de 8° (C a X).</p>
+</div>
+</div>
+<div class="fragment" data-fragment-index="5">
+<blockquote>
+<p><strong>Nota para Colombia:</strong> Nos ubicamos en las zonas <strong>17, 18 y 19</strong> y en las bandas de latitud <strong>N</strong> (Norte) y <strong>P</strong> (más al norte).</p>
+</blockquote>
+</div>
+</section>
+<section id="proyecciones-planas" class="slide level2 center">
+<h2>Proyecciones planas</h2>
+<div class="quarto-layout-panel" data-layout-ncol="3">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center" style="width: 100%; height: 200px; object-fit: contain; border: 1px solid #eee;">
+<figure>
+<p><img data-src="images/sistemas_coordenadas/image33.png"></p>
+<figcaption>Polar</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center" style="width: 100%; height: 200px; object-fit: contain; border: 1px solid #eee;">
+<figure>
+<p><img data-src="images/sistemas_coordenadas/image34.png"></p>
+<figcaption>Ecuatorial</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center" style="width: 100%; height: 200px; object-fit: contain; border: 1px solid #eee;">
+<figure>
+<p><img data-src="images/sistemas_coordenadas/image35.png"></p>
+<figcaption>Oblicua</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="parámetros-de-proyección" class="slide level2 center">
+<h2>Parámetros de Proyección</h2>
+<div style="text-align: center; margin-top: 1em;">
+<div class="columns">
+<div class="column fragment" style="width:33%;">
+<!-- -->
+<h3 id="lineales"><i class="fa-solid fa-ruler-combined" aria-label="ruler-combined"></i> LINEALES</h3>
+<p><em>Unidades de medida</em></p>
+<ul>
+<li class="fragment">Falso Este</li>
+<li class="fragment">Falso Norte</li>
+<li class="fragment">Altura</li>
+</ul>
+</div><div class="column fragment" style="width:33%;">
+<!-- -->
+<h3 id="angulares"><i class="fa-solid fa-compass" aria-label="compass"></i> ANGULARES</h3>
+<p><em>Unidades sexagesimales</em></p>
+<ul>
+<li class="fragment">Azimuth</li>
+<li class="fragment">Meridiano Central</li>
+<li class="fragment">Longitud de Origen</li>
+<li class="fragment">Paralelo Central</li>
+<li class="fragment">Latitud de Origen</li>
+</ul>
+</div><div class="column fragment" style="width:33%;">
+<!-- -->
+<h3 id="sin-unidades"><i class="fa-solid fa-expand" aria-label="expand"></i> SIN UNIDADES</h3>
+<p><em>Relaciones matemáticas</em></p>
+<ul>
+<li class="fragment">Factor de escala</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="explicación-de-parámetros" class="slide level2 center">
+<h2>Explicación de Parámetros</h2>
+<div class="panel-tabset">
+<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1"><i class="fa-solid fa-ruler-combined" aria-label="ruler-combined"></i> Lineales</a></li><li><a href="#tabset-1-2"><i class="fa-solid fa-compass" aria-label="compass"></i> Angulares</a></li><li><a href="#tabset-1-3"><i class="fa-solid fa-expand" aria-label="expand"></i> Sin Unidades</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1">
+<ul>
+<li class="fragment"><strong>Falso Este/Norte:</strong> Valores constantes sumados a las coordenadas para que siempre sean positivas. En Colombia (Origen Nacional), se usa <strong>5,000,000 m</strong>.</li>
+<li class="fragment"><strong>Altura:</strong> Define el plano de elevación sobre el cual se proyectan los datos.</li>
+</ul>
+</div>
+<div id="tabset-1-2">
+<ul>
+<li class="fragment"><strong>Meridiano Central / Longitud de Origen:</strong> La línea vertical de longitud que es el eje central de la proyección.</li>
+<li class="fragment"><strong>Latitud de Origen / Paralelo Central:</strong> La línea horizontal que define el origen de las coordenadas Y.</li>
+<li class="fragment"><strong>Azimuth:</strong> Ángulo de rotación de la proyección respecto al Norte.</li>
+</ul>
+</div>
+<div id="tabset-1-3">
+<ul>
+<li class="fragment"><strong>Factor de escala:</strong> Determina cuánto se reduce o amplía la escala en el meridiano central para minimizar la distorsión en los bordes. Por ejemplo, en UTM es <strong>0.9996</strong>.</li>
+</ul>
+</div>
+</div>
+</div>
+<blockquote>
+<p><strong>Nota</strong> Estos parámetros aseguran que las mediciones en el mapa coincidan lo mejor posible con el terreno real.</p>
+</blockquote>
+</section>
+<section id="componentes-de-un-sistema-de-coordenadas-proyectado" class="slide level2 center">
+<h2>Componentes de un sistema de coordenadas proyectado</h2>
+
+<img data-src="images/sistemas_coordenadas/componentes_proyectado.png" class="quarto-figure quarto-figure-center r-stretch"><p class="caption">Tiene Ambos: GCS + PCS</p></section>
+<section id="sistema-de-referencia-colombiano" class="slide level2 center">
+<h2>Sistema de Referencia Colombiano</h2>
+<ul>
+<li class="fragment"><p>Pre-MAGNA-SIRGAS (ARENA)</p></li>
+<li class="fragment"><p><strong>Datum Bogotá</strong> (1941).</p></li>
+<li class="fragment"><p>Elipsoide Internacional de 1924 (Hayford)</p></li>
+<li class="fragment"><p>Proyección Gauss–Krüger (cilíndrica - transversa - conforme)</p></li>
+<li class="fragment"><p>MAGNA-SIRGAS</p></li>
+<li class="fragment"><p><strong>SIRGAS:</strong> Sistema de Referencia Geocéntrico para las Américas.</p></li>
+<li class="fragment"><p><strong>MAGNA:</strong> Marco Geocéntrico Nacional de Referencia.</p></li>
+<li class="fragment"><p>60 estaciones GPS de cubrimiento nacional.</p></li>
+</ul>
+</section>
+<section id="el-origen-observatorio-astronómico" class="slide level2 center">
+<h2>El Origen: Observatorio Astronómico</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>Punto de Referencia:</strong> Pilastra Sur del Observatorio Astronómico de Bogotá.</p>
+<p><strong>Coordenadas Geográficas (GCS):</strong></p>
+<ul>
+<li class="fragment"><strong>Latitud (N):</strong> 4° 35’ 56.57”</li>
+<li class="fragment"><strong>Longitud (W):</strong> 74° 04’ 51.30”</li>
+</ul>
+<p><strong>Falsos Orígenes (Gauss-Krüger):</strong></p>
+<ul>
+<li class="fragment"><strong>Falso Norte:</strong> 1,000,000 m N</li>
+<li class="fragment"><strong>Falso Este:</strong> 1,000,000 m E</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/sistemas_coordenadas/image39.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
+<figcaption>6 orígenes</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="sistema-de-referencia-colombiano---magna-sirgas" class="slide level2 center">
+<h2>Sistema de Referencia Colombiano - MAGNA-SIRGAS</h2>
+<div style="font-size: 0.85em;">
+<p>Debido a los avances científicos y tecnológicos de la Geodesia (especialmente GPS), el <strong>IGAC</strong> reemplazó el antiguo <em>Datum Bogotá</em> por un sistema moderno y compatible a nivel internacional.</p>
+<hr>
+<div class="columns">
+<div class="column" style="width:50%;">
+<h3 id="referencia-global"><i class="fa-solid fa-globe" aria-label="globe"></i> Referencia Global</h3>
+<ul>
+<li class="fragment"><strong>WGS84:</strong> Implementado por el Departamento de Defensa de EE. UU. (Serie WGS60, 66, 72 y 84).</li>
+<li class="fragment"><strong>ITRS:</strong> Sistema Internacional de Referencia Terrestre con origen en el centro de masas de la Tierra.</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<h3 id="red-nacional"><i class="fa-solid fa-tower-broadcast" aria-label="tower-broadcast"></i> Red Nacional</h3>
+<ul>
+<li class="fragment"><strong>SIRGAS:</strong> Sistema de Referencia Geocéntrico para las Américas. Red de estaciones GPS de alta precisión.</li>
+<li class="fragment"><strong>MAGNA:</strong> Marco Geocéntrico Nacional de Referencia. Es la densificación de SIRGAS en Colombia.</li>
+</ul>
+</div>
+</div>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>MAGNA-SIRGAS</strong></p>
+</div>
+<div class="callout-content">
+<p>Es el sistema oficial que garantiza que la cartografía colombiana sea totalmente compatible con las tecnologías de posicionamiento global modernas.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="sirgas-sistema-de-referencia-geocéntrico-para-las-américas" class="slide level2 center">
+<h2>SIRGAS: Sistema de Referencia Geocéntrico para las Américas</h2>
+
+<img data-src="images/sistemas_coordenadas/sirgas.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="el-sistema-gauss-krüger-en-colombia" class="slide level2 center">
+<h2>El Sistema Gauss-Krüger en Colombia</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<h3 id="cómo-funcionaba">¿Cómo funcionaba?</h3>
+<ul>
+<li class="fragment"><strong>Seis Cilindros:</strong> El país se dividió en 6 fajas transversales cada 3° de longitud: 68°, 71°, 74°, 77°, 80° y 83° W.</li>
+<li class="fragment"><strong>Zona Insular:</strong> La <strong>sexta faja (83° W)</strong> no suele aparecer en los mapas continentales, pero es la que cubre a San Andrés y Providencia.</li>
+<li class="fragment"><strong>Origen Bogotá:</strong> El meridiano central principal es el de <strong>74° W</strong> (Observatorio de Bogotá).</li>
+<li class="fragment"><strong>Parámetros:</strong> Para evitar números negativos, cada zona usaba un <strong>Falso Este y Norte de 1,000,000 m</strong>.</li>
+</ul>
+</div><div class="column" style="width:40%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/sistemas_coordenadas/origenes_colombia.png" class="quarto-figure quarto-figure-center"></p>
+<figcaption>Sistema de 6 fajas</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="el-gran-problema-del-sistema-antiguo" class="slide level2 center">
+<h2>El Gran Problema del Sistema Antiguo</h2>
+<section id="por-qué-tuvimos-que-cambiar" style="text-align: center; margin-top: 1.5em;">
+<h3>¿Por qué tuvimos que cambiar?</h3>
+<div class="fragment strike">
+<p><strong>Coordenadas Repetidas</strong></p>
+</div>
+<div class="fragment">
+<p>Como cada una de las 6 fajas empezaba a contar desde <strong>1,000,000 m</strong>, una misma coordenada (ej: <em>X=1,100,000 ; Y=1,000,000</em>) podía existir en <strong>6 lugares diferentes</strong> de Colombia.</p>
+</div>
+<div class="fragment">
+<p><i class="fa-solid fa-triangle-exclamation" aria-label="triangle-exclamation"></i> <strong>Confusión total:</strong> Si no especificabas a qué zona pertenecía el dato, el punto podía caer en el Chocó o en el Vichada.</p>
+</div>
+</section>
+<blockquote>
+<p><strong>Próxima Diapositiva:</strong> Veremos cómo el <strong>Origen Nacional Único</strong> solucionó esto “estirando” un solo cilindro para todo el país.</p>
+</blockquote>
+</section>
+<section id="el-nuevo-origen-nacional-epsg9377" class="slide level2 center">
+<h2>El Nuevo Origen Nacional (EPSG:9377)</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<h3 id="unificación-de-las-6-fajas">Unificación de las 6 fajas</h3>
+<p>Para resolver el caos de las coordenadas repetidas, el IGAC definió un <strong>único origen</strong> para todo el país:</p>
+<ul>
+<li class="fragment"><strong>Meridiano Central:</strong> Se fijó oficialmente en <strong>73° W</strong> (simplificando el antiguo origen de la faja de Bogotá).</li>
+<li class="fragment"><strong>Latitud de Origen:</strong> Se mantiene el paralelo del Observatorio (<strong>4° 35’ 46.32” N</strong>).</li>
+<li class="fragment"><strong>El gran cambio (Falsos):</strong> * <strong>Norte:</strong> 2,000,000 m
+<ul>
+<li class="fragment"><strong>Este:</strong> 5,000,000 m</li>
+</ul></li>
+</ul>
+</div><div class="column" style="width:40%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/sistemas_coordenadas/image_origen_nacional.jpg" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="por-qué-5000000-en-el-este" class="slide level2 center">
+<h2>¿Por qué 5,000,000 en el Este?</h2>
+<section id="adiós-a-la-confusión" style="text-align: center; margin-top: 1em;">
+<h3>Adiós a la confusión</h3>
+<p>Al usar <strong>5,000,000</strong>, nos aseguramos de que:</p>
+<ol type="1">
+<li class="fragment"><strong>Distinción inmediata:</strong> Si una coordenada empieza por 5 millones, <em>sabes</em> que es el nuevo sistema. Si empieza por 1 millón, es el sistema viejo.</li>
+<li class="fragment"><strong>Sin repeticiones:</strong> El número es lo suficientemente grande para que toda la extensión de Colombia (desde el Amazonas hasta el Chocó) quepa en un solo plano sin cruzar el cero ni repetir coordenadas de otras fajas.</li>
+</ol>
+</section>
+<blockquote>
+<p><strong>Dato Curioso:</strong> Este sistema permite que un solo mapa de Colombia sea “continuo”, eliminando las molestas costuras que se formaban entre las 6 fajas antiguas. Mas información <a href="https://origen.igac.gov.co/">acá</a></p>
+</blockquote>
+</section>
+<section id="guía-de-referencia-epsg-colombia" class="slide level2 center">
+<h2>Guía de Referencia EPSG: Colombia</h2>
+<div style="font-size: 0.65em; line-height: 1.2;">
+<table>
+<colgroup>
+<col style="width: 21%">
+<col style="width: 26%">
+<col style="width: 26%">
+<col style="width: 26%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Sistema / Faja</th>
+<th style="text-align: center;">Código EPSG</th>
+<th style="text-align: center;">Meridiano Central</th>
+<th style="text-align: center;">Estado</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>WGS 84</strong></td>
+<td style="text-align: center;"><strong>4326</strong></td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">Global</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>MAGNA-SIRGAS</strong></td>
+<td style="text-align: center;"><strong>4686</strong></td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">Nacional</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span style="color: #2c3e50; font-weight: bold;"><strong>Origen Nacional</strong></span></td>
+<td style="text-align: center;"><span style="color: #c0392b; font-weight: bold;"><strong>9377</strong></span></td>
+<td style="text-align: center;"><strong>73° W</strong></td>
+<td style="text-align: center;"><strong>ACTUAL</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Central (Bogotá)</td>
+<td style="text-align: center;">3116</td>
+<td style="text-align: center;">74° 04’ W</td>
+<td style="text-align: center;">Histórico</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Este Central</td>
+<td style="text-align: center;">3117</td>
+<td style="text-align: center;">73° 04’ W</td>
+<td style="text-align: center;">Histórico</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Este</td>
+<td style="text-align: center;">3118</td>
+<td style="text-align: center;">71° 04’ W</td>
+<td style="text-align: center;">Histórico</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Oeste</td>
+<td style="text-align: center;">3115</td>
+<td style="text-align: center;">75° 04’ W</td>
+<td style="text-align: center;">Histórico</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Oeste Oeste</td>
+<td style="text-align: center;">3114</td>
+<td style="text-align: center;">77° 04’ W</td>
+<td style="text-align: center;">Histórico</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Datum Bogotá</td>
+<td style="text-align: center;">4218</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">ARENA</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div style="font-size: 0.7em; margin-top: 10px;">
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Herramientas Oficiales IGAC</strong></p>
+</div>
+<div class="callout-content">
+<p><a href="https://origen.igac.gov.co/herramientas.html"><strong>origen.igac.gov.co/herramientas.html</strong></a></p>
+</div>
+</div>
+</div>
+</div>
+<div class="footer" style="font-size: 0.5em;">
+<p>Nota: Los códigos 21894-21899 corresponden a la realización antigua (Datum Bogotá 1975).</p>
+</div>
+<div class="quarto-auto-generated-content">
+<div class="footer footer-default">
+
+</div>
+</div>
+</section>
+    </div>
+  </div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="64-presentacion_4_clase3_coordenadas_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="64-presentacion_4_clase3_coordenadas_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="64-presentacion_4_clase3_coordenadas_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="64-presentacion_4_clase3_coordenadas_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="64-presentacion_4_clase3_coordenadas_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="64-presentacion_4_clase3_coordenadas_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="64-presentacion_4_clase3_coordenadas_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="64-presentacion_4_clase3_coordenadas_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="64-presentacion_4_clase3_coordenadas_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="64-presentacion_4_clase3_coordenadas_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: true,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'fade',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1600,
+
+        height: 900,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 5.0e-2,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const isCodeAnnotation = (el) => {
+        for (const clz of el.classList) {
+          if (clz.startsWith('code-annotation-')) {                     
+            return true;
+          }
+        }
+        return false;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button', {
+        text: function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+      });
+      clipboard.on('success', function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copied!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
+        setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      });
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+        const config = {
+          allowHTML: true,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start',
+        };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          return note.innerHTML;
+        });
+      }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
+          });
+        }
+      }
+    });
+    </script>
+    
+
+</body></html>
