@@ -1,10 +1,16 @@
 # Guía de Instalación. Opción B: QGIS y PyQGIS {#guia-B}
 
-## [Opción B] Instalación Detallada del Entorno Nativo
+La **Opción B** realmente se basa en dos alternativas para la instalación de QGIS [@rosas2022qgis]: **OSGeo4W** y **QGIS + GEE usando Pixi.**
 
-La **Opción B** se basa en el instalador **OSGeo4W**, un entorno para Windows que agrupa y facilita la gestión de software geoespacial de código abierto como QGIS [@rosas2022qgis], GDAL/OGR [@mitchell2015introduction], GRASS [@neteler2012grass] y SAGA [@passy2018use].
+## Opción B.1 - OSGeo4W {#sec-osgeo4w}
+
+ **OSGeo4W** es un entorno para Windows que agrupa y facilita la gestión de software geoespacial de código abierto como QGIS [@rosas2022qgis], GDAL/OGR [@mitchell2015introduction], GRASS [@neteler2012grass] y SAGA [@passy2018use].
 
 En este escenario, **Python** [@python_docs] es el motor fundamental, permitiendo la automatización directa de tareas sobre el software de escritorio [@lawhead2017qgis]. Para mantener la estabilidad del sistema, en este entorno nativo no intentaremos vincular R [@rlanguage] o Julia [@bezanson2017julia]; para dicho propósito políglota utilizaremos exclusivamente la **Opción A (Docker)** [@docker2025].
+
+> **Nota**: OSGeo4W permite instalar diversas aplicaciones de escritorio, como se muestra en la @fig-aplicaciones_desktop_osgeo4w. Mientras que la @tbl-stack-software-osgeo4w se centra en las librerías binarias requeridas para QGIS, el instalador también permite integrar las demás herramientas mostradas en la figura. El último item de la figura es el instalador `Setup` que permitirá agregar mas componentes en cualquier momento.
+
+![Aplicaciones Desktop OSGeo4W.](./images/aplicaciones_desktop_osgeo4w.png){#fig-aplicaciones_desktop_osgeo4w}
 
 ### Instrucciones de Instalación
 
@@ -13,7 +19,7 @@ En este escenario, **Python** [@python_docs] es el motor fundamental, permitiend
 3. Mantenga las rutas por defecto (`C:\OSGeo4W`).
 4. En el paso de **Select Packages**, busque los elementos de la tabla y marque únicamente la casilla **Bin** (Binarios).
 
-### Lista de Paquetes Seleccionados
+### Lista de paquetes a seleccionar
 
 | Grupo | Paquete | Módulo | Propósito / Uso en Clase |
 | --- | --- | --- | --- |
@@ -34,6 +40,8 @@ En este escenario, **Python** [@python_docs] es el motor fundamental, permitiend
 | **Motores SIG** | `proj` / `geos` | 6 | Cálculos de proyecciones y geometría. |
 | **Machine Learning** | `python3-scikit-learn` | 6 | Modelado predictivo espacial. |
 
+: Listado de herramientas y librerías OSGeo4W para el curso {#tbl-stack-software-osgeo4w}
+
 ::: {.callout-important icon="true"}
 
 ### Aceptación de Dependencias Adicionales
@@ -41,7 +49,7 @@ En este escenario, **Python** [@python_docs] es el motor fundamental, permitiend
 Al avanzar, el instalador mostrará la ventana **"Unmet Dependencies"**. Es obligatorio aceptar todos los paquetes sugeridos para contar con los controladores de formatos `.ecw` y `.sid` requeridos por la cartografía oficial nacional. Para que el comando `spatialite` funcione en la shell, asegúrese de marcar el paquete `libspatialite` en la sección **Libs**.
 :::
 
-## Verificación de la Instalación
+### Verificación de la Instalación
 
 Abra la **OSGeo4W Shell** y ejecute los comandos para verificar la correcta integración de Python y los motores SIG:
 
@@ -51,7 +59,7 @@ gdalinfo --version
 spatialite --version
 ```
 
-### Corrección de Errores al Lanzar QGIS
+#### Corrección de Errores al Lanzar QGIS
 
 Si al iniciar QGIS aparece un error crítico indicando `ModuleNotFoundError: No module named 'gdal'`, se debe a una sintaxis de importación obsoleta en ciertos complementos [@rosas2022qgis].
 
@@ -67,11 +75,6 @@ Debe modificar el archivo del plugin para usar el espacio de nombres de OSGeo:
    - **Incorrecto:** `import gdal, osr`
    - **Correcto:** `from osgeo import gdal, osr`
 
-## Otras referencias importantes
-
-- PyQGIS cookbook en markdown y Jupyter notebook formats [@wu2023pyqgis]
-- QGIS Notebook Plugin: Integrate Jupyter Notebooks into QGIS [@wu2023qgisnotebook]
-
 ::: {.callout-note}
 
 ### Nota sobre R y Julia
@@ -79,7 +82,7 @@ Debe modificar el archivo del plugin para usar el espacio de nombres de OSGeo:
 Para el uso intensivo de R y Julia, se recomienda la **Opción A (Docker)** [@docker2025] ya que viene con las librerías espaciales pre-configuradas, evitando errores de vinculación de DLLs comunes en instalaciones nativas de Windows.
 :::
 
-## Instalación QGIS + GEE using Pixi {#sec-qgis-gee-pixi}
+## Opción B.2: QGIS + GEE usando Pixi {#sec-qgis-gee-pixi}
 
 Antes de comenzar, es indispensable contar con una cuenta de **Google Cloud** habilitada para **Google Earth Engine (GEE)**. Puede dar de alta su cuenta en [earthengine.google.com](https://earthengine.google.com/). 
 
@@ -149,6 +152,7 @@ pixi add qgis geemap geopandas xee rioxarray
 ---
 
 ### Autenticación de Earth Engine
+
 Finalmente, debe vincular su entorno local con su cuenta de Google Cloud. Este comando abrirá una ventana en su navegador para autorizar el acceso:
 
 ```bash
@@ -156,13 +160,21 @@ pixi run earthengine authenticate
 ```
 
 Siga las instrucciones en pantalla, seleccione su proyecto de Google Cloud y copie el código de verificación si el sistema se lo solicita. ¡Ya está listo para procesar datos satelitales a escala global!
----
+
 
 ### Trabajar GEE dentro de QGIS
 
 Una vez que el entorno está configurado y autenticado, el siguiente paso es integrar **Google Earth Engine** directamente en la interfaz de QGIS. Para esto, utilizaremos el complemento desarrollado por el equipo de **OpenGeos**: El Plugin: **GEE Data Catalog**. Este complemento permite navegar por los miles de datasets de Earth Engine (Sentinel, Landsat, MODIS, etc.) y cargarlos en el lienzo de QGIS con un solo clic, utilizando el motor de procesamiento en la nube.
 
+### Recursos Adicionales
+
 * **Repositorio oficial:** [opengeos/qgis-gee-data-catalogs-plugin](https://github.com/opengeos/qgis-gee-data-catalogs-plugin)
 
-* **Video Guía **Earth Engine Data Catalogs Plugin for QGIS**: [aquí](https://youtu.be/nZ3D6wLKJQw) 
-* **Video Guía **Time Series Satellite Images in Seconds**: [aquí](https://youtu.be/8IW6XqnUjgg) 
+* Video Guía **Earth Engine Data Catalogs Plugin for QGIS**: [aquí](https://youtu.be/nZ3D6wLKJQw) 
+
+* Video Guía **Time Series Satellite Images in Seconds**: [aquí](https://youtu.be/8IW6XqnUjgg) 
+
+## Otras referencias importantes
+
+- PyQGIS cookbook en markdown y Jupyter notebook formats [@wu2023pyqgis]
+- QGIS Notebook Plugin: Integrate Jupyter Notebooks into QGIS [@wu2023qgisnotebook]

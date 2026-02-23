@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -148,7 +182,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./04-guia_instalacion_C_ArcGIS.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Guía de Instalación. Opción C: ArcGIS Pro/ArcPy</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Guía de Instalación. Opción C: ArcGIS Pro y ArcPy</span></span></a>
   </div>
 </li>
       </ul>
@@ -336,6 +370,9 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#stack-de-julia" id="toc-stack-de-julia" class="nav-link active" data-scroll-target="#stack-de-julia"><span class="header-section-number">K.1</span> Stack de Julia</a></li>
   <li><a href="#versiones-instaladas-del-software" id="toc-versiones-instaladas-del-software" class="nav-link" data-scroll-target="#versiones-instaladas-del-software"><span class="header-section-number">K.2</span> Versiones instaladas del software</a></li>
+  <li><a href="#guía-corta-instalación-de-paquetes-julia-cirugía-openssl" id="toc-guía-corta-instalación-de-paquetes-julia-cirugía-openssl" class="nav-link" data-scroll-target="#guía-corta-instalación-de-paquetes-julia-cirugía-openssl"><span class="header-section-number">K.3</span> 🩺 Guía Corta: Instalación de Paquetes Julia + Cirugía OpenSSL</a></li>
+  <li><a href="#sincronizar-versiones-de-paquetes-en-julia-no-tuvo-efectos---no-funcionó" id="toc-sincronizar-versiones-de-paquetes-en-julia-no-tuvo-efectos---no-funcionó" class="nav-link" data-scroll-target="#sincronizar-versiones-de-paquetes-en-julia-no-tuvo-efectos---no-funcionó"><span class="header-section-number">K.4</span> Sincronizar versiones de paquetes en Julia (no tuvo efectos - no funcionó)</a></li>
+  <li><a href="#librerías-adicionales" id="toc-librerías-adicionales" class="nav-link" data-scroll-target="#librerías-adicionales"><span class="header-section-number">K.5</span> Librerías adicionales</a></li>
   </ul>
 </nav>
     </div>
@@ -481,6 +518,39 @@ Tabla&nbsp;K.1: Paquetes principales del stack en Julia
 </tr>
 </tbody>
 </table>
+</section>
+<section id="guía-corta-instalación-de-paquetes-julia-cirugía-openssl" class="level2" data-number="K.3">
+<h2 data-number="K.3" class="anchored" data-anchor-id="guía-corta-instalación-de-paquetes-julia-cirugía-openssl"><span class="header-section-number">K.3</span> 🩺 Guía Corta: Instalación de Paquetes Julia + Cirugía OpenSSL</h2>
+<p>Cuando necesite instalar un paquete (por ejemplo, <code>GeoInterfaceRecipes</code>), abra la terminal de su contenedor (el prompt que se ve como <code>root@contenedor:/#</code>) y ejecute estos 3 pasos en un solo comando combinado:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Instalar el paquete (si arroja error rojo de precompilación, ignórelo, es normal)</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">julia</span> <span class="at">-e</span> <span class="st">'using Pkg; Pkg.add("GeoInterfaceRecipes")'</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Aplicar la cirugía inmediata a los nuevos artefactos que llegaron</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> /root/.julia/artifacts <span class="at">-name</span> <span class="st">"libssl.so*"</span> <span class="at">-exec</span> ln <span class="at">-sf</span> /usr/lib/x86_64-linux-gnu/libssl.so.3 {} <span class="dt">\;</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> /root/.julia/artifacts <span class="at">-name</span> <span class="st">"libcrypto.so*"</span> <span class="at">-exec</span> ln <span class="at">-sf</span> /usr/lib/x86_64-linux-gnu/libcrypto.so.3 {} <span class="dt">\;</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Sanar y compilar todo con el OpenSSL del sistema</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="ex">julia</span> <span class="at">-e</span> <span class="st">'using Pkg; Pkg.precompile()'</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="sincronizar-versiones-de-paquetes-en-julia-no-tuvo-efectos---no-funcionó" class="level2" data-number="K.4">
+<h2 data-number="K.4" class="anchored" data-anchor-id="sincronizar-versiones-de-paquetes-en-julia-no-tuvo-efectos---no-funcionó"><span class="header-section-number">K.4</span> Sincronizar versiones de paquetes en Julia (no tuvo efectos - no funcionó)</h2>
+<p>De forma dirigida solo para esos tres, para minimizar riesgos</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># En la terminal de Linux</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">julia</span> <span class="at">-e</span> <span class="st">'using Pkg; Pkg.add(["GeoJSON", "GeoInterfaceRecipes", "Plots"])'</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Aplicar cirugía solo a lo nuevo</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> /root/.julia/artifacts <span class="at">-name</span> <span class="st">"libssl.so*"</span> <span class="at">-exec</span> ln <span class="at">-sf</span> /usr/lib/x86_64-linux-gnu/libssl.so.3 {} <span class="dt">\;</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> /root/.julia/artifacts <span class="at">-name</span> <span class="st">"libcrypto.so*"</span> <span class="at">-exec</span> ln <span class="at">-sf</span> /usr/lib/x86_64-linux-gnu/libcrypto.so.3 {} <span class="dt">\;</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Precompilar</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="ex">julia</span> <span class="at">-e</span> <span class="st">'using Pkg; Pkg.precompile()'</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="librerías-adicionales" class="level2" data-number="K.5">
+<h2 data-number="K.5" class="anchored" data-anchor-id="librerías-adicionales"><span class="header-section-number">K.5</span> Librerías adicionales</h2>
+<ul>
+<li>GeoInterfaceRecipes</li>
+<li></li>
+</ul>
 
 
 </section>

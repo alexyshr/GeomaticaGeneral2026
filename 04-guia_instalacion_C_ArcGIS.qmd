@@ -1,5 +1,6 @@
-# Guía de Instalación. Opción C: ArcGIS Pro/ArcPy {#guia-C}
+# Guía de Instalación. Opción C: ArcGIS Pro y ArcPy {#guia-C}
 
-## Introducción a ArcPy y el ecosistema ESRI
+## 
 
-...
+Falta
+

@@ -202,7 +202,7 @@ div.csl-indent {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./04-guia_instalacion_C_ArcGIS.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Guía de Instalación. Opción C: ArcGIS Pro/ArcPy</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Guía de Instalación. Opción C: ArcGIS Pro y ArcPy</span></span></a>
   </div>
 </li>
       </ul>
@@ -388,24 +388,22 @@ div.csl-indent {
     <h2 id="toc-title">Tabla de Contenidos</h2>
    
   <ul>
-  <li><a href="#opción-b-instalación-detallada-del-entorno-nativo" id="toc-opción-b-instalación-detallada-del-entorno-nativo" class="nav-link active" data-scroll-target="#opción-b-instalación-detallada-del-entorno-nativo"><span class="header-section-number">3.1</span> [Opción B] Instalación Detallada del Entorno Nativo</a>
+  <li><a href="#sec-osgeo4w" id="toc-sec-osgeo4w" class="nav-link active" data-scroll-target="#sec-osgeo4w"><span class="header-section-number">3.1</span> Opción B.1 - OSGeo4W</a>
   <ul class="collapse">
   <li><a href="#instrucciones-de-instalación" id="toc-instrucciones-de-instalación" class="nav-link" data-scroll-target="#instrucciones-de-instalación">Instrucciones de Instalación</a></li>
-  <li><a href="#lista-de-paquetes-seleccionados" id="toc-lista-de-paquetes-seleccionados" class="nav-link" data-scroll-target="#lista-de-paquetes-seleccionados">Lista de Paquetes Seleccionados</a></li>
+  <li><a href="#lista-de-paquetes-a-seleccionar" id="toc-lista-de-paquetes-a-seleccionar" class="nav-link" data-scroll-target="#lista-de-paquetes-a-seleccionar">Lista de paquetes a seleccionar</a></li>
+  <li><a href="#verificación-de-la-instalación" id="toc-verificación-de-la-instalación" class="nav-link" data-scroll-target="#verificación-de-la-instalación">Verificación de la Instalación</a></li>
   </ul></li>
-  <li><a href="#verificación-de-la-instalación" id="toc-verificación-de-la-instalación" class="nav-link" data-scroll-target="#verificación-de-la-instalación"><span class="header-section-number">3.2</span> Verificación de la Instalación</a>
-  <ul class="collapse">
-  <li><a href="#corrección-de-errores-al-lanzar-qgis" id="toc-corrección-de-errores-al-lanzar-qgis" class="nav-link" data-scroll-target="#corrección-de-errores-al-lanzar-qgis">Corrección de Errores al Lanzar QGIS</a></li>
-  </ul></li>
-  <li><a href="#otras-referencias-importantes" id="toc-otras-referencias-importantes" class="nav-link" data-scroll-target="#otras-referencias-importantes"><span class="header-section-number">3.3</span> Otras referencias importantes</a></li>
-  <li><a href="#sec-qgis-gee-pixi" id="toc-sec-qgis-gee-pixi" class="nav-link" data-scroll-target="#sec-qgis-gee-pixi"><span class="header-section-number">3.4</span> Instalación QGIS + GEE using Pixi</a>
+  <li><a href="#sec-qgis-gee-pixi" id="toc-sec-qgis-gee-pixi" class="nav-link" data-scroll-target="#sec-qgis-gee-pixi"><span class="header-section-number">3.2</span> Opción B.2: QGIS + GEE usando Pixi</a>
   <ul class="collapse">
   <li><a href="#instalación-de-pixi" id="toc-instalación-de-pixi" class="nav-link" data-scroll-target="#instalación-de-pixi">Instalación de Pixi</a></li>
   <li><a href="#creación-del-proyecto" id="toc-creación-del-proyecto" class="nav-link" data-scroll-target="#creación-del-proyecto">Creación del Proyecto</a></li>
   <li><a href="#configuración-del-entorno-geográfico" id="toc-configuración-del-entorno-geográfico" class="nav-link" data-scroll-target="#configuración-del-entorno-geográfico">Configuración del Entorno Geográfico</a></li>
   <li><a href="#autenticación-de-earth-engine" id="toc-autenticación-de-earth-engine" class="nav-link" data-scroll-target="#autenticación-de-earth-engine">Autenticación de Earth Engine</a></li>
   <li><a href="#trabajar-gee-dentro-de-qgis" id="toc-trabajar-gee-dentro-de-qgis" class="nav-link" data-scroll-target="#trabajar-gee-dentro-de-qgis">Trabajar GEE dentro de QGIS</a></li>
+  <li><a href="#recursos-adicionales" id="toc-recursos-adicionales" class="nav-link" data-scroll-target="#recursos-adicionales">Recursos Adicionales</a></li>
   </ul></li>
+  <li><a href="#otras-referencias-importantes" id="toc-otras-referencias-importantes" class="nav-link" data-scroll-target="#otras-referencias-importantes"><span class="header-section-number">3.3</span> Otras referencias importantes</a></li>
   </ul>
 </nav>
     </div>
@@ -431,10 +429,24 @@ div.csl-indent {
 </header>
 
 
-<section id="opción-b-instalación-detallada-del-entorno-nativo" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="opción-b-instalación-detallada-del-entorno-nativo"><span class="header-section-number">3.1</span> [Opción B] Instalación Detallada del Entorno Nativo</h2>
-<p>La <strong>Opción B</strong> se basa en el instalador <strong>OSGeo4W</strong>, un entorno para Windows que agrupa y facilita la gestión de software geoespacial de código abierto como QGIS <span class="citation" data-cites="rosas2022qgis">(<a href="99-referencias.html#ref-rosas2022qgis" role="doc-biblioref">Rosas-Chavoya et&nbsp;al., 2022</a>)</span>, GDAL/OGR <span class="citation" data-cites="mitchell2015introduction">(<a href="99-referencias.html#ref-mitchell2015introduction" role="doc-biblioref">Mitchell, 2015</a>)</span>, GRASS <span class="citation" data-cites="neteler2012grass">(<a href="99-referencias.html#ref-neteler2012grass" role="doc-biblioref">Neteler et&nbsp;al., 2012</a>)</span> y SAGA <span class="citation" data-cites="passy2018use">(<a href="99-referencias.html#ref-passy2018use" role="doc-biblioref">Passy &amp; Théry, 2018</a>)</span>.</p>
+<p>La <strong>Opción B</strong> realmente se basa en dos alternativas para la instalación de QGIS <span class="citation" data-cites="rosas2022qgis">(<a href="99-referencias.html#ref-rosas2022qgis" role="doc-biblioref">Rosas-Chavoya et&nbsp;al., 2022</a>)</span>: <strong>OSGeo4W</strong> y <strong>QGIS + GEE usando Pixi.</strong></p>
+<section id="sec-osgeo4w" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="sec-osgeo4w"><span class="header-section-number">3.1</span> Opción B.1 - OSGeo4W</h2>
+<p><strong>OSGeo4W</strong> es un entorno para Windows que agrupa y facilita la gestión de software geoespacial de código abierto como QGIS <span class="citation" data-cites="rosas2022qgis">(<a href="99-referencias.html#ref-rosas2022qgis" role="doc-biblioref">Rosas-Chavoya et&nbsp;al., 2022</a>)</span>, GDAL/OGR <span class="citation" data-cites="mitchell2015introduction">(<a href="99-referencias.html#ref-mitchell2015introduction" role="doc-biblioref">Mitchell, 2015</a>)</span>, GRASS <span class="citation" data-cites="neteler2012grass">(<a href="99-referencias.html#ref-neteler2012grass" role="doc-biblioref">Neteler et&nbsp;al., 2012</a>)</span> y SAGA <span class="citation" data-cites="passy2018use">(<a href="99-referencias.html#ref-passy2018use" role="doc-biblioref">Passy &amp; Théry, 2018</a>)</span>.</p>
 <p>En este escenario, <strong>Python</strong> <span class="citation" data-cites="python_docs">(<a href="99-referencias.html#ref-python_docs" role="doc-biblioref">Python Software Foundation, 2025</a>)</span> es el motor fundamental, permitiendo la automatización directa de tareas sobre el software de escritorio <span class="citation" data-cites="lawhead2017qgis">(<a href="99-referencias.html#ref-lawhead2017qgis" role="doc-biblioref">Lawhead, 2017</a>)</span>. Para mantener la estabilidad del sistema, en este entorno nativo no intentaremos vincular R <span class="citation" data-cites="rlanguage">(<a href="99-referencias.html#ref-rlanguage" role="doc-biblioref">R Core Team, 2025</a>)</span> o Julia <span class="citation" data-cites="bezanson2017julia">(<a href="99-referencias.html#ref-bezanson2017julia" role="doc-biblioref">Bezanson et&nbsp;al., 2017</a>)</span>; para dicho propósito políglota utilizaremos exclusivamente la <strong>Opción A (Docker)</strong> <span class="citation" data-cites="docker2025">(<a href="99-referencias.html#ref-docker2025" role="doc-biblioref">Inc., 2025</a>)</span>.</p>
+<blockquote class="blockquote">
+<p><strong>Nota</strong>: OSGeo4W permite instalar diversas aplicaciones de escritorio, como se muestra en la <a href="#fig-aplicaciones_desktop_osgeo4w" class="quarto-xref">Figura&nbsp;<span>3.1</span></a>. Mientras que la <a href="#tbl-stack-software-osgeo4w" class="quarto-xref">Tabla&nbsp;<span>3.1</span></a> se centra en las librerías binarias requeridas para QGIS, el instalador también permite integrar las demás herramientas mostradas en la figura. El último item de la figura es el instalador <code>Setup</code> que permitirá agregar mas componentes en cualquier momento.</p>
+</blockquote>
+<div id="fig-aplicaciones_desktop_osgeo4w" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-aplicaciones_desktop_osgeo4w-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="./images/aplicaciones_desktop_osgeo4w.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-aplicaciones_desktop_osgeo4w-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;3.1: Aplicaciones Desktop OSGeo4W.
+</figcaption>
+</figure>
+</div>
 <section id="instrucciones-de-instalación" class="level3">
 <h3 class="anchored" data-anchor-id="instrucciones-de-instalación">Instrucciones de Instalación</h3>
 <ol type="1">
@@ -444,8 +456,14 @@ div.csl-indent {
 <li>En el paso de <strong>Select Packages</strong>, busque los elementos de la tabla y marque únicamente la casilla <strong>Bin</strong> (Binarios).</li>
 </ol>
 </section>
-<section id="lista-de-paquetes-seleccionados" class="level3">
-<h3 class="anchored" data-anchor-id="lista-de-paquetes-seleccionados">Lista de Paquetes Seleccionados</h3>
+<section id="lista-de-paquetes-a-seleccionar" class="level3">
+<h3 class="anchored" data-anchor-id="lista-de-paquetes-a-seleccionar">Lista de paquetes a seleccionar</h3>
+<div id="tbl-stack-software-osgeo4w" class="quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-stack-software-osgeo4w-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabla&nbsp;3.1: Listado de herramientas y librerías OSGeo4W para el curso
+</figcaption>
+<div aria-describedby="tbl-stack-software-osgeo4w-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="table">
 <colgroup>
 <col style="width: 25%">
@@ -560,6 +578,9 @@ div.csl-indent {
 </tr>
 </tbody>
 </table>
+</div>
+</figure>
+</div>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -574,15 +595,14 @@ Aceptación de Dependencias Adicionales
 </div>
 </div>
 </section>
-</section>
-<section id="verificación-de-la-instalación" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="verificación-de-la-instalación"><span class="header-section-number">3.2</span> Verificación de la Instalación</h2>
+<section id="verificación-de-la-instalación" class="level3">
+<h3 class="anchored" data-anchor-id="verificación-de-la-instalación">Verificación de la Instalación</h3>
 <p>Abra la <strong>OSGeo4W Shell</strong> y ejecute los comandos para verificar la correcta integración de Python y los motores SIG:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">--version</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">gdalinfo</span> <span class="at">--version</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">spatialite</span> <span class="at">--version</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<section id="corrección-de-errores-al-lanzar-qgis" class="level3">
-<h3 class="anchored" data-anchor-id="corrección-de-errores-al-lanzar-qgis">Corrección de Errores al Lanzar QGIS</h3>
+<section id="corrección-de-errores-al-lanzar-qgis" class="level4">
+<h4 class="anchored" data-anchor-id="corrección-de-errores-al-lanzar-qgis">Corrección de Errores al Lanzar QGIS</h4>
 <p>Si al iniciar QGIS aparece un error crítico indicando <code>ModuleNotFoundError: No module named 'gdal'</code>, se debe a una sintaxis de importación obsoleta en ciertos complementos <span class="citation" data-cites="rosas2022qgis">(<a href="99-referencias.html#ref-rosas2022qgis" role="doc-biblioref">Rosas-Chavoya et&nbsp;al., 2022</a>)</span>.</p>
 <p><strong>Error identificado:</strong> <code>File ".../agknow_utils.py", line 29, in &lt;module&gt; import gdal, osr</code></p>
 <p><strong>Solución:</strong> Debe modificar el archivo del plugin para usar el espacio de nombres de OSGeo:</p>
@@ -594,14 +614,6 @@ Aceptación de Dependencias Adicionales
 <li><strong>Correcto:</strong> <code>from osgeo import gdal, osr</code></li>
 </ul></li>
 </ol>
-</section>
-</section>
-<section id="otras-referencias-importantes" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="otras-referencias-importantes"><span class="header-section-number">3.3</span> Otras referencias importantes</h2>
-<ul>
-<li>PyQGIS cookbook en markdown y Jupyter notebook formats <span class="citation" data-cites="wu2023pyqgis">(<a href="99-referencias.html#ref-wu2023pyqgis" role="doc-biblioref">Wu, 2023a</a>)</span></li>
-<li>QGIS Notebook Plugin: Integrate Jupyter Notebooks into QGIS <span class="citation" data-cites="wu2023qgisnotebook">(<a href="99-referencias.html#ref-wu2023qgisnotebook" role="doc-biblioref">Wu, 2023b</a>)</span></li>
-</ul>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -616,8 +628,10 @@ Nota sobre R y Julia
 </div>
 </div>
 </section>
-<section id="sec-qgis-gee-pixi" class="level2" data-number="3.4">
-<h2 data-number="3.4" class="anchored" data-anchor-id="sec-qgis-gee-pixi"><span class="header-section-number">3.4</span> Instalación QGIS + GEE using Pixi</h2>
+</section>
+</section>
+<section id="sec-qgis-gee-pixi" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="sec-qgis-gee-pixi"><span class="header-section-number">3.2</span> Opción B.2: QGIS + GEE usando Pixi</h2>
 <p>Antes de comenzar, es indispensable contar con una cuenta de <strong>Google Cloud</strong> habilitada para <strong>Google Earth Engine (GEE)</strong>. Puede dar de alta su cuenta en <a href="https://earthengine.google.com/">earthengine.google.com</a>.</p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -690,15 +704,25 @@ Requisito de Google Cloud
 <p>Finalmente, debe vincular su entorno local con su cuenta de Google Cloud. Este comando abrirá una ventana en su navegador para autorizar el acceso:</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> run earthengine authenticate</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Siga las instrucciones en pantalla, seleccione su proyecto de Google Cloud y copie el código de verificación si el sistema se lo solicita. ¡Ya está listo para procesar datos satelitales a escala global!</p>
-<hr>
 </section>
 <section id="trabajar-gee-dentro-de-qgis" class="level3">
 <h3 class="anchored" data-anchor-id="trabajar-gee-dentro-de-qgis">Trabajar GEE dentro de QGIS</h3>
 <p>Una vez que el entorno está configurado y autenticado, el siguiente paso es integrar <strong>Google Earth Engine</strong> directamente en la interfaz de QGIS. Para esto, utilizaremos el complemento desarrollado por el equipo de <strong>OpenGeos</strong>: El Plugin: <strong>GEE Data Catalog</strong>. Este complemento permite navegar por los miles de datasets de Earth Engine (Sentinel, Landsat, MODIS, etc.) y cargarlos en el lienzo de QGIS con un solo clic, utilizando el motor de procesamiento en la nube.</p>
+</section>
+<section id="recursos-adicionales" class="level3">
+<h3 class="anchored" data-anchor-id="recursos-adicionales">Recursos Adicionales</h3>
 <ul>
 <li><p><strong>Repositorio oficial:</strong> <a href="https://github.com/opengeos/qgis-gee-data-catalogs-plugin">opengeos/qgis-gee-data-catalogs-plugin</a></p></li>
-<li><p><strong>Video Guía </strong>Earth Engine Data Catalogs Plugin for QGIS**: <a href="https://youtu.be/nZ3D6wLKJQw">aquí</a></p></li>
-<li><p><strong>Video Guía </strong>Time Series Satellite Images in Seconds**: <a href="https://youtu.be/8IW6XqnUjgg">aquí</a></p></li>
+<li><p>Video Guía <strong>Earth Engine Data Catalogs Plugin for QGIS</strong>: <a href="https://youtu.be/nZ3D6wLKJQw">aquí</a></p></li>
+<li><p>Video Guía <strong>Time Series Satellite Images in Seconds</strong>: <a href="https://youtu.be/8IW6XqnUjgg">aquí</a></p></li>
+</ul>
+</section>
+</section>
+<section id="otras-referencias-importantes" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="otras-referencias-importantes"><span class="header-section-number">3.3</span> Otras referencias importantes</h2>
+<ul>
+<li>PyQGIS cookbook en markdown y Jupyter notebook formats <span class="citation" data-cites="wu2023pyqgis">(<a href="99-referencias.html#ref-wu2023pyqgis" role="doc-biblioref">Wu, 2023a</a>)</span></li>
+<li>QGIS Notebook Plugin: Integrate Jupyter Notebooks into QGIS <span class="citation" data-cites="wu2023qgisnotebook">(<a href="99-referencias.html#ref-wu2023qgisnotebook" role="doc-biblioref">Wu, 2023b</a>)</span></li>
 </ul>
 
 
@@ -740,7 +764,6 @@ Wu, Q. (2023a). PyQGIS cookbook in markdown and Jupyter notebook formats. En <em
 Wu, Q. (2023b). QGIS Notebook Plugin: Integrate Jupyter Notebooks into QGIS. En <em>GitHub repository</em> [Software]. <a href="https://github.com/opengeos/qgis-notebook-plugin" class="uri">https://github.com/opengeos/qgis-notebook-plugin</a>; GitHub.
 </div>
 </div>
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -1138,8 +1161,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./04-guia_instalacion_C_ArcGIS.html" class="pagination-link" aria-label="Guía de Instalación. Opción C: ArcGIS Pro/ArcPy">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Guía de Instalación. Opción C: ArcGIS Pro/ArcPy</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./04-guia_instalacion_C_ArcGIS.html" class="pagination-link" aria-label="Guía de Instalación. Opción C: ArcGIS Pro y ArcPy">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Guía de Instalación. Opción C: ArcGIS Pro y ArcPy</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

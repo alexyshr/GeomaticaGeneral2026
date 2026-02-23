@@ -1,7 +1,381 @@
 # Uso de la Infraestructura Instalada {#sec-anexo_infraestructura}
 
+## (NEW - use it) Configuración de Mermaid a pdf en Docker
 
-## Configuración inicial del entorno (Pre-flight) {#sec-preflight}
+Esta guía detalla la solución técnica para renderizar diagramas Mermaid en pdf dentro de contenedores, evitando los conflictos de seguridad del kernel y los errores al usar Google Chrome (`/usr/bin/google-chrome`).
+
+### Instalación de Chromium y verificación
+
+Es el paso fundamental para obtener el binario funcional dentro del entorno de Linux del contenedor.
+
+* **Instalación inicial:** Ejecutar el comando de Quarto para descargar el motor del navegador.
+
+```bash
+quarto install chromium
+```
+
+* **Verificar si Quarto reconoce Chromium**:
+
+```bash
+quarto check
+```
+
+Busca la línea que dice **Chromium**. Si aparece una ruta (como `/root/.local/share/quarto/...`), el navegador está instalado y listo para usar. Si no está instalado dice `Chromium: (not installed)`
+
+* **Localizar la ruta del binario:** Confirmar dónde se almacenó el ejecutable para configurar las rutas de Quarto.
+
+```bash
+find / -name chrome -type f 2>/dev/null | grep quarto
+# Ruta esperada: /root/.local/share/quarto/chromium/linux-869685/chrome-linux/chrome
+```
+
+* **Verificar dependencias de sistema:** Asegurar que el binario tenga acceso a todas las librerías compartidas necesarias. No debe salir nada después de ejecutar el comando.
+```bash
+ldd /root/.local/share/quarto/chromium/linux-869685/chrome-linux/chrome | grep "not found"
+```
+
+---
+
+### El engaño al sistema (solución al error de Chrome)
+
+Dado que el sistema y Quarto suelen priorizar la ruta `/usr/bin/google-chrome` (que falla en Docker por restricciones de Snap o del kernel), creamos un binario falso con alta prioridad.
+
+* **Crear directorio de binarios temporales:** Se genera una carpeta con prioridad en el sistema.
+
+```bash
+mkdir -p /tmp/bin
+```
+* **Crear el enlace simbólico:** Se redirigen las peticiones de `google-chrome` hacia el Chromium funcional de Quarto.
+
+```bash
+ln -s /root/.local/share/quarto/chromium/linux-869685/chrome-linux/chrome /tmp/bin/google-chrome
+```
+* **Actualizar el Path:** Se coloca el nuevo directorio al principio de la variable de entorno para que el sistema lo encuentre primero.
+```bash
+export PATH="/tmp/bin:$PATH"
+echo 'export PATH="/tmp/bin:$PATH"' >> ~/.bashrc
+```
+* **Validación:** Confirmar que el comando `which` apunta ahora a nuestra ruta temporal.
+```bash
+which google-chrome
+```
+
+---
+
+### Configuración global de R (Rprofile.site)
+
+Para que todos los archivos `.qmd` reconozcan esta configuración automáticamente sin añadir código repetitivo, editamos el archivo de configuración global del sitio en el contenedor.
+
+```bash
+cat <<EOF >> /etc/R/Rprofile.site
+
+# --- Configuración Mermaid/Chromium para Docker ---
+# Definir ruta del binario manual
+Sys.setenv(QUARTO_CHROMIUM = "/root/.local/share/quarto/chromium/linux-869685/chrome-linux/chrome")
+
+# Argumentos de seguridad y rendimiento para contenedores
+Sys.setenv(QUARTO_CHROME_ARGUMENTS = "--no-sandbox --disable-gpu --disable-dev-shm-usage --headless")
+EOF
+```
+
+---
+
+
+### Configuración de variables en ~/.bashrc
+
+```bash
+cat <<EOF >> ~/.bashrc
+
+# --- Configuración Quarto + Chromium para Docker ---
+export QUARTO_CHROMIUM="/root/.local/share/quarto/chromium/linux-869685/chrome-linux/chrome"
+export QUARTO_CHROME_ARGUMENTS="--no-sandbox --disable-gpu --disable-dev-shm-usage --headless"
+EOF
+
+# Aplicar los cambios inmediatamente
+source ~/.bashrc
+```
+
+### Configuración del proyecto (_quarto.yml)
+
+Si estás trabajando en un proyecto de Quarto, puedes definir estos parámetros de forma centralizada en el archivo `_quarto.yml`. Esto evita tener que configurar cada archivo `.qmd` por separado.
+
+```yaml
+project:
+  title: "Mi Proyecto de Investigación"
+
+format:
+  html: default
+  pdf:
+    keep-tex: true
+    mermaid-format: png
+    include-in-header:
+      - text: \usepackage{pdflscape}
+    chrome-args: 
+      - "--no-sandbox"
+      - "--disable-gpu"
+      - "--disable-dev-shm-usage"
+      - "--headless"
+```
+
+
+---
+
+### Evitar el uso de configuración redundante en archivos individuales
+
+Para compilar archivos `.qmd` de forma independiente (por ejemplo, capítulos de un libro) sin tener que repetir el bloque de configuración de Chromium en cada uno, cree un archivo llamado `_metadata.yml` en la carpeta correspondiente con el siguiente contenido:
+
+```yaml
+format:
+  html: default
+  pdf:
+    mermaid-format: png
+    include-in-header:
+      - text: \usepackage{pdflscape}
+    chrome-args: 
+      - "--no-sandbox"
+      - "--disable-gpu"
+      - "--disable-dev-shm-usage"
+      - "--headless"
+```
+
+---
+
+### Diagrama ajustado al ancho de página
+
+Usamos `%%| fig-width` para controlar la resolución interna y `out-width` para el tamaño real en el papel.
+
+```mermaid
+%%| label: fig-flujo
+%%| fig-cap: "El flujo completo: Desde la declaración hasta el desempaquetado."
+%%| fig-width: 8
+%%| fig-align: center
+%%| out-width: "100%"
+graph TD
+  A[PYTHON Base 0] --> B(ruta[1])
+  B --> C[Terminal: 6.2442, -75.58]
+  C --> D[Lat: 6.2442]
+  C --> E[Desempaquetado]
+```
+
+* **out-width: "100%":** Esto es lo más importante; obliga al diagrama a expandirse hasta los márgenes del PDF sin salirse.
+* **fig-width:** Si el texto del diagrama se ve muy pequeño o borroso, aumenta este valor (ej. a `10` o `12`). Si se ve muy gigante, bájalo. 
+* **fig-cap:** Agregar un pie de figura (`fig-cap`) le da ese aspecto de "Libro" o "Paper" profesional que buscas.
+
+---
+
+### Estructura del documento .qmd
+
+Para compilar exitosamente, el encabezado yaml debe forzar el formato png para Mermaid, que es el método más estable para "fotografiar" el diagrama dentro de entornos sin interfaz gráfica.
+
+`````yaml
+---
+title: "Prueba Mermaid"
+format:
+  pdf:
+    mermaid-format: png
+    chrome-args: 
+      - "--no-sandbox"
+      - "--disable-gpu"
+      - "--disable-dev-shm-usage"
+      - "--headless"
+---
+
+Compilación individual funcionó con este:
+---
+format:
+  html: default
+  pdf:
+    keep-tex: true
+    mermaid-format: png
+    include-in-header:
+      - text: \usepackage{pdflscape}
+---
+
+### Diagrama funcional
+::: {.content-visible when-format="pdf"}
+\blandscape
+:::
+
+```{mermaid}
+graph TD
+  A[Inicio] --> B[Procesamiento en Docker]
+  B --> C[PDF generado exitosamente]
+```
+::: {.content-visible when-format="pdf"}
+\elandscape
+:::
+
+`````
+
+
+
+### Diagnóstico y pruebas manuales
+
+Si el renderizado falla, se puede ejecutar una prueba de navegación directa para confirmar que Chromium responde correctamente a los flags de seguridad.
+
+```bash
+/root/.local/share/quarto/chromium/linux-869685/chrome-linux/chrome --headless --no-sandbox --disable-gpu --remote-debugging-port=9222 about:blank
+```
+*(Si el comando permite la conexión al puerto 9222 sin errores de librerías, el sistema está operativo).*
+
+### Crear el instalador local de Chromium para instalarlo sin Internet
+
+* Instala `quarto install chromium`
+* Crear el comprimido en tu carpeta de trabajo persistente
+```bash
+tar -czvf /home/rstudio/work/quarto-chromium-869685.tar.gz -C /root/.local/share/quarto/ chromium
+```
+
+* Comando de instalación rápida (restaurar)
+
+    * Uso del script de restauración
+```bash
+# Dar permisos de ejecución (solo la primera vez)
+chmod +x /home/rstudio/work/install_chromium.sh
+
+# Ejecutar la restauración relámpago
+/home/rstudio/work/install_chromium.sh
+```
+
+    * Como alternativa corres los comandos individuales que hay en `install_chromium.sh`
+
+```bash
+# Asegurar que el directorio base de Quarto exista
+mkdir -p /root/.local/share/quarto/
+
+# Descomprimir el instalador directamente en su destino
+tar -xzvf /home/rstudio/work/quarto-chromium-869685.tar.gz -C /root/.local/share/quarto/
+```
+
+* Verificación de la restauración
+
+Tras ejecutar cualquiera de los métodos anteriores, puedes verificar que el binario de Chromium está en su sitio y listo para operar con el siguiente comando:
+
+```bash
+ls -l /root/.local/share/quarto/chromium/linux-869685/chrome-linux/chrome
+```
+*(Deberías ver el archivo listado con permisos `-rwxr-xr-x`, lo que confirma que Chromium está operativo para renderizar tus diagramas Mermaid).*
+
+
+## (NEW - do not use) Configuración inicial del entorno (Pre-flight) {#sec-preflight}
+
+Para automatizar el soporte de gráficos mermaid, ejecute estos comandos en la terminal del contenedor `contenedor_sig_unal` inmediatamente después de iniciar los servicios con `docker compose up -d` on con `docker compose start`:
+
+
+**Contexto del problema**: Al compilar documentos Quarto (`.qmd`) en contenedores Docker, el motor interno que Quarto usa para dibujar diagramas Mermaid suele colapsar por las restricciones de seguridad del sistema (el "sandbox"). Para solucionar esto de forma definitiva, utilizaremos R (`DiagrammeR` y `webshot2`) para procesar la gráfica e incrustarla limpiamente tanto en HTML como en PDF.
+
+* **Paso 1**: Instalar la librería requerida
+
+```bash
+Rscript -e "install.packages('DiagrammeR', dependencies=TRUE)"
+```
+
+* **Paso 2**: Configurar el entorno global de R (`Rprofile.site`)
+
+
+Google Chrome se instaló en el contenedor para compilar código `mermaid` dentro de Quarto.Necesitamos indicarle a R dónde está el navegador Chrome y cómo abrirlo sin que el contenedor Docker lo bloquee.
+
+Copien y peguen este bloque completo en la terminal. El comando limpiará cualquier configuración conflictiva anterior y escribirá la configuración correcta:
+
+```bash
+# 1. Limpiar configuraciones previas (para evitar duplicados o errores)
+sed -i '/CHROMOTE/d' /etc/R/Rprofile.site
+sed -i '/chromote/d' /etc/R/Rprofile.site
+
+# 2. Inyectar la configuración limpia
+cat << 'EOF' >> /etc/R/Rprofile.site
+
+# --- Configuración segura de Chromote para Docker ---
+Sys.setenv(CHROMOTE_CHROME = "/usr/bin/google-chrome")
+options(chromote.args = c("--no-sandbox", "--disable-gpu", "--headless", "--remote-debugging-port=9222", "--disable-dev-shm-usage"))
+EOF
+```
+
+* **Paso 3**: Configuración de contingencia en el documento (ppcional pero recomendado)
+
+Aunque el Paso 2 configura el sistema globalmente, es una excelente práctica (especialmente si comparten su código o lo corren en otro equipo) incluir las variables de entorno directamente en un bloque de configuración (`setup`) dentro de su script. Esto garantiza que el documento sea autónomo y sobreviva a cualquier entorno.
+
+
+* **Paso 4**: Crear el archivo .qmd de prueba
+
+Creen un archivo llamado `prueba_mermaid.qmd` y peguen exactamente este código. Noten que usamos un bloque `{r}` regular en lugar de `{mermaid}` para forzar al sistema a usar nuestra ruta segura.
+
+``````markdown
+---
+title: "Prueba Mermaid vía Knitr"
+format:
+  html: default
+  pdf: default
+execute:
+  echo: false
+---
+
+```{.r}
+#| label: setup_chrome
+#| include: false
+# 1. Configuración de Chrome inyectada directamente para sobrevivir a Docker
+Sys.setenv(CHROMOTE_CHROME = "/usr/bin/google-chrome")
+
+if (requireNamespace("chromote", quietly = TRUE)) {
+  chromote::set_chrome_args(c(
+    "--no-sandbox", 
+    "--disable-dev-shm-usage", 
+    "--headless"
+  ))
+}
+
+# 2. Cargar la librería que le permite a knitr entender Mermaid
+library(DiagrammeR)
+```
+
+```{.r}
+#| label: plot-mermaid
+#| echo: false
+# Este bloque genera la gráfica interactiva en HTML o la imagen estática en PDF
+mermaid("
+graph TD
+  A[Anyone] -->|Can help| B(Go to [github.com/yuzutech/kroki](https://github.com/yuzutech/kroki))
+  B --> C{How to contribute?}
+  C --> D[Reporting bugs]
+  C --> E[Sharing ideas]
+  C --> F[Advocating]
+")
+```
+
+``````
+
+> En el contenido del archivo `prueba_mermaid.qmd`, en las dos partes donde aparece, cambie `{.r}` por `{r}` .
+
+* **Paso 5**: Compilar el documento
+
+```bash
+quarto render prueba_mermaid.qmd --to all
+```
+
+### Test adicionales (Chrome)
+
+* Ejecute uno de lo siguientes comandos para comprobar si Google Chrome web browser está instalado correctamente:
+
+```bash
+google-chrome --version
+```
+
+```bash
+which google-chrome
+```
+
+```bash
+quarto check
+```
+
+* Prueba de vida de Chrome (diagnóstico). Si aparece mucho texto tipo HTML, Chrome está funcionando correctamente.
+
+```bash
+/usr/bin/google-chrome --headless --no-sandbox --disable-dev-shm-usage --dump-dom https://example.com
+```
+
+
+## (OLD - No usar) Configuración inicial del entorno (Pre-flight) {#sec-preflight_old}
 
 Para automatizar el soporte de gráficos y capturas sin configurar cada archivo individualmente, ejecute estos comandos en la terminal del contenedor `contenedor_sig_unal` inmediatamente después de iniciar los servicios con `docker compose up -d`:
 
@@ -10,19 +384,23 @@ Para automatizar el soporte de gráficos y capturas sin configurar cada archivo 
 | **Automatización R** | `echo 'Sys.setenv(CHROMOTE_CHROME = "/opt/google/chrome/chrome")' >> /etc/R/Rprofile.site` | Configura la ruta de Chrome para todo el sistema R de forma persistente. (si falla usa `/usr/lib/R/etc/Rprofile.site`. El `R.home("etc")` en nuestro sistema es `/usr/lib/R/etc`)|
 | **Seguridad Root** | `echo 'options(chromote.args = c("--no-sandbox", "--disable-gpu", "--headless", "--remote-debugging-port=9222"))' >> /etc/R/Rprofile.site` | Habilita el modo *headless* y evita bloqueos de *sandbox* al ejecutar como root. (si falla usa `/usr/lib/R/etc/Rprofile.site`. El `R.home("etc")` en nuestro sistema es `/usr/lib/R/etc`)|
 
-: Comandos de configuración global del contenedor {#tbl-preflight}
+: Comandos de configuración global del contenedor {#tbl-preflight_old_1}
 
-/usr/bin/google-chrome
-
-Google Chrome se necesita para compilar código `mermaid` dentro de Quarto. Ejecute el siguiente comando para comprobar si Google Chrome web browser está instalado correctamente:
+Google Chrome se necesita para compilar código `mermaid` dentro de Quarto. Ejecute uno de lo siguientes comandos para comprobar si Google Chrome web browser está instalado correctamente:
 
 ```bash
-
+google-chrome --version
 ```
-/usr/lib/R/etc/Rprofile.site /etc/R/Rprofile.site
 
+```bash
+which google-chrome
+```
 
-La imagen cargada del archivo tar ya incluye los programas descritos a continuación en @tbl-preflight_old. Esta tabla se deja como referencia para facilitar una futura compilación. La tabla descrita líneas abajo servirá para complementar el archivo Dockerfile.
+```bash
+quarto check
+```
+
+La imagen cargada del archivo tar ya incluye los programas descritos a continuación en @tbl-preflight_old_2. Esta tabla se deja como referencia para facilitar una futura compilación. La tabla descrita líneas abajo servirá para complementar el archivo Dockerfile.
 
 | Categoría | Comando de Configuración | Propósito |
 |:--- |:--- |:--- |
@@ -32,9 +410,7 @@ La imagen cargada del archivo tar ya incluye los programas descritos a continuac
 | **Librerías Python**| `pip3 install selenium` | Habilita la automatización de capturas para visualizaciones dinámicas de Python. |
 | **Librerías Julia** | `julia -e 'using Pkg; Pkg.add(["FileIO", "ImageIO"])'` | Soporte esencial para procesar y exportar gráficos en el ecosistema Julia. |
 
-: Comandos de configuración global del contenedor ya incluidos en la imagen cargada a partir del archivo .tar {#tbl-preflight_old}
-
-
+: Comandos de configuración global del contenedor ya incluidos en la imagen cargada a partir del archivo .tar {#tbl-preflight_old_2}
 
 
 ### Ventajas de esta configuración {#sec-ventajas}
@@ -56,6 +432,76 @@ En distribuciones basadas en Ubuntu 22.04 o superiores, el comando `apt install 
 #### Importancia de ImageIO y FileIO en Julia
 En Julia, estas librerías actúan como los "drivers" de imagen. Sin ellas, aunque el código genere un mapa o gráfico, Quarto no podrá convertirlo a un formato que LaTeX entienda (como PNG), resultando en bloques vacíos en el PDF final.
 :::
+
+
+## Función j_eval y j_plot en R
+
+El motor de ejecución de los archivos Quarto (`.qmd`) dentro del contenedor instalado para el curso es `knitr`, el cual está basado en `R`. Esto significa que el código de `Python` y `Julia` se ejecuta a través de `R` para generar los archivos de salida HTML y PDF. 
+
+`Python` se ejecuta mediante el paquete de R `reticulate`, mientras que `Julia` suele hacerlo a través del paquete `JuliaCall`. Debido a que este último presenta problemas de compatibilidad con librerías geoespaciales en `R`, se desarrollaron con apoyo de inteligencia artificial las funciones `j_eval` y `j_plot`, las cuales utilizan el paquete `JuliaConnectoR` en su lugar.
+
+Las funciones `j_eval` y `j_plot` son usadas para ejecutar código **Julia** en **R**. `j_eval` ejecuta comandos que no tengan salidas gráficas, y `j_plot` es necesaria cuándo el código Julia produce salidas gráficas.
+
+```{r}
+#| label: j_eval_j_plot
+#| code-fold: true
+#| results: asis
+# #| include: false
+source("./docs/j_eval_j_plot.r")
+```
+
+
+### Flujo de ejecución de texto con j_eval {#sec-flujo-jeval}
+
+Para entender por qué los resultados aparecen con colores y cómo se gestionan los bloques de código, observe el siguiente flujo de ejecución de la función `j_eval`:
+
+fig-flujo-jeval
+
+::: {#fig-flujo-jeval}
+![](images/fig-flujo-jeval.png){width=100%}
+Arquitectura de ejecución de la función puente j_eval.
+:::
+
+
+::: {.callout-note}
+Como se ilustra en la @fig-flujo-jeval, la función no solo "pasa" el texto, sino que actúa como un supervisor que espera a que los bloques de programación estén completos antes de despertar al motor de Julia. Esto garantiza la estabilidad del sistema.
+:::
+
+### Flujo de generación gráfica con j_plot {#sec-flujo-jplot}
+
+A diferencia de la ejecución de texto, `j_plot` requiere una coordinación adicional para gestionar archivos físicos. Observe el proceso:
+
+
+::: {#fig-flujo-jplot}
+![](images/fig-flujo-jplot.png){width=100%}
+Arquitectura de generación y renderizado de gráficos Julia-R.
+:::
+
+::: {.callout-tip}
+#### El rol del disco duro
+Como muestra la @fig-flujo-jplot, el secreto de `j_plot` es que utiliza un archivo temporal como "puente" visual. Por eso, si usted tiene el archivo `tmp_plot.png` abierto en otro programa, j_plot podría fallar al intentar sobrescribirlo.
+:::
+
+
+### Interpretación de errores y consola {#sec-errores-consola}
+
+Al trabajar con la interoperabilidad entre lenguajes (usando las funciones `j_eval` y `j_plot` definidas arriba, la consola de **VSCode** nos devolverá mensajes que debemos aprender a interpretar.
+
+#### El error de conexión TCP
+Si al usar Julia recibe un mensaje de error que menciona `TCP connection`, usualmente significa que el motor de Julia se ha cerrado o ha entrado en conflicto de memoria.
+* **Solución**: Ejecute `.ensure_julia_ready()` en su consola de R para reiniciar el puente de comunicación.
+
+#### Interpretación del Stacktrace en Julia
+Cuando Julia detecta un error, genera un rastro de llamadas o *Stacktrace*. No intente leer cada línea; busque siempre la primera (que define el tipo de error) y la última línea de código escrita por usted.
+
+```julia
+# Ejemplo de error por índice fuera de rango
+ERROR: BoundsError: attempt to access 5-element Vector{Int64} at index [6]
+```
+
+#### Resaltado de sintaxis en la salida
+Gracias a la configuración de `results: asis` en los bloques de código, la salida de nuestras funciones aparecerá con el prompt `julia>` coloreado, facilitando la distinción entre lo que es un mensaje informativo y un resultado del cálculo.
+
 
 ## Introducción a la infraestructura de datos
 
@@ -219,7 +665,7 @@ docker logs contenedor_sig_unal
 jupyter lab --ip=0.0.0.0 --port=8889 --no-browser --allow-root --ServerApp.token='geomatica2025'
 ```
 
-## Guía Visual de JupyterLab
+## Guía visual de JupyterLab
 
 Al ingresar, se encontrará con el centro de mando de sus kernels, donde podrá elegir entre R, Python o Julia para sus Notebooks:
 
@@ -278,7 +724,7 @@ Este es un espacio para tus observaciones personales y recordatorios.
 ```
 :::
 
-## Mapeo de Capacidades SIG
+## Mapeo de capacidades SIG
 
 Es vital entender que, aunque usemos lenguajes distintos, todos "beben" de las mismas librerías de bajo nivel instaladas en nuestra imagen base de OSGeo:
 
@@ -289,14 +735,89 @@ Es vital entender que, aunque usemos lenguajes distintos, todos "beben" de las m
 | Reproyección | `st_transform()` | `.to_crs()` | `ArchGDAL.reproject()` | **PROJ** |
 
 
-## Verificación de Conectividad Multilenguaje
+## Verificación de conectividad multilenguaje
 
 **Nota técnica**: Dentro de la red de Docker, el host es `db-postgis`.
 
 ::: panel-tabset
 ### Python
 
+::: {.content-visible when-format="html"}
+::: {.callout-tip collapse="true" icon="false"}
+#### ▷ CÓDIGO PURO (Copiar y Pegar)
 ```{python}
+#| label: python_verificacion_codigo
+#| eval: false
+import psycopg2
+import geopandas as gpd
+import fiona
+import matplotlib.pyplot as plt
+from shapely.geometry import Point
+
+print("--- Inicio de Verificación de Python SIG ---")
+
+# 1. Prueba de conexión a la base de datos PostGIS
+try:
+    conn = psycopg2.connect(
+        host="db-postgis", 
+        dbname="sig_db_unal", 
+        user="profe_unal", 
+        password="geomatica2025"
+    )
+    print("✅ Conexión a PostGIS: Exitosa")
+    conn.close()
+except Exception as e:
+    print(f"❌ Error de conexión a PostGIS: {e}")
+
+# 2. Prueba de Fiona y drivers GDAL
+try:
+    drivers = len(fiona.supported_drivers)
+    print(f"✅ Fiona operativo: {drivers} drivers GDAL detectados")
+except Exception as e:
+    print(f"❌ Error en Fiona/GDAL: {e}")
+
+# 3. Prueba de GeoPandas, Motores GEOS y Visualización
+try:
+    # Creamos un punto y su buffer (GEOS)
+    punto = Point(0, 0)
+    buffer_geom = punto.buffer(1.0)
+    
+    # Creamos GeoDataFrames para graficar
+    gdf_buffer = gpd.GeoDataFrame({'geometry': [buffer_geom]}, crs="EPSG:4326")
+    gdf_punto = gpd.GeoDataFrame({'geometry': [punto]}, crs="EPSG:4326")
+    
+    print(f"✅ GeoPandas {gpd.__version__}: Operativo")
+    print(f"✅ Motores GEOS/Shapely: Verificados")
+
+    # Generación del Plot Espacial con Ejes y Cuadrícula
+    fig, ax = plt.subplots(figsize=(6, 6))
+    
+    # Graficamos el buffer
+    gdf_buffer.plot(ax=ax, color='lightgreen', edgecolor='green', alpha=0.4, label='Buffer')
+    
+    # Graficamos el punto original (en rojo)
+    gdf_punto.plot(ax=ax, color='red', markersize=50, zorder=5, label='Centro')
+    
+    # Configuración de estilo consistente (Ejes y Grilla)
+    ax.set_title("Validación Python SIG: Buffer GEOS")
+    ax.set_xlabel("Longitud")
+    ax.set_ylabel("Latitud")
+    ax.grid(True, linestyle='--', alpha=0.7) # Cuadrícula activada
+    ax.set_aspect('equal') # Proporción 1:1 para evitar deformación
+    
+    plt.show()
+    print("✅ Visualización GeoPandas: Mapa generado con éxito")
+
+except Exception as e:
+    print(f"❌ Error en el stack espacial de Python: {e}")
+
+print("--- Verificación Finalizada ---")
+```
+:::
+:::
+
+```{python}
+#| label: python_verificacion
 import psycopg2
 import geopandas as gpd
 import fiona
@@ -365,7 +886,81 @@ print("--- Verificación Finalizada ---")
 
 ### R
 
+::: {.content-visible when-format="html"}
+::: {.callout-tip collapse="true" icon="false"}
+#### ▷ CÓDIGO PURO (Copiar y Pegar)
 ```{r}
+#| label: r_verificacion_codigo
+#| eval: false
+library(DBI)
+library(RPostgres)
+library(sf)
+library(terra)
+
+cat("--- Inicio de Verificación de R-Spatial ---\n")
+
+# 1. Prueba de conexión a la base de datos PostGIS
+tryCatch({
+  con <- dbConnect(
+    RPostgres::Postgres(), 
+    host = "db-postgis", 
+    dbname = "sig_db_unal", 
+    user = "profe_unal", 
+    password = "geomatica2025"
+  )
+  cat("✅ Conexión a PostGIS: Exitosa\n")
+  dbDisconnect(con)
+}, error = function(e) {
+  cat("❌ Error de conexión a PostGIS:", conditionMessage(e), "\n")
+})
+
+# 2. Prueba de Motores de Sistema y Visualización (sf)
+tryCatch({
+  conf <- sf_extSoftVersion()
+  cat(paste0("✅ sf operativo. Motores detectados:\n",
+             "   - GDAL: ", conf["GDAL"], "\n",
+             "   - GEOS: ", conf["GEOS"], "\n",
+             "   - PROJ: ", conf["PROJ"], "\n"))
+  
+  # Creamos el punto y el buffer
+  punto <- st_point(c(0, 0))
+  buffer_geom <- st_buffer(punto, dist = 1)
+  cat("✅ Prueba geométrica (GEOS): Buffer creado correctamente\n")
+
+  # Generación del Plot Espacial
+  # Usamos st_geometry para graficar solo la forma
+  plot(st_geometry(buffer_geom), 
+       col = 'lightblue', 
+       border = 'blue', 
+       main = "Validación R-Spatial: Buffer GEOS",
+       axes = TRUE,
+       graticule = TRUE)
+  
+  # Añadimos el punto original para referencia
+  plot(st_geometry(punto), add = TRUE, col = 'red', pch = 20)
+  
+  cat("✅ Visualización sf: Mapa generado con éxito\n")
+  
+}, error = function(e) {
+  cat("❌ Error en el stack sf/GEOS:", conditionMessage(e), "\n")
+})
+
+# 3. Prueba de Raster (terra)
+tryCatch({
+  r <- rast(ncols=10, nrows=10)
+  values(r) <- 1:ncell(r)
+  cat("✅ Paquete 'terra' operativo: Objetos Raster verificados\n")
+}, error = function(e) {
+  cat("❌ Error en el stack terra:", conditionMessage(e), "\n")
+})
+
+cat("--- Verificación Finalizada ---\n")
+```
+:::
+:::
+
+```{r}
+#| label: r_verificacion
 library(DBI)
 library(RPostgres)
 library(sf)
@@ -433,7 +1028,71 @@ cat("--- Verificación Finalizada ---\n")
 
 ### Julia
 
-```{r}
+::: {.content-visible when-format="html"}
+::: {.callout-tip collapse="true" icon="false"}
+#### ▷ CÓDIGO PURO (Copiar y Pegar)
+```{julia}
+#| label: julia_verificacion_codigo
+#| eval: false
+using LibPQ
+using LibGEOS
+using ArchGDAL
+using Plots
+
+println("--- Inicio de Verificación de Julia SIG ---")
+
+# 1. Prueba de conexión a la base de datos PostGIS
+try
+    conn = LibPQ.Connection("host=db-postgis dbname=sig_db_unal user=profe_unal password=geomatica2025")
+    println("✅ Conexión a PostGIS: Exitosa")
+    close(conn)
+catch e
+    println("❌ Error de conexión a PostGIS: ", e)
+end
+
+# 2. Verificación de LibGEOS y Visualización de Geometría
+try
+    # Creamos un punto y le aplicamos un buffer de 1.0 unidades
+    # Esto valida la integración de Julia con la librería GEOS del sistema
+    punto = LibGEOS.readgeom("POINT (0 0)")
+    buffer_geom = LibGEOS.buffer(punto, 1.0)
+    
+    println("✅ LibGEOS operativo: Motores geométricos verificados")
+    
+    # Graficamos el objeto del buffer
+    # fillcolor y alpha ayudan a ver que es un polígono real
+    plt = plot(buffer_geom, 
+               title="Validación Julia SIG: Buffer GEOS", 
+               fillcolor=:blue, 
+               fillalpha=0.3, 
+               aspect_ratio=:equal, 
+               legend=false)
+    
+    # display() es OBLIGATORIO para mostrar gráficos dentro de bloques try/catch
+    display(plt) 
+    
+catch e
+    println("❌ Error en LibGEOS o Visualización: ", e)
+end
+
+# 3. Verificación de ArchGDAL (Usando llamada de bajo nivel)
+try
+    # Accedemos directamente al motor de C para evitar errores de exportación
+    gdal_ver = ArchGDAL.GDAL.gdalversioninfo("--version")
+    println("✅ ArchGDAL operativo (Versión GDAL: $gdal_ver)")
+catch e
+    println("❌ Error en ArchGDAL: ", e)
+end
+
+println("--- Verificación Finalizada ---")
+```
+:::
+:::
+
+
+```r
+#| label: julia_verificacion3
+#| results: asis
 # #| eval: false
 j_plot('
 using LibPQ
@@ -490,8 +1149,86 @@ println("--- Verificación Finalizada ---")
 ')
 ```
 
-```julia
+
+::: {.content-visible when-format="html"}
+::: {.callout-tip collapse="true" icon="false"}
+#### ▷ CÓDIGO PURO (Copiar y Pegar)
+```{julia}
+#| label: julia_verificacion2_codigo
+#| eval: false
+
+
+# codigo
+
+```
+:::
+:::
+
+```{r}
+#| label: julia_verificacion
+#| results: asis
+
+j_eval(r"-(
+using LibPQ
+using LibGEOS
+using ArchGDAL
+using Plots
+
+println("--- Inicio de Verificación de Julia SIG ---")
+
+# 1. Prueba de conexión a la base de datos PostGIS
+try
+    conn = LibPQ.Connection("host=db-postgis dbname=sig_db_unal user=profe_unal password=geomatica2025")
+    println("✅ Conexión a PostGIS: Exitosa")
+    close(conn)
+catch e
+    println("❌ Error de conexión a PostGIS: ", e)
+end
+
+# 2. Verificación de LibGEOS (Calculamos, pero NO graficamos aún)
+try
+    # Usamos 'global' para que la variable sobreviva y el siguiente chunk la pueda usar
+    global punto = LibGEOS.readgeom("POINT (0 0)")
+    global buffer_geom = LibGEOS.buffer(punto, 1.0)
+    println("✅ LibGEOS operativo: Motores geométricos verificados")
+catch e
+    println("❌ Error en LibGEOS: ", e)
+end
+
+# 3. Verificación de ArchGDAL
+try
+    gdal_ver = ArchGDAL.GDAL.gdalversioninfo("--version")
+    println("✅ ArchGDAL operativo (Versión GDAL: $gdal_ver)")
+catch e
+    println("❌ Error en ArchGDAL: ", e)
+end
+
+println("--- Verificación Finalizada ---")
+)-")
+```
+
+
+```{r}
+#| label: julia_verificacion_plot
+#| eval: false
+# #| echo: false
+j_plot(r"-(
+# Dibujamos el gráfico de forma limpia al final. 
+# Al no usar 'display()', el objeto plt queda vivo y j_plot lo captura para el PDF.
+plot(buffer_geom, 
+     title="Validación Julia SIG: Buffer GEOS", 
+     fillcolor=:blue, 
+     fillalpha=0.3, 
+     aspect_ratio=:equal, 
+     legend=false)
+)-")
+```
+
+```r
+#| label: julia_verificacion2
+#| results: asis
 # Validación de Motores SIG y Conectividad
+j_eval('
 using LibPQ, LibGEOS, ArchGDAL, Plots
 
 # 1. Prueba de conexión a PostGIS
@@ -516,6 +1253,7 @@ try
 catch e
     println("❌ Error en motores geométricos o gráficos: ", e)
 end
+')
 ```
 
 
