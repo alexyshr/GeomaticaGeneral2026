@@ -1,0 +1,112 @@
+---
+title: "Guía y Estructura del Proyecto Final"
+subtitle: "Asignatura: Geomática General"
+author: "Alexys H. Rodríguez-Avellaneda Ph.D."
+format:
+  html:
+    toc: true
+    theme: simple
+  pdf:
+    toc: true
+    number-sections: true
+---
+
+## Introducción al Proyecto Final
+
+El proyecto final es la oportunidad perfecta para poner en práctica todos los conceptos de Sistemas de Información Geográfica, Sensores Remotos, Modelos Digitales de Elevación y Cartografía Digital vistos durante el semestre. 
+
+**Modalidad:** Trabajo en parejas (2 estudiantes).
+
+**Objetivo principal:** Representar y analizar un fenómeno natural, social o económico utilizando herramientas y datos espaciales.
+
+---
+
+## Estructura del Documento Final
+
+Su proyecto debe documentarse siguiendo el enfoque de *Open Science* promovido en el curso. Deben entregar un documento (HTML o PDF generado con Quarto) y alojar sus códigos/scripts en GitHub. El documento debe contener las siguientes secciones:
+
+1. **Título del Proyecto:** Claro, conciso y descriptivo.
+2. **Introducción y Justificación:** ¿Cuál es el problema a resolver? ¿Por qué es importante el contexto espacial para este problema?
+3. **Objetivos:** Un objetivo general y dos o tres específicos.
+4. **Área de Estudio:** Delimitación geográfica clara del lugar donde se realizará el análisis (incluir un mapa base).
+5. **Fuentes de Datos:** Descripción de los datos espaciales a utilizar (ej. imágenes de Google Earth Engine, datos vectoriales de geoportales, MDE, etc.).
+6. **Metodología:** Explicación paso a paso de las técnicas aplicadas, correcciones realizadas, cálculo de índices o modelos implementados. 
+7. **Resultados y Discusión:** Presentación de la cartografía temática generada y el análisis de lo que estos mapas nos dicen sobre el fenómeno estudiado.
+8. **Conclusiones:** ¿Se cumplieron los objetivos? ¿Qué limitaciones encontraron?
+9. **Referencias:** Bibliografía y fuentes de datos en formato APA.
+
+---
+
+## Ideas y Temas para el Proyecto Final
+
+Si aún no tienen un tema definido, aquí les presentamos algunas ideas basadas en los módulos del curso que pueden adaptar a su región de interés:
+
+### 1. Análisis Agropecuario y Cobertura Terrestre
+* **Monitoreo de salud de cultivos:** Uso de imágenes multiespectrales para calcular índices (ej. NDVI) y analizar el vigor agrícola.
+* **Dinámicas de cobertura terrestre:** Exploración de cambios de uso del suelo utilizando Machine Learning no supervisado (ej. K-Means en imágenes Sentinel-2). [Ver ejemplo de código](https://colab.research.google.com/drive/1v2kXcbQUpnwmtiM5YQ_8H87P1t5rziW8?usp=sharing).
+
+### 2. Riesgos Naturales y Modelos de Elevación
+
+* **Zonificación de riesgo de inundaciones o deslizamientos:** Integración de MDE para derivar pendientes y redes de drenaje, combinados con datos de cobertura vegetal.
+* **Monitoreo y evaluación de daños:** Análisis de incendios forestales (Wildfires) o evaluación de daños a infraestructuras tras un desastre.
+
+### 3. Planeación Urbana y Social
+* **Accesibilidad a servicios y huella urbana:** Análisis de redes o clasificación de imágenes para observar la expansión de las ciudades y el acceso a servicios.
+* **Derechos Humanos:** Uso de imágenes satelitales para monitorear asentamientos informales o impactos en comunidades vulnerables.
+
+### 4. Navegación y Trabajo de Campo
+* **Mapeo colaborativo de infraestructura:** Creación de formularios de captura de datos y uso de sistemas GNSS para levantar información en campo.
+
+---
+
+## Recursos, Plataformas y Datos (Inspiración y Casos de Uso)
+
+Para que no empiecen desde cero, exploren estas plataformas que ofrecen casos de uso, datos abiertos y guías paso a paso:
+
+* **NASA Lifelines Data Studios:** Paquetes enfocados en casos humanitarios (guías, dashboards y datos). [Visitar portal](https://nasalifelines.org/data-studios/)
+    * [Incendios Forestales (Wildfires)](https://nasalifelines.org/hfs-data-series/wildfire-early-warning-and-rapid-response/)
+    * [Inundaciones (Flooding)](https://nasalifelines.org/hfs-data-series/flood-early-warning-2/)
+    * [Deslizamientos (Landslides)](https://nasalifelines.org/hfs-data-series/landslide-risk-and-monitoring/)
+    * [Evaluación de Daños (Damage Assessment)](https://nasalifelines.org/hfs-data-series/building-damage-assessment/)
+    * [Derechos Humanos](https://nasalifelines.org/hfs-data-series/human-rights/)
+* **Sentinel Hub Education:** Guías para crear y visualizar índices satelitales (Contaminación del aire, Incendios, etc.) y uso de su plugin para QGIS. [Explorar](https://www.sentinel-hub.com/explore/education/)
+* **NASA ARSET (Applied Remote Sensing Training Program):** Capacitaciones aplicadas en Agricultura, Resiliencia Climática, Salud, Calidad del Aire y Recursos Hídricos. [Ver entrenamientos](https://www.earthdata.nasa.gov/data/projects/arset)
+* **EUMETSAT:** Entrenamientos específicos, como la [Introducción a productos de incendios](https://trainingevents.eumetsat.int/trui/events/2678).
+* **Cursos ESRI (MOOC):** Ej. *GIS for Climate Action*. [Ver catálogo](https://www.esri.com/training/catalog/search/)
+
+---
+
+## Soportes Tecnológicos y Retos de Implementación
+
+Si quieren enfocar su proyecto final en la implementación técnica o el desarrollo de una solución geomática avanzada, pueden elegir uno de los siguientes retos:
+
+1. **Arquitectura de Datos Espaciales:** Estructurar una base de datos robusta (GeoPackage, PostGIS, Spatialite) o una File Geodatabase (definiendo Datasets, Dominios, Subtipos y Reglas topológicas).
+2. **Automatización de Geoprocesamiento:** Solucionar un problema espacial estructurando un modelo visual usando ModelBuilder (ArcGIS) o el Modelador Gráfico (QGIS).
+3. **Análisis en la Nube / Programación:** Procesar imágenes usando Google Earth Engine (GEE) o usar un Notebook (Jupyter/Python) integrado en QGIS/ArcGIS.
+4. **Análisis Temporal Dinámico:** Generar un timelapse satelital utilizando el plugin *GEE Timelapse* para QGIS ([Ver repositorio](https://github.com/opengeos/qgis-timelapse-plugin)).
+
+
+
+### 🚀 Nivel Avanzado: Machine Learning y GeoAI
+Para aquellos interesados en la vanguardia tecnológica (Visión por Computadora aplicada a SIG), pueden explorar las herramientas creadas por Qiusheng Wu:
+
+* **Herramientas GeoAI ([opengeoai.org](https://opengeoai.org/)):** 
+    * *Detección y Segmentación de Objetos:* Edificios, paneles solares, vehículos, barcos o cuerpos de agua.
+    * *Clasificación de Coberturas Terrestres* (Segmentación Semántica).
+    * *Uso de modelos de lenguaje (LLMs)* interactuando con SIG ("¿Cuántos edificios hay en esta imagen?").
+* **SamGeo (Segment Anything Model for Geospatial):** Adaptación del modelo SAM de Meta para imágenes satelitales. Permite segmentar imágenes mediante texto, crear máscaras interactivas y exportar vectores. Disponible también como [Plugin para QGIS](https://github.com/opengeos/segment-geospatial).
+
+---
+
+## Lecturas Recomendadas
+
+* Dovgyi, S. et al. (2019). *Fundamentals of remote sensing: history and practice*. Institute of Gifted Child of the NAPS of Ukraine.
+* Documentación oficial y *How-to-Guides* de la plataforma que decidan utilizar.
+
+---
+
+## Recomendaciones Clave
+
+* **Empiecen por los datos:** Antes de enamorarse de un tema, verifiquen que existan datos espaciales disponibles (geoportales, catálogos GEE, etc.) para su zona de estudio.
+* **Menos es más:** Es preferible un análisis sencillo pero riguroso y bien documentado, que intentar un modelo complejísimo que no logren terminar.
+* **Apóyense en las asesorías:** Utilicen las semanas destinadas a asesoría de proyecto final para validar su idea, su modelo de datos y sus fuentes de información con el profesor.

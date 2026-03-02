@@ -1,0 +1,2248 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.550">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Geomática General - 9&nbsp; Conversión de Formatos (ArcGIS Pro - QGIS)</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./61-presentacion_1_clase1_varios.html" rel="next">
+<link href="./43-practica_3_clase3_coordenadas.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Sin resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./41-practica_1_clase2_visualizacion_dinamica.html">Prácticas</a></li><li class="breadcrumb-item"><a href="./44-practica_4_clase4_conversionformatos.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Conversión de Formatos (ArcGIS Pro - QGIS)</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Geomática General</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Buscar"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bienvenida</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./00-prefacio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prefacio</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Instalación y Entornos</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-introduccion-entornos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introducción a Entornos de Desarrollo</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-guia_instalacion_A_docker.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Guía de Instalación. Opción A: Docker (Python, R, Julia)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-guia_instalacion_B_qgis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Guía de Instalación. Opción B: QGIS y PyQGIS</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-guia_instalacion_C_ArcGIS.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Guía de Instalación. Opción C: ArcGIS Pro y ArcPy</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Proyecto Final</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./38-guia_estructura_proyecto_final.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Guía y Estructura del Proyecto Final</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Prácticas</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./41-practica_1_clase2_visualizacion_dinamica.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Visualización y Mapas Dinámicos</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./42-practica_2_clase2_geoportales.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">🌐 Geoportales y Servicios Web</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./43-practica_3_clase3_coordenadas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Sistemas de Coordenadas - ArcGIS Pro</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./44-practica_4_clase4_conversionformatos.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Conversión de Formatos (ArcGIS Pro - QGIS)</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">Presentaciones</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./61-presentacion_1_clase1_varios.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Temas por Charlar</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./62-presentacion_2_clase2_geomatica.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">¿Qué es la Geomática?</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./63-presentacion_3_clase2_syllabus_evaluacion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Presentación del Curso y Syllabus 2025</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./64-presentacion_4_clase3_coordenadas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Sistemas de Coordenadas</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+ <span class="menu-text">Apéndices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./80-instalacion_herramientas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Resumen instalación de herramientas</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./81-uso_infraestructura_instalada.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Uso de la Infraestructura Instalada</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./82-quarto.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Quarto: Orquestación y Configuración</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./83-docker_desktop.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Docker: Gestión de Contenedores e Imágenes</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./84-git_github.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Git y GitHub: Sincronización Local-Remota</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./85-vscode.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Visual Studio Code (VScode): Extensiones e Interfaz</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./86-windows.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">G</span>&nbsp; <span class="chapter-title">Temas técnicos sobre Windows</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./87-linux_ubuntu.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">H</span>&nbsp; <span class="chapter-title">Temas Técnicos sobre Linux</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./88-python.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">I</span>&nbsp; <span class="chapter-title">Adicionales Sobre Python</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./89-r.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">J</span>&nbsp; <span class="chapter-title">Adicionales Sobre R</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./90-julia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">K</span>&nbsp; <span class="chapter-title">Adicionales Sobre Julia</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./91-qgis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">L</span>&nbsp; <span class="chapter-title">Adicionales Sobre QGIS</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./92-arcgispro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">M</span>&nbsp; <span class="chapter-title">Adicionales sobre ArcGIS Pro</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./93-postgresql.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">N</span>&nbsp; <span class="chapter-title">Adicionales sobre ArcGIS Pro</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./98-errata.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">O</span>&nbsp; <span class="chapter-title">Errata</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./99-referencias.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Referencias Bibliográficas</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Tabla de Contenidos</h2>
+   
+  <ul>
+  <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción"><span class="header-section-number">9.1</span> Introducción</a></li>
+  <li><a href="#objetivos" id="toc-objetivos" class="nav-link" data-scroll-target="#objetivos"><span class="header-section-number">9.2</span> Objetivos</a></li>
+  <li><a href="#marco-de-referencia" id="toc-marco-de-referencia" class="nav-link" data-scroll-target="#marco-de-referencia"><span class="header-section-number">9.3</span> Marco de referencia</a>
+  <ul class="collapse">
+  <li><a href="#consideraciones-sobre-formatos-vectoriales-y-cad" id="toc-consideraciones-sobre-formatos-vectoriales-y-cad" class="nav-link" data-scroll-target="#consideraciones-sobre-formatos-vectoriales-y-cad">Consideraciones sobre formatos vectoriales y CAD</a></li>
+  <li><a href="#consideraciones-sobre-formatos-ráster-y-compresión" id="toc-consideraciones-sobre-formatos-ráster-y-compresión" class="nav-link" data-scroll-target="#consideraciones-sobre-formatos-ráster-y-compresión">Consideraciones sobre formatos ráster y compresión</a></li>
+  <li><a href="#operaciones-de-conversión-de-capas-vectoriales-a-ráster-y-viceversa" id="toc-operaciones-de-conversión-de-capas-vectoriales-a-ráster-y-viceversa" class="nav-link" data-scroll-target="#operaciones-de-conversión-de-capas-vectoriales-a-ráster-y-viceversa">Operaciones de conversión de capas vectoriales a ráster y viceversa</a></li>
+  <li><a href="#tipos-de-formatos-ráster-soportados" id="toc-tipos-de-formatos-ráster-soportados" class="nav-link" data-scroll-target="#tipos-de-formatos-ráster-soportados">Tipos de formatos ráster soportados</a></li>
+  <li><a href="#tipos-de-formatos-vector-soportados" id="toc-tipos-de-formatos-vector-soportados" class="nav-link" data-scroll-target="#tipos-de-formatos-vector-soportados">Tipos de formatos vector soportados</a></li>
+  </ul></li>
+  <li><a href="#opciones-de-conversión-de-formatos-arcgis-pro---qgis" id="toc-opciones-de-conversión-de-formatos-arcgis-pro---qgis" class="nav-link" data-scroll-target="#opciones-de-conversión-de-formatos-arcgis-pro---qgis"><span class="header-section-number">9.4</span> Opciones de conversión de formatos (ArcGIS Pro - QGIS)</a></li>
+  <li><a href="#ejercicios" id="toc-ejercicios" class="nav-link" data-scroll-target="#ejercicios"><span class="header-section-number">9.5</span> Ejercicios</a>
+  <ul class="collapse">
+  <li><a href="#ejercicio-1-migración-de-bases-de-datos-obsoletas-.mdb-a-formatos-modernos" id="toc-ejercicio-1-migración-de-bases-de-datos-obsoletas-.mdb-a-formatos-modernos" class="nav-link" data-scroll-target="#ejercicio-1-migración-de-bases-de-datos-obsoletas-.mdb-a-formatos-modernos">Ejercicio 1: Migración de bases de datos obsoletas (.mdb) a formatos modernos</a></li>
+  <li><a href="#ejercicio-2-exportación-de-capas-vectoriales-a-formatos-cad-dxf" id="toc-ejercicio-2-exportación-de-capas-vectoriales-a-formatos-cad-dxf" class="nav-link" data-scroll-target="#ejercicio-2-exportación-de-capas-vectoriales-a-formatos-cad-dxf">Ejercicio 2: Exportación de capas vectoriales a formatos CAD (DXF)</a></li>
+  <li><a href="#ejercicio-3-despliegue-optimizado-de-una-imagen-escaneada-con-3-bandas-rgb" id="toc-ejercicio-3-despliegue-optimizado-de-una-imagen-escaneada-con-3-bandas-rgb" class="nav-link" data-scroll-target="#ejercicio-3-despliegue-optimizado-de-una-imagen-escaneada-con-3-bandas-rgb">Ejercicio 3: Despliegue optimizado de una imagen escaneada con 3 bandas (RGB)</a></li>
+  <li><a href="#ejercicio-4-calcular-el-tamaño-de-una-imagen-y-georreferenciarla-con-archivo-world" id="toc-ejercicio-4-calcular-el-tamaño-de-una-imagen-y-georreferenciarla-con-archivo-world" class="nav-link" data-scroll-target="#ejercicio-4-calcular-el-tamaño-de-una-imagen-y-georreferenciarla-con-archivo-world">Ejercicio 4: Calcular el tamaño de una imagen y georreferenciarla con archivo world</a></li>
+  <li><a href="#ejercicio-5-convertir-a-ráster-una-capa-vectorial-de-puntos-asignando-a-cada-píxel-el-valor-de-un-atributo" id="toc-ejercicio-5-convertir-a-ráster-una-capa-vectorial-de-puntos-asignando-a-cada-píxel-el-valor-de-un-atributo" class="nav-link" data-scroll-target="#ejercicio-5-convertir-a-ráster-una-capa-vectorial-de-puntos-asignando-a-cada-píxel-el-valor-de-un-atributo">Ejercicio 5: Convertir a ráster una capa vectorial de puntos asignando a cada píxel el valor de un atributo</a></li>
+  <li><a href="#ejercicio-6-conversión-a-ráster-de-un-tema-vectorial-de-líneas" id="toc-ejercicio-6-conversión-a-ráster-de-un-tema-vectorial-de-líneas" class="nav-link" data-scroll-target="#ejercicio-6-conversión-a-ráster-de-un-tema-vectorial-de-líneas">Ejercicio 6: Conversión a ráster de un tema vectorial de líneas</a></li>
+  <li><a href="#ejercicio-7-convertir-a-ráster-una-capa-vectorial-de-polígonos" id="toc-ejercicio-7-convertir-a-ráster-una-capa-vectorial-de-polígonos" class="nav-link" data-scroll-target="#ejercicio-7-convertir-a-ráster-una-capa-vectorial-de-polígonos">Ejercicio 7: Convertir a ráster una capa vectorial de polígonos</a></li>
+  <li><a href="#ejercicio-8-obtener-capas-vectoriales-a-partir-de-capas-ráster" id="toc-ejercicio-8-obtener-capas-vectoriales-a-partir-de-capas-ráster" class="nav-link" data-scroll-target="#ejercicio-8-obtener-capas-vectoriales-a-partir-de-capas-ráster">Ejercicio 8: Obtener capas vectoriales a partir de capas ráster</a></li>
+  <li><a href="#ejercicio-9-importar-una-capa-vectorial-a-una-base-de-datos-postgis" id="toc-ejercicio-9-importar-una-capa-vectorial-a-una-base-de-datos-postgis" class="nav-link" data-scroll-target="#ejercicio-9-importar-una-capa-vectorial-a-una-base-de-datos-postgis">Ejercicio 9: Importar una capa vectorial a una base de datos PostGIS</a></li>
+  </ul></li>
+  <li><a href="#evaluación-final-del-capítulo" id="toc-evaluación-final-del-capítulo" class="nav-link" data-scroll-target="#evaluación-final-del-capítulo"><span class="header-section-number">9.6</span> Evaluación Final del Capítulo</a>
+  <ul class="collapse">
+  <li><a href="#descarga-de-datos" id="toc-descarga-de-datos" class="nav-link" data-scroll-target="#descarga-de-datos">Descarga de Datos</a></li>
+  <li><a href="#ejercicio-1-intercambio-de-formatos-para-visualización-web-kml" id="toc-ejercicio-1-intercambio-de-formatos-para-visualización-web-kml" class="nav-link" data-scroll-target="#ejercicio-1-intercambio-de-formatos-para-visualización-web-kml">Ejercicio 1: Intercambio de formatos para visualización web (KML)</a></li>
+  <li><a href="#ejercicio-2-etl-espacial-y-carga-filtrada-en-postgis" id="toc-ejercicio-2-etl-espacial-y-carga-filtrada-en-postgis" class="nav-link" data-scroll-target="#ejercicio-2-etl-espacial-y-carga-filtrada-en-postgis">Ejercicio 2: ETL Espacial y carga filtrada en PostGIS</a></li>
+  <li><a href="#entregables-y-criterios-de-evaluación" id="toc-entregables-y-criterios-de-evaluación" class="nav-link" data-scroll-target="#entregables-y-criterios-de-evaluación">Entregables y criterios de evaluación</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./41-practica_1_clase2_visualizacion_dinamica.html">Prácticas</a></li><li class="breadcrumb-item"><a href="./44-practica_4_clase4_conversionformatos.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Conversión de Formatos (ArcGIS Pro - QGIS)</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Conversión de Formatos (ArcGIS Pro - QGIS)</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="https://drive.google.com/file/d/1ZhzEN-3Cg7yP-lbsST7zk-mEq4IKvUO4/view?usp=sharing">👉 Descargar Datos del Taller de Conversión (incluye datos para ejercicios finales)</a></p>
+<section id="introducción" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="introducción"><span class="header-section-number">9.1</span> Introducción</h2>
+<p>Establecer estándares universales para datos geográficos ha demostrado ser un objetivo complejo. En la actualidad, no existe una normalización única que tenga aceptación global absoluta, en parte por la continua evolución tecnológica y por los ecosistemas cerrados que han desarrollado diversos fabricantes de software a lo largo del tiempo.</p>
+<p>Sin embargo, frente a la necesidad de compartir datos, la tendencia se ha enfocado en el uso y creación de formatos de intercambio (o el soporte multipropósito mediante librerías como GDAL/OGR) que permiten trasladar información de un sistema a otro, evitando la pérdida de datos o la duplicación de esfuerzos técnicos. Un usuario moderno de Sistemas de Información Geográfica (SIG) debe conocer los métodos y las herramientas para convertir datos espaciales a formatos compatibles según la necesidad de análisis o la plataforma de trabajo (ArcGIS Pro, QGIS, bases de datos espaciales, etc.).</p>
+</section>
+<section id="objetivos" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="objetivos"><span class="header-section-number">9.2</span> Objetivos</h2>
+<ul>
+<li>Reconocer los diversos formatos de estructuras de datos vectoriales y ráster soportados por los SIG modernos.</li>
+<li>Comprender los fundamentos teóricos detrás de la compresión de imágenes y las reglas de asignación espacial durante las transformaciones.</li>
+<li>Practicar los métodos de importación, exportación e intercambio de diferentes formatos de datos espaciales en ArcGIS Pro y QGIS.</li>
+<li>Ejecutar conversiones geográficas de datos ráster a vector y de vector a ráster.</li>
+</ul>
+</section>
+<section id="marco-de-referencia" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="marco-de-referencia"><span class="header-section-number">9.3</span> Marco de referencia</h2>
+<p>Cuando se habla de conversión de formatos, se hace referencia a dos dimensiones distintas: por un lado, la migración de archivos entre diferentes extensiones o arquitecturas (ej. de Shapefile a GeoPackage) y, por otro, la conversión del modelo de datos espaciales, es decir, de vector a ráster (rasterización) o de ráster a vector (vectorización).</p>
+<section id="consideraciones-sobre-formatos-vectoriales-y-cad" class="level3">
+<h3 class="anchored" data-anchor-id="consideraciones-sobre-formatos-vectoriales-y-cad">Consideraciones sobre formatos vectoriales y CAD</h3>
+<p>Muchos de los datos que se incorporan a los SIG provienen de programas de Dibujo Asistido por Computador (CAD). Existe una gran variedad de formatos CAD, siendo los más comunes como estándar de intercambio los <code>.dxf</code> y <code>.dwg</code> (AutoCAD) y los <code>.dgn</code> (MicroStation).</p>
+<p>Estos archivos suelen almacenar la información de las entidades separándolas gráficamente en puntos, líneas, polígonos y anotaciones (textos). Al incorporarlos a un SIG, es importante recordar que a menudo carecen de un sistema de coordenadas espaciales definido (proyección geométrica pura), por lo que suele ser necesario georreferenciarlos y exportarlos a formatos nativos SIG (como Geodatabases o GeoPackages) para habilitar su análisis topológico y de atributos.</p>
+</section>
+<section id="consideraciones-sobre-formatos-ráster-y-compresión" class="level3">
+<h3 class="anchored" data-anchor-id="consideraciones-sobre-formatos-ráster-y-compresión">Consideraciones sobre formatos ráster y compresión</h3>
+<p>El conocimiento de la procedencia y las características de cada formato de imagen permite su óptima utilización. Algunos de los más relevantes incluyen:</p>
+<ul>
+<li><strong>Multibandas nativos (.BIL, .BIP, .BSQ):</strong> Formatos binarios clásicos utilizados para almacenar información satelital original. Suelen requerir archivos de texto adjuntos (metadatos o archivos <em>world</em>) que le indican al software el orden de los bytes y las coordenadas de georreferenciación.</li>
+<li><strong>ERDAS IMAGINE (.IMG):</strong> Diseñado para almacenar tanto rásters de capas temáticas (usos del suelo discretos) como variables continuas (imágenes satelitales, Modelos Digitales de Terreno).</li>
+<li><strong>TIFF / GeoTIFF (.TIF):</strong> Uno de los formatos más extendidos por su flexibilidad. El estándar GeoTIFF permite incrustar etiquetas (tags) en la cabecera del archivo con la información de proyección, datum, elipsoide y coordenadas, evitando la necesidad de archivos de referenciación externos.</li>
+</ul>
+<p><strong>Los formatos de compresión:</strong> Existen básicamente dos formas de comprimir documentos ráster: 1. <strong>Con pérdida de información (Lossy):</strong> Como <strong>JPEG</strong> o <strong>MrSID</strong> (Multiresolution Seamless Image Database). Alcanzan proporciones de compresión altísimas (20:1 o más) transformando o desechando valores redundantes. Son excelentes para visualización de fondos (ortofotos), pero <strong>no se recomiendan para procesos de análisis digital</strong> ya que alteran los valores originales de los píxeles. 2. <strong>Sin pérdida de información (Lossless):</strong> Como <strong>LZW</strong> o <strong>Run-Length Encoding (RLE)</strong>. Reducen el tamaño del archivo agrupando valores idénticos sin alterar los datos crudos, siendo ideales para preservar la integridad analítica de la imagen.</p>
+</section>
+<section id="operaciones-de-conversión-de-capas-vectoriales-a-ráster-y-viceversa" class="level3">
+<h3 class="anchored" data-anchor-id="operaciones-de-conversión-de-capas-vectoriales-a-ráster-y-viceversa">Operaciones de conversión de capas vectoriales a ráster y viceversa</h3>
+<p>Las conversiones de modelos de datos responden a reglas geométricas estrictas para decidir cómo se asignan los valores en el espacio.</p>
+<p><strong>De Vectorial a Ráster (Rasterización):</strong> El proceso superpone una retícula ortogonal sobre la capa vectorial. Cada píxel toma un valor numérico heredado de un campo de la tabla de atributos del vector original. Las reglas de asignación suelen ser:</p>
+<ul>
+<li><strong>Polígonos:</strong> El píxel toma el valor del polígono que coincide con su centroide, o aquel que cubre la mayor área de la celda.</li>
+<li><strong>Líneas:</strong> El píxel toma el valor de la línea que lo intersecta. Si varias líneas lo cruzan, toma el valor de la primera detectada o se pueden aplicar reglas de prioridad.</li>
+<li><strong>Puntos:</strong> El píxel adquiere el valor del punto contenido en él. <em>(Nota: Si un píxel no coincide con ningún objeto, se le asigna valor “No Data” o nulo).</em></li>
+</ul>
+<p><strong>De Ráster a Vectorial (Vectorización):</strong> El usuario define el tipo de geometría de salida.</p>
+<ul>
+<li><strong>Ráster a Polígonos:</strong> Se forman polígonos fusionando píxeles adyacentes que comparten exactamente el mismo valor (Gridcode).</li>
+<li><strong>Ráster a Líneas:</strong> Se generan líneas trazadas a través del centroide de los píxeles alineados, usualmente permitiendo aplicar algoritmos de suavizado o simplificación (generalización) para reducir los vértices escalonados.</li>
+<li><strong>Ráster a Puntos:</strong> Se crea una entidad puntual en el centro geométrico de cada píxel válido.</li>
+</ul>
+</section>
+<section id="tipos-de-formatos-ráster-soportados" class="level3">
+<h3 class="anchored" data-anchor-id="tipos-de-formatos-ráster-soportados">Tipos de formatos ráster soportados</h3>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" aria-current="page">ArcGIS</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">QGIS</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<p>Menú <code>Project</code> (Proyecto) -&gt; <code>Options</code> (Opciones) -&gt; <code>Raster and Imagery</code> (Ráster e imágenes) -&gt; <code>Raster Formats</code> (Formatos ráster)</p>
+<div id="fig-raster-arcgis" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-raster-arcgis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/conversion_formatos/raster_formats_arcgis.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-raster-arcgis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;9.1: Formatos ráster soportados en el menú de opciones de ArcGIS Pro.
+</figcaption>
+</figure>
+</div>
+<p>Ver la <a href="https://pro.arcgis.com/en/pro-app/latest/help/data/imagery/supported-raster-dataset-file-formats.htm">ayuda</a> para mayor información.</p>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<p>Menú <code>Settings</code> (Configuración) -&gt; <code>Options</code> (Opciones) -&gt; <code>GDAL</code> -&gt; pestaña <code>Raster Drivers</code> (Controladores ráster)</p>
+<div id="fig-raster-qgis" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-raster-qgis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/conversion_formatos/formatos_raster_qgis_gdal.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-raster-qgis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;9.2: Formatos ráster y capacidades GDAL listados en QGIS.
+</figcaption>
+</figure>
+</div>
+<p><strong>Explicación de los <em>Flags</em> (Capacidades) en QGIS:</strong></p>
+<p>La columna <strong>Flags</strong> en la tabla de GDAL indica los permisos exactos que tiene QGIS para interactuar con cada formato de archivo. Cada letra representa una capacidad específica:</p>
+<ul>
+<li><strong><code>r</code> (Read - Lectura):</strong> QGIS puede abrir y visualizar el archivo.</li>
+<li><strong><code>w</code> (Write - Escritura):</strong> QGIS puede crear, guardar o exportar un archivo nuevo en este formato desde cero.</li>
+<li><strong><code>+</code> (Update - Actualización):</strong> QGIS puede modificar un archivo existente (por ejemplo, editar sus metadatos o cambiar valores de píxeles) sin tener que crear un archivo completamente nuevo.</li>
+<li><strong><code>v</code> (Virtual IO - Entrada/Salida Virtual):</strong> QGIS puede leer o escribir este archivo dentro de “sistemas de archivos virtuales”. Esto permite abrir un ráster que está comprimido dentro de un <code>.zip</code> o alojado en la web mediante una URL, sin necesidad de extraerlo o descargarlo previamente.</li>
+</ul>
+<p><strong>Ejemplos de combinaciones comunes:</strong></p>
+<ul>
+<li><strong><code>ro</code>:</strong> Solo lectura. Se puede visualizar, pero no modificar ni crear, y no soporta archivos virtuales.</li>
+<li><strong><code>rov</code>:</strong> Solo lectura + soporte virtual. Se puede visualizar directamente desde un <code>.zip</code> o desde internet.</li>
+<li><strong><code>rwv</code>:</strong> Lectura, escritura + soporte virtual. Se puede abrir, crear nuevos archivos y usar archivos virtuales.</li>
+<li><strong><code>rw+v</code>:</strong> Control total. Permite abrir, crear, actualizar un archivo existente y soporta lectura desde archivos comprimidos o la web.</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="tipos-de-formatos-vector-soportados" class="level3">
+<h3 class="anchored" data-anchor-id="tipos-de-formatos-vector-soportados">Tipos de formatos vector soportados</h3>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">ArcGIS</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">QGIS</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<p>A diferencia de los formatos ráster, <strong>ArcGIS Pro no centraliza el listado de formatos vectoriales en su menú de opciones</strong>. El soporte nativo para vectores está integrado en el núcleo del software (Geodatabases de archivos y móviles, Shapefiles, KML, archivos CAD, etc.).</p>
+<p>Para visualizar los tipos de archivos vectoriales y bases de datos espaciales que el software reconoce directamente, la forma más sencilla es a través del cuadro de diálogo al agregar datos:</p>
+<p>Pestaña <code>Map</code> (Mapa) -&gt; <code>Add Data</code> (Agregar datos) -&gt; <code>Browse...</code> (Examinar…). En la ventana “Add data”, al desplegar la lista de tipos (Tipo de elemento) al lado de <strong>Name</strong> , verás los formatos soportados.</p>
+<div id="fig-vector-arcgis" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-vector-arcgis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/conversion_formatos/vector_formats_arcgis.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-vector-arcgis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;9.3: Formatos vectoriales reconocidos en el cuadro de diálogo Add Data de ArcGIS Pro.
+</figcaption>
+</figure>
+</div>
+<blockquote class="blockquote">
+<p><strong>Nota:</strong> Para leer y escribir en formatos vectoriales no nativos o más especializados, ArcGIS Pro utiliza una extensión llamada <strong>Data Interoperability</strong>, la cual habilita el soporte para más de 300 formatos adicionales. Puedes consultar la lista completa en la <a href="https://pro.arcgis.com/en/pro-app/latest/help/projects/supported-data-types-and-items.htm">ayuda oficial de Esri</a>.</p>
+</blockquote>
+</div>
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<p>QGIS utiliza la biblioteca <strong>OGR</strong> (parte del proyecto GDAL) para la lectura y escritura de datos vectoriales. Puedes ver la lista completa de formatos, sus controladores (drivers) y capacidades en:</p>
+<p>Menú <code>Settings</code> (Configuración) -&gt; <code>Options</code> (Opciones) -&gt; <code>GDAL</code> -&gt; pestaña <code>Vector Drivers</code> (Controladores vectoriales).</p>
+<div id="fig-vector-qgis" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-vector-qgis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/conversion_formatos/formatos_vector_qgis_ogr.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-vector-qgis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;9.4: Lista de controladores OGR y sus capacidades en QGIS.
+</figcaption>
+</figure>
+</div>
+<p><strong>Capacidades de los Drivers OGR (Banderas / Flags):</strong></p>
+<p>Al igual que en los ráster, los controladores vectoriales muestran banderas (<strong>Flags</strong>) en QGIS que indican exactamente qué permisos tiene el software para interactuar con cada formato. Estas letras se traducen en las siguientes capacidades:</p>
+<ul>
+<li><strong><code>r</code> (Read - Lectura / ReadOnly):</strong> El formato puede ser visualizado. Si el controlador solo muestra la bandera <code>ro</code>, significa que es de <strong>Solo Lectura</strong> y no puede ser editado (ej. algunos formatos web o de OpenStreetMap).</li>
+<li><strong><code>w</code> (Write - Escritura / Read/Write):</strong> Indica que QGIS puede crear y exportar archivos nuevos en este formato. Al combinarse con lectura (<code>rw</code>), permite la creación y edición completa de entidades y atributos (ej. <strong>GeoPackage</strong>, <strong>Shapefile</strong>).</li>
+<li><strong><code>+</code> (Update - Actualización):</strong> Significa que el controlador puede modificar o actualizar un archivo existente sin tener que sobrescribirlo por completo.</li>
+<li><strong><code>v</code> (Virtual IO - Entrada/Salida Virtual):</strong> Permite que QGIS lea archivos directamente desde “sistemas virtuales”, como servicios web, la nube o dentro de archivos comprimidos (<strong>.zip</strong>, <strong>.tar</strong>) sin necesidad de extraerlos previamente en el disco duro.</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="opciones-de-conversión-de-formatos-arcgis-pro---qgis" class="level2" data-number="9.4">
+<h2 data-number="9.4" class="anchored" data-anchor-id="opciones-de-conversión-de-formatos-arcgis-pro---qgis"><span class="header-section-number">9.4</span> Opciones de conversión de formatos (ArcGIS Pro - QGIS)</h2>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">ArcGIS Pro</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">QGIS</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-3" role="tab" aria-controls="tabset-3-3" aria-selected="false">GRASS</a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
+<p>En ArcGIS Pro existen principalmente tres métodos para la conversión e intercambio de formatos de datos espaciales. A continuación, se detalla cada uno de ellos:</p>
+<section id="desde-las-herramientas-de-geoprocesamiento-toolbox" class="level4">
+<h4 class="anchored" data-anchor-id="desde-las-herramientas-de-geoprocesamiento-toolbox">1. Desde las herramientas de geoprocesamiento (toolbox)</h4>
+<p>Esta es la forma más estructurada y completa, ideal para ejecutar procesos masivos (Batch) o aplicar herramientas de conversión muy específicas.</p>
+<ul>
+<li><strong>Ruta:</strong> Menú <code>View</code> (Vista) -&gt; botón <code>Geoprocessing</code> (Geoprocesamiento) -&gt; pestaña <code>Toolboxes</code> (Cajas de herramientas) -&gt; expandir <code>Conversion Tools</code> (Herramientas de conversión).</li>
+</ul>
+<div id="fig-conv-tools-arcgis" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-conv-tools-arcgis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/conversion_formatos/conversion_tools_arcgis_pro.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:25.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-conv-tools-arcgis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;9.5: Herramientas de conversión en la caja de procesos de ArcGIS Pro.
+</figcaption>
+</figure>
+</div>
+<p>Dentro de la caja de <strong>Conversion Tools</strong> (Herramientas de conversión), las opciones se agrupan según el formato de origen o destino:</p>
+<ul>
+<li><p><strong>Conversiones Ráster:</strong></p>
+<ul>
+<li><p><strong>From Raster</strong> (Desde ráster): Convierte datos ráster a otros formatos (principalmente vectoriales, como polígonos, líneas o puntos).</p>
+<div id="fig-from-raster-arcgis" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-from-raster-arcgis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/conversion_formatos/conversion_tools_from_raster_pro.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:30.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-from-raster-arcgis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;9.6: Opciones para convertir desde un formato ráster.
+</figcaption>
+</figure>
+</div></li>
+<li><p><strong>To Raster</strong> (A ráster): Convierte otros formatos (como entidades vectoriales) a formato ráster.</p>
+<div id="fig-to-raster-arcgis" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-to-raster-arcgis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/conversion_formatos/conversion_tools_to_raster_pro.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:30.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-to-raster-arcgis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;9.7: Opciones para convertir hacia un formato ráster.
+</figcaption>
+</figure>
+</div></li>
+<li><p><strong>To GeoPackage</strong> (A GeoPackage): Permite agregar un ráster existente a un archivo GeoPackage mediante <code>Add Raster to GeoPackage</code> (Agregar ráster a GeoPackage).</p></li>
+</ul></li>
+<li><p><strong>Conversiones Vectoriales y Web:</strong></p>
+<ul>
+<li><strong>To Geodatabase</strong> (A geodatabase): Múltiples opciones para migrar formatos vectoriales (e incluso datos ráster usando <code>Raster to Geodatabase</code> [Ráster a geodatabase]) hacia una File o Enterprise Geodatabase.</li>
+<li><strong>To Shapefile</strong> (A shapefile): Convierte entidades vectoriales almacenadas en Geodatabases (Feature Classes) al formato tradicional Shapefile.</li>
+<li><strong>To CAD</strong> (A CAD): Exporta datos vectoriales a formatos de diseño asistido por computadora (ej. DWG, DXF).</li>
+<li><strong>From WFS</strong> (Desde WFS): Convierte un servicio Web Feature Service a diferentes formatos vectoriales locales. Consulta la <a href="https://pro.arcgis.com/en/pro-app/latest/tool-reference/conversion/wfs-to-feature-class.htm">ayuda en línea aquí</a>.</li>
+</ul></li>
+<li><p><strong>Conversiones Bidireccionales (Desde y Hacia):</strong></p>
+<ul>
+<li><strong>GPS:</strong> Convierte archivos GPX a vectores usando <code>GPX to features</code> (GPX a entidades) o viceversa con <code>Features to GPX</code> (Entidades a GPX).</li>
+<li><strong>JSON:</strong> Transforma archivos GeoJSON a entidades vectoriales y de vuelta.</li>
+<li><strong>KML:</strong> Permite convertir archivos, capas o mapas enteros a formato KML/KMZ o viceversa.</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="desde-la-capa-en-el-mapa-contents-pane" class="level4">
+<h4 class="anchored" data-anchor-id="desde-la-capa-en-el-mapa-contents-pane">2. Desde la capa en el mapa (contents pane)</h4>
+<p>Este método es el más rápido y práctico cuando ya tienes los datos cargados en tu vista de mapa y necesitas exportar la capa activa. Es especialmente útil porque respeta las selecciones (si tienes polígonos seleccionados, solo exportará esos). Con esta opción se habilitan las opciones de transformación de datos con las coordenadas del mapa (usando la reproyección al vuelo aplicada a la capa) o de la capa.</p>
+<ul>
+<li><strong>Ruta:</strong> <code>Clic Derecho</code> sobre la capa (en el panel <code>Contents</code> [Contenido]) -&gt; <code>Data</code> (Datos) -&gt; <code>Export Features</code> (Exportar entidades) (para vectores) o <code>Export Raster</code> (Exportar ráster) (para imágenes).</li>
+</ul>
+<div id="fig-export-map-arcgis" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-export-map-arcgis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/conversion_formatos/conversion_formatos_desde_mapa_pro.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-export-map-arcgis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;9.8: Exportación directa de entidades desde el panel de contenido en ArcGIS Pro.
+</figcaption>
+</figure>
+</div>
+<hr>
+</section>
+<section id="desde-el-panel-de-catálogo-catalog-pane" class="level4">
+<h4 class="anchored" data-anchor-id="desde-el-panel-de-catálogo-catalog-pane">3. Desde el panel de catálogo (catalog pane)</h4>
+<p>Ideal para gestionar y convertir archivos directamente desde el disco duro o bases de datos sin necesidad de cargarlos previamente al mapa para visualizarlos.</p>
+<ul>
+<li><strong>Ruta:</strong> Para abrir el catálogo ve al menú <code>View</code> (Vista) -&gt; <code>Catalog Pane</code> (Panel de catálogo).</li>
+<li><strong>Proceso:</strong> <code>Clic Derecho</code> sobre el dato de interés -&gt; <code>Export</code> (Exportar) -&gt; <em>Seleccionar la opción deseada</em>.</li>
+</ul>
+<blockquote class="blockquote">
+<p><strong>Nota:</strong> Las opciones de exportación que aparecen en el menú desplegable son dinámicas y dependen estrictamente del tipo de archivo seleccionado por el usuario. La imagen a continuación muestra el ejemplo de las opciones habilitadas al seleccionar un archivo <strong>Shapefile</strong>:</p>
+</blockquote>
+<div id="fig-export-catalog-arcgis" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-export-catalog-arcgis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/conversion_formatos/intercambio_de_formatos_desde_el_catalogo_pro.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-export-catalog-arcgis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;9.9: Opciones de exportación contextuales desde el panel de catálogo en ArcGIS Pro.
+</figcaption>
+</figure>
+</div>
+</section>
+</div>
+<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
+<p>De manera análoga a ArcGIS Pro, QGIS ofrece diferentes vías para la conversión e intercambio de formatos, apoyándose fuertemente en las librerías GDAL (para ráster) y OGR (para vectores). A continuación, se detallan los tres métodos principales:</p>
+<section id="desde-la-caja-de-herramientas-de-procesos-processing-toolbox" class="level4">
+<h4 class="anchored" data-anchor-id="desde-la-caja-de-herramientas-de-procesos-processing-toolbox">1. Desde la caja de herramientas de procesos (processing toolbox)</h4>
+<p>Este método es ideal para procesos por lotes (Batch) y para acceder a los algoritmos nativos de GDAL/OGR con control total sobre los parámetros de conversión.</p>
+<ul>
+<li><strong>Ruta:</strong> Menú <code>Processing</code> (Procesos) -&gt; <code>Toolbox</code> (Caja de herramientas).</li>
+</ul>
+<div id="fig-toolbox-qgis" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-toolbox-qgis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/conversion_formatos/caja_herramientas_qgis.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-toolbox-qgis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;9.10: Caja de herramientas de procesos en QGIS.
+</figcaption>
+</figure>
+</div>
+<p>Dentro de la caja de herramientas, las opciones de conversión se encuentran distribuidas en diferentes grupos, principalmente bajo <strong>GDAL</strong>, <strong>Database</strong> (Base de datos) y <strong>Vector general</strong> (Vectorial general):</p>
+<ul>
+<li><p><strong>Conversiones Ráster y Vectoriales (GDAL):</strong></p>
+<ul>
+<li><strong>En <code>GDAL</code> -&gt; <code>Raster conversion</code> (Conversión ráster):</strong>
+<ul>
+<li><code>Translate (convert format)</code> (Traducir [convertir formato]): Es la herramienta principal para convertir entre formatos ráster (ej. TIFF a JPEG, o a un GeoPackage).</li>
+<li><code>Polygonize (raster to vector)</code> (Poligonizar [ráster a vector]): Convierte píxeles de un ráster a polígonos vectoriales.</li>
+</ul>
+<div id="fig-gdal-raster-qgis" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-gdal-raster-qgis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/conversion_formatos/conversion_raster_gdal_qgis.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-gdal-raster-qgis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;9.11: Herramientas de conversión ráster de GDAL en QGIS.
+</figcaption>
+</figure>
+</div></li>
+<li><strong>En <code>GDAL</code> -&gt; <code>Vector conversion</code> (Conversión vectorial):</strong>
+<ul>
+<li><code>Convert format</code> (Convertir formato): Permite convertir masivamente formatos vectoriales (ej. de Shapefile a GeoPackage, GeoJSON, KML, etc.).</li>
+<li><code>Rasterize (vector to raster)</code> (Rasterizar [vector a ráster]): Convierte entidades vectoriales a formato ráster.</li>
+</ul>
+<div id="fig-gdal-vector-qgis" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-gdal-vector-qgis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/conversion_formatos/rasteriza_vector_to_raster.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-gdal-vector-qgis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;9.12: Herramientas de conversión vectorial de GDAL en QGIS.
+</figcaption>
+</figure>
+</div></li>
+</ul></li>
+<li><p><strong>Conversiones a Bases de Datos y Otros Formatos (Export):</strong></p>
+<ul>
+<li><strong>En el grupo <code>Database</code> (Base de datos):</strong> Encuentras algoritmos específicos para bases de datos espaciales, como <code>Export to PostgreSQL</code> (Exportar a PostgreSQL) y <code>Export to SpatiaLite</code> (Exportar a SpatiaLite).</li>
+<li><strong>En el grupo <code>Vector general</code> (Vectorial general):</strong> Herramientas nativas de QGIS como <code>Save vector features to file</code> (Guardar entidades vectoriales a archivo) (que funciona como un guardado masivo) y <code>Export layers to DXF</code> (Exportar capas a DXF) para transformar datos espaciales en formatos CAD.</li>
+<li><strong>En <code>GDAL</code> -&gt; <code>Vector miscellaneous</code> (Miscelánea vectorial):</strong> Opciones alternativas manejadas por GDAL para conectarse y exportar datos a bases de datos como PostgreSQL.</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="desde-la-capa-en-el-panel-de-capas-layers-panel" class="level4">
+<h4 class="anchored" data-anchor-id="desde-la-capa-en-el-panel-de-capas-layers-panel">2. Desde la capa en el panel de capas (layers panel)</h4>
+<p>Al igual que en ArcGIS Pro, este es el método más utilizado en el trabajo diario cuando la capa ya está cargada en el lienzo del mapa. Permite guardar selecciones específicas y ofrece un control granular sobre qué atributos exportar. También permite aplicar una transformación de coordenadas al vuelo (reproyectar) durante la exportación.</p>
+<ul>
+<li><strong>Ruta:</strong> <code>Clic Derecho</code> sobre la capa (en el panel <code>Layers</code> (Capas)) -&gt; <code>Export</code> (Exportar) -&gt; <code>Save Features As...</code> (Guardar entidades como…) (para vectores) o <code>Save As...</code> (Guardar como…) (para imágenes).</li>
+</ul>
+<div id="fig-export-layer-qgis" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-export-layer-qgis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/conversion_formatos/exportar_capa_qgis.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:65.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-export-layer-qgis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;9.13: Exportación de datos espaciales desde el panel de capas en QGIS.
+</figcaption>
+</figure>
+</div>
+<blockquote class="blockquote">
+<p><strong>Nota:</strong> El cuadro de diálogo de <code>Save Vector Layer as...</code> (Guardar capa vectorial como…) es extremadamente potente. No solo permite cambiar el formato, sino que también te permite cambiar el Sistema de Referencia de Coordenadas (CRS), seleccionar qué campos de la tabla de atributos conservar y definir parámetros específicos de la capa (Layer Options) como la geometría.</p>
+</blockquote>
+<div id="fig-save-vector-qgis" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-save-vector-qgis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/conversion_formatos/save_features_as_dialog_qgis.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-save-vector-qgis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;9.14: Cuadro de diálogo de guardado avanzado vectorial en QGIS.
+</figcaption>
+</figure>
+</div>
+<hr>
+</section>
+<section id="desde-el-panel-del-navegador-browser-panel" class="level4">
+<h4 class="anchored" data-anchor-id="desde-el-panel-del-navegador-browser-panel">3. Desde el panel del navegador (browser panel)</h4>
+<p>El panel del navegador en QGIS actúa como un catálogo. Aunque tradicionalmente se usa más para cargar datos arrastrándolos al mapa, también permite exportar datos físicos de manera directa, así como gestionar bases de datos espaciales.</p>
+<ul>
+<li><strong>Ruta:</strong> Para abrir el navegador ve al menú <code>View</code> (Ver) -&gt; <code>Panels</code> (Paneles) -&gt; <code>Browser</code> (Navegador).</li>
+</ul>
+<div id="fig-browser-qgis" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-browser-qgis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/conversion_formatos/panel_navegador_qgis.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:35.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-browser-qgis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;9.15: Panel del navegador utilizado para gestionar archivos en QGIS.
+</figcaption>
+</figure>
+</div>
+<ul>
+<li><strong>Proceso:</strong> <code>Clic Derecho</code> sobre el archivo o tabla de base de datos de interés -&gt; <code>Export Layer</code> (Exportar capa) -&gt; <code>To File...</code> (A archivo…). Aparecerá nuevamente el cuadro de diálogo <code>Save Vector Layer as...</code> (Guardar capa vectorial como…).</li>
+</ul>
+<div id="fig-export-browser-qgis" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-export-browser-qgis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/conversion_formatos/exportar_navegador_qgis.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:65.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-export-browser-qgis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;9.16: Proceso de exportación directa desde el navegador de QGIS.
+</figcaption>
+</figure>
+</div>
+<blockquote class="blockquote">
+<p><strong>Tip para bases de datos:</strong> Desde el navegador, una de las formas más rápidas de convertir formatos es simplemente arrastrar un archivo (como un Shapefile) y soltarlo dentro de una conexión de base de datos (como un GeoPackage o PostGIS) para importarlo instantáneamente.</p>
+</blockquote>
+</section>
+</div>
+<div id="tabset-3-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-3-tab">
+<p>GRASS GIS es un software espacial de grado científico que viene integrado como un proveedor nativo dentro de la caja de herramientas de procesos de QGIS. Sus herramientas de conversión son vitales en análisis avanzados porque exigen y aplican una limpieza topológica estricta a los datos geométricos.</p>
+<p>GRASS GIS funciona bajo una estructura particular organizada en <strong>Database</strong>, <strong>Location</strong> y <strong>Mapset</strong>, la cual garantiza la <em>integridad topológica</em> al no operar directamente sobre archivos sueltos. Todos los algoritmos de GRASS siguen una nomenclatura lógica: <code>módulo.acción.formato</code>. El módulo vectorial usa la letra <code>v</code> y el módulo ráster usa la letra <code>r</code>. Las acciones son <code>in</code> para importar datos a la estructura particular de GRASS y <code>out</code> para exportar datos desde esta hacia otras plataformas.</p>
+<div id="fig-grass-tools" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-grass-tools-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/conversion_formatos/herramientas_grass_qgis.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:25.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-grass-tools-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;9.17: Estructura de los módulos de GRASS en la caja de procesos de QGIS.
+</figcaption>
+</figure>
+</div>
+<section id="módulos-de-importación-in" class="level4">
+<h4 class="anchored" data-anchor-id="módulos-de-importación-in">1. Módulos de importación (in)</h4>
+<p>Sirven para “convertir” e ingresar datos externos hacia el estricto formato interno de GRASS. Las herramientas de importación terminan en <code>.in</code> (del inglés <em>input</em> [entrada]).</p>
+<ul>
+<li><strong>Vectoriales (<code>v.in.*</code>):</strong> &nbsp; &nbsp; * Encontrarás comandos muy útiles para importar y corregir topología de varios formatos. Ejemplos destacados incluyen <code>v.in.wfs</code> para traer datos de servicios web, o <code>v.in.e00</code> para leer archivos antiguos de intercambio.</li>
+</ul>
+<div id="fig-grass-import-vector" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-grass-import-vector-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/conversion_formatos/grass_import_vector_qgis.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:30.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-grass-import-vector-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;9.18: Herramientas de importación vectorial en GRASS.
+</figcaption>
+</figure>
+</div>
+<ul>
+<li><strong>Ráster (<code>r.in.*</code>):</strong> &nbsp; &nbsp; * Existen importadores dedicados como <code>r.in.lidar</code> para datos de elevación de nubes de puntos.</li>
+</ul>
+<div id="fig-grass-import-raster" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-grass-import-raster-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/conversion_formatos/grass_import_raster_qgis.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:30.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-grass-import-raster-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;9.19: Herramientas de importación ráster en GRASS.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="módulos-de-exportación-out" class="level4">
+<h4 class="anchored" data-anchor-id="módulos-de-exportación-out">2. Módulos de exportación (out)</h4>
+<p>Se utilizan para “convertir” y sacar los datos ya procesados en el entorno topológico de GRASS hacia formatos estándar reconocibles por otros SIG. Estas herramientas terminan en <code>.out</code> (del inglés <em>output</em> [salida]).</p>
+<ul>
+<li><strong>Vectoriales (<code>v.out.*</code>):</strong> &nbsp; &nbsp; * Herramientas como <code>v.out.dxf</code> para enviar geometrías a CAD, o <code>v.out.postgis</code> que facilita la carga directa y estructurada a una base de datos espacial PostgreSQL.</li>
+</ul>
+<div id="fig-grass-export-vector" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-grass-export-vector-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/conversion_formatos/grass_export_vector_qgis.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:30.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-grass-export-vector-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;9.20: Herramientas de exportación vectorial en GRASS.
+</figcaption>
+</figure>
+</div>
+<ul>
+<li><strong>Ráster (<code>r.out.*</code>):</strong> &nbsp; &nbsp; * GRASS ofrece un nivel de detalle avanzado para exportar matrices numéricas. Puedes convertir tus modelos ráster a formatos de texto plano legibles por máquina con <code>r.out.ascii</code>, exportarlos como imágenes ligeras para la web con <code>r.out.png</code>, o utilizar formatos matemáticos como <code>r.out.mat</code>.</li>
+</ul>
+<div id="fig-grass-export-raster" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-grass-export-raster-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/conversion_formatos/grass_export_raster_qgis.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:30.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-grass-export-raster-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;9.21: Herramientas de exportación ráster en GRASS.
+</figcaption>
+</figure>
+</div>
+</section>
+</div>
+</div>
+</div>
+</section>
+<section id="ejercicios" class="level2" data-number="9.5">
+<h2 data-number="9.5" class="anchored" data-anchor-id="ejercicios"><span class="header-section-number">9.5</span> Ejercicios</h2>
+<section id="ejercicio-1-migración-de-bases-de-datos-obsoletas-.mdb-a-formatos-modernos" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-1-migración-de-bases-de-datos-obsoletas-.mdb-a-formatos-modernos">Ejercicio 1: Migración de bases de datos obsoletas (.mdb) a formatos modernos</h3>
+<p><strong>Nota importante:</strong> Las bases de datos personales de Esri (<code>.mdb</code>) están construidas sobre tecnología antigua de 32 bits de Microsoft Access. Dado que ArcGIS Pro es una arquitectura moderna de 64 bits, ha dejado de soportar este formato. Para recuperar, leer y modernizar estos datos, utilizaremos QGIS como “puente” gracias a su potente compatibilidad mediante la librería GDAL/OGR.</p>
+<p>A continuación, se presentan tres métodos en QGIS para migrar todos los datos de una <code>.mdb</code> hacia formatos modernos como GeoPackage (<code>.gpkg</code>) o File Geodatabase (<code>.gdb</code>).</p>
+<section id="método-a-empaquetar-capas-a-geopackage" class="level4">
+<h4 class="anchored" data-anchor-id="método-a-empaquetar-capas-a-geopackage">Método A: Empaquetar capas a GeoPackage</h4>
+<ul>
+<li><strong>Objetivo:</strong> Agrupar todas las capas cargadas desde la base de datos antigua en un solo archivo estándar y abierto (GeoPackage).</li>
+<li><strong>Herramientas:</strong> Menú <code>Processing</code> (Procesos) -&gt; <code>Toolbox</code> (Caja de herramientas) -&gt; <code>Database</code> (Base de datos) -&gt; <code>Package layers</code> (Empaquetar capas).</li>
+<li><strong>Proceso:</strong> Cargue primero las capas del <code>.mdb</code> al panel de capas de QGIS. Abra la herramienta, seleccione las 7 capas cargadas como entrada (también puede arrastrar todas las capas desde el panel de capas hacia la herramienta) y ejecute.</li>
+<li><strong>Datos de entrada:</strong> Capas cargadas desde <code>GreenvalleyDB.mdb</code>.</li>
+<li><strong>Datos de salida:</strong> <code>GreenValleyDB.gpkg</code> (almacenado en la carpeta <code>geodatabase</code>).</li>
+</ul>
+<div id="fig-package-layers" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-package-layers-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/conversion_formatos/package_layer_qgis_mdb_gdb.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-package-layers-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;9.22: Herramienta para empaquetar múltiples capas a un GeoPackage en QGIS.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="método-b-conversión-directa-a-file-geodatabase-gdal" class="level4">
+<h4 class="anchored" data-anchor-id="método-b-conversión-directa-a-file-geodatabase-gdal">Método B: Conversión directa a File Geodatabase (GDAL)</h4>
+<ul>
+<li><strong>Objetivo:</strong> Convertir la base de datos antigua completa directamente a una File Geodatabase de Esri (<code>.gdb</code>) en un solo paso mediante procesos por lotes de GDAL.</li>
+<li><strong>Herramientas:</strong> Menú <code>Processing</code> (Procesos) -&gt; <code>Toolbox</code> (Caja de herramientas) -&gt; <code>GDAL</code> -&gt; <code>Vector conversion</code> (Conversión vectorial) -&gt; <code>Convert format</code> (Convertir formato).</li>
+<li><strong>Proceso:</strong> Ingrese la ruta del archivo <code>.mdb</code> original. Es vital marcar la casilla <strong>“Convert all layers from dataset”</strong> (Convertir todas las capas del conjunto de datos) para que migre toda la base de datos y no solo una tabla.</li>
+<li><strong>Datos de entrada:</strong> <code>GreenvalleyDB.mdb</code>.</li>
+<li><strong>Datos de salida:</strong> <code>GreenValleyDB.gdb</code> (almacenado en la carpeta <code>geodatabase</code>).</li>
+</ul>
+<blockquote class="blockquote">
+<p>Nota: Esta interfáz gráfica simplemente corre el comando <code>ogr2ogr -f OpenFileGDB</code></p>
+</blockquote>
+<div id="fig-convert-format" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-convert-format-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/conversion_formatos/convert_format_qgis_mdb_gdb.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-convert-format-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;9.23: Uso del algoritmo Convert format de GDAL para transformar bases de datos enteras.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="método-c-creación-y-arrastre-desde-el-panel-del-navegador" class="level4">
+<h4 class="anchored" data-anchor-id="método-c-creación-y-arrastre-desde-el-panel-del-navegador">Método C: Creación y arrastre desde el panel del navegador</h4>
+<ul>
+<li><strong>Objetivo:</strong> Crear una File Geodatabase vacía desde cero y migrar las capas visualmente arrastrándolas entre directorios.</li>
+<li><strong>Herramientas:</strong> Panel del navegador (<code>Browser</code>) en QGIS.</li>
+<li><strong>Proceso:</strong>
+<ol type="1">
+<li><p>Haga clic derecho sobre la carpeta de destino (<code>geodatabase</code>), seleccione <code>New</code> (Nuevo) y luego <code>ESRI FileGeodatabase...</code> para crear la base vacía.</p></li>
+<li><p>Despliegue el contenido del archivo <code>GreenvalleyDB.mdb</code> en el navegador, seleccione todas sus capas (con la tecla <em>Shift</em>), arrástrelas y suéltelas sobre la nueva base de datos.</p></li>
+<li><p>Utilice el botón de refrescar para confirmar la copia de los datos.</p>
+<ul>
+<li><p><strong>Datos de entrada:</strong> Capas internas de <code>GreenvalleyDB.mdb</code> (ej. <code>buildings_point</code>, <code>flood_polygon</code>, etc.).</p></li>
+<li><p><strong>Datos de salida:</strong> <code>GrenValleyDB2.gdb</code> (almacenado en la carpeta <code>geodatabase</code>).</p></li>
+</ul></li>
+</ol></li>
+</ul>
+<div id="fig-drag-drop-gdb" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-drag-drop-gdb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/conversion_formatos/arrasrtar_soltar_qgis_mdb_gdb.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-drag-drop-gdb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;9.24: Proceso de creación, arrastre y copiado de datos mediante el navegador de QGIS.
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="ejercicio-2-exportación-de-capas-vectoriales-a-formatos-cad-dxf" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-2-exportación-de-capas-vectoriales-a-formatos-cad-dxf">Ejercicio 2: Exportación de capas vectoriales a formatos CAD (DXF)</h3>
+<ul>
+<li><p><strong>Objetivo:</strong> Exportar capas vectoriales a formatos estandarizados de diseño asistido por computadora para facilitar el intercambio con software de ingeniería.</p></li>
+<li><p><strong>Herramientas:</strong></p>
+<ul>
+<li><strong>ArcGIS Pro:</strong> <code>Conversion Tools</code> (Herramientas de conversión) -&gt; <code>To CAD</code> (A CAD) -&gt; <code>Export to CAD</code> (Exportar a CAD).</li>
+<li><strong>QGIS:</strong> Menú <code>Project</code> (Proyecto) -&gt; <code>Import/Export</code> (Importar/Exportar) -&gt; <code>Export project to DXF</code> (Exportar proyecto a DXF) o desde la caja de herramientas GDAL <code>Export layers to DXF</code> (Exportar capas a DXF).</li>
+</ul></li>
+<li><p><strong>Datos de entrada:</strong> Capas vectoriales almacenadas en <code>GreenValleyDB.gdb</code> (por ejemplo, las capas urbanas o de infraestructura).</p></li>
+<li><p><strong>Datos de salida:</strong> Archivos espaciales CAD en formato <code>.dxf</code> (con 6 decimales de precisión en sus coordenadas) dentro de la carpeta <code>dxf</code>.</p></li>
+</ul>
+<div id="fig-export_to_cad_pro" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-export_to_cad_pro-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/conversion_formatos/export_to_cad_pro.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-export_to_cad_pro-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;9.25: Herramienta Export to CAD (Exportar a CAD) en ArcGIS Pro.
+</figcaption>
+</figure>
+</div>
+<blockquote class="blockquote">
+<p><strong>Tip avanzado para ArcGIS Pro:</strong> Si exportas entidades de puntos y deseas que se representen con una simbología específica de AutoCAD, puedes crear un campo de texto llamado <strong><code>RefName</code></strong> en tu tabla de atributos y escribir allí el nombre del bloque. Al exportar usando un archivo DWG de plantilla (Seed file) que contenga dichos bloques, ArcGIS los insertará automáticamente en la posición de cada punto.</p>
+</blockquote>
+<div id="fig-dxf_export_qgis" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-dxf_export_qgis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/conversion_formatos/dxf_export_qgis.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dxf_export_qgis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;9.26: Herramienta DXF Export (Exportar a DXF) en QGIS.
+</figcaption>
+</figure>
+</div>
+<div id="fig-dxf_export_qgis" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-dxf_export_qgis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/conversion_formatos/export_layers_dxf_qgis.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dxf_export_qgis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;9.27: Herramienta Export Layers to DXF (Exportar Capas a DXF) en QGIS.
+</figcaption>
+</figure>
+</div>
+<section id="caso-de-estudio-avanzado-en-arcgis-pro-simbología-geológica-con-atributos-automáticos" class="level4">
+<h4 class="anchored" data-anchor-id="caso-de-estudio-avanzado-en-arcgis-pro-simbología-geológica-con-atributos-automáticos">Caso de estudio avanzado en ArcGIS Pro: Simbología geológica con atributos automáticos</h4>
+<p>A continuación, se detalla un flujo de trabajo para exportar puntos de datos estructurales (buzamientos geológicos) logrando que la simbología geométrica (el bloque) y el texto asociado (el ángulo de buzamiento) se generen automáticamente dentro del archivo CAD resultante, respetando los estándares de diseño de una plantilla predefinida.</p>
+<ul>
+<li><strong>Datos de entrada GIS:</strong> Shapefile de puntos <code>buz_final.shp</code> (en carpeta /datos/shapefile_dxf/) que representa ubicaciones de medidas de buzamiento.</li>
+<li><strong>Configuración de la tabla GIS:</strong> La tabla de atributos incluye tanto campos reservados de CAD (especificados en la <a href="https://pro.arcgis.com/en/pro-app/latest/help/data/cad/reserved-cad-fields-for-dwg-and-dxf-files.htm">ayuda oficial</a> de Esri) como campos personalizados de atributo.
+<ul>
+<li><strong><code>RefName</code></strong>: Campo reservado de texto que especifica el nombre exacto del bloque CAD a insertar (por ejemplo el bloque “<strong>100000</strong>”).</li>
+<li><strong><code>DIP</code></strong>: Campo personalizado que contiene el valor numérico del ángulo de buzamiento (aplica para el bloque <strong>100000</strong>).</li>
+</ul></li>
+<li><strong>Archivo de plantilla CAD (Seed file):</strong> <code>DatosEstructuralesBloques_ATTDEF.dwg</code>. Este archivo debe contener la definición del bloque “<strong>100000</strong>” (y todos los demás bloques definidos en el campo <code>RefName</code>), y vitalmente, dentro de ese bloque debe existir una definición de atributo (<strong>ATTDEF</strong>) con la etiqueta (<strong>Tag</strong>) exacta “<strong>DIP</strong>”.</li>
+</ul>
+<div id="fig-cad-avanzado" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-cad-avanzado-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/conversion_formatos/export_to_cad_pro_seed_file_reserved_fields.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cad-avanzado-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;9.28: Visualización de la tabla de atributos de <code>buz_final.shp</code> con campos reservados (ej: <code>RefName</code>, <code>CadType</code>, <code>ScaleX</code>, …) y personalizados (<code>DIP</code>) configurados para su exportación avanzada a CAD usando una plantilla (<code>Seed file</code>) que soporta definiciones de atributos (<code>ATTDEF</code>).
+</figcaption>
+</figure>
+</div>
+<p><strong>Explicación del mecanismo técnico:</strong></p>
+<p>Cuando se ejecuta la herramienta <code>Export to CAD</code> (Exportar a CAD) en ArcGIS Pro:</p>
+<ol type="1">
+<li><strong>Lectura de geometría:</strong> ArcGIS lee la coordenada espacial XY del punto GIS.</li>
+<li><strong>Identificación del bloque:</strong> Lee el campo reservado <code>RefName</code> (ej: valor “<strong>100000</strong>”) y localiza la definición de ese bloque dentro del archivo <code>seed</code> (plantilla).</li>
+<li><strong>Inserción del bloque:</strong> Inserta el bloque geométrico “<strong>100000</strong>” en la coordenada correspondiente en el DWG resultante.</li>
+<li><strong>Mapeo dinámico de atributos:</strong> El motor de exportación GIS busca coincidencias exactas entre los nombres de los campos personalizados de la tabla GIS y las etiquetas (<strong>Tags</strong>) de los atributos (<strong>ATTDEF</strong>) definidos <em>dentro</em> del bloque CAD. Al encontrar una coincidencia exacta para “<strong>DIP</strong>”, transfiere automáticamente el valor del campo GIS al texto del atributo del bloque insertado.</li>
+</ol>
+<p><strong>Resultado:</strong></p>
+<p>En el archivo DWG creado, los puntos GIS ya no serán puntos simples, sino referencias de bloques complejos. La simbología geométrica será correcta y aparecerá un texto mostrando el ángulo de buzamiento en la posición, rotación y estilo definidos en la plantilla CAD, sin necesidad de generar textos adicionales manualmente en el DWG.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Evolución de la interoperabilidad CAD - GIS hacia entornos BIM
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Es fundamental aclarar que la interoperabilidad entre los mundos del diseño de infraestructura (CAD) y el análisis espacial (GIS) ha evolucionado drásticamente más allá de la simple exportación de líneas y polígonos en formatos tradicionales.</p>
+<p>En la actualidad, esta integración de alto nivel se rige por la metodología <strong>BIM (Building Information Modeling)</strong>. Para proyectos de ingeniería avanzada (como los generados en AutoCAD Civil 3D, Infraworks o Revit), el estándar universal de intercambio abierto es el formato <strong>IFC (Industry Foundation Classes)</strong>.</p>
+<p>Adicionalmente, motores SIG modernos como ArcGIS Pro cuentan con conectores nativos que integran directamente archivos <strong><code>.rvt</code></strong> y modelos de <strong>Civil 3D</strong>. Este salto tecnológico es crucial porque <strong>facilita la lectura directa</strong> de los elementos constructivos sin requerir conversiones intermedias destructivas, conservando intacta la riqueza de los metadatos de ingeniería y permitiendo una <strong>visualización 3D nativa</strong> para el análisis volumétrico y espacial dentro del entorno geográfico.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="ejercicio-3-despliegue-optimizado-de-una-imagen-escaneada-con-3-bandas-rgb" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-3-despliegue-optimizado-de-una-imagen-escaneada-con-3-bandas-rgb">Ejercicio 3: Despliegue optimizado de una imagen escaneada con 3 bandas (RGB)</h3>
+<p><strong>Nota técnica:</strong> Las imágenes ráster escaneadas (como mapas o fotografías aéreas antiguas) ya poseen una representación visual final destinada al ojo humano. A diferencia de las bandas de satélite crudas, un escaneo RGB no requiere estiramientos de contraste agresivos que alteren sus colores originales. Sin embargo, los SIG modernos a menudo aplican mejoras dinámicas automáticas al cargar cualquier ráster, lo que puede “lavar” o saturar los colores del escaneo.</p>
+<p>El objetivo de este ejercicio es configurar el motor de visualización para respetar los valores de color originales del escaneo y optimizar la legibilidad del texto mediante técnicas de remuestreo dinámico en <strong>ArcGIS Pro</strong> y <strong>QGIS</strong>.</p>
+<ul>
+<li><strong>Objetivo:</strong> Visualizar correctamente un mapa escaneado multibanda, verificando el mapeo RGB y ajustando las opciones de estiramiento y remuestreo para maximizar la legibilidad visual sin alterar la radiometría original del escaneo.</li>
+<li><strong>Herramientas:</strong> Funciones de visualización y simbología ráster en <strong>ArcGIS Pro</strong> y <strong>QGIS</strong>.</li>
+<li><strong>Datos de entrada:</strong> Imagen ráster escaneada <code>caleriza.tif</code> (GeoTIFF compuesto de 3 bandas, almacenado en la carpeta <code>datos</code>).</li>
+<li><strong>Datos de salida:</strong> No aplica (los cambios se visualizan en vivo en el lienzo del mapa).</li>
+</ul>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true">Flujo de trabajo en ArcGIS Pro</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false">Flujo de trabajo en QGIS</a></li></ul>
+<div class="tab-content">
+<div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
+<p>ArcGIS Pro ofrece un control visual inmediato desde la cinta de opciones (Ribbon). Al cargar la imagen <code>caleriza.tif</code>, el software mapea automáticamente las bandas 1, 2 y 3 a los canales Rojo, Verde y Azul. El desafío es que a menudo aplica un estiramiento de contraste predeterminado (ej. <em>Percent Clip</em>) que distorsiona el color real del mapa escaneado.</p>
+<p>El proceso correcto para un escaneo es eliminar el estiramiento y mejorar la nitidez al hacer zoom:</p>
+<p><strong>1. Verificación de bandas y eliminación del estiramiento de contraste:</strong></p>
+<p>Haga clic sobre la capa ráster. En el panel <code>Raster Layer</code> (Capa Raster), sección &nbsp;<code>Symbology</code> (Simbología), verifique que la simbología de despliegue sea <code>RGB</code>. Alternativamente: Cambié el <code>Stretch type</code> (Tipo de estiramiento) a <code>None</code> (Ninguno). Esto asegura que el SIG visualice los valores de color exactos que fueron escaneados.</p>
+<div id="fig-pro-symbology-none" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-pro-symbology-none-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/conversion_formatos/rgb_visualization_imagen_escaneada_pro_1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pro-symbology-none-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;9.29: Panel <code>Raster Layer</code> (Capa Raster), sección <code>Symbology</code> (Simbología) en ArcGIS Pro configurando el renderizado RGB.
+</figcaption>
+</figure>
+</div>
+<p><strong>2. Optimización dinámica de la visualización (Cinta de opciones):</strong></p>
+<p>Active la pestaña <code>Raster Layer</code> (Capa ráster) -&gt; grupo <code>Rendering</code> (Renderizado) en la cinta de opciones. Aquí puede controlar la visualización de forma global.</p>
+<ul>
+<li><p>Verifique que la opción <code>DRA</code> (Dynamic Range Adjustment [Ajuste de rango dinámico]) esté desactivada, ya que esta herramienta recalcula el contraste constantemente al navegar, lo que no se desea en un mapa escaneado.</p></li>
+<li><p>Verifique que el <code>Resampling Type</code> (Tipo de Remuestreo) está establecido por defecto a <code>Nearest Neighbor</code> (Vecino mas Cercano) y observe que el despliegue del mapa escaneado no es nítido. Por defecto, al hacer zoom sobre un ráster (especialmente texto escaneado), ArcGIS Pro utiliza el método <code>Nearest Neighbor</code>, lo que provoca una visualización “pixelada” o escalonada.</p></li>
+</ul>
+<div id="fig-pro-rendering-ribbon" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-pro-rendering-ribbon-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/conversion_formatos/rgb_visualization_imagen_escaneada_pro_2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pro-rendering-ribbon-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;9.30: Uso de la pestaña <code>Raster Layer</code> (Capa ráster) -&gt; grupo <code>Rendering</code> (Renderizado) en ArcGIS Pro para verificar el tipo de remuestreo y sus efectos en el despliegue de la imagen.
+</figcaption>
+</figure>
+</div>
+<p><strong>3. Mejora de legibilidad mediante remuestreo:</strong></p>
+<p>Para mejorar drásticamente la lectura de textos y líneas finas en un escaneo, cambie el <code>Resampling Type</code> (Tipo de remuestreo) dinámico a <code>Bilinear</code> (Bilineal) o <code>Cubic</code> (Cúbico) en la pestaña <code>Raster Layer</code> (Capa ráster) -&gt; grupo <code>Rendering</code> (Renderizado). Esto suaviza la imagen al vuelo sin alterar el archivo original, permitiendo leer el mapa con mayor nitidez.</p>
+<div id="fig-pro-resampling-compare" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-pro-resampling-compare-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/conversion_formatos/rgb_visualization_imagen_escaneada_pro_3.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pro-resampling-compare-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;9.31: Comparación visual del efecto del remuestreo dinámico en ArcGIS Pro usando <code>Cubic</code> (Cúbico).
+</figcaption>
+</figure>
+</div>
+</div>
+<div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
+<p>En QGIS, el proceso es más directo y se centraliza en la ventana de propiedades de la capa.</p>
+<p><strong>1. Configuración de simbología y remuestreo:</strong></p>
+<p>Haga doble clic (o clic derecho) sobre la capa <code>caleriza.tif</code> -&gt; pestaña <code>Symbology</code> (Simbología).</p>
+<ul>
+<li>En la sección <code>Band Rendering</code> (Renderizado de Banda), verifique que el <code>Render type</code> (Tipo de renderizado) sea <code>Multiband Color</code> (Color Multibanda).</li>
+<li>En la sección <code>Band Rendering</code> (Renderizado de Banda), luego en <code>Contrast enhancement</code> (Mejora de contraste), seleccione <code>No Enhancement</code> (Sin mejora) para respetar los colores originales del escaneo.</li>
+</ul>
+<div id="fig-qgis-symbology" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-qgis-symbology-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/conversion_formatos/rgb_visualization_imagen_escaneada_qgis_1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-qgis-symbology-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;9.32: Panel de <code>Symbology</code> (Simbología) en QGIS configurando el renderizado ráster <code>Multiband color</code> (Color multibanda) y <code>No Enhancement</code> (sin estiramiento)
+</figcaption>
+</figure>
+</div>
+<p><strong>2. Optimización de visualización:</strong></p>
+<p>Al igual que en ArcGIS Pro, <code>Nearest Neighbor</code> (Vecino más cercano) pixelará el texto al hacer zoom. En la misma pestaña de <code>Symbology</code> (Simbología), localice las opciones de <code>Resampling</code> (Remuestreo). A diferencia de otros programas, QGIS divide el remuestreo en dos configuraciones independientes para optimizar los cálculos matemáticos según el nivel de acercamiento:</p>
+<ul>
+<li><strong><code>Zoomed in</code> (Acercar):</strong> Se activa cuando hace un acercamiento más allá de la resolución nativa del ráster (un solo píxel de la imagen debe representarse usando varios píxeles de su monitor). Para evitar que los textos y líneas se vean como bloques cuadrados, cambie este método a <code>Bilinear</code> (Bilineal) o <code>Cubic</code> (Cúbico), algoritmos que interpolan transiciones suaves entre los colores.</li>
+<li><strong><code>Zoomed out</code> (Alejar):</strong> Se activa cuando se aleja la vista (múltiples píxeles de la imagen original se comprimen para caber en un solo píxel de su monitor). En este caso, cambie el método también a <code>Bilinear</code> (Bilineal) o <code>Cubic</code> (Cúbico), los cuales aplican cálculos de interpolación entre los píxeles circundantes para evitar la pérdida de líneas finas o el efecto de distorsión óptica (<em>aliasing</em>) en el mapa escaneado.</li>
+</ul>
+<div id="fig-qgis-symbology-resampling" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-qgis-symbology-resampling-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/conversion_formatos/rgb_visualization_imagen_escaneada_qgis_2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-qgis-symbology-resampling-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;9.33: Panel de <code>Symbology</code> (Simbología) en QGIS configurando el renderizado ráster para ajustar las opciones de <code>Resampling</code> (Remuestreo) dinámico para optimizar el despliegue visual.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="ejercicio-4-calcular-el-tamaño-de-una-imagen-y-georreferenciarla-con-archivo-world" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-4-calcular-el-tamaño-de-una-imagen-y-georreferenciarla-con-archivo-world">Ejercicio 4: Calcular el tamaño de una imagen y georreferenciarla con archivo world</h3>
+<p>Las imágenes que poseen una distorsión poco significativa en su cuadrícula para el trabajo a realizar, por ejemplo, las que se adquieren mediante el escaneo de mapas, o de imágenes en general que han perdido su referenciación terrestre tras haber sido rectificadas, pueden ser fácilmente georreferenciadas mediante la incorporación de un archivo de texto adjunto con estructura interna “world” y extensión con final en “w” (ej. <code>.tfw</code> para imágenes <code>.tif</code>). Para realizar esta operación es necesario, previamente, conocer el número de píxeles de la imagen, además de las coordenadas de un punto y el tamaño que en la realidad le corresponde a cada píxel (resolución espacial).</p>
+<p><strong>Descripción de los datos (<code>5O9MTN.tif</code>):</strong> Antes de proceder con la georreferenciación, es importante entender la naturaleza del archivo con el que vamos a trabajar. El nombre <strong><code>5O9MTN</code></strong> hace referencia a la <strong>Hoja 509</strong> (zona de Alcalá de Henares, Madrid) del <strong>Mapa Topográfico Nacional (MTN)</strong> de España. Técnicamente, es una composición de tres bandas capturadas por el sensor TM del satélite Landsat, recortada para coincidir con los límites de esa hoja cartográfica oficial. Debido a su origen y ubicación, el Sistema de Referencia de Coordenadas (CRS) probable de esta imagen es <strong>ED50 / UTM zone 30N (EPSG:23030)</strong>, un estándar histórico español cuyas unidades de medida métrica son los <strong>metros</strong>.</p>
+<p><strong>Paso 1: Cómo calcular el tamaño de una imagen</strong></p>
+<p>Cargue la imagen <code>5O9MTN.tif</code> (que se encuentra en la carpeta de datos) en <strong>ArcGIS Pro</strong> o <strong>QGIS</strong>.</p>
+<p>Para saber las características de la imagen <code>5O9MTN.tif</code>, haga clic sobre el nombre de la capa con el botón derecho del ratón y abra <code>Properties</code> (Propiedades):</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true"><strong>ArcGIS Pro</strong></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-2" role="tab" aria-controls="tabset-5-2" aria-selected="false"><strong>QGIS</strong></a></li></ul>
+<div class="tab-content">
+<div id="tabset-5-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-5-1-tab">
+<ul>
+<li>En <strong>ArcGIS Pro</strong>, en la ventana de propiedades de la capa, active la sección <code>Source</code> (Fuente) y expanda <code>Raster Information</code> (Información del ráster).</li>
+</ul>
+<div id="fig-arcgis-raster-properties" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-arcgis-raster-properties-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/conversion_formatos/raster_information_pro.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-arcgis-raster-properties-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;9.34: Información de la capa raster en ArcGIS Pro.
+</figcaption>
+</figure>
+</div>
+</div>
+<div id="tabset-5-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-2-tab">
+<ul>
+<li>En <strong>QGIS</strong>, en la ventana de propiedades de la capa, active la sección <code>Information</code> (Información).</li>
+</ul>
+<div id="fig-qgis-raster-properties" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-qgis-raster-properties-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/conversion_formatos/raster_information_qgis.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-qgis-raster-properties-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;9.35: Información de la capa raster en QGIS.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>La información que nos ofrece nos permite conocer el número de filas y columnas que la componen, el tipo de datos admitidos en cada celda (<code>Pixel Depth</code> [Profundidad del Pixel] y <code>Data Type</code> [Tipo de Dato]); y si existen compresiones, pirámides, etc.</p>
+<p>En el ejemplo señalado, la imagen posee 943 columnas por 623 filas, esto es, 587.489 celdas. El tamaño del píxel estaría en función de las coordenadas en las que se inscribe y está medido por las unidades de medida del mapa, por lo que no es un dato relevante hasta que no se produzca la georreferenciación.</p>
+<p><strong>Paso 2: Referenciar una imagen con documento “world” adjunto</strong></p>
+<p>Para referenciar la imagen tendremos que conocer las coordenadas X e Y de la celda situada en la parte superior izquierda de la imagen, así como el tamaño del píxel en horizontal y en vertical. Con estos datos tendremos que crear un archivo de texto (con cualquier procesador de texto, guardando el documento como un texto plano o con el mismo Bloc de notas del sistema) que contenga seis filas de datos (más una en blanco) en el siguiente orden:</p>
+<ol type="1">
+<li><strong>La primera fila</strong> hace referencia al tamaño real (<code>World coordinate</code> [Coordenada del mundo]) de los píxeles en dirección X (siempre positivo, por aumentar hacia la derecha), es decir, 30 metros (cada píxel equivale a treinta metros en el terreno).</li>
+<li><strong>La segunda</strong> (rotación respecto al eje Y) y <strong>la tercera</strong> (rotación respecto al eje X) fila hacen referencia al giro de la imagen, que puede ser posible; mientras no se soporte dicha acción, serán siempre 0 y 0.</li>
+<li><strong>La cuarta fila</strong> es el tamaño real del píxel en dirección Y (siempre negativo por disminuir en dirección hacia abajo). En este caso es -30 metros.</li>
+<li><strong>La quinta y sexta fila</strong> son las coordenadas exactas X e Y del primer píxel (al que se refieren los anteriores datos). En este caso X=427900, Y=4520833.</li>
+</ol>
+<p>Al importar el ráster, el programa identifica automáticamente sus dimensiones (conteo de píxeles horizontales y verticales). Al integrar esta información con los seis parámetros de escala, rotación y coordenadas de origen descritos en el archivo <code>5O9MTN.tfw</code>, el software calcula la posición espacial necesaria para georreferenciar la imagen correctamente.</p>
+<p><strong>Nota sobre la integridad de los datos:</strong> Evite manipular manualmente los valores numéricos del archivo world para intentar “ajustar” o corregir visualmente una imagen que se ve desplazada o torcida; esto solo provocará deformaciones geométricas asimétricas (achatamiento o estiramiento). Si la imagen requiere ajustes de posición o corrección de distorsiones, utilice las herramientas de georreferenciación de su software SIG para garantizar la precisión espacial.</p>
+<p>Abra el Bloc de notas de su sistema operativo e introduzca los datos correspondientes (recuerde dejar una fila en blanco al final):</p>
+<div id="fig-world-file" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-world-file-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/conversion_formatos/archivo_5O9MTN.tfw.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:30.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-world-file-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;9.36: Contenido exacto del archivo de texto world creado en el Bloc de notas.
+</figcaption>
+</figure>
+</div>
+<p>Ahora guarde este documento en la misma carpeta donde se ubica la imagen <code>5O9MTN.tif</code>, asignándole el nombre <code>5O9MTN.tfw</code>. Es fundamental elegir en el cuadro de diálogo la opción Tipo <code>All Files</code> (Todos los archivos) en lugar de <code>Text Documents (*.txt)</code> (Documentos de texto), por lo que llevará su mismo nombre base, pero con distinta extensión. Si el archivo apareciera con la extensión <code>.txt</code>, habría que cambiarla manualmente por <code>.tfw</code>, con la “w” alusiva a las coordenadas reales (World coordinate).</p>
+<p><strong>Ajuste de las unidades del mapa (Data Frame / Lienzo):</strong> El archivo <em>world</em> (<code>.tfw</code>) es agnóstico; solo le dice al software que el píxel mide “30 unidades”, pero no especifica si son metros, pies o grados. Si el mapa donde carga la imagen está configurado por defecto en grados decimales o pies, la imagen se dibujará con un tamaño incorrecto y no coincidirá espacialmente con ninguna capa base.</p>
+<p>Para que el archivo <code>.tfw</code> funcione correctamente al cargar la imagen, primero debemos asegurar que el mapa base utilice <strong>metros</strong>.</p>
+<ul>
+<li><strong>En ArcGIS Pro:</strong> Haga clic derecho sobre el nombre del mapa en el panel <code>Contents</code> (Contenido), elija <code>Properties</code> (Propiedades) y en la pestaña <code>Coordinate Systems</code> (Sistemas de coordenadas) asigne el sistema <strong>European Datum 1950 UTM Zone 30N</strong> (23030). Alternativamente puede cargar el mapa base <code>Imagery</code> (menú <code>Map</code> -&gt; <code>Basemap</code> -&gt; <code>Imagery</code>)</li>
+<li><strong>En QGIS:</strong> Vaya al menú <code>Project</code> (Proyecto) -&gt; <code>Properties</code> (Propiedades) -&gt; pestaña <code>CRS</code> (SRC) y busque el código <strong>EPSG:23030</strong>.</li>
+</ul>
+<p>Por último, comprobaremos los resultados abriendo un nuevo mapa en su SIG, ajustando su sistema de coordenadas como se indicó en el paso anterior, y adjuntando nuevamente <code>5O9MTN.tif</code>, que ahora nos aparecerá proyectada en las coordenadas correctas gracias a la lectura automática de su archivo <em>world</em> adjunto.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Asignación formal del Sistema de Coordenadas a la capa
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Aunque configurar el mapa en metros permite que el archivo <code>.tfw</code> posicione la imagen visualmente en el lugar correcto, <strong>la capa ráster en sí misma sigue sin tener un sistema de coordenadas definido internamente</strong> (aparecerá como <em>Unknown CRS</em> [CRS Desconocido]).</p>
+<p>Para garantizar que la imagen funcione en futuros proyectos sin importar en qué unidades esté el mapa principal, es fundamental asignarle su sistema de coordenadas definitivo:</p>
+<ol type="1">
+<li>Utilice la herramienta <code>Define Projection</code> (Definir proyección) en ArcGIS Pro o <code>Assign Projection</code> (Asignar proyección) en QGIS.</li>
+<li>Defina el CRS de la capa como <strong>ED50 / UTM zone 30N (EPSG:23030)</strong>.</li>
+</ol>
+<p>A partir de este momento, el SIG podrá realizar reproyecciones al vuelo (<em>On-the-fly projection</em>) de manera automática si se cruza con información en otros sistemas o unidades.</p>
+</div>
+</div>
+</section>
+<section id="ejercicio-5-convertir-a-ráster-una-capa-vectorial-de-puntos-asignando-a-cada-píxel-el-valor-de-un-atributo" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-5-convertir-a-ráster-una-capa-vectorial-de-puntos-asignando-a-cada-píxel-el-valor-de-un-atributo">Ejercicio 5: Convertir a ráster una capa vectorial de puntos asignando a cada píxel el valor de un atributo</h3>
+<p>En la conversión de formato vectorial a ráster, el proceso consiste en superponer una retícula (cuadrícula) sobre la capa vectorial, de modo que cada píxel hereda un valor numérico específico del objeto vectorial con el que coincide espacialmente. Para que esta conversión tenga utilidad analítica, es el usuario quien debe indicar explícitamente qué columna (campo numérico) de la tabla de atributos se usará para poblar los píxeles del nuevo ráster.</p>
+<ul>
+<li><strong>Objetivo:</strong> Convertir una capa vectorial de puntos a formato ráster, asignando a cada celda el valor de altitud del punto correspondiente y definiendo correctamente la resolución espacial.</li>
+<li><strong>Datos de entrada:</strong> Capa vectorial <code>Belvisma.shp</code> (ubicada en la carpeta <code>datos</code>), la cual contiene una muestra de puntos con altitudes de la zona de Belvís (Madrid).</li>
+<li><strong>Datos de salida:</strong> Nuevo archivo ráster <code>Belvisma2.tif</code>.</li>
+</ul>
+<p><strong>Paso 1: Carga de datos e identificación del campo de atributo</strong></p>
+<p>Cargue en su SIG la capa <code>Belvisma.shp</code>. Abra la tabla de atributos de la capa (<code>Open Attribute Table</code> [Abrir tabla de atributos]). Observe las columnas disponibles y localice el campo que contiene los valores topográficos de altura (<code>Data_Value</code>). Este será el campo vital que utilizaremos para que nuestro ráster represente verdaderamente el relieve y no un simple identificador numérico interno.</p>
+<p><strong>Paso 2: Calcular el tamaño de celda (Resolución)</strong></p>
+<p>Antes de convertir, necesitamos definir de qué tamaño (en metros) será cada píxel. Para establecer una resolución conveniente, se debe averiguar la distancia entre cualquier par de puntos del tema vectorial. Si un tamaño es muy menor, podría generar píxeles con valor nulo.</p>
+<p>Utilice la herramienta de medición (regla) de su SIG y mida la distancia horizontal o vertical entre dos puntos cercanos de la cuadrícula. En la capa <code>Belvisma</code>, la distancia entre puntos es constante (aprox. 151.3 m). Elegiremos dicho valor (redondeado a <strong>151</strong>) como resolución.</p>
+<p><strong>Paso 3: Ejecutar la conversión vectorial a ráster</strong></p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-6-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-1" role="tab" aria-controls="tabset-6-1" aria-selected="true">Flujo en ArcGIS Pro</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-2" role="tab" aria-controls="tabset-6-2" aria-selected="false">Flujo en QGIS</a></li></ul>
+<div class="tab-content">
+<div id="tabset-6-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-6-1-tab">
+<ol type="1">
+<li>Abra el panel de <code>Geoprocessing</code> (Geoprocesamiento) y busque la herramienta <code>Feature to Raster</code> (De entidad a ráster) en <code>Conversion Tools</code> -&gt; <code>To Raster</code>.</li>
+<li>Configure los siguientes parámetros principales:
+<ul>
+<li><code>Input features</code> (Entidades de entrada): <code>Belvisma</code></li>
+<li><code>Field</code> (Campo): Seleccione aquí el campo de altitud identificado en el Paso 1.</li>
+<li><code>Output raster</code> (Ráster de salida): Asígnele el nombre <code>Belvisma2.tif</code> y guárdelo en su carpeta de <code>raster</code>.</li>
+<li><code>Output cell size</code> (Tamaño de celda de salida): Escriba <strong>151</strong>.</li>
+</ul></li>
+<li>Haga clic en la pestaña superior de la herramienta llamada <code>Environments</code> (Entornos). En la sección <code>Processing Extent</code> (Extensión de procesamiento), elija <code>Extent of Layer Belvisma</code> (Igual a Belvisma) para garantizar que el ráster cubra exactamente la misma zona que los puntos originales.</li>
+<li>Ejecute la herramienta.</li>
+</ol>
+</div>
+<div id="tabset-6-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-2-tab">
+<ol type="1">
+<li>Vaya al menú superior <code>Raster</code> (Ráster) -&gt; <code>Conversion</code> (Conversión) -&gt; <code>Rasterize (Vector to Raster)</code> (Rasterizar [vectorial a ráster]).</li>
+<li>Configure los siguientes parámetros:
+<ul>
+<li><code>Input layer</code> (Capa de entrada): <code>Belvisma</code>.</li>
+<li><code>Field to use for a burn-in value</code> (Campo a usar para un valor de marcado): Seleccione el campo de altitud.</li>
+<li><code>Output raster size units</code> (Unidades del tamaño del ráster de salida): Elija <code>Georeferenced units</code> (Unidades georreferenciadas).</li>
+<li><code>Width/Horizontal resolution</code> (Ancho/Resolución horizontal): Escriba <strong>151</strong>.</li>
+<li><code>Height/Vertical resolution</code> (Alto/Resolución vertical): Escriba <strong>151</strong>.</li>
+<li><code>Output extent</code> (Extensión de salida): Haga clic en la flecha al lado derecho de la caja, elija <code>Calculate from Layer</code> (Calcular a partir de capa) y seleccione <code>Belvisma</code>.</li>
+</ul></li>
+<li>Guarde el archivo de salida como <code>Belvisma2.tif</code> (en la carpeta <code>raster</code>) y ejecute la herramienta.</li>
+</ol>
+</div>
+</div>
+</div>
+<p><strong>Paso 4: Verificación de resultados</strong></p>
+<p>Examine el resultado, haga ampliaciones e identifique los valores de la capa ráster (con la herramienta explorar o identificar) para apreciar cómo ha operado la conversión. Podrá comprobar que los valores de altitud que antes estaban en la tabla de atributos de los puntos, ahora se han convertido en el valor intrínseco de cada celda del nuevo mapa ráster.</p>
+</section>
+<section id="ejercicio-6-conversión-a-ráster-de-un-tema-vectorial-de-líneas" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-6-conversión-a-ráster-de-un-tema-vectorial-de-líneas">Ejercicio 6: Conversión a ráster de un tema vectorial de líneas</h3>
+<p>En la conversión de un formato vectorial de líneas a ráster, el píxel toma el valor correspondiente a la línea que lo corta. Si varias líneas coinciden o se cruzan dentro de un mismo píxel, el programa tomará por defecto el valor de la primera de ellas que encuentre en el proceso de conversión. Se desea transformar las líneas de las carreteras de la zona de Belvís (Madrid) a una capa ráster.</p>
+<ul>
+<li><strong>Objetivo:</strong> Convertir entidades lineales continuas a formato ráster, asegurando que la extensión y el tamaño de celda de salida coincidan exactamente con un Modelo Digital de Elevación utilizado como referencia espacial.</li>
+<li><strong>Herramientas:</strong>
+<ul>
+<li><strong>ArcGIS Pro:</strong> <code>Conversion Tools</code> (Herramientas de conversión) -&gt; <code>To Raster</code> (A ráster) -&gt; <code>Polyline to Raster</code> (Polilínea a ráster).</li>
+<li><strong>QGIS:</strong> Caja de herramientas GDAL -&gt; <code>Vector conversion</code> (Conversión vectorial) -&gt; <code>Rasterize (vector to raster)</code> (Rasterizar [vector a ráster]).</li>
+</ul></li>
+<li><strong>Datos de entrada:</strong> Capa lineal <code>Carbelvi.shp</code> (carreteras) y capa ráster <code>Belvismde</code> (DEM para referencia espacial).</li>
+<li><strong>Datos de salida:</strong> Capa ráster de infraestructura <code>Carbelvi4.tif</code>.</li>
+</ul>
+<p><strong>Paso 1: Carga de datos e identificación del campo de atributo</strong></p>
+<p>Cargue en su SIG la capa vectorial <code>Carbelvi.shp</code> y la capa ráster <code>Belvismde</code>. Esta última se utilizará únicamente como molde geométrico o referencia. Abra la tabla de atributos de la capa de carreteras (<code>Open Attribute Table</code> [Abrir tabla de atributos]). Identifique el campo <code>Codicar</code>, el cual contiene el identificador numérico o código de cada tipo de vía. Este será el valor que se quemará (“burn-in”) en los píxeles del nuevo ráster.</p>
+<p><strong>Paso 2: Ejecutar la conversión vectorial a ráster</strong></p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-7-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-1" role="tab" aria-controls="tabset-7-1" aria-selected="true">Flujo en ArcGIS Pro</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-2" role="tab" aria-controls="tabset-7-2" aria-selected="false">Flujo en QGIS</a></li></ul>
+<div class="tab-content">
+<div id="tabset-7-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-7-1-tab">
+<ol type="1">
+<li>Abra el panel de <code>Geoprocessing</code> (Geoprocesamiento) y busque la herramienta <code>Polyline to Raster</code> (Polilínea a ráster).</li>
+<li>Configure los siguientes parámetros principales:
+<ul>
+<li><code>Input Features</code> (Entidades de entrada): <code>Carbelvi</code>.</li>
+<li><code>Value field</code> (Campo de valor): Seleccione el campo <code>Codicar</code>.</li>
+<li><code>Output Raster Dataset</code> (Ráster de salida): Asígnele el nombre <code>Carbelvi4.tif</code> y guárdelo en su carpeta <code>raster</code>.</li>
+<li><code>Cell assignment type</code> (Tipo de asignación de celda): Deje el valor por defecto <code>Maximum length</code> (Longitud máxima) o <code>Maximum combined length</code> (Longitud combinada máxima) para dar prioridad a la vía que atraviesa mayor área del píxel.</li>
+<li><code>Cellsize</code> (Tamaño de celda): Escriba <strong>25</strong>.</li>
+</ul></li>
+<li>Haga clic en la pestaña superior de la herramienta llamada <code>Environments</code> (Entornos). En la sección <code>Processing Extent</code> (Extensión de procesamiento), elija <code>Extent of Layer Belvismde</code> (Igual a Belvismde) para garantizar que la nueva retícula se alinee a la misma área.</li>
+<li>Ejecute la herramienta.</li>
+</ol>
+</div>
+<div id="tabset-7-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-7-2-tab">
+<ol type="1">
+<li>Vaya al menú superior <code>Raster</code> (Ráster) -&gt; <code>Conversion</code> (Conversión) -&gt; <code>Rasterize (Vector to Raster)</code> (Rasterizar [vectorial a ráster]).</li>
+<li>Configure los siguientes parámetros:
+<ul>
+<li><code>Input layer</code> (Capa de entrada): <code>Carbelvi</code>.</li>
+<li><code>Field to use for a burn-in value</code> (Campo a usar para un valor de marcado): Seleccione el campo <code>Codicar</code>.</li>
+<li><code>Output raster size units</code> (Unidades del tamaño del ráster de salida): Elija <code>Georeferenced units</code> (Unidades georreferenciadas).</li>
+<li><code>Width/Horizontal resolution</code> (Ancho/Resolución horizontal): Escriba <strong>25</strong>.</li>
+<li><code>Height/Vertical resolution</code> (Alto/Resolución vertical): Escriba <strong>25</strong>.</li>
+<li><code>Output extent</code> (Extensión de salida): Haga clic en la flecha al lado derecho de la caja, elija <code>Calculate from Layer</code> (Calcular a partir de capa) y seleccione el ráster <code>Belvismde</code>.</li>
+</ul></li>
+<li>Guarde el archivo de salida como <code>Carbelvi4.tif</code> y ejecute la herramienta.</li>
+</ol>
+</div>
+</div>
+</div>
+<p><strong>Paso 3: Verificación de resultados</strong></p>
+<p>Examine la capa ráster obtenida realizando las ampliaciones necesarias (Zoom In). Apague temporalmente la capa vectorial original (<code>Carbelvi.shp</code>) y observe cómo las líneas suaves y continuas han sido reemplazadas por una secuencia de celdas cuadradas (“escalonadas”) que contienen el valor de la vía, coincidiendo espacialmente con la extensión geométrica del modelo digital de elevaciones.</p>
+</section>
+<section id="ejercicio-7-convertir-a-ráster-una-capa-vectorial-de-polígonos" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-7-convertir-a-ráster-una-capa-vectorial-de-polígonos">Ejercicio 7: Convertir a ráster una capa vectorial de polígonos</h3>
+<p>En la asignación de valores a los píxeles a partir de polígonos, la regla general es que el píxel toma el valor del polígono coincidente con el centro del píxel.</p>
+<ul>
+<li><strong>Objetivo:</strong> Rasterizar un mapa temático de polígonos transfiriendo un código numérico de clasificación a las celdas generadas, asegurando que la extensión y resolución coincidan con un ráster base.</li>
+<li><strong>Herramientas:</strong>
+<ul>
+<li><strong>ArcGIS Pro:</strong> <code>Conversion Tools</code> (Herramientas de conversión) -&gt; <code>To Raster</code> (A ráster) -&gt; <code>Polygon to Raster</code> (Polígono a ráster).</li>
+<li><strong>QGIS:</strong> Caja de herramientas GDAL -&gt; <code>Vector conversion</code> (Conversión vectorial) -&gt; <code>Rasterize (vector to raster)</code> (Rasterizar [vector a ráster]).</li>
+</ul></li>
+<li><strong>Datos de entrada:</strong> Capa vectorial con los polígonos de usos del suelo definidos por el Mapa Forestal de España para la zona de Belvís (<code>mfebelvis.shp</code>) y la capa ráster del DEM de Belvís (<code>Belvismde</code>).</li>
+<li><strong>Datos de salida:</strong> Rasterización temática <code>mfebelvis2.tif</code>.</li>
+</ul>
+<p><strong>Paso 1: Carga de datos y configuración del mapa de salida</strong></p>
+<p>Abra un nuevo Mapa en ArcGIS Pro o inicie un Proyecto vacío en QGIS y cargue la capa vectorial <code>mfebelvis.shp</code> y la capa ráster <code>Belvismde</code>. Esta última se usará para referencia geométrica solamente.</p>
+<p>Antes de ejecutar la herramienta, es importante tener claro que especificaremos las propiedades del mapa de salida indicando una extensión y resolución (25 metros) exactamente iguales a las de la capa <code>Belvismde</code>. Asimismo, abra la tabla de atributos de la capa de polígonos e identifique el campo <code>USO_IFN</code>, el cual contiene los códigos numéricos que representan las categorías de uso del suelo a transferir a los píxeles.</p>
+<p><strong>Paso 2: Ejecutar la conversión vectorial a ráster</strong></p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-8-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-1" role="tab" aria-controls="tabset-8-1" aria-selected="true">Flujo en ArcGIS Pro</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-8-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-2" role="tab" aria-controls="tabset-8-2" aria-selected="false">Flujo en QGIS</a></li></ul>
+<div class="tab-content">
+<div id="tabset-8-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-8-1-tab">
+<ol type="1">
+<li>Abra el panel de <code>Geoprocessing</code> (Geoprocesamiento) y busque la herramienta <code>Polygon to Raster</code> (Polígono a ráster).</li>
+<li>Configure los siguientes parámetros principales:
+<ul>
+<li><code>Input Features</code> (Entidades de entrada): <code>mfebelvis</code>.</li>
+<li><code>Value field</code> (Campo de valor): Seleccione el campo <code>USO_IFN</code>.</li>
+<li><code>Output Raster Dataset</code> (Ráster de salida): Asígnele el nombre <code>mfebelvis2.tif</code> y guárdelo en su carpeta <code>raster</code>.</li>
+<li><code>Cell assignment type</code> (Tipo de asignación de celda): Deje el valor por defecto <code>Cell center</code> (Centro de celda) para respetar la regla de conversión de polígonos.</li>
+<li><code>Cellsize</code> (Tamaño de celda): Escriba <strong>25</strong>.</li>
+</ul></li>
+<li>Haga clic en la pestaña superior de la herramienta llamada <code>Environments</code> (Entornos). En la sección <code>Processing Extent</code> (Extensión de procesamiento), elija <code>Extent of Layer Belvismde</code> (Igual a Belvismde) para garantizar que la nueva retícula se alinee correctamente a la referencia.</li>
+<li>Ejecute la herramienta.</li>
+</ol>
+</div>
+<div id="tabset-8-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-8-2-tab">
+<ol type="1">
+<li>Vaya al menú superior <code>Raster</code> (Ráster) -&gt; <code>Conversion</code> (Conversión) -&gt; <code>Rasterize (Vector to Raster)</code> (Rasterizar [vectorial a ráster]).</li>
+<li>Configure los siguientes parámetros:
+<ul>
+<li><code>Input layer</code> (Capa de entrada): <code>mfebelvis</code>.</li>
+<li><code>Field to use for a burn-in value</code> (Campo a usar para un valor de marcado): Seleccione el campo <code>USO_IFN</code>.</li>
+<li><code>Output raster size units</code> (Unidades del tamaño del ráster de salida): Elija <code>Georeferenced units</code> (Unidades georreferenciadas).</li>
+<li><code>Width/Horizontal resolution</code> (Ancho/Resolución horizontal): Escriba <strong>25</strong>.</li>
+<li><code>Height/Vertical resolution</code> (Alto/Resolución vertical): Escriba <strong>25</strong>.</li>
+<li><code>Output extent</code> (Extensión de salida): Haga clic en la flecha al lado derecho de la caja, elija <code>Calculate from Layer</code> (Calcular a partir de capa) y seleccione el ráster <code>Belvismde</code>.</li>
+</ul></li>
+<li>Guarde el archivo de salida como <code>mfebelvis2.tif</code> y ejecute la herramienta.</li>
+</ol>
+<p>El proceso a ejecutar en esta caja de diálogo [Vector Conversion - Rasterize (Vector to Raster)] es equivalente a ejecutar el siguiente comando GDAL/OGR en consola:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">gdal_rasterize</span> <span class="at">-l</span> mfebelvis <span class="at">-a</span> USO_IFN <span class="at">-tr</span> 25.0 25.0 <span class="at">-a_nodata</span> 0.0 <span class="at">-te</span> 452987.5 4486988.0 456112.5 4489988.0 <span class="at">-ot</span> Float32 <span class="at">-of</span> GTiff D:/co/conver/datos/mfebelvis.shp D:/co/conver/raster/mfebelvis2.tif</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<p><strong>Paso 3: Verificación de resultados y simbología</strong></p>
+<p>Examine la capa ráster obtenida realizando un mapa temático de categorías. Diríjase a las propiedades de la nueva capa ráster (<code>mfebelvis2.tif</code>) y cambie su simbología a <code>Unique Values</code> (Valores únicos) en ArcGIS Pro o <code>Paletted/Unique values</code> (Paletizado/Valores únicos) en QGIS.</p>
+<p>El significado de los usos codificados en los píxeles es el siguiente:</p>
+<div style="width: 50%; margin: auto;">
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">Cód.</th>
+<th style="text-align: left;">Uso del suelo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>1</strong></td>
+<td style="text-align: left;">Forestal arbolado</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>3</strong></td>
+<td style="text-align: left;">Forestal desarbolado</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>5</strong></td>
+<td style="text-align: left;">Cultivos agrícolas/ganaderos</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>7</strong></td>
+<td style="text-align: left;">Improductivo</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Compruebe los valores en la capa ráster con la herramienta Explorar o Identificar (haciendo clic sobre distintos píxeles de colores) y elimine las capas innecesarias para limpiar su espacio de trabajo.</p>
+</section>
+<section id="ejercicio-8-obtener-capas-vectoriales-a-partir-de-capas-ráster" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-8-obtener-capas-vectoriales-a-partir-de-capas-ráster">Ejercicio 8: Obtener capas vectoriales a partir de capas ráster</h3>
+<p>A partir de una capa ráster, es posible obtener otra vectorial de cualquiera de los objetos geométricos básicos tales como: puntos, líneas y polígonos. Recuerde que si la capa ráster contiene datos de tipo “real” (flotante), es necesario convertirla a datos enteros previamente.</p>
+<p>En primer lugar, se obtendrán líneas a partir de la capa de carreteras ráster y luego polígonos a partir del mapa forestal. Ambos datos de entrada (<code>Carbelvi4.tif</code> y <code>mfebelvis2.tif</code>) son los resultados obtenidos en los ejercicios previos.</p>
+<ul>
+<li><strong>Objetivo:</strong> Ejecutar el proceso de vectorización, donde zonas agrupadas y secuencias lineales de píxeles son fusionadas y generalizadas para crear nuevas geometrías de polígonos y líneas.</li>
+<li><strong>Herramientas:</strong>
+<ul>
+<li><strong>ArcGIS Pro:</strong> <code>Conversion Tools</code> (Herramientas de conversión) -&gt; <code>From Raster</code> (Desde ráster) -&gt; algoritmos <code>Raster to Polyline</code> (Ráster a polilínea) y <code>Raster to Polygon</code> (Ráster a polígono).</li>
+<li><strong>QGIS:</strong> Caja de herramientas GDAL -&gt; <code>Polygonize (raster to vector)</code> (Poligonizar [ráster a vector]) o utilizando los módulos analíticos <code>r.to.vect</code> de <strong>GRASS</strong>.</li>
+</ul></li>
+<li><strong>Datos de entrada:</strong> Ráster de clasificación lineal <code>Carbelvi4.tif</code> (campo <code>Value</code>) y ráster temático <code>mfebelvis2.tif</code> (campo <code>Value</code>).</li>
+<li><strong>Datos de salida:</strong> Clases de entidad o shapefiles derivados (ej. <code>carbelvi43.shp</code> y <code>mfebelvis23.shp</code>).</li>
+</ul>
+<hr>
+<section id="identificación-y-manejo-de-tipos-de-ráster" class="level4">
+<h4 class="anchored" data-anchor-id="identificación-y-manejo-de-tipos-de-ráster">Identificación y Manejo de Tipos de Ráster</h4>
+<p>Para el formato ráster, solo los datos que son de tipo entero (<em>integer</em>) y que tienen una tabla de atributos asociada se pueden seleccionar o vectorizar basándose en sus atributos. Los ráster de tipo flotante (<em>floating point</em>) no se pueden seleccionar directamente.</p>
+<p>Para identificar el tipo de ráster en su SIG, revise las propiedades de la capa (Pestaña <code>Source</code> -&gt; <code>Raster Information</code> -&gt; <code>Pixel Type</code>):</p>
+<table class="table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 30%">
+<col style="width: 38%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Pixel Type (Tipo de píxel)</th>
+<th style="text-align: left;">Significado Técnico</th>
+<th style="text-align: center;">¿Soporta Tabla de Atributos?</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong><code>char</code></strong></td>
+<td style="text-align: left;">Entero de 8 bits con signo</td>
+<td style="text-align: center;">Sí</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong><code>unsigned char</code></strong></td>
+<td style="text-align: left;">Entero de 8 bits sin signo</td>
+<td style="text-align: center;">Sí</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong><code>Float</code> / <code>Double</code></strong></td>
+<td style="text-align: left;">Punto flotante (valores decimales continuos)</td>
+<td style="text-align: center;">No</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Si su ráster es entero (<code>char</code> o <code>unsigned char</code>) pero no tiene tabla:</strong> puede ejecute la herramienta <code>Build Raster Attribute Table</code> (Construir tabla de atributos de ráster) para generarla.</li>
+<li><strong>Si su ráster es flotante y requiere vectorizarlo:</strong> Debe convertirlo primero a formato entero.
+<ul>
+<li><strong>ArcGIS Pro:</strong> Puede hacerlo utilizando la herramienta <code>Int</code> (en <em>Spatial Analyst</em> -&gt; <em>Math</em>) (también disponible en la caja de herramientas de Image Analyst y 3D Analyst) o exportándolo y reimportándolo definiendo el formato de salida como <code>INTEGER</code>.</li>
+<li><strong>QGIS:</strong> Menú <code>Raster</code> -&gt; <code>Conversion</code> (conversión) -&gt; <code>Translate (Convert Format)</code> [Transformar (Convertir Formato)]. En la ventana que aparece en la sección <strong>Advanced Parameters</strong> (parámetros avanzados), en la opción <code>Output data type</code> (tipo de dato de salida) seleccionar uno de los siguientes: <strong>Byte</strong> (0 a 255), <strong>Int8</strong> (-128 a 127), <strong>Int16</strong> (-32.768 a 32.767), <strong>UInt16</strong> (0 a 65.535), <strong>Int32</strong> (-2.147’483.648 a 2.147’483.647), <strong>UInt32</strong> (0 a 4.294’967.295)</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="nota-importante-selección-de-elementos-antes-de-transformar" class="level4">
+<h4 class="anchored" data-anchor-id="nota-importante-selección-de-elementos-antes-de-transformar">Nota Importante: Selección de elementos antes de transformar</h4>
+<p>Las conversiones de formato (vector a ráster o ráster a vector) se ven afectadas por todas las posibilidades de selección de elementos sobre las capas a exportar (selecciones realizadas justo antes de ejecutar la herramienta).</p>
+<p>Esto significa que, cuando se hace la conversión, un botón de opción (habilitado/deshabilitado) aparecerá con el mensaje <strong>Use the selected records: n</strong>, donde <strong>n</strong> es el número de registros seleccionados en la tabla de atributos. Si se habilita esa opción, solo los elementos seleccionados se involucrarán en el proceso, quedando sin procesar o transformar los elementos no seleccionados.</p>
+<p>A continuación se describen las principales herramientas en los SIG para realizar selecciones antes de una conversión. Los números en la primera columna corresponden a las gráficas de interfaz mostradas más abajo:</p>
+<div id="tbl-herramientas-seleccion" class="quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-herramientas-seleccion-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabla&nbsp;9.1: Principales herramientas de selección en sistemas de información geográfica.
+</figcaption>
+<div aria-describedby="tbl-herramientas-seleccion-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="table">
+<colgroup>
+<col style="width: 23%">
+<col style="width: 19%">
+<col style="width: 19%">
+<col style="width: 19%">
+<col style="width: 19%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">#</th>
+<th style="text-align: left;">Herramienta</th>
+<th style="text-align: left;">Descripción</th>
+<th style="text-align: left;">Ubicación</th>
+<th style="text-align: left;">Modo de Uso</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>(1)</strong></td>
+<td style="text-align: left;"><strong>Selección manual</strong></td>
+<td style="text-align: left;">Seleccionar elementos interactuando con el mapa.</td>
+<td style="text-align: left;">Pestaña <code>Map</code> (Mapa) o Barra de herramientas superior.</td>
+<td style="text-align: left;">Con el puntero, haga clic o dibuje una caja sobre los elementos que desea seleccionar. Use <code>Shift</code> para agregar más a la selección previa.</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>(2)</strong></td>
+<td style="text-align: left;"><strong>Select by Attributes</strong></td>
+<td style="text-align: left;">Seleccionar elementos a partir de los atributos alfanuméricos.</td>
+<td style="text-align: left;">Menú de Selección.</td>
+<td style="text-align: left;">Conformar la parte WHERE de una cláusula SQL en la ventana de la herramienta.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>(3)</strong></td>
+<td style="text-align: left;"><strong>Select by Location</strong></td>
+<td style="text-align: left;">Seleccionar a partir de propiedades espaciales (intersección, cruza, contenido, etc.) entre capas.</td>
+<td style="text-align: left;">Menú de Selección.</td>
+<td style="text-align: left;">Operando las reglas espaciales en la ventana de la herramienta.</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>(4)</strong></td>
+<td style="text-align: left;"><strong>Tabla de atributos</strong></td>
+<td style="text-align: left;">Seleccionar registros directamente de la base de datos.</td>
+<td style="text-align: left;">Clic derecho sobre la capa -&gt; <code>Open Attribute Table</code>.</td>
+<td style="text-align: left;">Clic en el margen izquierdo de la fila deseada, o usando las opciones de selección integradas en la tabla.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p><em>Nota: Todas estas opciones se ven afectadas por el método de selección activo (Crear nueva selección, Agregar a la selección actual, Remover de la selección actual, Seleccionar de la selección actual).</em></p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-9-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-1" role="tab" aria-controls="tabset-9-1" aria-selected="true"><strong>ArcGIS Pro</strong></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-9-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-2" role="tab" aria-controls="tabset-9-2" aria-selected="false"><strong>QGIS</strong></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-9-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-3" role="tab" aria-controls="tabset-9-3" aria-selected="false"><strong>Tabla de Atributos: ArcGIS Pro y QGIS</strong></a></li></ul>
+<div class="tab-content">
+<div id="tabset-9-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-9-1-tab">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/conversion_formatos/select_options_pro.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+<figcaption>Opciones de selección ArcGIS Pro. Los números hacen referencia a la tabla de herramientas (<a href="#tbl-herramientas-seleccion" class="quarto-xref">Tabla&nbsp;<span>9.1</span></a>).</figcaption>
+</figure>
+</div>
+</div>
+<div id="tabset-9-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-9-2-tab">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/conversion_formatos/select_options_qgis.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+<figcaption>Opciones de selección QGIS - Seleccionar por Expresión. Los números hacen referencia a la tabla de herramientas (<a href="#tbl-herramientas-seleccion" class="quarto-xref">Tabla&nbsp;<span>9.1</span></a>)</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/conversion_formatos/select_options_qgis2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+<figcaption>Opciones de selección QGIS - Seleccionar por Ubicación. Los números hacen referencia a la tabla de herramientas (<a href="#tbl-herramientas-seleccion" class="quarto-xref">Tabla&nbsp;<span>9.1</span></a>)</figcaption>
+</figure>
+</div>
+</div>
+<div id="tabset-9-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-9-3-tab">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/conversion_formatos/select_by_table_of_attributes.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+<figcaption>Selección usando la Tabla de Atributos: ArcGIS Pro (arriba) y QGIS (abajo). Los números hacen referencia a la tabla de herramientas (<a href="#tbl-herramientas-seleccion" class="quarto-xref">Tabla&nbsp;<span>9.1</span></a>)</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p><strong>Paso 1: Obtención de líneas</strong></p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-10-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-1" role="tab" aria-controls="tabset-10-1" aria-selected="true">Flujo en ArcGIS Pro</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-10-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-2" role="tab" aria-controls="tabset-10-2" aria-selected="false">Flujo en QGIS (vía GRASS)</a></li></ul>
+<div class="tab-content">
+<div id="tabset-10-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-10-1-tab">
+<ol type="1">
+<li>Abra la herramienta <code>Raster to Polyline</code> (Ráster a polilínea).</li>
+<li>En <code>Input raster</code> (Ráster de entrada), elija el tema de carreteras <code>Carbelvi4</code>.</li>
+<li>En <code>Field</code> (Campo), asegúrese de seleccionar el campo <strong><code>Value</code></strong> (Valor).</li>
+<li>En <code>Output polyline features</code> (Entidades de polilínea de salida), asigne el nombre <code>carbelvi43.shp</code>.</li>
+<li>Mantenga activada la opción <code>Simplify polylines</code> (Simplificar polilíneas) para generalizar las líneas (equivalente a <code>Generalize lines</code> en versiones anteriores) y ejecute.</li>
+</ol>
+</div>
+<div id="tabset-10-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-10-2-tab">
+<ol type="1">
+<li>En la Caja de Herramientas de Procesos, busque <code>r.to.vect</code> (de GRASS).</li>
+<li>En <code>Input raster layer</code> (Capa ráster de entrada), seleccione <code>Carbelvi4</code>.</li>
+<li>En <code>Feature type</code> (Tipo de entidad), elija <code>line</code> (línea).</li>
+<li>En el campo de valores, asegúrese de utilizar la columna que representa el <strong><code>Value</code></strong>.</li>
+<li>Active <code>Smooth corners of data features</code> (Suavizar esquinas) si desea generalizar la geometría.</li>
+<li>Guarde el archivo de salida como <code>carbelvi43.shp</code> y ejecute.</li>
+</ol>
+</div>
+</div>
+</div>
+<p>Observe que un nuevo tema de vías vectoriales ha sido creado y desplegado sobre su mapa base.</p>
+<p><strong>Paso 2: Obtención de polígonos</strong></p>
+<p>Repita a continuación el proceso para la capa ráster del mapa forestal de la zona de Belvís (<code>mfebelvis2.tif</code>), solicitando en la herramienta (<code>Raster to Polygon</code> en ArcGIS Pro o <code>Polygonize</code> en QGIS) que el tipo de objeto de salida sea polígono. Nuevamente, asegúrese de seleccionar el campo <strong><code>Value</code></strong> para la conversión.</p>
+<p><strong>Análisis de los resultados de salida:</strong> Abra la tabla de atributos de la nueva capa vectorial de polígonos generada (<code>mfebelvis23.shp</code>). Observe que: 1. El valor temático de cada píxel (el código de uso del suelo) se almacena en una columna específica, generalmente llamada <code>gridcode</code> o <code>grid_code</code>, de cada polígono resultante. 2. Además, cada polígono nuevo creado tiene un identificador distinto y único (el <code>ID</code> o <code>FID</code>) que puede servir para vincular cada uno de ellos con un registro externo de la tabla de atributos.</p>
+</section>
+</section>
+<section id="ejercicio-9-importar-una-capa-vectorial-a-una-base-de-datos-postgis" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-9-importar-una-capa-vectorial-a-una-base-de-datos-postgis">Ejercicio 9: Importar una capa vectorial a una base de datos PostGIS</h3>
+<p>El almacenamiento de datos espaciales en bases de datos relacionales como PostgreSQL (con su extensión espacial PostGIS) es el estándar actual. En este ejercicio, nos conectaremos a un contenedor local de PostGIS.</p>
+<p>Aprovecharemos este ejercicio para ilustrar una limitación clásica de interoperabilidad: intentaremos exportar los datos usando ArcGIS Pro (lo cual nos arrojará un error por diseño del software) y luego resolveremos la tarea usando QGIS, que nos permite escribir sin restricciones en bases de datos nativas.</p>
+<ul>
+<li><strong>Objetivo:</strong> Establecer una conexión a PostGIS, comprender las restricciones de escritura de los clientes comerciales sobre bases de datos crudas, e importar exitosamente el shapefile.</li>
+<li><strong>Herramientas:</strong> Conector de bases de datos de ArcGIS Pro (para explorar la restricción) y el <strong>DB Manager</strong> (Administrador de BBDD) de QGIS (para la carga exitosa).</li>
+<li><strong>Datos de entrada:</strong> Capa poligonal <code>mfebelvis.shp</code>.</li>
+<li><strong>Datos de salida:</strong> Tabla espacial <code>mfebelvis</code> almacenada dentro de la base de datos PostgreSQL.</li>
+</ul>
+<p><strong>Paso 1: Parámetros de conexión</strong></p>
+<p>Asegúrese de que su contenedor Docker (<code>contenedor_postgis_unal</code>) esté en ejecución. Los parámetros que utilizaremos son los siguientes:</p>
+<ul>
+<li><strong>Host / Servidor:</strong> <code>127.0.0.1</code></li>
+<li><strong>Puerto:</strong> <code>5434</code></li>
+<li><strong>Base de datos:</strong> <code>sig_db_unal</code></li>
+<li><strong>Usuario:</strong> <code>profe_unal</code></li>
+<li><strong>Contraseña:</strong> <code>geomatica2025</code></li>
+</ul>
+<p><strong>Paso 2: Conexión, el error 000210 y la importación exitosa</strong></p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-11-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-11-1" role="tab" aria-controls="tabset-11-1" aria-selected="true">Flujo en ArcGIS Pro (El Error Educativo)</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-11-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-11-2" role="tab" aria-controls="tabset-11-2" aria-selected="false">Flujo en QGIS (La Solución)</a></li></ul>
+<div class="tab-content">
+<div id="tabset-11-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-11-1-tab">
+<ol type="1">
+<li>En el panel <strong>Catalog</strong> (Catálogo), haga clic derecho en <strong>Databases</strong> (Bases de datos) y seleccione <strong>New Database Connection</strong> (Nueva conexión de base de datos).</li>
+<li>Configure la ventana con los parámetros del Paso 1. Para agregar el puerto, en la sección <strong>Additional Properties</strong> (Propiedades adicionales), escriba <code>Port</code> y <code>5434</code>. Haga clic en <strong>OK</strong> (Aceptar).</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/conversion_formatos/conexion_postgis_pro.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:55.0%"></p>
+<figcaption>Configuración de conexión a PostgreSQL en ArcGIS Pro.</figcaption>
+</figure>
+</div>
+<ol start="3" type="1">
+<li>Haga clic derecho sobre su capa <code>mfebelvis</code> -&gt; <strong>Data</strong> (Datos) -&gt; <strong>Export Features</strong> (Exportar entidades).</li>
+<li>En <strong>Output Feature Class</strong> (Clase de entidad de salida), navegue hasta su conexión. Verá que ArcGIS intenta nombrar la salida como <code>sig_db_unal.profe_unal.mfebelvis</code>. Si intenta forzar la salida hacia el esquema público (<code>sig_db_unal.public.mfebelvis</code>) y ejecuta, <strong>la herramienta fallará</strong>.</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/conversion_formatos/export_features_postgis_pro.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:85.0%"></p>
+<figcaption>Herramienta Export Features. A la izquierda la ruta por defecto, a la derecha el intento forzando el esquema public.</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/conversion_formatos/error_no_esquema_profe_unal.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+<figcaption>ERROR 000210 al intentar exportar la capa desde ArcGIS Pro a PostgreSQL nativo.</figcaption>
+</figure>
+</div>
+<section id="error-000210-al-cargar-un-shapefile-en-postgresqlpostgis" class="level5">
+<h5 class="anchored" data-anchor-id="error-000210-al-cargar-un-shapefile-en-postgresqlpostgis">ERROR 000210 al cargar un Shapefile en PostgreSQL/PostGIS</h5>
+<p><strong>¿Qué significa el ERROR 000210?</strong></p>
+<p>En ArcGIS Pro, el <strong><code>ERROR 000210: Cannot create output</code></strong> indica que el sistema no puede crear el dataset de salida. Cuando se trabaja con PostgreSQL + PostGIS (sin habilitar <em>Enterprise Geodatabase</em>), este error generalmente está relacionado con <strong>permisos, esquemas y propiedad</strong>, no con el shapefile en sí.</p>
+<p><strong>¿Por qué ocurre en una base PostgreSQL/PostGIS nativa?</strong></p>
+<p>En una conexión directa a PostgreSQL:</p>
+<ul>
+<li>ArcGIS Pro intenta crear la tabla en el <strong>esquema asociado al usuario conectado</strong>.</li>
+<li>PostgreSQL, por convención, utiliza un esquema con el mismo nombre del usuario.</li>
+<li>El usuario debe:
+<ul>
+<li>Tener un esquema propio.</li>
+<li>Ser propietario (<em>owner</em>) de ese esquema.</li>
+<li>Tener permisos <code>CREATE</code> y <code>USAGE</code>.</li>
+</ul></li>
+</ul>
+<p>Si el esquema no existe o el usuario no es propietario, ArcGIS Pro no puede crear la tabla y genera el <code>ERROR 000210</code>.</p>
+<blockquote class="blockquote">
+<p>No se trata exactamente de una “regla de seguridad de Esri”, sino de la interacción entre:</p>
+<ul>
+<li>La gestión de esquemas y permisos en PostgreSQL.</li>
+<li>La forma en que ArcGIS Pro resuelve el esquema de escritura.</li>
+</ul>
+</blockquote>
+<p>Además, en muchas instalaciones modernas, el esquema <code>public</code> no permite la creación de objetos por defecto.</p>
+<hr>
+<p><strong>Posible solución en PostgreSQL</strong></p>
+<p>Si el usuario es <code>profe_unal</code>, se debería ejecutar el siguiente bloque desde un cliente SQL:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">SCHEMA</span> profe_unal <span class="kw">AUTHORIZATION</span> profe_unal;</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">ALL</span> <span class="kw">ON</span> <span class="kw">SCHEMA</span> profe_unal <span class="kw">TO</span> profe_unal;</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="kw">ALTER</span> <span class="fu">USER</span> profe_unal <span class="kw">SET</span> search_path <span class="kw">TO</span> profe_unal, <span class="kw">public</span>;</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Esto garantiza que: - El esquema exista. - El usuario sea propietario. - El <code>search_path</code> apunte primero a su propio esquema.</p>
+<hr>
+<p><strong>Decisión en este entorno</strong></p>
+<p>Dado que nuestro contenedor es una instalación limpia de PostgreSQL + PostGIS (sin habilitar <em>Enterprise Geodatabase</em>), y el objetivo del ejercicio no es administrar roles avanzados de bases de datos, utilizaremos QGIS para cargar los datos directamente en PostGIS y continuar el flujo de trabajo.</p>
+</section>
+</div>
+<div id="tabset-11-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-11-2-tab">
+<p>A diferencia de ArcGIS Pro, QGIS es de código abierto y nos permite interactuar de forma nativa con PostGIS sin exigir la creación de esquemas ligados al nombre de usuario.</p>
+<ol type="1">
+<li>En el panel <strong>Browser</strong> (Navegador), haga clic derecho sobre <strong>PostgreSQL</strong> y seleccione <strong>New Connection…</strong> (Conexión nueva…).</li>
+<li>Llene el formulario con los parámetros del Paso 1. En <strong>Name</strong> (Nombre) asigne un alias (ej. <code>PostGIS_UNAL</code>).</li>
+<li>Haga clic en <strong>Test Connection</strong> (Probar conexión). Si es exitosa, haga clic en <strong>OK</strong> (Aceptar).</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/conversion_formatos/conexion_postgis_qgis.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%"></p>
+<figcaption>Configuración y prueba de la nueva conexión a PostGIS en QGIS.</figcaption>
+</figure>
+</div>
+<ol start="4" type="1">
+<li>Para importar la capa:
+<ul>
+<li>Vaya al menú superior <strong>Database</strong> (Base de datos) -&gt; <strong>DB Manager</strong> (Administrador de BBDD).</li>
+<li>Despliegue el árbol de <em>PostGIS</em> -&gt; <em>PostGIS_UNAL</em> -&gt; esquema <em>public</em>.</li>
+<li>Haga clic en el botón <strong>Import Layer/File</strong> (Importar Capa/Archivo) en la barra superior (icono de flecha hacia abajo).</li>
+<li>Seleccione <code>mfebelvis</code> como entrada, asigne el nombre de tabla <code>mfebelvis</code>, active la opción <strong>Create spatial index</strong> (Crear índice espacial) y haga clic en <strong>OK</strong> (Aceptar). La importación se realizará sin ningún error de permisos.</li>
+</ul></li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/conversion_formatos/export_shapefile_postgis_qgis.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%"></p>
+<figcaption>Importación de la capa usando el Administrador de BBDD en QGIS.</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/conversion_formatos/export_shapefile_postgis_qgis_2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%"></p>
+<figcaption>Importación de la capa usando el Administrador de BBDD en QGIS. Salida después de presionar Aceptar.</figcaption>
+</figure>
+</div>
+<p>En esa misma ventana es posible previsualizar el resultado (vectores y tabla) accediendo a las pestañas correspondientes:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/conversion_formatos/export_shapefile_postgis_qgis_3.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%"></p>
+<figcaption>Previsualización de vectores y atributos usando el Administrador de BBDD en QGIS.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p><strong>Paso 3: Verificación e Interoperabilidad</strong></p>
+<p>Apague la capa shapefile original en sus paneles de capas. En QGIS, arrastre la nueva tabla espacial <code>mfebelvis</code> desde el esquema <code>public</code> hacia su lienzo de mapa.</p>
+<p><em>Nota de interoperabilidad:</em> Aunque ArcGIS Pro no nos permitió <strong>escribir</strong> los datos por sus restricciones de esquema, sí nos permite <strong>leerlos</strong>. Si regresa a ArcGIS Pro y actualiza su conexión, verá la tabla recién cargada por QGIS y podrá arrastrarla a su mapa para su visualización y análisis.</p>
+</section>
+</section>
+<section id="evaluación-final-del-capítulo" class="level2" data-number="9.6">
+<h2 data-number="9.6" class="anchored" data-anchor-id="evaluación-final-del-capítulo"><span class="header-section-number">9.6</span> Evaluación Final del Capítulo</h2>
+<p>Para poner en práctica los conceptos aprendidos sobre conversión de formatos e interoperabilidad, deberá resolver los siguientes dos ejercicios de aplicación técnica.</p>
+<section id="descarga-de-datos" class="level3">
+<h3 class="anchored" data-anchor-id="descarga-de-datos">Descarga de Datos</h3>
+<p>Puede obtener el paquete de datos necesario para estos ejercicios en el siguiente enlace: <a href="https://drive.google.com/file/d/1ZhzEN-3Cg7yP-lbsST7zk-mEq4IKvUO4/view?usp=sharing">👉 Descargar Datos del Taller de Conversión</a></p>
+<hr>
+</section>
+<section id="ejercicio-1-intercambio-de-formatos-para-visualización-web-kml" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-1-intercambio-de-formatos-para-visualización-web-kml">Ejercicio 1: Intercambio de formatos para visualización web (KML)</h3>
+<p>El formato KML (Keyhole Markup Language) es el estándar de facto para visualizar datos geográficos en tres dimensiones. Sin embargo, es un formato rígido: <strong>Google Earth no realiza proyección al vuelo</strong>; el archivo debe estar obligatoriamente en coordenadas geográficas <strong>WGS84 (EPSG:4326)</strong> para posicionarse correctamente.</p>
+<ul>
+<li><strong>Objetivo:</strong> Exportar un dato vectorial a KML asegurando la integridad espacial mediante la reproyección previa.</li>
+<li><strong>Reto:</strong> Seleccione <strong>cualquier capa vectorial</strong> de los ejercicios anteriores y expórtela a KML siguiendo estos flujos:
+<ol type="1">
+<li><strong>ArcGIS Pro (Desde el Mapa):</strong> Use la herramienta <strong>Map To KML</strong> (Mapa a KML). Observe cómo se exportan todas las capas visibles del lienzo.</li>
+<li><strong>ArcGIS Pro (Desde la Capa):</strong> Use la herramienta <strong>Layer To KML</strong> (Capa a KML). En la pestaña <strong>Environments</strong> (Entornos), verifique que el sistema de salida sea <strong>GCS_WGS_1984</strong>.</li>
+<li><strong>QGIS:</strong> Use el menú contextual -&gt; <strong>Export</strong> (Exportar) -&gt; <strong>Save Features As…</strong> (Guardar entidades como…). En el cuadro de diálogo, cambie el <strong>CRS</strong> (SRC) a <code>EPSG:4326 - WGS 84</code>.</li>
+</ol></li>
+<li><strong>Validación:</strong> Abra los archivos <code>.kmz</code> resultantes en <strong>Google Earth</strong> y verifique que caigan exactamente sobre la superficie terrestre.</li>
+</ul>
+<hr>
+</section>
+<section id="ejercicio-2-etl-espacial-y-carga-filtrada-en-postgis" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-2-etl-espacial-y-carga-filtrada-en-postgis">Ejercicio 2: ETL Espacial y carga filtrada en PostGIS</h3>
+<p>Este ejercicio simula un flujo de trabajo profesional donde se deben aplicar “reglas de negocio” (filtros) antes de cargar datos en un servidor de base de datos.</p>
+<ul>
+<li><strong>Datos de entrada:</strong> * Capa vectorial: <code>MUNICIPIOS_ISLA_WGS84.shp</code> (campo <code>NMG</code> para el nombre).
+<ul>
+<li>Filtro espacial: Archivo <code>coordenadas.kml</code> (puntos de interés).</li>
+</ul></li>
+<li><strong>Reglas de transformación:</strong>
+<ol type="1">
+<li><strong>Filtro de Atributo:</strong> No se deben cargar municipios con nombres compuestos (ej: “La Guajira” se descarta, “Magdalena” se conserva). <em>Tip: Busque valores que NO contengan espacios en el campo <code>NMG</code></em>.</li>
+<li><strong>Filtro Espacial:</strong> Solo se deben cargar los municipios que se encuentren dentro de un radio de <strong>40 km</strong> respecto a los puntos del archivo <code>coordenadas.kml</code>.</li>
+</ol></li>
+<li><strong>Carga Final:</strong> Los datos resultantes que cumplan <strong>ambas</strong> condiciones deben cargarse en el esquema <strong><code>public</code></strong> de su base de datos PostGIS local con el nombre de tabla <strong><code>mpios_kml</code></strong>.</li>
+</ul>
+<hr>
+</section>
+<section id="entregables-y-criterios-de-evaluación" class="level3">
+<h3 class="anchored" data-anchor-id="entregables-y-criterios-de-evaluación">Entregables y criterios de evaluación</h3>
+<p>El objetivo de esta evaluación es documentar el flujo lógico y demostrar la capacidad de mover datos entre plataformas de forma segura.</p>
+<p><strong>1. Archivos de Datos:</strong> * El archivo <code>.kmz</code> generado en el Ejercicio 1. * Una captura de pantalla de la tabla de atributos en PostGIS (desde el <strong>DB Manager</strong> [Administrador de BBDD] de QGIS) mostrando los registros finales de la tabla <code>mpios_kml</code>.</p>
+<p><strong>2. Documento Analítico (Quarto):</strong> Debe redactar un breve informe en <strong>Quarto (<code>.qmd</code>)</strong> y renderizarlo en <strong>HTML o PDF</strong>. En este documento debe responder:</p>
+<ul>
+<li><strong>Sobre el Ejercicio 1 (Sistemas de Coordenadas):</strong> Explique por qué es un error intentar abrir un KML con coordenadas planas (metros) en Google Earth. ¿Por qué decimos que este visor no tiene “proyección al vuelo”?</li>
+<li><strong>Sobre el Ejercicio 2 (Eficiencia ETL):</strong> Para este proceso de filtrado, ¿es más eficiente realizar primero el filtro por nombre (Atributos) o el filtro por radio de 40 km (Espacial)? Justifique su decisión pensando en el ahorro de memoria del computador.</li>
+<li><strong>Reflexión sobre Interoperabilidad:</strong> Al cargar los datos en PostGIS, vimos que ArcGIS Pro presenta restricciones con el nombre de los esquemas. Explique, basado en su experiencia en el Ejercicio 9, por qué usar QGIS como “puente” facilita la carga de datos hacia PostgreSQL/PostGIS.</li>
+</ul>
+<p><strong>3. Repositorio en GitHub:</strong> Suba su carpeta de proyecto (scripts, archivo <code>.qmd</code> y renders) a un repositorio público en su cuenta de <strong>GitHub</strong>.</p>
+<ul>
+<li><strong>Entrega:</strong> Envíe únicamente la URL de su repositorio para la calificación.</li>
+</ul>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copiado");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copiado");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./43-practica_3_clase3_coordenadas.html" class="pagination-link" aria-label="Sistemas de Coordenadas - ArcGIS Pro">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Sistemas de Coordenadas - ArcGIS Pro</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./61-presentacion_1_clase1_varios.html" class="pagination-link" aria-label="Temas por Charlar">
+        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Temas por Charlar</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

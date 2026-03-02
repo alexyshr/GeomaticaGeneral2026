@@ -22,11 +22,15 @@ book:
         - 02-guia_instalacion_A_docker.qmd
         - 03-guia_instalacion_B_qgis.qmd
         - 04-guia_instalacion_C_ArcGIS.qmd
+    - part: "Proyecto Final"
+      chapters:
+        - 38-guia_estructura_proyecto_final.qmd        
     - part: "Prácticas"        
       chapters:
         - 41-practica_1_clase2_visualizacion_dinamica.qmd
         - 42-practica_2_clase2_geoportales.qmd
         - 43-practica_3_clase3_coordenadas.qmd
+        - 44-practica_4_clase4_conversionformatos.qmd
     - part: "Presentaciones"        
       chapters:
         - 61-presentacion_1_clase1_varios.qmd
@@ -61,9 +65,13 @@ crossref:  # <--- PERSONALIZACIÓN DE REFERENCIAS
   sec-prefix: "Sección"
   eq-prefix: "Ecuación"
 
+execute:
+  freeze: auto  # 'auto' re-ejecuta solo si el archivo .qmd cambió
+
 # CONFIGURACIÓN DE BIBLIOGRAFÍA (GLOBAL)
 bibliography: referencias.bib     # Archivo BibTeX con todas las referencias
-csl: https://www.zotero.org/styles/apa  # Estilo de citación: APA
+#csl: https://www.zotero.org/styles/apa  # Estilo de citación: APA
+csl: apa.csl # Descargado de https://www.zotero.org/styles/apa
 link-citations: true             # Enlaza citas con la bibliografía
 
 # NIVEL GLOBAL (RECOMENDADO)
@@ -108,11 +116,23 @@ format:
       - bottom=2.5cm
       - left=2.5cm
       - right=2.5cm
-    
+
+    # Salida mermaid a PDF
+    mermaid-format: png
+    mermaid:
+      chrome-args: 
+        - "--no-sandbox"
+        - "--disable-gpu"
+        - "--disable-dev-shm-usage"
+        - "--headless"
+
     # CONFIGURACIÓN LaTeX (se inserta en el preámbulo)
     include-in-header:
       text: |
+        % para girar a landscape \blandscape y retornar \elandscape
+        \usepackage{pdflscape}      
         \usepackage{emptypage}   % Elimina números en páginas vacías
+        
         % \usepackage[spanish]{babel}
 
         %PAQUETES APRA COLOREO DE TABLAS
@@ -216,7 +236,7 @@ format:
     toc: true                    # Tabla de contenidos en PDF
     toc-depth: 3                 # Profundidad del TOC en PDF
     lof: true  # <--- Fuerza la Lista de Figuras
-    lot: true  # <--- Fuerza la Lista de Tablas     
+    lot: true  # <--- Fuerza la Lista de Tablas    
     #number-sections: true        # Numerar secciones en PDF
     colorlinks: true             # Enlaces en color (no cajas)
     fig-cap-location: bottom     # Ubicación de leyendas de figuras: abajo

@@ -4,6 +4,7 @@ _freeze/
 __pycache__/
 notebooks/
 scripts/
-data/
+data_heavy/
 /.quarto/
+_extensions/
 .Rhistory
