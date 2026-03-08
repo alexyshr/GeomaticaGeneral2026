@@ -1,0 +1,80 @@
+{
+    "type": "Image",
+    "bands": [
+        {
+            "id": "avg_rad",
+            "data_type": {
+                "type": "PixelType",
+                "precision": "float"
+            },
+            "dimensions": [
+                86400,
+                33600
+            ],
+            "crs": "EPSG:4326",
+            "crs_transform": [
+                0.0041666667,
+                0,
+                -180.00208525335,
+                0,
+                -0.0041666667,
+                75.00208393335001
+            ]
+        },
+        {
+            "id": "cf_cvg",
+            "data_type": {
+                "type": "PixelType",
+                "precision": "int",
+                "min": 0,
+                "max": 65535
+            },
+            "dimensions": [
+                86400,
+                33600
+            ],
+            "crs": "EPSG:4326",
+            "crs_transform": [
+                0.0041666667,
+                0,
+                -180.00208525335,
+                0,
+                -0.0041666667,
+                75.00208393335001
+            ]
+        }
+    ],
+    "version": 1683149185102750.0,
+    "id": "NOAA/VIIRS/DNB/MONTHLY_V1/VCMSLCFG/20230101",
+    "properties": {
+        "system:time_start": 1672531200000,
+        "system:footprint": {
+            "type": "LinearRing",
+            "coordinates": [
+                [
+                    -180,
+                    -90
+                ],
+                [
+                    180,
+                    -90
+                ],
+                [
+                    180,
+                    90
+                ],
+                [
+                    -180,
+                    90
+                ],
+                [
+                    -180,
+                    -90
+                ]
+            ]
+        },
+        "system:time_end": 1675209600000,
+        "system:asset_size": 4769092335,
+        "system:index": "20230101"
+    }
+}

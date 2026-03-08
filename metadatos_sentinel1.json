@@ -1,0 +1,207 @@
+{
+    "type": "Image",
+    "bands": [
+        {
+            "id": "VV",
+            "data_type": {
+                "type": "PixelType",
+                "precision": "double"
+            },
+            "dimensions": [
+                28645,
+                21988
+            ],
+            "crs": "EPSG:32618",
+            "crs_transform": [
+                10,
+                0,
+                414920.0868868121,
+                0,
+                -10,
+                595318.1968520485
+            ]
+        },
+        {
+            "id": "VH",
+            "data_type": {
+                "type": "PixelType",
+                "precision": "double"
+            },
+            "dimensions": [
+                28645,
+                21988
+            ],
+            "crs": "EPSG:32618",
+            "crs_transform": [
+                10,
+                0,
+                414920.0868868121,
+                0,
+                -10,
+                595318.1968520485
+            ]
+        },
+        {
+            "id": "angle",
+            "data_type": {
+                "type": "PixelType",
+                "precision": "float"
+            },
+            "dimensions": [
+                21,
+                10
+            ],
+            "crs": "EPSG:32618",
+            "crs_transform": [
+                -13501.807665018365,
+                -3113.1867996494984,
+                700995.9838207283,
+                2777.188511466724,
+                -20297.555843510723,
+                543292.5046945844
+            ]
+        }
+    ],
+    "version": 1773008301489533,
+    "id": "COPERNICUS/S1_GRD/S1A_IW_GRDH_1SDV_20230108T104325_20230108T104350_046691_0598C2_C3AE",
+    "properties": {
+        "SNAP_Graph_Processing_Framework_GPF_vers": "8.0.3",
+        "SLC_Processing_facility_org": "ESA",
+        "SLC_Processing_facility_country": "Italy",
+        "GRD_Post_Processing_facility_org": "ESA",
+        "transmitterReceiverPolarisation": [
+            "VV",
+            "VH"
+        ],
+        "GRD_Post_Processing_start": 1673181854097,
+        "sliceNumber": 5,
+        "GRD_Post_Processing_facility_name": "Copernicus Ground Segment",
+        "resolution": "H",
+        "SLC_Processing_facility_name": "Copernicus Ground Segment",
+        "system:footprint": {
+            "type": "LinearRing",
+            "coordinates": [
+                [
+                    -73.29744617361045,
+                    4.298621346824387
+                ],
+                [
+                    -73.2840572353524,
+                    4.3639705105159265
+                ],
+                [
+                    -73.19183693909814,
+                    4.8189279643442635
+                ],
+                [
+                    -73.18431967593129,
+                    4.898686294968328
+                ],
+                [
+                    -73.18428258769613,
+                    4.912430658883628
+                ],
+                [
+                    -73.89001918189292,
+                    5.059616016413661
+                ],
+                [
+                    -75.41196277323614,
+                    5.374114775729156
+                ],
+                [
+                    -75.53399870171515,
+                    4.797833405966846
+                ],
+                [
+                    -75.65535764206093,
+                    4.224019970963274
+                ],
+                [
+                    -75.70004332285626,
+                    4.010399013156221
+                ],
+                [
+                    -75.72182215382179,
+                    3.8817406301012647
+                ],
+                [
+                    -75.72370712588692,
+                    3.868406041322784
+                ],
+                [
+                    -75.72226271933073,
+                    3.866233823659439
+                ],
+                [
+                    -75.53277978732059,
+                    3.8267290121112785
+                ],
+                [
+                    -73.48551118942049,
+                    3.397241279636273
+                ],
+                [
+                    -73.42032451800594,
+                    3.7085298442967596
+                ],
+                [
+                    -73.347760851479,
+                    4.054525998601297
+                ],
+                [
+                    -73.3239374101926,
+                    4.169546484617666
+                ],
+                [
+                    -73.29744617361045,
+                    4.298621346824387
+                ]
+            ]
+        },
+        "familyName": "SENTINEL-1",
+        "segmentStartTime": 1673174501673,
+        "missionDataTakeID": 366786,
+        "GRD_Post_Processing_facility_country": "Italy",
+        "nssdcIdentifier": "2014-016A",
+        "productClass": "S",
+        "phaseIdentifier": 1,
+        "orbitProperties_pass": "DESCENDING",
+        "relativeOrbitNumber_stop": 69,
+        "system:time_end": 1673174605000,
+        "platformHeading": -168.0321955071988,
+        "SLC_Processing_facility_site": "Production Service-SERCO",
+        "GRD_Post_Processing_stop": 1673182512000,
+        "system:time_start": 1673174605000,
+        "instrumentMode": "IW",
+        "totalSlices": 16,
+        "SLC_Processing_stop": 1673182405000,
+        "startTimeANX": 2888098,
+        "SLC_Processing_start": 1673182029000,
+        "resolution_meters": 10,
+        "instrumentSwath": "IW",
+        "relativeOrbitNumber_start": 69,
+        "productTimelinessCategory": "Fast-24h",
+        "SLC_Processing_software_name": "Sentinel-1 IPF",
+        "sliceProductFlag": "true",
+        "S1TBX_Calibration_vers": "8.0.3",
+        "orbitNumber_start": 46691,
+        "GRD_Post_Processing_facility_site": "Production Service-SERCO",
+        "instrument": "Synthetic Aperture Radar",
+        "GRD_Post_Processing_software_name": "Sentinel-1 IPF",
+        "platform_number": "A",
+        "S1TBX_SAR_Processing_vers": "8.0.3",
+        "productType": "GRD",
+        "orbitProperties_ascendingNodeTime": 1673171717276,
+        "stopTimeANX": 2913097,
+        "productComposition": "Slice",
+        "productClassDescription": "SAR Standard L1 Product",
+        "GRD_Post_Processing_software_version": "003.52",
+        "SLC_Processing_software_version": "003.52",
+        "orbitNumber_stop": 46691,
+        "instrumentConfigurationID": 7,
+        "system:asset_size": 4136295429,
+        "cycleNumber": 281,
+        "system:index": "S1A_IW_GRDH_1SDV_20230108T104325_20230108T104350_046691_0598C2_C3AE"
+    }
+}

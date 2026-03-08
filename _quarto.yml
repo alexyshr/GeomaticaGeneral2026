@@ -1,6 +1,8 @@
 project:
   type: book                     # Tipo: libro (genera estructura de capítulos)
   output-dir: _site              # Carpeta de salida para archivos generados
+  resources:
+    - "*.html"  # <--- Agrega esto. Copiará cualquier mapa HTML a tu sitio final
 
 lang: es  # <--- VITAL: Esto activa el español para todo el proyecto (HTML y PDF)
 
@@ -24,7 +26,10 @@ book:
         - 04-guia_instalacion_C_ArcGIS.qmd
     - part: "Proyecto Final"
       chapters:
-        - 38-guia_estructura_proyecto_final.qmd        
+        - 10-guia_estructura_proyecto_final.qmd
+    - part: "Sensores Remotos"
+      chapters:
+        - 15-introduccion_sr_gee.qmd                        
     - part: "Prácticas"        
       chapters:
         - 41-practica_1_clase2_visualizacion_dinamica.qmd

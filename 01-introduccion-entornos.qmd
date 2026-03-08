@@ -1,39 +1,39 @@
-# Introducción a Entornos de Desarrollo {#intro-entornos}
+# Introducción a Entornos de Desarrollo SIG {#intro-entornos}
 
 ## Estrategia de Trabajo: Arquitectura Híbrida
 
-Para el desarrollo de la asignatura **Geomática General**, adoptaremos un enfoque que equilibra la potencia del software de escritorio con el rigor de la reproducibilidad. Esta estructura garantiza competencias tanto en la gestión de datos tradicional como en el análisis moderno.
+Para el desarrollo del curso, utilizaremos tres enfoques que permiten equilibrar la potencia del software de escritorio (comercial y libre) con el rigor de la ciencia de datos reproducible. Esta estructura garantiza que el estudiante adquiera competencias tanto en la automatización de software SIG tradicional como en el análisis de datos geoespaciales moderno.
 
 ### Comparativa de Entornos
 
-| Criterio | **Opción A: Contenedor (Docker)** | **Opción B: Nativo (QGIS)** | **Opción C: Nativo (ArcGIS Pro)** |
+| Criterio | **Opción A: Contenedor (Docker)** | **Opción B: Nativo (OSGeo4W)** | **Opción C: Nativo (ArcGIS Pro)** |
 | --- | --- | --- | --- |
-| **Tecnología** | Docker y JupyterLab. | QGIS (OSGeo4W) / Pixi (GEE). | ArcGIS Pro. |
-| **Uso Principal** | Bases de Datos y Ciencia de Datos. | Automatización y Cloud Computing. | Geoprocesamiento con ArcPy. |
-| **Ventaja** | Entorno reproducible. | Integración con GEE y Plugins. | Herramientas comerciales líderes. |
-| **Lenguajes** | Python, R y Julia (Disponibles). | Python (PyQGIS). | Python (Conda/ArcPy). |
+| **Tecnología** | Docker [@docker2025] Compose (JupyterLab). | OSGeo4W - QGIS [@rosas2022qgis] LTR. | ArcGIS Pro [@law2019getting] (Conda Environment). |
+| **Uso Principal** | Análisis masivo y Ciencia de Datos. | Automatización SIG con PyQGIS [@lawhead2017qgis]. | Geoprocesamiento y ArcPy  [@toms2015arcpy]. |
+| **Ventaja** | Entorno idéntico y reproducible. | Acceso a drivers locales y QGIS. | Herramientas comerciales avanzadas. |
+| **Lenguajes** | **Python [@python2021python], R [@rlanguage] y Julia [@bezanson2017julia]** (Preconfigurados). | **Python (PyQGIS)**. | **Python (ArcPy)**. |
 
 ### Secuencia Didáctica y Uso de Entornos
 
-El curso progresa desde la gestión estructural de la información hacia la automatización en entornos especializados:
+El curso seguirá una progresión lógica desde la abstracción de datos y bases de datos hacia la automatización en software especializado:
 
-1.  **Fase de Fundamentos y Bases de Datos**: Se utiliza la **Opción A (Docker)** para el aprendizaje de **PostGIS**. Esto permite manejar la lógica de bases de datos espaciales en un entorno controlado.
-2.  **Fase de Extensibilidad y Cloud Computing**: Se utiliza la **Opción B (QGIS)**. Esta opción se divide en dos rutas según la necesidad:
-    * **B1 (Estándar)**: Instalación vía **OSGeo4W** para automatización clásica con PyQGIS.
-    * **B2 (Avanzada)**: Uso de **Pixi** para habilitar el plugin de **Google Earth Engine (GEE)**, integrando procesamiento en la nube directamente en el SIG.
-3.  **Fase de Extensibilidad Comercial**: Se utiliza la **Opción C (ArcGIS Pro)** para procesos de geoprocesamiento avanzado y flujos de trabajo profesionales de ESRI utilizando ArcPy.
+| Etapa | Entorno Sugerido | Contenido Temático | Razón |
+| --- | --- | --- | --- |
+| **Fase 1: Fundamentos y DB (Semanas 1-7)** | **Opción A: Docker** | Principios de programación, estructuras básicas, Ciencia de Datos políglota y **PostGIS**. | Entorno controlado para aprender lógica de programación y gestión de bases de datos sin conflictos de instalación. |
+| **Fase 2: Extensibilidad Libre (Semanas 8-11)** | **Opción B: OSGeo4W** | Desarrollo de scripts, complementos y automatización dentro de QGIS. | Uso de Python (PyQGIS) para extender las capacidades del software libre más relevante. |
+| **Fase 3: Extensibilidad Comercial (Semanas 12-15)** | **Opción C: ArcGIS** | Scripts de geoprocesamiento, Toolbox y flujos de trabajo en ArcGIS Pro. | Uso de Python (ArcPy) para automatizar procesos en el entorno comercial líder. |
 
 ### Propósito según el Escenario
 
-* **Usa la Opción A**: Para talleres de SQL espacial y gestión de datos masivos de forma independiente al sistema operativo.
-* **Usa la Opción B**: Para tareas que requieran la interfaz de QGIS. Es la opción ideal cuando necesites integrar catálogos de datos satelitales globales mediante el plugin de GEE.
-* **Usa la Opción C**: Para análisis complejos que aprovechan el ecosistema de ArcGIS, por ejemplo herramientas de teledetección específicas de ESRI.
+| Escenario | **Usa la Opción A (Docker/PostGIS)** | **Usa la Opción B (QGIS/Python)** | **Usa la Opción C (ArcGIS/Python)** |
+| --- | --- | --- | --- |
+| **Prácticas de clase** | Para aprender Python y consultas SQL espaciales. | Para automatizar tareas repetitivas en QGIS. | Para crear herramientas dentro de ArcGIS Pro. |
+| **Automatización** | Para flujos de análisis de datos masivos. | Para interactuar con la API de QGIS (PyQGIS). | Para interactuar con la API de ArcGIS (ArcPy). |
+| **Ecosistema** | Independiente del Sistema Operativo. | Ecosistema de Código Abierto (OSGeo). | Ecosistema Comercial (ESRI). |
+
 
 ## Decisiones de Diseño del Entorno
 
-La elección de **Docker** como núcleo inicial responde a la necesidad de transparencia y reproducibilidad. Por otro lado, la evolución de la **Opción B** hacia el uso de gestores de entornos como Pixi responde a la necesidad de integrar herramientas de vanguardia como **Google Earth Engine** sin comprometer la estabilidad del sistema. Finalmente, el uso de **ArcGIS Pro** asegura que el estudiante domine las herramientas estándar de la industria comercial.
+La **Opción A** constituye el núcleo de la Ciencia de Datos Espaciales del curso. Al integrar **PostGIS** en este entorno, se garantiza que los estudiantes practiquen la persistencia de datos y el análisis SQL desde la primera fase. 
 
-::: {.callout-tip}
-## Sobre el uso de GEE en QGIS
-La Opción B ahora permite no solo trabajar localmente, sino extender el poder del SIG al catálogo de datos de Earth Engine, facilitando el análisis de series temporales y datos Sentinel/Landsat desde la interfaz de QGIS.
-:::
+Las **Opciones B y C** tienen como propósito específico el dominio de Python dentro de los entornos de software SIG de mayor relevancia, permitiendo al estudiante tener acceso a todas las funcionalidades, motores de renderizado y herramientas de geoprocesamiento nativas de QGIS y ArcGIS respectivamente.

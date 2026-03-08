@@ -1,0 +1,58 @@
+{
+    "type": "Image",
+    "bands": [
+        {
+            "id": "precipitation",
+            "data_type": {
+                "type": "PixelType",
+                "precision": "float"
+            },
+            "dimensions": [
+                7200,
+                2000
+            ],
+            "crs": "EPSG:4326",
+            "crs_transform": [
+                0.05,
+                0,
+                -180,
+                0,
+                -0.05,
+                50
+            ]
+        }
+    ],
+    "version": 1747258082806880.0,
+    "id": "UCSB-CHG/CHIRPS/DAILY/20230501",
+    "properties": {
+        "system:time_start": 1682899200000,
+        "system:footprint": {
+            "type": "LinearRing",
+            "coordinates": [
+                [
+                    -180,
+                    -90
+                ],
+                [
+                    180,
+                    -90
+                ],
+                [
+                    180,
+                    90
+                ],
+                [
+                    -180,
+                    90
+                ],
+                [
+                    -180,
+                    -90
+                ]
+            ]
+        },
+        "system:time_end": 1682985600000,
+        "system:asset_size": 5023365,
+        "system:index": "20230501"
+    }
+}

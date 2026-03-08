@@ -1,0 +1,60 @@
+{
+    "type": "FeatureCollection",
+    "columns": {
+        "area_in_meters": "Float",
+        "confidence": "Float",
+        "full_plus_code": "String",
+        "longitude_latitude": "Geometry",
+        "system:index": "String"
+    },
+    "version": 1687463787852143,
+    "id": "GOOGLE/Research/open-buildings/v3/polygons",
+    "properties": {
+        "system:asset_size": 193220134336
+    },
+    "features": [
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            -41.81130388917978,
+                            -22.400999420173672
+                        ],
+                        [
+                            -41.811383084354425,
+                            -22.400918065047634
+                        ],
+                        [
+                            -41.81141350315993,
+                            -22.400943662312944
+                        ],
+                        [
+                            -41.811334308029686,
+                            -22.401025017457222
+                        ],
+                        [
+                            -41.81130388917978,
+                            -22.400999420173672
+                        ]
+                    ]
+                ]
+            },
+            "id": "00000000000000000fe0",
+            "properties": {
+                "area_in_meters": 51.50040054321289,
+                "confidence": 0.6875,
+                "full_plus_code": "589WH5XQ+JF64",
+                "longitude_latitude": {
+                    "type": "Point",
+                    "coordinates": [
+                        -41.81135854717644,
+                        -22.400971925345495
+                    ]
+                }
+            }
+        }
+    ]
+}

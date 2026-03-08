@@ -1,0 +1,326 @@
+{
+    "type": "Image",
+    "bands": [
+        {
+            "id": "sur_refl_b01",
+            "data_type": {
+                "type": "PixelType",
+                "precision": "int",
+                "min": -32768,
+                "max": 32767
+            },
+            "dimensions": [
+                86400,
+                38400
+            ],
+            "crs": "SR-ORG:6974",
+            "crs_transform": [
+                463.3127165279165,
+                0,
+                -20015109.354,
+                0,
+                -463.3127165279167,
+                7783653.637669001
+            ]
+        },
+        {
+            "id": "sur_refl_b02",
+            "data_type": {
+                "type": "PixelType",
+                "precision": "int",
+                "min": -32768,
+                "max": 32767
+            },
+            "dimensions": [
+                86400,
+                38400
+            ],
+            "crs": "SR-ORG:6974",
+            "crs_transform": [
+                463.3127165279165,
+                0,
+                -20015109.354,
+                0,
+                -463.3127165279167,
+                7783653.637669001
+            ]
+        },
+        {
+            "id": "sur_refl_b03",
+            "data_type": {
+                "type": "PixelType",
+                "precision": "int",
+                "min": -32768,
+                "max": 32767
+            },
+            "dimensions": [
+                86400,
+                38400
+            ],
+            "crs": "SR-ORG:6974",
+            "crs_transform": [
+                463.3127165279165,
+                0,
+                -20015109.354,
+                0,
+                -463.3127165279167,
+                7783653.637669001
+            ]
+        },
+        {
+            "id": "sur_refl_b04",
+            "data_type": {
+                "type": "PixelType",
+                "precision": "int",
+                "min": -32768,
+                "max": 32767
+            },
+            "dimensions": [
+                86400,
+                38400
+            ],
+            "crs": "SR-ORG:6974",
+            "crs_transform": [
+                463.3127165279165,
+                0,
+                -20015109.354,
+                0,
+                -463.3127165279167,
+                7783653.637669001
+            ]
+        },
+        {
+            "id": "sur_refl_b05",
+            "data_type": {
+                "type": "PixelType",
+                "precision": "int",
+                "min": -32768,
+                "max": 32767
+            },
+            "dimensions": [
+                86400,
+                38400
+            ],
+            "crs": "SR-ORG:6974",
+            "crs_transform": [
+                463.3127165279165,
+                0,
+                -20015109.354,
+                0,
+                -463.3127165279167,
+                7783653.637669001
+            ]
+        },
+        {
+            "id": "sur_refl_b06",
+            "data_type": {
+                "type": "PixelType",
+                "precision": "int",
+                "min": -32768,
+                "max": 32767
+            },
+            "dimensions": [
+                86400,
+                38400
+            ],
+            "crs": "SR-ORG:6974",
+            "crs_transform": [
+                463.3127165279165,
+                0,
+                -20015109.354,
+                0,
+                -463.3127165279167,
+                7783653.637669001
+            ]
+        },
+        {
+            "id": "sur_refl_b07",
+            "data_type": {
+                "type": "PixelType",
+                "precision": "int",
+                "min": -32768,
+                "max": 32767
+            },
+            "dimensions": [
+                86400,
+                38400
+            ],
+            "crs": "SR-ORG:6974",
+            "crs_transform": [
+                463.3127165279165,
+                0,
+                -20015109.354,
+                0,
+                -463.3127165279167,
+                7783653.637669001
+            ]
+        },
+        {
+            "id": "QA",
+            "data_type": {
+                "type": "PixelType",
+                "precision": "int",
+                "min": 0,
+                "max": 4294967295
+            },
+            "dimensions": [
+                86400,
+                38400
+            ],
+            "crs": "SR-ORG:6974",
+            "crs_transform": [
+                463.3127165279165,
+                0,
+                -20015109.354,
+                0,
+                -463.3127165279167,
+                7783653.637669001
+            ]
+        },
+        {
+            "id": "SolarZenith",
+            "data_type": {
+                "type": "PixelType",
+                "precision": "int",
+                "min": -32768,
+                "max": 32767
+            },
+            "dimensions": [
+                86400,
+                38400
+            ],
+            "crs": "SR-ORG:6974",
+            "crs_transform": [
+                463.3127165279165,
+                0,
+                -20015109.354,
+                0,
+                -463.3127165279167,
+                7783653.637669001
+            ]
+        },
+        {
+            "id": "ViewZenith",
+            "data_type": {
+                "type": "PixelType",
+                "precision": "int",
+                "min": -32768,
+                "max": 32767
+            },
+            "dimensions": [
+                86400,
+                38400
+            ],
+            "crs": "SR-ORG:6974",
+            "crs_transform": [
+                463.3127165279165,
+                0,
+                -20015109.354,
+                0,
+                -463.3127165279167,
+                7783653.637669001
+            ]
+        },
+        {
+            "id": "RelativeAzimuth",
+            "data_type": {
+                "type": "PixelType",
+                "precision": "int",
+                "min": -32768,
+                "max": 32767
+            },
+            "dimensions": [
+                86400,
+                38400
+            ],
+            "crs": "SR-ORG:6974",
+            "crs_transform": [
+                463.3127165279165,
+                0,
+                -20015109.354,
+                0,
+                -463.3127165279167,
+                7783653.637669001
+            ]
+        },
+        {
+            "id": "StateQA",
+            "data_type": {
+                "type": "PixelType",
+                "precision": "int",
+                "min": 0,
+                "max": 65535
+            },
+            "dimensions": [
+                86400,
+                38400
+            ],
+            "crs": "SR-ORG:6974",
+            "crs_transform": [
+                463.3127165279165,
+                0,
+                -20015109.354,
+                0,
+                -463.3127165279167,
+                7783653.637669001
+            ]
+        },
+        {
+            "id": "DayOfYear",
+            "data_type": {
+                "type": "PixelType",
+                "precision": "int",
+                "min": 0,
+                "max": 65535
+            },
+            "dimensions": [
+                86400,
+                38400
+            ],
+            "crs": "SR-ORG:6974",
+            "crs_transform": [
+                463.3127165279165,
+                0,
+                -20015109.354,
+                0,
+                -463.3127165279167,
+                7783653.637669001
+            ]
+        }
+    ],
+    "version": 1749032055226217,
+    "id": "MODIS/061/MOD09A1/2023_01_01",
+    "properties": {
+        "system:time_start": 1672531200000,
+        "google:max_source_file_timestamp": 1674086363000,
+        "num_tiles": 301,
+        "system:footprint": {
+            "type": "LinearRing",
+            "coordinates": [
+                [
+                    -180,
+                    -90
+                ],
+                [
+                    180,
+                    -90
+                ],
+                [
+                    180,
+                    90
+                ],
+                [
+                    -180,
+                    90
+                ],
+                [
+                    -180,
+                    -90
+                ]
+            ]
+        },
+        "system:time_end": 1673222400000,
+        "system:asset_size": 26082714959,
+        "system:index": "2023_01_01"
+    }
+}

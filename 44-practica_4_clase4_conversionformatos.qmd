@@ -468,7 +468,7 @@ Al igual que en ArcGIS Pro, `Nearest Neighbor` (Vecino más cercano) pixelará e
 
 :::
 
-### Ejercicio 4: Calcular el tamaño de una imagen y georreferenciarla con archivo world
+### Ejercicio 4: Georreferenciar una imagen con archivo world
 
 Las imágenes que poseen una distorsión poco significativa en su cuadrícula para el trabajo a realizar, por ejemplo, las que se adquieren mediante el escaneo de mapas, o de imágenes en general que han perdido su referenciación terrestre tras haber sido rectificadas, pueden ser fácilmente georreferenciadas mediante la incorporación de un archivo de texto adjunto con estructura interna "world" y extensión con final en "w" (ej. `.tfw` para imágenes `.tif`). Para realizar esta operación es necesario, previamente, conocer el número de píxeles de la imagen, además de las coordenadas de un punto y el tamaño que en la realidad le corresponde a cada píxel (resolución espacial).
 
@@ -504,14 +504,23 @@ En el ejemplo señalado, la imagen posee 943 columnas por 623 filas, esto es, 58
 
 **Paso 2: Referenciar una imagen con documento "world" adjunto**
 
-Para referenciar la imagen tendremos que conocer las coordenadas X e Y de la celda situada en la parte superior izquierda de la imagen, así como el tamaño del píxel en horizontal y en vertical. Con estos datos tendremos que crear un archivo de texto (con cualquier procesador de texto, guardando el documento como un texto plano o con el mismo Bloc de notas del sistema) que contenga seis filas de datos (más una en blanco) en el siguiente orden:
+Para entender cómo se georreferencia una imagen, primero debemos comprender la relación entre el **Espacio de Imagen** (donde el origen `0,0` está en la esquina superior izquierda de la pantalla y se mide en píxeles hacia abajo y a la derecha) y el **Espacio de Coordenadas** (el mundo real, medido en metros o grados, donde el eje Y crece hacia arriba).
 
-1. **La primera fila** hace referencia al tamaño real (`World coordinate` [Coordenada del mundo]) de los píxeles en dirección X (siempre positivo, por aumentar hacia la derecha), es decir, 30 metros (cada píxel equivale a treinta metros en el terreno).
-2. **La segunda** (rotación respecto al eje Y) y **la tercera** (rotación respecto al eje X) fila hacen referencia al giro de la imagen, que puede ser posible; mientras no se soporte dicha acción, serán siempre 0 y 0.
-3. **La cuarta fila** es el tamaño real del píxel en dirección Y (siempre negativo por disminuir en dirección hacia abajo). En este caso es -30 metros.
-4. **La quinta y sexta fila** son las coordenadas exactas X e Y del primer píxel (al que se refieren los anteriores datos). En este caso X=427900, Y=4520833.
+Observe la siguiente gráfica que ilustra esta relación:
 
-Al importar el ráster, el programa identifica automáticamente sus dimensiones (conteo de píxeles horizontales y verticales). Al integrar esta información con los seis parámetros de escala, rotación y coordenadas de origen descritos en el archivo `5O9MTN.tfw`, el software calcula la posición espacial necesaria para georreferenciar la imagen correctamente.
+![Relación geométrica entre el Espacio de Imagen (Píxeles) y el Espacio de Coordenadas (Metros). Se destacan las dimensiones del píxel (A, E) y las coordenadas de origen (C, F).](/images/conversion_formatos/image_077aba.png){#fig-espacio-imagen-coordenadas fig-align="center" width="85%"}
+
+Para referenciar la imagen tendremos que crear un archivo de texto (con cualquier procesador de texto plano o el Bloc de notas) que le traduzca al SIG cómo pasar del *Espacio de Imagen* al *Espacio de Coordenadas*. Este archivo debe contener exactamente seis filas de datos (más una en blanco al final) correspondientes a los parámetros de la gráfica anterior:
+
+1. **La primera fila (Variable A):** Hace referencia al tamaño real de los píxeles en dirección X (`World coordinate` [Coordenada del mundo]). Siempre es positivo porque X aumenta hacia la derecha en ambos espacios. Es decir, **30** metros (cada píxel equivale a 30 metros de ancho en el terreno).
+2. **La segunda fila:** Rotación respecto al eje Y. Como la imagen no está rotada, el valor es **0**.
+3. **La tercera fila:** Rotación respecto al eje X. Como la imagen no está rotada, el valor es **0**.
+4. **La cuarta fila (Variable E):** Es el tamaño real del píxel en dirección Y. Este valor es **siempre negativo** (en este caso **-30** metros) porque en la imagen las filas crecen hacia abajo, pero en el mundo real las coordenadas Y disminuyen hacia abajo.
+5. **La quinta fila (Variable C):** Es la coordenada **X** exacta del centro del primer píxel superior izquierdo. En este caso X=**427900**.
+6. **La sexta fila (Variable F):** Es la coordenada **Y** exacta del centro del primer píxel superior izquierdo. En este caso Y=**4520833**.
+
+Al importar el ráster, el programa identifica automáticamente sus dimensiones. Al integrar esta información con los seis parámetros descritos en el archivo `5O9MTN.tfw`, el software calcula la posición espacial de todos los demás píxeles sin deformar la imagen.
+
 
 **Nota sobre la integridad de los datos:** Evite manipular manualmente los valores numéricos del archivo world para intentar "ajustar" o corregir visualmente una imagen que se ve desplazada o torcida; esto solo provocará deformaciones geométricas asimétricas (achatamiento o estiramiento). Si la imagen requiere ajustes de posición o corrección de distorsiones, utilice las herramientas de georreferenciación de su software SIG para garantizar la precisión espacial.
 
