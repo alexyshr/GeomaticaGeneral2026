@@ -1,0 +1,50 @@
+---
+title: "Recursos Adicionales de Teledetección"
+subtitle: "Fundamentos de Sensores Remotos"
+format:
+  html:
+    toc: true
+    theme: cosmo
+  pdf:
+    toc: true
+---
+
+## Requisitos de finalización
+
+A continuación, se presenta una lista de herramientas, portales y documentos recomendados para complementar y profundizar tu aprendizaje sobre la teledetección satelital y la observación de la Tierra.
+
+---
+
+### Módulo 1: ¿Por qué Observaciones de la Tierra (EO)?
+
+* [Sitio de Misiones de Ciencias de la Tierra de la NASA](https://science.nasa.gov/earth-science/missions/)
+* [Lista de Satélites OSCAR de la Organización Meteorológica Mundial (OMM)](https://space.oscar.wmo.int/satellites)
+* [Áreas Temáticas de Observación de la Tierra para Usuarios Públicos y Privados por la ESA](https://eo4society.esa.int/communities/users/)
+
+### Módulo 2: ¿Qué es la Teledetección?
+
+* [Tour del Espectro Electromagnético](https://smd-cms.nasa.gov/wp-content/uploads/2023/08/tour-of-the-ems-tagged-v7-0.pdf)
+* [NASA Science - Introducción al Espectro Electromagnético](https://science.nasa.gov/ems/01_intro)
+* [Ciencia Abierta de Observación de la Tierra de la Agencia Espacial Europea (ESA)](https://eo4society.esa.int/) - Materiales educativos y capacitación sobre observación de la Tierra.
+* [Servicio de Información y Satélites de la NOAA (NESDIS)](https://www.nesdis.noaa.gov/) - Explica cómo los satélites de la NOAA observan la Tierra, con módulos de capacitación para principiantes.
+
+### Módulo 3: ¿Cómo Funciona la Teledetección?
+
+* [Métodos de Teledetección del NASA Earth Observatory](https://earthobservatory.nasa.gov/features/RemoteSensing/remote_08.php)
+* [ESA – Tipos de Órbitas](https://www.esa.int/Enabling_Support/Space_Transportation/Types_of_orbits#GEO)
+* [NASA Earth Data – Aprender > Conceptos Básicos de Datos de Observación de la Tierra > Teledetección](https://www.earthdata.nasa.gov/learn/earth-observation-data-basics/remote-sensing)
+* [Centro Canadiense de Teledetección (CCRS) - Tutorial de Fundamentos de Teledetección](https://natural-resources.canada.ca/maps-tools-and-publications/satellite-imagery-elevation-data-and-air-photos/tutorial-fundamentals-remote-sensing/9309)
+
+### Módulo 4: ¿Cómo Uso los Datos de Teledetección?
+
+* [Catálogo de Capacitación en Ciencias Aplicadas de NASA/ARSET](https://appliedsciences.nasa.gov/get-involved/training)
+* [Earthdata Pathfinders (Guías de Ruta de Datos de la Tierra)](https://www.earthdata.nasa.gov/learn/pathfinders)
+* [Instrumentos de Earth Data](https://www.earthdata.nasa.gov/data/instruments)
+* [NASA Earthdata – Niveles de Procesamiento de Datos](https://www.earthdata.nasa.gov/engage/open-data-services-and-software/data-and-information-policy/data-levels)
+* [NASA Earth Observatory – ¿Por qué ese Bosque es Rojo y esa Nube es Azul?](https://earthobservatory.nasa.gov/features/FalseColor)
+* [COMET/MetEd - Aplicaciones Satelitales Multiespectrales: Explicación de Productos RGB](https://www.meted.ucar.edu/education_training/lessons/568)
+* [NASA Earth Observatory - Cómo Interpretar una Imagen Satelital, 5 Consejos](https://earthobservatory.nasa.gov/features/ColorImage)
+* [NASA Science – Visualización: De Energía a Imagen](https://science.nasa.gov/ems/04_energytoimage/)
+* [Centro de Ciencia y Observación de Recursos Terrestres (EROS) del USGS](https://eros.usgs.gov/) - Tutoriales y herramientas para aplicar datos de Landsat y otros datos de teledetección.
+* [Open Data Cube](https://www.opendatacube.org/) - Proporciona tutoriales sobre cómo acceder y analizar imágenes satelitales de varios sensores.
+* [Copernicus Data Space Ecosystem](https://dataspace.copernicus.eu/) - Ayuda a los usuarios a acceder y analizar los datos de los satélites Sentinel de la Unión Europea.

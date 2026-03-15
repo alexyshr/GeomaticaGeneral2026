@@ -1,0 +1,1 @@
+D:\Programs\wget\wget.exe --mirror --convert-links --adjust-extension --page-requisites --no-parent -P curso_sensores https://natural-resources.canada.ca/science-data/science-research/geomatics/remote-sensing/tutorial-fundamentals-remote-sensing

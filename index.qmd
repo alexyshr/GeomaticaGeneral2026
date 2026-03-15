@@ -44,5 +44,6 @@ Este material ha sido diseñado para facilitar la transición de la teoría a la
 :::
 
 ---
+
 **Institución:** Universidad Nacional de Colombia  
 **Programa:** Maestría en Geomática

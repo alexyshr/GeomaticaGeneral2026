@@ -1,0 +1,595 @@
+---
+title: "Guía de Exploración: NASA Worldview"
+subtitle: "Uso práctico de imágenes de sensores remotos"
+format:
+  html:
+    toc: true
+    theme: cosmo
+  pdf:
+    toc: true
+---
+
+## Resumen de la Actividad
+
+Esta actividad te guía a través de un caso de uso real de imágenes de sensores remotos satelitales utilizando **NASA Worldview**. Visualizarás imágenes de muestra y seguirás instrucciones paso a paso para familiarizarte con el uso de la herramienta. Finalmente, responderás las preguntas al final de la actividad para completar este ejercicio.
+
+> **Fuente:** Reconocemos el uso de imágenes de la aplicación NASA Worldview (https://worldview.earthdata.nasa.gov), parte del Sistema de Datos e Información de Ciencias de la Tierra de la NASA (ESDIS).
+
+---
+
+## Navegando por Worldview
+
+A continuación, revisaremos la interfaz y la funcionalidad de la herramienta para aprender a seleccionar e interactuar con mapas de imágenes en cualquier área de interés. 
+
+![](/images/sensores_remotos/arset/image-671c0a86b6f36.png){fig-align="center" width="100%"}
+
+### Componentes de la Interfaz
+
+**1. Panel de Capas, Eventos y Datos (Layers, Events and Data Panel)**
+Administra las imágenes del mapa en este panel a través de tres pestañas principales:
+
+* **Pestaña Capas (Layers Tab):** Muestra todas las capas de imágenes que están cargadas en el mapa. Las capas base aparecen debajo de las superposiciones del mapa. Puedes activar y desactivar las capas haciendo clic en el icono del "ojo" a la izquierda del nombre de la capa. Solo se muestra la capa base activa que esté más arriba. Para reordenar las capas en la lista, haz clic y mantén presionado sobre una capa o grupo y muévelo.
+* **Pestaña Eventos (Events Tab):** Selecciona esta pestaña para ver una lista curada de eventos naturales actuales e históricos alrededor del mundo para cargarlos en tu mapa.
+* **Pestaña Descarga de Datos (Data Download Tab):** Selecciona esta pestaña para descargar los datos subyacentes de las capas de imágenes mostradas en el mapa. Serás redirigido a la herramienta Earthdata Search para descargar los gránulos de datos de la capa seleccionada, el área de interés elegida y la fecha actual.
+
+**2. Selector de Capas (Layer Picker)**
+
+* **Layer Picker:** Haz clic en el botón *Add Layer* para explorar y buscar entre más de 1000 capas de imágenes por disciplina científica, categorías de riesgos y desastres, o por palabra clave.
+* **Iniciar Comparación (Start Comparison):** Compara imágenes de dos fechas diferentes, dos conjuntos de imágenes de la misma fecha, o incluso dos conjuntos de imágenes de fechas distintas.
+
+**3. Gestión de la Línea de Tiempo (Timeline Management)**
+De izquierda a derecha:
+
+* **Selector de Fecha (Date Selector):** Cambia la fecha (y la hora del día si tienes capas Geoestacionarias cargadas) escribiendo en los campos de fecha, o haciendo clic en las flechas arriba y abajo junto a cada campo.
+* **Selector de Intervalo (Interval Selector):** Selecciona el intervalo de tiempo deseado y usa las flechas izquierda y derecha para avanzar o retroceder en el tiempo según el intervalo seleccionado. Usa la flecha del extremo derecho para ir a la última fecha disponible.
+* **Animación (Animation):** Anima las imágenes haciendo clic en el ícono de la cámara de video. Haz clic en el botón *Play* para ver cómo cambian las imágenes. También puedes seleccionar un área para exportar como un GIF animado.
+* **Ajustador de Escala de Tiempo (Timescale Adjuster):** Ajusta la escala de tiempo a años, meses y días (además de horas y minutos si tienes una capa Geoestacionaria cargada).
+
+**4. Coordenadas del Mapa y Medición (Map Coordinates and Measurement)**
+
+* **Coordenadas del Mapa:** Al pasar el cursor sobre el mapa, las coordenadas se muestran aquí. Haz clic en las coordenadas para cambiar entre formatos comunes como Grados Decimales (DD), Grados Minutos Decimales (DDM) y Grados Minutos Segundos (DMS).
+* **Medir (Measure):** Mide distancias y áreas en kilómetros (km) o millas (mi) y expórtalas como GeoJSON.
+
+**5. Zoom**
+
+* Usa los botones **+/-** para acercar y alejar, o usa la funcionalidad de zoom incorporada en tu dispositivo.
+
+**6. Búsqueda, Compartir y más (Search, Share and more)**
+Opciones del menú superior derecho, de izquierda a derecha:
+
+* **Buscar por ubicación (Search by location):** Busca por nombre o coordenadas, lo cual coloca un marcador en el mapa. Por el contrario, coloca un marcador en el mapa para averiguar el nombre del lugar y sus coordenadas.
+* **Compartir URL Personalizada (Share Custom URL):** Crea un enlace URL personalizado de tu vista del mapa en Worldview. Acredita a Worldview utilizando el texto de citación proporcionado.
+* **Proyecciones del Mapa (Map Projections):** Cambia la proyección del mapa de Geográfica a Ártica o Antártica.
+* **Captura (Snapshot):** Toma una captura de las imágenes mostradas en el mapa y expórtalas como GeoTIFF, JPG con Worldfile, PNG con Worldfile o KMZ para llevarlas directamente a clientes SIG.
+* **Información (Information):** Ajusta la configuración, explora la aplicación a través de recorridos guiados, revisa notificaciones del servicio, envía comentarios y descubre más sobre el código abierto. También puedes acceder al modo *Distraction Free*, que oculta la mayor parte de la aplicación para que puedas concentrarte solo en el mapa.
+
+> 💡 **Nota:** Esta sección es una adaptación. Si deseas profundizar más, puedes acceder al [tutorial original para explorar Worldview aquí](https://go.nasa.gov/48kMhMc).
+
+---
+
+## Exploración de Worldview (Práctica)
+
+Ahora que has explorado algunas de las características de la herramienta, usaremos este [escenario de mapa personalizado de WorldView](https://go.nasa.gov/3CbFnMW) para responder a las preguntas a continuación. Puedes abrir este escenario en otra pestaña del navegador si te resulta más fácil mientras respondes.
+
+### Ejercicio 1: Comparación de Sensores de Órbita Polar
+
+En el panel de Capas (Layers), usa el ícono del ojo para ocultar todas las capas base; el mapa quedará en blanco mostrando solo los contornos de los países. Luego, haz clic en cada ícono del ojo para encender y apagar cada capa individualmente y comparar las diferencias en las imágenes.
+
+**Pregunta:** Al ver las imágenes MODIS de los satélites Aqua y Terra, se observan franjas negras alrededor de los trópicos. Esta característica no se ve al observar imágenes de VIIRS en los satélites Suomi NPP, NOAA-20 y NOAA-21. ¿Por qué se ve esto en las imágenes MODIS, pero no en VIIRS?
+
+```{=html}
+<div class="quiz-container">
+  <div class="quiz-option" onclick="checkAnswer(this, false)">VIIRS tiene una órbita geoestacionaria, por lo que tiene cobertura global.</div>
+  <div class="quiz-option" onclick="checkAnswer(this, false)">MODIS tiene mayor resolución espacial que VIIRS.</div>
+  <div class="quiz-option" onclick="checkAnswer(this, true)">Las observaciones de VIIRS tienen un ancho de barrido (swath) mayor que MODIS, lo suficientemente ancho como para que sus órbitas se superpongan.</div>
+  <div class="quiz-option" onclick="checkAnswer(this, false)">Es una sombra de la luna (o es una sombra del satélite).</div>
+  <div class="quiz-feedback"></div>
+</div>
+```
+
+### Ejercicio 2: Satélites Geoestacionarios
+
+Oculta todas las capas base y asegúrate de **alejar el zoom para poder ver tanto América del Norte como América del Sur**. Sobre las capas base, verás dos capas de los satélites NOAA GOES Este y Oeste bajo el encabezado 'Geostationary'. Haz clic en los íconos del ojo de ambas. 
+
+En el panel de la **línea de tiempo** en la parte inferior, **cambia la fecha a uno, dos, tres, cuatro, o cinco días antes de la fecha actual** (*Nota: Dependiendo del tamaño de tu navegador, puede que necesites desplazarte hacia abajo para ver el panel de la línea de tiempo*). Usa el **ícono del ojo** para alternar y comparar las diferencias entre la capa actual y las capas base. **Si las imágenes GOES no se muestran, intenta con otras fechas**.
+
+**Pregunta:** Al ver las capas GOES, hay imágenes sobre América del Norte y del Sur, y espacio negro a ambos lados de la imagen. ¿Por qué estas imágenes se ven diferentes a las disponibles en las capas base?
+
+```{=html}
+<div class="quiz-container">
+  <div class="quiz-option" onclick="checkAnswer(this, false)">Los sensores VIIRS y MODIS tienen un ancho de barrido (swath) más amplio.</div>
+  <div class="quiz-option" onclick="checkAnswer(this, false)">La resolución espacial de GOES no es lo suficientemente alta.</div>
+  <div class="quiz-option" onclick="checkAnswer(this, false)">Los sensores VIIRS han estado en órbita por más tiempo.</div>
+  <div class="quiz-option" onclick="checkAnswer(this, true)">Los satélites GOES son geoestacionarios (GEO) y, por lo tanto, no tienen cobertura global completa como los de órbita polar.</div>
+  <div class="quiz-feedback"></div>
+</div>
+
+<style>
+.quiz-option {
+  padding: 12px 15px;
+  margin: 8px 0;
+  background-color: #f1f3f4;
+  border: 1px solid #dadce0;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  font-family: inherit;
+}
+.quiz-option:hover {
+  background-color: #e8eaed;
+}
+.quiz-correct {
+  background-color: #d4edda !important;
+  border-color: #c3e6cb !important;
+  color: #155724;
+}
+.quiz-incorrect {
+  background-color: #f8d7da !important;
+  border-color: #f5c6cb !important;
+  color: #721c24;
+}
+.quiz-feedback {
+  display: none;
+  margin-top: 10px;
+  font-weight: bold;
+  padding: 10px;
+  border-radius: 5px;
+}
+</style>
+
+<script>
+function checkAnswer(element, isCorrect) {
+  let container = element.parentElement;
+  let options = container.getElementsByClassName('quiz-option');
+  let feedback = container.getElementsByClassName('quiz-feedback')[0];
+
+  // Restablecer estilos en todas las opciones de este contenedor
+  for (let opt of options) {
+    opt.classList.remove('quiz-correct', 'quiz-incorrect');
+  }
+
+  // Aplicar estilo según si es correcto o incorrecto
+  if (isCorrect) {
+    element.classList.add('quiz-correct');
+    feedback.style.display = "block";
+    feedback.style.backgroundColor = "#d4edda";
+    feedback.style.color = "#155724";
+    feedback.innerHTML = "✔ ¡Respuesta correcta!";
+  } else {
+    element.classList.add('quiz-incorrect');
+    feedback.style.display = "block";
+    feedback.style.backgroundColor = "#f8d7da";
+    feedback.style.color = "#721c24";
+    feedback.innerHTML = "✖ Respuesta incorrecta. Inténtalo de nuevo.";
+  }
+}
+</script>
+```
+
+### Ejercicio 3: Incendios Forestales (Modo Comparación)
+
+En el siguiente [escenario personalizado de Worldview sobre Incendios](https://go.nasa.gov/4j3Mc4s), se utiliza el "modo de comparación" para mostrar diferentes capas para el mismo día (8 de agosto de 2021). 
+
+La capa base en el **Lado 'A' (Izquierda)** muestra imágenes de color verdadero de VIIRS (en el satélite NOAA-20). La capa base en el **Lado 'B' (Derecha)** muestra imágenes de falso color de VIIRS (satélite NOAA-20). Usa la barra deslizante central para interactuar con el mapa y comparar.
+
+#### Lado A (Izquierda)
+Además de la capa base de color verdadero, el Lado A tiene las siguientes capas:
+
+* VIIRS Incendios y Anomalías Térmicas, Día (visible)
+* VIIRS Incendios y Anomalías Térmicas, Noche (oculta)
+
+Los incendios y otras anomalías térmicas, como las antorchas de gas, muestran fuertes emisiones en la parte del Infrarrojo Medio (Mid-IR) del espectro electromagnético. Sensores como VIIRS utilizan un algoritmo que aprovecha esta fuerte emisión para detectar incendios activos.
+
+En el Lado A, usa el ícono del ojo en el panel de capas para **ocultar** las detecciones de incendios diurnos de VIIRS y **mostrar** las detecciones de incendios nocturnos.
+
+**Pregunta:** Dado que VIIRS es un sensor pasivo de órbita polar, ¿por qué es capaz de detectar incendios por la noche?
+
+```{=html}
+<div class="quiz-container">
+  <div class="quiz-option" onclick="checkAnswer(this, true)">Los incendios emiten fuertemente en el infrarrojo medio (mid-IR), por lo que no requieren que la luz solar se refleje en la superficie.</div>
+  <div class="quiz-option" onclick="checkAnswer(this, false)">Los incendios son más fríos por la noche.</div>
+  <div class="quiz-option" onclick="checkAnswer(this, false)">VIIRS tiene una alta resolución espacial, por lo que puede hacer observaciones de noche.</div>
+  <div class="quiz-option" onclick="checkAnswer(this, false)">Hay menos humo por la noche.</div>
+  <div class="quiz-feedback"></div>
+</div>
+```
+
+#### Lado B (Derecha)
+El Lado 'B' muestra las mismas capas de Incendios y Anomalías Térmicas de VIIRS, pero con una capa base diferente. La capa base del Lado B es una **imagen de falso color** de VIIRS. Esta combinación de falso color incluye:
+
+* Rojo: Infrarrojo de onda corta o SWIR (Banda M11)
+* Verde: Infrarrojo cercano o NIR (Banda I2)
+* Azul: Visible (Banda I1)
+
+Usa la barra deslizante para comparar las capas base de los lados A y B. 
+
+**Pregunta:** En el Lado B, ¿por qué las áreas que se han quemado (cicatrices de quema) aparecen de color rojo?
+
+```{=html}
+<div class="quiz-container">
+  <div class="quiz-option" onclick="checkAnswer(this, false)">El suelo que acaba de quemarse es más oscuro que el área circundante, por lo que es más visible.</div>
+  <div class="quiz-option" onclick="checkAnswer(this, false)">El humo hace que el suelo quemado parezca más oscuro.</div>
+  <div class="quiz-option" onclick="checkAnswer(this, true)">El suelo desnudo (o cicatriz de quema) es más reflectante en el infrarrojo de onda corta (SWIR), por lo que aparece rojo en la imagen de falso color.</div>
+  <div class="quiz-option" onclick="checkAnswer(this, false)">El suelo que acaba de quemarse está más caliente que el área circundante, por lo que aparece rojo.</div>
+  <div class="quiz-feedback"></div>
+</div>
+```
+
+### Ejercicio 4: Firmas Espectrales (Emparejamiento)
+
+Empareja cada material con la descripción de cómo su superficie responde a la radiación electromagnética incidente. Selecciona la opción correcta en cada lista desplegable y haz clic en "Comprobar Respuestas".
+
+```{=html}
+<div class="match-container" style="background-color: #f8f9fa; padding: 20px; border-radius: 8px; border: 1px solid #dadce0;">
+  
+  <div class="match-row" style="margin-bottom: 15px;">
+    <p style="margin: 0 0 5px 0; font-weight: 500;">1. Refleja la mayoría de las longitudes de onda visibles.</p>
+    <select id="match-q1" class="match-select" style="padding: 8px; border-radius: 4px; border: 1px solid #ccc; width: 200px;">
+      <option value="">Elegir...</option>
+      <option value="ice">Hielo/Nieve</option>
+      <option value="soil">Suelo</option>
+      <option value="vegetation">Vegetación</option>
+      <option value="water">Agua</option>
+    </select>
+    <span id="match-f1" style="margin-left: 10px; font-weight: bold;"></span>
+  </div>
+
+  <div class="match-row" style="margin-bottom: 15px;">
+    <p style="margin: 0 0 5px 0; font-weight: 500;">2. Absorbe la mayoría de las longitudes de onda visibles (excepto el verde) y refleja las longitudes de onda infrarrojas.</p>
+    <select id="match-q2" class="match-select" style="padding: 8px; border-radius: 4px; border: 1px solid #ccc; width: 200px;">
+      <option value="">Elegir...</option>
+      <option value="ice">Hielo/Nieve</option>
+      <option value="soil">Suelo</option>
+      <option value="vegetation">Vegetación</option>
+      <option value="water">Agua</option>
+    </select>
+    <span id="match-f2" style="margin-left: 10px; font-weight: bold;"></span>
+  </div>
+
+  <div class="match-row" style="margin-bottom: 15px;">
+    <p style="margin: 0 0 5px 0; font-weight: 500;">3. Absorbe la mayoría de las longitudes de onda visibles, con una mayor absorción de las longitudes de onda visibles más largas.</p>
+    <select id="match-q3" class="match-select" style="padding: 8px; border-radius: 4px; border: 1px solid #ccc; width: 200px;">
+      <option value="">Elegir...</option>
+      <option value="ice">Hielo/Nieve</option>
+      <option value="soil">Suelo</option>
+      <option value="vegetation">Vegetación</option>
+      <option value="water">Agua</option>
+    </select>
+    <span id="match-f3" style="margin-left: 10px; font-weight: bold;"></span>
+  </div>
+
+  <div class="match-row" style="margin-bottom: 20px;">
+    <p style="margin: 0 0 5px 0; font-weight: 500;">4. Absorbe la mayoría de las longitudes de onda visibles, con una mayor absorción de las longitudes de onda visibles más cortas.</p>
+    <select id="match-q4" class="match-select" style="padding: 8px; border-radius: 4px; border: 1px solid #ccc; width: 200px;">
+      <option value="">Elegir...</option>
+      <option value="ice">Hielo/Nieve</option>
+      <option value="soil">Suelo</option>
+      <option value="vegetation">Vegetación</option>
+      <option value="water">Agua</option>
+    </select>
+    <span id="match-f4" style="margin-left: 10px; font-weight: bold;"></span>
+  </div>
+
+  <button onclick="checkMatchAnswers()" style="background-color: #0d6efd; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold;">Comprobar Respuestas</button>
+</div>
+
+<script>
+function checkMatchAnswers() {
+  const correctAnswers = {
+    'match-q1': 'ice',
+    'match-q2': 'vegetation',
+    'match-q3': 'water',
+    'match-q4': 'soil'
+  };
+
+  for (const [qId, correctVal] of Object.entries(correctAnswers)) {
+    let selectElement = document.getElementById(qId);
+    let feedbackElement = document.getElementById(qId.replace('q', 'f'));
+    
+    if (selectElement.value === "") {
+      feedbackElement.innerHTML = "⚠️ Selecciona una opción";
+      feedbackElement.style.color = "#856404";
+      selectElement.style.borderColor = "#ffeeba";
+    } else if (selectElement.value === correctVal) {
+      feedbackElement.innerHTML = "✔ Correcto";
+      feedbackElement.style.color = "#155724";
+      selectElement.style.borderColor = "#28a745";
+    } else {
+      feedbackElement.innerHTML = "✖ Incorrecto";
+      feedbackElement.style.color = "#721c24";
+      selectElement.style.borderColor = "#dc3545";
+    }
+  }
+}
+</script>
+```
+
+### Ejercicio 5: Conceptos Fundamentales de Sensores Remotos
+
+Pon a prueba tu conocimiento sobre los principios de la teledetección, órbitas y productos de datos. Haz clic en la opción que consideres correcta.
+
+**1. ¿Cuáles de las siguientes afirmaciones sobre la teledetección de la atmósfera terrestre son correctas?**
+
+1. Las nubes son altamente reflectantes para todas las longitudes de onda de la luz visible.
+2. Muchos tipos de contaminación (ej. humo, polvo) absorben más en longitudes de onda visibles.
+3. Los científicos que estudian la superficie terrestre deben tener en cuenta los efectos de las nubes, gases traza y aerosoles en la atmósfera al usar datos satelitales.
+4. La atmósfera es completamente transparente a longitudes de onda visibles, pero opaca a la radiación infrarroja y ultravioleta.
+5. Todos los sensores remotos de la NASA están diseñados para "ver a través" de las nubes.
+
+```{=html}
+<div class="quiz-container">
+  <div class="quiz-option" onclick="checkAnswer(this, false)">Afirmaciones 1, 4 y 5</div>
+  <div class="quiz-option" onclick="checkAnswer(this, true, '¡Correcto! Las nubes suelen verse blancas porque reflejan todas las longitudes de onda visibles, mientras que la contaminación absorbe la luz visible. Además, diferentes componentes de la atmósfera absorben radiación en diferentes partes del espectro, por lo que los científicos deben tener en cuenta el impacto de los gases en la radiación vista por el sensor.')">Afirmaciones 1, 2 y 3</div>
+  <div class="quiz-option" onclick="checkAnswer(this, false)">Solo la afirmación 5</div>
+  <div class="quiz-option" onclick="checkAnswer(this, false)">Todas las afirmaciones (1, 2, 3, 4 y 5)</div>
+  <div class="quiz-feedback"></div>
+</div>
+```
+
+**2. Empareja cada característica deseada de los datos satelitales con el tipo de órbita más probable para cumplirla.**
+
+```{=html}
+<div class="match-container" style="background-color: #f8f9fa; padding: 20px; border-radius: 8px; border: 1px solid #dadce0; margin-bottom: 20px;">
+  
+  <div class="match-row" style="margin-bottom: 15px;">
+    <p style="margin: 0 0 5px 0; font-weight: 500;">Necesito datos con mayor frecuencia en latitudes bajas y medias.</p>
+    <select id="match2-q1" class="match-select" style="padding: 8px; border-radius: 4px; border: 1px solid #ccc; width: 300px;">
+      <option value="">Elegir...</option>
+      <option value="inclined">Órbita LEO Inclinada</option>
+      <option value="sunsync">Órbita LEO Sincronizada con el Sol</option>
+      <option value="geo">Órbita Geoestacionaria (GEO)</option>
+      <option value="leo">Órbita LEO General (Low Earth Orbit)</option>
+    </select>
+    <span id="match2-f1" style="margin-left: 10px; font-weight: bold;"></span>
+  </div>
+
+  <div class="match-row" style="margin-bottom: 15px;">
+    <p style="margin: 0 0 5px 0; font-weight: 500;">Necesito mediciones diarias consistentes, tomadas a la misma hora local en una latitud alta.</p>
+    <select id="match2-q2" class="match-select" style="padding: 8px; border-radius: 4px; border: 1px solid #ccc; width: 300px;">
+      <option value="">Elegir...</option>
+      <option value="inclined">Órbita LEO Inclinada</option>
+      <option value="sunsync">Órbita LEO Sincronizada con el Sol</option>
+      <option value="geo">Órbita Geoestacionaria (GEO)</option>
+      <option value="leo">Órbita LEO General (Low Earth Orbit)</option>
+    </select>
+    <span id="match2-f2" style="margin-left: 10px; font-weight: bold;"></span>
+  </div>
+
+  <div class="match-row" style="margin-bottom: 15px;">
+    <p style="margin: 0 0 5px 0; font-weight: 500;">Necesito datos cada hora (alta frecuencia temporal).</p>
+    <select id="match2-q3" class="match-select" style="padding: 8px; border-radius: 4px; border: 1px solid #ccc; width: 300px;">
+      <option value="">Elegir...</option>
+      <option value="inclined">Órbita LEO Inclinada</option>
+      <option value="sunsync">Órbita LEO Sincronizada con el Sol</option>
+      <option value="geo">Órbita Geoestacionaria (GEO)</option>
+      <option value="leo">Órbita LEO General (Low Earth Orbit)</option>
+    </select>
+    <span id="match2-f3" style="margin-left: 10px; font-weight: bold;"></span>
+  </div>
+
+  <div class="match-row" style="margin-bottom: 20px;">
+    <p style="margin: 0 0 5px 0; font-weight: 500;">Necesito datos globales (alta cobertura espacial).</p>
+    <select id="match2-q4" class="match-select" style="padding: 8px; border-radius: 4px; border: 1px solid #ccc; width: 300px;">
+      <option value="">Elegir...</option>
+      <option value="inclined">Órbita LEO Inclinada</option>
+      <option value="sunsync">Órbita LEO Sincronizada con el Sol</option>
+      <option value="geo">Órbita Geoestacionaria (GEO)</option>
+      <option value="leo">Órbita LEO General (Low Earth Orbit)</option>
+    </select>
+    <span id="match2-f4" style="margin-left: 10px; font-weight: bold;"></span>
+  </div>
+
+  <button onclick="checkMatchAnswers2()" style="background-color: #0d6efd; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold;">Comprobar Respuestas</button>
+  <div id="match2-feedback" style="display: none; margin-top: 15px; padding: 10px; background-color: #d4edda; color: #155724; border-radius: 5px; border: 1px solid #c3e6cb;">¡Correcto! La respuesta correcta es:<br>• <b>Órbita LEO Inclinada:</b> Necesito datos con mayor frecuencia en latitudes bajas y medias.<br>• <b>Órbita LEO Sincronizada con el Sol:</b> Necesito mediciones diarias consistentes, tomadas a la misma hora local en una latitud alta.<br>• <b>Órbita Geoestacionaria (GEO):</b> Necesito datos cada hora (alta frecuencia temporal).<br>• <b>Órbita LEO General:</b> Necesito datos globales (alta cobertura espacial).</div>
+</div>
+
+<script>
+function checkMatchAnswers2() {
+  const correctAnswers = { 'match2-q1': 'inclined', 'match2-q2': 'sunsync', 'match2-q3': 'geo', 'match2-q4': 'leo' };
+  let allCorrect = true;
+  for (const [qId, correctVal] of Object.entries(correctAnswers)) {
+    let selectElement = document.getElementById(qId);
+    let feedbackElement = document.getElementById(qId.replace('q', 'f'));
+    if (selectElement.value === "") {
+      feedbackElement.innerHTML = "⚠️"; feedbackElement.style.color = "#856404"; selectElement.style.borderColor = "#ffeeba";
+      allCorrect = false;
+    } else if (selectElement.value === correctVal) {
+      feedbackElement.innerHTML = "✔"; feedbackElement.style.color = "#155724"; selectElement.style.borderColor = "#28a745";
+    } else {
+      feedbackElement.innerHTML = "✖"; feedbackElement.style.color = "#721c24"; selectElement.style.borderColor = "#dc3545";
+      allCorrect = false;
+    }
+  }
+  let globalFeedback = document.getElementById('match2-feedback');
+  if(allCorrect){
+    globalFeedback.style.display = "block";
+  } else {
+    globalFeedback.style.display = "none";
+  }
+}
+</script>
+```
+
+**3. Los sensores remotos ACTIVOS dependen de la luz solar que se refleja o se vuelve a emitir desde la Tierra para realizar mediciones.**
+
+```{=html}
+<div class="quiz-container">
+  <div class="quiz-option" onclick="checkAnswer(this, false)">Verdadero</div>
+  <div class="quiz-option" onclick="checkAnswer(this, true, '¡Correcto! Los sensores pasivos dependen de la energía reflejada o reemitida por el sol, mientras que los sensores activos (como un radar) proporcionan su propia fuente de energía.')">Falso</div>
+  <div class="quiz-feedback"></div>
+</div>
+```
+
+**4. ¿Cuál es la relación general entre la resolución espacial y la cobertura espacial (ancho de barrido) para los sensores satelitales?**
+
+```{=html}
+<div class="quiz-container">
+  <div class="quiz-option" onclick="checkAnswer(this, false)">Solo hay una cobertura espacial posible: ver un hemisferio entero de la Tierra.</div>
+  <div class="quiz-option" onclick="checkAnswer(this, true, '¡Correcto! Generalmente, cuanto mayor sea la resolución deseada, más estrecho será el ancho de barrido (swath) o campo de visión.')">Por lo general, a medida que la resolución espacial se vuelve más fina (mayor detalle), la cobertura espacial se vuelve más estrecha.</div>
+  <div class="quiz-option" onclick="checkAnswer(this, false)">Por lo general, a medida que la resolución espacial se vuelve más fina, la cobertura espacial se vuelve más amplia.</div>
+  <div class="quiz-option" onclick="checkAnswer(this, false)">No existe relación entre ambas variables.</div>
+  <div class="quiz-feedback"></div>
+</div>
+```
+
+**5. Empareja el tiempo de revisita (resolución temporal) del satélite/sensor más apropiado para los siguientes escenarios:**
+
+```{=html}
+<div class="match-container" style="background-color: #f8f9fa; padding: 20px; border-radius: 8px; border: 1px solid #dadce0; margin-bottom: 20px;">
+  
+  <div class="match-row" style="margin-bottom: 15px;">
+    <p style="margin: 0 0 5px 0; font-weight: 500;">Estudio el crecimiento de cultivos durante una sola temporada y necesito al menos 4 observaciones en la temporada.</p>
+    <select id="match3-q1" class="match-select" style="padding: 8px; border-radius: 4px; border: 1px solid #ccc; width: 300px;">
+      <option value="">Elegir...</option>
+      <option value="narrow">Satélite de órbita polar de franja estrecha (Narrow-swath)</option>
+      <option value="wide">Satélite de órbita polar de franja ancha (Wide-swath)</option>
+      <option value="geo">Satélite Geoestacionario</option>
+    </select>
+    <span id="match3-f1" style="margin-left: 10px; font-weight: bold;"></span>
+  </div>
+
+  <div class="match-row" style="margin-bottom: 15px;">
+    <p style="margin: 0 0 5px 0; font-weight: 500;">Estudio el impacto de inundaciones en la vegetación y necesito observaciones nuevas cada día.</p>
+    <select id="match3-q2" class="match-select" style="padding: 8px; border-radius: 4px; border: 1px solid #ccc; width: 300px;">
+      <option value="">Elegir...</option>
+      <option value="narrow">Satélite de órbita polar de franja estrecha (Narrow-swath)</option>
+      <option value="wide">Satélite de órbita polar de franja ancha (Wide-swath)</option>
+      <option value="geo">Satélite Geoestacionario</option>
+    </select>
+    <span id="match3-f2" style="margin-left: 10px; font-weight: bold;"></span>
+  </div>
+
+  <div class="match-row" style="margin-bottom: 20px;">
+    <p style="margin: 0 0 5px 0; font-weight: 500;">Estudio la propagación de incendios activos y necesito observaciones cada pocos minutos.</p>
+    <select id="match3-q3" class="match-select" style="padding: 8px; border-radius: 4px; border: 1px solid #ccc; width: 300px;">
+      <option value="">Elegir...</option>
+      <option value="narrow">Satélite de órbita polar de franja estrecha (Narrow-swath)</option>
+      <option value="wide">Satélite de órbita polar de franja ancha (Wide-swath)</option>
+      <option value="geo">Satélite Geoestacionario</option>
+    </select>
+    <span id="match3-f3" style="margin-left: 10px; font-weight: bold;"></span>
+  </div>
+
+  <button onclick="checkMatchAnswers3()" style="background-color: #0d6efd; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold;">Comprobar Respuestas</button>
+  <div id="match3-feedback" style="display: none; margin-top: 15px; padding: 10px; background-color: #d4edda; color: #155724; border-radius: 5px; border: 1px solid #c3e6cb;">¡Correcto! Para eventos que cambian rápidamente como incendios forestales, el sensor geoestacionario proporciona observaciones frecuentes, mientras que los otros dos escenarios buscan datos de alta resolución que puedan ver campos y ríos individuales y, por lo tanto, necesitan satélites de órbita polar que pasan con menos frecuencia.</div>
+</div>
+
+<script>
+function checkMatchAnswers3() {
+  const correctAnswers = { 'match3-q1': 'narrow', 'match3-q2': 'wide', 'match3-q3': 'geo' };
+  let allCorrect = true;
+  for (const [qId, correctVal] of Object.entries(correctAnswers)) {
+    let selectElement = document.getElementById(qId);
+    let feedbackElement = document.getElementById(qId.replace('q', 'f'));
+    if (selectElement.value === "") {
+      feedbackElement.innerHTML = "⚠️"; feedbackElement.style.color = "#856404"; selectElement.style.borderColor = "#ffeeba";
+      allCorrect = false;
+    } else if (selectElement.value === correctVal) {
+      feedbackElement.innerHTML = "✔"; feedbackElement.style.color = "#155724"; selectElement.style.borderColor = "#28a745";
+    } else {
+      feedbackElement.innerHTML = "✖"; feedbackElement.style.color = "#721c24"; selectElement.style.borderColor = "#dc3545";
+      allCorrect = false;
+    }
+  }
+  let globalFeedback = document.getElementById('match3-feedback');
+  if(allCorrect){
+    globalFeedback.style.display = "block";
+  } else {
+    globalFeedback.style.display = "none";
+  }
+}
+</script>
+```
+
+**6. Las imágenes de sensores remotos por satélite siempre muestran exactamente lo que "ve" el instrumento de la misma forma que una cámara fotográfica tradicional.**
+
+```{=html}
+<div class="quiz-container">
+  <div class="quiz-option" onclick="checkAnswer(this, false)">Verdadero</div>
+  <div class="quiz-option" onclick="checkAnswer(this, true, '¡Correcto! Los instrumentos satelitales no toman fotografías tradicionales, sino que miden la radiancia en diferentes bandas espectrales. Esta información luego se procesa computacionalmente para crear la imagen que vemos.')">Falso</div>
+  <div class="quiz-feedback"></div>
+</div>
+```
+
+**7. ¿Cuál es el nivel más bajo de procesamiento de datos en el que encontrarás variables geofísicas con control de calidad alineadas en cuadrículas uniformes (grids) en el espacio y el tiempo?**
+
+```{=html}
+<div class="quiz-container">
+  <div class="quiz-option" onclick="checkAnswer(this, false)">Nivel 0</div>
+  <div class="quiz-option" onclick="checkAnswer(this, false)">Nivel 1</div>
+  <div class="quiz-option" onclick="checkAnswer(this, false)">Nivel 2</div>
+  <div class="quiz-option" onclick="checkAnswer(this, true, '¡Correcto! Los niveles inferiores (L0, L1 y L2) no están mapeados en una cuadrícula uniforme, pero los datos de Nivel 3 y superiores siempre están en una cuadrícula.')">Nivel 3</div>
+  <div class="quiz-option" onclick="checkAnswer(this, false)">Nivel 4</div>
+  <div class="quiz-feedback"></div>
+</div>
+```
+
+**8. ¿Cuáles de los siguientes son beneficios comunes del uso de datos de observación de la Tierra por sensores remotos?**
+
+1. Un solo sensor puede usarse para medir toda o una gran parte de la Tierra.
+2. La NASA cobra una tarifa por descargar datos para financiar mejores sensores.
+3. La teledetección es la forma más directa y precisa de medir cualquier cantidad geofísica.
+4. Se pueden recolectar datos incluso de lugares difíciles de alcanzar en el terreno.
+5. Algunos datos están disponibles en pocas horas, permitiendo decisiones casi en tiempo real.
+
+```{=html}
+<div class="quiz-container">
+  <div class="quiz-option" onclick="checkAnswer(this, false)">Afirmaciones 3 y 4</div>
+  <div class="quiz-option" onclick="checkAnswer(this, true, '¡Correcto! La teledetección permite monitorear grandes extensiones y lugares remotos rápidamente, aunque los datos de la NASA son gratuitos (no se cobra tarifa) y no siempre es la forma más directa de medir variables comparado con sensores en el terreno (in-situ).')">Afirmaciones 1, 4 y 5</div>
+  <div class="quiz-option" onclick="checkAnswer(this, false)">Afirmaciones 1, 2 y 3</div>
+  <div class="quiz-option" onclick="checkAnswer(this, false)">Todas las afirmaciones</div>
+  <div class="quiz-feedback"></div>
+</div>
+```
+
+**9. Todas las siguientes son *debilidades* o retos de usar datos de sensores remotos de la NASA, EXCEPTO:**
+
+```{=html}
+<div class="quiz-container">
+  <div class="quiz-option" onclick="checkAnswer(this, false)">Grandes cantidades de datos en una variedad de formatos pueden requerir más tiempo y procesamiento.</div>
+  <div class="quiz-option" onclick="checkAnswer(this, false)">Es difícil obtener datos de alta resolución espacial, espectral, temporal y radiométrica al mismo tiempo.</div>
+  <div class="quiz-option" onclick="checkAnswer(this, true, '¡Correcto! Esta afirmación es la excepción. Una de las mayores ventajas de la teledetección es precisamente que proporciona información en lugares donde NO existen mediciones basadas en tierra (in-situ).')">La teledetección proporciona información únicamente en los lugares donde ya existen mediciones basadas en tierra.</div>
+  <div class="quiz-option" onclick="checkAnswer(this, false)">Aunque los datos generalmente se validan con medidas en superficie, estos muchas veces no coinciden exactamente con la medida satelital.</div>
+  <div class="quiz-feedback"></div>
+</div>
+```
+
+**10. Todos los datos y herramientas de teledetección de la NASA se pueden buscar y acceder a través del sitio web Earthdata de la NASA sin costo alguno.**
+
+```{=html}
+<div class="quiz-container">
+  <div class="quiz-option" onclick="checkAnswer(this, true, '¡Correcto! El portal NASA Earthdata en www.earthdata.nasa.gov proporciona acceso sin costo a todos los datos y herramientas de teledetección, alineado con el compromiso de la NASA hacia la Ciencia Abierta (Open Science).')">Verdadero</div>
+  <div class="quiz-option" onclick="checkAnswer(this, false)">Falso</div>
+  <div class="quiz-feedback"></div>
+</div>
+
+<script>
+// SCRIPT ACTUALIZADO PARA ACEPTAR MENSAJES DE RETROALIMENTACIÓN
+function checkAnswer(element, isCorrect, feedbackMsg = null) {
+  let container = element.parentElement;
+  let options = container.getElementsByClassName('quiz-option');
+  let feedback = container.getElementsByClassName('quiz-feedback')[0];
+
+  // Restablecer estilos
+  for (let opt of options) {
+    opt.classList.remove('quiz-correct', 'quiz-incorrect');
+  }
+
+  // Aplicar estilo según si es correcto o incorrecto
+  if (isCorrect) {
+    element.classList.add('quiz-correct');
+    feedback.style.display = "block";
+    feedback.style.backgroundColor = "#d4edda";
+    feedback.style.color = "#155724";
+    // Si se pasa un mensaje personalizado, se muestra; si no, mensaje genérico
+    feedback.innerHTML = feedbackMsg ? "✔ " + feedbackMsg : "✔ ¡Respuesta correcta!";
+  } else {
+    element.classList.add('quiz-incorrect');
+    feedback.style.display = "block";
+    feedback.style.backgroundColor = "#f8d7da";
+    feedback.style.color = "#721c24";
+    feedback.innerHTML = "✖ Respuesta incorrecta. Inténtalo de nuevo.";
+  }
+}
+</script>
+```

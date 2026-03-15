@@ -186,5 +186,11 @@
         "LAYOVER_SHADOW_COVERAGE": 1.1123,
         "POLARIZATION": "['VV', 'VH']",
         "system:index": "T18NWL_20240830T104323Z_20251107T024246Z_S1A"
-    }
+    },
+    "uris": [
+        "gs://earth-engine-public-requester-pays/NASA/OPERA/opera_l3_dswx_s1_v1/2024-08-30/regen/OPERA_L3_DSWx-S1_T18NWL_20240830T104323Z_20251107T024246Z_S1A_30_v1.0_B01_WTR.tif",
+        "gs://earth-engine-public-requester-pays/NASA/OPERA/opera_l3_dswx_s1_v1/2024-08-30/regen/OPERA_L3_DSWx-S1_T18NWL_20240830T104323Z_20251107T024246Z_S1A_30_v1.0_B02_BWTR.tif",
+        "gs://earth-engine-public-requester-pays/NASA/OPERA/opera_l3_dswx_s1_v1/2024-08-30/regen/OPERA_L3_DSWx-S1_T18NWL_20240830T104323Z_20251107T024246Z_S1A_30_v1.0_B03_CONF.tif",
+        "gs://earth-engine-public-requester-pays/NASA/OPERA/opera_l3_dswx_s1_v1/2024-08-30/regen/OPERA_L3_DSWx-S1_T18NWL_20240830T104323Z_20251107T024246Z_S1A_30_v1.0_B04_DIAG.tif"
+    ]
 }

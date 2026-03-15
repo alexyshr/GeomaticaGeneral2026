@@ -1,0 +1,182 @@
+---
+title: "Satélites y sensores"
+format: html
+---
+
+> **Fuente original:** [Natural Resources Canada - Remote Sensing Tutorials](https://natural-resources.canada.ca/science-data/science-research/geomatics/remote-sensing/tutorial-fundamentals-remote-sensing)
+
+## Introducción a plataformas y sensores
+
+Para que un sensor pueda captar y registrar la energía reflejada o emitida por un objetivo, debe estar alojado en una **plataforma** estable, aislada de la superficie observada. Estas plataformas pueden situarse en la superficie terrestre, en la atmósfera o en el espacio.
+
+![Registro de energía mediante sensores en diversas plataformas. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/rsrecord.gif){#fig-rsrecord fig-align="center" out-width="70%"}
+
+* **Plataformas terrestres:** Se emplean frecuentemente para caracterizar detalladamente el comportamiento espectral de las coberturas. Esta información ("verdad terreno") es vital para calibrar y validar los datos capturados por sensores aéreos y espaciales.
+
+![Sensor montado en una plataforma terrestre. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/grdsens.jpg){#fig-grdsens fig-align="center" out-width="50%"}
+
+* **Plataformas aéreas:** Los aviones de ala fija son las plataformas atmosféricas más utilizadas. Facilitan la captura de imágenes de alta resolución espacial y permiten una planificación flexible y oportuna sobre cualquier área.
+
+![Avión empleado como plataforma para teledetección aérea. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/convair.jpg){#fig-convair fig-align="center" out-width="50%"}
+
+* **Plataformas espaciales:** La percepción remota espacial se realiza desde el transbordador espacial o, mayoritariamente, desde satélites, los cuales permiten una cobertura sistemática, repetitiva y global de la superficie terrestre.
+
+![Fotografía tomada desde el transbordador espacial. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/shuttle.jpg){#fig-shuttle fig-align="center" out-width="50%"}
+![Representación artística de plataformas satelitales. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/satels.jpg){#fig-satels fig-align="center" out-width="50%"}
+
+## Características orbitales y franjas de barrido
+
+La trayectoria que sigue un satélite se denomina **órbita**. Su diseño está estrictamente ligado a las capacidades del sensor y los objetivos de la misión.
+
+* **Órbitas geoestacionarias:** Situadas a gran altitud (aprox. 36,000 km), su velocidad angular coincide con la rotación de la Tierra. El satélite permanece estacionario sobre un punto fijo, lo que permite la observación continua de un mismo hemisferio. 
+
+![Dinámica de una órbita geoestacionaria. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/geostation.gif){#fig-geostation fig-align="center" out-width="50%"}
+
+* **Órbitas casi polares (Near-polar):** Siguen una trayectoria predominante de norte a sur. Al combinarse con la rotación terrestre, logran cobertura global. Comúnmente son **heliosincrónicas**, garantizando que el satélite sobrevuele cada latitud a la misma hora solar local para mantener condiciones de iluminación consistentes.
+
+![Trayectoria de una órbita casi polar y heliosincrónica. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/nearpolar.gif){#fig-nearpolar fig-align="center" out-width="50%"}
+
+El trayecto de sur a norte se denomina **paso ascendente**, mientras que el trayecto de norte a sur es el **paso descendente**. Los sensores ópticos pasivos operan casi exclusivamente durante los pases descendentes (lado diurno).
+
+![Representación de los pases ascendentes y descendentes. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/ascdesc.gif){#fig-ascdesc fig-align="center" out-width="50%"}
+
+El área terrestre interceptada por el sensor se conoce como **franja de barrido** (*swath*). La rotación terrestre bajo la órbita permite que cada pase barra un área diferente.
+
+![Proyección de la franja de barrido sobre la superficie terrestre. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/swath.gif){#fig-swath fig-align="center" out-width="50%"}
+![Desplazamiento del área barrida en pasadas consecutivas. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/orbit.gif){#fig-orbit fig-align="center" out-width="50%"}
+
+En órbitas casi polares, el traslape (*overlap*) entre franjas adyacentes aumenta conforme la órbita se acerca a los polos.
+
+![Aumento del traslape entre franjas adyacentes en altas latitudes. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/overlap.gif){#fig-overlap fig-align="center" out-width="50%"}
+
+## Resolución espacial, tamaño de píxel y escala
+
+La resolución espacial para sensores pasivos se deriva del **Campo de Visión Instantáneo (IFOV)**, que corresponde al cono angular de visibilidad del instrumento en un instante dado.
+
+![Determinación geométrica del Campo de Visión Instantáneo (IFOV). Fuente: CCRS/CCT ©](images/sensores_remotos/canada/fieldview.gif){#fig-fieldview fig-align="center" out-width="60%"}
+
+Es imperativo diferenciar entre *tamaño de píxel* (unidad bidimensional de la imagen digital) y *resolución espacial* (característica física del hardware). 
+
+![Imagen con resolución espacial gruesa o baja. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/corsres.jpg){#fig-corsres fig-align="center" out-width="48%"}
+![Imagen con resolución espacial fina o alta. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/fineres.jpg){#fig-fineres fig-align="center" out-width="48%"}
+
+La **escala** denota la relación matemática entre una dimensión en la imagen y su magnitud real en el terreno.
+
+![Diferencia de escala entre imágenes satelitales y aéreas. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/ottsat.jpg){#fig-ottsat fig-align="center" out-width="48%"}
+![Fotografía aérea a mayor escala de la misma región. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/ottair.jpg){#fig-ottair fig-align="center" out-width="48%"}
+
+## Resolución espectral y radiométrica
+
+La **resolución espectral** define la capacidad del sensor para segmentar el espectro electromagnético en intervalos estrechos. Los sensores hiperespectrales logran registrar cientos de bandas continuas para caracterizaciones moleculares y mineralógicas precisas.
+
+![Resolución espectral necesaria para discriminar asociaciones litológicas. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/rockcrve.gif){#fig-rockcrve fig-align="center" out-width="60%"}
+
+![Esquema del particionamiento del espectro según la resolución. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/specrese.gif){#fig-specrese fig-align="center" out-width="70%"}
+
+La **resolución radiométrica** determina la sensibilidad a pequeñas variaciones de radiancia, la cual se cuantifica en bits. Una profundidad de 8 bits permite registrar 256 niveles de gris, ofreciendo mucho mayor contraste que imágenes de menores profundidades de bits.
+
+![Visualización de una imagen a 2 bits. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/2bit.gif){#fig-2bit fig-align="center" out-width="45%"}
+![Misma imagen a 8 bits. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/8bit.jpg){#fig-8bit fig-align="center" out-width="45%"}
+
+## Resolución temporal
+
+La **resolución temporal** indica la frecuencia con la que se registra un objetivo geográfico. Plataformas con sensores orientables o apuntables (*off-nadir*) reducen drásticamente los periodos de revisita.
+
+![Mejora de la resolución temporal mediante sensores de apunte lateral. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/spotpoint.gif){#fig-spotpoint fig-align="center" out-width="60%"}
+
+## Cámaras, fotografía aérea y escaneo
+
+Las cámaras aéreas de encuadre capturan simultáneamente una porción bidimensional del terreno, ya sea en película pancromática o en falso color infrarrojo.
+
+![Geometría básica de un sistema fotográfico de encuadre. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/camera.gif){#fig-camera fig-align="center" out-width="50%"}
+
+![Fotografía aérea en color natural. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/normal.jpg){#fig-normal fig-align="center" out-width="48%"}
+![Misma zona cubierta con una película de falso color infrarrojo (CIR). Fuente: CCRS/CCT ©](images/sensores_remotos/canada/falsecolor.jpg){#fig-falsecolor fig-align="center" out-width="48%"}
+
+Las adquisiciones pueden ser oblicuas o verticales, integrándose en líneas de vuelo con alto traslape para habilitar estudios estereoscópicos.
+
+![Fotografía oblicua ilustrando variaciones profundas en la escala espacial. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/obliquept.jpg){#fig-obliquept fig-align="center" out-width="60%"}
+![Esquema de progresión de una línea de vuelo con solape estereoscópico. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/flightline.gif){#fig-flightline fig-align="center" out-width="60%"}
+![Fotografía panorámica adquirida desde la órbita terrestre. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/shtlpho.jpg){#fig-shtlpho fig-align="center" out-width="50%"}
+
+En teledetección satelital, predominan los **sistemas de escaneo multiespectral**:
+* **Barrido transversal (Across-track/Whiskbroom):** Un espejo oscilante desvía la energía pixel a pixel.
+* **Empuje lineal (Along-track/Pushbroom):** Un arreglo lineal de detectores captura una fila completa simultáneamente, eliminando partes móviles e incrementando el tiempo de integración.
+
+![Mecanismo de un escáner tipo Across-track con espejo giratorio. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/acrsstrack.gif){#fig-acrsstrack fig-align="center" out-width="48%"}
+![Geometría de captura mediante arreglo lineal (Along-track). Fuente: CCRS/CCT ©](images/sensores_remotos/canada/alngtrk.gif){#fig-alngtrk fig-align="center" out-width="48%"}
+
+## Imágenes térmicas y distorsión geométrica
+
+Los sensores térmicos detectan la emisión infrarroja natural de las superficies. Las representaciones gráficas de temperatura aparente se denominan **termogramas**.
+
+![Dinámica de detección pasiva en el espectro infrarrojo térmico. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/thermal_e.gif){#fig-thermal fig-align="center" out-width="50%"}
+![Termograma ilustrando anomalías y pérdidas térmicas urbanas. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/thermogram.jpg){#fig-thermogram fig-align="center" out-width="60%"}
+
+Durante la adquisición, las imágenes sufren distorsiones como el **desplazamiento por relieve** (efecto de paralelaje respecto al nadir) y distorsiones tangenciales propias de la cinemática del sensor.
+
+![Desplazamiento ortogonal inducido por topografía abrupta. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/reliefdis.gif){#fig-reliefdis fig-align="center" out-width="48%"}
+![Deformación tangencial geométrica característica del escaneo por espejos. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/geomdis.gif){#fig-geomdis fig-align="center" out-width="48%"}
+
+## Satélites meteorológicos
+
+Las aplicaciones meteorológicas constituyeron uno de los primeros usos civiles de la percepción remota. Estos satélites se caracterizan por coberturas espaciales sumamente amplias (resolución espacial baja a moderada) pero con muy altas frecuencias temporales.
+
+* **Sistemas Geoestacionarios (ej. GOES):** Proveen vistas hemisféricas constantes. Son críticos para la identificación de dinámica atmosférica rápida y ciclones tropicales.
+
+![Imagen hemisférica adquirida por un satélite geoestacionario. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/fulldsk.jpg){#fig-fulldsk fig-align="center" out-width="50%"}
+![Imagen del satélite GOES ilustrando la escala masiva de cobertura atmosférica. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/goesvw.jpg){#fig-goesvw fig-align="center" out-width="50%"}
+
+* **Sistemas Casi-polares (ej. NOAA AVHRR):** El sensor AVHRR opera sobre un *swath* de casi 3000 km. Aunque concebido para el monitoreo del clima y la temperatura superficial del mar, ha resultado indispensable para derivar índices regionales de vegetación y generar mosaicos de usos del suelo a escala continental.
+
+![Comparativa de escala térmica/nubosa de AVHRR frente a sistemas geoestacionarios. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/noaacld.jpg){#fig-noaacld fig-align="center" out-width="60%"}
+![Mosaico global de AVHRR utilizado para mapeo de temperatura superficial del mar (SST). Fuente: CCRS/CCT ©](images/sensores_remotos/canada/noaasst.jpg){#fig-noaasst fig-align="center" out-width="48%"}
+![Mosaico de cobertura terrestre de Canadá derivado de AVHRR. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/mosaic.jpg){#fig-mosaic fig-align="center" out-width="48%"}
+
+## Satélites de observación terrestre
+
+Orientados al mapeo de precisión y la gestión de recursos naturales, estos sistemas ofrecen resoluciones espaciales finas en detrimento de la resolución temporal (debido a barridos más estrechos).
+
+* **Landsat:** Operado históricamente por NASA y NOAA, instituyó el monitoreo terrestre con los sensores MSS (Multispectral Scanner) y posteriormente el Thematic Mapper (TM). TM introdujo resolución de 30 m, mayores anchos de banda, canales en el SWIR y cuantificación a 8 bits.
+
+![Satélite de la serie histórica Landsat en órbita polar. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/landsat2.jpg){#fig-landsat2 fig-align="center" out-width="40%"}
+![Monitoreo de deforestación mediante el análisis temporal de imágenes Landsat. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/forestchg.jpg){#fig-forestchg fig-align="center" out-width="50%"}
+
+* **SPOT:** Desarrollado por el CNES francés. Fue pionero en emplear tecnología "pushbroom" y en permitir la orientación lateral de sus sensores HRV (High Resolution Visible). Esto habilitó la recolección estéreo para derivar Modelos Digitales de Elevación (DEM) y mejoró los tiempos de revisita bajo demanda.
+
+![Configuración del sistema espacial francés SPOT. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/spot.gif){#fig-spot fig-align="center" out-width="40%"}
+![Capacidad de apunte lateral (off-nadir) de SPOT para acelerar revisitas. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/spotoff.gif){#fig-spotoff fig-align="center" out-width="50%"}
+![Modo de adquisición de franjas adyacentes fusionadas en el sensor HRV. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/spotadj.gif){#fig-spotadj fig-align="center" out-width="50%"}
+![Alta resolución de SPOT empleada para cartografía urbana de detalle. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/spotmap.jpg){#fig-spotmap fig-align="center" out-width="60%"}
+
+## Satélites de observación marina
+
+Los océanos exigen sensores calibrados para rangos de reflectancia muy bajos y anchos de banda extremadamente finos, necesarios para penetrar la columna de agua y evaluar variables físico-químicas.
+
+![Representación de la concentración de fitoplancton mediante oceanografía por satélite. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/czcsclr.jpg){#fig-czcsclr fig-align="center" out-width="50%"}
+
+Misiones como Nimbus-7 (sensor CZCS) y SeaStar (sensor SeaWiFS) fueron diseñadas específicamente para medir la absorción de clorofila y la dinámica del fitoplancton oceánico, parámetros fundamentales para modelar la producción primaria y el ciclo del carbono a nivel planetario.
+
+## Otros sensores y plataformas
+
+El espectro de sensores se complementa con tecnologías de mayor especialidad o basadas en plataformas sub-orbitales:
+
+![Instrumentos no convencionales para percepción remota. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/othsensors.gif){#fig-othsensors fig-align="center" out-width="50%"}
+
+* **Sistemas Láser y LiDAR:** Instrumentos activos que emiten pulsos de energía fotónica para determinar distancias milimétricas y generar perfiles tridimensionales (ej. canopeo forestal, batimetría somera). Los fluorosensores láser inducen y leen emisiones reactivas útiles en el control de vertidos marinos de hidrocarburos.
+* **RADAR:** Sensores activos de microondas que proveen datos independientemente de la cobertura nubosa o la luz diurna, vitales para interferometría geomorfológica o control de hielos.
+
+## Recepción, transmisión y procesamiento de datos
+
+Los satélites de observación terrestre operan bajo una logística rigurosa para enviar los ingentes volúmenes de datos a la superficie.
+
+![Esquema de las arquitecturas de enlace de datos desde la plataforma espacial al segmento terrestre. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/transmit.gif){#fig-transmit fig-align="center" out-width="60%"}
+
+La transmisión de telemetría (downlink) puede ejecutarse de tres modos: 
+1. **Transmisión directa:** Ejecutada en tiempo real hacia una Estación Receptora Terrestre (GRS) dentro del radio visual del satélite.
+2. **Registro a bordo:** Los datos se graban temporalmente en sistemas de estado sólido internos hasta alcanzar el alcance de una estación de control.
+3. **Satélites de retransmisión:** Constelaciones como TDRSS interceptan la señal en órbitas altas y la retransmiten globalmente a tierra sin interrupciones geográficas.
+
+![Círculos de cobertura nominal de las estaciones receptoras canadienses de Cantley y Prince Albert. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/gat_pass.gif){#fig-gat_pass fig-align="center" out-width="60%"}
+
+Tras la recepción, los datos son convertidos desde su formato radiométrico original a productos estructurados de uso final, aplicando rectificaciones paramétricas. A nivel operativo, las estaciones suelen generar vistas previas de baja resolución (*quick-looks*) y procesamientos en tiempo casi real orientados a respuestas de emergencia, como navegación en mares congelados o combate de incendios.

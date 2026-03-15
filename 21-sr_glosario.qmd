@@ -1,0 +1,170 @@
+---
+title: "Glosario de Sensores Remotos"
+subtitle: "Términos y Definiciones"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    theme: cosmo
+  pdf:
+    toc: true
+---
+
+## Referencias y Fuentes
+
+Este glosario ha sido compilado y adaptado utilizando material de las siguientes fuentes de excelencia en observación de la Tierra:
+
+* **NASA-ARSET**: Programa de Capacitación en Teledetección Aplicada de la NASA (Applied Remote Sensing Training).
+* **Natural Resources Canada**: [Remote Sensing Tutorials - Fundamentals of Remote Sensing](https://natural-resources.canada.ca/science-data/science-research/geomatics/remote-sensing/tutorial-fundamentals-remote-sensing).
+
+---
+
+## Requisitos de finalización
+
+Revisa los términos ordenados alfabéticamente a continuación para conocer sus definiciones. Al terminar, haz clic en el botón de retroceso de tu navegador para volver a la página principal del curso o utiliza el menú de navegación para seleccionar la siguiente actividad.
+
+---
+
+### A
+
+* **Absorción (Absorption):** Ocurre cuando la luz incidente golpea átomos y moléculas provocando que vibren.
+* **Albedo:** El albedo de una superficie es equivalente al porcentaje de reflectancia; es la fracción de radiación incidente que es reflejada por una superficie. Los valores van de 0 a 1, donde 0 significa que la superficie absorbe toda la radiación y 1 significa que refleja toda la radiación.
+* **Amplitud (Amplitude):** La "altura" de una onda o su desplazamiento máximo desde el punto de equilibrio.
+* **Ancho de Barrido (Swath):** El área de la superficie de la Tierra capturada o escaneada durante una sola pasada de un avión o satélite.
+* **Ángulo de Incidencia (Incident Angle):** El ángulo formado entre un rayo incidente (por ejemplo, una onda de RADAR) sobre una superficie y la línea perpendicular a dicha superficie en el punto de incidencia.
+* **Antropogénico (Anthropogenic):** Resultante o derivado de la actividad humana.
+* **Aplicación (Application):** Se refiere a las preguntas o problemas del mundo real que los datos de teledetección ayudan a resolver. Los temas de aplicación incluyen calidad del aire, agricultura, gestión de desastres, manejo ecológico y ambiental, y calidad del agua.
+* **ARSET:** Programa de Capacitación en Teledetección Aplicada de la NASA (Applied Remote Sensing Training program).
+
+### B
+
+* **Banda (Band):** Representa un segmento seleccionado del espectro electromagnético. Típicamente, un instrumento de teledetección mide la radiación electromagnética en una o más bandas (ver *Canal*).
+
+### C
+
+* **Canal (Channel):** Representa un segmento seleccionado del espectro electromagnético. Es un término que suele usarse de manera intercambiable con *Banda*.
+* **Clasificación (Classification):** El proceso de utilizar ciertas características de los datos para asignar clases o categorías a áreas u objetos específicos. Categorizar cada píxel en una imagen como "agua" o "tierra" es un ejemplo de clasificación.
+* **Composición de Imagen en Color Verdadero (True Color Imagery Composite):** Una combinación de bandas que muestra a la Tierra en colores similares a los que veríamos con nuestros propios ojos. Los colores de visualización rojo, verde y azul se asignan a las longitudes de onda visibles roja, verde y azul, respectivamente.
+* **Composición de Imagen en Falso Color (False Color Imagery Composite / RGB):** Una composición que asigna los colores de visualización rojo, verde y azul (RGB) a longitudes de onda que no corresponden necesariamente a los colores rojo, verde y azul del espectro visible.
+* **Cuadriculado / En grilla (Gridded):** Datos espaciales organizados sobre una cuadrícula uniforme y espacialmente referenciada (por ejemplo, una cuadrícula de latitud y longitud).
+
+### D
+
+* **DAAC:** Centro de Archivo Activo Distribuido (Distributive Active Archive Center); los datos de la NASA se archivan en varios DAACs.
+* **Detección y Medición por Luz (LiDAR - Light Detection and Ranging):** Una técnica de teledetección activa que funciona bajo el mismo principio que el radar, pero utiliza luz de un láser en lugar de ondas de radio.
+* **Dispersión (Scattering):** Redirección de la radiación electromagnética a través de interacciones con partículas o moléculas en la atmósfera.
+
+### E
+
+* **Emisión (Emission):** Ocurre cuando un objeto libera radiación electromagnética a partir de su propia energía.
+* **Energía Electromagnética (Electromagnetic Energy):** Energía que viaja en forma de ondas y abarca el espectro electromagnético, como la proveniente del sol. La cantidad de energía transmitida varía con la longitud de onda.
+* **Energía Solar (Solar Energy):** La energía electromagnética emitida por el sol, también conocida como radiación solar.
+* **Enmascaramiento (Masking):** Un método para eliminar ciertas secciones de una imagen (por ejemplo, remover nubes para dejar solo la porción utilizable de los datos).
+* **ESA:** Agencia Espacial Europea (European Space Agency).
+* **Espectro Electromagnético (Electromagnetic Spectrum):** Término utilizado para describir el rango completo de las longitudes de onda de la radiación electromagnética. Incluye rayos gamma, rayos X, luz ultravioleta, luz visible, infrarrojos, microondas y ondas de radio.
+* **Espectrometría (Spectrometry):** La ciencia de estudiar e identificar la materia en función de cómo interactúa con la radiación electromagnética.
+* **Espectrómetro (Spectrometer):** Un sensor utilizado para medir las propiedades de la luz en las regiones ultravioleta, visible e infrarrojo cercano del espectro electromagnético.
+* **Espectrorradiómetro (Spectroradiometer):** Un sensor que mide tanto la longitud de onda como la amplitud de la luz emitida.
+* **Extensión Espacial (Spatial Extent):** El área superficial total cubierta por un conjunto de datos (dataset) determinado.
+
+### F
+
+* **Fase (Phase):** La posición de un punto en el tiempo dentro de un ciclo de forma de onda.
+* **Firma Espectral (Spectral signature):** La respuesta espectral de una superficie u objeto; es la forma en que el material responde a la radiación incidente en función de la longitud de onda.
+* **Frecuencia (Frequency):** El número de ciclos de una onda que pasan por un punto fijo por unidad de tiempo.
+
+### G
+
+* **Geoestacionario (Geostationary):** Que permanece fijo sobre una ubicación específica en la superficie de la Tierra (acompañando la rotación terrestre).
+* **Georreferenciación (Georeference):** El acto de vincular datos espaciales a su ubicación correcta sobre, debajo o por encima de la superficie de la Tierra.
+
+### I
+
+* **Imágenes Hiperespectrales (Hyperspectral Imaging):** Medición a través del espectro electromagnético utilizando cientos o miles de bandas muy estrechas.
+* **In Situ:** Término que significa "en el lugar original". En teledetección, se refiere comúnmente a los datos recopilados en el terreno para validar los datos capturados por sensores remotos aéreos o espaciales.
+* **Infrarrojo (Infrared):** Una región de longitudes de onda en el espectro electromagnético, de 0.75 a 100 µm ($7.5 \times 10^{-7}$ - $10^{-4}$ m).
+* **Infrarrojo Cercano (NIR - Near Infrared):** Una subregión de la zona infrarroja del espectro electromagnético, con longitudes de onda de 0.75 a 1.4 µm ($7.5 \times 10^{-7}$ - $1.4 \times 10^{-6}$ m).
+* **Infrarrojo de Onda Corta (SWIR - Shortwave Infrared):** Una subregión infrarroja del espectro electromagnético, con longitudes de onda de 1.4 a 4 µm ($1.4 \times 10^{-6}$ - $3 \times 10^{-6}$ m).
+* **Infrarrojo de Onda Larga (LWIR - Longwave Infrared):** Una subregión infrarroja del espectro electromagnético, con longitudes de onda de 8 a 15 µm ($8 \times 10^{-6}$ - $1.5 \times 10^{-5}$ m).
+* **Infrarrojo Térmico (TIR - Thermal Infrared):** Una subregión infrarroja del espectro electromagnético (8 a 15 µm) donde los objetos emiten radiación en función de su temperatura. El TIR es crucial para estudiar las temperaturas de la superficie y la atmósfera.
+* **Intensidad (Intensity):** La transferencia de potencia promedio durante un período de la onda. Es proporcional al cuadrado de la amplitud de la onda.
+
+### L
+
+* **Longitud de Onda (Wavelength):** La distancia desde la cresta de una onda hasta la siguiente; la longitud de onda es inversamente proporcional a la frecuencia.
+* **Luz Visible (Visible light):** La región del espectro electromagnético que es visible para el ojo humano y contiene los colores del arco iris, con longitudes de onda de 750 nm a 400 nm (rojo ~690nm, verde ~530nm, azul ~420nm).
+
+### M
+
+* **Microondas (Microwave):** Una región de longitudes de onda en el espectro electromagnético, desde 1 mm ($10^{-3}$ m) hasta 100 mm ($10^{-1}$ m).
+* **Multiespectral (Multispectral):** Medición a través del espectro electromagnético utilizando generalmente entre 3 y 10 bandas.
+
+### N
+
+* **Nadir:** El punto en la superficie de la Tierra directamente debajo del satélite de observación.
+* **NASA:** Administración Nacional de Aeronáutica y el Espacio (National Aeronautics and Space Administration).
+* **NOAA:** Oficina Nacional de Administración Oceánica y Atmosférica (National Oceanic and Atmospheric Administration).
+
+### O
+
+* **Observaciones de la Tierra (Earth Observations):** Información sobre los sistemas físicos, químicos y biológicos de la Tierra (por ejemplo, imágenes satelitales).
+* **Ondas de Radio (Radio waves):** La región con las longitudes de onda más largas en el espectro electromagnético, desde 1 m hasta 100 km (1 - $10^5$ m).
+* **Ondas de Rayos Gamma (Gamma ray waves):** La región con las longitudes de onda más cortas en el espectro electromagnético, desde 1 fm ($10^{-15}$ m) hasta 100 fm ($10^{-13}$ m).
+* **Ondas de Rayos X (X-Ray waves):** Una región de longitudes de onda en el espectro electromagnético, desde 1 pm ($10^{-12}$ m) hasta 100 pm ($10^{-10}$ m).
+* **Ondas Ultravioleta / UV (Ultraviolet waves):** Una región de longitudes de onda en el espectro electromagnético, de 100 nm ($10^{-7}$ m) a 1 nm ($10^{-9}$ m).
+* **Óptico (Optical):** Sensores que recopilan luz de las partes visibles e infrarrojas del espectro.
+* **Órbita Polar (Polar Orbit):** Un tipo de órbita que cruza en o cerca de los polos Norte y Sur.
+
+### P
+
+* **Parámetro Geofísico (Geophysical parameter):** Propiedades medibles dentro del sistema terrestre. La temperatura de la superficie terrestre, la humedad en el aire y la altura de los árboles son ejemplos de parámetros geofísicos.
+* **Plataforma (Platform):** Lo que transporta a un sensor. Generalmente, un satélite o un avión.
+* **Polarímetro (Polarimeter):** Un sensor que mide la intensidad y la orientación de las ondas de luz.
+* **Polarización (Polarization):** La orientación o alineación de una onda electromagnética.
+* **Porcentaje de Reflectancia (Percent Reflectance):** La relación entre la energía reflejada y la energía total incidente sobre el objeto a una longitud de onda dada.
+* **Proyección (Projection):** Los medios por los cuales se muestra un sistema de coordenadas y datos espaciales en una superficie plana.
+
+### R
+
+* **Radar:** Un sensor activo que utiliza ondas de radio para medir la distancia a un objeto.
+* **Radar de Apertura Sintética (SAR - Synthetic Aperture Radar):** Una forma de radar que utiliza el movimiento de la antena para crear una resolución espacial más fina (detallada) que un radar estacionario tradicional.
+* **Radar Polarimétrico (Polarimetric radar):** Un sensor que produce su propia energía de microondas y mide tanto la intensidad de la energía que regresa al satélite como la orientación de la onda electromagnética en sí.
+* **Radiación de Onda Corta (Shortwave radiation):** Se refiere a la porción del espectro electromagnético emitida por el sol con longitudes de onda entre 0.1 µm y 4 µm, que incluye las regiones ultravioleta, visible e infrarroja.
+* **Radiación Electromagnética (Electromagnetic Radiation):** Energía que viaja en forma de ondas. Es un término intercambiable con *Energía Electromagnética*.
+* **Radiación Incidente (Incident Radiation):** La energía electromagnética entrante que golpea una superficie.
+* **Radiación Solar (Solar Radiation):** La energía electromagnética emitida por el sol.
+* **Radiancia (Radiance):** Una medida de la potencia de la radiación electromagnética emitida desde un objeto objetivo por unidad de área para una longitud de onda determinada. En el espectro visible, también se describe como el brillo de la fuente en una dirección dada.
+* **Radiómetro de imágenes (Imaging radiometer):** Mide la cantidad de energía reflejada y emitida en porciones específicas del Espectro Electromagnético.
+* **Radiómetro de microondas (Microwave radiometer):** Un sensor que mide varias bandas de microondas diferentes dentro del espectro electromagnético.
+* **Recuperación / Extracción (Retrieval):** El proceso de utilizar datos brutos de un sensor remoto (es decir, medidas de radiación) para cuantificar un parámetro geofísico.
+* **Reflectancia (Reflectance):** Una medida de la luz o el calor reflejado por un objeto objetivo.
+* **Reflexión (Reflection):** Las ondas electromagnéticas que rebotan en una superficie en un ángulo igual y opuesto al ángulo de la radiación incidente.
+* **Resolución Espacial (Spatial Resolution):** El tamaño de un píxel dentro de una imagen digital y el área real en la superficie de la Tierra representada por ese píxel.
+* **Resolución Espectral (Spectral Resolution):** La capacidad de un sensor para diferenciar entre longitudes de onda. A mayor resolución espectral, más estrecho es el rango de longitud de onda para un canal o banda dada.
+* **Resolución Radiométrica (Radiometric Resolution):** La precisión de un sensor para detectar diferencias en la intensidad de la señal, expresada frecuentemente en bits (por ejemplo, 8 bits o 16 bits).
+* **Resolución Temporal (Temporal Resolution):** El intervalo de tiempo en el que un sensor mide u observa la misma ubicación (tiempo de revisita).
+* **Retrodispersión (Backscatter):** Se refiere a la energía reflejada directamente de regreso hacia su fuente después de golpear un objetivo (muy utilizado en RADAR).
+
+### S
+
+* **Satélite (Satellite):** Una nave espacial que orbita la Tierra y proporciona una plataforma para instrumentos científicos, incluidos los sensores remotos.
+* **Sensor (Sensor):** Un instrumento montado en una plataforma que detecta y mide la radiación reflejada o emitida por los objetos. El término "instrumento" se usa de manera intercambiable.
+* **Sensor Activo (Active Sensor):** Un sensor que proporciona su propia iluminación o energía y mide lo que se refleja de regreso (ej. RADAR o LiDAR).
+* **Sensor Pasivo (Passive Sensor):** Un sensor que no proporciona su propia iluminación, sino que mide la energía reflejada o emitida que proviene de fuentes naturales (como el sol).
+* **Series de Tiempo (Time Series):** Una serie de imágenes sobre una misma área objetivo recopiladas en diferentes puntos en el tiempo.
+* **SIG (GIS):** Sistema de Información Geográfica (Geographic Information System).
+* **Sincronizado con el Sol / Heliosíncrono (Sun-Synchronous):** Un tipo de órbita donde el satélite está sincronizado con la relación espacial entre la Tierra y el Sol, lo que significa que siempre pasa sobre el mismo lugar a la misma hora solar local.
+
+### T
+
+* **Teledetección / Percepción Remota (Remote Sensing):** El proceso de recopilar información sobre objetos desde la distancia, sin estar en contacto físico con ellos.
+* **Teledetección Aerotransportada (Airborne Remote Sensing):** Instrumentos de teledetección montados en aviones o vehículos aéreos no tripulados (UAV / Drones) para recopilar datos.
+* **Transmisión (Transmission):** Ocurre cuando un objeto es transparente a ciertas longitudes de onda de la radiación incidente y les permite pasar a su través.
+
+### U
+
+* **USGS:** Servicio Geológico de los Estados Unidos (United States Geological Survey).
+
+### V
+
+* **Ventana Atmosférica (Atmospheric Window):** Una región en el espectro electromagnético donde la atmósfera terrestre es relativamente transparente, permitiendo que la radiación pase con una absorción o dispersión mínima.

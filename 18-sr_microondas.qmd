@@ -1,0 +1,186 @@
+---
+title: "Sensores remotos de microondas"
+format: html
+---
+
+> **Fuente original:** [Natural Resources Canada - Remote Sensing Tutorials](https://natural-resources.canada.ca/science-data/science-research/geomatics/remote-sensing/tutorial-fundamentals-remote-sensing)
+
+## Introducción a la percepción remota por microondas
+
+La región de microondas del espectro electromagnético abarca longitudes de onda desde aproximadamente 1 centímetro hasta 1 metro. Su mayor ventaja radica en la capacidad de penetrar casi cualquier condición atmosférica. Al ser ondas sustancialmente más largas que las partículas atmosféricas (polvo, lluvia o nieve), no sufren dispersión severa, operando eficazmente bajo cobertura nubosa total.
+
+![Capacidad de penetración de las microondas a través de las nubes. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/mwrad.gif){#fig-mwrad fig-align="center" out-width="60%"}
+
+* **Sistemas pasivos:** Detectan la escasa radiación natural de microondas emitida por la Tierra. Dada la baja energía, requieren antenas grandes y operan con resoluciones espaciales bajas. Se aplican en meteorología (perfiles atmosféricos), hidrología (humedad del suelo) y oceanografía (hielo marino).
+
+![Concepto de teledetección pasiva en microondas. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/passmw.gif){#fig-passmw fig-align="center" out-width="60%"}
+
+* **Sistemas activos:** Emiten su propia energía (pulsos) hacia la superficie y miden la retrodispersión (*backscatter*). Al generar su iluminación, son completamente independientes de la luz solar o la energía térmica terrestre.
+
+![Esquema de funcionamiento de un sensor activo de microondas. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/actvmw.gif){#fig-actvmw fig-align="center" out-width="60%"}
+
+## Fundamentos del radar
+
+**RADAR** (RAdio Detection And Ranging) emite breves pulsos de energía enfocados direccionalmente. Mide el tiempo de retardo entre la emisión y la recepción del eco para determinar la distancia (rango) al objetivo, y la intensidad del eco para caracterizarlo.
+
+![Geometría básica y funcionamiento del sistema RADAR. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/radar.gif){#fig-radar fig-align="center" out-width="60%"}
+
+El espectro se subdivide en bandas (Ka, X, C, S, L, P). La elección de la banda define la interacción: bandas largas (L, P) penetran el dosel forestal; bandas cortas (X, C) interactúan con el ápice foliar o superficies expuestas.
+
+![Ubicación de las bandas de microondas en el espectro electromagnético. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/image2_en.gif){#fig-image2_en fig-align="center" out-width="70%"}
+
+![Respuesta diferencial de cultivos agrícolas en Banda C (arriba). Fuente: CCRS/CCT ©](images/sensores_remotos/canada/wavcomp1.jpg){#fig-wavcomp1 fig-align="center" out-width="48%"}
+![Respuesta de la misma área vista con penetración de Banda L (abajo). Fuente: CCRS/CCT ©](images/sensores_remotos/canada/wavcomp2.jpg){#fig-wavcomp2 fig-align="center" out-width="48%"}
+
+La **polarización** (orientación del campo eléctrico) es crítica. Los pulsos pueden transmitirse y recibirse horizontal (H) o verticalmente (V), generando polarizaciones equivalentes (HH, VV) o cruzadas (HV, VH). Cada combinación ofrece respuestas únicas del terreno.
+
+![Concepto de polarización de la onda electromagnética. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/polari.gif){#fig-polari fig-align="center" out-width="50%"}
+
+![Imagen en combinación de múltiples polarizaciones (RGB). Fuente: CCRS/CCT ©](images/sensores_remotos/canada/polar1.jpg){#fig-polar1 fig-align="center" out-width="48%"}
+![Imágenes individuales en polarizaciones HH, VV y HV. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/polar2.jpg){#fig-polar2 fig-align="center" out-width="48%"}
+
+## Geometría de visión y resolución espacial
+
+El radar posee una geometría de visión lateral (*side-looking*).
+* **Azimut:** Dirección paralela al avance de la plataforma.
+* **Rango:** Dirección transversal y ortogonal al avance.
+
+![Geometría de recolección lateral mostrando el avance (azimut) y el barrido (rango). Fuente: CCRS/CCT ©](images/sensores_remotos/canada/radgeom.gif){#fig-radgeom fig-align="center" out-width="60%"}
+
+![Designación de las zonas de rango cercano (near) y lejano (far). Fuente: CCRS/CCT ©](images/sensores_remotos/canada/range.gif){#fig-range fig-align="center" out-width="50%"}
+
+El **ángulo de incidencia** se forma entre el haz y la normal del terreno. El radar mide directamente la distancia en **rango oblicuo** (*slant range*), que difiere geométricamente de la proyección horizontal real en el terreno (*ground range*).
+
+![Ángulos de incidencia y componentes de distancia del radar. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/incangl.gif){#fig-incangl fig-align="center" out-width="60%"}
+
+La resolución espacial del radar es bidimensional:
+1. **Resolución en rango:** Depende de la longitud del pulso. Objetos muy cercanos en la dirección transversal se confunden si su separación es menor a la mitad de dicha longitud.
+
+![Fundamento teórico de la resolución espacial en rango. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/rangres.gif){#fig-rangres fig-align="center" out-width="50%"}
+
+2. **Resolución en azimut:** Dictada por la amplitud angular del haz. Físicamente, requeriría antenas kilométricas en el espacio para mantener resolución a grandes distancias. 
+
+![Ensanchamiento del haz afectando la resolución en azimut. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/azimres.gif){#fig-azimres fig-align="center" out-width="50%"}
+
+Para resolver esto, se emplea el **Radar de Apertura Sintética (SAR)**, que registra el historial Doppler del eco mientras la plataforma avanza, simulando matemáticamente una antena de inmensa longitud y logrando resoluciones finas y uniformes.
+
+![Simulación de una antena larga mediante el Radar de Apertura Sintética (SAR). Fuente: CCRS/CCT ©](images/sensores_remotos/canada/sar.gif){#fig-sar fig-align="center" out-width="60%"}
+
+## Distorsiones geométricas
+
+La reconstrucción desde el tiempo de vuelo hacia la imagen induce severas distorsiones debido a la topografía:
+
+* **Distorsión de rango oblicuo:** Comprime artificialmente la escala en la zona cercana de la imagen.
+
+![Compresión inherente de la escala en el rango inclinado. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/slntdis.gif){#fig-slntdis fig-align="center" out-width="50%"}
+
+![Imagen cruda mostrando compresión de rango oblicuo (arriba). Fuente: CCRS/CCT ©](images/sensores_remotos/canada/slant1.jpg){#fig-slant1 fig-align="center" out-width="48%"}
+![Misma imagen proyectada y corregida al plano terrestre (abajo). Fuente: CCRS/CCT ©](images/sensores_remotos/canada/slant2.jpg){#fig-slant2 fig-align="center" out-width="48%"}
+
+* **Escorzo (*Foreshortening*):** Las laderas enfrentadas al sensor devuelven el eco prematuramente, acortándose drásticamente en la imagen y viéndose muy brillantes.
+
+![Mecanismo del escorzo topográfico en laderas expuestas. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/forshrt.gif){#fig-forshrt fig-align="center" out-width="48%"}
+![Ejemplo real de escorzo en una imagen SAR de zonas montañosas. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/iforshrt.jpg){#fig-iforshrt fig-align="center" out-width="48%"}
+
+* **Abatimiento (*Layover*):** Caso extremo donde la cima de la montaña refleja la señal antes que la base, provocando que el relieve parezca "caer" hacia el sensor.
+
+![Inversión topográfica producida por el abatimiento (Layover). Fuente: CCRS/CCT ©](images/sensores_remotos/canada/layover.gif){#fig-layover fig-align="center" out-width="48%"}
+![Ejemplo extremo de layover deformando crestas topográficas. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/ilayovr.jpg){#fig-ilayovr fig-align="center" out-width="48%"}
+
+* **Sombra (*Shadow*):** Zonas tras el relieve (pendientes de espaldas) donde el haz no logra iluminar, resultando en áreas completamente negras (sin datos).
+
+![Generación de sombra radar detrás de elevaciones abruptas. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/newshadow.gif){#fig-newshadow fig-align="center" out-width="48%"}
+![Valles ocluidos exhibiendo sombra radar total. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/ishadow.jpg){#fig-ishadow fig-align="center" out-width="48%"}
+
+## Interacción con el objetivo y apariencia
+
+La retrodispersión SAR depende de tres variables críticas:
+
+1. **Rugosidad superficial:** En relación a la longitud de onda. Superficies lisas (agua, vías) generan reflexión especular (oscuras); superficies rugosas (bosques) generan dispersión difusa (brillantes).
+
+![Concepto de rugosidad en función de la escala de la onda. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/surfrgh.gif){#fig-surfrgh fig-align="center" out-width="50%"}
+
+![Comportamiento especular (A) frente a comportamiento difuso (B). Fuente: CCRS/CCT ©](images/sensores_remotos/canada/specdif.gif){#fig-specdif fig-align="center" out-width="50%"}
+
+2. **Relación geométrica:** Evaluada mediante el ángulo de incidencia local. Las geometrías a 90° (estructuras urbanas) actúan como **reflectores de esquina**, retornando toda la energía en un destello brillante. La orientación del terreno respecto al haz (dirección de mirada) altera radicalmente el contraste.
+
+![Variación del ángulo de incidencia local por la pendiente. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/localin.gif){#fig-localin fig-align="center" out-width="48%"}
+![Sensibilidad del backscatter a la dirección u orientación del relieve. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/lookdir.gif){#fig-lookdir fig-align="center" out-width="48%"}
+
+![Mecanismo de doble rebote o reflector de esquina. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/corner.gif){#fig-corner fig-align="center" out-width="48%"}
+![Alta reflectividad urbana producida por abundantes reflectores de esquina. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/sarcity.jpg){#fig-sarcity fig-align="center" out-width="48%"}
+
+3. **Humedad (constante dieléctrica):** La humedad incrementa la reflectividad radar. En condiciones extremadamente secas, la microonda puede penetrar la superficie, revelando estructuras subsuperficiales u originando interacciones de **volumen** (como el rebote múltiple dentro del follaje de un bosque).
+
+![Dispersión volumétrica típica en coberturas de dosel arbóreo. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/volume.gif){#fig-volume fig-align="center" out-width="60%"}
+
+## Propiedades de las imágenes
+
+Las imágenes SAR exhiben un granulado característico llamado **Speckle**, derivado de la interferencia de ondas dentro de un píxel.
+
+![Apariencia visual del ruido de Speckle en un mosaico radar. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/speckle.jpg){#fig-speckle fig-align="center" out-width="50%"}
+![Interferencia constructiva y destructiva dentro de la celda de resolución. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/spkltar.gif){#fig-spkltar fig-align="center" out-width="50%"}
+
+Para reducirlo, se utiliza el procesamiento **Multi-look** (promediando vistas durante la adquisición) o el **filtrado espacial** post-procesamiento (promedios locales que suavizan la imagen pero degradan levemente la resolución espacial).
+
+![Procesamiento Multi-look para mitigar el granulado. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/multilk.gif){#fig-multilk fig-align="center" out-width="48%"}
+![Filtrado espacial mediante ventana móvil de convolución. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/avgfltr.gif){#fig-avgfltr fig-align="center" out-width="48%"}
+
+![Imagen original con alto contenido de ruido speckle. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/spklred1.jpg){#fig-spklred1 fig-align="center" out-width="48%"}
+![Misma imagen suavizada tras aplicar un filtro de reducción. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/spklred2.jpg){#fig-spklred2 fig-align="center" out-width="48%"}
+
+Otros ajustes vitales incluyen la corrección del **patrón de antena** (para compensar la caída natural de energía en el rango lejano) y la **calibración absoluta**, esencial para convertir niveles digitales en valores de retrodispersión físicamente comparables.
+
+![Variación de luminosidad en el rango debido al patrón de antena sin corregir. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/antpat.jpg){#fig-antpat fig-align="center" out-width="60%"}
+
+## Aplicaciones avanzadas
+
+* **Radargrametría (Estéreo SAR):** Uso de adquisiciones con ángulos solapados para visión tridimensional.
+
+![Esquema de recolección estereoscópica en microondas. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/stereo2.jpg){#fig-stereo2 fig-align="center" out-width="50%"}
+
+* **Interferometría SAR (InSAR):** Explotación de la coherencia y diferencia de fase para mapeo topográfico y detección de subsidencia milimétrica.
+
+![Desfase ondulatorio, principio básico de la interferometría. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/phsedif.gif){#fig-phsedif fig-align="center" out-width="48%"}
+![Configuración de un sistema interferométrico de un solo paso. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/isar.gif){#fig-isar fig-align="center" out-width="48%"}
+
+![Interferograma con franjas de fase correspondientes a isohipsas. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/intrfer.jpg){#fig-intrfer fig-align="center" out-width="48%"}
+![Modelo tridimensional derivado de procesamiento InSAR. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/3dimg.jpg){#fig-3dimg fig-align="center" out-width="48%"}
+
+## Polarimetría de radar
+
+Consiste en el análisis completo del estado de polarización de la onda dispersada. Radares totalmente polarimétricos adquieren y comparan fases y amplitudes de los 4 canales (HH, HV, VH, VV). 
+
+![Ondas ortogonales que definen los planos de polarización. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/horizontal.jpg){#fig-horizontal fig-align="center" out-width="50%"}
+
+Esta síntesis permite derivar **firmas de polarización** e imágenes compuestas que potencian enormemente la capacidad algorítmica para discriminar cultivos, hielos marinos y texturas forestales.
+
+![Imagen polarización HH. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/polhh.jpg){#fig-polhh fig-align="center" out-width="48%"}
+![Imagen polarización VV. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/polvv.jpg){#fig-polvv fig-align="center" out-width="48%"}
+
+![Imagen polarización HV. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/polhv.jpg){#fig-polhv fig-align="center" out-width="48%"}
+![Composición color RGB de firmas polarimétricas cruzadas. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/polcomp.jpg){#fig-polcomp fig-align="center" out-width="48%"}
+
+![Firma co-polarizada indicando mecanismos de rebote simple. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/copolariz.gif){#fig-copolariz fig-align="center" out-width="48%"}
+![Firma cruzada de la misma dispersión electromagnética. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/crosspol.gif){#fig-crosspol fig-align="center" out-width="48%"}
+
+## Sistemas de radar aero y espaciales
+
+Los radares aerotransportados ofrecen agilidad, pero sus rangos de incidencia muy variables a través de la franja acentúan los artefactos. Los sistemas satelitales observan con ángulos consistentes desde grandes altitudes, garantizando geometría uniforme.
+
+**Sistemas históricos y operativos destacados:**
+* **Aéreos:** Convair-580 C/X (Canadá), sistemas STAR (hielo) y AirSAR de la NASA (L, P, C multi-polarizado).
+
+![Avión Convair-580 de CCRS, plataforma clásica experimental SAR. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/convair.jpg){#fig-convair-rad fig-align="center" out-width="48%"}
+![Aeronave STAR instrumentada para cartografía radar. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/star2.jpg){#fig-star2 fig-align="center" out-width="48%"}
+![Sistema AirSAR de NASA, pionero en multifrecuencia polarimétrica. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/airsar.jpg){#fig-airsar fig-align="center" out-width="50%"}
+
+* **Espaciales:** SEASAT (primer SAR civil), misiones europeas ERS-1/2, la japonesa JERS-1, y el avanzado sistema canadiense RADARSAT, con capacidad de direccionamiento de haz y modos escalables.
+
+![El satélite pionero SEASAT de la década del 70. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/seasat.gif){#fig-seasat fig-align="center" out-width="48%"}
+![Satélite europeo ERS-1 optimizado para análisis oceanográfico. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/ers.gif){#fig-ers fig-align="center" out-width="48%"}
+
+![Satélite JERS-1 con penetración en banda L. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/jers.gif){#fig-jers fig-align="center" out-width="48%"}
+![Plataforma satelital canadiense RADARSAT. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/rsat.gif){#fig-rsat fig-align="center" out-width="48%"}
+
+![Flexibilidad de barrido y modos operativos del sistema RADARSAT. Fuente: CCRS/CCT ©](images/sensores_remotos/canada/rsatopt.gif){#fig-rsatopt fig-align="center" out-width="60%"}
