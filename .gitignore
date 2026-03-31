@@ -9,3 +9,4 @@ data_heavy/
 _extensions/
 .Rhistory
 **/*.quarto_ipynb
+
