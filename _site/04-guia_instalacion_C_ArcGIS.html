@@ -308,6 +308,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Guía de Instalación y Uso: NASA Earthdata Plugin para QGIS</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./48-practica_8_clase8_gee_conceptos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Fundamentos de programación en GEE y conceptos clave de sensores remotos</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -322,31 +328,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./61-presentacion_1_clase1_varios.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Temas por Charlar</span></span></a>
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Temas por Charlar</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./62-presentacion_2_clase2_geomatica.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">¿Qué es la Geomática?</span></span></a>
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">¿Qué es la Geomática?</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./63-presentacion_3_clase2_syllabus_evaluacion.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Presentación del Curso y Syllabus 2025</span></span></a>
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Presentación del Curso y Syllabus 2025</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./64-presentacion_4_clase3_coordenadas.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Sistemas de Coordenadas</span></span></a>
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Sistemas de Coordenadas</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./65-presentacion_5_clase7_sr_arset.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Sensores Remotos - NASA ARSET</span></span></a>
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Sensores Remotos - NASA ARSET</span></span></a>
   </div>
 </li>
       </ul>
@@ -477,7 +483,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#instalar-google-cloud-sdk" id="toc-instalar-google-cloud-sdk" class="nav-link" data-scroll-target="#instalar-google-cloud-sdk">Instalar Google Cloud SDK</a></li>
   <li><a href="#credenciales-para-gee" id="toc-credenciales-para-gee" class="nav-link" data-scroll-target="#credenciales-para-gee">Credenciales para GEE</a></li>
   </ul></li>
-  <li><a href="#inicializar-gee-en-arcgis-pro" id="toc-inicializar-gee-en-arcgis-pro" class="nav-link" data-scroll-target="#inicializar-gee-en-arcgis-pro"><span class="header-section-number">4.2</span> Inicializar GEE en ArcGIS Pro</a></li>
+  <li><a href="#sec-arcgis-pro-initialize-gee" id="toc-sec-arcgis-pro-initialize-gee" class="nav-link" data-scroll-target="#sec-arcgis-pro-initialize-gee"><span class="header-section-number">4.2</span> Inicializar GEE en ArcGIS Pro</a></li>
   <li><a href="#urls-y-enlaces-de-referencia-importantes" id="toc-urls-y-enlaces-de-referencia-importantes" class="nav-link" data-scroll-target="#urls-y-enlaces-de-referencia-importantes"><span class="header-section-number">4.3</span> URLs y enlaces de referencia importantes</a></li>
   <li><a href="#fuentes-de-datos-alternativas-en-arcgis-pro" id="toc-fuentes-de-datos-alternativas-en-arcgis-pro" class="nav-link" data-scroll-target="#fuentes-de-datos-alternativas-en-arcgis-pro"><span class="header-section-number">4.4</span> Fuentes de datos alternativas en ArcGIS Pro</a></li>
   </ul>
@@ -679,9 +685,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <hr>
 </section>
 </section>
-<section id="inicializar-gee-en-arcgis-pro" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="inicializar-gee-en-arcgis-pro"><span class="header-section-number">4.2</span> Inicializar GEE en ArcGIS Pro</h2>
-<p>Una vez configurado el entorno y descargada la caja de herramientas, procede a inicializar Earth Engine dentro de la interfaz de ArcGIS Pro. Para ver el paso a paso, consulta la sección <a href="45-practica_5_clase6_introduccion_sr_gee.html#sec-arcgis-pro-initialize-gee" class="quarto-xref"><span>Sección 17.8.1</span></a>.</p>
+<section id="sec-arcgis-pro-initialize-gee" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="sec-arcgis-pro-initialize-gee"><span class="header-section-number">4.2</span> Inicializar GEE en ArcGIS Pro</h2>
+<p>Una vez configurado el entorno y descargada la caja de herramientas, procede a inicializar Earth Engine dentro de la interfaz de ArcGIS Pro. Antes de usar cualquier función, debemos autenticar nuestra cuenta. En la caja de herramientas de GEE dentro de ArcGIS Pro, abra la sección <code>Authentication Tools</code>:</p>
+<div id="fig-arcgis-auth-tools" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-arcgis-auth-tools-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/arcgispro/gee/opciones_inicializacion_gee.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:30.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-arcgis-auth-tools-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;4.1: Herramientas de Autenticación de GEE en ArcGIS Pro.
+</figcaption>
+</figure>
+</div>
+<p><strong>Paso A:</strong> Abra la herramienta <code>Authenticate Earth Engine</code> y escriba su <em>Project ID</em> (ej. <code>ee-giswqg</code>). Al ejecutar (<code>Run</code>) la herramienta y ver los detalles de la ejecución (<code>View Details</code>), deberá observar un mensaje de éxito como: <em>Earth Engine is ready to use. Authentication successful</em>.</p>
+<div id="fig-arcgis-auth-success" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-arcgis-auth-success-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/arcgispro/gee/gee_authenticate_pro.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-arcgis-auth-success-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;4.2: Herramienta de autenticación en GEE (Recuerda cambiar el Project ID por el tuyo).
+</figcaption>
+</figure>
+</div>
+<p><strong>Paso B:</strong> A continuación, abra la herramienta <code>Initialize Earth Engine</code> y escriba nuevamente su <em>Project ID</em>. Ejecute la herramienta; en los detalles observará el mensaje confirmando: <em>Earth Engine is ready to use.</em></p>
 <hr>
 </section>
 <section id="urls-y-enlaces-de-referencia-importantes" class="level2" data-number="4.3">

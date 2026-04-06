@@ -1,0 +1,13 @@
+---
+title: "Guía de Instalación ..."
+subtitle: "..."
+format:
+  html:
+    toc: true
+    theme: cosmo
+  pdf:
+    toc: true
+---
+
+## Resumen del Plugin
+

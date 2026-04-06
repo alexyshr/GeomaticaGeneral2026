@@ -1,0 +1,79 @@
+{
+    "type": "Image",
+    "bands": [
+        {
+            "id": "stable_lights",
+            "data_type": {
+                "type": "PixelType",
+                "precision": "int",
+                "min": 0,
+                "max": 255
+            },
+            "dimensions": [
+                43201,
+                16801
+            ],
+            "crs": "EPSG:4326",
+            "crs_transform": [
+                0.0083333333,
+                0,
+                -180.00416666665,
+                0,
+                -0.0083333333,
+                75.00416666665
+            ]
+        },
+        {
+            "id": "stable_lights_1",
+            "data_type": {
+                "type": "PixelType",
+                "precision": "int",
+                "min": 0,
+                "max": 255
+            },
+            "dimensions": [
+                43201,
+                16801
+            ],
+            "crs": "EPSG:4326",
+            "crs_transform": [
+                0.0083333333,
+                0,
+                -180.00416666665,
+                0,
+                -0.0083333333,
+                75.00416666665
+            ]
+        },
+        {
+            "id": "stable_lights_2",
+            "data_type": {
+                "type": "PixelType",
+                "precision": "int",
+                "min": 0,
+                "max": 255
+            },
+            "dimensions": [
+                43201,
+                16801
+            ],
+            "crs": "EPSG:4326",
+            "crs_transform": [
+                0.0083333333,
+                0,
+                -180.00416666665,
+                0,
+                -0.0083333333,
+                75.00416666665
+            ]
+        }
+    ],
+    "version": 1504844073441627,
+    "id": "NOAA/DMSP-OLS/NIGHTTIME_LIGHTS/F182013",
+    "properties": {
+        "system:time_start": 1356998400000,
+        "system:time_end": 1388534400000,
+        "system:asset_size": 653327723,
+        "system:index": "F182013"
+    }
+}

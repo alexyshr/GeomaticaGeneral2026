@@ -9,7 +9,7 @@ execute:
   freeze: auto
 ---
 
-# Introducción a Sensores Remotos y Procesamiento de Imágenes Satelitales con Google Earth Engine
+# Introducción a Sensores Remotos y Procesamiento de Imágenes Satelitales con Google Earth Engine {#sec-gee-intro}
 
 ## Requerimientos
 
@@ -353,9 +353,9 @@ print(f"\nID de la imagen Landsat 9 seleccionada: {id_exacto}")
 # A) Exportar Metadatos (Referencia humana)
 # Contiene el resultado final: propiedades, fecha, % de nubes, bandas, etc.
 metadatos_json = l9.getInfo()
-with open('metadatos_landsat9.json', 'w') as archivo:
+with open('data/metadatos_landsat9.json', 'w') as archivo:
     json.dump(metadatos_json, archivo, indent=4)
-print("¡Archivo 'metadatos_landsat9.json' generado! (Explora sus propiedades)")
+print("¡Archivo 'data/metadatos_landsat9.json' generado! (Explora sus propiedades)")
 
 # B) Exportar Grafo Serializado (Para ArcGIS Pro)
 # Contiene las instrucciones puras. Usamos el ID limpio para no confundir a ArcGIS.
@@ -363,9 +363,9 @@ l9_limpia = ee.Image(id_exacto)
 texto_json_serializado = l9_limpia.serialize()
 
 # TRUCO PARA ARCGIS PRO: Guardamos el resultado empacado directamente como un String.
-with open('landsat9_serializado.json', 'w') as archivo:
+with open('data/landsat9_serializado.json', 'w') as archivo:
     json.dump(texto_json_serializado, archivo)
-print("¡Archivo 'landsat9_serializado.json' generado! (Úsalo en la herramienta de ArcGIS Pro)")
+print("¡Archivo 'data/landsat9_serializado.json' generado! (Úsalo en la herramienta de ArcGIS Pro)")
 
 
 # 8. AGREGAR LA IMAGEN AL VISOR
@@ -517,9 +517,9 @@ print(f"\nID de la imagen Landsat 9 seleccionada: {id_exacto}")
 # A) Exportar Metadatos (Referencia humana)
 # Contiene el resultado final: propiedades, fecha, % de nubes, bandas, etc.
 metadatos_json = l9.getInfo()
-with open('metadatos_landsat9.json', 'w') as archivo:
+with open('data/metadatos_landsat9.json', 'w') as archivo:
     json.dump(metadatos_json, archivo, indent=4)
-print("¡Archivo 'metadatos_landsat9.json' generado! (Explora sus propiedades)")
+print("¡Archivo 'data/metadatos_landsat9.json' generado! (Explora sus propiedades)")
 
 # B) Exportar Grafo Serializado (Para ArcGIS Pro)
 # Contiene las instrucciones puras. Usamos el ID limpio para no confundir a ArcGIS.
@@ -527,9 +527,9 @@ l9_limpia = ee.Image(id_exacto)
 texto_json_serializado = l9_limpia.serialize()
 
 # TRUCO PARA ARCGIS PRO: Guardamos el resultado empacado directamente como un String.
-with open('landsat9_serializado.json', 'w') as archivo:
+with open('data/landsat9_serializado.json', 'w') as archivo:
     json.dump(texto_json_serializado, archivo)
-print("¡Archivo 'landsat9_serializado.json' generado! (Úsalo en la herramienta de ArcGIS Pro)")
+print("¡Archivo 'data/landsat9_serializado.json' generado! (Úsalo en la herramienta de ArcGIS Pro)")
 
 
 # 6. PARÁMETROS DE VISUALIZACIÓN (Composición RGB)
@@ -791,19 +791,9 @@ La caja de herramientas de GEE (*GEE Toolbox*) actúa como un puente que no requ
 ![Caja de Herramientas GEE dentro de ArcGIS Pro.](images/arcgispro/gee/gee_arcgispro_tool.png){#fig-gee-tool fig-align="center" width="60%"}
 
 
-### Inicializar GEE en ArcGIS Pro {#sec-arcgis-pro-initialize-gee}
+### Inicializar GEE en ArcGIS Pro
 
-Asegúrate de seguir el procedimiento de instalación y configuración de GEE en ArcGIS Pro en @sec-arcgis-pro-gee.
-
-Antes de usar cualquier función, debemos autenticar nuestra cuenta. En la caja de herramientas de GEE dentro de ArcGIS Pro, abra la sección `Authentication Tools`:
-
-![Herramientas de Autenticación de GEE en ArcGIS Pro.](images/arcgispro/gee/opciones_inicializacion_gee.png){#fig-arcgis-auth-tools fig-align="center" width="30%"}
-
-**Paso A:** Abra la herramienta `Authenticate Earth Engine` y escriba su *Project ID* (ej. `ee-giswqg`). Al ejecutar (`Run`) la herramienta y ver los detalles de la ejecución (`View Details`), deberá observar un mensaje de éxito como: *Earth Engine is ready to use. Authentication successful*.
-
-![Herramienta de autenticación en GEE (Recuerda cambiar el Project ID por el tuyo).](images/arcgispro/gee/gee_authenticate_pro.png){#fig-arcgis-auth-success fig-align="center" width="40%"}
-
-**Paso B:** A continuación, abra la herramienta `Initialize Earth Engine` y escriba nuevamente su *Project ID*. Ejecute la herramienta; en los detalles observará el mensaje confirmando: *Earth Engine is ready to use.*
+Una vez configurado el entorno y descargada la caja de herramientas, procede a inicializar Earth Engine dentro de la interfaz de ArcGIS Pro. Ver @sec-arcgis-pro-initialize-gee.
 
 
 ### Exploración del Catálogo y Propiedades
@@ -919,13 +909,13 @@ print(f"\nID de la imagen Sentinel 2 seleccionada: {id_exacto}")
 
 # A) Exportar Metadatos
 metadatos_json = s2.getInfo()
-with open('metadatos_sentinel2.json', 'w') as archivo:
+with open('data/metadatos_sentinel2.json', 'w') as archivo:
     json.dump(metadatos_json, archivo, indent=4)
 
 # B) Exportar Grafo Serializado (Para ArcGIS Pro)
 s2_limpia = ee.Image(id_exacto)
 texto_json_serializado = s2_limpia.serialize()
-with open('sentinel2_serializado.json', 'w') as archivo:
+with open('data/sentinel2_serializado.json', 'w') as archivo:
     json.dump(texto_json_serializado, archivo)
 print("¡Archivos JSON generados con éxito!")
 
@@ -1067,13 +1057,13 @@ print(f"\nID de la imagen Sentinel 2 seleccionada: {id_exacto}")
 
 # A) Metadatos
 metadatos_json = s2.getInfo()
-with open('metadatos_sentinel2.json', 'w') as archivo:
+with open('data/metadatos_sentinel2.json', 'w') as archivo:
     json.dump(metadatos_json, archivo, indent=4)
 
 # B) Grafo Serializado
 s2_limpia = ee.Image(id_exacto)
 texto_json_serializado = s2_limpia.serialize()
-with open('sentinel2_serializado.json', 'w') as archivo:
+with open('data/sentinel2_serializado.json', 'w') as archivo:
     json.dump(texto_json_serializado, archivo)
 print("¡Archivos JSON generados con éxito!")
 
@@ -1342,13 +1332,13 @@ print(f"\nID de la imagen Sentinel 1 seleccionada: {id_exacto}")
 
 # A) Exportar Metadatos
 metadatos_json = s1.getInfo()
-with open('metadatos_sentinel1.json', 'w') as archivo:
+with open('data/metadatos_sentinel1.json', 'w') as archivo:
     json.dump(metadatos_json, archivo, indent=4)
 
 # B) Exportar Grafo Serializado (Para ArcGIS Pro)
 s1_limpia = ee.Image(id_exacto)
 texto_json_serializado = s1_limpia.serialize()
-with open('sentinel1_serializado.json', 'w') as archivo:
+with open('data/sentinel1_serializado.json', 'w') as archivo:
     json.dump(texto_json_serializado, archivo)
 
 # 8. AGREGAR LA IMAGEN AL VISOR
@@ -1481,12 +1471,12 @@ id_exacto = s1.get('system:id').getInfo()
 print(f"\nID de la imagen Sentinel 1 seleccionada: {id_exacto}")
 
 metadatos_json = s1.getInfo()
-with open('metadatos_sentinel1.json', 'w') as archivo:
+with open('data/metadatos_sentinel1.json', 'w') as archivo:
     json.dump(metadatos_json, archivo, indent=4)
 
 s1_limpia = ee.Image(id_exacto)
 texto_json_serializado = s1_limpia.serialize()
-with open('sentinel1_serializado.json', 'w') as archivo:
+with open('data/sentinel1_serializado.json', 'w') as archivo:
     json.dump(texto_json_serializado, archivo)
 
 # 6. PARÁMETROS DE VISUALIZACIÓN
@@ -1748,13 +1738,13 @@ print(f"\nID de la imagen MODIS seleccionada: {id_exacto}")
 
 # A) Exportar Metadatos
 metadatos_json = modis.getInfo()
-with open('metadatos_modis.json', 'w') as archivo:
+with open('data/metadatos_modis.json', 'w') as archivo:
     json.dump(metadatos_json, archivo, indent=4)
 
 # B) Exportar Grafo Serializado (Para ArcGIS Pro)
 modis_limpia = ee.Image(id_exacto)
 texto_json_serializado = modis_limpia.serialize()
-with open('modis_serializado.json', 'w') as archivo:
+with open('data/modis_serializado.json', 'w') as archivo:
     json.dump(texto_json_serializado, archivo)
 
 # 8. AGREGAR LA IMAGEN AL VISOR
@@ -1888,12 +1878,12 @@ id_exacto = modis.get('system:id').getInfo()
 print(f"\nID de la imagen MODIS seleccionada: {id_exacto}")
 
 metadatos_json = modis.getInfo()
-with open('metadatos_modis.json', 'w') as archivo:
+with open('data/metadatos_modis.json', 'w') as archivo:
     json.dump(metadatos_json, archivo, indent=4)
 
 modis_limpia = ee.Image(id_exacto)
 texto_json_serializado = modis_limpia.serialize()
-with open('modis_serializado.json', 'w') as archivo:
+with open('data/modis_serializado.json', 'w') as archivo:
     json.dump(texto_json_serializado, archivo)
 
 # 6. PARÁMETROS DE VISUALIZACIÓN
@@ -2139,7 +2129,7 @@ print(f"\nID de la imagen SRTM seleccionada: {id_exacto}")
 
 # A) Exportar Metadatos
 metadatos_json = srtm.getInfo()
-with open('metadatos_srtm.json', 'w') as archivo:
+with open('data/metadatos_srtm.json', 'w') as archivo:
     json.dump(metadatos_json, archivo, indent=4)
 
 # B) Exportar Grafo Serializado (Para ArcGIS Pro)
@@ -2147,7 +2137,7 @@ with open('metadatos_srtm.json', 'w') as archivo:
 # la compatibilidad de carga mediante la herramienta Add Image to Map.
 srtm_limpia = ee.Image(id_exacto)
 texto_json_serializado = srtm_limpia.serialize()
-with open('srtm_serializado.json', 'w') as archivo:
+with open('data/srtm_serializado.json', 'w') as archivo:
     json.dump(texto_json_serializado, archivo)
 
 # 6. PARÁMETROS DE VISUALIZACIÓN
@@ -2258,12 +2248,12 @@ id_exacto = srtm.get('system:id').getInfo()
 print(f"\nID de la imagen SRTM seleccionada: {id_exacto}")
 
 metadatos_json = srtm.getInfo()
-with open('metadatos_srtm.json', 'w') as archivo:
+with open('data/metadatos_srtm.json', 'w') as archivo:
     json.dump(metadatos_json, archivo, indent=4)
 
 srtm_limpia = ee.Image(id_exacto)
 texto_json_serializado = srtm_limpia.serialize()
-with open('srtm_serializado.json', 'w') as archivo:
+with open('data/srtm_serializado.json', 'w') as archivo:
     json.dump(texto_json_serializado, archivo)
 
 # 4. PARÁMETROS DE VISUALIZACIÓN
@@ -2510,13 +2500,13 @@ print(f"\nID de la imagen CHIRPS seleccionada: {id_exacto}")
 
 # A) Exportar Metadatos
 metadatos_json = chirps.getInfo()
-with open('metadatos_chirps.json', 'w') as archivo:
+with open('data/metadatos_chirps.json', 'w') as archivo:
     json.dump(metadatos_json, archivo, indent=4)
 
 # B) Exportar Grafo Serializado (Para ArcGIS Pro)
 chirps_limpia = ee.Image(id_exacto)
 texto_json_serializado = chirps_limpia.serialize()
-with open('chirps_serializado.json', 'w') as archivo:
+with open('data/chirps_serializado.json', 'w') as archivo:
     json.dump(texto_json_serializado, archivo)
 
 # 8. AGREGAR LA IMAGEN AL VISOR
@@ -2674,12 +2664,12 @@ id_exacto = chirps.get('system:id').getInfo()
 print(f"\nID de la imagen CHIRPS seleccionada: {id_exacto}")
 
 metadatos_json = chirps.getInfo()
-with open('metadatos_chirps.json', 'w') as archivo:
+with open('data/metadatos_chirps.json', 'w') as archivo:
     json.dump(metadatos_json, archivo, indent=4)
 
 chirps_limpia = ee.Image(id_exacto)
 texto_json_serializado = chirps_limpia.serialize()
-with open('chirps_serializado.json', 'w') as archivo:
+with open('data/chirps_serializado.json', 'w') as archivo:
     json.dump(texto_json_serializado, archivo)
 
 # 6. PARÁMETROS DE VISUALIZACIÓN
@@ -2958,12 +2948,12 @@ print(f"\nID de la colección vectorial seleccionada: {id_exacto}")
 # A) Exportar Metadatos
 # Para evitar colapsar la memoria, solo extraemos la información de 1 polígono de muestra
 metadatos_json = buildings.limit(1).getInfo()
-with open('metadatos_buildings.json', 'w') as archivo:
+with open('data/metadatos_buildings.json', 'w') as archivo:
     json.dump(metadatos_json, archivo, indent=4)
 
 # B) Exportar Grafo Serializado (Para ArcGIS Pro)
 texto_json_serializado = buildings.serialize()
-with open('buildings_serializado.json', 'w') as archivo:
+with open('data/buildings_serializado.json', 'w') as archivo:
     json.dump(texto_json_serializado, archivo)
 
 # 6. PARÁMETROS DE VISUALIZACIÓN
@@ -3084,11 +3074,11 @@ id_exacto = "GOOGLE/Research/open-buildings/v3/polygons"
 print(f"\nID de la colección vectorial seleccionada: {id_exacto}")
 
 metadatos_json = buildings.limit(1).getInfo()
-with open('metadatos_buildings.json', 'w') as archivo:
+with open('data/metadatos_buildings.json', 'w') as archivo:
     json.dump(metadatos_json, archivo, indent=4)
 
 texto_json_serializado = buildings.serialize()
-with open('buildings_serializado.json', 'w') as archivo:
+with open('data/buildings_serializado.json', 'w') as archivo:
     json.dump(texto_json_serializado, archivo)
 
 # 4. PARÁMETROS DE VISUALIZACIÓN
@@ -3349,13 +3339,13 @@ print(f"\nID de la imagen BlackMarble seleccionada: {id_exacto}")
 
 # A) Exportar Metadatos
 metadatos_json = ntl.getInfo()
-with open('metadatos_ntl.json', 'w') as archivo:
+with open('data/metadatos_ntl.json', 'w') as archivo:
     json.dump(metadatos_json, archivo, indent=4)
 
 # B) Exportar Grafo Serializado
 ntl_limpia = ee.Image(id_exacto)
 texto_json_serializado = ntl_limpia.serialize()
-with open('ntl_serializado.json', 'w') as archivo:
+with open('data/ntl_serializado.json', 'w') as archivo:
     json.dump(texto_json_serializado, archivo)
 
 # 8. AGREGAR LA IMAGEN AL VISOR
@@ -3489,12 +3479,12 @@ id_exacto = ntl.get('system:id').getInfo()
 print(f"\nID de la imagen BlackMarble seleccionada: {id_exacto}")
 
 metadatos_json = ntl.getInfo()
-with open('metadatos_ntl.json', 'w') as archivo:
+with open('data/metadatos_ntl.json', 'w') as archivo:
     json.dump(metadatos_json, archivo, indent=4)
 
 ntl_limpia = ee.Image(id_exacto)
 texto_json_serializado = ntl_limpia.serialize()
-with open('ntl_serializado.json', 'w') as archivo:
+with open('data/ntl_serializado.json', 'w') as archivo:
     json.dump(texto_json_serializado, archivo)
 
 # 5. PARÁMETROS DE VISUALIZACIÓN
@@ -3749,13 +3739,13 @@ print(f"\nID de la imagen DSWx seleccionada: {id_exacto}")
 
 # A) Exportar Metadatos
 metadatos_json = dswx.getInfo()
-with open('metadatos_dswx.json', 'w') as archivo:
+with open('data/metadatos_dswx.json', 'w') as archivo:
     json.dump(metadatos_json, archivo, indent=4)
 
 # B) Exportar Grafo Serializado
 dswx_limpia = ee.Image(id_exacto)
 texto_json_serializado = dswx_limpia.serialize()
-with open('dswx_serializado.json', 'w') as archivo:
+with open('data/dswx_serializado.json', 'w') as archivo:
     json.dump(texto_json_serializado, archivo)
 
 # 7. PARÁMETROS DE VISUALIZACIÓN
@@ -3893,12 +3883,12 @@ id_exacto = dswx.get('system:id').getInfo()
 print(f"\nID de la imagen DSWx seleccionada: {id_exacto}")
 
 metadatos_json = dswx.getInfo()
-with open('metadatos_dswx.json', 'w') as archivo:
+with open('data/metadatos_dswx.json', 'w') as archivo:
     json.dump(metadatos_json, archivo, indent=4)
 
 dswx_limpia = ee.Image(id_exacto)
 texto_json_serializado = dswx_limpia.serialize()
-with open('dswx_serializado.json', 'w') as archivo:
+with open('data/dswx_serializado.json', 'w') as archivo:
     json.dump(texto_json_serializado, archivo)
 
 # 5. PARÁMETROS DE VISUALIZACIÓN
@@ -4154,13 +4144,13 @@ print(f"\nID de la imagen WorldPop seleccionada: {id_exacto}")
 
 # A) Exportar Metadatos
 metadatos_json = pop.getInfo()
-with open('metadatos_pop.json', 'w') as archivo:
+with open('data/metadatos_pop.json', 'w') as archivo:
     json.dump(metadatos_json, archivo, indent=4)
 
 # B) Exportar Grafo Serializado
 pop_limpia = ee.Image(id_exacto)
 texto_json_serializado = pop_limpia.serialize()
-with open('pop_serializado.json', 'w') as archivo:
+with open('data/pop_serializado.json', 'w') as archivo:
     json.dump(texto_json_serializado, archivo)
 
 # 7. PARÁMETROS DE VISUALIZACIÓN
@@ -4287,12 +4277,12 @@ id_exacto = pop.get('system:id').getInfo()
 print(f"\nID de la imagen WorldPop seleccionada: {id_exacto}")
 
 metadatos_json = pop.getInfo()
-with open('metadatos_pop.json', 'w') as archivo:
+with open('data/metadatos_pop.json', 'w') as archivo:
     json.dump(metadatos_json, archivo, indent=4)
 
 pop_limpia = ee.Image(id_exacto)
 texto_json_serializado = pop_limpia.serialize()
-with open('pop_serializado.json', 'w') as archivo:
+with open('data/pop_serializado.json', 'w') as archivo:
     json.dump(texto_json_serializado, archivo)
 
 # 5. PARÁMETROS DE VISUALIZACIÓN
@@ -4542,13 +4532,13 @@ print(f"\nID de la imagen Sentinel 2 base: {id_exacto}")
 
 # A) Exportar Metadatos (Imagen base)
 metadatos_json = s2_base.getInfo()
-with open('metadatos_s2_clip.json', 'w') as archivo:
+with open('data/metadatos_s2_clip.json', 'w') as archivo:
     json.dump(metadatos_json, archivo, indent=4)
 
 # B) Exportar Grafo Serializado (Para ArcGIS Pro)
 # Serializamos el objeto recortado (s2_clip) para conservar el geoproceso
 texto_json_serializado = s2_clip.serialize()
-with open('s2_clip_serializado.json', 'w') as archivo:
+with open('data/s2_clip_serializado.json', 'w') as archivo:
     json.dump(texto_json_serializado, archivo)
 
 # 7. PARÁMETROS DE VISUALIZACIÓN
@@ -4685,11 +4675,11 @@ id_exacto = s2_base.get('system:id').getInfo()
 print(f"\nID de la imagen Sentinel 2 base: {id_exacto}")
 
 metadatos_json = s2_base.getInfo()
-with open('metadatos_s2_clip.json', 'w') as archivo:
+with open('data/metadatos_s2_clip.json', 'w') as archivo:
     json.dump(metadatos_json, archivo, indent=4)
 
 texto_json_serializado = s2_clip.serialize()
-with open('s2_clip_serializado.json', 'w') as archivo:
+with open('data/s2_clip_serializado.json', 'w') as archivo:
     json.dump(texto_json_serializado, archivo)
 
 # 5. PARÁMETROS DE VISUALIZACIÓN
@@ -4952,7 +4942,7 @@ ndvi = s2_clip.normalizedDifference(['B8', 'B4']).rename('NDVI')
 
 # 5. EXPORTAR EL GRAFO SERIALIZADO (Para ArcGIS Pro)
 texto_json_serializado = ndvi.serialize()
-with open('ndvi_serializado.json', 'w') as archivo:
+with open('data/ndvi_serializado.json', 'w') as archivo:
     json.dump(texto_json_serializado, archivo)
 
 # 6. PARÁMETROS DE VISUALIZACIÓN
