@@ -77,4 +77,31 @@ Fernán - Raul Andrés
 
 
 Clase Abril 13:
-https://meet.google.com/qyv-rbai-fau
+- https://meet.google.com/qyv-rbai-fau
+- Clase de Hoy:
+	- MDE
+	- Productos derivados
+	- Hidrología
+	- Google Earth Pro
+	- ArcGIS Pro
+	- QGIS
+		- GRASS
+		- SAGA
+		- GRASS
+	- Modelos gráficos en SIG
+		- Model Builder - ArcGIS Pro
+		- Model Designer - QGIS (tarea)
+- Tarea de hoy: Grupos de 4 personas
+- Resumen estado de tareas (después del Descanso resumen)
+- Equipos: 
+	-  8 navegadores Garmin 64CSX
+	-  1 antena RTX Trimble con licencia Catalyst de 60 cm de exactitude
+- Clase Siguiente
+	- Captura de datos de campo IA:
+		- ArcGIS Online
+		- Survey 123
+		- Arccade
+		- Instant Apps
+	- Equipos
+	- No Dron
+- Preguntas del proyecto

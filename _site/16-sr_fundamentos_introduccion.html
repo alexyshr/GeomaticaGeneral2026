@@ -1,0 +1,1324 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.550">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Geomática General - 6&nbsp; Fundamentos de sensores remotos: Introducción</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./17-sr_satelites_sensores.html" rel="next">
+<link href="./10-guia_estructura_proyecto_final.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Sin resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./16-sr_fundamentos_introduccion.html">Sensores Remotos</a></li><li class="breadcrumb-item"><a href="./16-sr_fundamentos_introduccion.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Fundamentos de sensores remotos: Introducción</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Geomática General</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Buscar"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bienvenida</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./00-prefacio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prefacio</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Instalación y Entornos</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-introduccion-entornos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introducción a Entornos de Desarrollo SIG</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-guia_instalacion_A_docker.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Guía de Instalación. Opción A: Docker (Python, R, Julia)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-guia_instalacion_B_qgis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Guía de Instalación. Opción B: QGIS y PyQGIS</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-guia_instalacion_C_ArcGIS.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Guía de Instalación. Opción C: ArcGIS Pro y ArcPy</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Proyecto Final</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10-guia_estructura_proyecto_final.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Guía y Estructura del Proyecto Final</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Sensores Remotos</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./16-sr_fundamentos_introduccion.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Fundamentos de sensores remotos: Introducción</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./17-sr_satelites_sensores.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Satélites y sensores</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./18-sr_microondas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Sensores remotos de microondas</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./19-sr_analisis_interpretacion_imagenes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Análisis e interpretación de imágenes</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./20-sr_aplicaciones.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Aplicaciones de los sensores remotos</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./21-sr_glosario.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Glosario de Sensores Remotos</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./22-sr_recursos_adicionales.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Recursos Adicionales de Teledetección</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">Prácticas</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./41-practica_1_clase2_visualizacion_dinamica.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Visualización y Mapas Dinámicos</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./42-practica_2_clase2_geoportales.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">🌐 Geoportales y Servicios Web</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./43-practica_3_clase3_coordenadas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Sistemas de Coordenadas - ArcGIS Pro</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./44-practica_4_clase4_conversionformatos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Conversión de Formatos (ArcGIS Pro - QGIS)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./45-practica_5_clase6_introduccion_sr_gee.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Introducción a Sensores Remotos y Procesamiento de Imágenes Satelitales con Google Earth Engine</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./46-practica_6_clase7_nasa_worldview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Guía de Exploración: NASA Worldview</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./47-practica_7_clase7_nasa_plugin_qgis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Guía de Instalación y Uso: NASA Earthdata Plugin para QGIS</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./48-practica_8_clase8_gee_conceptos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Fundamentos de programación en GEE y conceptos clave de sensores remotos</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./49-practica_9_mde.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Fundamentos de modelos digitales de elevación y elaboración cartográfica</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./50-practica_10_mde_hydro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Procesamiento hidrológico y morfométrico de modelos digitales de elevación</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./51-practica_11_mde_models.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Model builder (ArcGIS Pro) y Model Designer (QGIS) de productos del MDE</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+ <span class="menu-text">Presentaciones</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./61-presentacion_1_clase1_varios.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Temas por Charlar</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./62-presentacion_2_clase2_geomatica.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">¿Qué es la Geomática?</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./63-presentacion_3_clase2_syllabus_evaluacion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Presentación del Curso y Syllabus 2025</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./64-presentacion_4_clase3_coordenadas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Sistemas de Coordenadas</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./65-presentacion_5_clase7_sr_arset.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Sensores Remotos - NASA ARSET</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
+ <span class="menu-text">Apéndices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./80-instalacion_herramientas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Resumen instalación de herramientas</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./81-uso_infraestructura_instalada.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Uso de la Infraestructura Instalada</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./82-quarto.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Quarto: Orquestación y Configuración</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./83-docker_desktop.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Docker: Gestión de Contenedores e Imágenes</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./84-git_github.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Git y GitHub: Sincronización Local-Remota</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./85-vscode.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Visual Studio Code (VScode): Extensiones e Interfaz</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./86-windows.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">G</span>&nbsp; <span class="chapter-title">Temas técnicos sobre Windows</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./87-linux_ubuntu.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">H</span>&nbsp; <span class="chapter-title">Temas Técnicos sobre Linux</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./88-python.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">I</span>&nbsp; <span class="chapter-title">Adicionales Sobre Python</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./89-r.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">J</span>&nbsp; <span class="chapter-title">Adicionales Sobre R</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./90-julia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">K</span>&nbsp; <span class="chapter-title">Adicionales Sobre Julia</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./91-qgis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">L</span>&nbsp; <span class="chapter-title">Adicionales Sobre QGIS</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./92-arcgispro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">M</span>&nbsp; <span class="chapter-title">Adicionales sobre ArcGIS Pro</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./93-postgresql.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">N</span>&nbsp; <span class="chapter-title">Adicionales sobre ArcGIS Pro</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./98-errata.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">O</span>&nbsp; <span class="chapter-title">Errata</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./99-referencias.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Referencias Bibliográficas</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Tabla de Contenidos</h2>
+   
+  <ul>
+  <li><a href="#qué-es-la-percepción-remota" id="toc-qué-es-la-percepción-remota" class="nav-link active" data-scroll-target="#qué-es-la-percepción-remota"><span class="header-section-number">6.1</span> ¿Qué es la percepción remota?</a></li>
+  <li><a href="#radiación-electromagnética" id="toc-radiación-electromagnética" class="nav-link" data-scroll-target="#radiación-electromagnética"><span class="header-section-number">6.2</span> Radiación electromagnética</a></li>
+  <li><a href="#espectro-electromagnético" id="toc-espectro-electromagnético" class="nav-link" data-scroll-target="#espectro-electromagnético"><span class="header-section-number">6.3</span> Espectro electromagnético</a>
+  <ul class="collapse">
+  <li><a href="#región-ultravioleta-uv" id="toc-región-ultravioleta-uv" class="nav-link" data-scroll-target="#región-ultravioleta-uv">Región ultravioleta (UV)</a></li>
+  <li><a href="#espectro-visible" id="toc-espectro-visible" class="nav-link" data-scroll-target="#espectro-visible">Espectro visible</a></li>
+  <li><a href="#región-infrarroja-ir" id="toc-región-infrarroja-ir" class="nav-link" data-scroll-target="#región-infrarroja-ir">Región infrarroja (IR)</a></li>
+  <li><a href="#región-de-microondas" id="toc-región-de-microondas" class="nav-link" data-scroll-target="#región-de-microondas">Región de microondas</a></li>
+  </ul></li>
+  <li><a href="#interacciones-con-la-atmósfera" id="toc-interacciones-con-la-atmósfera" class="nav-link" data-scroll-target="#interacciones-con-la-atmósfera"><span class="header-section-number">6.4</span> Interacciones con la atmósfera</a>
+  <ul class="collapse">
+  <li><a href="#dispersión-scattering" id="toc-dispersión-scattering" class="nav-link" data-scroll-target="#dispersión-scattering">Dispersión (Scattering)</a></li>
+  <li><a href="#absorción-y-ventanas-atmosféricas" id="toc-absorción-y-ventanas-atmosféricas" class="nav-link" data-scroll-target="#absorción-y-ventanas-atmosféricas">Absorción y ventanas atmosféricas</a></li>
+  </ul></li>
+  <li><a href="#interacciones-radiación-objetivo" id="toc-interacciones-radiación-objetivo" class="nav-link" data-scroll-target="#interacciones-radiación-objetivo"><span class="header-section-number">6.5</span> Interacciones radiación-objetivo</a>
+  <ul class="collapse">
+  <li><a href="#ejemplos-de-respuesta-material" id="toc-ejemplos-de-respuesta-material" class="nav-link" data-scroll-target="#ejemplos-de-respuesta-material">Ejemplos de respuesta material</a></li>
+  </ul></li>
+  <li><a href="#sensores-pasivos-y-activos" id="toc-sensores-pasivos-y-activos" class="nav-link" data-scroll-target="#sensores-pasivos-y-activos"><span class="header-section-number">6.6</span> Sensores pasivos y activos</a></li>
+  <li><a href="#características-de-las-imágenes" id="toc-características-de-las-imágenes" class="nav-link" data-scroll-target="#características-de-las-imágenes"><span class="header-section-number">6.7</span> Características de las imágenes</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./16-sr_fundamentos_introduccion.html">Sensores Remotos</a></li><li class="breadcrumb-item"><a href="./16-sr_fundamentos_introduccion.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Fundamentos de sensores remotos: Introducción</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Fundamentos de sensores remotos: Introducción</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<blockquote class="blockquote">
+<p><strong>Fuente original:</strong> <a href="https://natural-resources.canada.ca/science-data/science-research/geomatics/remote-sensing/tutorial-fundamentals-remote-sensing">Natural Resources Canada - Remote Sensing Tutorials</a></p>
+</blockquote>
+<section id="qué-es-la-percepción-remota" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="qué-es-la-percepción-remota"><span class="header-section-number">6.1</span> ¿Qué es la percepción remota?</h2>
+<p>La percepción remota (o teledetección) es la disciplina científica encargada de adquirir información sobre la superficie terrestre sin necesidad de contacto físico directo. Este proceso se fundamenta en la detección, el registro y el análisis de la energía electromagnética reflejada o emitida por los objetos.</p>
+<p>El flujo de trabajo estándar en la percepción remota, particularmente en sistemas de imágenes, consta de siete elementos secuenciales:</p>
+<div id="fig-rsprocess" class="quarto-figure quarto-figure-center quarto-float anchored" data-out-width="80%" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-rsprocess-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/sensores_remotos/canada/rsprocess.gif" class="img-fluid quarto-figure quarto-figure-center figure-img" data-out-width="80%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rsprocess-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;6.1: Proceso general de la percepción remota en siete etapas
+</figcaption>
+</figure>
+</div>
+<ol type="1">
+<li><strong>Fuente de energía o iluminación (A):</strong> Elemento que proporciona la energía electromagnética al objetivo.</li>
+<li><strong>Radiación y atmósfera (B):</strong> Interacción de la energía con los gases y partículas atmosféricas durante su trayectoria desde la fuente al objetivo, y del objetivo al sensor.</li>
+<li><strong>Interacción con el objetivo (C):</strong> Respuesta de la superficie terrestre a la energía incidente, dependiente de las propiedades físicas, químicas y biológicas del material.</li>
+<li><strong>Registro de energía por el sensor (D):</strong> Dispositivo remoto que capta y cuantifica la radiación electromagnética dispersada o emitida.</li>
+<li><strong>Transmisión, recepción y procesamiento (E):</strong> Envío electrónico de los datos capturados a estaciones terrestres para su conversión a formato digital o análogo.</li>
+<li><strong>Interpretación y análisis (F):</strong> Extracción de atributos relevantes de la imagen procesada mediante métodos visuales o digitales.</li>
+<li><strong>Aplicación (G):</strong> Uso de la información derivada para la toma de decisiones, resolución de problemas o modelamiento geoespacial.</li>
+</ol>
+</section>
+<section id="radiación-electromagnética" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="radiación-electromagnética"><span class="header-section-number">6.2</span> Radiación electromagnética</h2>
+<p>El primer requisito operativo de la percepción remota pasiva es disponer de una fuente de iluminación que emita energía en forma de radiación electromagnética (típicamente, el Sol).</p>
+<div id="fig-rsenergy" class="quarto-figure quarto-figure-center quarto-float anchored" data-out-width="60%" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-rsenergy-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/sensores_remotos/canada/rsenergy.gif" class="img-fluid quarto-figure quarto-figure-center figure-img" data-out-width="60%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rsenergy-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;6.2: Fuente de energía iluminando un objetivo en la superficie terrestre
+</figcaption>
+</figure>
+</div>
+<p>Esta radiación se rige por los principios de la teoría ondulatoria, componiéndose de un campo eléctrico (<span class="math inline">\(E\)</span>) y un campo magnético (<span class="math inline">\(M\)</span>) ortogonales entre sí, que se desplazan a la velocidad de la luz (<span class="math inline">\(c\)</span>).</p>
+<div id="fig-electromag" class="quarto-figure quarto-figure-center quarto-float anchored" data-out-width="70%" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-electromag-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/sensores_remotos/canada/electromag.gif" class="img-fluid quarto-figure quarto-figure-center figure-img" data-out-width="70%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-electromag-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;6.3: Propagación ortogonal de los campos eléctrico y magnético
+</figcaption>
+</figure>
+</div>
+<p>El comportamiento y categorización de esta radiación dependen de dos propiedades físicas fundamentales: la <strong>longitud de onda</strong> (<span class="math inline">\(\lambda\)</span>) y la <strong>frecuencia</strong> (<span class="math inline">\(\nu\)</span>). La longitud de onda es la distancia entre dos crestas consecutivas de la onda (medida habitualmente en micrómetros, <span class="math inline">\(\mu m\)</span>, o nanómetros, <span class="math inline">\(nm\)</span>), mientras que la frecuencia representa el número de ciclos ondulatorios que atraviesan un punto fijo por unidad de tiempo (medida en Hertz, <span class="math inline">\(Hz\)</span>).</p>
+<div id="fig-wvfreq" class="quarto-figure quarto-figure-center quarto-float anchored" data-out-width="60%" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-wvfreq-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/sensores_remotos/canada/wvfreq.gif" class="img-fluid quarto-figure quarto-figure-center figure-img" data-out-width="60%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-wvfreq-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;6.4: Representación gráfica de la longitud de onda y la frecuencia
+</figcaption>
+</figure>
+</div>
+<p>Ambas variables mantienen una relación inversamente proporcional descrita por la ecuación de la velocidad de la luz:</p>
+<div id="fig-equate1e" class="quarto-figure quarto-figure-center quarto-float anchored" data-out-width="30%" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-equate1e-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/sensores_remotos/canada/equate1e.gif" class="img-fluid quarto-figure quarto-figure-center figure-img" data-out-width="30%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-equate1e-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;6.5: Ecuación que relaciona velocidad de la luz, longitud de onda y frecuencia
+</figcaption>
+</figure>
+</div>
+<p>A menor longitud de onda, mayor será la frecuencia, y viceversa. Comprender esta relación es fundamental para discriminar espectralmente las cubiertas terrestres.</p>
+</section>
+<section id="espectro-electromagnético" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="espectro-electromagnético"><span class="header-section-number">6.3</span> Espectro electromagnético</h2>
+<p>El espectro electromagnético clasifica el continuo de energía desde las ondas más cortas (rayos gamma) hasta las más largas (ondas de radio). En percepción remota, solo regiones específicas poseen utilidad práctica.</p>
+<div id="fig-waveleng" class="quarto-figure quarto-figure-center quarto-float anchored" data-out-width="80%" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-waveleng-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/sensores_remotos/canada/waveleng.gif" class="img-fluid quarto-figure quarto-figure-center figure-img" data-out-width="80%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-waveleng-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;6.6: Regiones principales del espectro electromagnético
+</figcaption>
+</figure>
+</div>
+<section id="región-ultravioleta-uv" class="level3">
+<h3 class="anchored" data-anchor-id="región-ultravioleta-uv">Región ultravioleta (UV)</h3>
+<p>Es la porción de ondas más cortas aprovechables (inmediatamente inferiores al violeta). Ciertos materiales de la superficie, principalmente asociaciones litológicas y minerales, exhiben fluorescencia bajo iluminación UV, permitiendo su detección.</p>
+<div id="fig-ultravio" class="quarto-figure quarto-figure-center quarto-float anchored" data-out-width="50%" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ultravio-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/sensores_remotos/canada/ultravio.gif" class="img-fluid quarto-figure quarto-figure-center figure-img" data-out-width="50%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ultravio-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;6.7: Región ultravioleta del espectro electromagnético
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="espectro-visible" class="level3">
+<h3 class="anchored" data-anchor-id="espectro-visible">Espectro visible</h3>
+<p>Comprende las longitudes de onda detectables por el sistema visual humano (aprox. 0.4 <span class="math inline">\(\mu m\)</span> a 0.7 <span class="math inline">\(\mu m\)</span>). Aunque constituye una fracción minúscula del espectro electromagnético total, es la única región asociada a la percepción del color.</p>
+<div id="fig-visible" class="quarto-figure quarto-figure-center quarto-float anchored" data-out-width="50%" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-visible-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/sensores_remotos/canada/visible.gif" class="img-fluid quarto-figure quarto-figure-center figure-img" data-out-width="50%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-visible-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;6.8: El estrecho rango del espectro visible
+</figcaption>
+</figure>
+</div>
+<div id="fig-colours" class="quarto-figure quarto-figure-center quarto-float anchored" data-out-width="40%" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-colours-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/sensores_remotos/canada/colours_e.gif" class="img-fluid quarto-figure quarto-figure-center figure-img" data-out-width="40%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-colours-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;6.9: Distribución de colores según su longitud de onda
+</figcaption>
+</figure>
+</div>
+<p>Los colores azul, verde y rojo actúan como colores primarios espectrales. La luz solar, al refractarse a través de un prisma, revela esta composición al curvar cada longitud de onda en un ángulo distinto.</p>
+<div id="fig-prism" class="quarto-figure quarto-figure-center quarto-float anchored" data-out-width="50%" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-prism-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/sensores_remotos/canada/prism.gif" class="img-fluid quarto-figure quarto-figure-center figure-img" data-out-width="50%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-prism-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;6.10: Descomposición de la luz blanca a través de un prisma
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="región-infrarroja-ir" class="level3">
+<h3 class="anchored" data-anchor-id="región-infrarroja-ir">Región infrarroja (IR)</h3>
+<p>Abarca desde aprox. 0.7 <span class="math inline">\(\mu m\)</span> hasta 100 <span class="math inline">\(\mu m\)</span>. Se divide funcionalmente en dos categorías:</p>
+<ul>
+<li><strong>Infrarrojo reflejado (NIR y SWIR):</strong> Rango de 0.7 <span class="math inline">\(\mu m\)</span> a 3.0 <span class="math inline">\(\mu m\)</span>. Se comporta físicamente de manera similar a la luz visible y registra energía solar reflejada.</li>
+<li><strong>Infrarrojo térmico (TIR):</strong> Rango de 3.0 <span class="math inline">\(\mu m\)</span> a 100 <span class="math inline">\(\mu m\)</span>. Registra la energía emitida diferencialmente por la Tierra en forma de calor (radiancia térmica).</li>
+</ul>
+<div id="fig-infrared" class="quarto-figure quarto-figure-center quarto-float anchored" data-out-width="50%" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-infrared-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/sensores_remotos/canada/infrared_e.gif" class="img-fluid quarto-figure quarto-figure-center figure-img" data-out-width="50%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-infrared-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;6.11: División de la región infrarroja: cercano, medio y lejano/térmico
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="región-de-microondas" class="level3">
+<h3 class="anchored" data-anchor-id="región-de-microondas">Región de microondas</h3>
+<p>Cubriendo longitudes de onda desde 1 <span class="math inline">\(mm\)</span> hasta 1 <span class="math inline">\(m\)</span>, esta región es de creciente interés geomático debido a su capacidad de penetración atmosférica, siendo la base tecnológica de sistemas de radar.</p>
+<div id="fig-microwve" class="quarto-figure quarto-figure-center quarto-float anchored" data-out-width="50%" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-microwve-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/sensores_remotos/canada/microwve.gif" class="img-fluid quarto-figure quarto-figure-center figure-img" data-out-width="50%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-microwve-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;6.12: Región de microondas y ondas de radio
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="interacciones-con-la-atmósfera" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="interacciones-con-la-atmósfera"><span class="header-section-number">6.4</span> Interacciones con la atmósfera</h2>
+<p>La atmósfera terrestre modifica intrínsecamente la señal electromagnética a través de procesos de dispersión y absorción.</p>
+<div id="fig-rsatmosph" class="quarto-figure quarto-figure-center quarto-float anchored" data-out-width="60%" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-rsatmosph-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/sensores_remotos/canada/rsatmosph.gif" class="img-fluid quarto-figure quarto-figure-center figure-img" data-out-width="60%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rsatmosph-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;6.13: Atenuación de la radiación por la atmósfera terrestre
+</figcaption>
+</figure>
+</div>
+<section id="dispersión-scattering" class="level3">
+<h3 class="anchored" data-anchor-id="dispersión-scattering">Dispersión (Scattering)</h3>
+<p>Es la desviación de la trayectoria original de la radiación provocada por gases y partículas. Depende directamente de la longitud de onda y la abundancia del particulado.</p>
+<div id="fig-atmsct" class="quarto-figure quarto-figure-center quarto-float anchored" data-out-width="60%" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-atmsct-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/sensores_remotos/canada/atmsct.gif" class="img-fluid quarto-figure quarto-figure-center figure-img" data-out-width="60%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-atmsct-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;6.14: Mecanismos principales de dispersión atmosférica
+</figcaption>
+</figure>
+</div>
+<ul>
+<li><strong>Dispersión de Rayleigh:</strong> Ocurre cuando el diámetro de las partículas es menor que la longitud de onda. Es el mecanismo dominante en las capas altas de la atmósfera, afectando severamente a las ondas cortas (ej. luz azul). Explica por qué, al amanecer y atardecer, la radiación debe recorrer una mayor distancia atmosférica, filtrando casi toda la onda corta y permitiendo solo la llegada de luz rojiza a la superficie.</li>
+</ul>
+<div id="fig-sunset" class="quarto-figure quarto-figure-center quarto-float anchored" data-out-width="50%" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-sunset-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/sensores_remotos/canada/sunset_e.gif" class="img-fluid quarto-figure quarto-figure-center figure-img" data-out-width="50%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-sunset-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;6.15: Efecto de la dispersión de Rayleigh en la trayectoria solar
+</figcaption>
+</figure>
+</div>
+<ul>
+<li><strong>Dispersión de Mie:</strong> Producida por aerosoles (polvo, humo, vapor) con tamaños comparables a la longitud de onda incidente. Afecta típicamente longitudes de onda mayores en la baja atmósfera.</li>
+<li><strong>Dispersión no selectiva:</strong> Originada por macropartículas (como gotas de agua) mucho más grandes que la radiación incidente. Dispersa todas las longitudes de onda visibles uniformemente, razón por la cual las nubes resultan visualmente blancas.</li>
+</ul>
+<div id="fig-cloud" class="quarto-figure quarto-figure-center quarto-float anchored" data-out-width="50%" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-cloud-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/sensores_remotos/canada/cloud.gif" class="img-fluid quarto-figure quarto-figure-center figure-img" data-out-width="50%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cloud-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;6.16: Efecto de dispersión no selectiva responsable del color de las nubes
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="absorción-y-ventanas-atmosféricas" class="level3">
+<h3 class="anchored" data-anchor-id="absorción-y-ventanas-atmosféricas">Absorción y ventanas atmosféricas</h3>
+<p>Determinados gases (ozono, dióxido de carbono y vapor de agua) retienen o absorben selectivamente la energía incidente.</p>
+<div id="fig-atmabsorb" class="quarto-figure quarto-figure-center quarto-float anchored" data-out-width="60%" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-atmabsorb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/sensores_remotos/canada/atmabsorb.gif" class="img-fluid quarto-figure quarto-figure-center figure-img" data-out-width="60%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-atmabsorb-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;6.17: Bandas de absorción provocadas por gases específicos
+</figcaption>
+</figure>
+</div>
+<p>Los dominios espectrales donde la atmósfera presenta alta transmitancia (no absorbe significativamente la energía) se definen como <strong>ventanas atmosféricas</strong>. Los sistemas satelitales están calibrados de manera precisa para operar en coincidencia con estas ventanas operativas.</p>
+<div id="fig-atmwind" class="quarto-figure quarto-figure-center quarto-float anchored" data-out-width="80%" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-atmwind-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/sensores_remotos/canada/atmwind_e.gif" class="img-fluid quarto-figure quarto-figure-center figure-img" data-out-width="80%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-atmwind-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;6.18: Espectro electromagnético mostrando las ventanas atmosféricas y la transmitancia
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="interacciones-radiación-objetivo" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="interacciones-radiación-objetivo"><span class="header-section-number">6.5</span> Interacciones radiación-objetivo</h2>
+<p>La energía que logra franquear la atmósfera interactúa con los materiales terrestres a través de proporciones específicas de tres mecanismos: <strong>Absorción (A)</strong>, <strong>Transmisión (T)</strong> y <strong>Reflexión (R)</strong>.</p>
+<div id="fig-rsinterac" class="quarto-figure quarto-figure-center quarto-float anchored" data-out-width="50%" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-rsinterac-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/sensores_remotos/canada/rsinterac.gif" class="img-fluid quarto-figure quarto-figure-center figure-img" data-out-width="50%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rsinterac-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;6.19: Dinámica de llegada e interacción de la luz en la superficie
+</figcaption>
+</figure>
+</div>
+<div id="fig-intract" class="quarto-figure quarto-figure-center quarto-float anchored" data-out-width="60%" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-intract-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/sensores_remotos/canada/intract.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" data-out-width="60%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-intract-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;6.20: Componentes de absorción, transmisión y reflexión de la energía
+</figcaption>
+</figure>
+</div>
+<p>El registro teledetectado se enfoca empíricamente en la energía reflejada. Las propiedades de esta reflexión oscilan entre dos modelos teóricos dependiendo de la rugosidad de la superficie frente a la longitud de onda:</p>
+<ul>
+<li><strong>Reflectancia especular:</strong> La energía se redirige direccionalmente en forma de espejo (superficies lisas).</li>
+<li><strong>Reflectancia difusa (lambertiana):</strong> La energía se dispersa de forma isotrópica o uniforme (superficies rugosas). En el ámbito natural, este es el patrón predominante y deseable.</li>
+</ul>
+<p><img src="images/sensores_remotos/canada/speclar.gif" id="fig-speclar" class="img-fluid quarto-figure quarto-figure-center anchored" data-out-width="48%" alt="Mecanismo de reflectancia especular direccional"> <img src="images/sensores_remotos/canada/diffus.gif" id="fig-diffus" class="img-fluid quarto-figure quarto-figure-center anchored" data-out-width="48%" alt="Mecanismo de reflectancia difusa omnidireccional"></p>
+<section id="ejemplos-de-respuesta-material" class="level3">
+<h3 class="anchored" data-anchor-id="ejemplos-de-respuesta-material">Ejemplos de respuesta material</h3>
+<ul>
+<li><strong>Vegetación:</strong> La clorofila induce una fuerte absorción en el rojo y azul, reflejando el verde en el espectro visible. Simultáneamente, la estructura mesófila interna actúa como un poderoso reflector difuso en el infrarrojo cercano (NIR). El contraste entre la alta reflectancia NIR y baja reflectancia roja es el pilar de los índices de vegetación modernos.</li>
+</ul>
+<div id="fig-trees" class="quarto-figure quarto-figure-center quarto-float anchored" data-out-width="60%" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-trees-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/sensores_remotos/canada/trees.gif" class="img-fluid quarto-figure quarto-figure-center figure-img" data-out-width="60%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-trees-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;6.21: Interacción radiativa característica en tejidos foliares sanos
+</figcaption>
+</figure>
+</div>
+<ul>
+<li><strong>Agua:</strong> Absorbe abruptamente las longitudes de onda del infrarrojo cercano, confiriéndole en estas bandas tonos oscuros, ideales para delinear litorales. En el visible, la presencia de sedimentos incrementa la reflectancia general, mientras que el plancton desplaza la respuesta pico hacia el verde.</li>
+</ul>
+<div id="fig-water" class="quarto-figure quarto-figure-center quarto-float anchored" data-out-width="60%" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-water-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/sensores_remotos/canada/water.gif" class="img-fluid quarto-figure quarto-figure-center figure-img" data-out-width="60%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-water-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;6.22: Absorción y reflectancia diferencial en cuerpos de agua
+</figcaption>
+</figure>
+</div>
+<p>La recopilación de la magnitud de reflectancia a través de diversas longitudes de onda conforma la <strong>firma espectral</strong>. El análisis multiespectral radica en comparar firmas para discriminar taxones de cobertura o tipologías geológicas.</p>
+<div id="fig-spectrl" class="quarto-figure quarto-figure-center quarto-float anchored" data-out-width="80%" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-spectrl-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/sensores_remotos/canada/spectrl_e.gif" class="img-fluid quarto-figure quarto-figure-center figure-img" data-out-width="80%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spectrl-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;6.23: Curvas teóricas de la firma espectral para vegetación, suelo desnudo y agua
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="sensores-pasivos-y-activos" class="level2" data-number="6.6">
+<h2 data-number="6.6" class="anchored" data-anchor-id="sensores-pasivos-y-activos"><span class="header-section-number">6.6</span> Sensores pasivos y activos</h2>
+<p>Acorde al mecanismo de obtención de iluminación, la teledetección se divide en dos tipologías principales:</p>
+<ul>
+<li><strong>Sensores pasivos:</strong> Se limitan a registrar la radiación electromagnética preexistente en la naturaleza, ya sea luz solar reflejada (operatividad diurna) o radiación térmica emitida espontáneamente por los cuerpos térmicos superficiales.</li>
+</ul>
+<div id="fig-passiv" class="quarto-figure quarto-figure-center quarto-float anchored" data-out-width="60%" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-passiv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/sensores_remotos/canada/passiv.gif" class="img-fluid quarto-figure quarto-figure-center figure-img" data-out-width="60%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-passiv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;6.24: Esquema conceptual de la captura pasiva de energía
+</figcaption>
+</figure>
+</div>
+<ul>
+<li><strong>Sensores activos:</strong> Incorporan su propio emisor de energía dirigida al objetivo, registrando el grado de retrodispersión térmica o lumínica resultante (backscatter). Estos instrumentos (ej. Radar SAR o LiDAR) superan las limitaciones climáticas y de la iluminación natural diurna.</li>
+</ul>
+<div id="fig-sensors" class="quarto-figure quarto-figure-center quarto-float anchored" data-out-width="60%" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-sensors-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/sensores_remotos/canada/sensors.gif" class="img-fluid quarto-figure quarto-figure-center figure-img" data-out-width="60%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-sensors-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;6.25: Esquema conceptual de la emisión y recepción activa de energía
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="características-de-las-imágenes" class="level2" data-number="6.7">
+<h2 data-number="6.7" class="anchored" data-anchor-id="características-de-las-imágenes"><span class="header-section-number">6.7</span> Características de las imágenes</h2>
+<p>Existe una distinción metodológica crítica entre los términos “fotografía” e “imagen”:</p>
+<ul>
+<li><strong>Fotografía:</strong> Es una plasmación pictórica, obtenida sobre emulsiones fotoquímicas analógicas directas, frecuentemente limitadas al rango visible e infrarrojo próximo.</li>
+<li><strong>Imagen:</strong> Es el término integrador genérico referido a representaciones bidimensionales originadas electrónica o digitalmente desde cualquier porción del espectro electromagnético.</li>
+</ul>
+<div id="fig-photo" class="quarto-figure quarto-figure-center quarto-float anchored" data-out-width="50%" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-photo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/sensores_remotos/canada/photo.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" data-out-width="50%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-photo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;6.26: Fotografía pancromática aérea tradicional (Ottawa, Canadá)
+</figcaption>
+</figure>
+</div>
+<p>Las imágenes digitales se estructuran como mallas matriciales regulares (raster). Cada celda unitaria, conocida como <strong>píxel</strong> (picture element), almacena un Nivel Digital (ND) directamente correlacionado con la radiancia de la porción terrestre muestreada.</p>
+<div id="fig-pixel" class="quarto-figure quarto-figure-center quarto-float anchored" data-out-width="50%" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-pixel-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/sensores_remotos/canada/pixel.gif" class="img-fluid quarto-figure quarto-figure-center figure-img" data-out-width="50%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pixel-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;6.27: Estructura raster mostrando píxeles y sus respectivos Niveles Digitales (ND)
+</figcaption>
+</figure>
+</div>
+<p>Los datos multiespectrales se codifican en agrupaciones espectrales estrechas llamadas <strong>bandas</strong> o canales. Mientras la representación visual de una única banda produce imágenes monocromáticas (escala de grises), la asignación simultánea de tres bandas a los cañones de color RGB del monitor genera <strong>imágenes de composición en color</strong>, elevando exponencialmente la capacidad interpretativa humana.</p>
+<p><img src="images/sensores_remotos/canada/ottbw.jpg" id="fig-ottbw" class="img-fluid quarto-figure quarto-figure-center anchored" data-out-width="48%" alt="Visualización monocromática correspondiente a una banda individual"> <img src="images/sensores_remotos/canada/ottclr.jpg" id="fig-ottclr" class="img-fluid quarto-figure quarto-figure-center anchored" data-out-width="48%" alt="Composición en color RGB mediante la combinación de múltiples bandas espaciales"></p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copiado");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copiado");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./10-guia_estructura_proyecto_final.html" class="pagination-link" aria-label="Guía y Estructura del Proyecto Final">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Guía y Estructura del Proyecto Final</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./17-sr_satelites_sensores.html" class="pagination-link" aria-label="Satélites y sensores">
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Satélites y sensores</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

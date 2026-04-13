@@ -1,0 +1,1883 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.550">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Alexys H. Rodríguez-Avellaneda Ph.D.">
+
+<title>Geomática General - 27&nbsp; Sistemas de Coordenadas</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./65-presentacion_5_clase7_sr_arset.html" rel="next">
+<link href="./63-presentacion_3_clase2_syllabus_evaluacion.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/quarto-contrib/fontawesome6-6.7.2/all.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/fontawesome6-6.7.2/latex-fontsize.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Sin resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./61-presentacion_1_clase1_varios.html">Presentaciones</a></li><li class="breadcrumb-item"><a href="./64-presentacion_4_clase3_coordenadas.html"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Sistemas de Coordenadas</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Geomática General</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Buscar"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bienvenida</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./00-prefacio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prefacio</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Instalación y Entornos</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-introduccion-entornos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introducción a Entornos de Desarrollo SIG</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-guia_instalacion_A_docker.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Guía de Instalación. Opción A: Docker (Python, R, Julia)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-guia_instalacion_B_qgis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Guía de Instalación. Opción B: QGIS y PyQGIS</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-guia_instalacion_C_ArcGIS.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Guía de Instalación. Opción C: ArcGIS Pro y ArcPy</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Proyecto Final</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10-guia_estructura_proyecto_final.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Guía y Estructura del Proyecto Final</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Sensores Remotos</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./16-sr_fundamentos_introduccion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Fundamentos de sensores remotos: Introducción</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./17-sr_satelites_sensores.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Satélites y sensores</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./18-sr_microondas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Sensores remotos de microondas</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./19-sr_analisis_interpretacion_imagenes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Análisis e interpretación de imágenes</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./20-sr_aplicaciones.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Aplicaciones de los sensores remotos</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./21-sr_glosario.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Glosario de Sensores Remotos</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./22-sr_recursos_adicionales.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Recursos Adicionales de Teledetección</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">Prácticas</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./41-practica_1_clase2_visualizacion_dinamica.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Visualización y Mapas Dinámicos</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./42-practica_2_clase2_geoportales.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">🌐 Geoportales y Servicios Web</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./43-practica_3_clase3_coordenadas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Sistemas de Coordenadas - ArcGIS Pro</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./44-practica_4_clase4_conversionformatos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Conversión de Formatos (ArcGIS Pro - QGIS)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./45-practica_5_clase6_introduccion_sr_gee.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Introducción a Sensores Remotos y Procesamiento de Imágenes Satelitales con Google Earth Engine</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./46-practica_6_clase7_nasa_worldview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Guía de Exploración: NASA Worldview</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./47-practica_7_clase7_nasa_plugin_qgis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Guía de Instalación y Uso: NASA Earthdata Plugin para QGIS</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./48-practica_8_clase8_gee_conceptos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Fundamentos de programación en GEE y conceptos clave de sensores remotos</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./49-practica_9_mde.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Fundamentos de modelos digitales de elevación y elaboración cartográfica</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./50-practica_10_mde_hydro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Procesamiento hidrológico y morfométrico de modelos digitales de elevación</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./51-practica_11_mde_models.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Model builder (ArcGIS Pro) y Model Designer (QGIS) de productos del MDE</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+ <span class="menu-text">Presentaciones</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./61-presentacion_1_clase1_varios.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Temas por Charlar</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./62-presentacion_2_clase2_geomatica.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">¿Qué es la Geomática?</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./63-presentacion_3_clase2_syllabus_evaluacion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Presentación del Curso y Syllabus 2025</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./64-presentacion_4_clase3_coordenadas.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Sistemas de Coordenadas</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./65-presentacion_5_clase7_sr_arset.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Sensores Remotos - NASA ARSET</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
+ <span class="menu-text">Apéndices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./80-instalacion_herramientas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Resumen instalación de herramientas</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./81-uso_infraestructura_instalada.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Uso de la Infraestructura Instalada</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./82-quarto.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Quarto: Orquestación y Configuración</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./83-docker_desktop.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Docker: Gestión de Contenedores e Imágenes</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./84-git_github.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Git y GitHub: Sincronización Local-Remota</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./85-vscode.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Visual Studio Code (VScode): Extensiones e Interfaz</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./86-windows.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">G</span>&nbsp; <span class="chapter-title">Temas técnicos sobre Windows</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./87-linux_ubuntu.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">H</span>&nbsp; <span class="chapter-title">Temas Técnicos sobre Linux</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./88-python.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">I</span>&nbsp; <span class="chapter-title">Adicionales Sobre Python</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./89-r.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">J</span>&nbsp; <span class="chapter-title">Adicionales Sobre R</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./90-julia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">K</span>&nbsp; <span class="chapter-title">Adicionales Sobre Julia</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./91-qgis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">L</span>&nbsp; <span class="chapter-title">Adicionales Sobre QGIS</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./92-arcgispro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">M</span>&nbsp; <span class="chapter-title">Adicionales sobre ArcGIS Pro</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./93-postgresql.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">N</span>&nbsp; <span class="chapter-title">Adicionales sobre ArcGIS Pro</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./98-errata.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">O</span>&nbsp; <span class="chapter-title">Errata</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./99-referencias.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Referencias Bibliográficas</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Tabla de Contenidos</h2>
+   
+  <ul>
+  <li><a href="#mapa" id="toc-mapa" class="nav-link active" data-scroll-target="#mapa"><span class="header-section-number">27.1</span> Mapa</a></li>
+  <li><a href="#elementos-del-mapa" id="toc-elementos-del-mapa" class="nav-link" data-scroll-target="#elementos-del-mapa"><span class="header-section-number">27.2</span> Elementos del Mapa</a></li>
+  <li><a href="#qué-es-la-georreferenciación" id="toc-qué-es-la-georreferenciación" class="nav-link" data-scroll-target="#qué-es-la-georreferenciación"><span class="header-section-number">27.3</span> ¿Qué es la georreferenciación?</a></li>
+  <li><a href="#la-forma-de-la-tierra" id="toc-la-forma-de-la-tierra" class="nav-link" data-scroll-target="#la-forma-de-la-tierra"><span class="header-section-number">27.4</span> La Forma de la Tierra</a></li>
+  <li><a href="#la-tierra-y-su-representación" id="toc-la-tierra-y-su-representación" class="nav-link" data-scroll-target="#la-tierra-y-su-representación"><span class="header-section-number">27.5</span> La tierra y su representación</a></li>
+  <li><a href="#el-geoide" id="toc-el-geoide" class="nav-link" data-scroll-target="#el-geoide"><span class="header-section-number">27.6</span> El Geoide</a></li>
+  <li><a href="#conceptos-de-datum" id="toc-conceptos-de-datum" class="nav-link" data-scroll-target="#conceptos-de-datum"><span class="header-section-number">27.7</span> Conceptos de Datum</a></li>
+  <li><a href="#sistema-de-coordenadas-geográficas" id="toc-sistema-de-coordenadas-geográficas" class="nav-link" data-scroll-target="#sistema-de-coordenadas-geográficas"><span class="header-section-number">27.8</span> Sistema de Coordenadas Geográficas</a></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"><span class="header-section-number">27.9</span> </a></li>
+  <li><a href="#esferoide-o-elipsoide" id="toc-esferoide-o-elipsoide" class="nav-link" data-scroll-target="#esferoide-o-elipsoide"><span class="header-section-number">27.10</span> Esferoide o Elipsoide</a></li>
+  <li><a href="#geoide---esferoide-o-elipsoide---datum" id="toc-geoide---esferoide-o-elipsoide---datum" class="nav-link" data-scroll-target="#geoide---esferoide-o-elipsoide---datum"><span class="header-section-number">27.11</span> Geoide - Esferoide o Elipsoide - Datum</a></li>
+  <li><a href="#datums-y-conversión" id="toc-datums-y-conversión" class="nav-link" data-scroll-target="#datums-y-conversión"><span class="header-section-number">27.12</span> Datums y Conversión</a></li>
+  <li><a href="#georeferenciación-de-puntos" id="toc-georeferenciación-de-puntos" class="nav-link" data-scroll-target="#georeferenciación-de-puntos"><span class="header-section-number">27.13</span> Georeferenciación de Puntos</a></li>
+  <li><a href="#sistema-de-coordenadas-proyectado" id="toc-sistema-de-coordenadas-proyectado" class="nav-link" data-scroll-target="#sistema-de-coordenadas-proyectado"><span class="header-section-number">27.14</span> Sistema de Coordenadas Proyectado</a></li>
+  <li><a href="#sistema-de-coordenadas-proyectado-1" id="toc-sistema-de-coordenadas-proyectado-1" class="nav-link" data-scroll-target="#sistema-de-coordenadas-proyectado-1"><span class="header-section-number">27.15</span> Sistema de Coordenadas Proyectado</a></li>
+  <li><a href="#conceptos-de-proyecciones" id="toc-conceptos-de-proyecciones" class="nav-link" data-scroll-target="#conceptos-de-proyecciones"><span class="header-section-number">27.16</span> Conceptos de proyecciones</a></li>
+  <li><a href="#conceptos-de-proyecciones-1" id="toc-conceptos-de-proyecciones-1" class="nav-link" data-scroll-target="#conceptos-de-proyecciones-1"><span class="header-section-number">27.17</span> Conceptos de proyecciones</a></li>
+  <li><a href="#qué-se-afecta-al-proyectar" id="toc-qué-se-afecta-al-proyectar" class="nav-link" data-scroll-target="#qué-se-afecta-al-proyectar"><span class="header-section-number">27.18</span> ¿Qué se afecta al proyectar?</a></li>
+  <li><a href="#clasificación-de-proyecciones" id="toc-clasificación-de-proyecciones" class="nav-link" data-scroll-target="#clasificación-de-proyecciones"><span class="header-section-number">27.19</span> Clasificación de Proyecciones</a></li>
+  <li><a href="#tipos-de-proyección" id="toc-tipos-de-proyección" class="nav-link" data-scroll-target="#tipos-de-proyección"><span class="header-section-number">27.20</span> Tipos de Proyección</a></li>
+  <li><a href="#proyección-conforme" id="toc-proyección-conforme" class="nav-link" data-scroll-target="#proyección-conforme"><span class="header-section-number">27.21</span> Proyección Conforme</a></li>
+  <li><a href="#proyección-de-áreas-iguales" id="toc-proyección-de-áreas-iguales" class="nav-link" data-scroll-target="#proyección-de-áreas-iguales"><span class="header-section-number">27.22</span> Proyección de Áreas Iguales</a></li>
+  <li><a href="#proyección-equidistante" id="toc-proyección-equidistante" class="nav-link" data-scroll-target="#proyección-equidistante"><span class="header-section-number">27.23</span> Proyección Equidistante</a></li>
+  <li><a href="#proyecciones-de-verdadera-dirección" id="toc-proyecciones-de-verdadera-dirección" class="nav-link" data-scroll-target="#proyecciones-de-verdadera-dirección"><span class="header-section-number">27.24</span> Proyecciones de verdadera dirección</a></li>
+  <li><a href="#proyecciones-cónicas" id="toc-proyecciones-cónicas" class="nav-link" data-scroll-target="#proyecciones-cónicas"><span class="header-section-number">27.25</span> Proyecciones cónicas</a></li>
+  <li><a href="#proyecciones-cilíndricas" id="toc-proyecciones-cilíndricas" class="nav-link" data-scroll-target="#proyecciones-cilíndricas"><span class="header-section-number">27.26</span> Proyecciones cilíndricas</a></li>
+  <li><a href="#universal-transversa-de-mercator-utm" id="toc-universal-transversa-de-mercator-utm" class="nav-link" data-scroll-target="#universal-transversa-de-mercator-utm"><span class="header-section-number">27.27</span> Universal Transversa de Mercator (UTM)</a></li>
+  <li><a href="#sistema-de-coordenadas-utm" id="toc-sistema-de-coordenadas-utm" class="nav-link" data-scroll-target="#sistema-de-coordenadas-utm"><span class="header-section-number">27.28</span> Sistema de Coordenadas UTM</a></li>
+  <li><a href="#proyecciones-planas" id="toc-proyecciones-planas" class="nav-link" data-scroll-target="#proyecciones-planas"><span class="header-section-number">27.29</span> Proyecciones planas</a></li>
+  <li><a href="#parámetros-de-proyección" id="toc-parámetros-de-proyección" class="nav-link" data-scroll-target="#parámetros-de-proyección"><span class="header-section-number">27.30</span> Parámetros de Proyección</a></li>
+  <li><a href="#explicación-de-parámetros" id="toc-explicación-de-parámetros" class="nav-link" data-scroll-target="#explicación-de-parámetros"><span class="header-section-number">27.31</span> Explicación de Parámetros</a></li>
+  <li><a href="#componentes-de-un-sistema-de-coordenadas-proyectado" id="toc-componentes-de-un-sistema-de-coordenadas-proyectado" class="nav-link" data-scroll-target="#componentes-de-un-sistema-de-coordenadas-proyectado"><span class="header-section-number">27.32</span> Componentes de un sistema de coordenadas proyectado</a></li>
+  <li><a href="#sistema-de-referencia-colombiano" id="toc-sistema-de-referencia-colombiano" class="nav-link" data-scroll-target="#sistema-de-referencia-colombiano"><span class="header-section-number">27.33</span> Sistema de Referencia Colombiano</a></li>
+  <li><a href="#el-origen-observatorio-astronómico" id="toc-el-origen-observatorio-astronómico" class="nav-link" data-scroll-target="#el-origen-observatorio-astronómico"><span class="header-section-number">27.34</span> El Origen: Observatorio Astronómico</a></li>
+  <li><a href="#sistema-de-referencia-colombiano---magna-sirgas" id="toc-sistema-de-referencia-colombiano---magna-sirgas" class="nav-link" data-scroll-target="#sistema-de-referencia-colombiano---magna-sirgas"><span class="header-section-number">27.35</span> Sistema de Referencia Colombiano - MAGNA-SIRGAS</a></li>
+  <li><a href="#sirgas-sistema-de-referencia-geocéntrico-para-las-américas" id="toc-sirgas-sistema-de-referencia-geocéntrico-para-las-américas" class="nav-link" data-scroll-target="#sirgas-sistema-de-referencia-geocéntrico-para-las-américas"><span class="header-section-number">27.36</span> SIRGAS: Sistema de Referencia Geocéntrico para las Américas</a></li>
+  <li><a href="#el-sistema-gauss-krüger-en-colombia" id="toc-el-sistema-gauss-krüger-en-colombia" class="nav-link" data-scroll-target="#el-sistema-gauss-krüger-en-colombia"><span class="header-section-number">27.37</span> El Sistema Gauss-Krüger en Colombia</a></li>
+  <li><a href="#el-gran-problema-del-sistema-antiguo" id="toc-el-gran-problema-del-sistema-antiguo" class="nav-link" data-scroll-target="#el-gran-problema-del-sistema-antiguo"><span class="header-section-number">27.38</span> El Gran Problema del Sistema Antiguo</a>
+  <ul class="collapse">
+  <li><a href="#por-qué-tuvimos-que-cambiar" id="toc-por-qué-tuvimos-que-cambiar" class="nav-link" data-scroll-target="#por-qué-tuvimos-que-cambiar">¿Por qué tuvimos que cambiar?</a></li>
+  </ul></li>
+  <li><a href="#el-nuevo-origen-nacional-epsg9377" id="toc-el-nuevo-origen-nacional-epsg9377" class="nav-link" data-scroll-target="#el-nuevo-origen-nacional-epsg9377"><span class="header-section-number">27.39</span> El Nuevo Origen Nacional (EPSG:9377)</a></li>
+  <li><a href="#por-qué-5000000-en-el-este" id="toc-por-qué-5000000-en-el-este" class="nav-link" data-scroll-target="#por-qué-5000000-en-el-este"><span class="header-section-number">27.40</span> ¿Por qué 5,000,000 en el Este?</a>
+  <ul class="collapse">
+  <li><a href="#adiós-a-la-confusión" id="toc-adiós-a-la-confusión" class="nav-link" data-scroll-target="#adiós-a-la-confusión">Adiós a la confusión</a></li>
+  </ul></li>
+  <li><a href="#guía-de-referencia-epsg-colombia" id="toc-guía-de-referencia-epsg-colombia" class="nav-link" data-scroll-target="#guía-de-referencia-epsg-colombia"><span class="header-section-number">27.41</span> Guía de Referencia EPSG: Colombia</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./61-presentacion_1_clase1_varios.html">Presentaciones</a></li><li class="breadcrumb-item"><a href="./64-presentacion_4_clase3_coordenadas.html"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Sistemas de Coordenadas</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Sistemas de Coordenadas</span></h1>
+<p class="subtitle lead">Geomática General</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autor/a</div>
+    <div class="quarto-title-meta-contents">
+             <p>Alexys H. Rodríguez-Avellaneda Ph.D. </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="mapa" class="level2" data-number="27.1">
+<h2 data-number="27.1" class="anchored" data-anchor-id="mapa"><span class="header-section-number">27.1</span> Mapa</h2>
+<p>Representa objetos geográficos y otros fenómenos espaciales mostrando gráficamente su localización y atributos.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/sistemas_coordenadas/tierra_mapa.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<hr>
+</section>
+<section id="elementos-del-mapa" class="level2" data-number="27.2">
+<h2 data-number="27.2" class="anchored" data-anchor-id="elementos-del-mapa"><span class="header-section-number">27.2</span> Elementos del Mapa</h2>
+<ul>
+<li>Punto</li>
+<li>Línea</li>
+<li>Área</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/sistemas_coordenadas/image2.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<hr>
+</section>
+<section id="qué-es-la-georreferenciación" class="level2" data-number="27.3">
+<h2 data-number="27.3" class="anchored" data-anchor-id="qué-es-la-georreferenciación"><span class="header-section-number">27.3</span> ¿Qué es la georreferenciación?</h2>
+<p>Los datos se referencian a sitios sobre la superficie terrestre mediante:</p>
+<ul>
+<li>Sistema de coordenadas geográficas</li>
+<li>Sistema de coordenadas proyectadas</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/sistemas_coordenadas/image3.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<hr>
+</section>
+<section id="la-forma-de-la-tierra" class="level2" data-number="27.4">
+<h2 data-number="27.4" class="anchored" data-anchor-id="la-forma-de-la-tierra"><span class="header-section-number">27.4</span> La Forma de la Tierra</h2>
+<p>¿Cómo es realmente la Tierra?</p>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout-ncol="4">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<p><img src="images/sistemas_coordenadas/image4.jpeg" class="img-fluid" style="width: 100%; height: 200px; object-fit: contain; border: 1px solid #eee;"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<p><img src="images/sistemas_coordenadas/mapa_tierra.jpg" class="img-fluid" style="width: 100%; height: 200px; object-fit: contain; border: 1px solid #eee;"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<p><img src="images/sistemas_coordenadas/image6.png" class="img-fluid" style="width: 100%; height: 200px; object-fit: contain; border: 1px solid #eee;"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<p><img src="images/sistemas_coordenadas/mapa_tierra.png" class="img-fluid" style="width: 100%; height: 200px; object-fit: contain; border: 1px solid #eee;"></p>
+</div>
+</div>
+</div>
+<hr>
+</section>
+<section id="la-tierra-y-su-representación" class="level2" data-number="27.5">
+<h2 data-number="27.5" class="anchored" data-anchor-id="la-tierra-y-su-representación"><span class="header-section-number">27.5</span> La tierra y su representación</h2>
+<div class="columns">
+<div class="column" style="width:45%;">
+<ul>
+<li><strong>Geoide:</strong> La forma física real (superficie de igual gravedad).
+<ul>
+<li>Elíptico</li>
+<li>Imperfecto</li>
+</ul></li>
+<li><strong>Elipsoide o Esferoide:</strong> Modelo matemático que mejor se ajusta para cálculos.
+<ul>
+<li>Simplifica cálculos espaciales</li>
+</ul></li>
+<li><strong>Datum:</strong> Un esferoide alineado con un punto conocido.</li>
+<li><strong>Coordenadas Geográficas:</strong> Medidas en longitud y latitud con origen en el ecuador y el meridiano principal.</li>
+</ul>
+</div><div class="column" style="width:55%;">
+<div class="quarto-figure quarto-figure-right">
+<figure class="figure">
+<p><img src="images/sistemas_coordenadas/geoide_elipsoide.png" class="img-fluid quarto-figure quarto-figure-right figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<hr>
+</section>
+<section id="el-geoide" class="level2" data-number="27.6">
+<h2 data-number="27.6" class="anchored" data-anchor-id="el-geoide"><span class="header-section-number">27.6</span> El Geoide</h2>
+<p>Superficie en la que todos sus puntos experimentan la misma atracción gravitatoria, siendo esta equivalente a la experimentada al nivel del mar.</p>
+<p><em>Esta superficie no es regular, contiene ondulaciones que alteran los cálculos.</em></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/sistemas_coordenadas/image8.jpeg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<hr>
+</section>
+<section id="conceptos-de-datum" class="level2" data-number="27.7">
+<h2 data-number="27.7" class="anchored" data-anchor-id="conceptos-de-datum"><span class="header-section-number">27.7</span> Conceptos de Datum</h2>
+<div class="columns">
+<div class="column" style="width:65%;">
+<section id="qué-es-un-datum" class="level3">
+<h3 class="anchored" data-anchor-id="qué-es-un-datum"><i class="fa-solid fa-earth-americas" aria-label="earth-americas"></i> ¿Qué es un Datum?</h3>
+<p>Sistema de referencia geográfica basado en un <strong>modelo elipsoidal</strong> que representa la superficie de la tierra.</p>
+<div class="fragment">
+<section id="datum-local" class="level4">
+<h4 class="anchored" data-anchor-id="datum-local"><i class="fa-solid fa-map-pin" aria-label="map-pin"></i> Datum Local</h4>
+<p>Sistemas basados en elipsoides <strong>no-geocéntricos</strong>, ajustados a la superficie del geoide de un territorio específico.</p>
+<ul>
+<li><strong>Bogotá Observatory (“ARENA”)</strong> – Colombia</li>
+<li><strong>Aratu / SAD69</strong> – Brasil</li>
+<li><strong>PSAD56</strong> – Perú</li>
+<li><strong>NAD27</strong> – EE.UU. / GoM</li>
+</ul>
+</section>
+</div>
+<div class="fragment">
+<section id="datum-geocéntrico" class="level4">
+<h4 class="anchored" data-anchor-id="datum-geocéntrico"><i class="fa-solid fa-center-focus-strong" aria-label="center-focus-strong"></i> Datum Geocéntrico</h4>
+<p>Basado en elipsoides cuyo origen de cooordenadas <strong>coincide con el centro de masa de la Tierra</strong>.</p>
+<ul>
+<li><strong>Estándar internacional:</strong> WGS 1984 (GRS80)</li>
+<li><strong>Regional:</strong> SIRGAS / MAGNA-SIRGAS</li>
+</ul>
+</section>
+</div>
+</section>
+</div><div class="column" style="width:35%;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/sistemas_coordenadas/datum.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+<figcaption>Visualización de la orientación del Datum</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="sistema-de-coordenadas-geográficas" class="level2" data-number="27.8">
+<h2 data-number="27.8" class="anchored" data-anchor-id="sistema-de-coordenadas-geográficas"><span class="header-section-number">27.8</span> Sistema de Coordenadas Geográficas</h2>
+<ul>
+<li><strong>Medidas:</strong> Esféricas.</li>
+<li><strong>Origen:</strong> (0,0) -&gt; (Primer Meridiano, Ecuador)</li>
+<li><strong>Latitud:</strong> -90° a 90°.</li>
+<li><strong>Longitud:</strong> -180° a 180°.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/sistemas_coordenadas/image9.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<hr>
+</section>
+<section id="section" class="level2" data-number="27.9">
+<h2 data-number="27.9" class="anchored" data-anchor-id="section"><span class="header-section-number">27.9</span> </h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/sistemas_coordenadas/Paralelos-y-meriidianos.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<hr>
+</section>
+<section id="esferoide-o-elipsoide" class="level2" data-number="27.10">
+<h2 data-number="27.10" class="anchored" data-anchor-id="esferoide-o-elipsoide"><span class="header-section-number">27.10</span> Esferoide o Elipsoide</h2>
+<ul>
+<li>Definido por el eje semimayor (<strong>a</strong>) y el eje semimenor (<strong>b</strong>).</li>
+<li><strong>Aplanamiento:</strong> <span class="math inline">\(f = (a - b) / a\)</span> (diferencia en longitud entre los dos ejes).</li>
+<li><strong>WGS 1984 (Parámetros):</strong> (Sistema Geodético Mundial - 1984)
+<ul>
+<li>Elipsoide GRS80 (Geodetic Reference System 1980)</li>
+<li><span class="math inline">\(a = 6378137.0\)</span> m</li>
+<li><span class="math inline">\(1/f = 298.257223563\)</span></li>
+</ul></li>
+</ul>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout="[[1, 2]]">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><img src="images/sistemas_coordenadas/elipsoide.png" class="img-fluid" style="width: 100%; height: 350px; object-fit: contain;"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 66.7%;justify-content: center;">
+<p><img src="images/sistemas_coordenadas/ejes_elipsoide.png" class="img-fluid" style="width: 100%; height: 350px; object-fit: contain; transform: scale(1.2);"></p>
+</div>
+</div>
+</div>
+<hr>
+</section>
+<section id="geoide---esferoide-o-elipsoide---datum" class="level2" data-number="27.11">
+<h2 data-number="27.11" class="anchored" data-anchor-id="geoide---esferoide-o-elipsoide---datum"><span class="header-section-number">27.11</span> Geoide - Esferoide o Elipsoide - Datum</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/sistemas_coordenadas/datum_elipsoide_geoide.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<hr>
+</section>
+<section id="datums-y-conversión" class="level2" data-number="27.12">
+<h2 data-number="27.12" class="anchored" data-anchor-id="datums-y-conversión"><span class="header-section-number">27.12</span> Datums y Conversión</h2>
+<p>Marco de referencia para medir sitios sobre la superficie terrestre:</p>
+<ul>
+<li><strong>Local:</strong> Ej. NAD27 (Elipsoide Clarke 1866).</li>
+<li><strong>Geocéntrico:</strong> Ej. NAD83 / WGS84 (Elipsoide GRS80).</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/sistemas_coordenadas/datums_conversion_datums.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<hr>
+</section>
+<section id="georeferenciación-de-puntos" class="level2" data-number="27.13">
+<h2 data-number="27.13" class="anchored" data-anchor-id="georeferenciación-de-puntos"><span class="header-section-number">27.13</span> Georeferenciación de Puntos</h2>
+<ul>
+<li>Los puntos sobre la tierra se referencian a un datum</li>
+<li>Para el mismo punto, diferentes datums tienen diferentes valores de coordenadas</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/sistemas_coordenadas/referenciacion_puntos.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<hr>
+</section>
+<section id="sistema-de-coordenadas-proyectado" class="level2" data-number="27.14">
+<h2 data-number="27.14" class="anchored" data-anchor-id="sistema-de-coordenadas-proyectado"><span class="header-section-number">27.14</span> Sistema de Coordenadas Proyectado</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><br></p>
+<ul>
+<li>Coordenadas en cuadrícula cartesiana.</li>
+<li>Unidades: <strong>metros</strong>, pies, etc.</li>
+<li>¿Medir área o longitud? (¡No en geográficas!).</li>
+<li>Convierte coordenadas <strong>esféricas</strong> a <strong>planas</strong>.</li>
+<li><strong>Distorsión (FADD):</strong>
+<ul>
+<li>Forma,</li>
+<li>Área,</li>
+<li>Distancia y</li>
+<li>Dirección.</li>
+</ul></li>
+</ul>
+</div><div class="column" style="text-align: center;">
+<p><img src="images/sistemas_coordenadas/cproyectadas.png" class="img-fluid" style="margin-bottom: 20px;;width:50.0%"></p>
+<p><img src="images/sistemas_coordenadas/cproyectadas3.png" class="img-fluid" style="width:50.0%"></p>
+</div>
+</div>
+</section>
+<section id="sistema-de-coordenadas-proyectado-1" class="level2" data-number="27.15">
+<h2 data-number="27.15" class="anchored" data-anchor-id="sistema-de-coordenadas-proyectado-1"><span class="header-section-number">27.15</span> Sistema de Coordenadas Proyectado</h2>
+<ul>
+<li>La ventaja de un sistema plano es que la medida de la longitud, ángulos y áreas son constantes en las dos dimensiones</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/sistemas_coordenadas/plano_cartesiano.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<hr>
+</section>
+<section id="conceptos-de-proyecciones" class="level2" data-number="27.16">
+<h2 data-number="27.16" class="anchored" data-anchor-id="conceptos-de-proyecciones"><span class="header-section-number">27.16</span> Conceptos de proyecciones</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/sistemas_coordenadas/proyeccion_cilindrica.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<hr>
+</section>
+<section id="conceptos-de-proyecciones-1" class="level2" data-number="27.17">
+<h2 data-number="27.17" class="anchored" data-anchor-id="conceptos-de-proyecciones-1"><span class="header-section-number">27.17</span> Conceptos de proyecciones</h2>
+<div style="text-align: center;">
+<div class="fragment" data-fragment-index="1">
+<p>La superficie superior de la tierra.</p>
+</div>
+<div class="fragment" data-fragment-index="2">
+<p><span class="math inline">\(\downarrow\)</span></p>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/sistemas_coordenadas/image15.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+<div class="fragment" data-fragment-index="3">
+<p><span class="math inline">\(\uparrow\)</span></p>
+</div>
+<div class="fragment" data-fragment-index="4">
+<p>Tiene que llenar esta superficie del mapa.</p>
+</div>
+</div>
+<p><br></p>
+<div class="fragment" data-fragment-index="5">
+<blockquote class="blockquote">
+<p>Por lo tanto, mucha de la superficie de la tierra tiene que ser representada mas pequeña que la realidad.</p>
+</blockquote>
+</div>
+<hr>
+</section>
+<section id="qué-se-afecta-al-proyectar" class="level2" data-number="27.18">
+<h2 data-number="27.18" class="anchored" data-anchor-id="qué-se-afecta-al-proyectar"><span class="header-section-number">27.18</span> ¿Qué se afecta al proyectar?</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/sistemas_coordenadas/que_se_afecta_proyectando.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<hr>
+</section>
+<section id="clasificación-de-proyecciones" class="level2" data-number="27.19">
+<h2 data-number="27.19" class="anchored" data-anchor-id="clasificación-de-proyecciones"><span class="header-section-number">27.19</span> Clasificación de Proyecciones</h2>
+<p><br><br></p>
+<div style="display: flex; justify-content: center; align-items: center; height: 60%;">
+<table class="table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Tipo</th>
+<th style="text-align: center;">Preserva</th>
+<th style="text-align: center;">Ejemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="fragment" data-fragment-index="1"><strong>Conforme</strong></span></td>
+<td style="text-align: center;"><span class="fragment" data-fragment-index="1"><i class="fa-solid fa-object-group" aria-label="object-group"></i> Forma</span></td>
+<td style="text-align: center;"><span class="fragment" data-fragment-index="1">Lambert Conformal Conic</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="fragment" data-fragment-index="2"><strong>Equiarea</strong></span></td>
+<td style="text-align: center;"><span class="fragment" data-fragment-index="2"><i class="fa-solid fa-chart-area" aria-label="chart-area"></i> Área</span></td>
+<td style="text-align: center;"><span class="fragment" data-fragment-index="2">Albers Equal Area Conic</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="fragment" data-fragment-index="3"><strong>Equidistante</strong></span></td>
+<td style="text-align: center;"><span class="fragment" data-fragment-index="3"><i class="fa-solid fa-ruler-horizontal" aria-label="ruler-horizontal"></i> Distancia</span></td>
+<td style="text-align: center;"><span class="fragment" data-fragment-index="3">Equidistant Conic</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="fragment" data-fragment-index="4"><strong>Azimutal</strong></span></td>
+<td style="text-align: center;"><span class="fragment" data-fragment-index="4"><i class="fa-solid fa-compass" aria-label="compass"></i> Dirección</span></td>
+<td style="text-align: center;"><span class="fragment" data-fragment-index="4">Lambert Azimuthal</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="tipos-de-proyección" class="level2" data-number="27.20">
+<h2 data-number="27.20" class="anchored" data-anchor-id="tipos-de-proyección"><span class="header-section-number">27.20</span> Tipos de Proyección</h2>
+<ul>
+<li><strong>Cilíndrica</strong> (El cilindro envuelve la esfera)</li>
+<li><strong>Cónica</strong> (El cono se asienta sobre la esfera)</li>
+<li><strong>Plana / Azimutal</strong> (Un plano toca un punto de la esfera)</li>
+</ul>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout-ncol="3">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><img src="images/sistemas_coordenadas/image20.png" class="img-fluid" style="width: 100%; height: 200px; object-fit: contain; border: 1px solid #eee;"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><img src="images/sistemas_coordenadas/image22.png" class="img-fluid" style="width: 100%; height: 200px; object-fit: contain; border: 1px solid #eee;"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><img src="images/sistemas_coordenadas/image24.png" class="img-fluid" style="width: 100%; height: 200px; object-fit: contain; border: 1px solid #eee;"></p>
+</div>
+</div>
+</div>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout-ncol="3">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><img src="images/sistemas_coordenadas/image21.png" class="img-fluid" style="width: 100%; height: 200px; object-fit: contain; border: 1px solid #eee;"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><img src="images/sistemas_coordenadas/image23.png" class="img-fluid" style="width: 100%; height: 200px; object-fit: contain; border: 1px solid #eee;"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><img src="images/sistemas_coordenadas/image25.png" class="img-fluid" style="width: 100%; height: 200px; object-fit: contain; border: 1px solid #eee;"></p>
+</div>
+</div>
+</div>
+<hr>
+</section>
+<section id="proyección-conforme" class="level2" data-number="27.21">
+<h2 data-number="27.21" class="anchored" data-anchor-id="proyección-conforme"><span class="header-section-number">27.21</span> Proyección Conforme</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/sistemas_coordenadas/image16.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+<figcaption>Miller Cilíndrica</figcaption>
+</figure>
+</div>
+<hr>
+</section>
+<section id="proyección-de-áreas-iguales" class="level2" data-number="27.22">
+<h2 data-number="27.22" class="anchored" data-anchor-id="proyección-de-áreas-iguales"><span class="header-section-number">27.22</span> Proyección de Áreas Iguales</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/sistemas_coordenadas/image17.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+<figcaption>Igual Área Cilíndrica</figcaption>
+</figure>
+</div>
+<hr>
+</section>
+<section id="proyección-equidistante" class="level2" data-number="27.23">
+<h2 data-number="27.23" class="anchored" data-anchor-id="proyección-equidistante"><span class="header-section-number">27.23</span> Proyección Equidistante</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/sistemas_coordenadas/image18.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+<figcaption>Sinusoidal</figcaption>
+</figure>
+</div>
+<hr>
+</section>
+<section id="proyecciones-de-verdadera-dirección" class="level2" data-number="27.24">
+<h2 data-number="27.24" class="anchored" data-anchor-id="proyecciones-de-verdadera-dirección"><span class="header-section-number">27.24</span> Proyecciones de verdadera dirección</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/sistemas_coordenadas/image19.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+<figcaption>Ortográfica</figcaption>
+</figure>
+</div>
+<hr>
+</section>
+<section id="proyecciones-cónicas" class="level2" data-number="27.25">
+<h2 data-number="27.25" class="anchored" data-anchor-id="proyecciones-cónicas"><span class="header-section-number">27.25</span> Proyecciones cónicas</h2>
+<ol type="1">
+<li>Paralelo estándar</li>
+<li>Meridiano central</li>
+</ol>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout-ncol="3">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><img src="images/sistemas_coordenadas/image26.png" class="img-fluid" style="width: 100%; height: 200px; object-fit: contain; border: 1px solid #eee;"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><img src="images/sistemas_coordenadas/image27.png" class="img-fluid" style="width: 100%; height: 200px; object-fit: contain; border: 1px solid #eee;"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><img src="images/sistemas_coordenadas/image28.png" class="img-fluid" style="width: 100%; height: 200px; object-fit: contain; border: 1px solid #eee;"></p>
+</div>
+</div>
+</div>
+</section>
+<section id="proyecciones-cilíndricas" class="level2" data-number="27.26">
+<h2 data-number="27.26" class="anchored" data-anchor-id="proyecciones-cilíndricas"><span class="header-section-number">27.26</span> Proyecciones cilíndricas</h2>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout-ncol="3">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center" style="width: 100%; height: 200px; object-fit: contain; border: 1px solid #eee;">
+<figure class="figure">
+<p><img src="images/sistemas_coordenadas/image29.png" class="img-fluid figure-img"></p>
+<figcaption>Normal</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center" style="width: 100%; height: 200px; object-fit: contain; border: 1px solid #eee;">
+<figure class="figure">
+<p><img src="images/sistemas_coordenadas/image30.png" class="img-fluid figure-img"></p>
+<figcaption>Transversa</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center" style="width: 100%; height: 200px; object-fit: contain; border: 1px solid #eee;">
+<figure class="figure">
+<p><img src="images/sistemas_coordenadas/image31.png" class="img-fluid figure-img"></p>
+<figcaption>Oblicua</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<hr>
+</section>
+<section id="universal-transversa-de-mercator-utm" class="level2" data-number="27.27">
+<h2 data-number="27.27" class="anchored" data-anchor-id="universal-transversa-de-mercator-utm"><span class="header-section-number">27.27</span> Universal Transversa de Mercator (UTM)</h2>
+<p>Es una de las proyecciones cilíndricas más utilizadas globalmente para cartografía de escala media y grande.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/sistemas_coordenadas/image32.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+<hr>
+</section>
+<section id="sistema-de-coordenadas-utm" class="level2" data-number="27.28">
+<h2 data-number="27.28" class="anchored" data-anchor-id="sistema-de-coordenadas-utm"><span class="header-section-number">27.28</span> Sistema de Coordenadas UTM</h2>
+<div style="text-align: center; margin-top: 20px;">
+<div class="fragment" data-fragment-index="1">
+<section id="columnas-zonas-utm-longitud" class="level3">
+<h3 class="anchored" data-anchor-id="columnas-zonas-utm-longitud">Columnas: Zonas UTM (Longitud)</h3>
+<p><i class="fa-solid fa-database" aria-label="database"></i> 60 zonas de 6° cada una.</p>
+</section>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/sistemas_coordenadas/utm_colombia.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:55.0%"></p>
+</figure>
+</div>
+<div class="fragment" data-fragment-index="4">
+<section id="filas-bandas-de-latitud" class="level3">
+<h3 class="anchored" data-anchor-id="filas-bandas-de-latitud">Filas: Bandas de Latitud</h3>
+<p><i class="fa-solid fa-grip-lines" aria-label="grip-lines"></i> 20 bandas de 8° (C a X).</p>
+</section>
+</div>
+</div>
+<div class="fragment" data-fragment-index="5">
+<blockquote class="blockquote">
+<p><strong>Nota para Colombia:</strong> Nos ubicamos en las zonas <strong>17, 18 y 19</strong> y en las bandas de latitud <strong>N</strong> (Norte) y <strong>P</strong> (más al norte).</p>
+</blockquote>
+</div>
+<hr>
+</section>
+<section id="proyecciones-planas" class="level2" data-number="27.29">
+<h2 data-number="27.29" class="anchored" data-anchor-id="proyecciones-planas"><span class="header-section-number">27.29</span> Proyecciones planas</h2>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout-ncol="3">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center" style="width: 100%; height: 200px; object-fit: contain; border: 1px solid #eee;">
+<figure class="figure">
+<p><img src="images/sistemas_coordenadas/image33.png" class="img-fluid figure-img"></p>
+<figcaption>Polar</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center" style="width: 100%; height: 200px; object-fit: contain; border: 1px solid #eee;">
+<figure class="figure">
+<p><img src="images/sistemas_coordenadas/image34.png" class="img-fluid figure-img"></p>
+<figcaption>Ecuatorial</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center" style="width: 100%; height: 200px; object-fit: contain; border: 1px solid #eee;">
+<figure class="figure">
+<p><img src="images/sistemas_coordenadas/image35.png" class="img-fluid figure-img"></p>
+<figcaption>Oblicua</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="parámetros-de-proyección" class="level2" data-number="27.30">
+<h2 data-number="27.30" class="anchored" data-anchor-id="parámetros-de-proyección"><span class="header-section-number">27.30</span> Parámetros de Proyección</h2>
+<div style="text-align: center; margin-top: 1em;">
+<div class="columns">
+<div class="column fragment" style="width:33%;">
+<section id="lineales" class="level3">
+<h3 class="anchored" data-anchor-id="lineales"><i class="fa-solid fa-ruler-combined" aria-label="ruler-combined"></i> LINEALES</h3>
+<p><em>Unidades de medida</em></p>
+<ul>
+<li>Falso Este</li>
+<li>Falso Norte</li>
+<li>Altura</li>
+</ul>
+</section>
+</div><div class="column fragment" style="width:33%;">
+<section id="angulares" class="level3">
+<h3 class="anchored" data-anchor-id="angulares"><i class="fa-solid fa-compass" aria-label="compass"></i> ANGULARES</h3>
+<p><em>Unidades sexagesimales</em></p>
+<ul>
+<li>Azimuth</li>
+<li>Meridiano Central</li>
+<li>Longitud de Origen</li>
+<li>Paralelo Central</li>
+<li>Latitud de Origen</li>
+</ul>
+</section>
+</div><div class="column fragment" style="width:33%;">
+<section id="sin-unidades" class="level3">
+<h3 class="anchored" data-anchor-id="sin-unidades"><i class="fa-solid fa-expand" aria-label="expand"></i> SIN UNIDADES</h3>
+<p><em>Relaciones matemáticas</em></p>
+<ul>
+<li>Factor de escala</li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<hr>
+</section>
+<section id="explicación-de-parámetros" class="level2" data-number="27.31">
+<h2 data-number="27.31" class="anchored" data-anchor-id="explicación-de-parámetros"><span class="header-section-number">27.31</span> Explicación de Parámetros</h2>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" aria-current="page"><i class="fa-solid fa-ruler-combined" aria-label="ruler-combined"></i> Lineales</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false"><i class="fa-solid fa-compass" aria-label="compass"></i> Angulares</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false"><i class="fa-solid fa-expand" aria-label="expand"></i> Sin Unidades</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<ul>
+<li><strong>Falso Este/Norte:</strong> Valores constantes sumados a las coordenadas para que siempre sean positivas. En Colombia (Origen Nacional), se usa <strong>5,000,000 m</strong>.</li>
+<li><strong>Altura:</strong> Define el plano de elevación sobre el cual se proyectan los datos.</li>
+</ul>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<ul>
+<li><strong>Meridiano Central / Longitud de Origen:</strong> La línea vertical de longitud que es el eje central de la proyección.</li>
+<li><strong>Latitud de Origen / Paralelo Central:</strong> La línea horizontal que define el origen de las coordenadas Y.</li>
+<li><strong>Azimuth:</strong> Ángulo de rotación de la proyección respecto al Norte.</li>
+</ul>
+</div>
+<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
+<ul>
+<li><strong>Factor de escala:</strong> Determina cuánto se reduce o amplía la escala en el meridiano central para minimizar la distorsión en los bordes. Por ejemplo, en UTM es <strong>0.9996</strong>.</li>
+</ul>
+</div>
+</div>
+</div>
+<blockquote class="blockquote">
+<p><strong>Nota</strong> Estos parámetros aseguran que las mediciones en el mapa coincidan lo mejor posible con el terreno real.</p>
+</blockquote>
+</section>
+<section id="componentes-de-un-sistema-de-coordenadas-proyectado" class="level2" data-number="27.32">
+<h2 data-number="27.32" class="anchored" data-anchor-id="componentes-de-un-sistema-de-coordenadas-proyectado"><span class="header-section-number">27.32</span> Componentes de un sistema de coordenadas proyectado</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/sistemas_coordenadas/componentes_proyectado.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+<figcaption>Tiene Ambos: GCS + PCS</figcaption>
+</figure>
+</div>
+</section>
+<section id="sistema-de-referencia-colombiano" class="level2" data-number="27.33">
+<h2 data-number="27.33" class="anchored" data-anchor-id="sistema-de-referencia-colombiano"><span class="header-section-number">27.33</span> Sistema de Referencia Colombiano</h2>
+<ul>
+<li><p>Pre-MAGNA-SIRGAS (ARENA)</p></li>
+<li><p><strong>Datum Bogotá</strong> (1941).</p></li>
+<li><p>Elipsoide Internacional de 1924 (Hayford)</p></li>
+<li><p>Proyección Gauss–Krüger (cilíndrica - transversa - conforme)</p></li>
+<li><p>MAGNA-SIRGAS</p></li>
+<li><p><strong>SIRGAS:</strong> Sistema de Referencia Geocéntrico para las Américas.</p></li>
+<li><p><strong>MAGNA:</strong> Marco Geocéntrico Nacional de Referencia.</p></li>
+<li><p>60 estaciones GPS de cubrimiento nacional.</p></li>
+</ul>
+</section>
+<section id="el-origen-observatorio-astronómico" class="level2" data-number="27.34">
+<h2 data-number="27.34" class="anchored" data-anchor-id="el-origen-observatorio-astronómico"><span class="header-section-number">27.34</span> El Origen: Observatorio Astronómico</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>Punto de Referencia:</strong> Pilastra Sur del Observatorio Astronómico de Bogotá.</p>
+<p><strong>Coordenadas Geográficas (GCS):</strong></p>
+<ul>
+<li><strong>Latitud (N):</strong> 4° 35’ 56.57”</li>
+<li><strong>Longitud (W):</strong> 74° 04’ 51.30”</li>
+</ul>
+<p><strong>Falsos Orígenes (Gauss-Krüger):</strong></p>
+<ul>
+<li><strong>Falso Norte:</strong> 1,000,000 m N</li>
+<li><strong>Falso Este:</strong> 1,000,000 m E</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/sistemas_coordenadas/image39.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+<figcaption>6 orígenes</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<hr>
+</section>
+<section id="sistema-de-referencia-colombiano---magna-sirgas" class="level2" data-number="27.35">
+<h2 data-number="27.35" class="anchored" data-anchor-id="sistema-de-referencia-colombiano---magna-sirgas"><span class="header-section-number">27.35</span> Sistema de Referencia Colombiano - MAGNA-SIRGAS</h2>
+<div style="font-size: 0.85em;">
+<p>Debido a los avances científicos y tecnológicos de la Geodesia (especialmente GPS), el <strong>IGAC</strong> reemplazó el antiguo <em>Datum Bogotá</em> por un sistema moderno y compatible a nivel internacional.</p>
+<hr>
+<div class="columns">
+<div class="column" style="width:50%;">
+<section id="referencia-global" class="level3">
+<h3 class="anchored" data-anchor-id="referencia-global"><i class="fa-solid fa-globe" aria-label="globe"></i> Referencia Global</h3>
+<ul>
+<li><strong>WGS84:</strong> Implementado por el Departamento de Defensa de EE. UU. (Serie WGS60, 66, 72 y 84).</li>
+<li><strong>ITRS:</strong> Sistema Internacional de Referencia Terrestre con origen en el centro de masas de la Tierra.</li>
+</ul>
+</section>
+</div><div class="column" style="width:50%;">
+<section id="red-nacional" class="level3">
+<h3 class="anchored" data-anchor-id="red-nacional"><i class="fa-solid fa-tower-broadcast" aria-label="tower-broadcast"></i> Red Nacional</h3>
+<ul>
+<li><strong>SIRGAS:</strong> Sistema de Referencia Geocéntrico para las Américas. Red de estaciones GPS de alta precisión.</li>
+<li><strong>MAGNA:</strong> Marco Geocéntrico Nacional de Referencia. Es la densificación de SIRGAS en Colombia.</li>
+</ul>
+</section>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+MAGNA-SIRGAS
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Es el sistema oficial que garantiza que la cartografía colombiana sea totalmente compatible con las tecnologías de posicionamiento global modernas.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="sirgas-sistema-de-referencia-geocéntrico-para-las-américas" class="level2" data-number="27.36">
+<h2 data-number="27.36" class="anchored" data-anchor-id="sirgas-sistema-de-referencia-geocéntrico-para-las-américas"><span class="header-section-number">27.36</span> SIRGAS: Sistema de Referencia Geocéntrico para las Américas</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/sistemas_coordenadas/sirgas.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</section>
+<section id="el-sistema-gauss-krüger-en-colombia" class="level2" data-number="27.37">
+<h2 data-number="27.37" class="anchored" data-anchor-id="el-sistema-gauss-krüger-en-colombia"><span class="header-section-number">27.37</span> El Sistema Gauss-Krüger en Colombia</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<section id="cómo-funcionaba" class="level3">
+<h3 class="anchored" data-anchor-id="cómo-funcionaba">¿Cómo funcionaba?</h3>
+<ul>
+<li><strong>Seis Cilindros:</strong> El país se dividió en 6 fajas transversales cada 3° de longitud: 68°, 71°, 74°, 77°, 80° y 83° W.</li>
+<li><strong>Zona Insular:</strong> La <strong>sexta faja (83° W)</strong> no suele aparecer en los mapas continentales, pero es la que cubre a San Andrés y Providencia.</li>
+<li><strong>Origen Bogotá:</strong> El meridiano central principal es el de <strong>74° W</strong> (Observatorio de Bogotá).</li>
+<li><strong>Parámetros:</strong> Para evitar números negativos, cada zona usaba un <strong>Falso Este y Norte de 1,000,000 m</strong>.</li>
+</ul>
+</section>
+</div><div class="column" style="width:40%;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/sistemas_coordenadas/origenes_colombia.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+<figcaption>Sistema de 6 fajas</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<hr>
+</section>
+<section id="el-gran-problema-del-sistema-antiguo" class="level2" data-number="27.38">
+<h2 data-number="27.38" class="anchored" data-anchor-id="el-gran-problema-del-sistema-antiguo"><span class="header-section-number">27.38</span> El Gran Problema del Sistema Antiguo</h2>
+<section id="por-qué-tuvimos-que-cambiar" class="level3" style="text-align: center; margin-top: 1.5em;">
+<h3 class="anchored" data-anchor-id="por-qué-tuvimos-que-cambiar">¿Por qué tuvimos que cambiar?</h3>
+<div class="fragment strike">
+<p><strong>Coordenadas Repetidas</strong></p>
+</div>
+<div class="fragment">
+<p>Como cada una de las 6 fajas empezaba a contar desde <strong>1,000,000 m</strong>, una misma coordenada (ej: <em>X=1,100,000 ; Y=1,000,000</em>) podía existir en <strong>6 lugares diferentes</strong> de Colombia.</p>
+</div>
+<div class="fragment">
+<p><i class="fa-solid fa-triangle-exclamation" aria-label="triangle-exclamation"></i> <strong>Confusión total:</strong> Si no especificabas a qué zona pertenecía el dato, el punto podía caer en el Chocó o en el Vichada.</p>
+</div>
+</section>
+<blockquote class="blockquote">
+<p><strong>Próxima Diapositiva:</strong> Veremos cómo el <strong>Origen Nacional Único</strong> solucionó esto “estirando” un solo cilindro para todo el país.</p>
+</blockquote>
+</section>
+<section id="el-nuevo-origen-nacional-epsg9377" class="level2" data-number="27.39">
+<h2 data-number="27.39" class="anchored" data-anchor-id="el-nuevo-origen-nacional-epsg9377"><span class="header-section-number">27.39</span> El Nuevo Origen Nacional (EPSG:9377)</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<section id="unificación-de-las-6-fajas" class="level3">
+<h3 class="anchored" data-anchor-id="unificación-de-las-6-fajas">Unificación de las 6 fajas</h3>
+<p>Para resolver el caos de las coordenadas repetidas, el IGAC definió un <strong>único origen</strong> para todo el país:</p>
+<ul>
+<li><strong>Meridiano Central:</strong> Se fijó oficialmente en <strong>73° W</strong> (simplificando el antiguo origen de la faja de Bogotá).</li>
+<li><strong>Latitud de Origen:</strong> Se mantiene el paralelo del Observatorio (<strong>4° 35’ 46.32” N</strong>).</li>
+<li><strong>El gran cambio (Falsos):</strong> * <strong>Norte:</strong> 2,000,000 m
+<ul>
+<li><strong>Este:</strong> 5,000,000 m</li>
+</ul></li>
+</ul>
+</section>
+</div><div class="column" style="width:40%;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/sistemas_coordenadas/image_origen_nacional.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<hr>
+</section>
+<section id="por-qué-5000000-en-el-este" class="level2" data-number="27.40">
+<h2 data-number="27.40" class="anchored" data-anchor-id="por-qué-5000000-en-el-este"><span class="header-section-number">27.40</span> ¿Por qué 5,000,000 en el Este?</h2>
+<section id="adiós-a-la-confusión" class="level3" style="text-align: center; margin-top: 1em;">
+<h3 class="anchored" data-anchor-id="adiós-a-la-confusión">Adiós a la confusión</h3>
+<p>Al usar <strong>5,000,000</strong>, nos aseguramos de que:</p>
+<ol type="1">
+<li><strong>Distinción inmediata:</strong> Si una coordenada empieza por 5 millones, <em>sabes</em> que es el nuevo sistema. Si empieza por 1 millón, es el sistema viejo.</li>
+<li><strong>Sin repeticiones:</strong> El número es lo suficientemente grande para que toda la extensión de Colombia (desde el Amazonas hasta el Chocó) quepa en un solo plano sin cruzar el cero ni repetir coordenadas de otras fajas.</li>
+</ol>
+</section>
+<blockquote class="blockquote">
+<p><strong>Dato Curioso:</strong> Este sistema permite que un solo mapa de Colombia sea “continuo”, eliminando las molestas costuras que se formaban entre las 6 fajas antiguas. Mas información <a href="https://origen.igac.gov.co/">acá</a></p>
+</blockquote>
+</section>
+<section id="guía-de-referencia-epsg-colombia" class="level2" data-number="27.41">
+<h2 data-number="27.41" class="anchored" data-anchor-id="guía-de-referencia-epsg-colombia"><span class="header-section-number">27.41</span> Guía de Referencia EPSG: Colombia</h2>
+<div style="font-size: 0.65em; line-height: 1.2;">
+<table class="table">
+<colgroup>
+<col style="width: 21%">
+<col style="width: 26%">
+<col style="width: 26%">
+<col style="width: 26%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Sistema / Faja</th>
+<th style="text-align: center;">Código EPSG</th>
+<th style="text-align: center;">Meridiano Central</th>
+<th style="text-align: center;">Estado</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>WGS 84</strong></td>
+<td style="text-align: center;"><strong>4326</strong></td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">Global</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>MAGNA-SIRGAS</strong></td>
+<td style="text-align: center;"><strong>4686</strong></td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">Nacional</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span style="color: #2c3e50; font-weight: bold;"><strong>Origen Nacional</strong></span></td>
+<td style="text-align: center;"><span style="color: #c0392b; font-weight: bold;"><strong>9377</strong></span></td>
+<td style="text-align: center;"><strong>73° W</strong></td>
+<td style="text-align: center;"><strong>ACTUAL</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Central (Bogotá)</td>
+<td style="text-align: center;">3116</td>
+<td style="text-align: center;">74° 04’ W</td>
+<td style="text-align: center;">Histórico</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Este Central</td>
+<td style="text-align: center;">3117</td>
+<td style="text-align: center;">73° 04’ W</td>
+<td style="text-align: center;">Histórico</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Este</td>
+<td style="text-align: center;">3118</td>
+<td style="text-align: center;">71° 04’ W</td>
+<td style="text-align: center;">Histórico</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Oeste</td>
+<td style="text-align: center;">3115</td>
+<td style="text-align: center;">75° 04’ W</td>
+<td style="text-align: center;">Histórico</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Oeste Oeste</td>
+<td style="text-align: center;">3114</td>
+<td style="text-align: center;">77° 04’ W</td>
+<td style="text-align: center;">Histórico</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Datum Bogotá</td>
+<td style="text-align: center;">4218</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">ARENA</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div style="font-size: 0.7em; margin-top: 10px;">
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Herramientas Oficiales IGAC
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><a href="https://origen.igac.gov.co/herramientas.html"><strong>origen.igac.gov.co/herramientas.html</strong></a></p>
+</div>
+</div>
+</div>
+<div class="footer" style="font-size: 0.5em;">
+<p>Nota: Los códigos 21894-21899 corresponden a la realización antigua (Datum Bogotá 1975).</p>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copiado");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copiado");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./63-presentacion_3_clase2_syllabus_evaluacion.html" class="pagination-link" aria-label="Presentación del Curso y Syllabus 2025">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Presentación del Curso y Syllabus 2025</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./65-presentacion_5_clase7_sr_arset.html" class="pagination-link" aria-label="Sensores Remotos - NASA ARSET">
+        <span class="nav-page-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Sensores Remotos - NASA ARSET</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

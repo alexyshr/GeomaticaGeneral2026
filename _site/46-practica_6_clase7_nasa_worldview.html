@@ -1,0 +1,1436 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.550">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Geomática General - 18&nbsp; Guía de Exploración: NASA Worldview</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./47-practica_7_clase7_nasa_plugin_qgis.html" rel="next">
+<link href="./45-practica_5_clase6_introduccion_sr_gee.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Sin resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./41-practica_1_clase2_visualizacion_dinamica.html">Prácticas</a></li><li class="breadcrumb-item"><a href="./46-practica_6_clase7_nasa_worldview.html"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Guía de Exploración: NASA Worldview</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Geomática General</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Buscar"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bienvenida</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./00-prefacio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prefacio</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Instalación y Entornos</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-introduccion-entornos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introducción a Entornos de Desarrollo SIG</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-guia_instalacion_A_docker.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Guía de Instalación. Opción A: Docker (Python, R, Julia)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-guia_instalacion_B_qgis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Guía de Instalación. Opción B: QGIS y PyQGIS</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-guia_instalacion_C_ArcGIS.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Guía de Instalación. Opción C: ArcGIS Pro y ArcPy</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Proyecto Final</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10-guia_estructura_proyecto_final.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Guía y Estructura del Proyecto Final</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Sensores Remotos</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./16-sr_fundamentos_introduccion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Fundamentos de sensores remotos: Introducción</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./17-sr_satelites_sensores.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Satélites y sensores</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./18-sr_microondas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Sensores remotos de microondas</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./19-sr_analisis_interpretacion_imagenes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Análisis e interpretación de imágenes</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./20-sr_aplicaciones.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Aplicaciones de los sensores remotos</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./21-sr_glosario.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Glosario de Sensores Remotos</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./22-sr_recursos_adicionales.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Recursos Adicionales de Teledetección</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">Prácticas</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./41-practica_1_clase2_visualizacion_dinamica.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Visualización y Mapas Dinámicos</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./42-practica_2_clase2_geoportales.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">🌐 Geoportales y Servicios Web</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./43-practica_3_clase3_coordenadas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Sistemas de Coordenadas - ArcGIS Pro</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./44-practica_4_clase4_conversionformatos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Conversión de Formatos (ArcGIS Pro - QGIS)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./45-practica_5_clase6_introduccion_sr_gee.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Introducción a Sensores Remotos y Procesamiento de Imágenes Satelitales con Google Earth Engine</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./46-practica_6_clase7_nasa_worldview.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Guía de Exploración: NASA Worldview</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./47-practica_7_clase7_nasa_plugin_qgis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Guía de Instalación y Uso: NASA Earthdata Plugin para QGIS</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./48-practica_8_clase8_gee_conceptos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Fundamentos de programación en GEE y conceptos clave de sensores remotos</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./49-practica_9_mde.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Fundamentos de modelos digitales de elevación y elaboración cartográfica</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./50-practica_10_mde_hydro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Procesamiento hidrológico y morfométrico de modelos digitales de elevación</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./51-practica_11_mde_models.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Model builder (ArcGIS Pro) y Model Designer (QGIS) de productos del MDE</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+ <span class="menu-text">Presentaciones</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./61-presentacion_1_clase1_varios.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Temas por Charlar</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./62-presentacion_2_clase2_geomatica.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">¿Qué es la Geomática?</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./63-presentacion_3_clase2_syllabus_evaluacion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Presentación del Curso y Syllabus 2025</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./64-presentacion_4_clase3_coordenadas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Sistemas de Coordenadas</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./65-presentacion_5_clase7_sr_arset.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Sensores Remotos - NASA ARSET</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
+ <span class="menu-text">Apéndices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./80-instalacion_herramientas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Resumen instalación de herramientas</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./81-uso_infraestructura_instalada.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Uso de la Infraestructura Instalada</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./82-quarto.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Quarto: Orquestación y Configuración</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./83-docker_desktop.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Docker: Gestión de Contenedores e Imágenes</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./84-git_github.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Git y GitHub: Sincronización Local-Remota</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./85-vscode.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Visual Studio Code (VScode): Extensiones e Interfaz</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./86-windows.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">G</span>&nbsp; <span class="chapter-title">Temas técnicos sobre Windows</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./87-linux_ubuntu.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">H</span>&nbsp; <span class="chapter-title">Temas Técnicos sobre Linux</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./88-python.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">I</span>&nbsp; <span class="chapter-title">Adicionales Sobre Python</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./89-r.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">J</span>&nbsp; <span class="chapter-title">Adicionales Sobre R</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./90-julia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">K</span>&nbsp; <span class="chapter-title">Adicionales Sobre Julia</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./91-qgis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">L</span>&nbsp; <span class="chapter-title">Adicionales Sobre QGIS</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./92-arcgispro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">M</span>&nbsp; <span class="chapter-title">Adicionales sobre ArcGIS Pro</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./93-postgresql.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">N</span>&nbsp; <span class="chapter-title">Adicionales sobre ArcGIS Pro</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./98-errata.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">O</span>&nbsp; <span class="chapter-title">Errata</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./99-referencias.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Referencias Bibliográficas</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Tabla de Contenidos</h2>
+   
+  <ul>
+  <li><a href="#resumen-de-la-actividad" id="toc-resumen-de-la-actividad" class="nav-link active" data-scroll-target="#resumen-de-la-actividad"><span class="header-section-number">18.1</span> Resumen de la Actividad</a></li>
+  <li><a href="#navegando-por-worldview" id="toc-navegando-por-worldview" class="nav-link" data-scroll-target="#navegando-por-worldview"><span class="header-section-number">18.2</span> Navegando por Worldview</a>
+  <ul class="collapse">
+  <li><a href="#componentes-de-la-interfaz" id="toc-componentes-de-la-interfaz" class="nav-link" data-scroll-target="#componentes-de-la-interfaz">Componentes de la Interfaz</a></li>
+  </ul></li>
+  <li><a href="#exploración-de-worldview-práctica" id="toc-exploración-de-worldview-práctica" class="nav-link" data-scroll-target="#exploración-de-worldview-práctica"><span class="header-section-number">18.3</span> Exploración de Worldview (Práctica)</a>
+  <ul class="collapse">
+  <li><a href="#ejercicio-1-comparación-de-sensores-de-órbita-polar" id="toc-ejercicio-1-comparación-de-sensores-de-órbita-polar" class="nav-link" data-scroll-target="#ejercicio-1-comparación-de-sensores-de-órbita-polar">Ejercicio 1: Comparación de Sensores de Órbita Polar</a></li>
+  <li><a href="#ejercicio-2-satélites-geoestacionarios" id="toc-ejercicio-2-satélites-geoestacionarios" class="nav-link" data-scroll-target="#ejercicio-2-satélites-geoestacionarios">Ejercicio 2: Satélites Geoestacionarios</a></li>
+  <li><a href="#ejercicio-3-incendios-forestales-modo-comparación" id="toc-ejercicio-3-incendios-forestales-modo-comparación" class="nav-link" data-scroll-target="#ejercicio-3-incendios-forestales-modo-comparación">Ejercicio 3: Incendios Forestales (Modo Comparación)</a></li>
+  <li><a href="#ejercicio-4-firmas-espectrales-emparejamiento" id="toc-ejercicio-4-firmas-espectrales-emparejamiento" class="nav-link" data-scroll-target="#ejercicio-4-firmas-espectrales-emparejamiento">Ejercicio 4: Firmas Espectrales (Emparejamiento)</a></li>
+  <li><a href="#ejercicio-5-conceptos-fundamentales-de-sensores-remotos" id="toc-ejercicio-5-conceptos-fundamentales-de-sensores-remotos" class="nav-link" data-scroll-target="#ejercicio-5-conceptos-fundamentales-de-sensores-remotos">Ejercicio 5: Conceptos Fundamentales de Sensores Remotos</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./41-practica_1_clase2_visualizacion_dinamica.html">Prácticas</a></li><li class="breadcrumb-item"><a href="./46-practica_6_clase7_nasa_worldview.html"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Guía de Exploración: NASA Worldview</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Guía de Exploración: NASA Worldview</span></h1>
+<p class="subtitle lead">Uso práctico de imágenes de sensores remotos</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="resumen-de-la-actividad" class="level2" data-number="18.1">
+<h2 data-number="18.1" class="anchored" data-anchor-id="resumen-de-la-actividad"><span class="header-section-number">18.1</span> Resumen de la Actividad</h2>
+<p>Esta actividad te guía a través de un caso de uso real de imágenes de sensores remotos satelitales utilizando <strong>NASA Worldview</strong>. Visualizarás imágenes de muestra y seguirás instrucciones paso a paso para familiarizarte con el uso de la herramienta. Finalmente, responderás las preguntas al final de la actividad para completar este ejercicio.</p>
+<blockquote class="blockquote">
+<p><strong>Fuente:</strong> Reconocemos el uso de imágenes de la aplicación NASA Worldview (https://worldview.earthdata.nasa.gov), parte del Sistema de Datos e Información de Ciencias de la Tierra de la NASA (ESDIS).</p>
+</blockquote>
+<hr>
+</section>
+<section id="navegando-por-worldview" class="level2" data-number="18.2">
+<h2 data-number="18.2" class="anchored" data-anchor-id="navegando-por-worldview"><span class="header-section-number">18.2</span> Navegando por Worldview</h2>
+<p>A continuación, revisaremos la interfaz y la funcionalidad de la herramienta para aprender a seleccionar e interactuar con mapas de imágenes en cualquier área de interés.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/sensores_remotos/arset/image-671c0a86b6f36.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+<section id="componentes-de-la-interfaz" class="level3">
+<h3 class="anchored" data-anchor-id="componentes-de-la-interfaz">Componentes de la Interfaz</h3>
+<p><strong>1. Panel de Capas, Eventos y Datos (Layers, Events and Data Panel)</strong> Administra las imágenes del mapa en este panel a través de tres pestañas principales:</p>
+<ul>
+<li><strong>Pestaña Capas (Layers Tab):</strong> Muestra todas las capas de imágenes que están cargadas en el mapa. Las capas base aparecen debajo de las superposiciones del mapa. Puedes activar y desactivar las capas haciendo clic en el icono del “ojo” a la izquierda del nombre de la capa. Solo se muestra la capa base activa que esté más arriba. Para reordenar las capas en la lista, haz clic y mantén presionado sobre una capa o grupo y muévelo.</li>
+<li><strong>Pestaña Eventos (Events Tab):</strong> Selecciona esta pestaña para ver una lista curada de eventos naturales actuales e históricos alrededor del mundo para cargarlos en tu mapa.</li>
+<li><strong>Pestaña Descarga de Datos (Data Download Tab):</strong> Selecciona esta pestaña para descargar los datos subyacentes de las capas de imágenes mostradas en el mapa. Serás redirigido a la herramienta Earthdata Search para descargar los gránulos de datos de la capa seleccionada, el área de interés elegida y la fecha actual.</li>
+</ul>
+<p><strong>2. Selector de Capas (Layer Picker)</strong></p>
+<ul>
+<li><strong>Layer Picker:</strong> Haz clic en el botón <em>Add Layer</em> para explorar y buscar entre más de 1000 capas de imágenes por disciplina científica, categorías de riesgos y desastres, o por palabra clave.</li>
+<li><strong>Iniciar Comparación (Start Comparison):</strong> Compara imágenes de dos fechas diferentes, dos conjuntos de imágenes de la misma fecha, o incluso dos conjuntos de imágenes de fechas distintas.</li>
+</ul>
+<p><strong>3. Gestión de la Línea de Tiempo (Timeline Management)</strong> De izquierda a derecha:</p>
+<ul>
+<li><strong>Selector de Fecha (Date Selector):</strong> Cambia la fecha (y la hora del día si tienes capas Geoestacionarias cargadas) escribiendo en los campos de fecha, o haciendo clic en las flechas arriba y abajo junto a cada campo.</li>
+<li><strong>Selector de Intervalo (Interval Selector):</strong> Selecciona el intervalo de tiempo deseado y usa las flechas izquierda y derecha para avanzar o retroceder en el tiempo según el intervalo seleccionado. Usa la flecha del extremo derecho para ir a la última fecha disponible.</li>
+<li><strong>Animación (Animation):</strong> Anima las imágenes haciendo clic en el ícono de la cámara de video. Haz clic en el botón <em>Play</em> para ver cómo cambian las imágenes. También puedes seleccionar un área para exportar como un GIF animado.</li>
+<li><strong>Ajustador de Escala de Tiempo (Timescale Adjuster):</strong> Ajusta la escala de tiempo a años, meses y días (además de horas y minutos si tienes una capa Geoestacionaria cargada).</li>
+</ul>
+<p><strong>4. Coordenadas del Mapa y Medición (Map Coordinates and Measurement)</strong></p>
+<ul>
+<li><strong>Coordenadas del Mapa:</strong> Al pasar el cursor sobre el mapa, las coordenadas se muestran aquí. Haz clic en las coordenadas para cambiar entre formatos comunes como Grados Decimales (DD), Grados Minutos Decimales (DDM) y Grados Minutos Segundos (DMS).</li>
+<li><strong>Medir (Measure):</strong> Mide distancias y áreas en kilómetros (km) o millas (mi) y expórtalas como GeoJSON.</li>
+</ul>
+<p><strong>5. Zoom</strong></p>
+<ul>
+<li>Usa los botones <strong>+/-</strong> para acercar y alejar, o usa la funcionalidad de zoom incorporada en tu dispositivo.</li>
+</ul>
+<p><strong>6. Búsqueda, Compartir y más (Search, Share and more)</strong> Opciones del menú superior derecho, de izquierda a derecha:</p>
+<ul>
+<li><strong>Buscar por ubicación (Search by location):</strong> Busca por nombre o coordenadas, lo cual coloca un marcador en el mapa. Por el contrario, coloca un marcador en el mapa para averiguar el nombre del lugar y sus coordenadas.</li>
+<li><strong>Compartir URL Personalizada (Share Custom URL):</strong> Crea un enlace URL personalizado de tu vista del mapa en Worldview. Acredita a Worldview utilizando el texto de citación proporcionado.</li>
+<li><strong>Proyecciones del Mapa (Map Projections):</strong> Cambia la proyección del mapa de Geográfica a Ártica o Antártica.</li>
+<li><strong>Captura (Snapshot):</strong> Toma una captura de las imágenes mostradas en el mapa y expórtalas como GeoTIFF, JPG con Worldfile, PNG con Worldfile o KMZ para llevarlas directamente a clientes SIG.</li>
+<li><strong>Información (Information):</strong> Ajusta la configuración, explora la aplicación a través de recorridos guiados, revisa notificaciones del servicio, envía comentarios y descubre más sobre el código abierto. También puedes acceder al modo <em>Distraction Free</em>, que oculta la mayor parte de la aplicación para que puedas concentrarte solo en el mapa.</li>
+</ul>
+<blockquote class="blockquote">
+<p>💡 <strong>Nota:</strong> Esta sección es una adaptación. Si deseas profundizar más, puedes acceder al <a href="https://go.nasa.gov/48kMhMc">tutorial original para explorar Worldview aquí</a>.</p>
+</blockquote>
+<hr>
+</section>
+</section>
+<section id="exploración-de-worldview-práctica" class="level2" data-number="18.3">
+<h2 data-number="18.3" class="anchored" data-anchor-id="exploración-de-worldview-práctica"><span class="header-section-number">18.3</span> Exploración de Worldview (Práctica)</h2>
+<p>Ahora que has explorado algunas de las características de la herramienta, usaremos este <a href="https://go.nasa.gov/3CbFnMW">escenario de mapa personalizado de WorldView</a> para responder a las preguntas a continuación. Puedes abrir este escenario en otra pestaña del navegador si te resulta más fácil mientras respondes.</p>
+<section id="ejercicio-1-comparación-de-sensores-de-órbita-polar" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-1-comparación-de-sensores-de-órbita-polar">Ejercicio 1: Comparación de Sensores de Órbita Polar</h3>
+<p>En el panel de Capas (Layers), usa el ícono del ojo para ocultar todas las capas base; el mapa quedará en blanco mostrando solo los contornos de los países. Luego, haz clic en cada ícono del ojo para encender y apagar cada capa individualmente y comparar las diferencias en las imágenes.</p>
+<p><strong>Pregunta:</strong> Al ver las imágenes MODIS de los satélites Aqua y Terra, se observan franjas negras alrededor de los trópicos. Esta característica no se ve al observar imágenes de VIIRS en los satélites Suomi NPP, NOAA-20 y NOAA-21. ¿Por qué se ve esto en las imágenes MODIS, pero no en VIIRS?</p>
+<div class="quiz-container">
+  <div class="quiz-option" onclick="checkAnswer(this, false)">VIIRS tiene una órbita geoestacionaria, por lo que tiene cobertura global.</div>
+  <div class="quiz-option" onclick="checkAnswer(this, false)">MODIS tiene mayor resolución espacial que VIIRS.</div>
+  <div class="quiz-option" onclick="checkAnswer(this, true)">Las observaciones de VIIRS tienen un ancho de barrido (swath) mayor que MODIS, lo suficientemente ancho como para que sus órbitas se superpongan.</div>
+  <div class="quiz-option" onclick="checkAnswer(this, false)">Es una sombra de la luna (o es una sombra del satélite).</div>
+  <div class="quiz-feedback"></div>
+</div>
+</section>
+<section id="ejercicio-2-satélites-geoestacionarios" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-2-satélites-geoestacionarios">Ejercicio 2: Satélites Geoestacionarios</h3>
+<p>Oculta todas las capas base y asegúrate de <strong>alejar el zoom para poder ver tanto América del Norte como América del Sur</strong>. Sobre las capas base, verás dos capas de los satélites NOAA GOES Este y Oeste bajo el encabezado ‘Geostationary’. Haz clic en los íconos del ojo de ambas.</p>
+<p>En el panel de la <strong>línea de tiempo</strong> en la parte inferior, <strong>cambia la fecha a uno, dos, tres, cuatro, o cinco días antes de la fecha actual</strong> (<em>Nota: Dependiendo del tamaño de tu navegador, puede que necesites desplazarte hacia abajo para ver el panel de la línea de tiempo</em>). Usa el <strong>ícono del ojo</strong> para alternar y comparar las diferencias entre la capa actual y las capas base. <strong>Si las imágenes GOES no se muestran, intenta con otras fechas</strong>.</p>
+<p><strong>Pregunta:</strong> Al ver las capas GOES, hay imágenes sobre América del Norte y del Sur, y espacio negro a ambos lados de la imagen. ¿Por qué estas imágenes se ven diferentes a las disponibles en las capas base?</p>
+<div class="quiz-container">
+  <div class="quiz-option" onclick="checkAnswer(this, false)">Los sensores VIIRS y MODIS tienen un ancho de barrido (swath) más amplio.</div>
+  <div class="quiz-option" onclick="checkAnswer(this, false)">La resolución espacial de GOES no es lo suficientemente alta.</div>
+  <div class="quiz-option" onclick="checkAnswer(this, false)">Los sensores VIIRS han estado en órbita por más tiempo.</div>
+  <div class="quiz-option" onclick="checkAnswer(this, true)">Los satélites GOES son geoestacionarios (GEO) y, por lo tanto, no tienen cobertura global completa como los de órbita polar.</div>
+  <div class="quiz-feedback"></div>
+</div>
+
+<style>
+.quiz-option {
+  padding: 12px 15px;
+  margin: 8px 0;
+  background-color: #f1f3f4;
+  border: 1px solid #dadce0;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  font-family: inherit;
+}
+.quiz-option:hover {
+  background-color: #e8eaed;
+}
+.quiz-correct {
+  background-color: #d4edda !important;
+  border-color: #c3e6cb !important;
+  color: #155724;
+}
+.quiz-incorrect {
+  background-color: #f8d7da !important;
+  border-color: #f5c6cb !important;
+  color: #721c24;
+}
+.quiz-feedback {
+  display: none;
+  margin-top: 10px;
+  font-weight: bold;
+  padding: 10px;
+  border-radius: 5px;
+}
+</style>
+
+<script>
+function checkAnswer(element, isCorrect) {
+  let container = element.parentElement;
+  let options = container.getElementsByClassName('quiz-option');
+  let feedback = container.getElementsByClassName('quiz-feedback')[0];
+
+  // Restablecer estilos en todas las opciones de este contenedor
+  for (let opt of options) {
+    opt.classList.remove('quiz-correct', 'quiz-incorrect');
+  }
+
+  // Aplicar estilo según si es correcto o incorrecto
+  if (isCorrect) {
+    element.classList.add('quiz-correct');
+    feedback.style.display = "block";
+    feedback.style.backgroundColor = "#d4edda";
+    feedback.style.color = "#155724";
+    feedback.innerHTML = "✔ ¡Respuesta correcta!";
+  } else {
+    element.classList.add('quiz-incorrect');
+    feedback.style.display = "block";
+    feedback.style.backgroundColor = "#f8d7da";
+    feedback.style.color = "#721c24";
+    feedback.innerHTML = "✖ Respuesta incorrecta. Inténtalo de nuevo.";
+  }
+}
+</script>
+</section>
+<section id="ejercicio-3-incendios-forestales-modo-comparación" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-3-incendios-forestales-modo-comparación">Ejercicio 3: Incendios Forestales (Modo Comparación)</h3>
+<p>En el siguiente <a href="https://go.nasa.gov/4j3Mc4s">escenario personalizado de Worldview sobre Incendios</a>, se utiliza el “modo de comparación” para mostrar diferentes capas para el mismo día (8 de agosto de 2021).</p>
+<p>La capa base en el <strong>Lado ‘A’ (Izquierda)</strong> muestra imágenes de color verdadero de VIIRS (en el satélite NOAA-20). La capa base en el <strong>Lado ‘B’ (Derecha)</strong> muestra imágenes de falso color de VIIRS (satélite NOAA-20). Usa la barra deslizante central para interactuar con el mapa y comparar.</p>
+<section id="lado-a-izquierda" class="level4">
+<h4 class="anchored" data-anchor-id="lado-a-izquierda">Lado A (Izquierda)</h4>
+<p>Además de la capa base de color verdadero, el Lado A tiene las siguientes capas:</p>
+<ul>
+<li>VIIRS Incendios y Anomalías Térmicas, Día (visible)</li>
+<li>VIIRS Incendios y Anomalías Térmicas, Noche (oculta)</li>
+</ul>
+<p>Los incendios y otras anomalías térmicas, como las antorchas de gas, muestran fuertes emisiones en la parte del Infrarrojo Medio (Mid-IR) del espectro electromagnético. Sensores como VIIRS utilizan un algoritmo que aprovecha esta fuerte emisión para detectar incendios activos.</p>
+<p>En el Lado A, usa el ícono del ojo en el panel de capas para <strong>ocultar</strong> las detecciones de incendios diurnos de VIIRS y <strong>mostrar</strong> las detecciones de incendios nocturnos.</p>
+<p><strong>Pregunta:</strong> Dado que VIIRS es un sensor pasivo de órbita polar, ¿por qué es capaz de detectar incendios por la noche?</p>
+<div class="quiz-container">
+  <div class="quiz-option" onclick="checkAnswer(this, true)">Los incendios emiten fuertemente en el infrarrojo medio (mid-IR), por lo que no requieren que la luz solar se refleje en la superficie.</div>
+  <div class="quiz-option" onclick="checkAnswer(this, false)">Los incendios son más fríos por la noche.</div>
+  <div class="quiz-option" onclick="checkAnswer(this, false)">VIIRS tiene una alta resolución espacial, por lo que puede hacer observaciones de noche.</div>
+  <div class="quiz-option" onclick="checkAnswer(this, false)">Hay menos humo por la noche.</div>
+  <div class="quiz-feedback"></div>
+</div>
+</section>
+<section id="lado-b-derecha" class="level4">
+<h4 class="anchored" data-anchor-id="lado-b-derecha">Lado B (Derecha)</h4>
+<p>El Lado ‘B’ muestra las mismas capas de Incendios y Anomalías Térmicas de VIIRS, pero con una capa base diferente. La capa base del Lado B es una <strong>imagen de falso color</strong> de VIIRS. Esta combinación de falso color incluye:</p>
+<ul>
+<li>Rojo: Infrarrojo de onda corta o SWIR (Banda M11)</li>
+<li>Verde: Infrarrojo cercano o NIR (Banda I2)</li>
+<li>Azul: Visible (Banda I1)</li>
+</ul>
+<p>Usa la barra deslizante para comparar las capas base de los lados A y B.</p>
+<p><strong>Pregunta:</strong> En el Lado B, ¿por qué las áreas que se han quemado (cicatrices de quema) aparecen de color rojo?</p>
+<div class="quiz-container">
+  <div class="quiz-option" onclick="checkAnswer(this, false)">El suelo que acaba de quemarse es más oscuro que el área circundante, por lo que es más visible.</div>
+  <div class="quiz-option" onclick="checkAnswer(this, false)">El humo hace que el suelo quemado parezca más oscuro.</div>
+  <div class="quiz-option" onclick="checkAnswer(this, true)">El suelo desnudo (o cicatriz de quema) es más reflectante en el infrarrojo de onda corta (SWIR), por lo que aparece rojo en la imagen de falso color.</div>
+  <div class="quiz-option" onclick="checkAnswer(this, false)">El suelo que acaba de quemarse está más caliente que el área circundante, por lo que aparece rojo.</div>
+  <div class="quiz-feedback"></div>
+</div>
+</section>
+</section>
+<section id="ejercicio-4-firmas-espectrales-emparejamiento" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-4-firmas-espectrales-emparejamiento">Ejercicio 4: Firmas Espectrales (Emparejamiento)</h3>
+<p>Empareja cada material con la descripción de cómo su superficie responde a la radiación electromagnética incidente. Selecciona la opción correcta en cada lista desplegable y haz clic en “Comprobar Respuestas”.</p>
+<div class="match-container" style="background-color: #f8f9fa; padding: 20px; border-radius: 8px; border: 1px solid #dadce0;">
+  
+  <div class="match-row" style="margin-bottom: 15px;">
+    <p style="margin: 0 0 5px 0; font-weight: 500;">1. Refleja la mayoría de las longitudes de onda visibles.</p>
+    <select id="match-q1" class="match-select" style="padding: 8px; border-radius: 4px; border: 1px solid #ccc; width: 200px;">
+      <option value="">Elegir...</option>
+      <option value="ice">Hielo/Nieve</option>
+      <option value="soil">Suelo</option>
+      <option value="vegetation">Vegetación</option>
+      <option value="water">Agua</option>
+    </select>
+    <span id="match-f1" style="margin-left: 10px; font-weight: bold;"></span>
+  </div>
+
+  <div class="match-row" style="margin-bottom: 15px;">
+    <p style="margin: 0 0 5px 0; font-weight: 500;">2. Absorbe la mayoría de las longitudes de onda visibles (excepto el verde) y refleja las longitudes de onda infrarrojas.</p>
+    <select id="match-q2" class="match-select" style="padding: 8px; border-radius: 4px; border: 1px solid #ccc; width: 200px;">
+      <option value="">Elegir...</option>
+      <option value="ice">Hielo/Nieve</option>
+      <option value="soil">Suelo</option>
+      <option value="vegetation">Vegetación</option>
+      <option value="water">Agua</option>
+    </select>
+    <span id="match-f2" style="margin-left: 10px; font-weight: bold;"></span>
+  </div>
+
+  <div class="match-row" style="margin-bottom: 15px;">
+    <p style="margin: 0 0 5px 0; font-weight: 500;">3. Absorbe la mayoría de las longitudes de onda visibles, con una mayor absorción de las longitudes de onda visibles más largas.</p>
+    <select id="match-q3" class="match-select" style="padding: 8px; border-radius: 4px; border: 1px solid #ccc; width: 200px;">
+      <option value="">Elegir...</option>
+      <option value="ice">Hielo/Nieve</option>
+      <option value="soil">Suelo</option>
+      <option value="vegetation">Vegetación</option>
+      <option value="water">Agua</option>
+    </select>
+    <span id="match-f3" style="margin-left: 10px; font-weight: bold;"></span>
+  </div>
+
+  <div class="match-row" style="margin-bottom: 20px;">
+    <p style="margin: 0 0 5px 0; font-weight: 500;">4. Absorbe la mayoría de las longitudes de onda visibles, con una mayor absorción de las longitudes de onda visibles más cortas.</p>
+    <select id="match-q4" class="match-select" style="padding: 8px; border-radius: 4px; border: 1px solid #ccc; width: 200px;">
+      <option value="">Elegir...</option>
+      <option value="ice">Hielo/Nieve</option>
+      <option value="soil">Suelo</option>
+      <option value="vegetation">Vegetación</option>
+      <option value="water">Agua</option>
+    </select>
+    <span id="match-f4" style="margin-left: 10px; font-weight: bold;"></span>
+  </div>
+
+  <button onclick="checkMatchAnswers()" style="background-color: #0d6efd; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold;">Comprobar Respuestas</button>
+</div>
+
+<script>
+function checkMatchAnswers() {
+  const correctAnswers = {
+    'match-q1': 'ice',
+    'match-q2': 'vegetation',
+    'match-q3': 'water',
+    'match-q4': 'soil'
+  };
+
+  for (const [qId, correctVal] of Object.entries(correctAnswers)) {
+    let selectElement = document.getElementById(qId);
+    let feedbackElement = document.getElementById(qId.replace('q', 'f'));
+    
+    if (selectElement.value === "") {
+      feedbackElement.innerHTML = "⚠️ Selecciona una opción";
+      feedbackElement.style.color = "#856404";
+      selectElement.style.borderColor = "#ffeeba";
+    } else if (selectElement.value === correctVal) {
+      feedbackElement.innerHTML = "✔ Correcto";
+      feedbackElement.style.color = "#155724";
+      selectElement.style.borderColor = "#28a745";
+    } else {
+      feedbackElement.innerHTML = "✖ Incorrecto";
+      feedbackElement.style.color = "#721c24";
+      selectElement.style.borderColor = "#dc3545";
+    }
+  }
+}
+</script>
+</section>
+<section id="ejercicio-5-conceptos-fundamentales-de-sensores-remotos" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-5-conceptos-fundamentales-de-sensores-remotos">Ejercicio 5: Conceptos Fundamentales de Sensores Remotos</h3>
+<p>Pon a prueba tu conocimiento sobre los principios de la teledetección, órbitas y productos de datos. Haz clic en la opción que consideres correcta.</p>
+<p><strong>1. ¿Cuáles de las siguientes afirmaciones sobre la teledetección de la atmósfera terrestre son correctas?</strong></p>
+<ol type="1">
+<li>Las nubes son altamente reflectantes para todas las longitudes de onda de la luz visible.</li>
+<li>Muchos tipos de contaminación (ej. humo, polvo) absorben más en longitudes de onda visibles.</li>
+<li>Los científicos que estudian la superficie terrestre deben tener en cuenta los efectos de las nubes, gases traza y aerosoles en la atmósfera al usar datos satelitales.</li>
+<li>La atmósfera es completamente transparente a longitudes de onda visibles, pero opaca a la radiación infrarroja y ultravioleta.</li>
+<li>Todos los sensores remotos de la NASA están diseñados para “ver a través” de las nubes.</li>
+</ol>
+<div class="quiz-container">
+  <div class="quiz-option" onclick="checkAnswer(this, false)">Afirmaciones 1, 4 y 5</div>
+  <div class="quiz-option" onclick="checkAnswer(this, true, '¡Correcto! Las nubes suelen verse blancas porque reflejan todas las longitudes de onda visibles, mientras que la contaminación absorbe la luz visible. Además, diferentes componentes de la atmósfera absorben radiación en diferentes partes del espectro, por lo que los científicos deben tener en cuenta el impacto de los gases en la radiación vista por el sensor.')">Afirmaciones 1, 2 y 3</div>
+  <div class="quiz-option" onclick="checkAnswer(this, false)">Solo la afirmación 5</div>
+  <div class="quiz-option" onclick="checkAnswer(this, false)">Todas las afirmaciones (1, 2, 3, 4 y 5)</div>
+  <div class="quiz-feedback"></div>
+</div>
+<p><strong>2. Empareja cada característica deseada de los datos satelitales con el tipo de órbita más probable para cumplirla.</strong></p>
+<div class="match-container" style="background-color: #f8f9fa; padding: 20px; border-radius: 8px; border: 1px solid #dadce0; margin-bottom: 20px;">
+  
+  <div class="match-row" style="margin-bottom: 15px;">
+    <p style="margin: 0 0 5px 0; font-weight: 500;">Necesito datos con mayor frecuencia en latitudes bajas y medias.</p>
+    <select id="match2-q1" class="match-select" style="padding: 8px; border-radius: 4px; border: 1px solid #ccc; width: 300px;">
+      <option value="">Elegir...</option>
+      <option value="inclined">Órbita LEO Inclinada</option>
+      <option value="sunsync">Órbita LEO Sincronizada con el Sol</option>
+      <option value="geo">Órbita Geoestacionaria (GEO)</option>
+      <option value="leo">Órbita LEO General (Low Earth Orbit)</option>
+    </select>
+    <span id="match2-f1" style="margin-left: 10px; font-weight: bold;"></span>
+  </div>
+
+  <div class="match-row" style="margin-bottom: 15px;">
+    <p style="margin: 0 0 5px 0; font-weight: 500;">Necesito mediciones diarias consistentes, tomadas a la misma hora local en una latitud alta.</p>
+    <select id="match2-q2" class="match-select" style="padding: 8px; border-radius: 4px; border: 1px solid #ccc; width: 300px;">
+      <option value="">Elegir...</option>
+      <option value="inclined">Órbita LEO Inclinada</option>
+      <option value="sunsync">Órbita LEO Sincronizada con el Sol</option>
+      <option value="geo">Órbita Geoestacionaria (GEO)</option>
+      <option value="leo">Órbita LEO General (Low Earth Orbit)</option>
+    </select>
+    <span id="match2-f2" style="margin-left: 10px; font-weight: bold;"></span>
+  </div>
+
+  <div class="match-row" style="margin-bottom: 15px;">
+    <p style="margin: 0 0 5px 0; font-weight: 500;">Necesito datos cada hora (alta frecuencia temporal).</p>
+    <select id="match2-q3" class="match-select" style="padding: 8px; border-radius: 4px; border: 1px solid #ccc; width: 300px;">
+      <option value="">Elegir...</option>
+      <option value="inclined">Órbita LEO Inclinada</option>
+      <option value="sunsync">Órbita LEO Sincronizada con el Sol</option>
+      <option value="geo">Órbita Geoestacionaria (GEO)</option>
+      <option value="leo">Órbita LEO General (Low Earth Orbit)</option>
+    </select>
+    <span id="match2-f3" style="margin-left: 10px; font-weight: bold;"></span>
+  </div>
+
+  <div class="match-row" style="margin-bottom: 20px;">
+    <p style="margin: 0 0 5px 0; font-weight: 500;">Necesito datos globales (alta cobertura espacial).</p>
+    <select id="match2-q4" class="match-select" style="padding: 8px; border-radius: 4px; border: 1px solid #ccc; width: 300px;">
+      <option value="">Elegir...</option>
+      <option value="inclined">Órbita LEO Inclinada</option>
+      <option value="sunsync">Órbita LEO Sincronizada con el Sol</option>
+      <option value="geo">Órbita Geoestacionaria (GEO)</option>
+      <option value="leo">Órbita LEO General (Low Earth Orbit)</option>
+    </select>
+    <span id="match2-f4" style="margin-left: 10px; font-weight: bold;"></span>
+  </div>
+
+  <button onclick="checkMatchAnswers2()" style="background-color: #0d6efd; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold;">Comprobar Respuestas</button>
+  <div id="match2-feedback" style="display: none; margin-top: 15px; padding: 10px; background-color: #d4edda; color: #155724; border-radius: 5px; border: 1px solid #c3e6cb;">¡Correcto! La respuesta correcta es:<br>• <b>Órbita LEO Inclinada:</b> Necesito datos con mayor frecuencia en latitudes bajas y medias.<br>• <b>Órbita LEO Sincronizada con el Sol:</b> Necesito mediciones diarias consistentes, tomadas a la misma hora local en una latitud alta.<br>• <b>Órbita Geoestacionaria (GEO):</b> Necesito datos cada hora (alta frecuencia temporal).<br>• <b>Órbita LEO General:</b> Necesito datos globales (alta cobertura espacial).</div>
+</div>
+
+<script>
+function checkMatchAnswers2() {
+  const correctAnswers = { 'match2-q1': 'inclined', 'match2-q2': 'sunsync', 'match2-q3': 'geo', 'match2-q4': 'leo' };
+  let allCorrect = true;
+  for (const [qId, correctVal] of Object.entries(correctAnswers)) {
+    let selectElement = document.getElementById(qId);
+    let feedbackElement = document.getElementById(qId.replace('q', 'f'));
+    if (selectElement.value === "") {
+      feedbackElement.innerHTML = "⚠️"; feedbackElement.style.color = "#856404"; selectElement.style.borderColor = "#ffeeba";
+      allCorrect = false;
+    } else if (selectElement.value === correctVal) {
+      feedbackElement.innerHTML = "✔"; feedbackElement.style.color = "#155724"; selectElement.style.borderColor = "#28a745";
+    } else {
+      feedbackElement.innerHTML = "✖"; feedbackElement.style.color = "#721c24"; selectElement.style.borderColor = "#dc3545";
+      allCorrect = false;
+    }
+  }
+  let globalFeedback = document.getElementById('match2-feedback');
+  if(allCorrect){
+    globalFeedback.style.display = "block";
+  } else {
+    globalFeedback.style.display = "none";
+  }
+}
+</script>
+<p><strong>3. Los sensores remotos ACTIVOS dependen de la luz solar que se refleja o se vuelve a emitir desde la Tierra para realizar mediciones.</strong></p>
+<div class="quiz-container">
+  <div class="quiz-option" onclick="checkAnswer(this, false)">Verdadero</div>
+  <div class="quiz-option" onclick="checkAnswer(this, true, '¡Correcto! Los sensores pasivos dependen de la energía reflejada o reemitida por el sol, mientras que los sensores activos (como un radar) proporcionan su propia fuente de energía.')">Falso</div>
+  <div class="quiz-feedback"></div>
+</div>
+<p><strong>4. ¿Cuál es la relación general entre la resolución espacial y la cobertura espacial (ancho de barrido) para los sensores satelitales?</strong></p>
+<div class="quiz-container">
+  <div class="quiz-option" onclick="checkAnswer(this, false)">Solo hay una cobertura espacial posible: ver un hemisferio entero de la Tierra.</div>
+  <div class="quiz-option" onclick="checkAnswer(this, true, '¡Correcto! Generalmente, cuanto mayor sea la resolución deseada, más estrecho será el ancho de barrido (swath) o campo de visión.')">Por lo general, a medida que la resolución espacial se vuelve más fina (mayor detalle), la cobertura espacial se vuelve más estrecha.</div>
+  <div class="quiz-option" onclick="checkAnswer(this, false)">Por lo general, a medida que la resolución espacial se vuelve más fina, la cobertura espacial se vuelve más amplia.</div>
+  <div class="quiz-option" onclick="checkAnswer(this, false)">No existe relación entre ambas variables.</div>
+  <div class="quiz-feedback"></div>
+</div>
+<p><strong>5. Empareja el tiempo de revisita (resolución temporal) del satélite/sensor más apropiado para los siguientes escenarios:</strong></p>
+<div class="match-container" style="background-color: #f8f9fa; padding: 20px; border-radius: 8px; border: 1px solid #dadce0; margin-bottom: 20px;">
+  
+  <div class="match-row" style="margin-bottom: 15px;">
+    <p style="margin: 0 0 5px 0; font-weight: 500;">Estudio el crecimiento de cultivos durante una sola temporada y necesito al menos 4 observaciones en la temporada.</p>
+    <select id="match3-q1" class="match-select" style="padding: 8px; border-radius: 4px; border: 1px solid #ccc; width: 300px;">
+      <option value="">Elegir...</option>
+      <option value="narrow">Satélite de órbita polar de franja estrecha (Narrow-swath)</option>
+      <option value="wide">Satélite de órbita polar de franja ancha (Wide-swath)</option>
+      <option value="geo">Satélite Geoestacionario</option>
+    </select>
+    <span id="match3-f1" style="margin-left: 10px; font-weight: bold;"></span>
+  </div>
+
+  <div class="match-row" style="margin-bottom: 15px;">
+    <p style="margin: 0 0 5px 0; font-weight: 500;">Estudio el impacto de inundaciones en la vegetación y necesito observaciones nuevas cada día.</p>
+    <select id="match3-q2" class="match-select" style="padding: 8px; border-radius: 4px; border: 1px solid #ccc; width: 300px;">
+      <option value="">Elegir...</option>
+      <option value="narrow">Satélite de órbita polar de franja estrecha (Narrow-swath)</option>
+      <option value="wide">Satélite de órbita polar de franja ancha (Wide-swath)</option>
+      <option value="geo">Satélite Geoestacionario</option>
+    </select>
+    <span id="match3-f2" style="margin-left: 10px; font-weight: bold;"></span>
+  </div>
+
+  <div class="match-row" style="margin-bottom: 20px;">
+    <p style="margin: 0 0 5px 0; font-weight: 500;">Estudio la propagación de incendios activos y necesito observaciones cada pocos minutos.</p>
+    <select id="match3-q3" class="match-select" style="padding: 8px; border-radius: 4px; border: 1px solid #ccc; width: 300px;">
+      <option value="">Elegir...</option>
+      <option value="narrow">Satélite de órbita polar de franja estrecha (Narrow-swath)</option>
+      <option value="wide">Satélite de órbita polar de franja ancha (Wide-swath)</option>
+      <option value="geo">Satélite Geoestacionario</option>
+    </select>
+    <span id="match3-f3" style="margin-left: 10px; font-weight: bold;"></span>
+  </div>
+
+  <button onclick="checkMatchAnswers3()" style="background-color: #0d6efd; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold;">Comprobar Respuestas</button>
+  <div id="match3-feedback" style="display: none; margin-top: 15px; padding: 10px; background-color: #d4edda; color: #155724; border-radius: 5px; border: 1px solid #c3e6cb;">¡Correcto! Para eventos que cambian rápidamente como incendios forestales, el sensor geoestacionario proporciona observaciones frecuentes, mientras que los otros dos escenarios buscan datos de alta resolución que puedan ver campos y ríos individuales y, por lo tanto, necesitan satélites de órbita polar que pasan con menos frecuencia.</div>
+</div>
+
+<script>
+function checkMatchAnswers3() {
+  const correctAnswers = { 'match3-q1': 'narrow', 'match3-q2': 'wide', 'match3-q3': 'geo' };
+  let allCorrect = true;
+  for (const [qId, correctVal] of Object.entries(correctAnswers)) {
+    let selectElement = document.getElementById(qId);
+    let feedbackElement = document.getElementById(qId.replace('q', 'f'));
+    if (selectElement.value === "") {
+      feedbackElement.innerHTML = "⚠️"; feedbackElement.style.color = "#856404"; selectElement.style.borderColor = "#ffeeba";
+      allCorrect = false;
+    } else if (selectElement.value === correctVal) {
+      feedbackElement.innerHTML = "✔"; feedbackElement.style.color = "#155724"; selectElement.style.borderColor = "#28a745";
+    } else {
+      feedbackElement.innerHTML = "✖"; feedbackElement.style.color = "#721c24"; selectElement.style.borderColor = "#dc3545";
+      allCorrect = false;
+    }
+  }
+  let globalFeedback = document.getElementById('match3-feedback');
+  if(allCorrect){
+    globalFeedback.style.display = "block";
+  } else {
+    globalFeedback.style.display = "none";
+  }
+}
+</script>
+<p><strong>6. Las imágenes de sensores remotos por satélite siempre muestran exactamente lo que “ve” el instrumento de la misma forma que una cámara fotográfica tradicional.</strong></p>
+<div class="quiz-container">
+  <div class="quiz-option" onclick="checkAnswer(this, false)">Verdadero</div>
+  <div class="quiz-option" onclick="checkAnswer(this, true, '¡Correcto! Los instrumentos satelitales no toman fotografías tradicionales, sino que miden la radiancia en diferentes bandas espectrales. Esta información luego se procesa computacionalmente para crear la imagen que vemos.')">Falso</div>
+  <div class="quiz-feedback"></div>
+</div>
+<p><strong>7. ¿Cuál es el nivel más bajo de procesamiento de datos en el que encontrarás variables geofísicas con control de calidad alineadas en cuadrículas uniformes (grids) en el espacio y el tiempo?</strong></p>
+<div class="quiz-container">
+  <div class="quiz-option" onclick="checkAnswer(this, false)">Nivel 0</div>
+  <div class="quiz-option" onclick="checkAnswer(this, false)">Nivel 1</div>
+  <div class="quiz-option" onclick="checkAnswer(this, false)">Nivel 2</div>
+  <div class="quiz-option" onclick="checkAnswer(this, true, '¡Correcto! Los niveles inferiores (L0, L1 y L2) no están mapeados en una cuadrícula uniforme, pero los datos de Nivel 3 y superiores siempre están en una cuadrícula.')">Nivel 3</div>
+  <div class="quiz-option" onclick="checkAnswer(this, false)">Nivel 4</div>
+  <div class="quiz-feedback"></div>
+</div>
+<p><strong>8. ¿Cuáles de los siguientes son beneficios comunes del uso de datos de observación de la Tierra por sensores remotos?</strong></p>
+<ol type="1">
+<li>Un solo sensor puede usarse para medir toda o una gran parte de la Tierra.</li>
+<li>La NASA cobra una tarifa por descargar datos para financiar mejores sensores.</li>
+<li>La teledetección es la forma más directa y precisa de medir cualquier cantidad geofísica.</li>
+<li>Se pueden recolectar datos incluso de lugares difíciles de alcanzar en el terreno.</li>
+<li>Algunos datos están disponibles en pocas horas, permitiendo decisiones casi en tiempo real.</li>
+</ol>
+<div class="quiz-container">
+  <div class="quiz-option" onclick="checkAnswer(this, false)">Afirmaciones 3 y 4</div>
+  <div class="quiz-option" onclick="checkAnswer(this, true, '¡Correcto! La teledetección permite monitorear grandes extensiones y lugares remotos rápidamente, aunque los datos de la NASA son gratuitos (no se cobra tarifa) y no siempre es la forma más directa de medir variables comparado con sensores en el terreno (in-situ).')">Afirmaciones 1, 4 y 5</div>
+  <div class="quiz-option" onclick="checkAnswer(this, false)">Afirmaciones 1, 2 y 3</div>
+  <div class="quiz-option" onclick="checkAnswer(this, false)">Todas las afirmaciones</div>
+  <div class="quiz-feedback"></div>
+</div>
+<p><strong>9. Todas las siguientes son <em>debilidades</em> o retos de usar datos de sensores remotos de la NASA, EXCEPTO:</strong></p>
+<div class="quiz-container">
+  <div class="quiz-option" onclick="checkAnswer(this, false)">Grandes cantidades de datos en una variedad de formatos pueden requerir más tiempo y procesamiento.</div>
+  <div class="quiz-option" onclick="checkAnswer(this, false)">Es difícil obtener datos de alta resolución espacial, espectral, temporal y radiométrica al mismo tiempo.</div>
+  <div class="quiz-option" onclick="checkAnswer(this, true, '¡Correcto! Esta afirmación es la excepción. Una de las mayores ventajas de la teledetección es precisamente que proporciona información en lugares donde NO existen mediciones basadas en tierra (in-situ).')">La teledetección proporciona información únicamente en los lugares donde ya existen mediciones basadas en tierra.</div>
+  <div class="quiz-option" onclick="checkAnswer(this, false)">Aunque los datos generalmente se validan con medidas en superficie, estos muchas veces no coinciden exactamente con la medida satelital.</div>
+  <div class="quiz-feedback"></div>
+</div>
+<p><strong>10. Todos los datos y herramientas de teledetección de la NASA se pueden buscar y acceder a través del sitio web Earthdata de la NASA sin costo alguno.</strong></p>
+<div class="quiz-container">
+  <div class="quiz-option" onclick="checkAnswer(this, true, '¡Correcto! El portal NASA Earthdata en www.earthdata.nasa.gov proporciona acceso sin costo a todos los datos y herramientas de teledetección, alineado con el compromiso de la NASA hacia la Ciencia Abierta (Open Science).')">Verdadero</div>
+  <div class="quiz-option" onclick="checkAnswer(this, false)">Falso</div>
+  <div class="quiz-feedback"></div>
+</div>
+
+<script>
+// SCRIPT ACTUALIZADO PARA ACEPTAR MENSAJES DE RETROALIMENTACIÓN
+function checkAnswer(element, isCorrect, feedbackMsg = null) {
+  let container = element.parentElement;
+  let options = container.getElementsByClassName('quiz-option');
+  let feedback = container.getElementsByClassName('quiz-feedback')[0];
+
+  // Restablecer estilos
+  for (let opt of options) {
+    opt.classList.remove('quiz-correct', 'quiz-incorrect');
+  }
+
+  // Aplicar estilo según si es correcto o incorrecto
+  if (isCorrect) {
+    element.classList.add('quiz-correct');
+    feedback.style.display = "block";
+    feedback.style.backgroundColor = "#d4edda";
+    feedback.style.color = "#155724";
+    // Si se pasa un mensaje personalizado, se muestra; si no, mensaje genérico
+    feedback.innerHTML = feedbackMsg ? "✔ " + feedbackMsg : "✔ ¡Respuesta correcta!";
+  } else {
+    element.classList.add('quiz-incorrect');
+    feedback.style.display = "block";
+    feedback.style.backgroundColor = "#f8d7da";
+    feedback.style.color = "#721c24";
+    feedback.innerHTML = "✖ Respuesta incorrecta. Inténtalo de nuevo.";
+  }
+}
+</script>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copiado");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copiado");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./45-practica_5_clase6_introduccion_sr_gee.html" class="pagination-link" aria-label="Introducción a Sensores Remotos y Procesamiento de Imágenes Satelitales con Google Earth Engine">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Introducción a Sensores Remotos y Procesamiento de Imágenes Satelitales con Google Earth Engine</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./47-practica_7_clase7_nasa_plugin_qgis.html" class="pagination-link" aria-label="Guía de Instalación y Uso: NASA Earthdata Plugin para QGIS">
+        <span class="nav-page-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Guía de Instalación y Uso: NASA Earthdata Plugin para QGIS</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
