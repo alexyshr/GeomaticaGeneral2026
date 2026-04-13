@@ -135,9 +135,19 @@ A continuación se detallan las colecciones de imágenes satelitales, productos 
 | Colección (Asset ID) | Descripción general | Aplicación y datos específicos | Zona de estudio | Periodo temporal | Bandas analizadas |
 |---|---|---|---|---|---|
 | `LANDSAT/LC09/C02/T1_TOA` | Imágenes multiespectrales con calibración al tope de la atmósfera (Nivel 1). Misión conjunta NASA/USGS. | Composiciones espectrales en color verdadero y falso color. Comparación de resolución espacial nominal (30 m). | Campus Universidad Nacional (Bogotá), Ciénaga Grande de Santa Marta, Aeropuerto Internacional El Dorado (Bogotá). | 2023 | B2, B3, B4 (RGB), B5 (Infrarrojo Cercano - NIR). |
-| `COPERNICUS/S2_SR_HARMONIZED` | Reflectancia de superficie con corrección atmosférica (Nivel 2A). Misión Sentinel-2 de la ESA. | Reducciones estadísticas, series de tiempo (NDVI), firmas espectrales, máscaras de calidad (SCL). Comparación de resolución espacial nominal (10 m). | Eje Cafetero, PNN Los Nevados, Aeropuerto Internacional El Dorado (Bogotá), Zarzal (Valle del Cauca), Embalse de Guatapé. | 2023 | B2, B3, B4 (RGB), B8 (NIR), B11, B12 (SWIR), SCL (Capa de Clasificación de Escena). |
+| `COPERNICUS/S2_SR_HARMONIZED` | Reflectancia de superficie con corrección atmosférica (Nivel 2A). Misión Sentinel-2 de la ESA. | Reducciones estadísticas, series de tiempo (NDVI), firmas espectrales, máscaras de calidad (SCL). Comparación de resolución espacial nominal (10 m). | Eje Cafetero, PNN Los Nevados, Aeropuerto Internacional El Dorado (Bogotá), Zarzal (Valle del Cauca), Embalse de Guatapé. | 2023 - 2024 | B2, B3, B4 (RGB), B8 (NIR), B11, B12 (SWIR), SCL (Capa de Clasificación de Escena). |
 | `NOAA/DMSP-OLS/NIGHTTIME_LIGHTS` | Composiciones anuales de luces nocturnas estables registradas por el programa satelital meteorológico de defensa de EE. UU. | Ensamblaje multitemporal mediante álgebra de bandas para la evaluación visual de la expansión urbana (`F101993`, `F152003`, `F182013`). | Bogotá D.C. y Sabana de Bogotá. | 1993, 2003, 2013 | `stable_lights`. |
 | `MODIS/061/MOD09GA` | Reflectancia de superficie diaria a escala regional y global capturada por el satélite Terra. | Comparación teórica y visual de la resolución espacial nominal (500 m) frente a sensores de media (Landsat 9) y alta (Sentinel-2) resolución. | Aeropuerto Internacional El Dorado (Bogotá). | 2023 | `sur_refl_b01`, `sur_refl_b03`, `sur_refl_b04`. |
+
+
+**Acceso a los catálogos de GEE**
+
+Para conocer más sobre las fuentes de datos usadas en este taller, acceda al catálogo de datos oficial de GEE:
+
+👉 **[Explorar el Catálogo de Datos de GEE](https://developers.google.com/earth-engine/datasets/catalog/)**
+
+💡 **Tip:** *Cada página dentro de este catálogo contiene la descripción de las bandas, la resolución y, lo más importante, el fragmento de código exacto (`ee.ImageCollection("ID_DEL_DATO")`) que necesitas copiar para llamarlo desde tu script en Python o JavaScript.*
+
 
 ## Paradigma cliente vs. servidor
 
@@ -216,6 +226,7 @@ valor_b = 2
 resultado_suma = ee.Number(valor_a).add(valor_b)
 
 # Generación de secuencias numéricas (ej. años para series de tiempo).
+# La secuencia incluye el 2020!
 lista_anios = ee.List.sequence(1980, 2020, 5)
 
 # 6. TRANSFERENCIA SERVIDOR -> CLIENTE (.getInfo())
@@ -297,6 +308,7 @@ valor_b = 2
 resultado_suma = ee.Number(valor_a).add(valor_b)
 
 # Generación de secuencias numéricas (ej. años para series de tiempo).
+# La secuencia incluye el 2020!
 lista_anios = ee.List.sequence(1980, 2020, 5)
 
 # 6. TRANSFERENCIA SERVIDOR -> CLIENTE (.getInfo())
@@ -871,6 +883,15 @@ vis_fc = {'bands': ['B5', 'B4', 'B3'], 'min': 0.0, 'max': 0.3}
 # tile_fetcher.url_format:
 # - URL plantilla para solicitar mosaicos (tiles) dinámicos
 
+# ¿Qué es map_id_dict?
+# Cuando ejecutas map_id_dict = ee.Image(imagen_l9).getMapId(vis_fc), 
+# Google te devuelve un diccionario con las "credenciales" de acceso 
+# a esa imagen procesada. Si imprimes ese diccionario, verás algo como esto:
+# - mapid: Un código largo y único de la imagen.
+# - token: Una llave de seguridad temporal.
+# - tile_fetcher: Un objeto que contiene las instrucciones para traer 
+#                 los cuadritos.
+
 map_id_dict = ee.Image(imagen_l9).getMapId(vis_fc)
 
 
@@ -891,6 +912,20 @@ Map_fc = folium.Map(location=[10.850, -74.450], zoom_start=11)
 # - attr: atribución (fuente de datos)
 # - overlay: indica que es capa superpuesta
 # - name: nombre visible en el control de capas
+
+
+# La parte tiles=map_id_dict['tile_fetcher'].url_format hace lo siguiente:
+# map_id_dict['tile_fetcher']: Accede al objeto encargado de "ir a buscar" 
+#                              los datos al servidor de Google.
+# .url_format: Es la "plantilla" o dirección web (URL) que necesita Folium. 
+# Esta dirección tiene un formato estándar llamado XYZ. Se ve algo así:
+# https://earthengine.googleapis.com/v1/projects/.../maps/.../tiles/{z}/{x}/{y}
+
+# ¿Para qué sirven {z}/{x}/{y}?
+# Folium lee esa dirección y, automáticamente, reemplaza las letras por 
+# números mientras navegas:
+# - z (Zoom): El nivel de detalle.
+# x e y: Las coordenadas del "cuadrito" específico en la cuadrícula mundial.
 
 folium.TileLayer(
     tiles=map_id_dict['tile_fetcher'].url_format,
@@ -1405,6 +1440,7 @@ luces_2013 = ee.Image('NOAA/DMSP-OLS/NIGHTTIME_LIGHTS/F182013').select('stable_l
 # - Blanco: presencia en todos los años
 # - Negro: ausencia de luz (no urbano)
 
+# Creamos la composición usando addBands
 imagen_cambio = luces_2013.addBands(luces_2003).addBands(luces_1993)
 
 
@@ -1554,6 +1590,7 @@ luces_1993 = ee.Image('NOAA/DMSP-OLS/NIGHTTIME_LIGHTS/F101993').select('stable_l
 luces_2003 = ee.Image('NOAA/DMSP-OLS/NIGHTTIME_LIGHTS/F152003').select('stable_lights')
 luces_2013 = ee.Image('NOAA/DMSP-OLS/NIGHTTIME_LIGHTS/F182013').select('stable_lights')
 
+# Creamos la composición usando addBands
 imagen_cambio = luces_2013.addBands(luces_2003).addBands(luces_1993)
 
 
@@ -1575,6 +1612,16 @@ with open('data/urbano_serializado.json', 'w') as archivo:
 # PARÁMETROS DE VISUALIZACIÓN Y TILES
 # =========================================================
 vis_luces = {'min': 0, 'max': 63}
+
+# ¿Qué es map_id_dict?
+# Cuando ejecutas map_id_dict = ee.Image(imagen_cambio).getMapId(vis_luces), 
+# Google te devuelve un diccionario con las "credenciales" de acceso 
+# a esa imagen procesada. Si imprimes ese diccionario, verás algo como esto:
+# - mapid: Un código largo y único de la imagen.
+# - token: Una llave de seguridad temporal.
+# - tile_fetcher: Un objeto que contiene las instrucciones para traer 
+#                 los cuadritos.
+
 map_id_dict = ee.Image(imagen_cambio).getMapId(vis_luces)
 
 
@@ -1589,14 +1636,6 @@ Map_urbano = folium.Map(
     tiles='CartoDB dark_matter' 
 )
 
-# ¿Qué es map_id_dict?
-# Cuando ejecutas map_id_dict = ee.Image(imagen).getMapId(vis_params), 
-# Google te devuelve un diccionario con las "credenciales" de acceso 
-# a esa imagen procesada. Si imprimes ese diccionario, verás algo como esto:
-# - mapid: Un código largo y único de la imagen.
-# - token: Una llave de seguridad temporal.
-# - tile_fetcher: Un objeto que contiene las instrucciones para traer 
-#                 los cuadritos.
 
 # La parte tiles=map_id_dict['tile_fetcher'].url_format hace lo siguiente:
 # map_id_dict['tile_fetcher']: Accede al objeto encargado de "ir a buscar" 
@@ -2744,8 +2783,28 @@ img_s2 = ee.ImageCollection("COPERNICUS/S2_SR_HARMONIZED")\
     .filter(ee.Filter.lt('CLOUDY_PIXEL_PERCENTAGE', 10))\
     .first()
 
+
 # =========================================================
-# 4. CONFIGURACIÓN DE VISUALIZACIÓN (GETMAPID)
+# 4. EXTRACCIÓN DE LA RESOLUCIÓN ESPACIAL (ESCALA NOMINAL)
+# =========================================================
+# Seleccionamos una banda representativa de cada sensor
+# - MODIS: sur_refl_b01
+# - Landsat 9: B4 (Rojo)
+# - Sentinel-2: B8 (NIR)
+
+escala_modis = img_modis.select('sur_refl_b01').projection().nominalScale().getInfo()
+escala_l9 = img_l9.select('B4').projection().nominalScale().getInfo()
+escala_s2 = img_s2.select('B8').projection().nominalScale().getInfo()
+
+# Imprimir las resoluciones espaciales
+print("--- RESOLUCIÓN ESPACIAL DE LOS SENSORES ---")
+print(f"MODIS (sur_refl_b01): {escala_modis} metros")
+print(f"Landsat 9 (B4): {escala_l9} metros")
+print(f"Sentinel-2 (B8): {escala_s2} metros")
+
+
+# =========================================================
+# 5. CONFIGURACIÓN DE VISUALIZACIÓN (GETMAPID)
 # =========================================================
 # El método .getMapId() empaqueta la imagen procesada en la nube
 # para ser consumida como mosaicos (tiles) web.
@@ -2763,13 +2822,13 @@ vis_s2 = {'bands': ['B4', 'B3', 'B2'], 'min': 0, 'max': 3000}
 id_s2 = img_s2.getMapId(vis_s2)
 
 # =========================================================
-# 5. CREACIÓN DEL MAPA BASE (FOLIUM)
+# 6. CREACIÓN DEL MAPA BASE (FOLIUM)
 # =========================================================
 # Se inicializa el mapa centrado en el aeropuerto.
 Map_escala = folium.Map(location=[4.7015, -74.1469], zoom_start=15)
 
 # =========================================================
-# 6. ADICIÓN DE CAPAS AL MAPA
+# 7. ADICIÓN DE CAPAS AL MAPA
 # =========================================================
 
 # Capa MODIS (Capa base de menor resolución)
@@ -2803,7 +2862,7 @@ folium.TileLayer(
 folium.LayerControl().add_to(Map_escala)
 
 # =========================================================
-# 7. EXPORTACIÓN
+# 8. EXPORTACIÓN
 # =========================================================
 Map_escala.save("mapas/map_escala_multisensor.html")
 

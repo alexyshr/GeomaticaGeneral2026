@@ -17,7 +17,7 @@
             <meta name="viewport" content="width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             <style>
-                #map_8c1abc70079e997c97feed4f65b37b0a {
+                #map_4df954f466f97a93a1abff94d777f911 {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -54,14 +54,14 @@
 <body>
     
     
-            <div class="folium-map" id="map_8c1abc70079e997c97feed4f65b37b0a" ></div>
+            <div class="folium-map" id="map_4df954f466f97a93a1abff94d777f911" ></div>
         
 </body>
 <script>
     
     
-            var map_8c1abc70079e997c97feed4f65b37b0a = L.map(
-                "map_8c1abc70079e997c97feed4f65b37b0a",
+            var map_4df954f466f97a93a1abff94d777f911 = L.map(
+                "map_4df954f466f97a93a1abff94d777f911",
                 {
                     center: [4.895, -75.321],
                     crs: L.CRS.EPSG3857,
@@ -78,7 +78,7 @@
 
         
     
-            var tile_layer_fb1b5703f71ece86ab9572e8b3f13b36 = L.tileLayer(
+            var tile_layer_43195b89165ec85ee3d7ce26f706d15a = L.tileLayer(
                 "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
                 {
   "minZoom": 0,
@@ -95,11 +95,11 @@
             );
         
     
-            tile_layer_fb1b5703f71ece86ab9572e8b3f13b36.addTo(map_8c1abc70079e997c97feed4f65b37b0a);
+            tile_layer_43195b89165ec85ee3d7ce26f706d15a.addTo(map_4df954f466f97a93a1abff94d777f911);
         
     
-            var tile_layer_ed01806ccdd6424a580ecfdb5d8f10b0 = L.tileLayer(
-                "https://earthengine.googleapis.com/v1/projects/ee-giswqg/maps/64dd6fa7e5ce20f254d85f4d1db1e52d-abf1a73c7043cc8dbf32a2a17dee7675/tiles/{z}/{x}/{y}",
+            var tile_layer_b6632431b211b5b6935021300cc7c33a = L.tileLayer(
+                "https://earthengine.googleapis.com/v1/projects/ee-giswqg/maps/79e31bcc47b764b898c0045a61134b99-a8a0852c6309a34ae5d3456d3445184c/tiles/{z}/{x}/{y}",
                 {
   "minZoom": 0,
   "maxZoom": 18,
@@ -115,8 +115,8 @@
             );
         
     
-            var tile_layer_c27b7e9e6e969c54d57a4a340e26abe2 = L.tileLayer(
-                "https://earthengine.googleapis.com/v1/projects/ee-giswqg/maps/edf8c880444068ca6bac792ed62978fb-67bfb4304677ce8b2089b417281da5fa/tiles/{z}/{x}/{y}",
+            var tile_layer_a62184925031f655d6d5b488b87dea2a = L.tileLayer(
+                "https://earthengine.googleapis.com/v1/projects/ee-giswqg/maps/e373081062be50f2500442cf9bd4d41b-60b4e154bd6f1781d4ef229bcf5abb09/tiles/{z}/{x}/{y}",
                 {
   "minZoom": 0,
   "maxZoom": 18,
@@ -132,27 +132,27 @@
             );
         
     
-            tile_layer_c27b7e9e6e969c54d57a4a340e26abe2.addTo(map_8c1abc70079e997c97feed4f65b37b0a);
+            tile_layer_a62184925031f655d6d5b488b87dea2a.addTo(map_4df954f466f97a93a1abff94d777f911);
         
     
-            var layer_control_eed5c2855c0cc021a0d3901fad711a06_layers = {
+            var layer_control_0a1f4bf4c1e293b46595343d27951d49_layers = {
                 base_layers : {
-                    "cartodbdarkmatter" : tile_layer_fb1b5703f71ece86ab9572e8b3f13b36,
+                    "cartodbdarkmatter" : tile_layer_43195b89165ec85ee3d7ce26f706d15a,
                 },
                 overlays :  {
-                    "1. Original (Con Nubes y Sombras)" : tile_layer_ed01806ccdd6424a580ecfdb5d8f10b0,
-                    "2. M\u00e1scara SCL (P\u00edxeles Limpios)" : tile_layer_c27b7e9e6e969c54d57a4a340e26abe2,
+                    "1. Original (Con Nubes y Sombras)" : tile_layer_b6632431b211b5b6935021300cc7c33a,
+                    "2. M\u00e1scara SCL (P\u00edxeles Limpios)" : tile_layer_a62184925031f655d6d5b488b87dea2a,
                 },
             };
-            let layer_control_eed5c2855c0cc021a0d3901fad711a06 = L.control.layers(
-                layer_control_eed5c2855c0cc021a0d3901fad711a06_layers.base_layers,
-                layer_control_eed5c2855c0cc021a0d3901fad711a06_layers.overlays,
+            let layer_control_0a1f4bf4c1e293b46595343d27951d49 = L.control.layers(
+                layer_control_0a1f4bf4c1e293b46595343d27951d49_layers.base_layers,
+                layer_control_0a1f4bf4c1e293b46595343d27951d49_layers.overlays,
                 {
   "position": "topright",
   "collapsed": true,
   "autoZIndex": true,
 }
-            ).addTo(map_8c1abc70079e997c97feed4f65b37b0a);
+            ).addTo(map_4df954f466f97a93a1abff94d777f911);
 
         
 </script>

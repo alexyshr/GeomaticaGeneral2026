@@ -36,10 +36,45 @@ https://gidahatari.com/ih-es/tutorial-de-determinacion-de-huellas-espectrales-de
 Encuesta Clase Semana Santa: https://docs.google.com/forms/d/e/1FAIpQLSdobmrmo4tvdBHnMq2eSmIRQ-ssP5RezSLjTv0ThG66yfbs8g/viewform?usp=publish-editor
 
 
-Firma espectral completa de nubes versus nieve
-https://rodolfofrancoweb.com/2017/04/11/retroceso-glaciar-colombia/
+Clase 06 de Abril de 2026
 
-
-Url de la clase virtual: Abril 6 de 2026
+1) Url de la clase virtual: Abril 6 de 2026
 https://meet.google.com/ebm-esfz-rak
 
+
+2) Hasta hoy hay plazo para el anteproyecto
+
+3) Firma espectral completa de nubes versus nieve
+https://rodolfofrancoweb.com/2017/04/11/retroceso-glaciar-colombia/
+
+4) Propuesta para la clase 10 - Sistemas de Navegación Satelital
+
+- Hay equipos en la UNAL? (escribir a profesora Liliana) - Garmin
+							 - Antena GNSS - RTK
+- Requiere presencialidad!
+- Algún estudiante con equipo GPS que pueda ayudar con la clase
+	- Archivos de Postprocesamiento (ajuste de coordenadas) (IGAC/SIRGAS)
+	- Corrección por efemérides 
+	- Ajuste a estaciones permanente (Rinex Observado / Rinex Navegado)
+	- Guía y práctica
+- Cambiar la clase para incluir la introducción a Machine Learning?
+	- Random Forest
+	- XGBoost
+	- GEE
+- Drones
+
+
+GNSSS - RADIO ALTA FRECUENCIA
+Dron - DJI
+Fernán - Raul Andrés
+
+5) Tareas - 
+6) Proyecto -
+7) Paro / Presencialidad
+8) Equipos UNAL
+
+
+
+
+Clase Abril 13:
+https://meet.google.com/qyv-rbai-fau

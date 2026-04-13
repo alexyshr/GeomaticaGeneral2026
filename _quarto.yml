@@ -46,7 +46,9 @@ book:
         - 46-practica_6_clase7_nasa_worldview.qmd
         - 47-practica_7_clase7_nasa_plugin_qgis.qmd
         - 48-practica_8_clase8_gee_conceptos.qmd
-        # - 49-practica_9_clase9_gee.qmd
+        - 49-practica_9_mde.qmd
+        - 50-practica_10_mde_hydro.qmd
+        - 51-practica_11_mde_models.qmd
     - part: "Presentaciones"        
       chapters:
         - 61-presentacion_1_clase1_varios.qmd

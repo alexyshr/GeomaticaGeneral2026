@@ -196,7 +196,7 @@ Antes de renderizar el archivo Quarto, ejecuta el chunk de inicialización de GE
 
 ## Acceso a los catálogos de GEE
 
-Antes de entrar en ejemplos específicos, es vital conocer dónde buscar la información. Google Earth Engine aloja aproximadamente 120 petabytes de información espacial lista para el análisis, abarcando más de 40 años de observaciones históricas y actualizándose diariamente.
+Antes de entrar en ejemplos específicos, es vital conocer dónde buscar la información. Google Earth Engine aloja aproximadamente 80 petabytes de información espacial lista para el análisis, abarcando más de 40 años de observaciones históricas y actualizándose diariamente.
 
 Puedes explorar la lista completa, buscar por variables (clima, elevación, uso del suelo), satélites o etiquetas directamente en su portal web oficial:
 

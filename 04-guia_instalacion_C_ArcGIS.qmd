@@ -15,7 +15,8 @@ La guía resumida de instalación y uso se encuentra en el [blog oficial de Esri
 ### Configuración del ambiente Python con Conda
 
 1. Ejecutar **ArcGIS Python Command Prompt** como administrador:
-   Ruta: **Start Menu** -> **All Apps** -> **ArcGIS folder** -> **Python Command Prompt** (Clic derecho > Ejecutar como administrador).
+   Ruta: **Start Menu** -> **Programs** -> **ArcGIS** -> **ArcGIS Pro** -> **Python Command Prompt** (Clic derecho > Ejecutar como administrador).
+   Ruta: *C:\ProgramData\Microsoft\Windows\Start Menu\Programs\ArcGIS\ArcGIS Pro*
 
 ![ArcGIS Python Command Prompt como administrador](images/arcgispro/gee/python_commando_as_administrator.png){fig-align="center" width="60%"}
 
