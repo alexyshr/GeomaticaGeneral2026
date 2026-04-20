@@ -105,3 +105,5 @@ Clase Abril 13:
 	- Equipos
 	- No Dron
 - Preguntas del proyecto
+
+Clase 20 de Abril: Presencial!

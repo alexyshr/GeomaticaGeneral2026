@@ -36,7 +36,7 @@ book:
         - 20-sr_aplicaciones.qmd
         - 21-sr_glosario.qmd
         - 22-sr_recursos_adicionales.qmd
-    - part: "Prácticas"        
+    - part: "Prácticas"
       chapters:
         - 41-practica_1_clase2_visualizacion_dinamica.qmd
         - 42-practica_2_clase2_geoportales.qmd
@@ -49,6 +49,7 @@ book:
         - 49-practica_9_mde.qmd
         - 50-practica_10_mde_hydro.qmd
         - 51-practica_11_mde_models.qmd
+        - 52-practica_12_formularios_arcgis_online_ai.qmd
     - part: "Presentaciones"        
       chapters:
         - 61-presentacion_1_clase1_varios.qmd

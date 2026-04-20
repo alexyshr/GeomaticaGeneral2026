@@ -1,0 +1,21 @@
+Resumen general:
+-  algunos no han enviado nada (*)
+- ⁠ Eliminan archivos. algunos al descargar se borran html, pdf o carpetas en sí (proyecto)
+-  Mejor repositories independientes 
+-  Copian tareas de estudiantes que las hicieron a tiempo (Privados)
+	- Publicos
+-  Actualizan repositories (error o mejoras: cambio de fecha)
+	- 
+
+
+qmd: IA (avanzan!)
+	
+	-
+
+
+Cambiar
+
+Ver las secciones de SAGA y GRASS para la ejecución simultánea de derivadas topográficas parciales.
+
+vERIFICAR:
+dad/concavidad perpendicular a la pendient

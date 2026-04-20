@@ -1,0 +1,1780 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.550">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Geomática General - 24&nbsp; Taller operación en campo usando asistentes de IA en ArcGIS</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./61-presentacion_1_clase1_varios.html" rel="next">
+<link href="./51-practica_11_mde_models.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Sin resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./41-practica_1_clase2_visualizacion_dinamica.html">Prácticas</a></li><li class="breadcrumb-item"><a href="./52-practica_12_formularios_arcgis_online_ai.html"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Taller operación en campo usando asistentes de IA en ArcGIS</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Geomática General</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Buscar"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bienvenida</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./00-prefacio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prefacio</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Instalación y Entornos</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-introduccion-entornos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introducción a Entornos de Desarrollo SIG</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-guia_instalacion_A_docker.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Guía de Instalación. Opción A: Docker (Python, R, Julia)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-guia_instalacion_B_qgis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Guía de Instalación. Opción B: QGIS y PyQGIS</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-guia_instalacion_C_ArcGIS.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Guía de Instalación. Opción C: ArcGIS Pro y ArcPy</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Proyecto Final</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10-guia_estructura_proyecto_final.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Guía y Estructura del Proyecto Final</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Sensores Remotos</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./16-sr_fundamentos_introduccion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Fundamentos de sensores remotos: Introducción</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./17-sr_satelites_sensores.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Satélites y sensores</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./18-sr_microondas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Sensores remotos de microondas</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./19-sr_analisis_interpretacion_imagenes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Análisis e interpretación de imágenes</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./20-sr_aplicaciones.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Aplicaciones de los sensores remotos</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./21-sr_glosario.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Glosario de Sensores Remotos</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./22-sr_recursos_adicionales.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Recursos Adicionales de Teledetección</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">Prácticas</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./41-practica_1_clase2_visualizacion_dinamica.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Visualización y Mapas Dinámicos</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./42-practica_2_clase2_geoportales.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">🌐 Geoportales y Servicios Web</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./43-practica_3_clase3_coordenadas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Sistemas de Coordenadas - ArcGIS Pro</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./44-practica_4_clase4_conversionformatos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Conversión de Formatos (ArcGIS Pro - QGIS)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./45-practica_5_clase6_introduccion_sr_gee.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Introducción a Sensores Remotos y Procesamiento de Imágenes Satelitales con Google Earth Engine</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./46-practica_6_clase7_nasa_worldview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Guía de Exploración: NASA Worldview</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./47-practica_7_clase7_nasa_plugin_qgis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Guía de Instalación y Uso: NASA Earthdata Plugin para QGIS</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./48-practica_8_clase8_gee_conceptos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Fundamentos de programación en GEE y conceptos clave de sensores remotos</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./49-practica_9_mde.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Fundamentos de modelos digitales de elevación y elaboración cartográfica</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./50-practica_10_mde_hydro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Procesamiento hidrológico y morfométrico de modelos digitales de elevación</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./51-practica_11_mde_models.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Model builder (ArcGIS Pro) y Model Designer (QGIS) de productos del MDE</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./52-practica_12_formularios_arcgis_online_ai.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Taller operación en campo usando asistentes de IA en ArcGIS</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+ <span class="menu-text">Presentaciones</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./61-presentacion_1_clase1_varios.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Temas por Charlar</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./62-presentacion_2_clase2_geomatica.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">¿Qué es la Geomática?</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./63-presentacion_3_clase2_syllabus_evaluacion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Presentación del Curso y Syllabus 2025</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./64-presentacion_4_clase3_coordenadas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Sistemas de Coordenadas</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./65-presentacion_5_clase7_sr_arset.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Sensores Remotos - NASA ARSET</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
+ <span class="menu-text">Apéndices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./80-instalacion_herramientas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Resumen instalación de herramientas</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./81-uso_infraestructura_instalada.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Uso de la Infraestructura Instalada</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./82-quarto.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Quarto: Orquestación y Configuración</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./83-docker_desktop.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Docker: Gestión de Contenedores e Imágenes</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./84-git_github.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Git y GitHub: Sincronización Local-Remota</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./85-vscode.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Visual Studio Code (VScode): Extensiones e Interfaz</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./86-windows.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">G</span>&nbsp; <span class="chapter-title">Temas técnicos sobre Windows</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./87-linux_ubuntu.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">H</span>&nbsp; <span class="chapter-title">Temas Técnicos sobre Linux</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./88-python.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">I</span>&nbsp; <span class="chapter-title">Adicionales Sobre Python</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./89-r.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">J</span>&nbsp; <span class="chapter-title">Adicionales Sobre R</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./90-julia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">K</span>&nbsp; <span class="chapter-title">Adicionales Sobre Julia</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./91-qgis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">L</span>&nbsp; <span class="chapter-title">Adicionales Sobre QGIS</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./92-arcgispro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">M</span>&nbsp; <span class="chapter-title">Adicionales sobre ArcGIS Pro</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./93-postgresql.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">N</span>&nbsp; <span class="chapter-title">Adicionales sobre ArcGIS Pro</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./98-errata.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">O</span>&nbsp; <span class="chapter-title">Errata</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./99-referencias.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Referencias Bibliográficas</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Tabla de Contenidos</h2>
+   
+  <ul>
+  <li><a href="#operación-en-campo-usando-asistentes-de-ia-en-arcgis" id="toc-operación-en-campo-usando-asistentes-de-ia-en-arcgis" class="nav-link active" data-scroll-target="#operación-en-campo-usando-asistentes-de-ia-en-arcgis"><span class="header-section-number">24.1</span> Operación en campo usando asistentes de IA en ArcGIS</a></li>
+  <li><a href="#contexto" id="toc-contexto" class="nav-link" data-scroll-target="#contexto"><span class="header-section-number">24.2</span> Contexto</a></li>
+  <li><a href="#ejercicio-1" id="toc-ejercicio-1" class="nav-link" data-scroll-target="#ejercicio-1"><span class="header-section-number">24.3</span> Ejercicio 1</a>
+  <ul class="collapse">
+  <li><a href="#crear-un-formulario-con-el-asistente-de-ia-en-survey123" id="toc-crear-un-formulario-con-el-asistente-de-ia-en-survey123" class="nav-link" data-scroll-target="#crear-un-formulario-con-el-asistente-de-ia-en-survey123">Crear un formulario con el asistente de IA en Survey123</a></li>
+  <li><a href="#paso-1-iniciar-sesión-en-survey123" id="toc-paso-1-iniciar-sesión-en-survey123" class="nav-link" data-scroll-target="#paso-1-iniciar-sesión-en-survey123">Paso 1: iniciar sesión en Survey123</a></li>
+  <li><a href="#paso-2-crear-una-encuesta-con-el-asistente-de-ia" id="toc-paso-2-crear-una-encuesta-con-el-asistente-de-ia" class="nav-link" data-scroll-target="#paso-2-crear-una-encuesta-con-el-asistente-de-ia">Paso 2: crear una encuesta con el asistente de IA</a></li>
+  <li><a href="#paso-3-revisar-el-formulario-generado" id="toc-paso-3-revisar-el-formulario-generado" class="nav-link" data-scroll-target="#paso-3-revisar-el-formulario-generado">Paso 3: revisar el formulario generado</a></li>
+  <li><a href="#paso-4-modificar-el-asistente-usando-el-asistente" id="toc-paso-4-modificar-el-asistente-usando-el-asistente" class="nav-link" data-scroll-target="#paso-4-modificar-el-asistente-usando-el-asistente">Paso 4: modificar el asistente usando el asistente</a></li>
+  <li><a href="#paso-5-publicar-y-compartir-el-formulario" id="toc-paso-5-publicar-y-compartir-el-formulario" class="nav-link" data-scroll-target="#paso-5-publicar-y-compartir-el-formulario">Paso 5: publicar y compartir el formulario</a></li>
+  <li><a href="#resultados-del-ejercicio" id="toc-resultados-del-ejercicio" class="nav-link" data-scroll-target="#resultados-del-ejercicio">Resultados del ejercicio</a></li>
+  </ul></li>
+  <li><a href="#ejercicio-2" id="toc-ejercicio-2" class="nav-link" data-scroll-target="#ejercicio-2"><span class="header-section-number">24.4</span> Ejercicio 2</a>
+  <ul class="collapse">
+  <li><a href="#generar-documentación-con-asistente-de-ia" id="toc-generar-documentación-con-asistente-de-ia" class="nav-link" data-scroll-target="#generar-documentación-con-asistente-de-ia">Generar documentación con asistente de IA</a></li>
+  <li><a href="#paso-1-acceder-al-feature-layer-generado-por-el-formulario" id="toc-paso-1-acceder-al-feature-layer-generado-por-el-formulario" class="nav-link" data-scroll-target="#paso-1-acceder-al-feature-layer-generado-por-el-formulario">Paso 1: acceder al Feature Layer generado por el formulario</a></li>
+  <li><a href="#paso-2-revisar-los-metadatos-del-elemento" id="toc-paso-2-revisar-los-metadatos-del-elemento" class="nav-link" data-scroll-target="#paso-2-revisar-los-metadatos-del-elemento">Paso 2: revisar los metadatos del elemento</a></li>
+  <li><a href="#resultados-del-ejercicio-1" id="toc-resultados-del-ejercicio-1" class="nav-link" data-scroll-target="#resultados-del-ejercicio-1">Resultados del ejercicio</a></li>
+  </ul></li>
+  <li><a href="#ejercicio-3" id="toc-ejercicio-3" class="nav-link" data-scroll-target="#ejercicio-3"><span class="header-section-number">24.5</span> Ejercicio 3</a>
+  <ul class="collapse">
+  <li><a href="#crear-simbología-inteligente-y-pop-ups-con-el-asistente-de-arcade" id="toc-crear-simbología-inteligente-y-pop-ups-con-el-asistente-de-arcade" class="nav-link" data-scroll-target="#crear-simbología-inteligente-y-pop-ups-con-el-asistente-de-arcade">Crear simbología inteligente y pop-ups con el asistente de Arcade</a></li>
+  <li><a href="#trabajar-con-mapas-web" id="toc-trabajar-con-mapas-web" class="nav-link" data-scroll-target="#trabajar-con-mapas-web">Trabajar con mapas web</a></li>
+  <li><a href="#resultados-del-ejercicio-2" id="toc-resultados-del-ejercicio-2" class="nav-link" data-scroll-target="#resultados-del-ejercicio-2">Resultados del ejercicio</a></li>
+  </ul></li>
+  <li><a href="#ejercicio-4" id="toc-ejercicio-4" class="nav-link" data-scroll-target="#ejercicio-4"><span class="header-section-number">24.6</span> Ejercicio 4</a>
+  <ul class="collapse">
+  <li><a href="#exploración-de-datos-mediante-lenguaje-natural" id="toc-exploración-de-datos-mediante-lenguaje-natural" class="nav-link" data-scroll-target="#exploración-de-datos-mediante-lenguaje-natural">Exploración de datos mediante lenguaje natural</a></li>
+  <li><a href="#paso-1-abrir-el-mapa-1" id="toc-paso-1-abrir-el-mapa-1" class="nav-link" data-scroll-target="#paso-1-abrir-el-mapa-1">Paso 1: abrir el mapa</a></li>
+  <li><a href="#resultados-del-ejercicio-3" id="toc-resultados-del-ejercicio-3" class="nav-link" data-scroll-target="#resultados-del-ejercicio-3">Resultados del ejercicio</a></li>
+  </ul></li>
+  <li><a href="#evaluación-práctica-y-trabajo-de-campo" id="toc-evaluación-práctica-y-trabajo-de-campo" class="nav-link" data-scroll-target="#evaluación-práctica-y-trabajo-de-campo"><span class="header-section-number">24.7</span> Evaluación práctica y trabajo de campo</a>
+  <ul class="collapse">
+  <li><a href="#requisitos-de-modificación-del-formulario" id="toc-requisitos-de-modificación-del-formulario" class="nav-link" data-scroll-target="#requisitos-de-modificación-del-formulario">Requisitos de modificación del formulario</a></li>
+  <li><a href="#reglas-de-captura-de-información-en-el-campus" id="toc-reglas-de-captura-de-información-en-el-campus" class="nav-link" data-scroll-target="#reglas-de-captura-de-información-en-el-campus">Reglas de captura de información en el campus</a></li>
+  <li><a href="#entregables-del-proyecto" id="toc-entregables-del-proyecto" class="nav-link" data-scroll-target="#entregables-del-proyecto">Entregables del proyecto</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./41-practica_1_clase2_visualizacion_dinamica.html">Prácticas</a></li><li class="breadcrumb-item"><a href="./52-practica_12_formularios_arcgis_online_ai.html"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Taller operación en campo usando asistentes de IA en ArcGIS</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Taller operación en campo usando asistentes de IA en ArcGIS</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="operación-en-campo-usando-asistentes-de-ia-en-arcgis" class="level2" data-number="24.1">
+<h2 data-number="24.1" class="anchored" data-anchor-id="operación-en-campo-usando-asistentes-de-ia-en-arcgis"><span class="header-section-number">24.1</span> Operación en campo usando asistentes de IA en ArcGIS</h2>
+<p>Este taller está basado en el trabajo presentado por el Instructor <strong>Daniel Castañeda</strong> (ESRI Colombia) en la <strong>Conferencia Esri para Infraestructura 2026</strong> llevada a cabo el día <em>Abril 9 de 2026</em> en <em>Ágora Bogotá – Calle 24 No.&nbsp;38-71</em>.</p>
+</section>
+<section id="contexto" class="level2" data-number="24.2">
+<h2 data-number="24.2" class="anchored" data-anchor-id="contexto"><span class="header-section-number">24.2</span> Contexto</h2>
+<p>La gestión de infraestructura en campo requiere procesos ágiles para capturar información, documentar datos, analizar condiciones operativas y facilitar la toma de decisiones. Tradicionalmente, estos flujos de trabajo implican múltiples herramientas, configuraciones técnicas y tiempos prolongados de implementación.</p>
+<p>Los asistentes de Inteligencia Artificial integrados en ArcGIS están transformando estos procesos, permitiendo que usuarios técnicos y no técnicos puedan diseñar, documentar, analizar y explorar información geoespacial mediante lenguaje natural y automatización inteligente.</p>
+<p>Este taller presenta un flujo de trabajo completo orientado a la gestión de incidentes de infraestructura vial, demostrando cómo distintos asistentes de IA en ArcGIS apoyan cada etapa del proceso operativo en campo:</p>
+<ul>
+<li>Captura inteligente de información desde dispositivos móviles</li>
+<li>Documentación automática de datos geoespaciales</li>
+<li>Análisis y visualización inteligente de incidentes</li>
+<li>Exploración de datos mediante lenguaje natural</li>
+<li>Publicación de aplicaciones para toma de decisiones</li>
+</ul>
+<p>A lo largo de los ejercicios, los participantes recorrerán un escenario práctico en el que crearán un formulario inteligente para registrar incidentes de infraestructura, documentarán automáticamente los datos generados, aplicarán análisis y visualizaciones inteligentes y finalmente construirán una aplicación web que permitirá explorar la información mediante consultas conversacionales.</p>
+<p>Este enfoque demuestra cómo los asistentes de IA en ArcGIS no solo aceleran la configuración técnica, sino que también optimizan los flujos de trabajo operativos en campo, mejoran la calidad de los datos y facilitan la toma de decisiones basada en información geoespacial actualizada.</p>
+<p>Al finalizar el taller, habrá experimentado un flujo completo de trabajo asistido por inteligencia artificial, desde la captura de datos hasta la exploración avanzada de la información.</p>
+</section>
+<section id="ejercicio-1" class="level2" data-number="24.3">
+<h2 data-number="24.3" class="anchored" data-anchor-id="ejercicio-1"><span class="header-section-number">24.3</span> Ejercicio 1</h2>
+<section id="crear-un-formulario-con-el-asistente-de-ia-en-survey123" class="level3">
+<h3 class="anchored" data-anchor-id="crear-un-formulario-con-el-asistente-de-ia-en-survey123">Crear un formulario con el asistente de IA en Survey123</h3>
+<p>En este ejercicio utilizará el asistente de inteligencia artificial de Survey123 para crear un formulario que permita registrar incidentes de infraestructura vial. Posteriormente, utilizará nuevamente el asistente para modificar el formulario existente e incorporar un campo numérico oculto que permitirá realizar análisis estadísticos, simbología avanzada y consultas con lenguaje natural.</p>
+<p>En este ejercicio, realizará las siguientes tareas:</p>
+<ul>
+<li>Crear un formulario usando el Asistente de Survey123</li>
+<li>Revisar la estructura generada automáticamente</li>
+<li>Modificar el formulario usando el Asistente de Survey123</li>
+<li>Publicar el formulario</li>
+<li>Compartir el formulario mediante código QR</li>
+<li>Registrar datos en tiempo real</li>
+</ul>
+</section>
+<section id="paso-1-iniciar-sesión-en-survey123" class="level3">
+<h3 class="anchored" data-anchor-id="paso-1-iniciar-sesión-en-survey123">Paso 1: iniciar sesión en Survey123</h3>
+<p>Utilizará el asistente de IA de Survey123 para que le ayude a crear un formulario inteligente desde cero.</p>
+<ol type="a">
+<li>Abra un navegador web y diríjase a: <a href="https://survey123.arcgis.com/">https://survey123.arcgis.com/</a></li>
+<li>Inicie sesión con su cuenta de ArcGIS Online o ArcGIS Enterprise.</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/forms_ia/img_pag4_1.jpeg" class="img-fluid figure-img"></p>
+<figcaption>Página principal de ArcGIS Survey123</figcaption>
+</figure>
+</div>
+<ol start="3" type="a">
+<li>En la parte superior izquierda, haga clic en Nueva Encuesta.</li>
+</ol>
+</section>
+<section id="paso-2-crear-una-encuesta-con-el-asistente-de-ia" class="level3">
+<h3 class="anchored" data-anchor-id="paso-2-crear-una-encuesta-con-el-asistente-de-ia">Paso 2: crear una encuesta con el asistente de IA</h3>
+<ol type="a">
+<li>Seleccione en la opción Asistente Survey123 el botón Introducción.</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/forms_ia/img_pag4_2.png" class="img-fluid figure-img"></p>
+<figcaption>Asistente Survey123</figcaption>
+</figure>
+</div>
+<p>El asistente Survey123 utiliza un gran modelo de lenguaje (LLM) para ayudarle a diseñar encuestas a partir de una conversación. Pídale al asistente el tipo de encuesta que desee crear. Cuando el borrador de la encuesta esté listo, pídale al asistente que lo incorpore al diseñador web de Survey123. Puede modificar la encuesta en el diseñador web antes de publicarla. El asistente se basa en una tecnología en rápida evolución, por lo que esta función se mejora continuamente. Sus comentarios ayudarán a mejorarlo. Utilice las opciones de comentarios para informar a Esri sobre su experiencia. <a href="https://links.esri.com/survey123/survey123-assistant">Más información sobre el Asistente Survey123</a></p>
+<ol start="2" type="a">
+<li>Haga clic en Continuar.</li>
+<li>En el cuadro del asistente, escriba el siguiente prompt:</li>
+</ol>
+<pre class="text"><code>Crea un formulario para registrar incidentes de infraestructura vial.
+Incluye únicamente los siguientes campos:
+
+Ubicación del incidente (obligatoria)
+
+Tipo de infraestructura: (obligatoria)
+- Calzada
+- Señalización vial
+- Drenaje vial
+- Estructuras viales
+
+Tipo de activo: (obligatoria)
+- Pavimento
+- Señal
+- Alcantarilla
+- Puente/estructura
+
+Nivel de severidad: (obligatoria)
+- Alto
+- Medio
+- Bajo
+
+Estado: (obligatoria)
+- Reportado
+- En proceso
+- Resuelto</code></pre>
+<ol start="4" type="a">
+<li>Haga clic en Generar.</li>
+<li>Espere mientras el asistente crea el formulario dentro de la interfaz de Diseño.</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/forms_ia/img_pag5_1.png" class="img-fluid figure-img"></p>
+<figcaption>Formulario creado por el Asistente Survey123</figcaption>
+</figure>
+</div>
+</section>
+<section id="paso-3-revisar-el-formulario-generado" class="level3">
+<h3 class="anchored" data-anchor-id="paso-3-revisar-el-formulario-generado">Paso 3: revisar el formulario generado</h3>
+<ol type="a">
+<li>Verifique que estén incluidos todos los campos especificados en el prompt:</li>
+</ol>
+<ul>
+<li>Ubicación</li>
+<li>Tipo de infraestructura</li>
+<li>Tipo de activo</li>
+<li>Nivel de severidad</li>
+<li>Estado</li>
+</ul>
+<ol start="2" type="a">
+<li>Observe que el asistente ha creado listas y una estructura organizada.</li>
+<li>En la parte superior izquierda defina el nombre del formulario como: <strong>Incidentes de Infraestructura Vial [iniciales del nombre]</strong>.</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/forms_ia/img_pag6_1.png" class="img-fluid figure-img"></p>
+<figcaption>Defina el nombre del formulario</figcaption>
+</figure>
+</div>
+</section>
+<section id="paso-4-modificar-el-asistente-usando-el-asistente" class="level3">
+<h3 class="anchored" data-anchor-id="paso-4-modificar-el-asistente-usando-el-asistente">Paso 4: modificar el asistente usando el asistente</h3>
+<p>En el proceso se evidenció que hace falta una pregunta para extraer un dato numérico sobre el nivel de impacto de los incidentes reportados. Para ello, volverá a consultar al asistente sobre el mismo chat del prompt inicial para complementar el formulario.</p>
+<ol type="a">
+<li>En la parte inferior izquierda seleccione el símbolo de 3 destellos del Asistente de Survey123.</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/forms_ia/img_pag6_2.png" class="img-fluid figure-img"></p>
+<figcaption>Asistente de Survey123</figcaption>
+</figure>
+</div>
+<ol start="2" type="a">
+<li>En el cajón blanco del chat, ingrese el siguiente prompt:</li>
+</ol>
+<pre class="text"><code>Agrega un campo numérico llamado Nivel de impacto, donde a través de una barra deslizante se asignen los siguientes valores:
+* Muy Bajo = 1
+* Bajo = 2
+* Medio = 3
+* Alto = 4
+* Muy Alto = 5</code></pre>
+<p>El asistente vuelve a mostrar el formulario completo como boceto, ahora debe validar que se ha agregado la nueva pregunta.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/forms_ia/img_pag7_1.png" class="img-fluid figure-img"></p>
+<figcaption>Formulario completo con la nueva pregunta</figcaption>
+</figure>
+</div>
+<ol start="3" type="a">
+<li>Haga clic en Continuar.</li>
+<li>Espere mientras el asistente modifica el formulario. La forma en la que se muestra la nueva pregunta puede variar en su estilo, esta puede ser una referencia.</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/forms_ia/img_pag7_2.png" class="img-fluid figure-img"></p>
+<figcaption>Forma de mostrar la nueva pregunta</figcaption>
+</figure>
+</div>
+</section>
+<section id="paso-5-publicar-y-compartir-el-formulario" class="level3">
+<h3 class="anchored" data-anchor-id="paso-5-publicar-y-compartir-el-formulario">Paso 5: publicar y compartir el formulario</h3>
+<p>Puede hacer modificaciones en el tema, diseño, estructura y demás configuraciones en las preguntas antes de hacer la publicación.</p>
+<ol type="a">
+<li>En la zona derecha del banner superior de color verde, haga clic en Publicar.</li>
+</ol>
+<p><img src="images/forms_ia/img_pag7_3.png" class="img-fluid"></p>
+<ol start="2" type="a">
+<li><p>Confirme la publicación del formulario, dando clic nuevamente en Publicar.</p></li>
+<li><p>Espere mientras Survey123 publica la encuesta.</p></li>
+</ol>
+<p><img src="images/forms_ia/img_pag8_1.png" class="img-fluid"></p>
+<ol start="4" type="a">
+<li>Una vez publicado, el formulario estará disponible para captura de datos.</li>
+</ol>
+<p><img src="images/forms_ia/img_pag8_2.png" class="img-fluid"></p>
+<ol start="5" type="a">
+<li>En banner verde haga clic en la pestaña Colabora.</li>
+</ol>
+<p><img src="images/forms_ia/img_pag8_3.png" class="img-fluid"></p>
+<ol start="6" type="a">
+<li>En la sección Compartir una encuesta, haga clic en Mostrar el Código QR y en Haga clic para descargar.</li>
+</ol>
+<p><img src="images/forms_ia/img_pag8_4.png" class="img-fluid"></p>
+<ol start="7" type="a">
+<li>En la sección ¿Quién puede enviar datos a esta encuesta?, haga clic en Todos (público).</li>
+</ol>
+<p><img src="images/forms_ia/img_pag8_5.png" class="img-fluid"></p>
+<ol start="8" type="a">
+<li>Al final de la lista de opciones, haga clic en el botón Guardar para confirmar la configuración del nivel de uso compartido.</li>
+</ol>
+<p>Esto permitirá que usuarios sin cuenta de ArcGIS Online, puedan diligenciar el formulario. Ahora, podrá compartir el formulario para que en él se puedan generar registros de la audiencia.</p>
+<ol type="i">
+<li>Comparta el código QR con los demás participantes y solicite registrar al menos un incidente.</li>
+</ol>
+<ol start="10" type="a">
+<li>Espere a que se registren varios datos. Estos registros serán utilizados en los siguientes ejercicios.</li>
+</ol>
+</section>
+<section id="resultados-del-ejercicio" class="level3">
+<h3 class="anchored" data-anchor-id="resultados-del-ejercicio">Resultados del ejercicio</h3>
+<p>Al finalizar este ejercicio habrá:</p>
+<ul>
+<li>Creado un formulario con el asistente de Survey123</li>
+<li>Modificado el formulario con el Asistente de Survey123</li>
+<li>Publicado la encuesta</li>
+<li>Compartido mediante código QR</li>
+<li>Registrado datos en tiempo real</li>
+</ul>
+</section>
+</section>
+<section id="ejercicio-2" class="level2" data-number="24.4">
+<h2 data-number="24.4" class="anchored" data-anchor-id="ejercicio-2"><span class="header-section-number">24.4</span> Ejercicio 2</h2>
+<section id="generar-documentación-con-asistente-de-ia" class="level3">
+<h3 class="anchored" data-anchor-id="generar-documentación-con-asistente-de-ia">Generar documentación con asistente de IA</h3>
+<p>En este ejercicio utilizará el asistente de inteligencia artificial sobre Detalles elementos de ArcGIS para generar metadatos automáticamente del Feature Layer creado a partir del formulario de Survey123.</p>
+<p>Los metadatos permiten documentar el propósito del dataset, describir los campos y facilitar su uso en análisis posteriores, visualización y consultas con asistentes de IA.</p>
+<p>En este ejercicio, realizará las siguientes tareas:</p>
+<ul>
+<li>Revisar los metadatos del elemento</li>
+<li>Generar metadatos con el asistente de IA</li>
+<li>Revisar y ajustar la documentación generada</li>
+<li>Generar metadatos para los campos con el asistente de IA</li>
+<li>Guardar la documentación generada</li>
+</ul>
+</section>
+<section id="paso-1-acceder-al-feature-layer-generado-por-el-formulario" class="level3">
+<h3 class="anchored" data-anchor-id="paso-1-acceder-al-feature-layer-generado-por-el-formulario">Paso 1: acceder al Feature Layer generado por el formulario</h3>
+<ol type="a">
+<li>Abra una nueva pestaña del navegador y diríjase a <a href="https://arcgis.com/">https://arcgis.com/</a></li>
+<li>Inicie sesión con la cuenta de ArcGIS Online o ArcGIS Enterprise.</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/forms_ia/img_pag11_1.jpeg" class="img-fluid figure-img"></p>
+<figcaption>ArcGIS Online</figcaption>
+</figure>
+</div>
+<ol start="3" type="a">
+<li>Haga clic en la pestaña Contenido.</li>
+<li>En la sección de carpetas del costado izquierdo, localice la encuesta creada en el Ejercicio 1 -&gt; <strong>Survey-Incidentes de Infraestructura Vial [iniciales del nombre]</strong>.</li>
+</ol>
+<p><img src="images/forms_ia/img_pag11_2.png" class="img-fluid"></p>
+<ol start="5" type="a">
+<li>Observe que Survey123 ha creado automáticamente diferentes tipos de elementos:</li>
+</ol>
+<ul>
+<li>Formulario</li>
+<li>Feature Layer (alojado, vista)</li>
+<li>Feature Layer (alojado).</li>
+</ul>
+<ol start="6" type="a">
+<li>Haga clic en el <strong>Feature Layer alojado</strong>, llamado <strong>Incidentes de Infraestructura Vial [iniciales del nombre]</strong>.</li>
+</ol>
+<p><img src="images/forms_ia/img_pag11_3.png" class="img-fluid"></p>
+</section>
+<section id="paso-2-revisar-los-metadatos-del-elemento" class="level3">
+<h3 class="anchored" data-anchor-id="paso-2-revisar-los-metadatos-del-elemento">Paso 2: revisar los metadatos del elemento</h3>
+<p>Aparece la página de los detalles y configuración de la capa, donde encontrará información contextual sobre los datos que contiene y opciones de acceso a los datos.</p>
+<ol type="a">
+<li>Si es necesario, en la página del elemento, ubique la pestaña Vista general. Observe que los campos de metadatos del elemento se encuentran incompletos.</li>
+<li>Campos como Resumen, Descripción y Etiquetas se encuentran vacíos.</li>
+</ol>
+<p><img src="images/forms_ia/img_pag12_1.jpeg" class="img-fluid"></p>
+<p>Los metadatos permiten entender rápidamente el propósito del dataset, quién lo creó, para qué se utiliza y cómo puede ser usado por otros usuarios. Además, los asistentes de IA utilizan esta información para generar mejores análisis y sugerencias.</p>
+<section id="paso-4-generar-metadatos-del-elemento-con-el-asistente" class="level4">
+<h4 class="anchored" data-anchor-id="paso-4-generar-metadatos-del-elemento-con-el-asistente">Paso 4: generar metadatos del elemento con el asistente</h4>
+<p>Ahora, utilizará el Asistente de IA para detalles del elemento y podrá generar los metadatos esenciales de la capa alojada.</p>
+<ol type="a">
+<li>En el panel derecho, haga clic en el botón Sugerir.</li>
+</ol>
+<p><img src="images/forms_ia/img_pag12_2.png" class="img-fluid"></p>
+<ol start="2" type="a">
+<li>Aparecerá una ventana emergente indicando los metadatos esenciales que serán creados.</li>
+</ol>
+<p><img src="images/forms_ia/img_pag13_1.png" class="img-fluid"></p>
+<ol start="3" type="a">
+<li>Haga clic en Sugerir. Espere unos segundos mientras el asistente genera la información.</li>
+<li>Revise la información generada y realice ajustes si es necesario. La información que el asistente generó puede ser diferente a la de la imagen de referencia.</li>
+</ol>
+<p><img src="images/forms_ia/img_pag13_2.png" class="img-fluid"></p>
+<ol start="5" type="a">
+<li>Haga clic en Guardar.</li>
+</ol>
+<p>Observe que la información del elemento ahora está completa. Título, Resumen, Descripción y Etiquetas. Estos metadatos facilitan la búsqueda del contenido, mejoran la documentación del proyecto y permiten que otros usuarios comprendan rápidamente el propósito del dataset.</p>
+</section>
+<section id="paso-3-revisar-la-estructura-de-datos" class="level4">
+<h4 class="anchored" data-anchor-id="paso-3-revisar-la-estructura-de-datos">Paso 3: revisar la estructura de datos</h4>
+<p>Revisará la información con la que cuenta la capa y notará que los atributos no tienen descripción o datos básicos para comprender su función esencial. Más adelante, el Asistente de IA para detalles del elemento ayudará a generarlos.</p>
+<ol type="a">
+<li>En la página del elemento, haga clic en la pestaña Datos.</li>
+</ol>
+<p><img src="images/forms_ia/img_pag14_1.png" class="img-fluid"></p>
+<p>En el panel izquierdo, observe las opciones: <strong>Tabla, Campos, Actualizar datos y Calcular campo</strong>.</p>
+<ol start="2" type="a">
+<li>Seleccione la opción Tabla y observe los registros que han sido capturados mediante el formulario.</li>
+<li>Seleccione la opción Campos y observe la lista de campos generados por Survey123.</li>
+<li>Note que la tabla contiene las siguientes columnas:</li>
+</ol>
+<ul>
+<li>Nombre de visualización</li>
+<li>Nombre de campo</li>
+<li>Tipo</li>
+<li>Tipo de valor</li>
+<li>Dominio</li>
+</ul>
+<ol start="5" type="a">
+<li>Seleccione uno de los campos de la lista de atributos.</li>
+</ol>
+<p><img src="images/forms_ia/img_pag14_2.png" class="img-fluid"></p>
+<ol start="6" type="a">
+<li>Observe que el campo no tiene descripción ni tipo de valor.</li>
+</ol>
+<p><img src="images/forms_ia/img_pag14_3.png" class="img-fluid"></p>
+<p><img src="images/forms_ia/img_pag14_4.png" class="img-fluid"></p>
+<p>Los metadatos permiten entender rápidamente el propósito del dataset, quién lo creó, para qué se utiliza y cómo puede ser usado por otros usuarios. Además, los asistentes de IA utilizan esta información para generar mejores análisis y sugerencias.</p>
+</section>
+<section id="paso-6-generar-metadatos-de-los-campos" class="level4">
+<h4 class="anchored" data-anchor-id="paso-6-generar-metadatos-de-los-campos">Paso 6: generar metadatos de los campos</h4>
+<p>Es momento de que el asistente de IA ayude a generar los metadatos de los campos, lo hará de forma simultánea para todos los atributos.</p>
+<ol type="a">
+<li>Seleccione todos los campos dando clic en la casilla junto a Nombre de visualización.</li>
+</ol>
+<p><img src="images/forms_ia/img_pag15_1.png" class="img-fluid"></p>
+<ol start="2" type="a">
+<li>Observe que en la parte superior derecha aparece el botón Sugerir.</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/forms_ia/img_pag15_2.png" class="img-fluid figure-img"></p>
+<figcaption>Boton Sugerir</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/forms_ia/img_pag15_3.png" class="img-fluid figure-img"></p>
+<figcaption>Selección de campos y luego presionar Sugerir</figcaption>
+</figure>
+</div>
+<ol start="3" type="a">
+<li>Haga clic en Sugerir.</li>
+<li>Aparecerá una ventana emergente indicando los elementos que serán creados por el Asistente de IA.</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/forms_ia/img_pag15_4.png" class="img-fluid figure-img"></p>
+<figcaption>Ventana emergente: Sugerir propiedades de campo</figcaption>
+</figure>
+</div>
+<ol start="5" type="a">
+<li>Haga clic nuevamente en Sugerir. El proceso tarda algunos segundos mientras el asistente genera la información.</li>
+<li>Aparecerá una nueva ventana para revisar las propiedades de los campos.</li>
+<li>Observe que el asistente muestra cambios para:</li>
+</ol>
+<ul>
+<li>Nombre de campo</li>
+<li>Nombre de visualización</li>
+<li>Descripción</li>
+<li>Tipo de valor</li>
+</ul>
+<ol start="8" type="a">
+<li>Revise la información generada para cada uno de los campos y realice cambios de ser necesario.</li>
+</ol>
+<p><img src="images/forms_ia/img_pag16_1.png" class="img-fluid"></p>
+<ol type="i">
+<li>De clic en la casilla junto a Nombre de campo y seleccione todos los campos.</li>
+</ol>
+<p><img src="images/forms_ia/img_pag16_2.png" class="img-fluid"></p>
+<ol start="10" type="a">
+<li>Haga clic en Guardar.</li>
+</ol>
+<p>Los campos ahora cuentan con metadatos completos y documentados.</p>
+</section>
+</section>
+<section id="resultados-del-ejercicio-1" class="level3">
+<h3 class="anchored" data-anchor-id="resultados-del-ejercicio-1">Resultados del ejercicio</h3>
+<p>Al finalizar este ejercicio habrá:</p>
+<ul>
+<li>Generado metadatos del Feature Layer</li>
+<li>Documentado el propósito del dataset</li>
+<li>Generado metadatos para los campos</li>
+<li>Mejorado la documentación del dataset</li>
+<li>Preparado la capa para análisis con asistentes de IA</li>
+</ul>
+</section>
+</section>
+<section id="ejercicio-3" class="level2" data-number="24.5">
+<h2 data-number="24.5" class="anchored" data-anchor-id="ejercicio-3"><span class="header-section-number">24.5</span> Ejercicio 3</h2>
+<section id="crear-simbología-inteligente-y-pop-ups-con-el-asistente-de-arcade" class="level3">
+<h3 class="anchored" data-anchor-id="crear-simbología-inteligente-y-pop-ups-con-el-asistente-de-arcade">Crear simbología inteligente y pop-ups con el asistente de Arcade</h3>
+<p>En este ejercicio utilizará el asistente de Arcade para crear una simbología inteligente basada en múltiples campos y configurar un pop-up dinámico que resuma la información del incidente.</p>
+<p>Realizará las siguientes tareas:</p>
+<ul>
+<li>Crear el mapa basado en los reportes</li>
+<li>Simbolizar la capa usando el asistente de Arcade</li>
+<li>Crear descripciones detalladas en la ventana emergente o pop up</li>
+<li>Crear gráficos con ayuda del asistente de IA de Arcade</li>
+</ul>
+</section>
+<section id="trabajar-con-mapas-web" class="level3">
+<h3 class="anchored" data-anchor-id="trabajar-con-mapas-web">Trabajar con mapas web</h3>
+<section id="paso-1-abrir-el-mapa" class="level4">
+<h4 class="anchored" data-anchor-id="paso-1-abrir-el-mapa">Paso 1: abrir el mapa</h4>
+<ol type="a">
+<li>Si es necesario, abra una nueva pestaña del navegador y vaya a: https://arcgis.com/</li>
+<li>Inicie sesión con la cuenta de ArcGIS Online o ArcGIS Enterprise.</li>
+</ol>
+<p><img src="images/forms_ia/img_pag18_1.jpeg" class="img-fluid"></p>
+<ol start="3" type="a">
+<li>Haga clic en la pestaña Contenido.</li>
+<li>Localice y de clic en la encuesta creada en el Ejercicio 1 -&gt; <strong>Incidentes de Infraestructura Vial [iniciales del nombre]</strong>.</li>
+<li>Haga clic en el <strong>Feature Layer alojado</strong>, llamado <strong>Incidentes de Infraestructura Vial</strong>.</li>
+<li>En el panel derecho, haga clic en el botón <strong>Abrir en Map Viewer</strong>.</li>
+</ol>
+<p><img src="images/forms_ia/img_pag18_2.png" class="img-fluid"></p>
+</section>
+<section id="paso-2-aplicar-simbología-con-una-expresión-arcade" class="level4">
+<h4 class="anchored" data-anchor-id="paso-2-aplicar-simbología-con-una-expresión-arcade">Paso 2: aplicar simbología con una expresión Arcade</h4>
+<p>Es momento de usar el asistente de IA de Arcade para configurar la simbología de la capa de reportes de la Infraestructura Vial.</p>
+<ol type="a">
+<li>Una vez en el Visor de Mapas, ubique el panel lateral derecho y haga clic en Estilos. Puede expandir el panel con el botón de Expandir o Contraer de la parte inferior.</li>
+</ol>
+<p><img src="images/forms_ia/img_pag19_1.png" class="img-fluid"></p>
+<ol start="2" type="a">
+<li>En la sección Elegir atributos, haga clic en el botón Expresión. Se abrirá una nueva ventana para escribir código en el lenguaje de expresiones de ArcGIS Arcade.</li>
+</ol>
+<p><img src="images/forms_ia/img_pag19_2.png" class="img-fluid"></p>
+<ol start="3" type="a">
+<li>En la barra lateral derecha, ubique el botón de destellos del Asistente de Arcade.</li>
+</ol>
+<p><img src="images/forms_ia/img_pag19_3.png" class="img-fluid"></p>
+<ol start="4" type="a">
+<li>En la ventana de bienvenida del asistente haga clic en Continuar.</li>
+</ol>
+<p><img src="images/forms_ia/img_pag20_1.png" class="img-fluid"></p>
+<ol start="5" type="a">
+<li>Ingrese en siguiente prompt:</li>
+</ol>
+<pre class="text"><code>Genera una expresión Arcade que clasifique los incidentes según el nivel_de_severidad y nivel_de_impacto.
+
+Reglas:
+Si nivel_de_severidad es Alto y nivel_de_impacto es mayor o igual a 4 devolver "Atención inmediata"
+Si nivel_de_severidad es Medio y nivel_de_impacto es mayor o igual a 3 devolver "Atención prioritaria"
+En los demás casos devolver "Atención programada"
+La expresión debe devolver texto.</code></pre>
+<ol start="6" type="a">
+<li>Haga clic en Generar.</li>
+<li>En la parte inferior del asistente, haga clic en Agregar a editor.</li>
+</ol>
+<p>Revise el código y si nota alguna inconsistencia con los nombres de los campos puede refinar el código. En caso de que el código no se genere exitosamente, use la opción de Perfeccionar o Volver a empezar del Asistente de IA para Arcade.</p>
+<p><img src="images/forms_ia/img_pag20_2.png" class="img-fluid"></p>
+<ol start="8" type="a">
+<li>Haga clic en Ejecutar para validar abajo en la consola el resultado.</li>
+<li>Haga clic en Listo.</li>
+</ol>
+<p><img src="images/forms_ia/img_pag21_1.jpeg" class="img-fluid"></p>
+<p>Observe que se aplicó una simbología automáticamente por Tipos (símbolos únicos), con un color diferente para cada una de las tres categorías nuevas (Atención inmediata, Atención prioritaria y Atención Programada), construidas con una expresión de ArcGIS Arcade.</p>
+</section>
+<section id="paso-3-crear-mensaje-descriptivo-del-pop-up-con-el-asistente-de-arcade" class="level4">
+<h4 class="anchored" data-anchor-id="paso-3-crear-mensaje-descriptivo-del-pop-up-con-el-asistente-de-arcade">Paso 3: crear mensaje descriptivo del pop-up con el asistente de Arcade</h4>
+<p>Ahora pedirá al asistente de IA de Arcade ayuda para crear un código que mejore la descripción de cada registro en la ventana emergente.</p>
+<ol type="a">
+<li>En el Visor de Mapas, ubique nuevamente el panel lateral derecho y haga clic en Elementos emergentes.</li>
+</ol>
+<p><img src="images/forms_ia/img_pag21_2.png" class="img-fluid"></p>
+<ol start="2" type="a">
+<li>En la sección de Opciones, haga clic en Expresiones de atributos.</li>
+<li>Haga clic en Agregar Expresión. Se abre una ventana nueva similar a la del ejercicio de simbología.</li>
+<li>En la parte superior izquierda de la ventana, en Nueva Expresión, defina el nuevo nombre Mensaje.</li>
+<li>En la barra lateral derecha, ubique el botón Asistente de Arcade.</li>
+</ol>
+<p><img src="images/forms_ia/img_pag22_1.png" class="img-fluid"></p>
+<ol start="6" type="a">
+<li>En la ventana de bienvenida del asistente haga clic en Continuar.</li>
+<li>Ingrese en siguiente prompt:</li>
+</ol>
+<pre class="text"><code>Genera una expresión Arcade que construya un mensaje descriptivo del incidente utilizando:
+tipo_de_infraestructura
+tipo_de_activo
+nivel_de_severidad
+estado
+nivel_de_impacto</code></pre>
+<ol start="8" type="a">
+<li>Haga clic en Generar. El Asistente de Arcade tardará algunos segundos creando el código con la instrucción proporcionada.</li>
+<li>En la parte inferior del asistente, haga clic en Agregar a editor.</li>
+</ol>
+<p><img src="images/forms_ia/img_pag22_2.png" class="img-fluid"></p>
+<p>En caso de que el código no se genere exitosamente, puede intentar parafrasear el texto, o ajustar la instrucción nuevamente.</p>
+<ol start="10" type="a">
+<li>Haga clic en Ejecutar.</li>
+<li>Haga clic en Listo. Como resultado tendrá la expresión nombrada Mensaje.</li>
+</ol>
+<p><img src="images/forms_ia/img_pag22_3.png" class="img-fluid"></p>
+<ol start="12" type="a">
+<li>Haga clic en el botón Atrás <strong>&lt;</strong>.</li>
+</ol>
+<p><img src="images/forms_ia/img_pag23_1.png" class="img-fluid"></p>
+<ol start="13" type="a">
+<li>En la sección <strong>Cargo</strong> defina el nombre de la ventana emergente <strong>Incidentes en Infraestructura Vial</strong>.</li>
+</ol>
+<p><img src="images/forms_ia/img_pag23_2.png" class="img-fluid"></p>
+<ol start="14" type="a">
+<li>En la sección Lista de Campos, haga clic en Opciones <strong>…</strong> y Eliminar.</li>
+</ol>
+<p><img src="images/forms_ia/img_pag23_3.png" class="img-fluid"></p>
+<p><img src="images/forms_ia/img_pag23_4.png" class="img-fluid"></p>
+<ol start="15" type="a">
+<li>Haga clic en Agregar contenido y seleccione Texto.</li>
+</ol>
+<p><img src="images/forms_ia/img_pag23_5.png" class="img-fluid"></p>
+<ol start="16" type="a">
+<li>En Editar Texto, haga clic en el ícono de las llaves <code>{}</code> para acceder a la Lista de campos.</li>
+</ol>
+<p><img src="images/forms_ia/img_pag23_6.png" class="img-fluid"></p>
+<ol start="17" type="a">
+<li>Seleccione la expresión que construyó con el asistente de Arcade llamada Mensaje. Observe que se agrega la expresión de la forma <code>{expression/expr0}</code>, la cual hará el llamado al mensaje construido por el Asistente de Arcade.</li>
+</ol>
+<p><img src="images/forms_ia/img_pag23_7.png" class="img-fluid"></p>
+<ol start="18" type="a">
+<li>Haga clic en Aceptar.</li>
+<li>Seleccione uno de los puntos en el mapa para desplegar la ventana emergente. Confirme el mensaje mostrado y los atributos del punto seleccionado.</li>
+</ol>
+<p><img src="images/forms_ia/img_pag24_1.png" class="img-fluid"></p>
+</section>
+<section id="paso-6-crear-3-expresiones-con-arcade-como-insumo-de-gráfico" class="level4">
+<h4 class="anchored" data-anchor-id="paso-6-crear-3-expresiones-con-arcade-como-insumo-de-gráfico">Paso 6: crear 3 expresiones con Arcade como insumo de gráfico</h4>
+<p>Seguirá configurando la ventana emergente para crear tres expresiones de Arcade con ayuda del asistente. Dicho resultado permitirá hacer un gráfico con los datos arrojados.</p>
+<p><strong>1. Expresión para Impacto Bajo</strong></p>
+<ol type="a">
+<li>En el Visor de Mapas, ubique el panel lateral derecho y haga clic en Elementos emergentes.</li>
+<li>Nuevamente haga clic en Expresiones de atributos.</li>
+<li>Haga clic en Agregar Expresión.</li>
+</ol>
+<p><img src="images/forms_ia/img_pag24_2.png" class="img-fluid"></p>
+<ol start="4" type="a">
+<li>En el nombre de la expresión Nueva Expresión, defina el nuevo nombre Impacto Bajo.</li>
+<li>En la barra lateral derecha, ubique el botón Asistente de Arcade.</li>
+<li>En la ventana de bienvenida del asistente haga clic en Continuar.</li>
+<li>Ingrese el siguiente prompt:</li>
+</ol>
+<pre class="text"><code>Crea una expresión Arcade que cuente la cantidad de incidentes con nivel_de_severidad igual a "Bajo" para el mismo tipo_de_infraestructura del registro seleccionado. El resultado debe ser numérico para usarlo en un gráfico.</code></pre>
+<ol start="8" type="a">
+<li>Haga clic en Generar.</li>
+<li>En la parte inferior del asistente, haga clic en Agregar a editor. La escritura de código puede variar, lo importante es que al obtener el resultado este sea según el requerimiento.</li>
+</ol>
+<p><img src="images/forms_ia/img_pag25_1.png" class="img-fluid"></p>
+<ol start="10" type="a">
+<li>Haga clic en Ejecutar.</li>
+<li>Haga clic en Listo.</li>
+</ol>
+<p><strong>2. Expresión para Impacto Medio</strong></p>
+<ol type="a">
+<li>Haga clic nuevamente en <strong>Expresiones de atributos</strong>.</li>
+<li>Haga clic en Agregar Expresión.</li>
+<li>En el nombre de la expresión Nueva Expresión, defina el nuevo nombre Impacto Medio.</li>
+<li>En la barra lateral derecha, ubique el botón Asistente de Arcade.</li>
+<li>En la ventana de bienvenida del asistente haga clic en Continuar.</li>
+<li>Ingrese el siguiente prompt:</li>
+</ol>
+<pre class="text"><code>Crea una expresión Arcade que cuente la cantidad de incidentes con nivel_de_severidad igual a "Medio" para el mismo tipo_de_infraestructura del registro seleccionado. El resultado debe ser numérico para usarlo en un gráfico.</code></pre>
+<ol start="7" type="a">
+<li>Haga clic en Generar.</li>
+<li>En la parte inferior del asistente, haga clic en Agregar a editor.</li>
+</ol>
+<p><img src="images/forms_ia/img_pag25_2.png" class="img-fluid"></p>
+<ol type="i">
+<li>Haga clic en Ejecutar.</li>
+</ol>
+<ol start="10" type="a">
+<li>Haga clic en Listo.</li>
+</ol>
+<p><strong>3. Expresión para Impacto Alto</strong></p>
+<ol type="a">
+<li>Haga clic nuevamente en Expresiones de atributos.</li>
+<li>Haga clic en Agregar Expresión.</li>
+</ol>
+<p><img src="images/forms_ia/img_pag26_1.png" class="img-fluid"></p>
+<ol start="3" type="a">
+<li>En el nombre de la expresión Nueva Expresión, defina el nuevo nombre Impacto Alto.</li>
+<li>En la barra lateral derecha, ubique el botón Asistente de Arcade.</li>
+<li>En la ventana de bienvenida del asistente haga clic en Continuar.</li>
+<li>Ingrese el siguiente prompt:</li>
+</ol>
+<pre class="text"><code>Crea una expresión Arcade que cuente la cantidad de incidentes con nivel_de_severidad igual a "Alto" para el mismo tipo_de_infraestructura del registro seleccionado. El resultado debe ser numérico para usarlo en un gráfico.</code></pre>
+<ol start="7" type="a">
+<li>Haga clic en Generar.</li>
+<li>En la parte inferior del asistente, haga clic en Agregar a editor.</li>
+</ol>
+<p><img src="images/forms_ia/img_pag26_2.png" class="img-fluid"></p>
+<ol type="i">
+<li>Haga clic en Ejecutar.</li>
+</ol>
+<ol start="10" type="a">
+<li>Haga clic en Listo.</li>
+</ol>
+</section>
+<section id="paso-9-crear-gráfico-circular" class="level4">
+<h4 class="anchored" data-anchor-id="paso-9-crear-gráfico-circular">Paso 9: crear gráfico circular</h4>
+<p>Se tomarán las expresiones generadas anteriormente como insumo para la creación de un gráfico de torta que muestre la cantidad de incidentes con Nivel de severidad Alto, Medio y Bajo para el mismo Tipo de infraestructura.</p>
+<ol type="a">
+<li><p>Haga clic en el botón Atrás.</p></li>
+<li><p>En la configuración de Elementos Emergentes, haga clic en Agregar contenido.</p></li>
+<li><p>Seleccione Gráfico.</p></li>
+</ol>
+<p><img src="images/forms_ia/img_pag27_2.png" class="img-fluid"></p>
+<ol start="4" type="a">
+<li>Seleccione el tipo de gráfico como Circular.</li>
+</ol>
+<p><img src="images/forms_ia/img_pag27_3.png" class="img-fluid"></p>
+<ol start="5" type="a">
+<li>Haga clic en Seleccionar campos.</li>
+<li>Seleccione las tres expresiones creadas:</li>
+</ol>
+<ul>
+<li>Impacto Bajo {expresión/expr1}</li>
+<li>Impacto Medio {expresión/expr2}</li>
+<li>Impacto Alto {expresión/expr3}</li>
+</ul>
+<p><img src="images/forms_ia/img_pag27_4.png" class="img-fluid"></p>
+<ol start="7" type="a">
+<li><p>Haga clic en Listo.</p></li>
+<li><p>Seleccione uno de los puntos en el mapa para desplegar la ventana emergente. Observe que el gráfico circular se genera automáticamente y cambia en función del tipo de infraestructura seleccionada.</p></li>
+</ol>
+<p><img src="images/forms_ia/img_pag28_1.png" class="img-fluid"></p>
+<ol type="i">
+<li>En el campo Cargo, haga clic en el botón de llaves <code>{}</code>.</li>
+</ol>
+<ol start="10" type="a">
+<li>Seleccione el campo: <code>tipo_de_infraestructura</code>. Esto permitirá que el título del gráfico cambie dinámicamente según el incidente seleccionado.</li>
+<li>En Multimedia (Grafico circular) dé clic y configure el campo Leyenda, escriba:</li>
+</ol>
+<pre class="text"><code>Impacto Bajo: {expression/expr1}
+Impacto Medio: {expression/expr2}
+Impacto Alto: {expression/expr3}</code></pre>
+<p><img src="images/forms_ia/img_pag28_2.png" class="img-fluid"></p>
+<ol start="12" type="a">
+<li><p>Haga clic en Listo.</p></li>
+<li><p>En el campo Cargo, del contenido Multimedia, escriba: Nivel de impacto por Tipo de Infraestructura.</p></li>
+</ol>
+<p><img src="images/forms_ia/img_pag29_1.png" class="img-fluid"></p>
+<ol start="14" type="a">
+<li>La ventana emergente debe quedar similar a la imagen de referencia.</li>
+</ol>
+<p><img src="images/forms_ia/img_pag29_2.png" class="img-fluid"></p>
+<p>Observe que:</p>
+<ul>
+<li>El gráfico circular cambia dinámicamente</li>
+<li>El título cambia según la infraestructura</li>
+<li>Los valores se actualizan automáticamente</li>
+</ul>
+</section>
+<section id="paso-10-guardar-configuración-del-mapa" class="level4">
+<h4 class="anchored" data-anchor-id="paso-10-guardar-configuración-del-mapa">Paso 10: guardar configuración del mapa</h4>
+<ol type="a">
+<li>En el Visor de Mapa, ubique la barra lateral izquierda y haga clic en Guardar.</li>
+</ol>
+<p><img src="images/forms_ia/img_pag30_1.png" class="img-fluid"></p>
+<ol start="2" type="a">
+<li>Diligencie los campos de Título, Etiquetas y Resumen.</li>
+<li>En el Título escriba Mapa Incidencias Infraestructura Vial, el resto de los campos déjelos por defecto.</li>
+</ol>
+</section>
+</section>
+<section id="resultados-del-ejercicio-2" class="level3">
+<h3 class="anchored" data-anchor-id="resultados-del-ejercicio-2">Resultados del ejercicio</h3>
+<p>Al finalizar este ejercicio habrá:</p>
+<ul>
+<li>Creado expresiones Arcade con asistentes</li>
+<li>Generado un mensaje dinámico</li>
+<li>Creado un gráfico circular dinámico</li>
+</ul>
+</section>
+</section>
+<section id="ejercicio-4" class="level2" data-number="24.6">
+<h2 data-number="24.6" class="anchored" data-anchor-id="ejercicio-4"><span class="header-section-number">24.6</span> Ejercicio 4</h2>
+<section id="exploración-de-datos-mediante-lenguaje-natural" class="level3">
+<h3 class="anchored" data-anchor-id="exploración-de-datos-mediante-lenguaje-natural">Exploración de datos mediante lenguaje natural</h3>
+<p>En este ejercicio utilizará la plantilla Data Explorer de ArcGIS Instant Apps para crear una aplicación web que permita explorar los datos mediante lenguaje natural.</p>
+<p>Esta aplicación permitirá realizar preguntas directamente al mapa, generar consultas dinámicas y visualizar resultados sin necesidad de crear filtros manuales.</p>
+<p>En este ejercicio, realizará las siguientes tareas:</p>
+<ul>
+<li>Crear una aplicación con Data Explorer</li>
+<li>Configurar el modo análisis</li>
+<li>Generar incorporaciones para las capas</li>
+<li>Configurar preguntas de muestra</li>
+<li>Realizar consultas con lenguaje natural</li>
+<li>Compartir la aplicación</li>
+</ul>
+</section>
+<section id="paso-1-abrir-el-mapa-1" class="level3">
+<h3 class="anchored" data-anchor-id="paso-1-abrir-el-mapa-1">Paso 1: abrir el mapa</h3>
+<p>Iniciará eligiendo la plantilla de la aplicación Instant App y creando la opción de Data Explorer (beta).</p>
+<ol type="a">
+<li>Abra una nueva pestaña del navegador y acceda a la siguiente <a href="https://www.arcgis.com/home/item.html?id=b53dca102b0345a6a012899b1076eff8">URL</a>: <code>https://www.arcgis.com/home/item.html?id=b53dca102b0345a6a012899b1076eff8</code></li>
+<li>Si es necesario, inicie sesión con la cuenta de ArcGIS Online o ArcGIS Enterprise.</li>
+<li>En la parte derecha de la página, haga clic en Crear una aplicación web.</li>
+</ol>
+<p><img src="images/forms_ia/img_pag32_1.png" class="img-fluid"></p>
+<ol start="4" type="a">
+<li>En el campo Título, escriba: Incidencias Infraestructura Vial App.</li>
+<li>Deje el resto de los campos por defecto.</li>
+<li>Haga clic en Guardar.</li>
+</ol>
+<section id="paso-2-configurar-la-aplicación" class="level4">
+<h4 class="anchored" data-anchor-id="paso-2-configurar-la-aplicación">Paso 2: configurar la aplicación</h4>
+<p>Seguirá un paso a paso que la aplicación tiene definido por defecto para la creación instantánea de visores web.</p>
+<ol type="a">
+<li>En el panel izquierdo active el modo Rápido.</li>
+</ol>
+<p><img src="images/forms_ia/img_pag32_2.png" class="img-fluid"></p>
+<ol start="2" type="a">
+<li>En Paso 1. Seleccionar un mapa, haga clic en Seleccionar mapa.</li>
+</ol>
+<p><img src="images/forms_ia/img_pag32_3.png" class="img-fluid"></p>
+<ol start="3" type="a">
+<li>Seleccione el mapa: Mapa Incidentes Infraestructura Vial.</li>
+</ol>
+<p><img src="images/forms_ia/img_pag32_4.png" class="img-fluid"></p>
+<ol start="4" type="a">
+<li>Haga clic en Siguiente para dirigirse al siguiente paso.</li>
+<li>En el Paso 2, deje los valores por defecto.</li>
+<li>Desmarque la opción Ventana de introducción.</li>
+<li>Haga clic en Siguiente para dirigirse al siguiente paso.</li>
+<li>En el Paso 3, habilite la opción Modo análisis. Observe que aparecen las capas disponibles para análisis. Las capas que tienen metadatos completos muestran un indicador verde, indicando que están listas para análisis con lenguaje natural.</li>
+</ol>
+<p><img src="images/forms_ia/img_pag33_1.png" class="img-fluid"></p>
+<ol type="i">
+<li>Haga clic en Generar incorporaciones. Ahora habilitará una sección de preguntas de muestra para el usuario final.</li>
+</ol>
+<ol start="10" type="a">
+<li>Habilite la opción Preguntas de muestra y luego, haga clic en Agregar pregunta.</li>
+</ol>
+<p><img src="images/forms_ia/img_pag33_2.png" class="img-fluid"></p>
+<ol start="11" type="a">
+<li>Escriba la pregunta: ¿Cuántos incidentes en total se han reportado?</li>
+<li>Haga clic en Guardar.</li>
+<li>Agregue una segunda pregunta: ¿Cuántos incidentes son de tipo de infraestructura Calzada?</li>
+<li>Haga clic en Guardar.</li>
+</ol>
+<p>En la vista de la aplicación se deben ver dichas preguntas en el panel de consulta al Asistente de IA.</p>
+<p><img src="images/forms_ia/img_pag34_1.png" class="img-fluid"></p>
+</section>
+<section id="paso-5-explorar-datos-con-lenguaje-natural" class="level4">
+<h4 class="anchored" data-anchor-id="paso-5-explorar-datos-con-lenguaje-natural">Paso 5: explorar datos con lenguaje natural</h4>
+<p>Es momento de hacer una prueba realizando preguntas al chat del Asistente de IA.</p>
+<ol type="a">
+<li>Acceda al panel de Chat de la aplicación.</li>
+<li>Realice las preguntas preconfiguradas, haciendo clic sobre alguna de ellas y enviándola.</li>
+</ol>
+<p><img src="images/forms_ia/img_pag34_2.png" class="img-fluid"></p>
+<ol start="3" type="a">
+<li>Observe los resultados en:</li>
+</ol>
+<ul>
+<li>Panel de chat</li>
+<li>Mapa</li>
+<li>Capa generada</li>
+<li>Tabla de atributos generada</li>
+</ul>
+<p><img src="images/forms_ia/img_pag35_1.jpeg" class="img-fluid"></p>
+<ol start="4" type="a">
+<li>Observe las ventanas emergentes configuradas en el ejercicio anterior.</li>
+<li>Realice otras preguntas relacionadas con los datos, incluso operaciones con los mismos.</li>
+<li>Observe que los pasos 4 y 5 de la aplicación corresponden a configuraciones adicionales de diseño. Estos pasos permiten:</li>
+</ol>
+<ul>
+<li>Cambiar colores y apariencia</li>
+<li>Cambiar diseño de la aplicación</li>
+<li>Configurar mensajes y ventanas</li>
+</ul>
+</section>
+<section id="paso-7-compartir-y-publicar-la-aplicación" class="level4">
+<h4 class="anchored" data-anchor-id="paso-7-compartir-y-publicar-la-aplicación">Paso 7: compartir y publicar la aplicación</h4>
+<p>Puede compartir la aplicación en diferentes niveles de uso. Para este caso, se realizará de forma Privada para la Organización y así, cualquier persona de la entidad pueda acceder a la aplicación sin ninguna restricción y por medio de un enlace.</p>
+<p>En dado caso de querer dejarla a nivel Público, debe dirigirse a la Capa alojada y al Mapa y definir el mismo uso compartido como Publico.</p>
+<ol type="a">
+<li>En el panel lateral izquierdo, haga clic en Compartir.</li>
+<li>Seleccione Cambiar configuración de uso compartido.</li>
+</ol>
+<p><img src="images/forms_ia/img_pag36_1.png" class="img-fluid"></p>
+<ol start="3" type="a">
+<li>Seleccione la opción de Organización y confirme en Guardar.</li>
+</ol>
+<p><img src="images/forms_ia/img_pag36_2.png" class="img-fluid"></p>
+<ol start="4" type="a">
+<li>Finalice la aplicación dando clic en Publicar y Confirme la publicación.</li>
+</ol>
+<p><img src="images/forms_ia/img_pag36_3.png" class="img-fluid"></p>
+</section>
+</section>
+<section id="resultados-del-ejercicio-3" class="level3">
+<h3 class="anchored" data-anchor-id="resultados-del-ejercicio-3">Resultados del ejercicio</h3>
+<p>Al finalizar este ejercicio habrá:</p>
+<ul>
+<li>Creado una aplicación Data Explorer</li>
+<li>Configurado modo análisis</li>
+<li>Generado incorporaciones</li>
+<li>Configurado preguntas de muestra</li>
+<li>Exploración con lenguaje natural</li>
+<li>Compartido la aplicación</li>
+</ul>
+<p>Si llegó a este punto del taller, ha comprobado cómo los asistentes de IA permiten explorar datos geoespaciales mediante lenguaje natural para optimizar las operaciones en campo.</p>
+</section>
+</section>
+<section id="evaluación-práctica-y-trabajo-de-campo" class="level2" data-number="24.7">
+<h2 data-number="24.7" class="anchored" data-anchor-id="evaluación-práctica-y-trabajo-de-campo"><span class="header-section-number">24.7</span> Evaluación práctica y trabajo de campo</h2>
+<p>La presente evaluación tiene como objetivo comprobar la asimilación de los conceptos de captura de información, estructuración de datos espaciales y automatización mediante asistentes de IA. La actividad se desarrollará en grupos de dos personas y la toma de datos se ejecutará estrictamente dentro del campus de la Universidad Nacional de Colombia (Sede Bogotá).</p>
+<section id="requisitos-de-modificación-del-formulario" class="level3">
+<h3 class="anchored" data-anchor-id="requisitos-de-modificación-del-formulario">Requisitos de modificación del formulario</h3>
+<p>Tomando como base el formulario creado en Survey123 durante el Ejercicio 1, aplique las siguientes modificaciones utilizando el Asistente de IA o la interfaz de diseño:</p>
+<ul>
+<li>Inserte un campo obligatorio del tipo imagen que permita la captura fotográfica del incidente reportado en campo.</li>
+<li>Inserte una pregunta de selección múltiple o texto que sea única y particular para su grupo de trabajo (por ejemplo, afectación a la movilidad peatonal, proximidad a edificios emblemáticos de la UNAL como la Biblioteca Central, etc.).</li>
+</ul>
+</section>
+<section id="reglas-de-captura-de-información-en-el-campus" class="level3">
+<h3 class="anchored" data-anchor-id="reglas-de-captura-de-información-en-el-campus">Reglas de captura de información en el campus</h3>
+<p>La recolección de datos se realizará en el área de la Ciudad Universitaria, garantizando que los puntos cuenten con precisión de ubicación y correspondan a infraestructura real del campus.</p>
+<ul>
+<li><strong>Captura propia</strong>: Registre un mínimo de 5 incidentes utilizando su propio formulario.</li>
+<li><strong>Captura colaborativa</strong>: Intercambie los códigos QR de acceso con al menos 3 grupos de trabajo diferentes.</li>
+<li>Registre un mínimo de 5 incidentes en cada uno de los formularios de sus compañeros (totalizando 15 registros ajenos).</li>
+<li>Verifique que la capa final alojada en su cuenta de ArcGIS Online contenga la totalidad de los registros esperados.</li>
+</ul>
+</section>
+<section id="entregables-del-proyecto" class="level3">
+<h3 class="anchored" data-anchor-id="entregables-del-proyecto">Entregables del proyecto</h3>
+<p>Entregue un único archivo comprimido que contenga el documento Quarto (<code>.qmd</code>) y sus respectivas salidas compiladas en formatos HTML y PDF. El documento debe contener:</p>
+<ul>
+<li>Enlaces de acceso público al formulario de Survey123 y a la aplicación web (Data Explorer) finalizada.</li>
+<li>Descripción de la nueva pregunta integrada al modelo de datos y su justificación.</li>
+<li>Resumen estadístico básico de los datos capturados (frecuencia de incidentes por nivel de severidad y tipo de infraestructura).</li>
+<li>Análisis espacial básico: Generación de un análisis de densidad (mapa de calor o clústeres) utilizando los puntos capturados en la Ciudad Universitaria. Este producto debe identificar patrones espaciales de los incidentes (ej. concentración de fallas en la malla vial cerca de las entradas de la Calle 26 o la Carrera 30) y evidenciar la correcta configuración y proyección de los datos en el sistema de referencia oficial MAGNA-SIRGAS (Origen Nacional EPSG:9377).</li>
+</ul>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copiado");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copiado");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./51-practica_11_mde_models.html" class="pagination-link" aria-label="Model builder (ArcGIS Pro) y Model Designer (QGIS) de productos del MDE">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Model builder (ArcGIS Pro) y Model Designer (QGIS) de productos del MDE</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./61-presentacion_1_clase1_varios.html" class="pagination-link" aria-label="Temas por Charlar">
+        <span class="nav-page-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Temas por Charlar</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

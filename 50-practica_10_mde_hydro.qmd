@@ -64,6 +64,7 @@ print(f"MDE acondicionado exportado a: {mde_acondicionado}")
 
 ### QGIS (SAGA GIS)
 
+**Plugin**: `Processing Saga NextGen Provider`
 **Herramienta:** `SAGA Next Gen` -> `Terrain Analysis` -> `Fill Sinks (Wang & Liu)`
 
 Comparado con la herramienta `Fill` de ArcGIS Pro, este algoritmo no solo rellena las depresiones locales, sino que garantiza una pendiente mínima a lo largo de las rutas de drenaje forzadas, evitando superficies completamente planas que generan errores en el cálculo posterior de la dirección de flujo.
@@ -717,6 +718,9 @@ processing.run("sagang:terrainruggednessindextri", parametros)
 ### QGIS (Nativo)
 
 **Herramienta:** `Raster terrain analysis` -> `Ruggedness index`
+**Herramienta:** `Raster terrain analysis` -> `Terrain Ruggedness Index (TRI)`
+
+FALTA: Compararlas
 
 QGIS cuenta con una herramienta nativa para el cálculo de la rugosidad basada en la librería GDAL.
 
@@ -793,8 +797,9 @@ curv_gen.save(output_general)
 
 ### QGIS (SAGA y GRASS)
 
-*Ver las secciones de [SAGA](#sec-qgis_saga_sac) y [GRASS](#sec-qgis_grass_sac) para la ejecución simultánea de derivadas topográficas parciales.*
+*Ver las secciones de SAGA ([@sec-qgis_saga_sac]) y GRASS (#sec-qgis_grass_sac) para la ejecución simultánea de derivadas topográficas parciales.*
 
+FALTA
 :::
 
 ## Acumulación de flujo
