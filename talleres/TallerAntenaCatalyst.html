@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Guía de entrenamiento: Uso del Trimble Catalyst DA2 con Avenza Maps</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="TallerAntenaCatalyst_files/libs/clipboard/clipboard.min.js"></script>
+<script src="TallerAntenaCatalyst_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="TallerAntenaCatalyst_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="TallerAntenaCatalyst_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="TallerAntenaCatalyst_files/libs/quarto-html/popper.min.js"></script>
+<script src="TallerAntenaCatalyst_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="TallerAntenaCatalyst_files/libs/quarto-html/anchor.min.js"></script>
+<link href="TallerAntenaCatalyst_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="TallerAntenaCatalyst_files/libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="TallerAntenaCatalyst_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="TallerAntenaCatalyst_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="TallerAntenaCatalyst_files/libs/bootstrap/bootstrap-9e3ffae467580fdb927a41352e75a2e0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Guía de entrenamiento: Uso del Trimble Catalyst DA2 con Avenza Maps</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Nota: Documento creado y mejorado a partir del documento “Guía de Entrenamiento Antena Catalyst.pdf” compartido para la clase por el estudiante <em>Carlos Esteban Aguilar V</em>.</p>
+<section id="introducción" class="level1">
+<h1>Introducción</h1>
+<p>El Trimble Catalyst DA2 es un receptor GNSS que provee exactitudes superiores (de métrica a submétrica) y que ha sido diseñado para integrarse con dispositivos móviles Android a través de Bluetooth. La principal característica del equipo es la compatibilidad con la tecnología de corrección <strong>Trimble RTX</strong>, lo que permite alcanzar exactitudes centimétricas en la colecta de datos en campo.</p>
+<section id="tecnología-trimble-rtx" class="level2">
+<h2 class="anchored" data-anchor-id="tecnología-trimble-rtx">Tecnología Trimble RTX</h2>
+<p>La tecnología Trimble RTX (Real-Time eXtended) permite realizar correcciones diferenciales en tiempo real sin necesidad de estaciones base ni infraestructura RTK (Figura 1). Esta tecnología funciona en cualquier parte del mundo con una conexión de datos activa.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/img_pag1_2.jpeg" class="img-fluid figure-img"></p>
+<figcaption>Figura 1. Cómo funciona la tecnología Trimble RTX</figcaption>
+</figure>
+</div>
+<p>El esquema de funcionamiento del servicio RTX consta de cinco etapas fundamentales que garantizan la entrega del posicionamiento geodésico preciso:</p>
+<ol type="1">
+<li><strong>Red global de estaciones de rastreo (Trimble global tracking station network):</strong> Conjunto de estaciones de referencia distribuidas a nivel mundial que monitorean continuamente las señales emitidas por las constelaciones satelitales.</li>
+<li><strong>Centro de control (Trimble RTX control center):</strong> La información observada por la red de estaciones es transmitida a servidores centrales. Mediante procesamiento avanzado, se modelan y calculan correcciones para los errores de reloj, las órbitas de los satélites y los retardos atmosféricos.</li>
+<li><strong>Distribución de correcciones (Satellite uplink / IP / cellular):</strong> Las correcciones modeladas se difunden hacia el terreno. La transmisión se ejecuta mediante satélites geoestacionarios de comunicaciones en banda L o a través de internet usando conectividad celular convencional.</li>
+<li><strong>Receptor GNSS de campo (Customer’s GNSS receiver / display):</strong> Dispositivos móviles y antenas captan simultáneamente las señales GNSS directas y el flujo de correcciones RTX. Mediante algoritmos internos, el equipo procesa la información para determinar coordenadas con exactitudes de nivel centimétrico.</li>
+<li><strong>Satélites GNSS (GNSS satellites):</strong> Componente espacial conformado por los satélites de navegación (GPS, GLONASS, Galileo, BeiDou) que proveen la señal de radiofrecuencia base empleada tanto por la red de rastreo como por el receptor final.</li>
+</ol>
+<p>La exactitud que provee depende del tipo de suscripción que se adquiera (Figura 2).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/img_pag2_2.png" class="img-fluid figure-img"></p>
+<figcaption>Figura 2. Tipos de suscripción de Catalyst.</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="preparación-del-dispositivo-móvil-para-colección-de-datos" class="level1">
+<h1>Preparación del dispositivo móvil para colección de datos</h1>
+<section id="instalación-y-configuración-de-aplicaciones" class="level2">
+<h2 class="anchored" data-anchor-id="instalación-y-configuración-de-aplicaciones">Instalación y configuración de aplicaciones</h2>
+<p>Instalación de la aplicación <strong>Trimble Mobile Manager</strong> así como la aplicación <strong>Avenza Maps</strong> en un dispositivo móvil.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/trimble_mobile_manager.jpg" class="img-fluid figure-img"></p>
+<figcaption>Figura 3. Trimble Mobile Manager.</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/r_avenza_min.png" class="img-fluid figure-img" style="width:50.0%"></p>
+<figcaption>Figura 4. Avenza Maps.</figcaption>
+</figure>
+</div>
+</section>
+<section id="activación-de-ubicación-simulada" class="level2">
+<h2 class="anchored" data-anchor-id="activación-de-ubicación-simulada">Activación de ubicación simulada</h2>
+<p>En caso de colectar los datos desde un dispositivo Android es necesario seguir los siguientes pasos para activar <strong>Trimble Mobile Manager</strong> como <strong>Aplicación de Ubicación Simulada</strong> (<em>Mock Location App</em>).</p>
+<p>Sin la opción <em>Mock Location App</em> habilitada en su Android, al abrir la aplicación <strong>Trimble Mobile Manager</strong> mostrará el mensaje desplegado en la Figura 7. Para verificar este mensaje, en TMM Se puede acceder a las opciones de Menú y seleccionar <code>Settings</code>. Ver Figura 5.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/opciones_de_menu_tmm.jpeg" class="img-fluid figure-img" style="width:40.0%"></p>
+<figcaption>Figura 5. Opciones del Menú de Trimble Mobile Manager</figcaption>
+</figure>
+</div>
+<p>Aparecerá la pantalla mostrada en la Figura 6. Seleccionar la opción <code>Configure Location Sharing</code>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/settings_tmm.jpeg" class="img-fluid figure-img" style="width:40.0%"></p>
+<figcaption>Figura 6. Opción <code>Configure Location Sharing</code> disponible después de presionar <code>Settings</code> en el menú de TMM</figcaption>
+</figure>
+</div>
+<p>El siguiente mensaje indica que es necesario configurar en su equipo Android las <strong>opciones de desarrollador</strong> y seleccionar la <strong>Aplicación de Ubicación Simulada</strong> antes de continuar:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/location_sharing_msg_sin_opciones_desarrolllador_habilitadas.jpeg" class="img-fluid figure-img" style="width:40.0%"></p>
+<figcaption>Figura 7. Se requieren las <strong>opciones de desarrollador</strong> y la <strong>aplicación de Ubicación Simulada</strong> para trabajar TMM con la antena <strong>Catalyst DA2</strong></figcaption>
+</figure>
+</div>
+<p>Para realizar esas configuraciones en su dispositivo Android, realice los pasos descritos en la Figura 7 dependiendo de la versión Android del sistema.</p>
+<p><strong>Procedimiento genérico</strong></p>
+<ul>
+<li>Activar las opciones de desarrollador en Android (Ir a <code>Configuración</code> -&gt; <code>Sistema y actualizaciones</code>).</li>
+<li>Ir a <code>Opciones de Desarrollador</code> y seleccionar <code>Seleccionar Aplicación de Ubicación Simulada</code> (<code>Select mock location app</code>) (Figura 8).</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/img_pag3_3.jpeg" class="img-fluid figure-img"></p>
+<figcaption>Figura 8. Acceso a seleccionar aplicación de ubicación simulada</figcaption>
+</figure>
+</div>
+<ul>
+<li>Seleccionar <strong>Trimble Mobile Manager</strong> como <strong>Aplicación de Ubicación Simulada</strong> (Figura 9).</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/img_pag3_2.jpeg" class="img-fluid figure-img"></p>
+<figcaption>Figura 9. Selección de aplicación Trimble Mobile Manager</figcaption>
+</figure>
+</div>
+<p><strong>Procedimiento en Pixel 3</strong></p>
+<p>Habilite las opciones de desarrollador en su equipo:</p>
+<ul>
+<li><code>Settings</code></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/pixel_settings_1.jpeg" class="img-fluid figure-img" style="width:40.0%"></p>
+<figcaption>Figura 10. Pixel Settings</figcaption>
+</figure>
+</div>
+<ul>
+<li><code>Settings</code> -&gt; <code>About Phone</code></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/pixel_settings_about_phone.jpeg" class="img-fluid figure-img" style="width:40.0%"></p>
+<figcaption>Figura 11. Pixel Settings: About Phone</figcaption>
+</figure>
+</div>
+<ul>
+<li>Presione rápidamente 7 veces en <code>Build number</code></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/settings_opciones_desarrollador.jpeg" class="img-fluid figure-img" style="width:40.0%"></p>
+<figcaption>Figura 12. Pixel Settings: Presione 7 veces seguidas en <code>Build Number</code></figcaption>
+</figure>
+</div>
+<ul>
+<li><p>Escriba la clave de su teléfono</p></li>
+<li><p>Aparecerá un mensaje temporal: <strong>You are a developer</strong></p></li>
+</ul>
+<p>Seleccionar Aplicación de Ubicación Simulada:</p>
+<ul>
+<li><code>Settings</code> -&gt; <code>System</code> -&gt; <code>{} Developer Options</code> -&gt; <code>Select mock location app</code></li>
+<li>y seleccione <code>Mobile Manager</code></li>
+</ul>
+</section>
+</section>
+<section id="funcionamiento-del-trimble-catalyst-da2" class="level1">
+<h1>Funcionamiento del Trimble Catalyst DA2</h1>
+<section id="contenido-de-la-caja" class="level2">
+<h2 class="anchored" data-anchor-id="contenido-de-la-caja">Contenido de la caja</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/img_pag4_2.jpeg" class="img-fluid figure-img"></p>
+<figcaption>Figura 13. Contenido de la caja.</figcaption>
+</figure>
+</div>
+<ol type="a">
+<li>Receptor GNSS</li>
+<li>Power bank</li>
+<li>Adaptador para bastón de topografía</li>
+<li>Abrazadera de plástico</li>
+<li>Correas de caucho para adaptar bastón de topografía</li>
+<li>Cable de carga de power bank</li>
+</ol>
+</section>
+<section id="pasos-para-su-uso" class="level2">
+<h2 class="anchored" data-anchor-id="pasos-para-su-uso">Pasos para su uso</h2>
+<ul>
+<li>Asegúrese que la batería de su Catalyst DA2 tenga suficiente carga.</li>
+<li>Sincronice su dispositivo android con el Catalyst DA2
+<ul>
+<li>Encender el Catalyst DA2</li>
+<li>Activar el Bluetooth en el dispositivo móvil.</li>
+<li>Emparejar los dispositivos</li>
+</ul></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/pair_da2.jpeg" class="img-fluid figure-img" style="width:40.0%"></p>
+<figcaption>Figura 14. Emparejar el Android con la antena Catalyst DA2.</figcaption>
+</figure>
+</div>
+<ul>
+<li>Abrir la aplicación Trimble Mobile Manager (TMM) y presione el botón <code>Select</code> para seleccionar la antena previamente emparejada por Bluetooth.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/inicio_tmm.jpeg" class="img-fluid figure-img" style="width:40.0%"></p>
+<figcaption>Figura 15. Pantalla inicial de Trimble Mobile Manager</figcaption>
+</figure>
+</div>
+<ul>
+<li>El sistema pedirá las credenciales. Se debe iniciar sesión con Trimble ID y verificar la licencia activa.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/sign_in_da2.jpeg" class="img-fluid figure-img" style="width:40.0%"></p>
+<figcaption>Figura 16. Pantalla pare el inicio del registro de credenciales</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/sign_in_da2_2.jpeg" class="img-fluid figure-img" style="width:40.0%"></p>
+<figcaption>Figura 17. Pantalla pare el registro de credenciales</figcaption>
+</figure>
+</div>
+<ul>
+<li>Conectar el DA2 en TMM y confirmar la conexión GNSS. Después de un registro exitoso, la pantalla de inicio mostrará ahora la antena Catalyst DA2</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/img_pag5_2.jpeg" class="img-fluid figure-img"></p>
+<figcaption>Figura 18. Conexión del Catalyst DA2.</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/inicio_tmm_after_sign_in.jpeg" class="img-fluid figure-img" style="width:40.0%"></p>
+<figcaption>Figura 19. Pantalla inicial de Trimble Mobile Manager mostrando la antena Catalyst DA2 después del registro de credenciales</figcaption>
+</figure>
+</div>
+<ul>
+<li>Esperar la convergencia y validar la exactitud posicional del dispositivo.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/img_pag5_5.jpeg" class="img-fluid figure-img"></p>
+<figcaption>Figura 20. Pestañas de localización de satélites y estado justo después de conectar el dispositivo: <code>Skyplot</code></figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/img_pag5_4.jpeg" class="img-fluid figure-img"></p>
+<figcaption>Figura 21. Pestañas de localización de satélites y estado justo después de conectar el dispositivo: <code>Status</code></figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/img_pag6_4.jpeg" class="img-fluid figure-img"></p>
+<figcaption>Figura 22. Pestañas de localización de satélites y estado pasados unos minutos: <code>Skyplot</code></figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/img_pag6_3.jpeg" class="img-fluid figure-img"></p>
+<figcaption>Figura 23. Pestañas de localización de satélites y estado pasados unos minutos: <code>Status</code></figcaption>
+</figure>
+</div>
+</section>
+<section id="opciones-de-configuración-antes-de-la-colecta-de-datos" class="level2">
+<h2 class="anchored" data-anchor-id="opciones-de-configuración-antes-de-la-colecta-de-datos">Opciones de configuración antes de la colecta de datos</h2>
+<p>La correcta parametrización del sistema es fundamental para garantizar la interoperabilidad de los datos con el marco geodésico nacional. Antes de iniciar la captura en campo, se deben verificar los siguientes ajustes en la sección de configuración.</p>
+<p><strong>Selección del marco de referencia (GNSS output)</strong></p>
+<p>La aplicación ofrece dos variantes para el sistema de referencia nacional. La elección debe basarse en la vigencia normativa:</p>
+<ul>
+<li><strong>MAGNA-SIRGAS:</strong> Esta opción generalmente refiere a la época de referencia original (1995.0). Su uso en proyectos actuales no es recomendado, ya que no contempla los efectos del desplazamiento tectónico acumulado durante las últimas tres décadas.</li>
+<li><strong>MAGNA-SIRGAS(2018) (EPSG: 4686):</strong> Es la selección obligatoria para cualquier proyecto en territorio colombiano. Corresponde a la actualización definida en la Resolución 715 de 2018 del IGAC, permitiendo que las coordenadas obtenidas sean consistentes con la Red Geodésica Nacional activa.</li>
+</ul>
+<p><strong>Definición del modelo de referencia vertical (Geoid)</strong></p>
+<p>El software permite seleccionar la superficie de referencia para el cálculo de alturas físicas. La precisión vertical dependerá directamente de esta elección:</p>
+<ul>
+<li><strong>Colombia Geoid 2004:</strong> Se debe seleccionar esta opción específica en el menú desplegable. Este modelo es la implementación digital del <strong>GEOCOL2004</strong>, el modelo geoidal gravimétrico oficial desarrollado para Colombia. Al utilizar datos de gravedad locales, ofrece una precisión significativamente superior en la conversión de alturas elipsoidales a ortométricas dentro del territorio nacional.</li>
+<li><strong>EGM96 (Global):</strong> No se considera una opción óptima para aplicaciones de ingeniería en Colombia. Al ser un modelo global de baja resolución, omite variaciones locales del campo gravitatorio, especialmente críticas en las zonas cordilleranas, lo que introduce errores métricos en la altura final.</li>
+<li><strong>GEOID18 Colombia:</strong> (No disponible) En la configuración de Trimble para Colombia, este modelo representa la evolución hacia superficies de referencia de mayor resolución y precisión (modelos híbridos). Si el flujo de trabajo exige los estándares más rigurosos de la geodesia moderna y el software <strong>permite su activación</strong>, es la opción preferencial sobre modelos anteriores.</li>
+</ul>
+<section id="determinación-del-método-de-medición-measurement-method" class="level3">
+<h3 class="anchored" data-anchor-id="determinación-del-método-de-medición-measurement-method">Determinación del método de medición (Measurement method)</h3>
+<p>El punto de referencia vertical debe coincidir con el accesorio físico utilizado para soportar la antena Trimble Catalyst DA2. La omisión de este ajuste genera un error sistemático en la elevación de todos los puntos capturados.</p>
+<ul>
+<li><strong>Bottom of antenna mount:</strong> Configuración estándar cuando la antena está instalada sobre un jalón convencional o un trípode. La altura ingresada por el operador debe medirse desde la marca en el terreno hasta la base del tornillo de montaje (parte inferior de la antena).</li>
+<li><strong>Bottom of Catalyst antenna handle:</strong> Selección exclusiva para el uso del accesorio de mano (handle) de Trimble. El sistema compensa automáticamente el desfase vertical interno del accesorio.</li>
+<li><strong>Yellow/white split line:</strong> Utilizado para el registro de la altura inclinada (slant height) mediante el uso de la cinta métrica integrada en ciertos soportes, facilitando la medición cuando el acceso vertical directo está obstruido.</li>
+</ul>
+<p><strong>Resumen de configuración recomendada</strong></p>
+<p>Para la ejecución de levantamientos técnicos en Colombia, se debe asegurar la siguiente configuración en el receptor:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Campo de configuración</th>
+<th style="text-align: left;">Valor seleccionado</th>
+<th style="text-align: left;">Justificación técnica</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">GNSS output</td>
+<td style="text-align: left;">MAGNA-SIRGAS(2018)</td>
+<td style="text-align: left;">Cumplimiento Res. 715 de 2018 (IGAC).</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Geoid</td>
+<td style="text-align: left;">Colombia Geoid 2004</td>
+<td style="text-align: left;">Implementación local de GEOCOL2004.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Measurement method</td>
+<td style="text-align: left;">Bottom of antenna mount</td>
+<td style="text-align: left;">Uso estándar con jalón de 2.00 m.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">GNSS correction source</td>
+<td style="text-align: left;">Auto / Trimble RTX</td>
+<td style="text-align: left;">Asegura convergencia submétrica/centimétrica.</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+</section>
+<section id="alternativas-de-software-para-levantamiento-en-campo" class="level1">
+<h1>Alternativas de software para levantamiento en campo</h1>
+<p>La restricción de Avenza Maps para cargar cartografía personalizada sin suscripción representa un cuello de botella logístico. Es más eficiente migrar hacia plataformas que gestionen datos vectoriales estructurados en lugar de depender de formatos estáticos de visualización.</p>
+<section id="opciones-de-aplicaciones-de-captura" class="level2">
+<h2 class="anchored" data-anchor-id="opciones-de-aplicaciones-de-captura">Opciones de aplicaciones de captura</h2>
+<p>A continuación, se presentan herramientas de código abierto y de uso libre ampliamente validadas en operaciones geomáticas.</p>
+<ul>
+<li><strong>QField:</strong> Operando como el cliente móvil de QGIS, permite una integración directa con entornos de escritorio para proyectos de mayor complejidad.
+<ul>
+<li>Facilita la configuración de formularios relacionales, dominios de valor y reglas de topología antes de la salida a campo.</li>
+<li>Opera nativamente con contenedores GeoPackage (GPKG), eliminando la dependencia de múltiples archivos y permitiendo el renderizado de simbología compleja en campo.</li>
+<li>Consume la ubicación simulada del sistema operativo sin requerir configuración adicional de puertos COM virtuales.</li>
+</ul></li>
+<li><strong>SW Maps:</strong> Herramienta enfocada específicamente en topografía y captura de datos con receptores GNSS externos.
+<ul>
+<li>Permite la importación directa de datos vectoriales (shapefiles, KMZ, GPKG) y la configuración de mapas base mediante conexiones a servicios WMS o almacenamiento en caché local (MBTiles).</li>
+<li>Almacena automáticamente la metadata del posicionamiento en la tabla de atributos, registrando variables críticas como HRMS, VRMS y el número de satélites en el momento exacto de la captura del vértice.</li>
+</ul></li>
+<li><strong>KoboToolbox:</strong> Plataforma basada en el estándar ODK, diseñada fundamentalmente para la recolección exhaustiva de datos mediante formularios complejos.
+<ul>
+<li>Destaca en la captura estructurada de atributos condicionales, reglas de dependencia (skip logic) y variables cualitativas.</li>
+<li>Su integración con la ubicación simulada permite capturar coordenadas con exactitud RTX, registrando la ubicación como un atributo más dentro del formulario, aunque su interfaz no está orientada a la visualización cartográfica ni a la interacción topológica.</li>
+</ul></li>
+</ul>
+</section>
+<section id="análisis-comparativo-de-herramientas" class="level2">
+<h2 class="anchored" data-anchor-id="análisis-comparativo-de-herramientas">Análisis comparativo de herramientas</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Característica evaluada</th>
+<th style="text-align: left;">QField</th>
+<th style="text-align: left;">SW Maps</th>
+<th style="text-align: left;">KoboToolbox</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Enfoque principal</strong></td>
+<td style="text-align: left;">SIG móvil y topología espacial</td>
+<td style="text-align: left;">Topografía y captura de precisión</td>
+<td style="text-align: left;">Recolección de datos y encuestas</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Gestión de geometrías</strong></td>
+<td style="text-align: left;">Avanzada (edición de nodos, polígonos)</td>
+<td style="text-align: left;">Intermedia (puntos, líneas continuas)</td>
+<td style="text-align: left;">Básica (coordenada como atributo)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Registro de metadata GNSS</strong></td>
+<td style="text-align: left;">Requiere configuración de variables</td>
+<td style="text-align: left;">Automático (HRMS, VRMS nativo)</td>
+<td style="text-align: left;">Posible mediante código XLSForm</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Visualización cartográfica</strong></td>
+<td style="text-align: left;">Alta (renderizado exacto de escritorio)</td>
+<td style="text-align: left;">Media (servicios WMS, ráster local)</td>
+<td style="text-align: left;">Muy limitada (mapa base referencial)</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="validación-de-la-cadena-de-corrección-gnss" class="level2">
+<h2 class="anchored" data-anchor-id="validación-de-la-cadena-de-corrección-gnss">Validación de la cadena de corrección GNSS</h2>
+<p>El uso de aplicaciones de terceros exige verificar que las correcciones RTX estén fluyendo correctamente hacia el software de captura.</p>
+<ul>
+<li>Mantener Trimble Mobile Manager en ejecución en segundo plano para asegurar el enlace ininterrumpido y la convergencia de la señal.</li>
+<li>Asegurar que el motor de ubicación interno de QField, SW Maps o KoboCollect esté configurado para leer los “Servicios de ubicación de Android” (Location Services) y no intente establecer una conexión Bluetooth paralela con el DA2, lo cual generaría conflictos de puerto.</li>
+</ul>
+</section>
+<section id="recomendación-para-el-levantamiento-en-vía" class="level2">
+<h2 class="anchored" data-anchor-id="recomendación-para-el-levantamiento-en-vía">Recomendación para el levantamiento en vía</h2>
+<p>Para el objetivo específico de registrar puntos a lo largo del borde de una vía, el requerimiento central es la captura geométrica secuencial y el control topológico, no el diligenciamiento de cuestionarios extensos. Por esta razón, KoboToolbox se descarta para esta operación en particular.</p>
+<p>La herramienta recomendada es <strong>SW Maps</strong>. Su principal ventaja para este caso de uso radica en su simplicidad operativa y su capacidad para registrar automáticamente los valores de dilución de precisión (HRMS y VRMS) para cada punto capturado sobre el borde de la vía, garantizando el control de calidad geodésica sin requerir configuraciones complejas previas. Alternativamente, si se requiere visualizar el trazado geométrico en tiempo real interactuando con capas base vectoriales preexistentes, <strong>QField</strong> resulta la opción metodológica más robusta.</p>
+</section>
+</section>
+<section id="sw-maps" class="level1">
+<h1>SW Maps</h1>
+<p><a href="https://youtu.be/syvzv8sMBSI">Video guía</a> de uso rápido en español: <code>https://youtu.be/syvzv8sMBSI</code></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/sw_maps/0_pantalla_inicio.jpeg" class="img-fluid figure-img" style="width:40.0%"></p>
+<figcaption>Figura 34. Pantalla de Inicio en SW Maps</figcaption>
+</figure>
+</div>
+<ul>
+<li><ol type="1">
+<li>Menú Principal</li>
+</ol></li>
+<li><ol start="2" type="1">
+<li>Menú de Secundario (<code>Projects</code> y <code>Take Photo</code>)</li>
+</ol></li>
+<li><ol start="3" type="1">
+<li>Lista de Capas</li>
+</ol></li>
+<li><ol start="4" type="1">
+<li>Capturar datos GNSS (<code>Record Feature</code> (Punto) y <code>Record Track</code> (línea))</li>
+</ol></li>
+<li><ol start="5" type="1">
+<li>Skyplot GNSS</li>
+</ol></li>
+<li><ol start="6" type="1">
+<li>Precisión de la captura GNSS</li>
+</ol></li>
+<li><ol start="7" type="1">
+<li>Opciones adicionales de captura (GNSS y Dibujo)</li>
+</ol></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/sw_maps/1_skyplot.jpeg" class="img-fluid figure-img" style="width:40.0%"></p>
+<figcaption>Figura 35. Skyplot en SW Maps</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/sw_maps/2_proyectos.jpeg" class="img-fluid figure-img" style="width:40.0%"></p>
+<figcaption>Figura 36. Proyectos</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/sw_maps/3_agregar_proyecto.jpeg" class="img-fluid figure-img" style="width:40.0%"></p>
+<figcaption>Figura 37. Agregar Proyecto</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/sw_maps/4_capas.jpeg" class="img-fluid figure-img" style="width:40.0%"></p>
+<figcaption>Figura 38. Lista de Capas y opción para Agregar Capas</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/sw_maps/5_tipos_de_capas_feature_gnss.jpeg" class="img-fluid figure-img" style="width:40.0%"></p>
+<figcaption>Figura 39. Tipos de Capas. Tipo: <code>GNSS Recorded Feature</code></figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/sw_maps/6_capa_tipo_feature_gnss.jpeg" class="img-fluid figure-img" style="width:40.0%"></p>
+<figcaption>Figura 40. Capa Ventana Tipo: <code>GNSS Recorded Feature</code></figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/sw_maps/7_editar_propiedades_capa.jpeg" class="img-fluid figure-img" style="width:40.0%"></p>
+<figcaption>Figura 41. Editar propiedades de capa</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/sw_maps/8_propiedades_capa_agregar_atributos.jpeg" class="img-fluid figure-img" style="width:40.0%"></p>
+<figcaption>Figura 42. Agregar Atributos a una Capa</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/sw_maps/8_1_tipos_de_atributos.jpeg" class="img-fluid figure-img" style="width:40.0%"></p>
+<figcaption>Figura 43. Tipos de Atributos de una Capa</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/sw_maps/9_agregar_atributos.jpeg" class="img-fluid figure-img" style="width:40.0%"></p>
+<figcaption>Figura 44. Salvar el Atributo</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/sw_maps/10_atributo_tipo_opciones.jpeg" class="img-fluid figure-img" style="width:40.0%"></p>
+<figcaption>Figura 45. Atributo Tipo <code>Options</code></figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/sw_maps/11_atributo_tipo_foto.jpeg" class="img-fluid figure-img" style="width:40.0%"></p>
+<figcaption>Figura 46. Atributo Tipo <code>Foto</code></figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/sw_maps/12_todos_los_atributos.jpeg" class="img-fluid figure-img" style="width:40.0%"></p>
+<figcaption>Figura 47. Todos los Atributos de la capa <code>Ventana</code> y <code>Label Field</code> para etiquetar los objetos en el mapa</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/sw_maps/13_capa_tipo_dibujo.jpeg" class="img-fluid figure-img" style="width:40.0%"></p>
+<figcaption>Figura 48. Capas tipo <code>Drawn Feature</code> para dibujar objetos usando SW Maps</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/sw_maps/14_capa_arboles.jpeg" class="img-fluid figure-img" style="width:40.0%"></p>
+<figcaption>Figura 49. Agregar la capa <code>Arboles</code> tipo <code>Drawn Feature</code></figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/sw_maps/15_editar_capa_arboles.jpeg" class="img-fluid figure-img" style="width:40.0%"></p>
+<figcaption>Figura 50. Editar la capa <code>Arboles</code></figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/sw_maps/16_atributo_tipo_para_arboles.jpeg" class="img-fluid figure-img" style="width:40.0%"></p>
+<figcaption>Figura 51. Agregar atributo <code>Tipo</code> a la capa <code>Arboles</code></figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/sw_maps/17_atributo_diametro.jpeg" class="img-fluid figure-img" style="width:40.0%"></p>
+<figcaption>Figura 52. Agregar atributo <code>Diámetro</code> a la capa <code>Arboles</code></figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/sw_maps/18_atributos_arboles.jpeg" class="img-fluid figure-img" style="width:40.0%"></p>
+<figcaption>Figura 53. Ver atributos de la capa <code>Arboles</code></figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/sw_maps/19_grabar_feature.jpeg" class="img-fluid figure-img" style="width:40.0%"></p>
+<figcaption>Figura 54. Opciones para grabar <code>GNSS Recorded Feature</code></figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/sw_maps/20_grabar_ventana1.jpeg" class="img-fluid figure-img" style="width:40.0%"></p>
+<figcaption>Figura 55. Capturar una Ventana en la capa <code>Ventana</code> y Salvar cambios usando el ícono de GPS (parte inferior derecha)</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/sw_maps/21_grabar_ventana2.jpeg" class="img-fluid figure-img" style="width:40.0%"></p>
+<figcaption>Figura 56. Confirmar la captura de coordenadas y atributos de la ventana</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/sw_maps/22_1_precision_captura_ventana.jpeg" class="img-fluid figure-img" style="width:40.0%"></p>
+<figcaption>Figura 57. Revisar la precisión de captura de la ventana</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/sw_maps/22_grabar_ventana_3.jpeg" class="img-fluid figure-img" style="width:40.0%"></p>
+<figcaption>Figura 58. Capturar la Foto después de capturar otros atributos</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/sw_maps/23_ver_atributos.jpeg" class="img-fluid figure-img" style="width:40.0%"></p>
+<figcaption>Figura 59. Opción para ver atributos de elementos capturados</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/sw_maps/24_editar_atributos.jpeg" class="img-fluid figure-img" style="width:40.0%"></p>
+<figcaption>Figura 60. Editar los atributos de elementos capturados</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/sw_maps/27_opciones_adicionales_mapeo.jpeg" class="img-fluid figure-img" style="width:40.0%"></p>
+<figcaption>Figura 61. Opciones adicionales de captura y edición de SW Maps</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/sw_maps/25_export_project.jpeg" class="img-fluid figure-img" style="width:40.0%"></p>
+<figcaption>Figura 62. Opción de exportación de Proyectos en SW Maps</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/sw_maps/28_formatos_exportacion.jpeg" class="img-fluid figure-img" style="width:40.0%"></p>
+<figcaption>Figura 63. Formatos de exportación de Proyectos en SW Maps</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/sw_maps/29_export_to_kml.jpeg" class="img-fluid figure-img" style="width:40.0%"></p>
+<figcaption>Figura 64. Exportar proyecto a KML/KMZ</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/sw_maps/30_export_to_csv.jpeg" class="img-fluid figure-img" style="width:40.0%"></p>
+<figcaption>Figura 65. Exportar proyecto a CSV</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/sw_maps/31_coordenadas_proyecto_2.jpeg" class="img-fluid figure-img" style="width:40.0%"></p>
+<figcaption>Figura 66. Cambio de coordenadas planas del proyecto (sin relevancia)</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/sw_maps/32_coordenadas_proyecto_1.jpeg" class="img-fluid figure-img" style="width:40.0%"></p>
+<figcaption>Figura 67. Cambio de coordenadas planas del proyecto (sin relevancia)</figcaption>
+</figure>
+</div>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
