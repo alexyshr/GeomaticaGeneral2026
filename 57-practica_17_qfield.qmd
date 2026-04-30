@@ -1,0 +1,199 @@
+# Operación en campo mediante QGIS y QField
+
+> Nota: Guía técnica elaborada por *Carlos Esteban Aguilar V*. para la asignatura de Geomática general. Este documento propone un flujo de trabajo basado en herramientas de código abierto (FOSS) como alternativa técnica a los entornos de licenciamiento privativo (taller de trabajo en campo con ArcGIS y asistentes IA).
+
+## Introducción
+
+La gestión de infraestructura en campo requiere procesos ágiles para capturar información, documentar datos y analizar condiciones operativas. Este taller presenta un flujo de trabajo completo orientado a la gestión de incidentes de infraestructura vial, utilizando **QGIS** en escritorio y **QField** en dispositivos móviles, ambas herramientas libres y gratuitas.
+
+A lo largo de los ejercicios, los participantes:
+
+- Diseñarán una base de datos geoespacial y un formulario de captura en QGIS.
+- Desplegarán el proyecto en QField para trabajo de campo.
+- Registrarán incidentes con fotografía y atributos.
+- Realizarán simbología inteligente y pop-ups dinámicos usando expresiones.
+- Explorarán los datos recolectados y generarán análisis espaciales (mapa de calor).
+
+**No se requiere licencia ni conexión a internet en campo** (opcional para mapas base).
+
+## Requisitos previos
+
+### Software
+
+* **QGIS** (versión 3.28 o superior) → [https://qgis.org](https://qgis.org)
+* **QField** (versión 3.x) → Instalar desde Google Play (Android) o App Store (iOS). **No usar versión de Microsoft Store en Windows**.
+* **Plugin QFieldSync** (se instala desde QGIS: `Complementos` -> `Administrar e instalar complementos`).
+
+### Dispositivo móvil
+
+- Android 8.0+ o iOS 14+.
+- Permisos de ubicación y cámara habilitados para QField.
+
+## Ejercicio 1: Crear el formulario y la capa en QGIS
+
+En este ejercicio diseñará la estructura de datos (tabla de atributos) y el formulario que usará en campo.
+
+### Paso 1: Crear un proyecto QGIS
+
+1. Abra QGIS y cree un nuevo proyecto (`Proyecto > Nuevo`).
+2. Configure el sistema de referencia: `Proyecto > Propiedades` (`Ctrl+Shift+P`) → pestaña **SCR**. Busque y seleccione **MAGNA-SIRGAS / Bogotá (EPSG:9377)** (o **Origen Nacional**). Este es el sistema oficial para Colombia.
+3. Guarde el proyecto como `Taller_Geomatica.qgz`.
+
+### Paso 2: Crear una capa GeoPackage
+
+1. `Capa > Crear Capa > Nueva capa de GeoPackage...`
+2. Complete:
+   - **Base de datos**: elija una carpeta y nombre `Datos_Incidentes.gpkg`
+   - **Nombre de la tabla**: `Incidentes_Viales`
+   - **Tipo de geometría**: `Punto`
+   - **SCR**: `EPSG:9377`
+3. Agregue los siguientes **campos** (haga clic en `Agregar campo a la tabla` para cada uno):
+
+| Nombre del campo | Tipo          | Longitud |
+|------------------|---------------|----------|
+| tipo_infraestructura | Texto    | 30       |
+| tipo_activo          | Texto    | 30       |
+| nivel_severidad      | Texto    | 15       |
+| estado               | Texto    | 20       |
+| nivel_impacto        | Número entero |         |
+| foto                 | Texto    | 200      |
+| observaciones        | Texto    | 255      |
+
+4. Haga clic en **Aceptar**. La capa aparecerá en el panel de capas.
+
+### Paso 3: Diseñar el formulario (widgets)
+
+El formulario controla cómo se ingresan los datos en QField.
+
+1. **Clic derecho** sobre `Incidentes_Viales` → **Propiedades** → pestaña **Formulario de atributos**.
+2. Configure cada campo según la tabla siguiente (seleccione el campo en la lista izquierda y ajuste a la derecha):
+
+| Campo                | Tipo de widget                | Configuración adicional                                   |
+|----------------------|-------------------------------|-----------------------------------------------------------|
+| tipo_infraestructura | Mapa de valor                 | Valores: Calzada, Señalización vial, Drenaje vial, Estructuras viales |
+| tipo_activo          | Mapa de valor                 | Pavimento, Señal, Alcantarilla, Puente/estructura         |
+| nivel_severidad      | Mapa de valor                 | Alto, Medio, Bajo                                         |
+| estado               | Mapa de valor                 | Reportado, En proceso, Resuelto                           |
+| nivel_impacto        | Rango                         | Mínimo: 1, Máximo: 5, Precisión: 0                        |
+| foto                 | Adjunto                       | **Desmarcar "Sel. archivo existente"**; marcar "Mostrar botón para abrir diálogo". Modo: Copia simple. |
+| observaciones        | Edición de texto multilínea   |                                                            |
+
+3. Para campos obligatorios (ej. `tipo_infraestructura`), vaya a la pestaña **Restricciones** y marque **No nulo**.
+4. Haga clic en **Aceptar**.
+
+### Paso 4: Agregar un mapa base (opcional, mejora la orientación)
+
+- **En línea** (requiere internet en campo): En el panel **Navegador** → `XYZ Tiles` → clic derecho → **Nueva conexión**. Use URL de OpenStreetMap, Google o ESRI.
+- **Offline** (recomendado): Use el plugin **QFieldSync** más adelante.
+
+### Paso 5: Probar el formulario en QGIS
+
+1. Active la capa `Incidentes_Viales` y póngala en **edición** (botón lápiz 🖉).
+2. Use la herramienta **Añadir entidad** (icono `+`). Haga clic en el mapa.
+3. Rellene el formulario de prueba, especialmente **el campo foto** (puede seleccionar cualquier imagen de su PC).
+4. Guarde los cambios (`Ctrl+S`). Verifique en la tabla de atributos que los datos se guardaron.
+
+## Ejercicio 2: Preparar y exportar el proyecto a QField
+
+### Paso 1: Usar QFieldSync
+
+1. Guarde su proyecto QGIS.
+2. `Complementos > QFieldSync > Paquete para QField`.
+3. Elija **destino: Cable**.
+4. Seleccione una carpeta vacía en su PC (ej. `Exportacion_QField`).
+5. Opcional: si tiene un mapa base ráster (ej. MBTiles), actívelo en **Mapa base**.
+6. Haga clic en **Exportar**.
+
+### Paso 2: Transferir al dispositivo móvil
+
+- **Android**: Conecte el teléfono por USB, copie la carpeta `Exportacion_QField` a la memoria interna (ej. en `Documentos/` o `Descargas/`).
+- **iOS**: Use iTunes o aplicación de archivos para copiar la carpeta.
+
+### Paso 3: Abrir el proyecto en QField
+
+1. Abra QField en el móvil.
+2. Toque **"Abrir proyecto"** (📂) y navegue hasta la carpeta que copió.
+3. Seleccione el archivo `.qgs` (o `qfield_project.qgs`).
+4. El mapa se cargará. Active el GPS (icono 📍) para ver su ubicación.
+
+### Paso 4: Capturar datos en campo
+
+1. Seleccione la capa `Incidentes_Viales` en el panel de capas.
+2. Toque el botón **Editar** (lápiz ✏️) y luego **Añadir entidad** (`+`).
+3. Toque el mapa en la ubicación del incidente.
+4. Rellene el formulario:
+   - Use los menús desplegables.
+   - Para **nivel_impacto**, deslice la barra.
+   - Para **foto**: toque el campo; si configuró bien, aparecerá un botón **cámara 📷** para tomar foto nueva (y opcionalmente un botón 📁 para seleccionar existente).
+   - Escriba sus **observaciones**.
+5. Toque **Aceptar** para guardar.
+6. Repita para al menos **5 incidentes propios**.
+
+**Consejo**: Para compartir el formulario con otros grupos, copie la carpeta del proyecto a sus dispositivos o use un servicio de nube (Google Drive, etc.). Cada grupo registrará sus puntos en su propia copia.
+
+## Ejercicio 3: Sincronizar datos de vuelta a QGIS
+
+### Método recomendado: USB (gratuito)
+
+1. Conecte el móvil al PC por USB.
+2. Copie **toda la carpeta del proyecto** desde el móvil a su computadora (sobrescriba la anterior o use una nueva ubicación).
+3. En QGIS, vaya a `Complementos > QFieldSync > Sincronizar desde QField...`.
+4. Seleccione el archivo `.qgs` dentro de la carpeta que trajo del móvil. QFieldSync fusionará los nuevos puntos en su proyecto original.
+
+### Alternativa: Reemplazo manual
+
+Si no funciona QFieldSync, simplemente copie el archivo `Datos_Incidentes.gpkg` desde la carpeta del móvil a su PC y **agréguelo como capa** en QGIS (reemplazando la anterior). Así tendrá todos los puntos.
+
+## Ejercicio 4: Simbología inteligente y pop-ups dinámicos
+
+### Paso 1: Simbología por reglas (equivalente a IA de Arcade)
+
+1. En QGIS, clic derecho sobre `Incidentes_Viales` → **Propiedades** → pestaña **Simbología**.
+2. Cambie de "Símbolo único" a **"Simbología por reglas"**.
+3. Haga clic en **"Agregar regla"** (icono `+`) y defina:
+
+   **Regla 1 (Atención inmediata)**:
+   - Etiqueta: `Atención inmediata`
+   - Filtro: `"nivel_severidad" = 'Alto' and "nivel_impacto" >= 4`
+   - Elija un símbolo rojo intenso.
+
+   **Regla 2 (Atención prioritaria)**:
+   - Filtro: `"nivel_severidad" = 'Medio' and "nivel_impacto" >= 3`
+   - Símbolo naranja.
+
+   **Regla 3 (Atención programada)**:
+   - Filtro: `ELSE`
+   - Símbolo amarillo o verde.
+
+4. Haga clic en **Aceptar**. Los puntos se colorearán automáticamente según la regla.
+
+## Ejercicio 5: Exploración de datos y análisis espacial
+
+### Paso 1: Ver coordenadas de cada punto
+
+Ya que su capa está en **EPSG:9377**, las coordenadas X (Este) y Y (Norte) están en metros. Para visualizarlas:
+
+1. En la **tabla de atributos**, haga clic en **Abrir calculadora de campos**.
+2. Cree dos nuevos campos:
+   - `coordenada_E`: expresión `$x`
+   - `coordenada_N`: expresión `$y`
+3. Estos campos se llenarán automáticamente con las coordenadas de cada punto.
+
+### Paso 2: Mapa de calor (densidad de incidentes)
+
+1. `Vectorial > Herramientas de análisis > Mapa de calor (Kernel)...`
+2. **Capa de entrada**: `Incidentes_Viales`.
+3. **Radio**: 50 metros (ajuste según escala y área del campus).
+4. Guarde como archivo ráster (ej. `mapa_calor.tif`).
+5. Agregue el ráster al mapa y use simbología de pseudocolor.
+
+### Paso 3: Análisis estadístico básico
+
+- Clic derecho sobre `Incidentes_Viales` → **Abrir tabla de atributos**.
+- Use el menú **"Estadísticas"** (icono Σ) sobre los campos `nivel_severidad`, `tipo_infraestructura` para obtener frecuencias y porcentajes.
+
+### Paso 4: Crear un mapa final con impresión
+
+1. `Proyecto > Nuevo editor de impresión`.
+2. Agregue mapa, leyenda, escala, norte, tabla de atributos y gráficos.
+3. Exporte a PDF o imagen.

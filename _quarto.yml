@@ -50,6 +50,11 @@ book:
         - 50-practica_10_mde_hydro.qmd
         - 51-practica_11_mde_models.qmd
         - 52-practica_12_formularios_arcgis_online_ai.qmd
+        - 53-practica_13_gnss_allynav_r26.qmd
+        - 54-practica_14_postproceso_levantamiento_gnss.qmd
+        - 55-practica_15_gnss_trimble_da2.qmd
+        - 56-practica_16_exactitud_posicional.qmd
+        - 57-practica_17_qfield.qmd
     - part: "Presentaciones"        
       chapters:
         - 61-presentacion_1_clase1_varios.qmd

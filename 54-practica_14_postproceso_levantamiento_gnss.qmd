@@ -1,0 +1,15 @@
+# Postproceso del levantamiento GNSS 
+
+La práctica consistió en el postproceso del levantamiento realizado con el equipo `AllyNav R26`
+
+> Nota: Práctica elaborada y guiada en clase por *Raul Andrés Posada* (ver archivos `tallerGNSSpos.pdf` y `UNAL_GCS_MAGNA_SIRGAS_2018.pdf`)
+
+
+## Otros temas de interés
+
+* Página para postproceso en línea (ideal para levantamientos en Canadá): https://webapp.csrs-scrs.nrcan-rncan.gc.ca/geod/tools-outils/ppp.php
+
+* Verificar antenna registrada en la base de datos de la NOOA (no actualiza la metadata del header)
+
+* SBAS - USA, CANADA
+

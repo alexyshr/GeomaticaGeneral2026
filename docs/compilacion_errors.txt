@@ -1,0 +1,662 @@
+root@e119e17570d8:/home/rstudio/work/02_geomatica_gral# quarto render --to all
+WARNING: The file /home/rstudio/work/02_geomatica_gral/10-guia_estructura_proyecto_final.qmd contains a theme property which is being ignored. Website projects do not support per document themes since all pages within a website share the website's theme.
+[ 1/52] index.qmd
+[ 2/52] 00-prefacio.qmd
+[ 3/52] 01-introduccion-entornos.qmd
+[ 4/52] 02-guia_instalacion_A_docker.qmd
+[ 5/52] 03-guia_instalacion_B_qgis.qmd
+[ 6/52] 04-guia_instalacion_C_ArcGIS.qmd
+[ 7/52] 10-guia_estructura_proyecto_final.qmd
+[ 8/52] 16-sr_fundamentos_introduccion.qmd
+[ 9/52] 17-sr_satelites_sensores.qmd
+[10/52] 18-sr_microondas.qmd
+[11/52] 19-sr_analisis_interpretacion_imagenes.qmd
+[12/52] 20-sr_aplicaciones.qmd
+[13/52] 21-sr_glosario.qmd
+[14/52] 22-sr_recursos_adicionales.qmd
+[15/52] 41-practica_1_clase2_visualizacion_dinamica.qmd
+[16/52] 42-practica_2_clase2_geoportales.qmd
+[17/52] 43-practica_3_clase3_coordenadas.qmd
+[18/52] 44-practica_4_clase4_conversionformatos.qmd
+[19/52] 45-practica_5_clase6_introduccion_sr_gee.qmd
+[WARNING] Could not fetch resource https://polyfill.io/v3/polyfill.min.js?features=es6: HttpExceptionRequest Request {
+    host                 = "polyfill.io"
+    port                 = 443
+    secure               = True
+    requestHeaders       = []
+    path                 = "/v3/polyfill.min.js"
+    queryString          = "?features=es6"
+    method               = "GET"
+    proxy                = Nothing
+    rawBody              = False
+    redirectCount        = 10
+    responseTimeout      = ResponseTimeoutDefault
+    requestVersion       = HTTP/1.1
+    proxySecureMode      = ProxySecureWithConnect
+  }
+   (ConnectionFailure Network.Socket.getAddrInfo (called with preferred socket type/protocol: AddrInfo {addrFlags = [AI_ADDRCONFIG], addrFamily = AF_UNSPEC, addrSocketType = Stream, addrProtocol = 0, addrAddress = 0.0.0.0:0, addrCanonName = Nothing}, host name: Just "polyfill.io", service name: Just "443"): does not exist (Name does not resolve))
+[20/52] 46-practica_6_clase7_nasa_worldview.qmd
+[21/52] 47-practica_7_clase7_nasa_plugin_qgis.qmd
+[22/52] 48-practica_8_clase8_gee_conceptos.qmd
+WARNING (/opt/quarto/share/filters/main.lua:14938) Figure with invalid crossref category: python_falsocolor_estatico
+Won't be able to cross-reference this figure.
+
+Starting python3 kernel...Done
+
+Executing '48-practica_8_clase8_gee_conceptos.ipynb'
+  Cell 1/32: 'python_init_codigo'.....................Done
+  Cell 2/32: 'python_init'............................Done
+  Cell 3/32: 'python_fundamentos_codigo'..............Done
+  Cell 4/32: 'python_fundamentos'.....................Done
+  Cell 5/32: 'python_falsocolor_codigo'...............Done
+  Cell 6/32: 'python_falsocolor_estatico_codigo'......Done
+  Cell 7/32: 'python_falsocolor'......................Done
+  Cell 8/32: 'python_falsocolor_estatico'.............Done
+  Cell 9/32: 'python_multitemporal_codigo'............Done
+  Cell 10/32: 'python_multitemporal_estatico_codigo'...Done
+  Cell 11/32: 'python_multitemporal'...................Done
+  Cell 12/32: 'fig-python_multitemporal_estatico'......Done
+  Cell 13/32: 'python_coleccion_codigo'................Done
+  Cell 14/32: 'python_coleccion_estatico_codigo'.......Done
+  Cell 15/32: 'python_coleccion'.......................Done
+  Cell 16/32: 'fig-python_coleccion_estatico'..........Done
+  Cell 17/32: 'python_escala_codigo'...................Done
+  Cell 18/32: 'python_escala_estatico_comparativa'.....Done
+  Cell 19/32: 'python_escala'..........................Done
+  Cell 20/32: 'fig-python_escala_estatico'.............Done
+  Cell 21/32: 'python_temporal_codigo'.................Done
+  Cell 22/32: 'python_temporal_estatico_codigo'........Done
+  Cell 23/32: 'python_temporal'........................Done
+  Cell 24/32: 'fig-python_temporal_estatico'...........Done
+  Cell 25/32: 'python_espectral_codigo'................Done
+  Cell 26/32: 'python_espectral_estatico_codigo'.......Done
+  Cell 27/32: 'python_espectral'.......................Done
+  Cell 28/32: 'fig-python_espectral_estatico'..........Done
+  Cell 29/32: 'python_mascara_codigo'..................Done
+  Cell 30/32: 'python_mascara_estatico_codigo'.........Done
+  Cell 31/32: 'python_mascara'.........................Done
+  Cell 32/32: 'fig-python_mascara_estatico'............Done
+
+[WARNING] Could not fetch resource https://polyfill.io/v3/polyfill.min.js?features=es6: HttpExceptionRequest Request {
+    host                 = "polyfill.io"
+    port                 = 443
+    secure               = True
+    requestHeaders       = []
+    path                 = "/v3/polyfill.min.js"
+    queryString          = "?features=es6"
+    method               = "GET"
+    proxy                = Nothing
+    rawBody              = False
+    redirectCount        = 10
+    responseTimeout      = ResponseTimeoutDefault
+    requestVersion       = HTTP/1.1
+    proxySecureMode      = ProxySecureWithConnect
+  }
+   (ConnectionFailure Network.Socket.getAddrInfo (called with preferred socket type/protocol: AddrInfo {addrFlags = [AI_ADDRCONFIG], addrFamily = AF_UNSPEC, addrSocketType = Stream, addrProtocol = 0, addrAddress = 0.0.0.0:0, addrCanonName = Nothing}, host name: Just "polyfill.io", service name: Just "443"): does not exist (Name does not resolve))
+[23/52] 49-practica_9_mde.qmd
+WARNING (/opt/quarto/share/filters/main.lua:14938) Figure with invalid crossref category: python_derivados_mde_codigo
+Won't be able to cross-reference this figure.
+
+Starting python3 kernel...Done
+
+Executing '49-practica_9_mde.ipynb'
+  Cell 1/4: 'python_init_codigo'............Done
+  Cell 2/4: 'python_init'...................Done
+  Cell 3/4: 'python_srtm_nativa_puro'.......Done
+  Cell 4/4: 'python_derivados_mde_codigo'...Done
+
+[WARNING] Could not fetch resource https://polyfill.io/v3/polyfill.min.js?features=es6: HttpExceptionRequest Request {
+    host                 = "polyfill.io"
+    port                 = 443
+    secure               = True
+    requestHeaders       = []
+    path                 = "/v3/polyfill.min.js"
+    queryString          = "?features=es6"
+    method               = "GET"
+    proxy                = Nothing
+    rawBody              = False
+    redirectCount        = 10
+    responseTimeout      = ResponseTimeoutDefault
+    requestVersion       = HTTP/1.1
+    proxySecureMode      = ProxySecureWithConnect
+  }
+   (ConnectionFailure Network.Socket.getAddrInfo (called with preferred socket type/protocol: AddrInfo {addrFlags = [AI_ADDRCONFIG], addrFamily = AF_UNSPEC, addrSocketType = Stream, addrProtocol = 0, addrAddress = 0.0.0.0:0, addrCanonName = Nothing}, host name: Just "polyfill.io", service name: Just "443"): does not exist (Name does not resolve))
+[24/52] 50-practica_10_mde_hydro.qmd
+
+Starting python3 kernel...Done
+
+Executing '50-practica_10_mde_hydro.ipynb'
+  Cell 1/28: 'fill_arcgispro_codigo'...........Done
+  Cell 2/28: 'fill_sinks_qgis_codigo'..........Done
+  Cell 3/28: 'fill_sinks_grass_codigo'.........Done
+  Cell 4/28: 'slope_arcgispro_codigo'..........Done
+  Cell 5/28: 'morphometry_qgis_saga_codigo'....Done
+  Cell 6/28: 'morphometry_qgis_grass_codigo'...Done
+  Cell 7/28: 'sin_slope_arcgispro_codigo'......Done
+  Cell 8/28: 'sin_slope_saga_codigo'...........Done
+  Cell 9/28: 'sin_slope_grass_codigo'..........Done
+  Cell 10/28: 'aspect_arcgispro_codigo'.........Done
+  Cell 11/28: 'hillshade_arcgispro_codigo'......Done
+  Cell 12/28: 'hillshade_saga_codigo'...........Done
+  Cell 13/28: 'hillshade_grass_codigo'..........Done
+  Cell 14/28: 'ruggedness_arcgis_codigo'........Done
+  Cell 15/28: 'ruggedness_saga_codigo'..........Done
+  Cell 16/28: 'tri_arcgis_codigo'...............Done
+  Cell 17/28: 'tri_saga_codigo'.................Done
+  Cell 18/28: 'tri_qgis_codigo'.................Done
+  Cell 19/28: 'curvature_arcgis_codigo'.........Done
+  Cell 20/28: 'accum_arcgis_codigo'.............Done
+  Cell 21/28: 'accum_saga_codigo'...............Done
+  Cell 22/28: 'watershed_grass_codigo'..........Done
+  Cell 23/28: 'flowlength_arcgis_codigo'........Done
+  Cell 24/28: 'flowlength_saga_codigo'..........Done
+  Cell 25/28: 'flowlength_grass_codigo'.........Done
+  Cell 26/28: 'mean_slope_arcgis_codigo'........Done
+  Cell 27/28: 'mean_slope_saga_codigo'..........Done
+  Cell 28/28: 'mean_slope_grass_codigo'.........Done
+
+[WARNING] Could not fetch resource https://polyfill.io/v3/polyfill.min.js?features=es6: HttpExceptionRequest Request {
+    host                 = "polyfill.io"
+    port                 = 443
+    secure               = True
+    requestHeaders       = []
+    path                 = "/v3/polyfill.min.js"
+    queryString          = "?features=es6"
+    method               = "GET"
+    proxy                = Nothing
+    rawBody              = False
+    redirectCount        = 10
+    responseTimeout      = ResponseTimeoutDefault
+    requestVersion       = HTTP/1.1
+    proxySecureMode      = ProxySecureWithConnect
+  }
+   (ConnectionFailure Network.Socket.getAddrInfo (called with preferred socket type/protocol: AddrInfo {addrFlags = [AI_ADDRCONFIG], addrFamily = AF_UNSPEC, addrSocketType = Stream, addrProtocol = 0, addrAddress = 0.0.0.0:0, addrCanonName = Nothing}, host name: Just "polyfill.io", service name: Just "443"): does not exist (Name does not resolve))
+[25/52] 51-practica_11_mde_models.qmd
+[26/52] 52-practica_12_formularios_arcgis_online_ai.qmd
+[27/52] 53-practica_13_gnss_allynav_r26.qmd
+[28/52] 54-practica_14_postproceso_levantamiento_gnss.qmd
+[29/52] 55-practica_15_gnss_trimble_da2.qmd
+[30/52] 56-practica_16_exactitud_posicional.qmd
+[31/52] 57-practica_17_qfield.qmd
+[32/52] 61-presentacion_1_clase1_varios.qmd
+[33/52] 62-presentacion_2_clase2_geomatica.qmd
+r1      [RawInline (Format "html") "<i class=\"fa-solid fa-earth-americas\" aria-label=\"earth-americas\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-solid fa-earth-americas\" aria-label=\"earth-americas\"></i>"]
+r1      [RawInline (Format "html") "<i class=\"fa-solid fa-layer-group\" aria-label=\"layer-group\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-solid fa-layer-group\" aria-label=\"layer-group\"></i>"]
+r1      [RawInline (Format "html") "<i class=\"fa-solid fa-satellite-dish\" aria-label=\"satellite-dish\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-solid fa-satellite-dish\" aria-label=\"satellite-dish\"></i>"]
+r1      [RawInline (Format "html") "<i class=\"fa-solid fa-gear\" aria-label=\"gear\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-solid fa-gear\" aria-label=\"gear\"></i>"]
+r1      [RawInline (Format "html") "<i class=\"fa-solid fa-database\" aria-label=\"database\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-solid fa-database\" aria-label=\"database\"></i>"]
+r1      [RawInline (Format "html") "<i class=\"fa-solid fa-magnifying-glass-chart\" aria-label=\"magnifying-glass-chart\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-solid fa-magnifying-glass-chart\" aria-label=\"magnifying-glass-chart\"></i>"]
+r1      [RawInline (Format "html") "<i class=\"fa-solid fa-eye\" aria-label=\"eye\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-solid fa-eye\" aria-label=\"eye\"></i>"]
+r1      [RawInline (Format "html") "<i class=\"fa-solid fa-hand-pointer\" aria-label=\"hand-pointer\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-solid fa-hand-pointer\" aria-label=\"hand-pointer\"></i>"]
+r1      [RawInline (Format "html") "<i class=\"fa-solid fa-location-dot\" aria-label=\"location-dot\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-solid fa-location-dot\" aria-label=\"location-dot\"></i>"]
+r1      [RawInline (Format "html") "<i class=\"fa-solid fa-satellite-dish\" aria-label=\"satellite-dish\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-solid fa-satellite-dish\" aria-label=\"satellite-dish\"></i>"]
+r1      [RawInline (Format "html") "<i class=\"fa-solid fa-microchip\" aria-label=\"microchip\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-solid fa-microchip\" aria-label=\"microchip\"></i>"]
+r1      [RawInline (Format "html") "<i class=\"fa-solid fa-map-location-dot\" aria-label=\"map-location-dot\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-solid fa-map-location-dot\" aria-label=\"map-location-dot\"></i>"]
+r1      [RawInline (Format "html") "<i class=\"fa-solid fa-camera-retro\" aria-label=\"camera-retro\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-solid fa-camera-retro\" aria-label=\"camera-retro\"></i>"]
+r1      [RawInline (Format "html") "<i class=\"fa-solid fa-database\" aria-label=\"database\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-solid fa-database\" aria-label=\"database\"></i>"]
+r1      [RawInline (Format "html") "<i class=\"fa-solid fa-network-wired\" aria-label=\"network-wired\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-solid fa-network-wired\" aria-label=\"network-wired\"></i>"]
+r1      [RawInline (Format "html") "<i class=\"fa-solid fa-magnifying-glass-chart\" aria-label=\"magnifying-glass-chart\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-solid fa-magnifying-glass-chart\" aria-label=\"magnifying-glass-chart\"></i>"]
+r1      [RawInline (Format "html") "<i class=\"fa-solid fa-map-location-dot\" aria-label=\"map-location-dot\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-solid fa-map-location-dot\" aria-label=\"map-location-dot\"></i>"]
+r1      [RawInline (Format "html") "<i class=\"fa-solid fa-graduation-cap\" aria-label=\"graduation-cap\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-solid fa-graduation-cap\" aria-label=\"graduation-cap\"></i>"]
+r1      [RawInline (Format "html") "<i class=\"fa-solid fa-microchip\" aria-label=\"microchip\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-solid fa-microchip\" aria-label=\"microchip\"></i>"]
+r1      [RawInline (Format "html") "<i class=\"fa-solid fa-rocket\" aria-label=\"rocket\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-solid fa-rocket\" aria-label=\"rocket\"></i>"]
+r1      [RawInline (Format "html") "<i class=\"fa-solid fa-gear\" aria-label=\"gear\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-solid fa-gear\" aria-label=\"gear\"></i>"]
+r1      [RawInline (Format "html") "<i class=\"fa-solid fa-earth-americas\" aria-label=\"earth-americas\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-solid fa-earth-americas\" aria-label=\"earth-americas\"></i>"]
+r1      [RawInline (Format "html") "<i class=\"fa-solid fa-map-location-dot\" aria-label=\"map-location-dot\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-solid fa-map-location-dot\" aria-label=\"map-location-dot\"></i>"]
+r1      [RawInline (Format "html") "<i class=\"fa-solid fa-clone\" aria-label=\"clone\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-solid fa-clone\" aria-label=\"clone\"></i>"]
+r1      [RawInline (Format "html") "<i class=\"fa-solid fa-circle-xmark\" aria-label=\"circle-xmark\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-solid fa-circle-xmark\" aria-label=\"circle-xmark\"></i>"]
+r1      [RawInline (Format "html") "<i class=\"fa-solid fa-diagram-project\" aria-label=\"diagram-project\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-solid fa-diagram-project\" aria-label=\"diagram-project\"></i>"]
+r1      [RawInline (Format "html") "<i class=\"fa-solid fa-gears\" aria-label=\"gears\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-solid fa-gears\" aria-label=\"gears\"></i>"]
+r1      [RawInline (Format "html") "<i class=\"fa-solid fa-draw-polygon\" aria-label=\"draw-polygon\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-solid fa-draw-polygon\" aria-label=\"draw-polygon\"></i>"]
+r1      [RawInline (Format "html") "<i class=\"fa-solid fa-circle-exclamation\" aria-label=\"circle-exclamation\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-solid fa-circle-exclamation\" aria-label=\"circle-exclamation\"></i>"]
+r1      [RawInline (Format "html") "<i class=\"fa-solid fa-camera-retro\" aria-label=\"camera-retro\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-solid fa-camera-retro\" aria-label=\"camera-retro\"></i>"]
+r1      [RawInline (Format "html") "<i class=\"fa-solid fa-satellite\" aria-label=\"satellite\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-solid fa-satellite\" aria-label=\"satellite\"></i>"]
+r1      [RawInline (Format "html") "<i class=\"fa-solid fa-drone\" aria-label=\"drone\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-solid fa-drone\" aria-label=\"drone\"></i>"]
+r1      [RawInline (Format "html") "<i class=\"fa-solid fa-tower-observation\" aria-label=\"tower-observation\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-solid fa-tower-observation\" aria-label=\"tower-observation\"></i>"]
+r1      [RawInline (Format "html") "<i class=\"fa-solid fa-cloud\" aria-label=\"cloud\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-solid fa-cloud\" aria-label=\"cloud\"></i>"]
+r1      [RawInline (Format "html") "<i class=\"fa-solid fa-microchip\" aria-label=\"microchip\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-solid fa-microchip\" aria-label=\"microchip\"></i>"]
+r1      [RawInline (Format "html") "<i class=\"fa-solid fa-database\" aria-label=\"database\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-solid fa-database\" aria-label=\"database\"></i>"]
+r1      [RawInline (Format "html") "<i class=\"fa-solid fa-satellite-dish\" aria-label=\"satellite-dish\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-solid fa-satellite-dish\" aria-label=\"satellite-dish\"></i>"]
+r1      [RawInline (Format "html") "<i class=\"fa-solid fa-database\" aria-label=\"database\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-solid fa-database\" aria-label=\"database\"></i>"]
+r1      [RawInline (Format "html") "<i class=\"fa-solid fa-chart-line\" aria-label=\"chart-line\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-solid fa-chart-line\" aria-label=\"chart-line\"></i>"]
+r1      [RawInline (Format "html") "<i class=\"fa-solid fa-eye\" aria-label=\"eye\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-solid fa-eye\" aria-label=\"eye\"></i>"]
+r1      [RawInline (Format "html") "<i class=\"fa-solid fa-handshake-angle fa-2x\" aria-label=\"handshake-angle\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-solid fa-handshake-angle fa-2x\" aria-label=\"handshake-angle\"></i>"]
+r1      [RawInline (Format "html") "<i class=\"fa-solid fa-boxes-stacked fa-1x\" aria-label=\"boxes-stacked\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-solid fa-boxes-stacked fa-1x\" aria-label=\"boxes-stacked\"></i>"]
+r1      [RawInline (Format "html") "<i class=\"fa-solid fa-handshake-angle fa-1x\" aria-label=\"handshake-angle\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-solid fa-handshake-angle fa-1x\" aria-label=\"handshake-angle\"></i>"]
+r1      [RawInline (Format "html") "<i class=\"fa-solid fa-network-wired fa-1x\" aria-label=\"network-wired\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-solid fa-network-wired fa-1x\" aria-label=\"network-wired\"></i>"]
+r1      [RawInline (Format "html") "<i class=\"fa-solid fa-timeline\" aria-label=\"timeline\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-solid fa-timeline\" aria-label=\"timeline\"></i>"]
+r1      [RawInline (Format "html") "<i class=\"fa-solid fa-map-location-dot\" aria-label=\"map-location-dot\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-solid fa-map-location-dot\" aria-label=\"map-location-dot\"></i>"]
+r1      [RawInline (Format "html") "<i class=\"fa-solid fa-network-wired\" aria-label=\"network-wired\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-solid fa-network-wired\" aria-label=\"network-wired\"></i>"]
+r1      [RawInline (Format "html") "<i class=\"fa-solid fa-city\" aria-label=\"city\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-solid fa-city\" aria-label=\"city\"></i>"]
+r1      [RawInline (Format "html") "<i class=\"fa-solid fa-cube\" aria-label=\"cube\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-solid fa-cube\" aria-label=\"cube\"></i>"]
+r1      [RawInline (Format "html") "<i class=\"fa-solid fa-brain\" aria-label=\"brain\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-solid fa-brain\" aria-label=\"brain\"></i>"]
+r1      [RawInline (Format "html") "<i class=\"fa-solid fa-rocket\" aria-label=\"rocket\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-solid fa-rocket\" aria-label=\"rocket\"></i>"]
+r1      [RawInline (Format "html") "<i class=\"fa-solid fa-tower-broadcast\" aria-label=\"tower-broadcast\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-solid fa-tower-broadcast\" aria-label=\"tower-broadcast\"></i>"]
+r1      [RawInline (Format "html") "<i class=\"fa-solid fa-city\" aria-label=\"city\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-solid fa-city\" aria-label=\"city\"></i>"]
+r1      [RawInline (Format "html") "<i class=\"fa-solid fa-cube\" aria-label=\"cube\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-solid fa-cube\" aria-label=\"cube\"></i>"]
+r1      [RawInline (Format "html") "<i class=\"fa-solid fa-arrows-left-right\" aria-label=\"arrows-left-right\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-solid fa-arrows-left-right\" aria-label=\"arrows-left-right\"></i>"]
+r1      [RawInline (Format "html") "<i class=\"fa-solid fa-display\" aria-label=\"display\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-solid fa-display\" aria-label=\"display\"></i>"]
+r1      [RawInline (Format "html") "<i class=\"fa-solid fa-earth-americas\" aria-label=\"earth-americas\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-solid fa-earth-americas\" aria-label=\"earth-americas\"></i>"]
+r1      [RawInline (Format "html") "<i class=\"fa-solid fa-building-columns\" aria-label=\"building-columns\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-solid fa-building-columns\" aria-label=\"building-columns\"></i>"]
+r1      [RawInline (Format "html") "<i class=\"fa-solid fa-eye\" aria-label=\"eye\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-solid fa-eye\" aria-label=\"eye\"></i>"]
+r1      [RawInline (Format "html") "<i class=\"fa-solid fa-users\" aria-label=\"users\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-solid fa-users\" aria-label=\"users\"></i>"]
+r1      [RawInline (Format "html") "<i class=\"fa-solid fa-brain\" aria-label=\"brain\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-solid fa-brain\" aria-label=\"brain\"></i>"]
+r1      [RawInline (Format "html") "<i class=\"fa-solid fa-brain\" aria-label=\"brain\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-solid fa-brain\" aria-label=\"brain\"></i>"]
+r1      [RawInline (Format "html") "<i class=\"fa-solid fa-earth-americas\" aria-label=\"earth-americas\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-solid fa-earth-americas\" aria-label=\"earth-americas\"></i>"]
+r1      [RawInline (Format "html") "<i class=\"fa-solid fa-plus\" aria-label=\"plus\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-solid fa-plus\" aria-label=\"plus\"></i>"]
+r1      [RawInline (Format "html") "<i class=\"fa-solid fa-brain\" aria-label=\"brain\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-solid fa-brain\" aria-label=\"brain\"></i>"]
+r1      [RawInline (Format "html") "<i class=\"fa-solid fa-equals\" aria-label=\"equals\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-solid fa-equals\" aria-label=\"equals\"></i>"]
+r1      [RawInline (Format "html") "<i class=\"fa-solid fa-route\" aria-label=\"route\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-solid fa-route\" aria-label=\"route\"></i>"]
+r1      [RawInline (Format "html") "<i class=\"fa-solid fa-comments\" aria-label=\"comments\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-solid fa-comments\" aria-label=\"comments\"></i>"]
+r1      [RawInline (Format "html") "<i class=\"fa-solid fa-envelope\" aria-label=\"envelope\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-solid fa-envelope\" aria-label=\"envelope\"></i>"]
+r1      [RawInline (Format "html") "<i class=\"fa-brands fa-linkedin\" aria-label=\"linkedin\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-brands fa-linkedin\" aria-label=\"linkedin\"></i>"]
+r1      [RawInline (Format "html") "<i class=\"fa-solid fa-globe\" aria-label=\"globe\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-solid fa-globe\" aria-label=\"globe\"></i>"]
+[34/52] 63-presentacion_3_clase2_syllabus_evaluacion.qmd
+[35/52] 64-presentacion_4_clase3_coordenadas.qmd
+r1      [RawInline (Format "html") "<i class=\"fa-solid fa-earth-americas\" aria-label=\"earth-americas\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-solid fa-earth-americas\" aria-label=\"earth-americas\"></i>"]
+r1      [RawInline (Format "html") "<i class=\"fa-solid fa-map-pin\" aria-label=\"map-pin\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-solid fa-map-pin\" aria-label=\"map-pin\"></i>"]
+r1      [RawInline (Format "html") "<i class=\"fa-solid fa-center-focus-strong\" aria-label=\"center-focus-strong\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-solid fa-center-focus-strong\" aria-label=\"center-focus-strong\"></i>"]
+r1      [RawInline (Format "html") "<i class=\"fa-solid fa-object-group\" aria-label=\"object-group\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-solid fa-object-group\" aria-label=\"object-group\"></i>"]
+r1      [RawInline (Format "html") "<i class=\"fa-solid fa-chart-area\" aria-label=\"chart-area\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-solid fa-chart-area\" aria-label=\"chart-area\"></i>"]
+r1      [RawInline (Format "html") "<i class=\"fa-solid fa-ruler-horizontal\" aria-label=\"ruler-horizontal\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-solid fa-ruler-horizontal\" aria-label=\"ruler-horizontal\"></i>"]
+r1      [RawInline (Format "html") "<i class=\"fa-solid fa-compass\" aria-label=\"compass\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-solid fa-compass\" aria-label=\"compass\"></i>"]
+r1      [RawInline (Format "html") "<i class=\"fa-solid fa-database\" aria-label=\"database\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-solid fa-database\" aria-label=\"database\"></i>"]
+r1      [RawInline (Format "html") "<i class=\"fa-solid fa-grip-lines\" aria-label=\"grip-lines\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-solid fa-grip-lines\" aria-label=\"grip-lines\"></i>"]
+r1      [RawInline (Format "html") "<i class=\"fa-solid fa-ruler-combined\" aria-label=\"ruler-combined\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-solid fa-ruler-combined\" aria-label=\"ruler-combined\"></i>"]
+r1      [RawInline (Format "html") "<i class=\"fa-solid fa-compass\" aria-label=\"compass\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-solid fa-compass\" aria-label=\"compass\"></i>"]
+r1      [RawInline (Format "html") "<i class=\"fa-solid fa-expand\" aria-label=\"expand\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-solid fa-expand\" aria-label=\"expand\"></i>"]
+r1      [RawInline (Format "html") "<i class=\"fa-solid fa-ruler-combined\" aria-label=\"ruler-combined\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-solid fa-ruler-combined\" aria-label=\"ruler-combined\"></i>"]
+r1      [RawInline (Format "html") "<i class=\"fa-solid fa-compass\" aria-label=\"compass\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-solid fa-compass\" aria-label=\"compass\"></i>"]
+r1      [RawInline (Format "html") "<i class=\"fa-solid fa-expand\" aria-label=\"expand\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-solid fa-expand\" aria-label=\"expand\"></i>"]
+r1      [RawInline (Format "html") "<i class=\"fa-solid fa-globe\" aria-label=\"globe\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-solid fa-globe\" aria-label=\"globe\"></i>"]
+r1      [RawInline (Format "html") "<i class=\"fa-solid fa-tower-broadcast\" aria-label=\"tower-broadcast\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-solid fa-tower-broadcast\" aria-label=\"tower-broadcast\"></i>"]
+r1      [RawInline (Format "html") "<i class=\"fa-solid fa-triangle-exclamation\" aria-label=\"triangle-exclamation\"></i>"]
+r2      [RawInline (Format "html") "<i class=\"fa-solid fa-triangle-exclamation\" aria-label=\"triangle-exclamation\"></i>"]
+[WARNING] Ignoring duplicate attribute style="width:50%;".
+[36/52] 65-presentacion_5_clase7_sr_arset.qmd
+[WARNING] Ignoring duplicate attribute style="width:30%;".
+[WARNING] Ignoring duplicate attribute style="width:70%;".
+[37/52] 80-instalacion_herramientas.qmd
+[38/52] 81-uso_infraestructura_instalada.qmd
+
+
+processing file: 81-uso_infraestructura_instalada.qmd
+1/19                             
+2/19 [unnamed-chunk-1]           
+3/19                             
+4/19 [python_verificacion_codigo]
+5/19                             
+6/19 [python_verificacion]       
+7/19                             
+8/19 [r_verificacion_codigo]     
+9/19                             
+10/19 [r_verificacion]            
+11/19                             
+12/19 [julia_verificacion_codigo] 
+13/19                             
+14/19 [julia_verificacion]        
+15/19                             
+16/19 [julia_verificacion2_codigo]
+17/19                             
+18/19 [julia_verificacion2]       
+19/19                             
+output file: 81-uso_infraestructura_instalada.knit.md
+
+[39/52] 82-quarto.qmd
+[40/52] 83-docker_desktop.qmd
+[41/52] 84-git_github.qmd
+[42/52] 85-vscode.qmd
+[43/52] 86-windows.qmd
+[44/52] 87-linux_ubuntu.qmd
+[45/52] 88-python.qmd
+[46/52] 89-r.qmd
+[47/52] 90-julia.qmd
+[48/52] 91-qgis.qmd
+[49/52] 92-arcgispro.qmd
+[50/52] 93-postgresql.qmd
+[51/52] 98-errata.qmd
+[52/52] 99-referencias.qmd
+
+pandoc 
+  to: latex
+  output-file: index.tex
+  standalone: true
+  toc: true
+  number-sections: true
+  top-level-division: chapter
+  pdf-engine: lualatex
+  variables:
+    graphics: true
+    tables: true
+  default-image-extension: pdf
+  cite-method: citeproc
+  toc-depth: 3
+  
+metadata
+  crossref:
+    chapters: true
+    fig-title: Figura
+    tbl-title: Tabla
+    sec-prefix: Sección
+    eq-prefix: Ecuación
+  documentclass: book
+  papersize: letter
+  block-headings: true
+  lang: es
+  bibliography:
+    - referencias.bib
+  csl: apa.csl
+  link-citations: true
+  toc-title: Tabla de Contenidos
+  lof-title: Lista de Figuras
+  lot-title: Lista de Tablas
+  geometry:
+    - top=2.5cm
+    - bottom=2.5cm
+    - left=2.5cm
+    - right=2.5cm
+  mermaid:
+    chrome-args:
+      - '--no-sandbox'
+      - '--disable-gpu'
+      - '--disable-dev-shm-usage'
+      - '--headless'
+  linestretch: 1.25
+  lof: true
+  lot: true
+  colorlinks: true
+  fig-cap-location: bottom
+  title: Geomática General
+  author: Alexys H. Rodríguez-Avellaneda Ph.D.
+  date: '2026-04-30T00:00:00+00:00'
+  
+WARNING (/opt/quarto/share/filters/main.lua:14938) Figure with invalid crossref category: python_falsocolor_estatico
+Won't be able to cross-reference this figure.
+WARNING (/opt/quarto/share/filters/main.lua:14938) Figure with invalid crossref category: python_derivados_mde_codigo
+Won't be able to cross-reference this figure.
+r1      [RawInline (Format "tex") "\\faIcon{earth-americas}"]
+r2      [RawInline (Format "tex") "\\faIcon{earth-americas}"]
+r1      [RawInline (Format "tex") "\\faIcon{layer-group}"]
+r2      [RawInline (Format "tex") "\\faIcon{layer-group}"]
+r1      [RawInline (Format "tex") "\\faIcon{satellite-dish}"]
+r2      [RawInline (Format "tex") "\\faIcon{satellite-dish}"]
+r1      [RawInline (Format "tex") "\\faIcon{gear}"]
+r2      [RawInline (Format "tex") "\\faIcon{gear}"]
+r1      [RawInline (Format "tex") "\\faIcon{database}"]
+r2      [RawInline (Format "tex") "\\faIcon{database}"]
+r1      [RawInline (Format "tex") "\\faIcon{magnifying-glass-chart}"]
+r2      [RawInline (Format "tex") "\\faIcon{magnifying-glass-chart}"]
+r1      [RawInline (Format "tex") "\\faIcon{eye}"]
+r2      [RawInline (Format "tex") "\\faIcon{eye}"]
+r1      [RawInline (Format "tex") "\\faIcon{hand-pointer}"]
+r2      [RawInline (Format "tex") "\\faIcon{hand-pointer}"]
+r1      [RawInline (Format "tex") "\\faIcon{location-dot}"]
+r2      [RawInline (Format "tex") "\\faIcon{location-dot}"]
+r1      [RawInline (Format "tex") "\\faIcon{satellite-dish}"]
+r2      [RawInline (Format "tex") "\\faIcon{satellite-dish}"]
+r1      [RawInline (Format "tex") "\\faIcon{microchip}"]
+r2      [RawInline (Format "tex") "\\faIcon{microchip}"]
+r1      [RawInline (Format "tex") "\\faIcon{map-location-dot}"]
+r2      [RawInline (Format "tex") "\\faIcon{map-location-dot}"]
+r1      [RawInline (Format "tex") "\\faIcon{camera-retro}"]
+r2      [RawInline (Format "tex") "\\faIcon{camera-retro}"]
+r1      [RawInline (Format "tex") "\\faIcon{database}"]
+r2      [RawInline (Format "tex") "\\faIcon{database}"]
+r1      [RawInline (Format "tex") "\\faIcon{network-wired}"]
+r2      [RawInline (Format "tex") "\\faIcon{network-wired}"]
+r1      [RawInline (Format "tex") "\\faIcon{magnifying-glass-chart}"]
+r2      [RawInline (Format "tex") "\\faIcon{magnifying-glass-chart}"]
+r1      [RawInline (Format "tex") "\\faIcon{map-location-dot}"]
+r2      [RawInline (Format "tex") "\\faIcon{map-location-dot}"]
+r1      [RawInline (Format "tex") "\\faIcon{graduation-cap}"]
+r2      [RawInline (Format "tex") "\\faIcon{graduation-cap}"]
+r1      [RawInline (Format "tex") "\\faIcon{microchip}"]
+r2      [RawInline (Format "tex") "\\faIcon{microchip}"]
+r1      [RawInline (Format "tex") "\\faIcon{rocket}"]
+r2      [RawInline (Format "tex") "\\faIcon{rocket}"]
+r1      [RawInline (Format "tex") "\\faIcon{gear}"]
+r2      [RawInline (Format "tex") "\\faIcon{gear}"]
+r1      [RawInline (Format "tex") "\\faIcon{earth-americas}"]
+r2      [RawInline (Format "tex") "\\faIcon{earth-americas}"]
+r1      [RawInline (Format "tex") "\\faIcon{map-location-dot}"]
+r2      [RawInline (Format "tex") "\\faIcon{map-location-dot}"]
+r1      [RawInline (Format "tex") "\\faIcon{clone}"]
+r2      [RawInline (Format "tex") "\\faIcon{clone}"]
+r1      [RawInline (Format "tex") "\\faIcon{circle-xmark}"]
+r2      [RawInline (Format "tex") "\\faIcon{circle-xmark}"]
+r1      [RawInline (Format "tex") "\\faIcon{diagram-project}"]
+r2      [RawInline (Format "tex") "\\faIcon{diagram-project}"]
+r1      [RawInline (Format "tex") "\\faIcon{gears}"]
+r2      [RawInline (Format "tex") "\\faIcon{gears}"]
+r1      [RawInline (Format "tex") "\\faIcon{draw-polygon}"]
+r2      [RawInline (Format "tex") "\\faIcon{draw-polygon}"]
+r1      [RawInline (Format "tex") "\\faIcon{circle-exclamation}"]
+r2      [RawInline (Format "tex") "\\faIcon{circle-exclamation}"]
+r1      [RawInline (Format "tex") "\\faIcon{camera-retro}"]
+r2      [RawInline (Format "tex") "\\faIcon{camera-retro}"]
+r1      [RawInline (Format "tex") "\\faIcon{satellite}"]
+r2      [RawInline (Format "tex") "\\faIcon{satellite}"]
+r1      [RawInline (Format "tex") "\\faIcon{drone}"]
+r2      [RawInline (Format "tex") "\\faIcon{drone}"]
+r1      [RawInline (Format "tex") "\\faIcon{tower-observation}"]
+r2      [RawInline (Format "tex") "\\faIcon{tower-observation}"]
+r1      [RawInline (Format "tex") "\\faIcon{cloud}"]
+r2      [RawInline (Format "tex") "\\faIcon{cloud}"]
+r1      [RawInline (Format "tex") "\\faIcon{microchip}"]
+r2      [RawInline (Format "tex") "\\faIcon{microchip}"]
+r1      [RawInline (Format "tex") "\\faIcon{database}"]
+r2      [RawInline (Format "tex") "\\faIcon{database}"]
+r1      [RawInline (Format "tex") "\\faIcon{satellite-dish}"]
+r2      [RawInline (Format "tex") "\\faIcon{satellite-dish}"]
+r1      [RawInline (Format "tex") "\\faIcon{database}"]
+r2      [RawInline (Format "tex") "\\faIcon{database}"]
+r1      [RawInline (Format "tex") "\\faIcon{chart-line}"]
+r2      [RawInline (Format "tex") "\\faIcon{chart-line}"]
+r1      [RawInline (Format "tex") "\\faIcon{eye}"]
+r2      [RawInline (Format "tex") "\\faIcon{eye}"]
+r1      [RawInline (Format "tex") "\\faIcon{handshake-angle}"]
+r2      [RawInline (Format "tex") "\\faIcon{handshake-angle}"]
+r1      [RawInline (Format "tex") "\\faIcon{boxes-stacked}"]
+r2      [RawInline (Format "tex") "\\faIcon{boxes-stacked}"]
+r1      [RawInline (Format "tex") "\\faIcon{handshake-angle}"]
+r2      [RawInline (Format "tex") "\\faIcon{handshake-angle}"]
+r1      [RawInline (Format "tex") "\\faIcon{network-wired}"]
+r2      [RawInline (Format "tex") "\\faIcon{network-wired}"]
+r1      [RawInline (Format "tex") "\\faIcon{timeline}"]
+r2      [RawInline (Format "tex") "\\faIcon{timeline}"]
+r1      [RawInline (Format "tex") "\\faIcon{map-location-dot}"]
+r2      [RawInline (Format "tex") "\\faIcon{map-location-dot}"]
+r1      [RawInline (Format "tex") "\\faIcon{network-wired}"]
+r2      [RawInline (Format "tex") "\\faIcon{network-wired}"]
+r1      [RawInline (Format "tex") "\\faIcon{city}"]
+r2      [RawInline (Format "tex") "\\faIcon{city}"]
+r1      [RawInline (Format "tex") "\\faIcon{cube}"]
+r2      [RawInline (Format "tex") "\\faIcon{cube}"]
+r1      [RawInline (Format "tex") "\\faIcon{brain}"]
+r2      [RawInline (Format "tex") "\\faIcon{brain}"]
+r1      [RawInline (Format "tex") "\\faIcon{rocket}"]
+r2      [RawInline (Format "tex") "\\faIcon{rocket}"]
+r1      [RawInline (Format "tex") "\\faIcon{tower-broadcast}"]
+r2      [RawInline (Format "tex") "\\faIcon{tower-broadcast}"]
+r1      [RawInline (Format "tex") "\\faIcon{city}"]
+r2      [RawInline (Format "tex") "\\faIcon{city}"]
+r1      [RawInline (Format "tex") "\\faIcon{cube}"]
+r2      [RawInline (Format "tex") "\\faIcon{cube}"]
+r1      [RawInline (Format "tex") "\\faIcon{arrows-left-right}"]
+r2      [RawInline (Format "tex") "\\faIcon{arrows-left-right}"]
+r1      [RawInline (Format "tex") "\\faIcon{display}"]
+r2      [RawInline (Format "tex") "\\faIcon{display}"]
+r1      [RawInline (Format "tex") "\\faIcon{earth-americas}"]
+r2      [RawInline (Format "tex") "\\faIcon{earth-americas}"]
+r1      [RawInline (Format "tex") "\\faIcon{building-columns}"]
+r2      [RawInline (Format "tex") "\\faIcon{building-columns}"]
+r1      [RawInline (Format "tex") "\\faIcon{eye}"]
+r2      [RawInline (Format "tex") "\\faIcon{eye}"]
+r1      [RawInline (Format "tex") "\\faIcon{users}"]
+r2      [RawInline (Format "tex") "\\faIcon{users}"]
+r1      [RawInline (Format "tex") "\\faIcon{brain}"]
+r2      [RawInline (Format "tex") "\\faIcon{brain}"]
+r1      [RawInline (Format "tex") "\\faIcon{brain}"]
+r2      [RawInline (Format "tex") "\\faIcon{brain}"]
+r1      [RawInline (Format "tex") "\\faIcon{earth-americas}"]
+r2      [RawInline (Format "tex") "\\faIcon{earth-americas}"]
+r1      [RawInline (Format "tex") "\\faIcon{plus}"]
+r2      [RawInline (Format "tex") "\\faIcon{plus}"]
+r1      [RawInline (Format "tex") "\\faIcon{brain}"]
+r2      [RawInline (Format "tex") "\\faIcon{brain}"]
+r1      [RawInline (Format "tex") "\\faIcon{equals}"]
+r2      [RawInline (Format "tex") "\\faIcon{equals}"]
+r1      [RawInline (Format "tex") "\\faIcon{route}"]
+r2      [RawInline (Format "tex") "\\faIcon{route}"]
+r1      [RawInline (Format "tex") "\\faIcon{comments}"]
+r2      [RawInline (Format "tex") "\\faIcon{comments}"]
+r1      [RawInline (Format "tex") "\\faIcon{envelope}"]
+r2      [RawInline (Format "tex") "\\faIcon{envelope}"]
+r1      [RawInline (Format "tex") "\\faIcon{linkedin}"]
+r2      [RawInline (Format "tex") "\\faIcon{linkedin}"]
+r1      [RawInline (Format "tex") "\\faIcon{globe}"]
+r2      [RawInline (Format "tex") "\\faIcon{globe}"]
+r1      [RawInline (Format "tex") "\\faIcon{earth-americas}"]
+r2      [RawInline (Format "tex") "\\faIcon{earth-americas}"]
+r1      [RawInline (Format "tex") "\\faIcon{map-pin}"]
+r2      [RawInline (Format "tex") "\\faIcon{map-pin}"]
+r1      [RawInline (Format "tex") "\\faIcon{center-focus-strong}"]
+r2      [RawInline (Format "tex") "\\faIcon{center-focus-strong}"]
+r1      [RawInline (Format "tex") "\\faIcon{object-group}"]
+r2      [RawInline (Format "tex") "\\faIcon{object-group}"]
+r1      [RawInline (Format "tex") "\\faIcon{chart-area}"]
+r2      [RawInline (Format "tex") "\\faIcon{chart-area}"]
+r1      [RawInline (Format "tex") "\\faIcon{ruler-horizontal}"]
+r2      [RawInline (Format "tex") "\\faIcon{ruler-horizontal}"]
+r1      [RawInline (Format "tex") "\\faIcon{compass}"]
+r2      [RawInline (Format "tex") "\\faIcon{compass}"]
+r1      [RawInline (Format "tex") "\\faIcon{database}"]
+r2      [RawInline (Format "tex") "\\faIcon{database}"]
+r1      [RawInline (Format "tex") "\\faIcon{grip-lines}"]
+r2      [RawInline (Format "tex") "\\faIcon{grip-lines}"]
+r1      [RawInline (Format "tex") "\\faIcon{ruler-combined}"]
+r2      [RawInline (Format "tex") "\\faIcon{ruler-combined}"]
+r1      [RawInline (Format "tex") "\\faIcon{compass}"]
+r2      [RawInline (Format "tex") "\\faIcon{compass}"]
+r1      [RawInline (Format "tex") "\\faIcon{expand}"]
+r2      [RawInline (Format "tex") "\\faIcon{expand}"]
+r1      [RawInline (Format "tex") "\\faIcon{ruler-combined}"]
+r2      [RawInline (Format "tex") "\\faIcon{ruler-combined}"]
+r1      [RawInline (Format "tex") "\\faIcon{compass}"]
+r2      [RawInline (Format "tex") "\\faIcon{compass}"]
+r1      [RawInline (Format "tex") "\\faIcon{expand}"]
+r2      [RawInline (Format "tex") "\\faIcon{expand}"]
+r1      [RawInline (Format "tex") "\\faIcon{globe}"]
+r2      [RawInline (Format "tex") "\\faIcon{globe}"]
+r1      [RawInline (Format "tex") "\\faIcon{tower-broadcast}"]
+r2      [RawInline (Format "tex") "\\faIcon{tower-broadcast}"]
+r1      [RawInline (Format "tex") "\\faIcon{triangle-exclamation}"]
+r2      [RawInline (Format "tex") "\\faIcon{triangle-exclamation}"]
+WARNING (/opt/quarto/share/filters/main.lua:12156) Unable to resolve crossref @sec-qgis_saga_sac
+
+Rendering PDF
+running lualatex - 1
+  This is LuaHBTeX, Version 1.24.0 (TeX Live 2026) 
+   restricted system commands enabled.
+  
+updating tlmgr
+
+updating existing packages
+finding package for fontawesome6.sty
+> 1 package to install
+> installing fontawesome6 (1 of 1)
+  This is LuaHBTeX, Version 1.24.0 (TeX Live 2026) 
+   restricted system commands enabled.
+  
+ERROR: 
+compilation failed- error
+Package fontawesome6 Error: Incompatible version of Font Awesome already
+(fontawesome6)                loaded

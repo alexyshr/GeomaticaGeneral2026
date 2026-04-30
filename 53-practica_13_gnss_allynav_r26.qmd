@@ -1,0 +1,95 @@
+# Levantamiento GNSS usando equipo AllyNav R26: punto geodésico y borde de vía
+
+> Nota: Fundamentación teórica y desarrollo práctico elaborados por *Fernan Jose Severich Diaz*, con la colaboración de *Raul Andrés Posada* en el componente teórico
+
+
+## Justificación
+
+La presente práctica aplica los fundamentos operativos del posicionamiento GNSS mediante dos metodologías fundamentales en topografía y geodesia: el levantamiento **estático** y el levantamiento **cinemático** en tiempo real (RTK). Para este ejercicio se emplean receptores GNSS con comunicación por radio UHF, lo cual permite trabajar en configuración base–rover y comprender el principio de las correcciones diferenciales en tiempo real. 
+
+El equipo AllyNav R26 integra funciones como radio UHF incorporada, operación dual base/rover, compensación de inclinación, almacenamiento interno y soporte para datos estáticos y RTK. Estas características permiten desarrollar una experiencia integral que abarca desde la observación sobre un vértice de la red geodésica institucional (verdad terreno) hasta la captura dinámica de infraestructura lineal en el borde de una vía.
+
+## Objetivo general
+
+Desarrollar una práctica de campo y gabinete para el uso de equipos GNSS con radio UHF, aplicando levantamiento estático sobre un punto de referencia y levantamiento RTK en un segmento vial, con el fin de evaluar la exactitud posicional y familiarizar a los estudiantes con procedimientos reales de levantamiento geoespacial.
+
+## Objetivos específicos
+
+* Reconocer los componentes, prestaciones y configuración básica del receptor GNSS AllyNav R26 con radio UHF integrada.
+* Comprender la diferencia operativa entre las metodologías de levantamiento estático y cinemático (RTK).
+* Realizar observaciones GNSS en modo estático sobre el vértice geodésico `GPS-001 DODF` de la Universidad Nacional de Colombia.
+* Configurar un equipo GNSS en modo base y otro en modo rover para ejecutar un levantamiento RTK sobre el borde de una vía.
+* Identificar posibles fuentes de error y analizar la calidad de los resultados obtenidos mediante la comparación de coordenadas observadas frente a las oficiales.
+
+## Fundamento técnico del equipo
+
+El receptor AllyNav R26 es un equipo GNSS de alta precisión orientado a aplicaciones de topografía e ingeniería. Permite trabajar con múltiples constelaciones, operar como base o rover, transmitir correcciones por radio UHF en el rango 410–470 MHz y generar datos diferenciales en formato RTCM 3.X. 
+
+En cuanto a desempeño, el receptor ofrece una confiabilidad de inicialización RTK superior al 99.9%, con una frecuencia de actualización de datos de hasta 20 Hz. Incorpora compensación de inclinación (IMU) con un rango de 0 a 60°, manteniendo una precisión de 2.5 cm dentro de los primeros 30°. Posee una autonomía aproximada de 20 horas en modo rover y 15 horas en modo base.
+
+## Metodología de campo
+
+### Reconocimiento y configuración instrumental
+
+Al inicio de la práctica se identifican los componentes del sistema: receptores, baterías, cargadores, bastón, trípode y base nivelante. Se accede a la interfaz de configuración del AllyNav R26 para establecer el modo de operación, los parámetros de la radio UHF y el registro de alturas de antena. Es importante registrar correctamente el nombre del punto, la altura instrumental y la hora de inicio de la observación.
+
+### Ocupación del vértice geodésico (Fase estática)
+
+Se realiza la instalación del receptor sobre un trípode en el punto de coordenadas conocidas de la red geodésica de la Universidad Nacional, identificado como GPS-001 DODF. El procedimiento incluye:
+
+* Centrado y nivelación rigurosa sobre el vértice.
+* Configuración del receptor en modo estático para registrar información GNSS cruda en formato binario.
+* Tiempo de observación mínimo de 20 minutos para asegurar la consistencia de los datos destinados a la evaluación de exactitud absoluta.
+
+Las coordenadas oficiales de referencia para este punto son: Latitud 4°38'8.28035" N, Longitud 74°5'10.78854" W y una altura elipsoidal de 2577.033 m.
+
+> Nota: Este levantamiento estático no requiere configuración de sistema de coordenadas en el receptor.
+
+### Levantamiento cinemático de borde de vía (Fase RTK)
+
+Concluida la fase estática, el receptor sobre el vértice geodésico se configura como estación base para transmitir correcciones diferenciales vía radio UHF. El segundo receptor se configura como rover para recibir dichas correcciones en tiempo real. 
+
+* Se verifica la comunicación y el tipo de solución (Fija/Fixed).
+* El operador del rover se desplaza por el borde de la vía capturando vértices de manera rápida y dinámica.
+* Se monitorean parámetros de calidad como el número de satélites y la precisión reportada (HRMS/VRMS).
+* Se emplea la compensación de inclinación en tramos con obstáculos físicos que impidan la verticalidad del bastón.
+
+## Archivos de referencia y resultados
+
+Los archivos vinculados a este levantamiento son:
+
+| Archivo o directorio | Descripción |
+| :--- | :--- |
+| `R26-Datasheet.pdf` | Guía técnica del equipo AllyNav R26|
+| `red_geodesica_unal.txt` | Coordenadas del punto de referencia - Red Geodésica Nacional|
+| `UNAL3_103121.xls` | |
+| `UNALclase_102348.txt` | |
+| `UNAL_102813.txt` | |
+| `GNSS Clase.rar` | |
+| ↳ `Crudos/` (Directorio) | |
+| ↳ `RINEX/` (Directorio) | |
+| ↳ `Datos de Levantamiento Estático.txt` | |
+
+Algunos de los archivos descritos anteriormente están compartidos [aquí](https://drive.google.com/drive/folders/1ie3uWUi9XlN6al_OyyqYYqVJY6KrJugI)
+
+## Próxima práctica: postproceso de observaciones
+
+Como fase complementaria al trabajo de campo, se plantea una sesión de escritorio dedicada al postproceso de la información. El objetivo es que los estudiantes comprendan cómo se obtienen coordenadas ajustadas a partir de los datos brutos observados, analizando la diferencia entre una solución obtenida en tiempo real (RTK) y una solución derivada del procesamiento de oficina.
+
+El flujo de trabajo propuesto para esta etapa consiste en:
+
+1. **Descarga y organización:** Transferencia de los datos almacenados en formato binario desde la memoria interna del AllyNav R26 al computador.
+2. **Procesamiento:** Carga de archivos de observación en el software de postproceso, definición de parámetros geodésicos y obtención de coordenadas finales de los puntos ocupados.
+3. **Análisis de calidad:** Discusión sobre residuos, redundancia y la influencia de la geometría satelital en la precisión final de la solución.
+4. **Comparación de resultados:** Contraste entre las coordenadas estáticas postprocesadas y las obtenidas mediante el método RTK en campo, permitiendo establecer el alcance y las limitaciones de cada metodología en distintos contextos topográficos.
+
+### Recomendaciones/recursos adicionales para el postproceso
+
+* Uso del software [Leica Geo Office](https://leica-geosystems.com/es-es/rugbycl/archive-data/software/leica-geo-office) (licenciado)
+
+* **RTKLIB** es un paquete de software libre y de código abierto diseñado para el posicionamiento preciso mediante sistemas globales de navegación por satélite (GNSS), como GPS, GLONASS, Galileo, BeiDou y QZSS. Permite procesar datos en tiempo real (RTK) o postprocesamiento (PPK) para obtener precisiones centimétricas, siendo ampliamente utilizado en topografía, drones y agricultura de precisió
+
+* Página para identificar la fecha GNSS del levantamiento: [https://gnsscalendar.com/](https://gnsscalendar.com/)
+
+* https://redgeodesica.igac.gov.co/red_activa.html
+

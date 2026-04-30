@@ -210,7 +210,7 @@ salida_slope.save(slope_output)
 :::
 :::
 
-### QGIS (SAGA GIS) {#sec-qgis_saga_sac}
+### QGIS (SAGA GIS) {#sec-qgis_saga_sac} 
 
 **Herramienta:** `SAGA Next Gen` -> `Terrain Analysis` -> `Slope, Aspect, Curvature`
 
@@ -456,7 +456,7 @@ salida_aspect.save(aspect_output)
 
 ### QGIS (SAGA y GRASS)
 
-*Ver las secciones de [SAGA](#sec-qgis_saga_sac) y [GRASS](#sec-qgis_grass_sac) para la ejecución simultánea de derivadas topográficas parciales.*
+*Ver las secciones de SAGA ([@sec-qgis_saga_sac]) y GRASS ([@sec-qgis_grass_sac]) para la ejecución simultánea de derivadas topográficas parciales.*
 
 :::
 
@@ -797,7 +797,7 @@ curv_gen.save(output_general)
 
 ### QGIS (SAGA y GRASS)
 
-*Ver las secciones de SAGA ([@sec-qgis_saga_sac]) y GRASS (#sec-qgis_grass_sac) para la ejecución simultánea de derivadas topográficas parciales.*
+*Ver las secciones de SAGA ([@sec-qgis_saga_sac]) y GRASS ([@sec-qgis_grass_sac]) para la ejecución simultánea de derivadas topográficas parciales.*
 
 FALTA
 :::

@@ -17,7 +17,7 @@
             <meta name="viewport" content="width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             <style>
-                #map_1578b9f762c978c7a25512ed48f74363 {
+                #map_3634c39aa93c933fd02e29661c6e1043 {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -54,14 +54,14 @@
 <body>
     
     
-            <div class="folium-map" id="map_1578b9f762c978c7a25512ed48f74363" ></div>
+            <div class="folium-map" id="map_3634c39aa93c933fd02e29661c6e1043" ></div>
         
 </body>
 <script>
     
     
-            var map_1578b9f762c978c7a25512ed48f74363 = L.map(
-                "map_1578b9f762c978c7a25512ed48f74363",
+            var map_3634c39aa93c933fd02e29661c6e1043 = L.map(
+                "map_3634c39aa93c933fd02e29661c6e1043",
                 {
                     center: [4.638, -74.084],
                     crs: L.CRS.EPSG3857,
@@ -78,7 +78,7 @@
 
         
     
-            var tile_layer_f3e8f44f25c13adbdf5e1a7d1f7b86c8 = L.tileLayer(
+            var tile_layer_5097fa8e9314de1424dc692946e6249f = L.tileLayer(
                 "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
                 {
   "minZoom": 0,
@@ -95,11 +95,11 @@
             );
         
     
-            tile_layer_f3e8f44f25c13adbdf5e1a7d1f7b86c8.addTo(map_1578b9f762c978c7a25512ed48f74363);
+            tile_layer_5097fa8e9314de1424dc692946e6249f.addTo(map_3634c39aa93c933fd02e29661c6e1043);
         
     
-            var tile_layer_126ad653403ce1f0bf5d6763725018e0 = L.tileLayer(
-                "https://earthengine.googleapis.com/v1/projects/ee-giswqg/maps/d3d151636a6e22f9afe7594223e1c9a7-e541b2d5217ef07f1177aed177756beb/tiles/{z}/{x}/{y}",
+            var tile_layer_798e7ef224632eb19948a8b7f22311d8 = L.tileLayer(
+                "https://earthengine.googleapis.com/v1/projects/ee-giswqg/maps/d3d151636a6e22f9afe7594223e1c9a7-c4c784674c3f932e51a3e182e20e3614/tiles/{z}/{x}/{y}",
                 {
   "minZoom": 0,
   "maxZoom": 18,
@@ -115,26 +115,26 @@
             );
         
     
-            tile_layer_126ad653403ce1f0bf5d6763725018e0.addTo(map_1578b9f762c978c7a25512ed48f74363);
+            tile_layer_798e7ef224632eb19948a8b7f22311d8.addTo(map_3634c39aa93c933fd02e29661c6e1043);
         
     
-            var layer_control_3204fd9ec88dde8c125c027ecec48754_layers = {
+            var layer_control_80793b1161d052503892a174af36725c_layers = {
                 base_layers : {
-                    "openstreetmap" : tile_layer_f3e8f44f25c13adbdf5e1a7d1f7b86c8,
+                    "openstreetmap" : tile_layer_5097fa8e9314de1424dc692946e6249f,
                 },
                 overlays :  {
-                    "Edificios UNAL" : tile_layer_126ad653403ce1f0bf5d6763725018e0,
+                    "Edificios UNAL" : tile_layer_798e7ef224632eb19948a8b7f22311d8,
                 },
             };
-            let layer_control_3204fd9ec88dde8c125c027ecec48754 = L.control.layers(
-                layer_control_3204fd9ec88dde8c125c027ecec48754_layers.base_layers,
-                layer_control_3204fd9ec88dde8c125c027ecec48754_layers.overlays,
+            let layer_control_80793b1161d052503892a174af36725c = L.control.layers(
+                layer_control_80793b1161d052503892a174af36725c_layers.base_layers,
+                layer_control_80793b1161d052503892a174af36725c_layers.overlays,
                 {
   "position": "topright",
   "collapsed": true,
   "autoZIndex": true,
 }
-            ).addTo(map_1578b9f762c978c7a25512ed48f74363);
+            ).addTo(map_3634c39aa93c933fd02e29661c6e1043);
 
         
 </script>

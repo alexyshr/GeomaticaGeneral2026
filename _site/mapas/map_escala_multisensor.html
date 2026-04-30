@@ -17,7 +17,7 @@
             <meta name="viewport" content="width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             <style>
-                #map_6088ed1b138b56d3912ba944c198954c {
+                #map_1d9a3f8049e79fe242f1cbd4efc0087d {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -54,14 +54,14 @@
 <body>
     
     
-            <div class="folium-map" id="map_6088ed1b138b56d3912ba944c198954c" ></div>
+            <div class="folium-map" id="map_1d9a3f8049e79fe242f1cbd4efc0087d" ></div>
         
 </body>
 <script>
     
     
-            var map_6088ed1b138b56d3912ba944c198954c = L.map(
-                "map_6088ed1b138b56d3912ba944c198954c",
+            var map_1d9a3f8049e79fe242f1cbd4efc0087d = L.map(
+                "map_1d9a3f8049e79fe242f1cbd4efc0087d",
                 {
                     center: [4.7015, -74.1469],
                     crs: L.CRS.EPSG3857,
@@ -78,7 +78,7 @@
 
         
     
-            var tile_layer_94de15fba54dc178274873a9beb576f9 = L.tileLayer(
+            var tile_layer_b8ceb6e440ae36ac4e61d4e728494442 = L.tileLayer(
                 "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
                 {
   "minZoom": 0,
@@ -95,11 +95,11 @@
             );
         
     
-            tile_layer_94de15fba54dc178274873a9beb576f9.addTo(map_6088ed1b138b56d3912ba944c198954c);
+            tile_layer_b8ceb6e440ae36ac4e61d4e728494442.addTo(map_1d9a3f8049e79fe242f1cbd4efc0087d);
         
     
-            var tile_layer_f7cb6ee02e11e96ef82244057fdd7ed2 = L.tileLayer(
-                "https://earthengine.googleapis.com/v1/projects/ee-giswqg/maps/fe6d7bb9d481105649c9ae4a4f60d533-fb97637474315d15568ef74f044e2c7a/tiles/{z}/{x}/{y}",
+            var tile_layer_32a9200b8ee516c4b95032709822a97f = L.tileLayer(
+                "https://earthengine.googleapis.com/v1/projects/ee-giswqg/maps/30448c2a870b3ae744ac9e266485bbae-61a8bfb5d4b57b8e8d5f6c60e051e86b/tiles/{z}/{x}/{y}",
                 {
   "minZoom": 0,
   "maxZoom": 18,
@@ -115,8 +115,8 @@
             );
         
     
-            var tile_layer_f363f9a079cbfe311815ffaebfeccfb9 = L.tileLayer(
-                "https://earthengine.googleapis.com/v1/projects/ee-giswqg/maps/4667c6298624df5713173c5cdc688e20-6ae3a8e2ef8bba741c1f8aeb23eb3ee6/tiles/{z}/{x}/{y}",
+            var tile_layer_0b3826a2d44798fa8f63ddef66df0ee9 = L.tileLayer(
+                "https://earthengine.googleapis.com/v1/projects/ee-giswqg/maps/83a46d55e21923692e4e1e8e8fb9f1de-550ed7a3eb2227c365d5a732ebf9fcc9/tiles/{z}/{x}/{y}",
                 {
   "minZoom": 0,
   "maxZoom": 18,
@@ -132,8 +132,8 @@
             );
         
     
-            var tile_layer_a0c239629c85399749e9790f60dabae7 = L.tileLayer(
-                "https://earthengine.googleapis.com/v1/projects/ee-giswqg/maps/af190625578fbeaa3bc3243d39d12f16-545ef4baee333f1657c390b533852b72/tiles/{z}/{x}/{y}",
+            var tile_layer_e1da80b4e52a21ba0bc1c002505dfa10 = L.tileLayer(
+                "https://earthengine.googleapis.com/v1/projects/ee-giswqg/maps/c8de4d1e5e3b61e40c48258f164bb4bc-5caeb6b1cd9dc2462488772b346881cc/tiles/{z}/{x}/{y}",
                 {
   "minZoom": 0,
   "maxZoom": 18,
@@ -149,28 +149,28 @@
             );
         
     
-            tile_layer_a0c239629c85399749e9790f60dabae7.addTo(map_6088ed1b138b56d3912ba944c198954c);
+            tile_layer_e1da80b4e52a21ba0bc1c002505dfa10.addTo(map_1d9a3f8049e79fe242f1cbd4efc0087d);
         
     
-            var layer_control_abd4235870a0ead5b0e6160a49999070_layers = {
+            var layer_control_46f61e34511e6a0917eb4dc1d24b428d_layers = {
                 base_layers : {
-                    "openstreetmap" : tile_layer_94de15fba54dc178274873a9beb576f9,
+                    "openstreetmap" : tile_layer_b8ceb6e440ae36ac4e61d4e728494442,
                 },
                 overlays :  {
-                    "1. MODIS (500m)" : tile_layer_f7cb6ee02e11e96ef82244057fdd7ed2,
-                    "2. Landsat 9 (30m)" : tile_layer_f363f9a079cbfe311815ffaebfeccfb9,
-                    "3. Sentinel-2 (10m)" : tile_layer_a0c239629c85399749e9790f60dabae7,
+                    "1. MODIS (500m)" : tile_layer_32a9200b8ee516c4b95032709822a97f,
+                    "2. Landsat 9 (30m)" : tile_layer_0b3826a2d44798fa8f63ddef66df0ee9,
+                    "3. Sentinel-2 (10m)" : tile_layer_e1da80b4e52a21ba0bc1c002505dfa10,
                 },
             };
-            let layer_control_abd4235870a0ead5b0e6160a49999070 = L.control.layers(
-                layer_control_abd4235870a0ead5b0e6160a49999070_layers.base_layers,
-                layer_control_abd4235870a0ead5b0e6160a49999070_layers.overlays,
+            let layer_control_46f61e34511e6a0917eb4dc1d24b428d = L.control.layers(
+                layer_control_46f61e34511e6a0917eb4dc1d24b428d_layers.base_layers,
+                layer_control_46f61e34511e6a0917eb4dc1d24b428d_layers.overlays,
                 {
   "position": "topright",
   "collapsed": true,
   "autoZIndex": true,
 }
-            ).addTo(map_6088ed1b138b56d3912ba944c198954c);
+            ).addTo(map_1d9a3f8049e79fe242f1cbd4efc0087d);
 
         
 </script>
