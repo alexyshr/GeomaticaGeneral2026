@@ -1,0 +1,613 @@
+# Enfoques y aplicaciones de la cartografía
+
+La disciplina cartográfica se despliega a través de múltiples enfoques analíticos y de diseño, dependiendo del objetivo de estudio y la audiencia:
+
+* **Enfoque analítico:** Utilizado para la evaluación espacial de fenómenos, como el análisis de densidad delictiva urbana.
+
+![Mapa de densidad criminal en Portland](images/cartografia/02/img_pag1_1.jpeg)
+
+* **Enfoque colaborativo:** Estructurado para la contribución masiva de datos y la respuesta humanitaria rápida (por ejemplo, el equipo humanitario de OpenStreetMap).
+
+![Mapeo colaborativo humanitario: antes versus después](images/cartografia/02/mapeo_colaborativo.png)
+
+
+<!-- ::: {layout-ncol=2}
+
+![Mapeo colaborativo humanitario 1](images/cartografia/02/img_pag2_1.jpeg)
+
+![Mapeo colaborativo humanitario 2](images/cartografia/02/img_pag2_2.jpeg)
+
+::: -->
+
+![Humanitarian OpenStreetMap Team](images/cartografia/02/img_pag2_3.jpeg){fig-align="center" width="10%"}
+
+* **Enfoque de manipulación visual:** La representación geográfica puede ser alterada de forma intencional o técnica. Esto se logra mediante el uso de esquemas de clasificación específicos (como la modificación de rangos de valores o supresión de datos) y la selección de paletas de color.
+
+![Manipulación por clasificación de datos](images/cartografia/02/img_pag3_1.jpeg)
+
+Adicionalmente, la percepción del espacio se ve fuertemente influenciada por la proyección cartográfica seleccionada.
+
+![Manipulación por proyección espacial](images/cartografia/02/africa_2.jpg)
+
+![Manipulación por proyección espacial](images/cartografia/02/the_true_size_of_africa.jpg)
+
+## Propósitos y utilidad de los mapas
+
+El objetivo principal de la cartografía es la comunicación gráfica y efectiva de información geográfica, asegurando que el producto responda a los requerimientos técnicos de la audiencia.
+
+![Comunicación cartográfica interactiva](images/cartografia/02/img_pag5_1.jpeg)
+
+La cartografía abarca la concepción, producción, diseminación y estudio analítico de los mapas. Funciona como un sistema de comunicación visual para los siguientes propósitos:
+
+* Representación y comunicación estructurada de información espacial.
+* Integración de atributos y datos no espaciales (mapas temáticos).
+* Facilitación de procesos de análisis espacial complejo.
+
+## Elementos cartográficos fundamentales
+
+Un documento cartográfico estandarizado requiere la integración de diversos elementos estructurales para garantizar su correcta lectura:
+
+* Distancia y escala
+* Dirección u orientación
+* Leyenda o cuadro de convenciones
+* Fuentes de información (derechos de autor, origen de datos, cartógrafo)
+* Título
+* Sistema de proyección espacial
+* El marco de datos geográfico per se
+
+<!-- ![Estructura de un mapa estándar](images/cartografia/02/img_pag7_1.png){fig-align="center" width="100%"} -->
+
+![Estructura de un mapa estándar](images/cartografia/02/estructura_mapa_estandar.png){fig-align="center" width="100%"}
+
+### Escala
+
+La escala matemática representa una proporción o fracción representativa (RF). Un valor de 1:100.000 indica, por ejemplo, que una unidad lineal en el mapa (1 cm) equivale a 100.000 de esas mismas unidades en el terreno.
+
+La escala se define matemáticamente como la relación de proporcionalidad entre una distancia medida sobre el mapa y su correspondiente magnitud en el terreno. La igualdad fundamental se expresa de la siguiente manera:
+
+$$E = \frac{d}{D}$$
+
+Donde los componentes de la ecuación representan:
+
+* $E$: Escala (expresada habitualmente como una fracción representativa $1:M$).
+* $d$: Distancia medida en el mapa (unidades lineales).
+* $D$: Distancia real en el terreno (en las mismas unidades que $d$).
+
+Para determinar el denominador de la escala ($M$), la relación se reestructura como una fracción representativa:
+
+$$\frac{1}{M} = \frac{d}{D}$$
+
+Esta constante de proporcionalidad es crítica durante el proceso de planificación, ya que permite definir la resolución espacial necesaria y el nivel de detalle que el marco de datos podrá soportar sin incurrir en errores de legibilidad o sobrecarga de información.
+
+Dentro de la composición del mapa, se representa frecuentemente mediante barras gráficas o proporciones numéricas directas.
+
+<!-- ![Ejemplo de barra de escala](images/cartografia/02/img_pag9_1.jpeg){fig-align="center" width="80%"} -->
+
+![Ejemplo de barra de escala](images/cartografia/02/escalas.png){fig-align="center" width="80%"}
+
+
+La clasificación técnica entre "escala pequeña" y "escala grande" define el nivel de generalización del terreno cartografiado:
+
+```{mermaid}
+%%{init: {'theme': 'base', 'themeVariables': { 'fontSize': '28px', 'fontFamily': 'arial'}}}%%
+graph TD
+    %% Nodo raíz con fuente maximizada
+    R["Concepto de escala <br/> (1/M = d/D)"]
+    
+    %% Nodos de categorías (Pequeña a la izquierda)
+    EP["Escala pequeña"]
+    EG["Escala grande"]
+
+    %% Ramas Escala Pequeña (Izquierda)
+    EP1["Denominador grande <br/> (Ej. 1:1.000.000)"]
+    EP2["Cobertura geográfica extensa"]
+    EP3["Alto grado de generalización"]
+
+    %% Ramas Escala Grande (Derecha)
+    EG1["Denominador pequeño <br/> (Ej. 1:1.000)"]
+    EG2["Cobertura geográfica reducida"]
+    EG3["Alto nivel de detalle técnico"]
+
+    %% Conexiones jerárquicas
+    R --> EP
+    R --> EG
+    EP --- EP1
+    EP --- EP2
+    EP --- EP3
+    EG --- EG1
+    EG --- EG2
+    EG --- EG3
+
+    %% Estilos directos para asegurar legibilidad y evitar errores de clase
+    style R fill:#f5f5f5,stroke:#333,stroke-width:4px,font-weight:bold,font-size:32px
+    style EP fill:#fff,stroke:#333,stroke-width:2px,font-weight:bold,font-size:28px
+    style EG fill:#fff,stroke:#333,stroke-width:2px,font-weight:bold,font-size:28px
+    style EP1 stroke-dasharray: 5 5,font-size:22px
+    style EP2 stroke-dasharray: 5 5,font-size:22px
+    style EP3 stroke-dasharray: 5 5,font-size:22px
+    style EG1 stroke-dasharray: 5 5,font-size:22px
+    style EG2 stroke-dasharray: 5 5,font-size:22px
+    style EG3 stroke-dasharray: 5 5,font-size:22px
+```
+
+
+| Escala pequeña (ej. 1:30.000) | Escala grande (ej. 1:1.000) |
+| :--- | :--- |
+| Representa una gran extensión territorial | Representa una extensión territorial reducida |
+| Menor grado de detalle topológico | Alto nivel de detalle topológico |
+
+<!-- ![Comparativa visual entre escalas](images/cartografia/02/img_pag11_1.jpeg) -->
+<!-- layout-valign="center" -->
+::: {layout-ncol=3 layout-valign="center"}
+![](images/cartografia/02/escala_grande_versus_pequeña1.png){width="100%"}
+
+![](images/cartografia/02/escala_grande_versus_pequeña2.png){width="95%"}
+
+![](images/cartografia/02/escala_grande_versus_pequeña3.png){width="95%"}
+:::
+
+<!-- ![](images/cartografia/02/escala_grande_versus_pequeña.png){fig-align="center" width="60%"} -->
+
+
+### Dirección y orientación
+
+La orientación espacial en el marco de datos suele indicarse mediante una flecha de norte verdadero, o de forma alternativa, utilizando una gratícula (cuadrícula de coordenadas geográficas).
+
+<!-- ::: {layout-ncol=2}
+![Indicadores de dirección 1](images/cartografia/02/img_pag12_1.jpeg)
+
+![Indicadores de dirección 2](images/cartografia/02/img_pag12_2.png)
+::: -->
+
+
+![](images/cartografia/02/indicador_dirección_1.png)
+
+![](images/cartografia/02/indicador_dirección_2.png)
+
+
+
+
+En contextos específicos, como el modelado de redes viales urbanas, los sistemas SIG pueden requerir la rotación del marco de datos para alinear las calles de forma ortogonal a la página por motivos estéticos o de diseño. En estos casos, la inclusión de la flecha de norte es obligatoria para indicar la declinación o el desfase angular.
+
+
+<!-- ::: {layout-ncol=2 layout-widths="[90, 10]"}
+![Rotación de marco de datos urbano 1](images/cartografia/02/img_pag13_1.jpeg)
+
+![Rotación de marco de datos urbano 2](images/cartografia/02/img_pag13_2.png)
+::: -->
+
+
+![Rotación del mapa para optimizar espacio y mejorar diseño](images/cartografia/02/indicador_dirección_3.png)
+
+La necesidad de indicar el norte depende del contexto de publicación:
+
+* Extensión geográfica (a nivel global, el norte superior es un estándar implícito).
+* Orientación predeterminada (si el norte no se ubica en la parte superior, debe ser explícito).
+* Nivel de conocimiento geográfico de la audiencia objetivo.
+
+### Leyenda
+
+La leyenda decodifica de manera explícita la simbología utilizada para representar las entidades vectoriales y ráster, siendo un componente indispensable para interpretar categorías y valores temáticos.
+
+![Ejemplo de leyenda cartográfica](images/cartografia/02/img_pag15_1.png){fig-align="center" width="65%"}
+
+### Fuentes de información
+
+La declaración formal de fuentes de información, metadatos y derechos de autor proporciona trazabilidad, indicando el origen geométrico y la escala nominal a la cual se capturaron los datos iniciales.
+
+<!-- ![Declaración de fuentes 1](images/cartografia/02/img_pag16_1.jpeg){fig-align="center" width="100%"} -->
+
+![Declaración de fuentes 1](images/cartografia/02/declaracion_de_fuentes_1.png){fig-align="center" width="100%"}
+
+![Declaración de fuentes 2](images/cartografia/02/img_pag16_2.jpeg){fig-align="center" width="100%"}
+
+
+### Título y configuración de proyección
+
+El título otorga una descripción técnica y estructurada sobre la temática principal y la localización geográfica del proyecto.
+
+![Título y proyección del documento cartográfico.](images/cartografia/02/img_pag17_1.png){#fig-titulo-proyeccion width="100%"}
+
+El mapa diseñado debe integrar de manera explícita la totalidad de la información técnica descrita en la @fig-geodesia-cartografia, garantizando la correcta inclusión de los datos de la proyección cartográfica y las variables del sistema de referencia vertical.
+
+La definición de la proyección debe coincidir con los objetivos analíticos y el área de estudio del marco de datos. Esta configuración espacial suele declararse textualmente dentro de los bloques de metadatos o atributos de fuente.
+
+
+<!-- ::: {layout="[[25, 10, 65]]" layout-valign="center"}
+
+![](images/cartografia/02/img_pag18_2.jpeg){width="100%"}
+
+::: {style="text-align: center; font-size: 3rem; line-height: 1;"}
+<span style="font-size: 3rem; color: #007bff">→</span>
+:::
+
+![](images/cartografia/02/img_pag18_3.png){width="100%"}
+
+::: -->
+
+
+![Componentes de proyección y referencia vertical requeridos en el diseño cartográfico. Diagrama de flujo geodésico para la especificación de parámetros en el producto cartográfico final.](images/cartografia/02/geodesia_y_cartografia.png){#fig-geodesia-cartografia width="100%"}
+
+
+
+
+Desde el rigor geométrico, toda proyección introduce una distorsión sistemática. La escala nominal solo se mantiene real en líneas o puntos tangentes específicos. Las deformaciones pueden comprometer tres variables principales:
+
+* Área y tamaño
+* Forma y propiedades angulares
+* Distancia y escala
+
+La elección del sistema proyectado depende enteramente del balance requerido entre área, escala y propósito analítico.
+
+<!-- ![Tissot's Indicatrix](images/cartografia/02/img_pag19_1.png) -->
+
+![Tissot's Indicatrix](images/cartografia/02/tissot.png)
+
+Las propiedades matemáticas de deformación cartográfica también pueden utilizarse de forma retórica. Históricamente, proyecciones cilíndricas conformes (como Mercator) distorsionan exageradamente las geometrías en altas latitudes. Esto ha sido utilizado en representaciones geopolíticas para sobredimensionar visualmente áreas continentales ubicadas cerca de los polos frente a regiones ecuatoriales.
+
+* Durante la Guerra Fría, la cartografía de los Estados Unidos y la URSS se diseñó frecuentemente con el objetivo de enfatizar la amenaza representada por la Unión Soviética y sus aliados. La proyección de Mercator constituyó la elección técnica ideal para los cartógrafos de tendencia anticomunista: debido a la ubicación de la URSS en latitudes boreales tan elevadas, el algoritmo de Mercator distorsiona su superficie, estirándola fuera de toda proporción en comparación con su extensión territorial real.
+
+<!-- ![Concepto de distorsión cartográfica: La proyección Mercator](images/cartografia/02/img_pag20_1.png) -->
+
+![Concepto de distorsión cartográfica: La proyección Mercator](images/cartografia/02/africa_urss.png)
+
+## Tipología cartográfica
+
+El diseño cartográfico se divide en dos grandes categorías funcionales: los **mapas base** (mapa de referencia) y los **mapas temáticos**.
+
+::: {layout-ncol=2}
+![Mapa base (mapa de referencia)](images/cartografia/02/mapa_referencia_colombia_gemini.png)
+
+
+
+![Mapa temático](images/cartografia/02/mapa_tematico_gemini.jpg)
+
+:::
+
+<!-- ![Mapa temático](images/cartografia/02/img_pag21_2.jpeg) -->
+
+Clasificación general de mapas
+
+* **Mapas base (mapas de referencia):**
+
+    * Énfasis en elementos geográficos (features)
+    * Muchos elementos geográficos en el mapa
+
+* **Mapas temáticos:**
+    * Énfasis en atributos
+    * Número limitado de atributos
+
+
+* **Mapas base:** Su objetivo principal es mostrar la ubicación precisa de una variedad de objetos espaciales (geometría y topología). Se caracterizan por presentar múltiples entidades simultáneamente sin destacar un atributo específico. Los mapas topográficos a gran escala son el ejemplo clásico de esta categoría.
+
+<!-- ![Ejemplo de mapa topográfico urbano](images/cartografia/02/img_pag23_2.jpeg){fig-align="center" width="100%"} -->
+
+![Ejemplo de mapa topográfico urbano](images/cartografia/02/mapa_base_urbano.png){fig-align="center" width="100%"}
+
+
+
+* **Mapas temáticos:** Diseñados con el propósito específico de representar la distribución espacial de un único atributo o fenómeno estadístico (también conocidos como mapas de propósito especial). La geometría base actúa únicamente como marco de referencia para los datos.
+
+
+::: {layout-ncol=2}
+![Mapa temático de símbolos proporcionales](images/cartografia/02/img_pag24_1.jpeg)
+
+![Mapa de coropleta](images/cartografia/02/coropleta_colombia_gemini.png)
+:::
+
+<!-- ![Mapa de coropleta](images/cartografia/02/img_pag24_2.jpeg) -->
+
+
+
+
+
+
+### Clasificación de mapas temáticos
+
+Existen múltiples técnicas para representar variables temáticas, dependiendo de la naturaleza de los datos (continuos o discretos, absolutos o relativos):
+
+* Mapas de densidad de puntos (Dot density)
+* Mapas de coropletas (Choropleth)
+* Símbolos graduados o proporcionales (Graduated / propositional symbol)
+* Mapas de flujo (Flow)
+* Superficies continuas o mapas isarítmicos (Continuous surface)
+* Cartogramas
+
+
+
+#### Mapas de densidad de puntos
+
+En esta representación, se utilizan símbolos pequeños de tamaño uniforme para enfatizar el patrón espacial de un fenómeno discreto. Cada punto equivale a una cantidad numérica fija. Pueden utilizarse diferentes colores para representar variables múltiples (**mapa multivariado**).
+
+* La ubicación de los puntos dentro de una unidad espacial suele generarse de forma aleatoria por el motor SIG, por lo que no indican la ubicación exacta de la entidad.
+* También llamado mapa multivariado
+
+<!-- ::: {layout-ncol=2}
+
+![Ejemplo mapa de densidad de puntos 1](images/cartografia/02/img_pag25_1.jpeg)
+
+![Ejemplo mapa de densidad de puntos 2](images/cartografia/02/img_pag26_1.jpeg)
+:::
+
+![Ejemplo mapa de densidad de puntos multivariado](images/cartografia/02/img_pag27_1.jpeg) -->
+
+::: {layout-ncol=2}
+
+![Ejemplo mapa de densidad de puntos 1](images/cartografia/02/mapa_densidad_puntos_1.png)
+
+![Ejemplo mapa de densidad de puntos 2](images/cartografia/02/mapa_densidad_puntos_2.png)
+:::
+
+![Ejemplo mapa de densidad de puntos multivariado](images/cartografia/02/mapa_densidad_puntos_3.png)
+
+
+#### Mapas de coropletas
+
+Las unidades espaciales de agregación de datos (polígonos como censos, municipios o estados) se sombrean con una intensidad proporcional al valor de los datos asociados a esa unidad geométrica. Es vital utilizar esta técnica exclusivamente con datos relativos (tasas, porcentajes, promedios) y no con recuentos absolutos, para evitar el sesgo de área.
+
+![Mapa de coropletas 1 y 2: Ilustrativos](images/cartografia/02/mapa_coropletas_dptos_gemini.png)
+
+
+
+<!-- ::: {layout-ncol=2}
+![Mapa de coropletas 1](images/cartografia/02/img_pag28_1.jpeg)
+
+![Mapa de coropletas 2](images/cartografia/02/img_pag28_2.jpeg)
+::: -->
+
+
+![](images/cartografia/02/mapas_coropletas_1.png)
+
+![](images/cartografia/02/mapas_coropletas_2.png)
+
+![](images/cartografia/02/mapas_coropletas_3.png)
+
+![](images/cartografia/02/mapas_coropletas_4.png)
+
+
+![](images/cartografia/02/mapa_coropletas_5.png)
+
+![](images/cartografia/02/mapa_coropletas_6.png){fig-align="center" width="60%"}
+
+
+<!-- ![Mapas de coropletas 3](images/cartografia/02/img_pag29_1.jpeg)
+
+![Mapas de coropletas 4](images/cartografia/02/img_pag30_1.jpeg)
+
+![Mapas de coropletas 5](images/cartografia/02/img_pag30_2.png) -->
+
+
+#### Mapas de símbolos graduados o proporcionales
+
+Se utilizan para representar magnitudes relativas o absolutas de un fenómeno en ubicaciones específicas. El tamaño del símbolo varía de forma proporcional u ordinal respecto al valor del atributo. Los datos pueden originarse en puntos exactos o agregarse en el centroide de áreas.
+
+<!-- ![Mapa de símbolos proporcionales 1](images/cartografia/02/img_pag31_1.jpeg){fig-align="center" width="60%"} -->
+
+![Mapa de símbolos proporcionales 1](images/cartografia/02/mapa_simbolos_graduados_europa_gemini.png){fig-align="center" width="60%"}
+
+
+
+<!-- ![Mapas de símbolos proporcionales 2](images/cartografia/02/img_pag32_1.png){fig-align="center" width="100%"} -->
+
+![Mapas de símbolos proporcionales 2](images/cartografia/02/mapas_de_coropletas_gemini_muertes_carros_es.png){fig-align="center" width="100%"}
+
+
+En visualizaciones analíticas complejas, es común combinar técnicas, como integrar un mapa base de coropletas y superponer una capa de símbolos proporcionales para mostrar dos variables de forma simultánea.
+
+
+::: {layout-ncol=2}
+![Mapas de símbolos proporcionales 3](images/cartografia/02/img_pag33_1.jpeg)
+
+![Mapas de símbolos proporcionales 4](images/cartografia/02/img_pag33_2.jpeg)
+:::
+
+![Coropleta y símbolo proporcional combinados](images/cartografia/02/img_pag34_1.jpeg){fig-align="center" width="80%"}
+
+#### Mapas de flujo
+
+Están diseñados para representar datos lineales que muestran el movimiento o intercambio geográfico entre un origen y un destino (como patrones de migración, rutas marítimas, conectividad de red). El grosor de la línea suele indicar el volumen del flujo.
+
+
+![Ejemplo de mapa de flujo 1](images/cartografia/02/img_pag35_1.jpeg)
+
+![Ejemplo de mapa de flujo 2](images/cartografia/02/img_pag36_1.jpeg)
+
+<!-- ![Ejemplo de mapa de flujo 3](images/cartografia/02/img_pag36_2.png) -->
+
+![Ejemplo de mapa de flujo 3](images/cartografia/02/mapa_de_flujo.png)
+
+<!-- ![Ejemplo de mapa de flujo 4](images/cartografia/02/img_pag37_1.jpeg) -->
+
+![Ejemplo de mapa de flujo 4](images/cartografia/02/mapa_de_flujo_2.png)
+
+
+<!-- ![Esquema de mapa de flujo 4](images/cartografia/02/img_pag38_1.png) -->
+
+![Esquema de mapa de flujo 4](images/cartografia/02/mapa_de_flujo_3.png)
+
+#### Mapas de superficie continua (isarítmicos)
+
+Representan variables continuas que poseen un valor en cada ubicación del espacio de estudio (ej. temperatura, elevación, precipitación). Estos mapas se generan mediante interpolación espacial a partir de puntos de muestreo discretos, creando un formato ráster (grid) o líneas de contorno (isolíneas).
+
+![Mapa de superficie continua 1](images/cartografia/02/mapa_superficie_continua1.png){fig-align="center" width="60%"}
+
+
+<!-- ::: {layout="[[10, 60, 20, 10]]" layout-valign="center"}
+
+&nbsp;
+
+![Mapa de superficie continua 1](images/cartografia/02/img_pag39_1.jpeg)
+
+![](images/cartografia/02/img_pag39_2.jpeg)
+
+&nbsp;
+
+::: -->
+
+
+::: {layout-ncol=2 layout-widths="[60, 40]"}
+![Esquema de mapa de superficie continua 2](images/cartografia/02/img_pag40_1.png)
+
+![Esquema de mapa de superficie continua 3](images/cartografia/02/img_pag40_2.jpeg)
+:::
+
+
+![Mapa de superficie continua 4](images/cartografia/02/img_pag41_1.jpeg)
+
+#### Cartogramas
+
+Un cartograma es una representación donde las áreas de las unidades espaciales se distorsionan geométricamente basándose en el valor de una variable no espacial (por ejemplo, escalar el tamaño de un país según su población o PIB, en lugar de su área física real).
+
+
+
+<!-- ![Ejemplo de cartograma 1](images/cartografia/02/img_pag42_1.jpeg){fig-align="center" width="60%"} -->
+
+![Ejemplo de cartograma 1](images/cartografia/02/cartograma_1.png){fig-align="center" width="60%"}
+
+<!-- ![Ejemplo de cartograma 2: Elecciones USA 2008](images/cartografia/02/img_pag43_1.jpeg){fig-align="center" width="70%"} -->
+
+![Ejemplo de cartograma 2](images/cartografia/02/cartograma_2.png){fig-align="center" width="70%"}
+
+<!-- ![Ejemplo de cartograma 3](images/cartografia/02/img_pag44_1.jpeg){fig-align="center" width="100%"} -->
+
+![Ejemplo de cartograma 3](images/cartografia/02/cartograma_3.png){fig-align="center" width="100%"}
+
+## Análisis de calidad cartográfica (Buenas y malas prácticas)
+
+El diseño deficiente en la clasificación de datos, la elección de paletas de color no secuenciales o divergentes adecuadas, o la omisión de elementos espaciales clave (como el uso de coropletas para totales absolutos), puede generar mapas analíticamente incorrectos.
+
+<!-- ![Mapa 1. ¿bien diseñado o mal diseñado? ](images/cartografia/02/img_pag46_1.jpeg)
+
+![Mapa 2. ¿bien diseñado o mal diseñado?](images/cartografia/02/img_pag47_1.jpeg){fig-align="center" width="100%"} -->
+
+![Mapa 1. ¿bien diseñado o mal diseñado? ](images/cartografia/02/mapa_malo.png)
+
+![Mapa 2. ¿bien diseñado o mal diseñado?](images/cartografia/02/mapa_vinos.png){fig-align="center" width="100%"}
+
+<!-- ![Mapa 3. ¿bien diseñado o mal diseñado?](images/cartografia/02/img_pag48_1.jpeg){fig-align="center" width="100%"} -->
+
+![Mapa 3. ¿bien diseñado o mal diseñado?](images/cartografia/02/mapa_transporte.png){fig-align="center" width="100%"}
+
+
+<!-- ![Mapa 4. ¿bien diseñado o mal diseñado?](images/cartografia/02/img_pag49_1.jpeg){fig-align="center" width="80%"} -->
+
+![Mapa 4. ¿bien diseñado o mal diseñado?](images/cartografia/02/mapa_bueno_o_malo_1.png){fig-align="center" width="80%"}
+
+
+<!-- ![Mapa 5. ¿bien diseñado o mal diseñado?](images/cartografia/02/img_pag50_1.jpeg) -->
+![Mapa 5. ¿bien diseñado o mal diseñado?](images/cartografia/02/mapa_bueno_o_malo_2.png)
+
+<!-- ![Mapa 6. ¿bien diseñado o mal diseñado?](images/cartografia/02/img_pag51_1.jpeg) -->
+![Mapa 6. ¿bien diseñado o mal diseñado?](images/cartografia/02/mapa_bueno_o_malo_3.png)
+
+<!-- ![Mapa 7. ¿bien diseñado o mal diseñado?](images/cartografia/02/img_pag52_1.jpeg) -->
+![Mapa 7. ¿bien diseñado o mal diseñado?](images/cartografia/02/mapa_bueno_o_malo_4.png)
+
+<!-- ![Mapa 8. ¿bien diseñado o mal diseñado?](images/cartografia/02/img_pag53_1.jpeg) -->
+![Mapa 8. ¿bien diseñado o mal diseñado?](images/cartografia/02/mapa_bueno_o_malo_5.png)
+
+<!-- ![Mapa 9. ¿bien diseñado o mal diseñado?](images/cartografia/02/img_pag54_1.jpeg)
+
+![Mapa 10. ¿bien diseñado o mal diseñado?](images/cartografia/02/img_pag54_2.jpeg)
+
+![Mapa 11. ¿bien diseñado o mal diseñado?](images/cartografia/02/img_pag55_1.jpeg)
+
+![Mapa 12. ¿bien diseñado o mal diseñado?](images/cartografia/02/img_pag56_1.jpeg){fig-align="center" width="100%"} -->
+
+![Mapa 9. ¿bien diseñado o mal diseñado?](images/cartografia/02/mapa_bueno_o_malo_6.png)
+
+![Mapa 10. ¿bien diseñado o mal diseñado?](images/cartografia/02/mapa_bueno_o_malo_7.png)
+
+![Mapa 11. ¿bien diseñado o mal diseñado?](images/cartografia/02/mapa_bueno_o_malo_8.png)
+
+![Mapa 12. ¿bien diseñado o mal diseñado?](images/cartografia/02/mapa_bueno_o_malo_9.png){fig-align="center" width="100%"}
+
+
+## Proceso de planificación cartográfica
+
+El desarrollo de productos geoespaciales requiere un flujo de trabajo sistemático. Este proceso metodológico asegura la coherencia entre los datos de entrada y la comunicación visual resultante, y se estructura en cinco fases operativas:
+
+* Planificación
+* Procesamiento de datos
+* Simbología
+* Diseño de composición (layout)
+* Salida o publicación (output)
+
+```{mermaid}
+graph TD
+    %% Definición de estilos
+    classDef mainNode font-size:14pt,font-weight:bold,fill:#f9f9f9,stroke:#333,stroke-width:2px;
+    classDef questions font-size:12pt,font-style:italic,fill:#ffffff,stroke:#999,stroke-dasharray: 5 5;
+    classDef feedback stroke:#e67e22,stroke-width:2px,stroke-dasharray: 5 5;
+
+    %% Nodos principales
+    P(Planificación) --> D(Datos)
+    D --> S(Simbología)
+    S --> L(Composición)
+    L --> O(Salida)
+
+    %% Lazo de retroalimentación (Ciclo)
+    L -.->|Refinamiento e iteración| P
+
+    %% Bloques de preguntas vinculados
+    P --- PQ["¿Cómo se utilizará el mapa?<br/>¿Qué tipos de mapas se crearán?"]
+    D --- DQ["¿Qué datos se utilizarán?"]
+    S --- SQ["¿Cómo se simbolizarán los datos?"]
+    L --- LQ["¿Cómo se diseñará la composición?"]
+    O --- OQ["¿Cómo se publicará el mapa?"]
+
+    %% Aplicación de estilos
+    class P,D,S,L,O mainNode;
+    class PQ,DQ,SQ,LQ,OQ questions;
+    linkStyle 4 stroke:#e67e22,stroke-width:2px,stroke-dasharray: 5 5;
+```
+
+### Preguntas clave previas a la creación de un mapa
+
+
+
+Durante la etapa inicial de planificación, es mandatorio definir los parámetros técnicos y comunicativos del proyecto respondiendo a los siguientes interrogantes estructurales:
+
+**1. Uso y objetivo del mapa**
+
+Resulta indispensable definir la necesidad real del documento cartográfico, el mensaje exacto que se va a comunicar y el diseño que resultará más efectivo para la interpretación de la audiencia objetivo.
+
+
+**2. Selección y rigor de los datos**
+
+Se debe evaluar qué conjuntos de datos respaldan el objetivo analítico, verificar la disponibilidad y calidad geométrica de dicha información, y establecer el sistema de coordenadas de referencia que se implementará en el marco de datos.
+
+
+**3. Diseño de la simbología**
+
+Requiere clasificar la naturaleza de los datos (variables cualitativas frente a cuantitativas), determinar la necesidad de inclusión de etiquetas de texto (labels) y seleccionar las variables visuales (color, tamaño, forma) que mejor modelen la estadística subyacente.
+
+**4. Configuración de la composición (layout)**
+
+Implica definir los parámetros del lienzo: dimensiones exactas de la página, orientación (vertical u horizontal) y la naturaleza del formato (producto estático impreso frente a visualizador en línea interactivo).
+
+
+**5. Formato de publicación**
+
+Debe establecerse el medio técnico a través del cual se realizará la entrega del producto geoespacial final.
+
+
+
+**6. Tipología del producto final**
+
+La escala y complejidad del proyecto determinan el tipo de salida: la generación de una serie cartográfica automatizada (atlas o map series), el despliegue a través de un servicio de mapas web (Web map) o el diseño para impresión en gran formato (Wall map).
+
+
+<!-- ![Mapa Web](images/cartografia/02/img_pag65_2.jpeg)
+
+![Series de Mapas](images/cartografia/02/img_pag65_4.jpeg){fig-align="center" width="100%"}
+
+![Mapa de Pared](images/cartografia/02/img_pag65_10.jpeg){fig-align="center" width="100%"} -->
+
+
+![Mapa Web](images/cartografia/02/mapa_web.png)
+
+![Series de Mapas](images/cartografia/02/serie_de_mapas.png){fig-align="center" width="100%"}
+
+![Mapa de Pared](images/cartografia/02/mapa_de_pared.png){fig-align="center" width="100%"}
+

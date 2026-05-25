@@ -1,0 +1,840 @@
+---
+title: Métodos avanzados de SIG en cartografía digital
+format: html
+---
+
+## Salida y tipos de productos cartográficos
+
+```{mermaid}
+graph TD
+    %% Definición de estilos
+    classDef mainNode font-size:14pt,font-weight:bold,fill:#f9f9f9,stroke:#333,stroke-width:2px;
+    classDef questions font-size:12pt,font-style:italic,fill:#ffffff,stroke:#999,stroke-dasharray: 5 5;
+    classDef feedback stroke:#e67e22,stroke-width:2px,stroke-dasharray: 5 5;
+    classDef highlight fill:#fff3cd,stroke:#d4a017,stroke-width:4px;
+
+    %% Nodos principales
+    P(Planificación) --> D(Datos)
+    D --> S(Simbología)
+    S --> L(Composición)
+    L --> O(Salida)
+
+    %% Lazo de retroalimentación (Ciclo)
+    L -.->|Refinamiento e iteración| P
+
+    %% Bloques de preguntas vinculados
+    P --- PQ["¿Cómo se utilizará el mapa?<br/>¿Qué tipos de mapas se crearán?"]
+    D --- DQ["¿Qué datos se utilizarán?"]
+    S --- SQ["¿Cómo se simbolizarán los datos?"]
+    L --- LQ["¿Cómo se diseñará la composición?"]
+    O --- OQ["¿Cómo se publicará el mapa?"]
+
+    %% Aplicación de estilos
+    class P,D,S,L mainNode;
+    class PQ,DQ,SQ,LQ questions;
+    class O,OQ highlight;
+    linkStyle 4 stroke:#e67e22,stroke-width:2px,stroke-dasharray: 5 5;
+```
+
+
+Se responde a preguntas como ¿Qué tipo de mapas vas a crear?
+
+La fase final del proceso es la entrega o publicación del mapa. La elección del formato depende del uso previsto:
+
+* **Series cartográficas (Map series):** Conjuntos de mapas estandarizados para áreas extensas (ej: planchas catastrales).
+* **Mapas web (Web maps):** Productos interactivos diseñados para su visualización en navegadores y dispositivos móviles.
+* **Mapas de pared (Wall maps):** Impresiones de gran formato diseñadas para visualización a distancia.
+
+::: {layout="[[33, 33, 33]]" layout-valign="center"}
+
+![Mapa Web](images/cartografia/02/img_pag65_2.jpeg)
+
+![Series de Mapas](images/cartografia/02/img_pag65_4.jpeg){fig-align="center" width="100%"}
+
+![Mapa de Pared](images/cartografia/02/img_pag65_10.jpeg){fig-align="center" width="100%"}
+
+:::
+
+
+## Series de Mapas
+
+El flujo de trabajo para la generación de libros de mapas incluye:
+
+* Diseño (Layout)
+* Datos
+* Capa de índice
+* Páginas impulsadas por datos (Data Driven Pages)
+* Script de Python
+* Libro de mapas PDF de múltiples páginas
+
+![Imagen extraída de página 1](images/cartografia/04/img_pag1_1.jpeg)
+
+## Sistemas SIGWeb en la web
+
+Un SIGWeb permite aprovechar la web y el poder de los SIG, yendo mucho más allá de la simple cartografía y visualización.
+
+<!-- ![GISWeb](images/cartografia/04/img_pag2_1.jpeg) -->
+
+![SIGWeb](images/cartografia/04/SIGWeb.png){fig-align="center" width="90%"}
+
+### Definición de SIGWeb
+
+Consiste en una aplicación SIG con diversas funciones principales:
+
+* Zoom y paneo
+* Herramientas de medición (opcional)
+* Enrutamiento (opcional)
+* Funciones de consulta, etc. (opcional)
+
+Generalmente accede a servicios web o servicios SIG (geoservicios). La interfaz gráfica de usuario suele ser una aplicación web especializada en geodatos.
+
+### Ejemplos de SIGWeb
+
+Existen múltiples plataformas que operan bajo este concepto:
+
+* Google Maps
+
+![Google Maps](images/cartografia/04/img_pag4_1.jpeg)
+
+* OpenStreetMap (OSM)
+
+![OpenStreetMap](images/cartografia/04/img_pag5_1.jpeg)
+
+* Geoportales de gobiernos locales
+
+![Geoportales](images/cartografia/04/img_pag6_1_geoportales.png)
+
+* ArcGIS Online
+
+![ArcGIS Online](images/cartografia/04/img_pag7_1.jpeg)
+
+* Mapas de cobertura de red
+
+::: {layout="[[50, 50]]" layout-valign="center"}
+
+![](images/cartografia/04/img_pag8_1.jpeg)
+
+![](images/cartografia/04/img_pag8_2.jpeg)
+
+:::
+
+### Ejemplos de mapas que no son SIGWeb
+
+Se muestran representaciones estáticas o planos interactivos básicos que no cumplen con la estructura de un servicio SIGWeb avanzado.
+
+::: {layout="[[50, 50]]" layout-valign="center"}
+
+![](images/cartografia/04/img_pag9_1.jpeg)
+
+![](images/cartografia/04/img_pag9_2.jpeg)
+
+:::
+
+## Servicios SIG
+
+Los servicios SIG proporcionan acceso estandarizado a datos y herramientas a través de la red. Incluyen:
+
+* Servicios de mapas
+* Servicios de entidades (Feature service)
+* Servicios de imágenes
+* Servicios de geoprocesamiento
+* Servicios de geocodificación
+* Servicios de geodatos
+* Servicios de búsqueda
+
+### Flujo de trabajo típico para servicios SIG
+
+El modelo básico implica la publicación en un servidor y el posterior consumo por parte del cliente mediante solicitudes.
+
+![Flujo de Trabajo Servicios SIG](images/cartografia/04/workflow_gis_services.png)
+
+### Ventajas de los servicios SIG
+
+La implementación de servicios SIG centralizados ofrece beneficios operativos sustanciales:
+
+* Los servicios se ubican centralmente en un servidor
+* Cualquier entidad autorizada puede acceder a los servicios
+* Escenario de cambio de datos eficiente
+* Elimina la necesidad de transferir datos físicamente a estaciones de trabajo individuales
+* El servicio se actualiza en el servidor y cada usuario obtiene acceso directo a los nuevos datos
+
+### Posibles desventajas de los servicios SIG
+
+Existen limitaciones técnicas a considerar en este modelo:
+
+* En caso de falla del servicio, el usuario no puede acceder a los datos ni a las herramientas alojadas
+* Una conexión a Internet inestable o un alto tráfico de red generan tiempos de respuesta lentos
+
+## Plataforma ArcGIS Online
+
+Esta plataforma traslada los procesos SIG a la nube, posibilitando la distribución de recursos geográficos.
+
+![Plataforma ArcGIS Online](images/cartografia/04/img_pag16_1.jpeg)
+
+### Un mapa, múltiples recursos
+
+ArcGIS Online permite la integración de diversas fuentes de información:
+
+* Integración de datos propios a través de ArcGIS Pro
+* Herramientas de analítica de ubicación (ej. Esri Maps for Office)
+* Integración de servicios WMS
+* Integración de mapas base y capas de servicios
+* Integración de servicios de ArcGIS Server
+* Integración de resultados de análisis
+
+### Creación de contenido: WebMap y WebApp
+
+La estructura de contenido se apoya en dos componentes. 
+
+* El **WebMap** sirve como contenedor para todas las capas y propiedades del mapa, operando de forma comparable al documento de mapa tradicional en entornos de escritorio.
+
+::: {layout="[[50, 50]]" layout-valign="center"}
+
+![](images/cartografia/04/img_pag18_1.jpeg)
+
+![](images/cartografia/04/img_pag18_2.jpeg)
+
+:::
+
+El componente **WebApp** accede al WebMap y lo encapsula en un diseño de mapa o aplicación web funcional.
+
+
+:::: {.columns}
+
+::: {.column width="33%"}
+
+::: {style="display: flex; align-items: center; margin-bottom: 15px;"}
+![](images/cartografia/04/img_pag19_1.jpeg)
+:::
+
+::: {style="display: flex; align-items: center;"}
+![](images/cartografia/04/img_pag19_2.jpeg)
+:::
+
+:::
+
+
+::: {.column width="33%"}
+
+::: {style="display: flex; align-items: center; margin-bottom: 15px;"}
+![](images/cartografia/04/img_pag19_3.jpeg)
+:::
+
+::: {style="display: flex; align-items: center;"}
+![](images/cartografia/04/img_pag19_4.jpeg)
+:::
+:::
+
+::: {.column width="33%"}
+![](images/cartografia/04/img_pag19_5.jpeg)
+:::
+
+::::
+
+
+
+
+
+Ejemplos de creación de contenido en la plataforma:
+
+![](images/cartografia/04/img_pag20_1.jpeg)
+
+![](images/cartografia/04/img_pag21_1.jpeg)
+
+![](images/cartografia/04/img_pag22_1.jpeg)
+
+![](images/cartografia/04/img_pag23_1.jpeg)
+
+![](images/cartografia/04/img_pag24_1.jpeg)
+
+
+### Inclusión de mapas en páginas web y diseño adaptable
+
+Es posible incrustar mapas web en portales institucionales utilizando diseño adaptable (responsive design) para visualización óptima en múltiples dispositivos.
+
+![](images/cartografia/04/img_pag25_2.jpeg)
+
+![](images/cartografia/04/img_pag25_1.jpeg)
+
+![](images/cartografia/04/img_pag26_1.jpeg)
+
+::: {layout="[[33, 33, 33]]" layout-valign="center"}
+
+![](images/cartografia/04/img_pag27_1.jpeg)
+
+![](images/cartografia/04/img_pag27_2.jpeg)
+
+![](images/cartografia/04/img_pag27_3.jpeg)
+
+:::
+
+### Herramientas complementarias
+
+#### Esri Maps for Office
+
+El ecosistema en la nube se integra con aplicaciones cliente específicas. **Esri Maps for Office** facilita la creación de mapas mediante:
+
+* Creación de mapas vía geocodificación, 
+* Analítica espacial, 
+* Enriquecimiento de datos y 
+* Publicación a ArcGIS Online
+
+![](images/cartografia/04/img_pag28_1.jpeg)
+
+::: {layout="[[50, 50]]" layout-valign="center"}
+
+![](images/cartografia/04/img_pag28_2.jpeg)
+
+![](images/cartografia/04/img_pag28_3.jpeg)
+
+:::
+
+
+#### ArcGIS Field Maps
+
+El desarrollo metodológico previo estableció los fundamentos de la captura guiada por formularios y validación lógica mediante **ArcGIS Survey123**. Para complementar la estrategia de levantamiento de información, es necesario abordar los flujos de trabajo donde el componente **geométrico y la topología** rigen la interacción. ArcGIS Field Maps responde a esta necesidad al trasladar el eje de la operación desde una interfaz tabular secuencial hacia un entorno **estrictamente cartográfico**.
+
+La adopción de esta aplicación resulta necesaria en escenarios que demandan:
+
+* actualización de inventarios, 
+* inspección de infraestructura o 
+* edición de redes. 
+
+A diferencia del enfoque centrado en el dato de Survey123, las capacidades de **Field Maps** priorizan la comprensión del entorno geográfico inmediato:
+
+* **Interacción espacial directa:** La digitalización y edición de atributos se realiza seleccionando entidades directamente sobre el mapa base, lo que permite **ajustes geométricos precisos** mediante herramientas de dibujo y la integración con receptores GNSS.
+* **Consciencia situacional:** El operador visualiza su posición relativa frente a otros activos y fenómenos físicos circundantes, facilitando la toma de decisiones basada en **proximidad y contexto espacial**.
+* **Mantenimiento de bases de datos:** El diseño de la aplicación está optimizado para la actualización continua de elementos **preexistentes en la geodatabase**, en lugar de generar registros de información aislados.
+* **Integración de flujos de trabajo:** Admite la configuración de enlaces de aplicación (app linking), lo que permite utilizar la cartografía de Field Maps para ubicar un activo y **disparar un formulario estructurado de Survey123** específico para dicha entidad.
+
+![Flujo de trabajo integral de edición desconectada y sincronización.](images/cartografia/04/img_pag29_1.jpeg)
+
+
+## Alternativas de código abierto para SIGWeb
+
+Mientras que herramientas como Mapbox y CARTO han migrado hacia modelos de licenciamiento restrictivos o arquitecturas comerciales cerradas, han surgido alternativas robustas que garantizan la soberanía tecnológica y el cumplimiento de estándares abiertos de la OGC.
+
+![SIGWeb de Uso Libre](images/cartografia/04/sigweb_usolibre.png)
+
+### Bibliotecas de visualización en el cliente
+
+La capa de presentación ha evolucionado hacia el aprovechamiento de la aceleración por hardware (GPU) y el manejo eficiente de datos vectoriales:
+
+* **MapLibre GL JS:** Resulta de la bifurcación de Mapbox GL JS v1 tras el cambio de licencia de esta última. Es la biblioteca líder para el renderizado de teselas vectoriales (*vector tiles*) bajo licencia BSD.
+* **OpenLayers:** Es la opción más completa para aplicaciones de grado profesional que requieren soporte avanzado de proyecciones cartográficas y manipulación de geometrías complejas en el cliente.
+* **Leaflet:** Se mantiene como el estándar para visores ligeros y despliegues rápidos en dispositivos móviles debido a su simplicidad y amplio ecosistema de complementos.
+
+### Servidores de mapas y servicios geoespaciales
+
+Para la publicación y administración de servicios web (WMS, WFS, WCS), las herramientas de referencia son:
+
+* **GeoServer:** Escrito en Java, es el servidor más extendido para la implementación de Infraestructuras de Datos Espaciales (IDE) gracias a su versatilidad en la conexión con múltiples orígenes de datos.
+* **QGIS Server:** Permite la publicación directa de proyectos de escritorio conservando la simbología y el etiquetado complejo, facilitando la consistencia visual en el flujo de trabajo.
+* **MapServer:** Destaca por su alto rendimiento en entornos de alta demanda y su eficiencia en el renderizado de datos ráster.
+
+### Gestión de datos y análisis espacial
+
+La persistencia de la información es el componente crítico de la arquitectura:
+
+* **PostGIS:** Extensión espacial de PostgreSQL que constituye el motor de base de datos geoespacial más potente del mundo, permitiendo ejecutar consultas espaciales complejas mediante SQL.
+* **SpatiaLite:** Alternativa ligera basada en SQLite, ideal para el almacenamiento de datos en dispositivos locales o aplicaciones que no requieren un servidor dedicado.
+
+### Integración en entornos de ciencia de datos con Python
+
+Para el desarrollo de tableros de control y análisis interactivo en lenguajes de programación, se destacan dos librerías que actúan como interfaces hacia los motores de visualización web:
+
+* **Folium:** Permite la creación de mapas interactivos utilizando Leaflet como motor de renderizado. Es la herramienta estándar para la visualización rápida de resultados geográficos en reportes científicos.
+* **Geemap:** Diseñada para la interacción con Google Earth Engine (GEE). Facilita el análisis masivo de datos satelitales y su visualización interactiva. Para la inspección detallada de resultados en este proyecto, se define un nivel de zoom 17 como estándar de visualización.
+
+El lenguaje R ofrece un ecosistema consolidado para la transición de análisis estadísticos espaciales hacia interfaces web interactivas, facilitando la creación de productos cartográficos reproducibles mediante Quarto y Shiny.
+
+### Integración en entornos de ciencia de datos con R
+
+La infraestructura de R para SIGWeb se apoya en bibliotecas que actúan como puentes hacia motores de renderizado en JavaScript, permitiendo la manipulación de objetos espaciales de las clases `sf` (simple features) y `stars` (spatiotemporal arrays).
+
+* **Leaflet para R**: Constituye la integración más utilizada para la creación de mapas interactivos. Permite la personalización de capas base, el control de leyendas y la gestión de eventos de usuario directamente desde la sintaxis de R, integrándose de forma nativa con el operador pipe (`|>`).
+* **Mapview**: Esta biblioteca está optimizada para la visualización rápida de datos espaciales durante la fase de exploración. Ofrece funciones de alto nivel para generar mapas interactivos con una carga mínima de código, soportando eficientemente grandes volúmenes de datos vectoriales y ráster.
+* **Tmap**: Destaca por su versatilidad al permitir el cambio entre modos estáticos (`plot`) e interactivos (`view`) mediante un solo comando. Es la opción preferida para la generación de mapas temáticos consistentes en reportes científicos.
+* **Mapdeck**: Proporciona una interfaz para **deck.gl**, permitiendo el renderizado de conjuntos de datos masivos mediante WebGL. Es ideal para la visualización de flujos, arcos y datos tridimensionales que superan las capacidades de renderizado de bibliotecas basadas en SVG.
+* **Rgee**: Es el paquete de integración para la API de Google Earth Engine en R. Facilita el procesamiento de colecciones de imágenes satelitales en la nube. Para la validación de resultados generados con esta herramienta en el presente reporte, se establece de manera estricta un nivel de zoom 17 en los mapas interactivos resultantes.
+
+
+## Metas estructurales de un SIGWeb
+
+El desarrollo de implementaciones en red obedece a objetivos sistemáticos y colaborativos:
+
+* Consolidar un sistema de información
+* Facilitar la participación ciudadana
+* Optimizar la preparación y procesamiento de datos
+* Integrar diferentes áreas y culturas de trabajo
+* Fomentar la cooperación y el intercambio
+
+![](images/cartografia/04/metas_sigweb.png)
+
+
+## Flujo de trabajo para crear y compartir un mapa web
+
+El proceso de transición desde la cartografía de escritorio hacia entornos distribuidos en la nube requiere una secuencia lógica que garantice la integridad de los datos y la funcionalidad de la interfaz de usuario. Este flujo de trabajo permite transformar capas estáticas en servicios dinámicos capaces de soportar consultas y edición en tiempo real.
+
+### Fases del ciclo de vida cartográfico web
+
+La implementación de un sistema de información geográfica web se fundamenta en las siguientes etapas técnicas:
+
+* **Autoría y preparación de capas:** Selección de datasets, definición de sistemas de referencia de coordenadas (SRC) y optimización de tablas de atributos en el software de escritorio. En esta fase se decide qué entidades serán editables y se establecen los rangos de visibilidad.
+* **Publicación como servicio de entidades:** Carga de los datos al servidor (o portal) para habilitar servicios de mapas o de entidades (Feature Services). Esta acción genera una URL persistente que actúa como el punto de acceso al recurso.
+* **Configuración del mapa web:** Integración del servicio en un contenedor interactivo donde se definen las propiedades globales de la visualización.
+* **Definición de mapa base y simbología:** Selección de la capa de referencia (imágenes satelitales, topografía o mapas base vectoriales) que proporciona el contexto geográfico. Se ajustan los estilos visuales para asegurar la legibilidad en pantallas digitales.
+* **Configuración de ventanas emergentes y filtros:** Diseño de la experiencia de usuario mediante la definición de campos visibles en pop-ups y la creación de filtros lógicos para segmentar la información relevante.
+* **Gestión de acceso y difusión:** Establecimiento de permisos de seguridad y distribución del producto final a través de visores directos o aplicaciones web personalizadas.
+
+
+```{mermaid}
+%%| fig-align: center
+%%| out-width: 80%
+graph TD
+    A["1 Autoría del mapa y preparación de capas"]
+    B["2 Publicación como servicio de entidades"]
+    C["3 Configuración del mapa web en la nube"]
+    D["4 Definición de mapa base y simbología"]
+    E["5 Configuración de ventanas emergentes y filtros"]
+    F["6 Guardar y compartir URL / Aplicación"]
+    G["7 Edición y sincronización en campo"]
+    H["8 Retroalimentación Actualización de datos fuente"]
+
+    A --> B
+    B --> C
+    C --> D
+    D --> E
+    E --> F
+    F --> G
+    G --> H
+    H -.->|Sincronización bidireccional| A
+
+    classDef etapa fill:#ffffff,stroke:#27ae60,stroke-width:2px,color:#333;
+    classDef feedback fill:#f8f9fa,stroke:#2980b9,stroke-width:2px,dasharray: 5 5;
+    
+    class A,B,C,D,E,F,G etapa;
+    class H feedback;
+```
+
+### Persistencia y retroalimentación de datos
+
+La actualización de los datos fuente tras la edición en campo depende estrictamente del modelo de arquitectura seleccionado. Es fundamental diferenciar entre servicios alojados y servicios referenciados para comprender el flujo de retroalimentación.
+
+> **Nota técnica:** En servicios alojados (*hosted services*), los datos se encuentran en la nube y la sincronización con el repositorio local de escritorio debe realizarse mediante procesos de descarga y conciliación. En servicios referenciados (*enterprise services*), la edición impacta directamente en la base de datos corporativa (ej. PostGIS) en tiempo real.
+
+Este ciclo de retroalimentación asegura que la información capturada en dispositivos móviles regrese a la base de datos principal, cerrando el ciclo de edición y sincronización desconectada.
+
+
+## Mejores prácticas para el diseño de servicios de mapas
+
+La optimización cartográfica para la web demanda estrategias de diseño técnico específicas.
+
+### Capa operacional frente a mapa base
+
+Resulta necesario estructurar los datos separando la información temática interactiva (capa operacional) del contexto espacial de referencia (mapa base).
+
+
+![Capa operacional versus mapa base](images/cartografia/04/mapa_base_versus_capa_operacional.png)
+
+### Uso de mapas base en línea
+
+![Ejemplos de Mapas Base](images/cartografia/04/img_pag35_1.jpeg)
+
+### Consideraciones sobre el sistema de coordenadas
+
+El estándar técnico predominante es Web Mercator. 
+
+* WKID: 900913 (los números "900913" se asemejan a la palabra "GOOGLE" en una lectura alfanumérica)
+* EPSG: 3857
+
+Su adopción generalizada comenzó alrededor de 2005 tras la expansión de los principales proveedores de mapas comerciales en la web (Google Maps: La plataforma más popular), garantizando así la interoperabilidad entre plataformas.
+
+
+Aunque este sistema es el estándar para la visualización web debido a su capacidad para **preservar ángulos y formas locales en niveles de zoom altos**, no es proyectivo en cuanto a la **preservación de áreas**, lo que lo hace inadecuado para análisis espaciales que requieran cálculos precisos de superficie en latitudes altas.
+
+### Lineamientos de optimización y simbología
+
+El diseño web requiere ajustar los parámetros de renderizado mediante las siguientes prácticas:
+
+* Utilizar formato .png para preservar transparencia y nitidez
+* Diseñar símbolos orientados al reconocimiento visual rápido
+* Crear simbología adaptable a múltiples escalas
+* Implementar tipografías con estilos de letra claramente distinguibles
+* Aplicar tamaños de punto tipográfico mayores al estándar de impresión
+* Asignar niveles de escala predefinidos para la generación de caché
+* Aplicar técnicas de suavizado espacial (anti-aliasing)
+
+
+```{mermaid}
+%%| fig-align: center
+%%| out-width: 60%
+flowchart TD
+    T[Mejores prácticas para diseñar servicios de mapas]
+
+    %% Categorías principales
+    T --> C1[Formato y Visualización]
+    T --> C2[Simbología y Tipografía]
+    T --> C3[Rendimiento]
+
+    %% Rama Izquierda: Formato
+    C1 --> A[Usar formato .png]
+    A --> G[Aplicar anti-aliasing]
+
+    %% Rama Central: Simbología
+    C2 --> B[Diseñar símbolos para un reconocimiento rápido]
+    B --> C[Crear símbolos multiescala]
+    C --> D[Usar fuentes con estilos de letra únicos]
+    D --> E[Aplicar tamaños de punto más grandes]
+
+    %% Rama Derecha: Rendimiento
+    C3 --> F[Asignar escalas de caché recomendadas]
+
+    %% Estilos directos por nodo (Inmune a errores de classDef en v10.2.0-rc.2)
+    style T fill:#2c3e50,stroke:#2c3e50,stroke-width:2px,color:#ffffff
+    
+    style C1 fill:#f8f9fa,stroke:#2c3e50,stroke-width:2px,color:#2c3e50
+    style C2 fill:#f8f9fa,stroke:#2c3e50,stroke-width:2px,color:#2c3e50
+    style C3 fill:#f8f9fa,stroke:#2c3e50,stroke-width:2px,color:#2c3e50
+
+    style B fill:#27ae60,stroke:#1e8449,stroke-width:3px,color:#fff
+
+    style A fill:#ffffff,stroke:#333,stroke-width:1.5px,color:#333
+    style C fill:#ffffff,stroke:#333,stroke-width:1.5px,color:#333
+    style D fill:#ffffff,stroke:#333,stroke-width:1.5px,color:#333
+    style E fill:#ffffff,stroke:#333,stroke-width:1.5px,color:#333
+    style F fill:#ffffff,stroke:#333,stroke-width:1.5px,color:#333
+    style G fill:#ffffff,stroke:#333,stroke-width:1.5px,color:#333
+```
+
+<!-- 
+```mermaid
+%%| fig-align: center
+%%| out-width: 60%
+graph TD
+    T["Mejores prácticas para diseñar servicios de mapas"]
+
+    %% Categorías principales para balancear la carga visual
+    T --- C1["Formato y Visualización"]
+    T --- C2["Simbología y Tipografía"]
+    T --- C3["Rendimiento"]
+
+    %% Rama Izquierda: Formato (Cascada)
+    C1 --- A["Usar formato .png"]
+    A --- G["Aplicar anti-aliasing"]
+
+    %% Rama Central: Simbología (Cascada - Elemento destacado)
+    C2 --- B["<b>Diseñar símbolos para un<br/>reconocimiento rápido"</b>]
+    B --- C["Crear símbolos<br/>multiescala"]
+    C --- D["Usar fuentes con estilos<br/>de letra únicos"]
+    D --- E["Aplicar tamaños de<br/>punto más grandes"]
+
+    %% Rama Derecha: Rendimiento
+    C3 --- F["Asignar escalas de caché<br/>recomendadas"]
+
+    %% Estilos técnicos de renderizado
+    classDef default fill:#ffffff,stroke:#333,stroke-width:1.5px,rx:5,ry:5,color:#333;
+    classDef highlight fill:#27ae60,stroke:#1e8449,stroke-width:3px,color:#fff,font-size:1em;
+    classDef category fill:#f8f9fa,stroke:#2c3e50,stroke-width:2px,color:#2c3e50,rx:10,ry:10,font-weight:bold;
+    classDef title fill:#2c3e50,stroke:#2c3e50,stroke-width:2px,color:#ffffff,rx:5,ry:5,font-size:1em;
+    
+    class A,C,D,E,F,G default;
+    class B highlight;
+    class C1,C2,C3 category;
+    class T title;
+``` 
+-->
+
+
+::: {layout="[[50, 50]]" layout-valign="center"}
+
+![🚫 No use estos estilos complejos](images/cartografia/04/img_pag38_1.png){style="color: red; font-weight: bold;"}
+
+![🚫 No use estos estilos complejos](images/cartografia/04/img_pag38_2.png){style="color: red; font-weight: bold;"}
+
+:::
+
+
+```{mermaid}
+%%| fig-align: center
+%%| out-width: 60%
+flowchart TD
+    T[Mejores prácticas para diseñar servicios de mapas]
+
+    %% Categorías principales para balancear la carga visual
+    T --> C1[Formato y Visualización]
+    T --> C2[Simbología y Tipografía]
+    T --> C3[Rendimiento]
+
+    %% Rama Izquierda: Formato (Cascada)
+    C1 --> A[Usar formato .png]
+    A --> G[Aplicar anti-aliasing]
+
+    %% Rama Central: Simbología (Cascada - Elemento destacado)
+    C2 --> B[Diseñar símbolos para un reconocimiento rápido]
+    B --> C[Crear símbolos multiescala]
+    C --> D[Usar fuentes con estilos de letra únicos]
+    D --> E[Aplicar tamaños de punto más grandes]
+
+    %% Rama Derecha: Rendimiento
+    C3 --> F[Asignar escalas de caché recomendadas]
+
+    %% Estilos directos por nodo (Inmune a errores de clases en v10.2.0-rc.2)
+    style T fill:#2c3e50,stroke:#2c3e50,stroke-width:2px,color:#ffffff
+    
+    style C1 fill:#f8f9fa,stroke:#2c3e50,stroke-width:2px,color:#2c3e50
+    style C2 fill:#f8f9fa,stroke:#2c3e50,stroke-width:2px,color:#2c3e50
+    style C3 fill:#f8f9fa,stroke:#2c3e50,stroke-width:2px,color:#2c3e50
+
+    %% Nodo destacado (C)
+    style C fill:#27ae60,stroke:#1e8449,stroke-width:3px,color:#fff
+
+    %% Nodos estándar
+    style A fill:#ffffff,stroke:#333,stroke-width:1.5px,color:#333
+    style B fill:#ffffff,stroke:#333,stroke-width:1.5px,color:#333
+    style D fill:#ffffff,stroke:#333,stroke-width:1.5px,color:#333
+    style E fill:#ffffff,stroke:#333,stroke-width:1.5px,color:#333
+    style F fill:#ffffff,stroke:#333,stroke-width:1.5px,color:#333
+    style G fill:#ffffff,stroke:#333,stroke-width:1.5px,color:#333
+```
+
+<!-- 
+```mermaid
+%%| fig-align: center
+%%| out-width: 60%
+graph TD
+    T["Mejores prácticas para diseñar servicios de mapas"]
+
+    %% Categorías principales para balancear la carga visual
+    T --- C1["Formato y Visualización"]
+    T --- C2["Simbología y Tipografía"]
+    T --- C3["Rendimiento"]
+
+    %% Rama Izquierda: Formato (Cascada)
+    C1 --- A["Usar formato .png"]
+    A --- G["Aplicar anti-aliasing"]
+
+    %% Rama Central: Simbología (Cascada - Elemento destacado)
+    C2 --- B["Diseñar símbolos para un<br/>reconocimiento rápido"]
+    B --- C["<b>Crear símbolos<br/>multiescala</b>"]
+    C --- D["Usar fuentes con estilos<br/>de letra únicos"]
+    D --- E["Aplicar tamaños de<br/>punto más grandes"]
+
+    %% Rama Derecha: Rendimiento
+    C3 --- F["Asignar escalas de caché<br/>recomendadas"]
+
+    %% Estilos técnicos de renderizado
+    classDef default fill:#ffffff,stroke:#333,stroke-width:1.5px,rx:5,ry:5,color:#333;
+    classDef highlight fill:#27ae60,stroke:#1e8449,stroke-width:3px,color:#fff,font-size:1em;
+    classDef category fill:#f8f9fa,stroke:#2c3e50,stroke-width:2px,color:#2c3e50,rx:10,ry:10,font-weight:bold;
+    classDef title fill:#2c3e50,stroke:#2c3e50,stroke-width:2px,color:#ffffff,rx:5,ry:5,font-size:1em;
+    
+    class A,B,D,E,F,G default;
+    class C highlight;
+    class C1,C2,C3 category;
+    class T title;
+``` 
+-->
+
+
+<!-- ::: {layout="[[45, 10, 45]]" layout-valign="center"}
+
+![](images/cartografia/04/img_pag39_4.png)
+
+::: {style="text-align: center; font-size: 3rem; line-height: 1;"}
+<span style="font-size: 3rem; color: #007bff">→</span>
+:::
+
+![](images/cartografia/04/img_pag39_5.png)
+
+::: -->
+
+![Símbolos multiescala: Generalización y cambio de tipo de símbolo](images/cartografia/04/simbolos_multiescala.jpg){fig-align="center" width="100%"}
+
+
+```{mermaid}
+%%| fig-align: center
+%%| out-width: 60%
+flowchart TD
+    T[Mejores prácticas para diseñar servicios de mapas]
+
+    %% Categorías principales para balancear la carga visual
+    T --> C1[Formato y Visualización]
+    T --> C2[Simbología y Tipografía]
+    T --> C3[Rendimiento]
+
+    %% Rama Izquierda: Formato (Cascada)
+    C1 --> A[Usar formato .png]
+    A --> G[Aplicar anti-aliasing]
+
+    %% Rama Central: Simbología (Cascada)
+    C2 --> B[Diseñar símbolos para un reconocimiento rápido]
+    B --> C[Crear símbolos multiescala]
+    C --> D[Usar fuentes con estilos de letra únicos]
+    D --> E[Aplicar tamaños de punto más grandes]
+
+    %% Rama Derecha: Rendimiento (Elemento destacado)
+    C3 --> F[Asignar escalas de caché recomendadas]
+
+    %% Estilos directos por nodo (Inmune a errores de clases en v10.2.0-rc.2)
+    style T fill:#2c3e50,stroke:#2c3e50,stroke-width:2px,color:#ffffff
+    
+    style C1 fill:#f8f9fa,stroke:#2c3e50,stroke-width:2px,color:#2c3e50
+    style C2 fill:#f8f9fa,stroke:#2c3e50,stroke-width:2px,color:#2c3e50
+    style C3 fill:#f8f9fa,stroke:#2c3e50,stroke-width:2px,color:#2c3e50
+
+    %% Nodo destacado (F)
+    style F fill:#27ae60,stroke:#1e8449,stroke-width:3px,color:#fff
+
+    %% Nodos estándar
+    style A fill:#ffffff,stroke:#333,stroke-width:1.5px,color:#333
+    style B fill:#ffffff,stroke:#333,stroke-width:1.5px,color:#333
+    style C fill:#ffffff,stroke:#333,stroke-width:1.5px,color:#333
+    style D fill:#ffffff,stroke:#333,stroke-width:1.5px,color:#333
+    style E fill:#ffffff,stroke:#333,stroke-width:1.5px,color:#333
+    style G fill:#ffffff,stroke:#333,stroke-width:1.5px,color:#333
+```
+
+<!-- 
+```{mermaid}
+%%| fig-align: center
+%%| out-width: 60%
+graph TD
+    T["Mejores prácticas para diseñar servicios de mapas"]
+
+    %% Categorías principales para balancear la carga visual
+    T --- C1["Formato y Visualización"]
+    T --- C2["Simbología y Tipografía"]
+    T --- C3["Rendimiento"]
+
+    %% Rama Izquierda: Formato (Cascada)
+    C1 --- A["Usar formato .png"]
+    A --- G["Aplicar anti-aliasing"]
+
+    %% Rama Central: Simbología (Cascada - Elemento destacado)
+    C2 --- B["Diseñar símbolos para un<br/>reconocimiento rápido"]
+    B --- C["Crear símbolos<br/>multiescala"]
+    C --- D["Usar fuentes con estilos<br/>de letra únicos"]
+    D --- E["Aplicar tamaños de<br/>punto más grandes"]
+
+    %% Rama Derecha: Rendimiento
+    C3 --- F["<b>Asignar escalas de caché<br/>recomendadas</b>"]
+
+    %% Estilos técnicos de renderizado
+    classDef default fill:#ffffff,stroke:#333,stroke-width:1.5px,rx:5,ry:5,color:#333;
+    classDef highlight fill:#27ae60,stroke:#1e8449,stroke-width:3px,color:#fff,font-size:1em;
+    classDef category fill:#f8f9fa,stroke:#2c3e50,stroke-width:2px,color:#2c3e50,rx:10,ry:10,font-weight:bold;
+    classDef title fill:#2c3e50,stroke:#2c3e50,stroke-width:2px,color:#ffffff,rx:5,ry:5,font-size:1em;
+    
+    class A,B,C,D,E,G default;
+    class F highlight;
+    class C1,C2,C3 category;
+    class T title;
+```
+ -->
+
+
+
+
+
+::: {layout="[[50, 50]]" layout-valign="center"}
+
+![](images/cartografia/04/img_pag41_1.png)
+
+![](images/cartografia/04/img_pag41_2.png)
+
+:::
+
+```{mermaid}
+%%| fig-align: center
+%%| out-width: 60%
+flowchart TD
+    T[Mejores prácticas para diseñar servicios de mapas]
+
+    %% Categorías principales para balancear la carga visual
+    T --> C1[Formato y Visualización]
+    T --> C2[Simbología y Tipografía]
+    T --> C3[Rendimiento]
+
+    %% Rama Izquierda: Formato (Cascada)
+    C1 --> A[Usar formato .png]
+    A --> G[Aplicar anti-aliasing]
+
+    %% Rama Central: Simbología (Cascada)
+    C2 --> B[Diseñar símbolos para un reconocimiento rápido]
+    B --> C[Crear símbolos multiescala]
+    C --> D[Usar fuentes con estilos de letra únicos]
+    D --> E[Aplicar tamaños de punto más grandes]
+
+    %% Rama Derecha: Rendimiento
+    C3 --> F[Asignar escalas de caché recomendadas]
+
+    %% Estilos directos por nodo (Inmune a errores de clases en v10.2.0-rc.2)
+    style T fill:#2c3e50,stroke:#2c3e50,stroke-width:2px,color:#ffffff
+    
+    style C1 fill:#f8f9fa,stroke:#2c3e50,stroke-width:2px,color:#2c3e50
+    style C2 fill:#f8f9fa,stroke:#2c3e50,stroke-width:2px,color:#2c3e50
+    style C3 fill:#f8f9fa,stroke:#2c3e50,stroke-width:2px,color:#2c3e50
+
+    %% Nodo destacado (G)
+    style G fill:#27ae60,stroke:#1e8449,stroke-width:3px,color:#fff
+
+    %% Nodos estándar
+    style A fill:#ffffff,stroke:#333,stroke-width:1.5px,color:#333
+    style B fill:#ffffff,stroke:#333,stroke-width:1.5px,color:#333
+    style C fill:#ffffff,stroke:#333,stroke-width:1.5px,color:#333
+    style D fill:#ffffff,stroke:#333,stroke-width:1.5px,color:#333
+    style E fill:#ffffff,stroke:#333,stroke-width:1.5px,color:#333
+    style F fill:#ffffff,stroke:#333,stroke-width:1.5px,color:#333
+```
+
+<!-- 
+```{mermaid}
+%%| fig-align: center
+%%| out-width: 60%
+graph TD
+    T["Mejores prácticas para diseñar servicios de mapas"]
+
+    %% Categorías principales para balancear la carga visual
+    T --- C1["Formato y Visualización"]
+    T --- C2["Simbología y Tipografía"]
+    T --- C3["Rendimiento"]
+
+    %% Rama Izquierda: Formato (Cascada)
+    C1 --- A["Usar formato .png"]
+    A --- G["<b>Aplicar anti-aliasing</b>"]
+
+    %% Rama Central: Simbología (Cascada - Elemento destacado)
+    C2 --- B["Diseñar símbolos para un<br/>reconocimiento rápido"]
+    B --- C["Crear símbolos<br/>multiescala"]
+    C --- D["Usar fuentes con estilos<br/>de letra únicos"]
+    D --- E["Aplicar tamaños de<br/>punto más grandes"]
+
+    %% Rama Derecha: Rendimiento
+    C3 --- F["Asignar escalas de caché<br/>recomendadas"]
+
+    %% Estilos técnicos de renderizado
+    classDef default fill:#ffffff,stroke:#333,stroke-width:1.5px,rx:5,ry:5,color:#333;
+    classDef highlight fill:#27ae60,stroke:#1e8449,stroke-width:3px,color:#fff,font-size:1em;
+    classDef category fill:#f8f9fa,stroke:#2c3e50,stroke-width:2px,color:#2c3e50,rx:10,ry:10,font-weight:bold;
+    classDef title fill:#2c3e50,stroke:#2c3e50,stroke-width:2px,color:#ffffff,rx:5,ry:5,font-size:1em;
+    
+    class A,B,C,D,E,F default;
+    class G highlight;
+    class C1,C2,C3 category;
+    class T title;
+```
+ -->
+
+::: {layout="[[50, 50]]" layout-valign="center"}
+
+![](images/cartografia/04/img_pag42_2.png)
+
+![](images/cartografia/04/img_pag42_4.jpeg)
+
+:::
+
+![Comparación de la calidad visual en el renderizado de redes: efecto del anti-aliasing en la continuidad de geometrías lineales.](images/cartografia/04/antialiasing.png){fig-align="center" width="60%"}
+
+
+https://learn.arcgis.com/en/paths/mapping-and-visualization-in-arcgis-pro/

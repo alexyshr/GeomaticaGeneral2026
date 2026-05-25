@@ -107,3 +107,23 @@ Clase Abril 13:
 - Preguntas del proyecto
 
 Clase 20 de Abril: Presencial!
+
+
+
+####  
+
+https://courses.spatialthoughts.com/introduction-to-qgis.html
+
+https://courses.spatialthoughts.com/advanced-qgis.html
+
+https://courses.spatialthoughts.com/
+
+https://github.com/Nowosad/conferences_2026
+
+https://www.esri.com/training/catalog/5e7a48e6a662e60f85592a97/arcpy-essentials/
+
+
+
+ArcHydro Case Studies:
+- https://www.esri.com/en-us/industries/water-resources/arc-hydro
+

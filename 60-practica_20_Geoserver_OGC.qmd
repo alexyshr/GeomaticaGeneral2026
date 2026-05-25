@@ -1,0 +1,554 @@
+# Publicación de servicios OGC estándar con GeoServer
+
+## Introducción
+
+### Alcance del taller
+
+El presente taller desarrolla competencias en publicación de infraestructuras de datos geoespaciales mediante servicios web estándar OGC (Open Geospatial Consortium). Se abordarán la instalación y configuración de GeoServer, la creación de espacios de trabajo (workspaces) y almacenes de datos (data stores), y la publicación de servicios WMS (Web Map Service), WFS (Web Feature Service) y WMTS (Web Map Tile Service). El ejercicio culmina con la integración de servicios OGC en aplicaciones cliente, la documentación reproducible mediante Quarto y la reflexión crítica sobre interoperabilidad, seguridad y escalabilidad en infraestructuras de datos geoespaciales. La entrega se realizará mediante un repositorio GitHub que integre la configuración reproducible de GeoServer y un análisis técnico riguroso del despliegue realizado.
+
+### Objetivos de aprendizaje
+
+Al finalizar este taller, los estudiantes serán capaces de:
+
+* Instalar y configurar GeoServer en entornos locales y remotos.
+* Crear workspaces, data stores y capas publicables.
+* Publicar servicios WMS, WFS y WMTS configurados según estándares OGC.
+* Consumir servicios OGC desde clientes QGIS, navegadores web y aplicaciones custom.
+* Implementar seguridad, caché y optimizaciones de rendimiento en GeoServer.
+* Evaluar arquitectura de servicios web geoespaciales.
+
+### Resumen de servicios OGC y especificaciones técnicas
+
+Los servicios web estándar OGC permiten la interoperabilidad entre sistemas heterogéneos mediante protocolos HTTP y respuestas en formatos abiertos.
+
+| Servicio | Versión | Protocolo | Respuesta | Caso de uso |
+|---|---|---|---|---|
+| **WMS** | 1.3.0 | HTTP GET/POST | Imagen rasterizada (PNG, JPEG, GeoTIFF) | Visualización cartográfica base |
+| **WFS** | 2.0.0 | HTTP GET/POST | GeoJSON, GML, ShapeZip | Descarga y edición de vectores |
+| **WMTS** | 1.0.0 | HTTP GET KVP | Teselas predefinidas (PNG, JPEG) | Fondos de mapa optimizados |
+| **CSW** | 2.0.2 | HTTP SOAP/REST | XML (Dublin Core) | Descubrimiento de metadatos |
+| **WPS** | 1.0.0 | HTTP GET/POST | XML (GML, complex types) | Procesamiento geoespacial remoto |
+
+### Estructura de directorios del proyecto
+
+```text
+taller_geoserver/
+├── datos/
+│   ├── colombia_formatos.gpkg
+│   ├── municipios.shp
+│   └── [capas vectoriales]
+├── imagenes/
+│   ├── 01_geoserver_interface.png
+│   ├── 02_workspace_creation.png
+│   ├── 03_datastore_configuration.png
+│   ├── 04_wms_getcapabilities.png
+│   └── 05_client_consumption.png
+└── index.qmd
+```
+
+### Requisitos previos y materiales
+
+Para el desarrollo de las actividades programadas es indispensable contar con:
+
+* **Software:**
+  * GeoServer 2.20 o superior (descargable desde `geoserver.org`).
+  * Java Runtime Environment (JRE) 11 o superior.
+  * Cliente HTTP: curl, Postman, navegador web moderno.
+  * Git y cliente GitHub Desktop o línea de comandos.
+  * Quarto CLI instalado.
+
+* **Datos geográficos:**
+  * Shapefiles, GeoPackage o geodatabase con capas vectoriales de Colombia.
+  * Datos ráster opcionales (GeoTIFF, Cloud Optimized GeoTIFF).
+  * Tabla de atributos con metadatos descriptivos.
+
+* **Acceso y configuración:**
+  * Acceso administrativo a máquina local o servidor donde instalar GeoServer.
+  * Puerto disponible (por defecto 8080).
+  * Conocimientos básicos de línea de comandos y HTTP.
+
+## Procedimiento metodológico
+
+### Parte 1: Instalar y Configurar GeoServer
+
+
+::: {.callout-important}
+
+#### Rutas de instalación
+
+La configuración de la guía hace referencia a la ruta `D:\Programs\...`.
+
+Es necesario sustituir este directorio por la ubicación exacta donde instalará GeoServer y OpenJDK.
+
+:::
+
+1. **Descargar Java**
+
+- Versión requerida `Eclipse Temurin (OpenJDK) Versión 17` compatible con `GeoServer 2.28.x`
+- Accede a `https://adoptium.net/temurin/releases?version=17&os=any&arch=any`
+- Descarga el archivo `OpenJDK17U-jdk_x64_windows_hotspot_17.0.19_10.msi` e instalalo
+- Instalado a `D:\Programs\Eclipse Adoptium\jdk-17.0.19.10-hotspot\`
+
+2. **Descargar GeoServer**
+
+- Accede a `geoserver.org`
+- Descarga la versión estable (Windows installer o ZIP)
+   - Versión binaria: `geoserver-2.28.3-bin.zip`
+- Sigue el instalador gráfico O descomprime el ZIP
+   - Binario descomprimido a `D:\Programs\geoserver-2.28.3-bin`
+
+3. **Iniciar GeoServer**
+
+- **Windows (Installer):**
+   - GeoServer se instala como servicio de Windows
+   - Inicia automáticamente o manualmente en Services
+
+- **ZIP (Multiplataforma):**
+
+```
+:: 1. Forzar la asignación de la nueva ruta en la sesión actual
+set JAVA_HOME=D:\Programs\Eclipse Adoptium\jdk-17.0.19.10-hotspot
+
+:: 2. Verificar que la consola reconozca el binario de Java 11
+"%JAVA_HOME%\bin\java" -version
+
+:: 3. Desplazarse al directorio de GeoServer y ejecutar el inicio
+e:
+cd D:\Programs\geoserver-2.28.3-bin\bin
+startup.bat
+
+```
+
+4. **Verificar que está corriendo**
+
+- Accede a `http://localhost:8080/geoserver`
+- Deberías ver la interfaz de administración de GeoServer
+- Login por defecto: `admin` / `geoserver`
+
+5. **Cambiar contraseña (seguridad)**
+
+- Ve a `Security` → `Users, Groups, Roles`
+- Haz clic en usuario `admin`
+- Cambia la contraseña a algo seguro
+
+
+### Parte 2: Crear workspace
+
+1. **Crear workspace**
+
+* En panel izquierdo, hacer clic en `Workspaces`.
+* Hacer clic en `Add new workspace`.
+* Completar:
+  * **Name:** `Cartografia_UNAL`.
+  * **Namespace URI:** `http://www.unal.edu.co/cartografia/`.
+  * Marcar checkbox: `Default workspace`.
+  * Hacer clic en `Submit`.
+
+::: {.callout-note}
+### Nota técnica sobre el Namespace URI y el entorno local
+
+Es común cuestionar por qué se emplea una dirección web institucional (`http://www.unal.edu.co/cartografia`) en un servidor que corre localmente (`localhost`), especialmente si no se posee acceso administrativo o conexión activa a dicho dominio.
+
+La razón radica en que este campo **no opera como un localizador de recursos (URL de navegación)**, sino como un **identificador de recursos (URI)**. GeoServer no intentará conectarse a Internet ni validará la existencia de la página web. Para el sistema, esta dirección es una simple cadena de texto (*string*) utilizada como una "cédula de identidad" global única.
+
+El uso de esta nomenclatura en el taller responde a dos objetivos técnicos:
+
+* **Evitar colisiones de nombres:** Los estándares del *Open Geospatial Consortium* (OGC) dictan el uso de dominios invertidos o institucionales para garantizar que, si estos servicios se integran en el futuro con visores de otras entidades, las capas locales no entren en conflicto con datos externos.
+* **Estandarización del laboratorio:** Al unificar el Namespace URI, los archivos de estilos (SLD), los metadatos y las peticiones de prueba suministradas en la clase serán compatibles de forma simétrica en el entorno de cada estudiante sin requerir modificaciones adicionales.
+
+Por lo tanto, introduzca el valor exactamente como lo indica la guía y proceda con el registro.
+:::
+
+
+### Parte 3: Crear data store (almacén de datos)
+
+1. **Crear un Data Store para GeoPackage**
+
+- Ve a `Stores` → `Add new Store`
+- Selecciona `GeoPackage` como tipo
+- **Workspace:** `Cartografia_UNAL`
+- **Data Source Name:** `Datos_GeoPackage`
+- **Database:** `...\data_heavy\taller_geoserver\datos\colombia_formatos.gpkg`
+- Haz clic en `Save`
+
+2. **Crear un Data Store para directorio de Shapefiles**
+
+- Ve a `Stores` → `Add new Store`
+- Selecciona `Directory of spatial files (Shapefiles)` como tipo
+- **Workspace:** `Cartografia_UNAL`
+- **Data Source Name:** `Datos_Shapefiles`
+- **Shapefile location:** `file:D:/.../data_heavy/taller_geoserver/datos/`
+- Haz clic en `Save`
+
+3. **Alternativa: PostGIS Database**
+
+- Si tienes base de datos PostGIS:
+- Selecciona `PostGIS` como tipo
+- Configura:
+   - Host: localhost
+   - Port: 5432
+   - Database: tu_base_datos
+   - User y Password
+- Prueba la conexión (`Test Connection`)
+
+
+### Parte 4: Publicar una Capa (Layer)
+
+1. **Desde `Data` → `Layers`**
+
+- Seleccione uno de los `Data Stores` creados
+- GeoServer listará los datos geográficos disponibles
+- Para cada shapefile o tabla:
+   - Haz clic en `Publish`
+
+2. **Configurar la capa (Layer)**
+
+> Trabajaremos con la capa `departamentos`
+
+- **Nombre:** Déjalo automático o renombra
+- **Title:** Título descriptivo en español (ej. `departamentos`)
+- **Abstract:** Descripción de los datos
+- En `Native Bounding Box`:
+   - Haz clic en `Compute from data`
+- En `Lat/Lon Bounding Box`:
+   - Haz clic en `Compute from native bounds`
+- **Coordinate Reference System (CRS):**
+   - Verifica que sea correcto (`EPSG:4326` para WGS84)
+- Haz clic en `Save`
+
+### Parte 5: Configurar Estilos (SLD)
+
+1. **Acceder a estilos**
+
+- Ve a `Styles` (menú izquierdo)
+- Haz clic en `Add a new style`
+
+2. **Crear un estilo básico**
+
+- **Name:** `Estilo_Simple`
+- **Workspace:** `Cartografia_UNAL`
+- **Format:** `SLD` (Styled Layer Descriptor)
+
+3. **Ejemplo de SLD para polígonos (Departamentos)**
+
+```xml
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<StyledLayerDescriptor version="1.0.0"
+    xmlns="[http://www.opengis.net/sld](http://www.opengis.net/sld)"
+    xmlns:ogc="[http://www.opengis.net/ogc](http://www.opengis.net/ogc)"
+    xmlns:xsi="[http://www.w3.org/2001/XMLSchema-instance](http://www.w3.org/2001/XMLSchema-instance)"
+    xsi:schemaLocation="[http://www.opengis.net/sld](http://www.opengis.net/sld) [http://schemas.opengis.net/sld/1.0.0/StyledLayerDescriptor.xsd](http://schemas.opengis.net/sld/1.0.0/StyledLayerDescriptor.xsd)">
+  <NamedLayer>
+    <Name>Estilo_Simple</Name>
+    <UserStyle>
+      <Title>Estilo de Polígono Naranja</Title>
+      <FeatureTypeStyle>
+        <Rule>
+          <PolygonSymbolizer>
+            <Fill>
+              <CssParameter name="fill">#ff9900</CssParameter>
+            </Fill>
+            <Stroke>
+              <CssParameter name="stroke">#000000</CssParameter>
+              <CssParameter name="stroke-width">0.5</CssParameter>
+            </Stroke>
+          </PolygonSymbolizer>
+        </Rule>
+      </FeatureTypeStyle>
+    </UserStyle>
+  </NamedLayer>
+</StyledLayerDescriptor>
+```
+
+4. **Guardar el estilo**
+
+* Haz clic en `Validate` para verificar sintaxis
+* Haz clic en `Save`
+
+5. **Aplicar estilo a una capa**
+
+* Ve a `Layers` y haz clic en el título de la capa
+* Selecciona la pestaña `Publishing`
+* En la sección `WMS Settings` → `Layer Settings`
+* En `Default Style`, selecciona tu estilo `Estilo_Simple`
+* Haz clic en `Save`
+
+
+
+### Parte 6: Publicar Servicios OGC
+
+1. **Verificar WMS está habilitado**
+
+* `Services` → `WMS`
+* Asegúrate de que esté habilitado (checkbox)
+* URL de acceso: `http://localhost:8080/geoserver/wms`
+
+
+2. **Verificar WFS está habilitado**
+
+* `Services` → `WFS`
+* Asegúrate de que esté habilitado
+* URL de acceso: `http://localhost:8080/geoserver/wfs`
+
+
+3. **Acceder a las capacidades**
+
+* **WMS GetCapabilities:**
+
+```
+http://localhost:8080/geoserver/wms?service=WMS&version=1.1.0&request=GetCapabilities
+
+```
+
+
+* **WFS GetCapabilities:**
+
+```
+http://localhost:8080/geoserver/wfs?service=WFS&version=2.0.0&request=GetCapabilities
+
+```
+
+### Parte 7: Previsualización de Capas y Control de Salidas (WMS y WFS)
+
+1. **Previsualización interactiva mediante WMS**
+
+* En el menú izquierdo, bajo la sección `Data`, haz clic en `Layer Preview`.
+* Localiza la capa registrada bajo el nombre `Cartografia_UNAL:departamentos`.
+* En la columna `Common Formats`, haz clic en el enlace **OpenLayers**.
+* Se abrirá una pestaña dinámica en el navegador web que renderiza la cartografía mediante peticiones automáticas de mapas (`GetMap`).
+
+
+2. **Descarga de datos vectoriales crudos mediante WFS**
+
+* El servicio WFS permite descargar la geometría y los atributos reales de la capa directamente desde el servidor local.
+* En la misma fila de la capa en `Layer Preview`, despliega el menú de la columna `Select an option`.
+* Selecciona **Shapefile** bajo el grupo de formatos vectoriales. El navegador iniciará la descarga automática de un archivo comprimido (`.zip`) conteniendo las entidades vectoriales de los departamentos.
+
+
+3. **Construcción manual de una petición GetMap (WMS)**
+
+* De acuerdo con el estándar OGC WMS, es posible solicitar un mapa estático estructurando una URL con parámetros clave-valor (`KVP`).
+* Copia y pega la siguiente dirección en el navegador web para forzar al servidor a generar un renderizado PNG directo de la capa de departamentos:
+
+
+```text
+http://localhost:8080/geoserver/Cartografia_UNAL/wms?service=WMS&version=1.3.0&request=GetMap&layers=Cartografia_UNAL:departamentos&styles=&bbox=-4.3,-81.8,13.5,-66.8&width=768&height=768&srs=EPSG:4326&format=image/png
+
+```
+
+::: {.callout-tip}
+
+#### Parámetros clave de la URL WMS
+
+* **`layers`**: Especifica el espacio de nombres y la capa a consultar (`Cartografia_UNAL:departamentos`).
+* **`bbox`**: Define la extensión geográfica mínima y máxima para el encuadre cartográfico (valores límite aproximados para la República de Colombia).
+* **`srs`**: Define el sistema de referencia espacial de salida (`EPSG:4326`).
+* **`format`**: Determina el tipo de archivo de imagen devuelto por el servidor (`image/png`).
+:::
+
+### Parte 8: Publicación de teselas (WMTS - opcional avanzado)
+
+1. **Crear conjunto de teselas**
+
+* En panel izquierdo, ir a `Tile Caching` → `Tile Layers`.
+* Seleccionar layer a teselar (ej. `Cartografia_UNAL:departamentos`).
+* Hacer clic en botón de engranaje ⚙️ (gear icon).
+* Seleccionar esquema de teselas: `GoogleMaps` o `Web Mercator`.
+* Hacer clic en `Seed/Harvest` para generar teselas.
+* Especificar niveles de zoom (ej. 5 a 16).
+* Hacer clic en `Submit`.
+
+2. **Verificar WMTS**
+
+* Abrir URL:
+
+```
+http://localhost:8080/geoserver/gwc/service/wmts?service=WMTS&version=1.0.0&request=GetCapabilities
+
+```
+
+### Parte 9: Consumir Servicios desde QGIS
+
+1. **Conexión a servicios de mapas web (WMS)**
+
+- Abra QGIS y diríjase al menú superior: `Capa` → `Añadir capa` → `Añadir capa WMS/WMTS...` (o utilice el comando abreviado `Ctrl + Shift + W`).
+- En la pestaña **Capas**, haga clic en el botón **Nuevo** para parametrizar una nueva conexión a servidor.
+- Configure las propiedades de la conexión de la siguiente manera:
+   - **Nombre:** `GeoServer_Local_WMS`
+   - **URL:** `http://localhost:8080/geoserver/Cartografia_UNAL/wms`
+- Haga clic en **Aceptar**.
+- Regrese a la ventana principal de diálogo, seleccione la conexión recién creada y haga clic en **Conectar**.
+- El árbol de recursos desplegará la capa `departamentos`. Selecciónela, verifique que el formato de imagen de salida sea `image/png` y haga clic en **Añadir**.
+
+2. **Conexión a servicios de objetos web (WFS)**
+
+- El protocolo WFS permite interactuar con las geometrías y tablas de atributos directamente desde QGIS como si fuera un archivo vectorial local.
+- Diríjase al menú superior: `Capa` → `Añadir capa` → `Añadir capa WFS...` (o utilice el comando abreviado `Ctrl + Shift + G`).
+- Haga clic en **Nuevo** y configure los parámetros del servidor:
+   - **Nombre:** `GeoServer_Local_WFS`
+   - **URL:** `http://localhost:8080/geoserver/Cartografia_UNAL/wfs`
+- Haga clic en **Aceptar** y luego en **Conectar**.
+- Seleccione la capa `Cartografia_UNAL:departamentos` y haga clic en **Añadir**.
+
+::: {.callout-tip}
+### Nota de optimización sobre las URL de conexión
+
+Si bien GeoServer expone un *Endpoint* global (`http://localhost:8080/geoserver/wms`), se recomienda estructurar la URL incluyendo el espacio de nombres de la institución (`/geoserver/Cartografia_UNAL/wms`). Esto restringe el alcance de la petición en QGIS únicamente a los almacenes de datos del proyecto actual, reduciendo el consumo de memoria del cliente y estructurando el árbol de capas de forma aislada y limpia.
+:::
+
+3. **Auditoría visual y alfanumérica en el lienzo de QGIS**
+
+- **Capa WMS:** Seleccione la herramienta **Identificar objetos espaciales** (`Ctrl + Shift + I`) y haga clic sobre un polígono en el lienzo. QGIS enviará una petición automática `GetFeatureInfo` a GeoServer para recuperar los atributos alfanuméricos del departamento seleccionado sin necesidad de descargar el vector.
+- **Capa WFS:** Haga clic derecho sobre la capa WFS cargada en el panel de capas y seleccione **Abrir tabla de atributos**. Observe que, a diferencia del WMS, la tabla se transfiere de forma íntegra a la memoria local, permitiendo realizar consultas por atributos o espaciales avanzadas utilizando las herramientas nativas de QGIS.
+
+
+
+### Parte 10: Consideraciones de Seguridad y Publicación
+
+1. **Configurar CORS (si accedes desde dominio diferente)**
+
+- `Settings` → `Global`
+- Busca `CORS`
+- Habilita CORS y configura dominios permitidos
+
+2. **Usar autenticación si es necesario**
+
+- `Security` → `Authentication`
+- Configura roles y permisos por workspace/capa
+
+3. **Para publicar en internet (no localhost)**
+
+- Usa proxy inverso (Apache, Nginx)
+- Configura certificado SSL/TLS
+- Usa URL permanente y no cambios de IP
+
+
+## Cuestionario de evaluación y análisis
+
+El documento final debe responder analíticamente a los siguientes interrogantes sobre servicios OGC:
+
+**Pregunta 1:** Explique las diferencias arquitectónicas entre WMS y WFS en términos de modelo cliente-servidor. ¿Cuáles son las ventajas de stateless services para escalabilidad y tolerancia a fallos?
+
+**Pregunta 2:** En el flujo de transformación de CRS (MAGNA-SIRGAS EPSG:9377 → Web Mercator EPSG:3857), describa los puntos donde puede ocurrir pérdida de precisión o introducción de errores de proyección. ¿Cómo GeoServer gestiona estas transformaciones?
+
+**Pregunta 3:** Analice la relación entre caching de teselas (WMTS) y consumo de ancho de banda. ¿Cuáles son los trade-offs entre precisión cartográfica (rasterización dinámica en WMS) y rendimiento (WMTS pregenerado)?
+
+**Pregunta 4:** Diseñe un esquema de seguridad para exponer servicios OGC en producción (datos públicos vs. clasificados). ¿Qué mecanismos de autenticación y autorización implementaría en GeoServer?
+
+## Requerimientos de entrega y reproducibilidad
+
+La evaluación del taller se fundamenta en la correcta publicación de servicios interoperables y análisis técnico de la infraestructura.
+
+### 1. Estructura del documento Quarto (.qmd)
+
+Cada estudiante debe redactar un archivo fuente en Quarto (`index.qmd`) y compilarlo en HTML y PDF
+
+Las siguientes capturas de pantalla son requeridas y deben almacenarse en la ruta `imagenes/`:
+
+1. Interfaz de administración de GeoServer mostrando workspace creado.
+2. Configuración de data store (Shapefile o PostGIS).
+3. Respuesta XML de GetCapabilities de WMS en navegador.
+4. Respuesta XML de GetCapabilities de WFS en navegador.
+5. Capa WMS/WFS consumida en QGIS Desktop mostrando atributos.
+
+### 2. Publicación en GitHub y entrega final
+
+* **Crear repositorio público:** `taller-geoserver-[apellido_estudiante]`
+
+* **Estructura del repositorio:**
+
+```text
+taller-geoserver-[apellido_estudiante]/
+├── index.qmd
+├── index.html
+├── index.pdf
+├── imagenes/
+│   ├── 01_geoserver_interface.png
+│   ├── 02_workspace_creation.png
+│   ├── 03_datastore_configuration.png
+│   ├── 04_wms_getcapabilities.png
+│   └── 05_client_consumption.png
+├── .gitignore
+└── README.md
+
+```
+
+* **Compilar documento:**
+
+```bash
+cd taller-geoserver-[apellido_estudiante]
+quarto render index.qmd --to html
+quarto render index.qmd --to pdf
+
+```
+
+* **Hacer commit y push:**
+
+```bash
+git add .
+git commit -m "Publicación de servicios OGC estándar con GeoServer"
+git push origin main
+
+```
+
+* **Activar GitHub Pages:**
+  * Ir a Settings del repositorio.
+  * Sección "Pages".
+  * Source: Deploy from a branch.
+  * Branch: `main` / folder: `/ (root)`.
+  * Hacer clic en Save.
+
+* **Mecanismo de entrega:**
+  * URL del repositorio GitHub.
+  * URL del sitio GitHub Pages.
+  * URLs de GetCapabilities (WMS y WFS) del GeoServer si es accesible públicamente.
+
+### 3. Criterios de evaluación
+
+| Criterio | Ponderación | Descripción |
+| --- | --- | --- |
+| **Reproducibilidad** | 25% | Estructura de directorios, versionamiento Git, documento Quarto compilable. |
+| **Completitud técnica** | 30% | Instalación correcta de GeoServer, publicación de WMS/WFS, capas validadas, CRS correcto. |
+| **Calidad analítica** | 25% | Respuestas fundamentadas a preguntas del cuestionario con rigor técnico en OGC. |
+| **Documentación y capturas** | 15% | Evidencia visual de cada paso, URLs funcionales, metadatos completos. |
+| **Presentación** | 5% | Formato Quarto válido, referencias correctas, escritura técnica clara. |
+
+## Recursos adicionales
+
+* [GeoServer Official Documentation](https://geoserver.org/doc/)
+* [OGC Web Services Standards](https://www.ogc.org/standards/)
+* [WMS 1.3.0 Specification](https://www.ogc.org/standards/wms/)
+* [WFS 2.0.0 Specification](https://www.ogc.org/standards/wfs/)
+* [GeoServer REST API Documentation](https://geoserver.org/develop/rest/)
+* [MAGNA-SIRGAS Technical Documentation](https://www.igac.gov.co/en/services/magna-sirgas)
+
+## Anexo: Troubleshooting común
+
+### GeoServer no inicia
+
+Verificar que puerto 8080 no esté en uso. Revisar logs en `GeoServer/logs/`. Asegurar que Java está instalado correctamente (`java -version`).
+
+### GetCapabilities retorna error 401
+
+Verificar autenticación. Algunos clientes requieren credenciales. Probrar con curl:
+
+```bash
+curl -u admin:geoserver http://localhost:8080/geoserver/wms?service=WMS&version=1.3.0&request=GetCapabilities
+
+```
+
+### Capa WFS lenta en QGIS
+
+Limitar número de features descargadas. En QGIS, seleccionar "Load features" y especificar filtro BBOX o CQL. Considerar paginación.
+
+### Trasformación de CRS causa desplazamiento
+
+Verificar que CRS se asigne correctamente en GeoServer antes de publicar. Usar `Compute from data` para bounding box. Validar que EPSG:9377 sea reconocido por GDAL/PROJ.
+
+### CORS bloqueado al consumir desde navegador
+
+Habilitar CORS en GeoServer: `Web` → `Settings` → `CORS` → habilitar checkbox. Especificar `*` o dominio permitido.
+
+### Imágenes WMS pixeladas
+
+Aumentar `Max rendering size` en configuración de WMS. Considerar usar teselas WMTS para fondos de mapa. Asegurar resolución suficiente de datos origen.

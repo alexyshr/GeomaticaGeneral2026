@@ -1,0 +1,2109 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.550">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Geomática General - 35&nbsp; Flujos de trabajo desde QGIS hacia QGIS Server y aplicaciones web</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./60-practica_20_Geoserver_OGC.html" rel="next">
+<link href="./58-practica_18_ArcGISPro_OnlineIntegration.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Sin resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./41-practica_1_clase2_visualizacion_dinamica.html">Prácticas</a></li><li class="breadcrumb-item"><a href="./59-practica_19_QGIS_WebApp.html"><span class="chapter-number">35</span>&nbsp; <span class="chapter-title">Flujos de trabajo desde QGIS hacia QGIS Server y aplicaciones web</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Geomática General</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Buscar"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bienvenida</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./00-prefacio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prefacio</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Instalación y Entornos</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-introduccion-entornos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introducción a Entornos de Desarrollo SIG</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-guia_instalacion_A_docker.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Guía de Instalación. Opción A: Docker (Python, R, Julia)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-guia_instalacion_B_qgis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Guía de Instalación. Opción B: QGIS y PyQGIS</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-guia_instalacion_C_ArcGIS.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Guía de Instalación. Opción C: ArcGIS Pro y ArcPy</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Proyecto Final</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10-guia_estructura_proyecto_final.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Guía y Estructura del Proyecto Final</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Sensores Remotos</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./16-sr_fundamentos_introduccion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Fundamentos de sensores remotos: Introducción</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./17-sr_satelites_sensores.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Satélites y sensores</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./18-sr_microondas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Sensores remotos de microondas</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./19-sr_analisis_interpretacion_imagenes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Análisis e interpretación de imágenes</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./20-sr_aplicaciones.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Aplicaciones de los sensores remotos</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./21-sr_glosario.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Glosario de Sensores Remotos</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./22-sr_recursos_adicionales.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Recursos Adicionales de Teledetección</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">Cartografía</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./23-cartografia_part1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Historia de la cartografía y fundamentos de SIG</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./24-cartografia_part2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Enfoques y aplicaciones de la cartografía</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./25-cartografia_part3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Planeación y Diseño en Cartografía Digital</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./26-cartografia_part4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Métodos avanzados de SIG en cartografía digital</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+ <span class="menu-text">Prácticas</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./41-practica_1_clase2_visualizacion_dinamica.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Visualización y Mapas Dinámicos</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./42-practica_2_clase2_geoportales.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">🌐 Geoportales y Servicios Web</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./43-practica_3_clase3_coordenadas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Sistemas de Coordenadas - ArcGIS Pro</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./44-practica_4_clase4_conversionformatos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Conversión de Formatos (ArcGIS Pro - QGIS)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./45-practica_5_clase6_introduccion_sr_gee.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Introducción a Sensores Remotos y Procesamiento de Imágenes Satelitales con Google Earth Engine</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./46-practica_6_clase7_nasa_worldview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Guía de Exploración: NASA Worldview</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./47-practica_7_clase7_nasa_plugin_qgis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Guía de Instalación y Uso: NASA Earthdata Plugin para QGIS</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./48-practica_8_clase8_gee_conceptos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Fundamentos de programación en GEE y conceptos clave de sensores remotos</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./49-practica_9_mde.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Fundamentos de modelos digitales de elevación y elaboración cartográfica</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./50-practica_10_mde_hydro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Procesamiento hidrológico y morfométrico de modelos digitales de elevación</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./51-practica_11_mde_models.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Model builder (ArcGIS Pro) y Model Designer (QGIS) de productos del MDE</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./52-practica_12_formularios_arcgis_online_ai.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Taller operación en campo usando asistentes de IA en ArcGIS</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./53-practica_13_gnss_allynav_r26.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Levantamiento GNSS usando equipo AllyNav R26: punto geodésico y borde de vía</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./54-practica_14_postproceso_levantamiento_gnss.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Postproceso del levantamiento GNSS</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./55-practica_15_gnss_trimble_da2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">Levantamiento en Campo Usando el Equipo Trimble Catalyst DA2</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./56-practica_16_exactitud_posicional.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Evaluación de exactitud posicional de levantamientos GNSS</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./57-practica_17_qfield.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">Operación en campo mediante QGIS y QField</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./58-practica_18_ArcGISPro_OnlineIntegration.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">Flujos de trabajo desde ArcGIS Pro hacia ArcGIS Online</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./59-practica_19_QGIS_WebApp.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">35</span>&nbsp; <span class="chapter-title">Flujos de trabajo desde QGIS hacia QGIS Server y aplicaciones web</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./60-practica_20_Geoserver_OGC.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">36</span>&nbsp; <span class="chapter-title">Publicación de servicios OGC estándar con GeoServer</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
+ <span class="menu-text">Presentaciones</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./61-presentacion_1_clase1_varios.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">37</span>&nbsp; <span class="chapter-title">Temas por Charlar</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./62-presentacion_2_clase2_geomatica.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">38</span>&nbsp; <span class="chapter-title">¿Qué es la Geomática?</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./63-presentacion_3_clase2_syllabus_evaluacion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">39</span>&nbsp; <span class="chapter-title">Presentación del Curso y Syllabus 2025</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./64-presentacion_4_clase3_coordenadas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">40</span>&nbsp; <span class="chapter-title">Sistemas de Coordenadas</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./65-presentacion_5_clase7_sr_arset.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">41</span>&nbsp; <span class="chapter-title">Sensores Remotos - NASA ARSET</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true">
+ <span class="menu-text">Apéndices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./80-instalacion_herramientas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Resumen instalación de herramientas</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./81-uso_infraestructura_instalada.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Uso de la Infraestructura Instalada</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./82-quarto.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Quarto: Orquestación y Configuración</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./83-docker_desktop.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Docker: Gestión de Contenedores e Imágenes</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./84-git_github.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Git y GitHub: Sincronización Local-Remota</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./85-vscode.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Visual Studio Code (VScode): Extensiones e Interfaz</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./86-windows.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">G</span>&nbsp; <span class="chapter-title">Temas técnicos sobre Windows</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./87-linux_ubuntu.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">H</span>&nbsp; <span class="chapter-title">Temas Técnicos sobre Linux</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./88-python.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">I</span>&nbsp; <span class="chapter-title">Adicionales Sobre Python</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./89-r.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">J</span>&nbsp; <span class="chapter-title">Adicionales Sobre R</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./90-julia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">K</span>&nbsp; <span class="chapter-title">Adicionales Sobre Julia</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./91-qgis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">L</span>&nbsp; <span class="chapter-title">Adicionales Sobre QGIS</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./92-arcgispro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">M</span>&nbsp; <span class="chapter-title">Adicionales sobre ArcGIS Pro</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./93-postgresql.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">N</span>&nbsp; <span class="chapter-title">Adicionales sobre ArcGIS Pro</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./98-errata.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">O</span>&nbsp; <span class="chapter-title">Errata</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./99-referencias.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Referencias Bibliográficas</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Tabla de Contenidos</h2>
+   
+  <ul>
+  <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción"><span class="header-section-number">35.1</span> Introducción</a>
+  <ul class="collapse">
+  <li><a href="#alcance-del-taller" id="toc-alcance-del-taller" class="nav-link" data-scroll-target="#alcance-del-taller">Alcance del taller</a></li>
+  <li><a href="#estándares-de-la-ogc-para-servicios-web-geográficos" id="toc-estándares-de-la-ogc-para-servicios-web-geográficos" class="nav-link" data-scroll-target="#estándares-de-la-ogc-para-servicios-web-geográficos">Estándares de la OGC para servicios web geográficos</a></li>
+  <li><a href="#resumen-de-flujos-de-trabajo-y-comandos" id="toc-resumen-de-flujos-de-trabajo-y-comandos" class="nav-link" data-scroll-target="#resumen-de-flujos-de-trabajo-y-comandos">Resumen de flujos de trabajo y comandos</a></li>
+  <li><a href="#estructura-de-directorios-del-proyecto" id="toc-estructura-de-directorios-del-proyecto" class="nav-link" data-scroll-target="#estructura-de-directorios-del-proyecto">Estructura de directorios del proyecto</a></li>
+  <li><a href="#requisitos-previos-y-materiales" id="toc-requisitos-previos-y-materiales" class="nav-link" data-scroll-target="#requisitos-previos-y-materiales">Requisitos previos y materiales</a></li>
+  </ul></li>
+  <li><a href="#procedimiento-metodológico" id="toc-procedimiento-metodológico" class="nav-link" data-scroll-target="#procedimiento-metodológico"><span class="header-section-number">35.2</span> Procedimiento metodológico</a>
+  <ul class="collapse">
+  <li><a href="#parte-1-inicialización-del-proyecto-qgis-y-entorno-local" id="toc-parte-1-inicialización-del-proyecto-qgis-y-entorno-local" class="nav-link" data-scroll-target="#parte-1-inicialización-del-proyecto-qgis-y-entorno-local">Parte 1: Inicialización del proyecto QGIS y entorno local</a></li>
+  <li><a href="#parte-2-configuración-cartográfica-y-simbología" id="toc-parte-2-configuración-cartográfica-y-simbología" class="nav-link" data-scroll-target="#parte-2-configuración-cartográfica-y-simbología">Parte 2: Configuración cartográfica y simbología</a></li>
+  <li><a href="#parte-3-publicación-con-qgis2web-aplicación-web-interactiva" id="toc-parte-3-publicación-con-qgis2web-aplicación-web-interactiva" class="nav-link" data-scroll-target="#parte-3-publicación-con-qgis2web-aplicación-web-interactiva">Parte 3: Publicación con qgis2web (Aplicación web interactiva)</a></li>
+  <li><a href="#parte-4-publicación-con-qgis-server-servicios-ogc" id="toc-parte-4-publicación-con-qgis-server-servicios-ogc" class="nav-link" data-scroll-target="#parte-4-publicación-con-qgis-server-servicios-ogc">Parte 4: Publicación con QGIS Server (Servicios OGC)</a></li>
+  <li><a href="#parte-5-configuración-y-despliegue-local-de-qgis-server-con-apache-en-osgeo4w" id="toc-parte-5-configuración-y-despliegue-local-de-qgis-server-con-apache-en-osgeo4w" class="nav-link" data-scroll-target="#parte-5-configuración-y-despliegue-local-de-qgis-server-con-apache-en-osgeo4w">Parte 5: Configuración y despliegue local de QGIS Server con Apache en OSGeo4W</a></li>
+  <li><a href="#parte-5-integración-y-generación-del-documento-quarto" id="toc-parte-5-integración-y-generación-del-documento-quarto" class="nav-link" data-scroll-target="#parte-5-integración-y-generación-del-documento-quarto">Parte 5: Integración y generación del documento Quarto</a></li>
+  </ul></li>
+  <li><a href="#cuestionario-de-evaluación-y-análisis" id="toc-cuestionario-de-evaluación-y-análisis" class="nav-link" data-scroll-target="#cuestionario-de-evaluación-y-análisis"><span class="header-section-number">35.3</span> Cuestionario de evaluación y análisis</a></li>
+  <li><a href="#requerimientos-de-entrega-y-reproducibilidad" id="toc-requerimientos-de-entrega-y-reproducibilidad" class="nav-link" data-scroll-target="#requerimientos-de-entrega-y-reproducibilidad"><span class="header-section-number">35.4</span> Requerimientos de entrega y reproducibilidad</a>
+  <ul class="collapse">
+  <li><a href="#estructura-del-documento-quarto-.qmd" id="toc-estructura-del-documento-quarto-.qmd" class="nav-link" data-scroll-target="#estructura-del-documento-quarto-.qmd">1. Estructura del documento Quarto (.qmd)</a></li>
+  <li><a href="#entrega-de-archivos-y-publicación-en-github" id="toc-entrega-de-archivos-y-publicación-en-github" class="nav-link" data-scroll-target="#entrega-de-archivos-y-publicación-en-github">2. Entrega de archivos y publicación en GitHub</a></li>
+  </ul></li>
+  <li><a href="#recursos-adicionales" id="toc-recursos-adicionales" class="nav-link" data-scroll-target="#recursos-adicionales"><span class="header-section-number">35.5</span> Recursos adicionales</a></li>
+  <li><a href="#anexo-troubleshooting-común" id="toc-anexo-troubleshooting-común" class="nav-link" data-scroll-target="#anexo-troubleshooting-común"><span class="header-section-number">35.6</span> Anexo: Troubleshooting común</a>
+  <ul class="collapse">
+  <li><a href="#qgis2web-no-aparece-en-menú-web" id="toc-qgis2web-no-aparece-en-menú-web" class="nav-link" data-scroll-target="#qgis2web-no-aparece-en-menú-web">qgis2web no aparece en menú Web</a></li>
+  <li><a href="#aplicación-web-qgis2web-no-carga-datos" id="toc-aplicación-web-qgis2web-no-carga-datos" class="nav-link" data-scroll-target="#aplicación-web-qgis2web-no-carga-datos">Aplicación web qgis2web no carga datos</a></li>
+  <li><a href="#qgis-server-no-responde-a-getcapabilities" id="toc-qgis-server-no-responde-a-getcapabilities" class="nav-link" data-scroll-target="#qgis-server-no-responde-a-getcapabilities">QGIS Server no responde a GetCapabilities</a></li>
+  <li><a href="#crs-incompatibles-en-servicios-ogc" id="toc-crs-incompatibles-en-servicios-ogc" class="nav-link" data-scroll-target="#crs-incompatibles-en-servicios-ogc">CRS incompatibles en servicios OGC</a></li>
+  <li><a href="#transformación-de-proyecciones-causa-desplazamiento-de-datos" id="toc-transformación-de-proyecciones-causa-desplazamiento-de-datos" class="nav-link" data-scroll-target="#transformación-de-proyecciones-causa-desplazamiento-de-datos">Transformación de proyecciones causa desplazamiento de datos</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./41-practica_1_clase2_visualizacion_dinamica.html">Prácticas</a></li><li class="breadcrumb-item"><a href="./59-practica_19_QGIS_WebApp.html"><span class="chapter-number">35</span>&nbsp; <span class="chapter-title">Flujos de trabajo desde QGIS hacia QGIS Server y aplicaciones web</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">35</span>&nbsp; <span class="chapter-title">Flujos de trabajo desde QGIS hacia QGIS Server y aplicaciones web</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="introducción" class="level2" data-number="35.1">
+<h2 data-number="35.1" class="anchored" data-anchor-id="introducción"><span class="header-section-number">35.1</span> Introducción</h2>
+<section id="alcance-del-taller" class="level3">
+<h3 class="anchored" data-anchor-id="alcance-del-taller">Alcance del taller</h3>
+<p>El presente taller aborda dos estrategias complementarias para la publicación de cartografía web utilizando QGIS y software libre. En la primera parte, se utilizará el plugin qgis2web para generar aplicaciones web interactivas basadas en Leaflet, permitiendo una rápida prototipación con interactividad completa sin requerir servicios de infraestructura de servidor. En la segunda parte, se desplegará QGIS Server como una alternativa empresarial a SIG propietarios, publicando servicios web estándar OGC (WMS, WFS, WMTS) que garantizan interoperabilidad con cualquier cliente SIG compatible. El ejercicio concluye con la integración de ambos flujos en una documentación reproducible mediante Quarto y GitHub, demostrando la versatilidad del ecosistema QGIS.</p>
+</section>
+<section id="estándares-de-la-ogc-para-servicios-web-geográficos" class="level3">
+<h3 class="anchored" data-anchor-id="estándares-de-la-ogc-para-servicios-web-geográficos">Estándares de la OGC para servicios web geográficos</h3>
+<p>El Open Geospatial Consortium (OGC) define protocolos estandarizados para la interoperabilidad de datos espaciales a través de la red. La implementación de estos estándares permite el consumo de información geográfica desde servidores remotos sin necesidad de descargar los archivos fuente.</p>
+<section id="clasificación-y-descripción-de-estándares" class="level4">
+<h4 class="anchored" data-anchor-id="clasificación-y-descripción-de-estándares">Clasificación y descripción de estándares</h4>
+<p>La siguiente tabla resume las características técnico-operativas de los principales servicios web geográficos:</p>
+<table class="table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Estándar OGC</th>
+<th>Tipo de datos</th>
+<th>Operación principal</th>
+<th>Caso de uso típico</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>WMS</strong> <em>(Web Map Service)</em></td>
+<td>Imagen (Ráster pre-renderizado)</td>
+<td>Devuelve una imagen estática (PNG/JPEG) generada por el servidor a partir de datos vectoriales o ráster.</td>
+<td>Mapas base de referencia visual donde no se requiere analizar la geometría ni los atributos numéricos originales.</td>
+</tr>
+<tr class="even">
+<td><strong>WMTS</strong> <em>(Web Map Tile Service)</em></td>
+<td>Imagen (Teselas pre-renderizadas)</td>
+<td>Entrega mapas mediante una estructura piramidal de imágenes pre-calculadas (teselas) organizadas por niveles de zoom.</td>
+<td>Capas de cobertura global o regional de alta velocidad de carga, optimizadas para el rendimiento del lienzo de dibujo.</td>
+</tr>
+<tr class="odd">
+<td><strong>WFS</strong> <em>(Web Feature Service)</em></td>
+<td>Vectorial (Entidades geográficas)</td>
+<td>Transmite geometrías vectoriales y tablas de atributos (usualmente en formato GML o GeoJSON) que el cliente local renderiza.</td>
+<td>Edición cartográfica, consultas de atributos, análisis espacial vectorial y operaciones de persistencia de datos (<strong>WFS-T</strong>).</td>
+</tr>
+<tr class="even">
+<td><strong>WCS</strong> <em>(Web Coverage Service)</em></td>
+<td>Ráster (Valores de celda puros)</td>
+<td>Proporciona acceso a coberturas ráster multiparamétricas con sus datos numéricos intactos (GeoTIFF, NetCDF).</td>
+<td>Modelos Digitales de Elevación (DEM), álgebra de mapas, clasificaciones de imágenes satelitales y análisis analítico continuo.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="criterios-de-selección-en-flujos-de-trabajo-sig" class="level4">
+<h4 class="anchored" data-anchor-id="criterios-de-selección-en-flujos-de-trabajo-sig">Criterios de selección en flujos de trabajo SIG</h4>
+<p>Para optimizar el rendimiento del cliente y asegurar la integridad del análisis, se deben seguir las siguientes directrices de arquitectura:</p>
+<ul>
+<li><strong>Consumo de recursos:</strong> Utilice <strong>WMTS</strong> en lugar de WMS para mapas de fondo o capas de referencia que no cambian frecuentemente. Esto reduce las peticiones de procesamiento en el servidor Apache remoto al reutilizar la caché de teselas.</li>
+<li><strong>Integridad analítica:</strong> Evite el uso de WMS o WMTS si el objetivo es realizar operaciones de geoprocesamiento ráster (como el cálculo de pendientes). En tales escenarios, el estándar requerido es <strong>WCS</strong>, ya que preserva la matriz numérica original.</li>
+<li><strong>Modificación de datos:</strong> El estándar <strong>WFS</strong> descarga los elementos geométricos directamente en la memoria del cliente, lo que habilita la selección y filtrado topológico estructurado directamente en la estación de trabajo local.</li>
+</ul>
+</section>
+</section>
+<section id="resumen-de-flujos-de-trabajo-y-comandos" class="level3">
+<h3 class="anchored" data-anchor-id="resumen-de-flujos-de-trabajo-y-comandos">Resumen de flujos de trabajo y comandos</h3>
+<p>La estrategia de publicación web con QGIS ofrece dos enfoques complementarios con diferentes características de despliegue e interactividad.</p>
+<table class="table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Componente técnico</th>
+<th>Operación en QGIS</th>
+<th>Tecnología resultante</th>
+<th>Función en el cliente web</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Mapa web interactivo</strong></td>
+<td>qgis2web plugin → Leaflet/OpenLayers</td>
+<td>HTML5 + JavaScript + GeoJSON</td>
+<td>Interactividad cliente, sin requerimiento de servidor backend</td>
+</tr>
+<tr class="even">
+<td><strong>Servicio cartográfico</strong></td>
+<td>QGIS Server (WMS/WFS/WMTS/WCS)</td>
+<td>OGC Web Services</td>
+<td>Interoperabilidad con múltiples clientes, renderizado servidor</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="estructura-de-directorios-del-proyecto" class="level3">
+<h3 class="anchored" data-anchor-id="estructura-de-directorios-del-proyecto">Estructura de directorios del proyecto</h3>
+<p>El árbol de directorios del proyecto local debe mantener la siguiente estructura para garantizar la correcta vinculación de recursos:</p>
+<pre class="text"><code>taller_cartografia_qgis/
+├── datos/
+│   └── colombia_formatos.gpkg
+├── proyecto_qgis/
+│   └── taller_cartografia_qgis.qgz
+├── qgis2web_output/
+│   ├── qgis2web_2026_05_24-11_50_01/
+│   │   ├── index.html
+│   │   ├── js/
+│   │   ├── css/
+│   │   └── data/
+│   └── qgis2web_2026_05_24-11_52_30/
+│       ├── index.html
+│       └── ...
+├── imagenes/
+│   ├── 01_crs_configuration.png
+│   ├── 02_simbologia_qgis.png
+│   ├── 03_qgis2web_export.png
+│   ├── 04_qgis_server_wms.png
+│   └── 05_mapa_interactivo_final.png
+└── index.qmd
+</code></pre>
+</section>
+<section id="requisitos-previos-y-materiales" class="level3">
+<h3 class="anchored" data-anchor-id="requisitos-previos-y-materiales">Requisitos previos y materiales</h3>
+<p>Para el desarrollo de las actividades programadas es indispensable contar con:</p>
+<ul>
+<li><strong>Software:</strong>
+<ul>
+<li>QGIS Desktop (versión 3.20 o superior) descargado de <code>qgis.org</code>.</li>
+<li>Plugin qgis2web (se instala desde el Gestor de Plugins en QGIS).</li>
+<li>QGIS Server (versión compatible) para la segunda parte.</li>
+<li>Git y cliente GitHub Desktop o línea de comandos.</li>
+<li>Quarto CLI instalado.</li>
+</ul></li>
+<li><strong>Cuentas y acceso:</strong>
+<ul>
+<li>Cuenta activa en GitHub.com.</li>
+<li>Acceso a máquina con capacidad de ejecutar servidor web (local o remoto).</li>
+</ul></li>
+<li><strong>Datos geográficos:</strong>
+<ul>
+<li>GeoPackage (<code>.gpkg</code>) con capas vectoriales de Colombia:
+<ul>
+<li>Polígonos de municipios con información demográfica.</li>
+<li>Líneas de red hídrica (ríos principales y secundarios).</li>
+<li>Puntos de ciudades y centros urbanos.</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="procedimiento-metodológico" class="level2" data-number="35.2">
+<h2 data-number="35.2" class="anchored" data-anchor-id="procedimiento-metodológico"><span class="header-section-number">35.2</span> Procedimiento metodológico</h2>
+<section id="parte-1-inicialización-del-proyecto-qgis-y-entorno-local" class="level3">
+<h3 class="anchored" data-anchor-id="parte-1-inicialización-del-proyecto-qgis-y-entorno-local">Parte 1: Inicialización del proyecto QGIS y entorno local</h3>
+<ol type="1">
+<li><strong>Crear la estructura de directorios</strong></li>
+</ol>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> taller_cartografia_qgis</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> taller_cartografia_qgis</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> datos proyecto_qgis qgis_server qgis2web_output imagenes</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="2" type="1">
+<li><strong>Iniciar QGIS y crear nuevo proyecto</strong></li>
+</ol>
+<ul>
+<li>Abrir QGIS Desktop.</li>
+<li>Seleccionar <code>File</code> → <code>New Project</code>.</li>
+<li>Ir a <code>Project</code> → <code>Properties</code>.</li>
+<li>En la pestaña <code>General</code>, asignar el nombre: <code>taller_cartografia_qgis</code>.</li>
+<li>Guardar como: <code>taller_cartografia_qgis.qgz</code> en la carpeta <code>proyecto_qgis/</code>.</li>
+</ul>
+<ol start="3" type="1">
+<li><strong>Configurar el sistema de referencia de coordenadas (CRS)</strong></li>
+</ol>
+<ul>
+<li>En <code>Project</code> → <code>Properties</code> → <code>CRS</code>.</li>
+<li>Seleccionar: MAGNA-SIRGAS / Origen Nacional (EPSG:9377).</li>
+</ul>
+<ol start="4" type="1">
+<li><strong>Vincular los datos geográficos</strong></li>
+</ol>
+<ul>
+<li><code>Layer</code> → <code>Add Layer</code> → <code>Add Vector Layer</code>.</li>
+<li>Seleccionar el archivo <code>colombia_formatos.gpkg</code>.</li>
+<li>Seleccionar las capas: departamentos, drenajes, drenajes_doble, municipios, poblaciones, etc).</li>
+<li>Hacer clic en <code>Add</code>.</li>
+</ul>
+</section>
+<section id="parte-2-configuración-cartográfica-y-simbología" class="level3">
+<h3 class="anchored" data-anchor-id="parte-2-configuración-cartográfica-y-simbología">Parte 2: Configuración cartográfica y simbología</h3>
+<ol type="1">
+<li><strong>Organizar capas en el panel Layers</strong></li>
+</ol>
+<ul>
+<li>En el panel izquierdo (Layers), considerar el orden de visualización de las capas:
+<ul>
+<li>Mapa base: <code>Esri.WorldShadedRelief</code> (primera capa de abajo hacia arriba)</li>
+<li>Base (polígonos): departamentos, municipios, drenajes_doble.</li>
+<li>Media (líneas): drenajes.</li>
+<li>Superior (puntos): poblaciones. (primera capa de arriba hacia abajo)</li>
+</ul></li>
+</ul>
+<ol start="2" type="1">
+<li><strong>Agregar mapa base</strong></li>
+</ol>
+<ul>
+<li><strong>Mapa base</strong>
+<ul>
+<li>Agregue el mapa base <code>Esri.WorldShadedRelief</code> al mapa
+<ul>
+<li>En el Panel <code>Browser</code> → <code>XYZ Tiles</code></li>
+<li>Clic derecho en <code>Esri.WorldShadedRelief</code> → <code>Add Layer to Project</code></li>
+</ul></li>
+</ul></li>
+</ul>
+<ol start="3" type="1">
+<li><strong>Aplicar simbología a cada capa y mejorar nombres</strong></li>
+</ol>
+<ul>
+<li><strong>Capa de departamentos:</strong>
+<ul>
+<li>Hacer clic derecho → <code>Properties</code>.</li>
+<li>Ir a pestaña <code>Symbology</code>.</li>
+<li>Elegir <code>Single Symbol</code>.</li>
+<li>Color de relleno: gris claro (#E8E8E8).</li>
+<li>Contorno: gris oscuro (#505050), grosor: 1pt.</li>
+<li>Transparencia: 60%.
+<ul>
+<li>Seleccionar la capa y hacer clic derecho → <code>Properties</code> → <code>Symbology</code> → <code>Layer Rendering</code></li>
+<li>En <code>Opacity</code>, aplicar 40%.</li>
+<li>Seleccionar <code>Apply</code></li>
+<li>Seleccionar <code>OK</code>.</li>
+</ul></li>
+<li>Hacer clic en <code>Apply</code>.</li>
+<li>Renombrar la capa a <code>Departamentos</code>.</li>
+</ul></li>
+<li><strong>Capa de municipios:</strong>
+<ul>
+<li>Hacer clic derecho → <code>Properties</code>.</li>
+<li>Ir a pestaña <code>Symbology</code>.</li>
+<li>Elegir <code>Single Symbol</code>.</li>
+<li>Color de relleno: Transparent Fill.</li>
+<li>Contorno: gris claro (#b5b5b5), grosor: 0.5pt.</li>
+<li>Hacer clic en <code>Apply</code>.</li>
+<li>Renombrar la capa a <code>Municipios</code>.</li>
+</ul></li>
+<li><strong>Capa de drenajes_doble:</strong>
+<ul>
+<li>Color de relleno: azul (#1f78b4).</li>
+<li>Contorno: azul (#1f78b4), grosor: 0.5pt.</li>
+<li>Grosor: 1.5 puntos.</li>
+<li>Transparencia: 50%.
+<ul>
+<li>Seleccionar la capa y hacer clic derecho → <code>Properties</code> → <code>Symbology</code> → <code>Layer Rendering</code></li>
+<li>En <code>Opacity</code>, aplicar 50%.</li>
+<li>Seleccionar <code>Apply</code></li>
+<li>Seleccionar <code>OK</code>.</li>
+</ul></li>
+<li>Aplicar <code>Scale Dependent Visibility</code>: visible solo a zoom 1:500,000 y superior.
+<ul>
+<li>Seleccionar la capa y hacer clic derecho → <code>Properties</code> → <code>Rendering</code></li>
+<li>Seleccionar <code>Scale Dependent Visibility</code></li>
+<li>En <code>Minimum (exclusive)</code> 🔍⁻ escribir: 1:500001</li>
+<li>Seleccionar <code>Apply</code></li>
+<li>Seleccionar <code>OK</code>.</li>
+</ul></li>
+<li>Renombrar la capa a <code>Drenajes (áreas)</code></li>
+</ul></li>
+<li><strong>Capa de drenajes:</strong>
+<ul>
+<li>Color: azul (#4A90E2).</li>
+<li>Grosor: 1.5 puntos.</li>
+<li>Transparencia: 50%.
+<ul>
+<li>Seleccionar la capa y hacer clic derecho → <code>Properties</code> → <code>Symbology</code> → <code>Layer Rendering</code></li>
+<li>En <code>Opacity</code>, aplicar 50%.</li>
+<li>Seleccionar <code>Apply</code></li>
+<li>Seleccionar <code>OK</code>.</li>
+</ul></li>
+<li>Aplicar <code>Scale dependent visibility</code>: visible solo a zoom 1:500,000 y superior.
+<ul>
+<li>Seleccionar la capa y hacer clic derecho → <code>Properties</code> → <code>Rendering</code></li>
+<li>Seleccionar <code>Scale Dependent Visibility</code></li>
+<li>En <code>Minimum (exclusive)</code> 🔍⁻ escribir: 1:500001</li>
+<li>Seleccionar <code>Apply</code></li>
+<li>Seleccionar <code>OK</code>.</li>
+</ul></li>
+<li>Renombrar la capa a <code>Drenajes</code></li>
+</ul></li>
+<li><strong>Capa de poblaciones:</strong>
+<ul>
+<li>Aplicar simbología <code>Categorized</code> por el campo <code>CPOB_TIPO</code>
+<ul>
+<li>Seleccionar la capa y hacer clic derecho → <code>Properties</code> → <code>Symbology</code></li>
+<li>De la lista desplegable seleccionar <code>Categorized</code></li>
+<li>En <code>Value</code> seleccionar <code>CPOB_TIPO</code></li>
+<li>En <code>Symbol</code> seleccionar un circulo rojo (#E74C3C) de tamaño 4 puntos</li>
+<li>Rampa de colores: <code>Random colors</code></li>
+<li>Presionar el botón <code>Classify</code></li>
+<li>Cambiar las leyendas de acuerdo con la siguiente <a href="#tbl-mgn-dane" class="quarto-xref">Tabla&nbsp;<span>35.1</span></a></li>
+<li>Seleccionar <code>Apply</code></li>
+<li>Seleccionar <code>OK</code>.</li>
+</ul></li>
+<li>Aplicar etiquetado: campo <code>CPOB_NOMBRE</code> con fuente Arial 8pt.
+<ul>
+<li>Seleccionar la capa y hacer clic derecho → <code>Properties</code> → <code>Labels</code></li>
+<li>De la lista desplegable seleccionar <code>Single Labels</code></li>
+<li>En <code>Value</code> seleccionar <code>CPOB_NOMBRE</code></li>
+<li>En <code>Font</code> seleccionar <code>Arial</code></li>
+<li>En <code>Size</code> escribir <code>8</code></li>
+<li>Seleccionar <code>Apply</code></li>
+<li>Seleccionar <code>OK</code>.</li>
+</ul></li>
+<li>Renombrar la capa a <code>Poblaciones</code></li>
+</ul></li>
+</ul>
+<div id="tbl-mgn-dane" class="quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-mgn-dane-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabla&nbsp;35.1: Clasificación de centros poblados según el Marco Geoestadístico Nacional (DANE)
+</figcaption>
+<div aria-describedby="tbl-mgn-dane-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Value</th>
+<th style="text-align: left;">Legend</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">CAS</td>
+<td style="text-align: left;">Centro Poblado tipo Caserío</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CORR</td>
+<td style="text-align: left;">Centro Poblado tipo Corregimiento</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CP</td>
+<td style="text-align: left;">Centro Poblado</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">IP</td>
+<td style="text-align: left;">Centro Poblado tipo Inspección de Policía</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">IPD</td>
+<td style="text-align: left;">Centro Poblado tipo Inspección de Policía Departamental</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">IPM</td>
+<td style="text-align: left;">Centro Poblado tipo Inspección de Policía Municipal</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">all other values</td>
+<td style="text-align: left;">Otros Centros Poblados</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="data_heavy/taller_cartografia_qgis/imagenes/simbologia_poblaciones.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
+<figcaption>Simbología de Poblaciones</figcaption>
+</figure>
+</div>
+<ol start="4" type="1">
+<li><strong>Configurar información de atributos (Popup)</strong></li>
+</ol>
+<ul>
+<li>Para cada capa, hacer clic derecho → <code>Properties</code> → <code>Display</code> → <code>HTML Map Tip</code>.</li>
+<li>Crear plantilla HTML personalizada:</li>
+</ul>
+<div class="sourceCode" id="cb3"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">strong</span><span class="dt">&gt;</span>[% "CPOB_NOMBRE" %]<span class="dt">&lt;/</span><span class="kw">strong</span><span class="dt">&gt;&lt;</span><span class="kw">br</span><span class="dt">/&gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>Código: [% "CPOB_CODIGO" %]<span class="dt">&lt;</span><span class="kw">br</span><span class="dt">/&gt;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>Ubicación: [% "CPOB_NOMBRE_MPIO" %], [% "CPOB_NOMBRE_DPTO" %]</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="data_heavy/taller_cartografia_qgis/imagenes/map_tips_poblaciones_1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:90.0%"></p>
+<figcaption>Configuración de Popup Map Tips de la Capa Poblaciones</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="data_heavy/taller_cartografia_qgis/imagenes/map_tips_poblaciones_2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+<figcaption>Map Tips de la Capa Poblaciones</figcaption>
+</figure>
+</div>
+</section>
+<section id="parte-3-publicación-con-qgis2web-aplicación-web-interactiva" class="level3">
+<h3 class="anchored" data-anchor-id="parte-3-publicación-con-qgis2web-aplicación-web-interactiva">Parte 3: Publicación con qgis2web (Aplicación web interactiva)</h3>
+<ol type="1">
+<li><strong>Instalar el plugin qgis2web</strong></li>
+</ol>
+<ul>
+<li><code>Plugins</code> → <code>Manage and Install Plugins</code>.</li>
+<li>Buscar “qgis2web”.</li>
+<li>Hacer clic en <code>Install Plugin</code>.</li>
+<li>Cerrar el diálogo.</li>
+</ul>
+<ol start="2" type="1">
+<li><strong>Configurar parámetros de exportación</strong></li>
+</ol>
+<ul>
+<li><code>Web</code> → <code>qgis2web</code> → <code>Create web map</code>.</li>
+<li>En el panel <code>Layers and Groups</code>:
+<ul>
+<li>Seleccionar todas las capas (incluir todas las capas en el Mapa Web).</li>
+<li>Marcar las capas que serán visibles por defecto (todas).</li>
+<li>Configurar pop-ups informativos
+<ul>
+<li>Para cada capa, marcar: “Popups”.</li>
+<li>Configurar qué campos se mostrarán en los pop-ups.</li>
+</ul></li>
+</ul></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="data_heavy/taller_cartografia_qgis/imagenes/export_to_web_map_1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+<figcaption>qgis2web: Panel <code>Layers and Groups</code></figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="data_heavy/taller_cartografia_qgis/imagenes/export_to_web_map_7.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+<figcaption>qgis2web: Panel <code>Layers and Groups</code>, opción <code>Popups</code></figcaption>
+</figure>
+</div>
+<blockquote class="blockquote">
+<p>Nota: NO es necesario presionar el botón: <code>Install new browser</code> (NO INSTALAR)</p>
+</blockquote>
+<ul>
+<li>En el panel <code>Appearance</code>:
+<ul>
+<li>Definir una a una las opciones de su Mapa Web
+<ul>
+<li>Ver siguiente imagen</li>
+<li><strong>Measure tool:</strong> habilitar (marcar checkbox).</li>
+<li><strong>Search:</strong> habilitar (para búsqueda de ubicaciones).</li>
+<li>…</li>
+<li><strong>Scale:</strong> Rango de zoom: 4-15.</li>
+</ul></li>
+</ul></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="data_heavy/taller_cartografia_qgis/imagenes/export_to_web_map_2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
+<figcaption>qgis2web: Panel <code>Appearance</code></figcaption>
+</figure>
+</div>
+<ul>
+<li>En el panel <code>Export</code>:
+<ul>
+<li>Definir la salida a la carpeta <code>../data_heavy/taller_cartografia_qgis/qgis2web_output/</code></li>
+</ul></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="data_heavy/taller_cartografia_qgis/imagenes/export_to_web_map_3.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+<figcaption>qgis2web: Panel <code>Export</code></figcaption>
+</figure>
+</div>
+<ul>
+<li>En el panel <code>Settings</code>:
+<ul>
+<li>Ver siguiente gráfica</li>
+</ul></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="data_heavy/taller_cartografia_qgis/imagenes/export_to_web_map_4.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+<figcaption>qgis2web: Panel <code>Settings</code></figcaption>
+</figure>
+</div>
+<ul>
+<li>En el panel <code>WIKI</code>:
+<ul>
+<li>Existe la guía para usar y configurar <code>qgis2web</code></li>
+</ul></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="data_heavy/taller_cartografia_qgis/imagenes/export_to_web_map_5.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+<figcaption>qgis2web: Panel <code>WIKI</code></figcaption>
+</figure>
+</div>
+<ul>
+<li><p>Otras opciones:</p>
+<ul>
+<li><strong>Framework:</strong> seleccionar <code>Leaflet</code> (más ligero y rápido).</li>
+</ul></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="data_heavy/taller_cartografia_qgis/imagenes/export_to_web_map_6.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+<figcaption>qgis2web: Framework y Exportación</figcaption>
+</figure>
+</div>
+<ol start="3" type="1">
+<li><strong>Exportar la aplicación web</strong></li>
+</ol>
+<ul>
+<li>Hacer clic en <code>Export</code>.</li>
+<li>Seleccionar carpeta de destino: <code>qgis2web_output/</code>.</li>
+<li>Esperar a que finalice la exportación (2-3 minutos).</li>
+<li>Se generará una carpeta con archivos: <code>index.html</code>, <code>js/</code>, <code>css/</code>, <code>data/</code>.</li>
+</ul>
+<ol start="4" type="1">
+<li><strong>Verificar la aplicación web localmente</strong></li>
+</ol>
+<ul>
+<li>Abrir <code>qgis2web_output/index.html</code> en navegador web.</li>
+<li>Probar:
+<ul>
+<li>Navegación (zoom, pan).</li>
+<li>Clic en features para ver pop-ups.</li>
+<li>Herramienta de medición.</li>
+<li>Búsqueda de ubicaciones.</li>
+</ul></li>
+</ul>
+<ol start="5" type="1">
+<li><strong>Si la visualización falla</strong></li>
+</ol>
+<p>La cantidad de elementos vectoriales a visualizar puede estar excediendo la capacidad del servidor Apache. Realizar las siguientes acciones:</p>
+<ul>
+<li>Seleccionar la opción <code>Cluster</code> para capa <code>Poblaciones</code> (esto mostrará grupos de puntos cercanos con un solo símbolo e indicando el número de puntos).</li>
+<li>Seleccionar la opción <code>Basemap</code> para capa <code>Esri.WorldShadedRelief</code></li>
+<li>No incluir las capas <code>Drenajes (áreas)</code> y/o <code>Drenajes</code></li>
+<li>Presione el botón <code>Export</code> nuevamente.</li>
+</ul>
+</section>
+<section id="parte-4-publicación-con-qgis-server-servicios-ogc" class="level3">
+<h3 class="anchored" data-anchor-id="parte-4-publicación-con-qgis-server-servicios-ogc">Parte 4: Publicación con QGIS Server (Servicios OGC)</h3>
+<ol type="1">
+<li><strong>Configurar QGIS Server (instalación)</strong></li>
+</ol>
+<ul>
+<li><strong>En Windows:</strong></li>
+</ul>
+<p>En <a href="03-guia_instalacion_B_qgis.html#sec-osgeo4w" class="quarto-xref"><span>Sección 3.1</span></a> se definió el procedimeinto de instalación de QGIS con OSGeo4W. Complemente su instalación de QGIS Desktop agregando los siguientes paquetes de la sección Web:</p>
+<ul>
+<li>apache: Apache webserver</li>
+<li>mod_fcgid: Apache FastCGI ASF module</li>
+<li>qgis-ltr-server: QGIS Server (long term release)</li>
+<li>qwc-services: QWC Services</li>
+<li>qwc2: QGIS webclient 2</li>
+<li>Dependencias adicionales requeridas al seleccionar los paquetes anteriores. Se seleccionan al seleccionar la opción <code>Install these packages to meet dependencies (RECOMMENDED)</code></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="data_heavy/taller_cartografia_qgis/imagenes/install_qgis_server_osgeo4w.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+<figcaption>Instalar QGIS Server con OSGeo4W</figcaption>
+</figure>
+</div>
+<ul>
+<li><strong>En Linux (Ubuntu/Debian):</strong></li>
+</ul>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get install qgis-server</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>La gúia oficial de instalación de QGIS Server para Windows y otros sistemas operativos se puede encontrar <a href="https://docs.qgis.org/3.44/en/docs/server_manual/getting_started.html#installation-on-windows">acá</a></p>
+<ol start="2" type="1">
+<li><strong>Configurar proyecto QGIS para QGIS Server</strong></li>
+</ol>
+<p>El motor de renderizado de QGIS Server requiere la activación y parametrización explícita de las capacidades del servicio web dentro del archivo de configuración del mapa base. Este procedimiento define las restricciones de proyección, los metadatos institucionales y los privilegios de descarga transaccional que heredarán los protocolos WMS, WMTS, WFS y WCS.</p>
+<ul>
+<li>En QGIS Desktop, verificar que el proyecto <code>taller_cartografia_qgis.qgz</code> se encuentre guardado en el almacenamiento local.</li>
+<li>Acceder a la ruta de menú: <code>Project</code> → <code>Properties</code> y seleccionar la pestaña <strong>QGIS Server</strong> en la barra lateral izquierda.</li>
+<li>Diligenciar detalladamente las siguientes subsecciones de configuración según las directivas técnicas de la interfaz:</li>
+</ul>
+<p><em>Service capabilities (Metadatos globales del servicio):</em></p>
+<p>Esta sección define el encabezado del documento XML de capacidades generales que leerán los clientes SIG remotos.</p>
+<ul>
+<li>Activar la casilla de verificación <strong>Service capabilities</strong>.</li>
+<li><strong>Service title:</strong> “Mapa de Colombia - Red Hídrica y Municipios”.</li>
+<li><strong>Service abstract:</strong> Introducir un resumen descriptivo e institucional que precise el alcance de la información espacial (ej. “Servicio geográfico web que integra la delimitación político-administrativa municipal y la red de drenajes de la República de Colombia, optimizado para la gestión territorial y análisis ambiental”).</li>
+<li><strong>Keyword list:</strong> Agregar términos clave separados por comas para indexación: <code>Colombia</code>, <code>Red Hídrica</code>, <code>Municipios</code>, <code>OGC</code>.</li>
+<li><strong>Contact information:</strong> Diligenciar los campos de organización, correo electrónico y responsable técnico para asegurar la trazabilidad del servicio.</li>
+</ul>
+<div id="fig-capabilities" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-capabilities-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="data_heavy/taller_cartografia_qgis/imagenes/configuracion_service_capabilities_QGIS_Server.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-capabilities-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;35.1: Configuración de capacidades generales y metadatos del servicio.
+</figcaption>
+</figure>
+</div>
+<p><em>WMS capabilities (Servicio de mapas web):</em></p>
+<p>Esta sección determina las restricciones espaciales y formatos gráficos disponibles para la visualización de teselas e imágenes ráster.</p>
+<ul>
+<li>Activar la casilla de verificación <strong>WMS capabilities</strong>.</li>
+<li><strong>Advertised extent:</strong> Definir el rectángulo envolvente geográfico de la publicación presionando el botón <code>Use Current Canvas Extent</code> o calculándolo a partir de la capa de municipios de Colombia.</li>
+<li><strong>CRS restrictions:</strong> Agregar de forma obligatoria los sistemas de referencia de coordenadas compatibles mediante el selector de EPSG:
+<ul>
+<li><code>EPSG:9377</code> (Magnas-Sirgas / Origen Nacional - Sistema oficial para Colombia).</li>
+<li><code>EPSG:3857</code> (WGS 84 / Pseudo-Mercator - Requerido para visores web como OpenLayers, Leaflet o Mapbox).</li>
+<li><code>EPSG:4326</code> (WGS 84 / Coordenadas Geográficas).</li>
+</ul></li>
+</ul>
+<div id="fig-wms" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-wms-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="data_heavy/taller_cartografia_qgis/imagenes/configuracion_WMS_QGIS_Server.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-wms-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;35.2: Restricciones de sistemas de referencia espaciales y extensiones para el protocolo WMS.
+</figcaption>
+</figure>
+</div>
+<p><em>WMTS capabilities (Servicio de teselas de mapas web):</em></p>
+<p>Esta sección pre-calcula los esquemas de cuadrículas para acelerar el despliegue visual mediante caché de imágenes.</p>
+<ul>
+<li>Activar la casilla de verificación <strong>WMTS capabilities</strong>.</li>
+<li><strong>Project layers:</strong> Habilitar de forma explícita las capas vectoriales individuales (drenajes, municipios y mapa base) que formarán parte del esquema de teselas sincronizadas.</li>
+<li><strong>Formatos soportados:</strong> Asegurar la disponibilidad de formatos comprimidos con canal alfa activo (<code>image/png</code>) para preservar la transparencia entre capas superpuestas.</li>
+</ul>
+<div id="fig-wmts" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-wmts-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="data_heavy/taller_cartografia_qgis/imagenes/configuracion_WMTS_QGIS_Server.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-wmts-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;35.3: Definición de capas y formatos de salida para la generación del esquema de teselas web WMTS.
+</figcaption>
+</figure>
+</div>
+<p><em>WFS / OAPIF capabilities (Servicio de entidades web):</em></p>
+<p>Esta sección habilita el acceso directo al formato vectorial y controla los privilegios transaccionales de edición en red.</p>
+<ul>
+<li>Activar la casilla de verificación <strong>WFS capabilities</strong>.</li>
+<li><strong>Published:</strong> Seleccionar y activar las casillas para las capas vectoriales que se expondrán como objetos interactivos (drenajes y municipios).</li>
+<li><strong>Update / Insert / Delete (WFS-T):</strong> Para activar las capacidades transaccionales (WFS-T) que permitan modificar los vértices de los ríos o polígonos desde clientes externos, active de forma explícita las casillas bajo las columnas <code>Update</code>, <code>Insert</code> y <code>Delete</code> según las restricciones de seguridad deseadas.</li>
+</ul>
+<div id="fig-wfs" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-wfs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="data_heavy/taller_cartografia_qgis/imagenes/configuracion_WFS_OAPIF_QGIS_Server.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-wfs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;35.4: Habilitación de capas vectoriales WFS y asignación de permisos transaccionales para edición.
+</figcaption>
+</figure>
+</div>
+<p><em>WCS capabilities (Servicio de coberturas web):</em></p>
+<p>Esta sección faculta la descarga y transmisión de la matriz de datos numéricos puros de los píxeles para coberturas continuas o ráster.</p>
+<ul>
+<li>Activar la casilla de verificación <strong>WCS capabilities</strong>.</li>
+<li><strong>Published:</strong> Seleccionar las capas de relieve sombreado o modelos digitales de elevación que deban ser expuestos para análisis espacial.</li>
+<li>Verificar que las extensiones geográficas de las coberturas correspondan exactamente a los límites del área de estudio.</li>
+</ul>
+<div id="fig-wcs" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-wcs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="data_heavy/taller_cartografia_qgis/imagenes/configuracion_WCS_QGIS_Server.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-wcs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;35.5: Activación de coberturas y asignación del protocolo WCS para análisis espacial de celdas ráster.
+</figcaption>
+</figure>
+</div>
+<ul>
+<li>Guardar las modificaciones del proyecto haciendo clic en el icono del disquete o mediante el atajo de teclado <code>CTRL + S</code> antes de proceder al despliegue en el directorio web del servidor Apache.</li>
+</ul>
+</section>
+<section id="parte-5-configuración-y-despliegue-local-de-qgis-server-con-apache-en-osgeo4w" class="level3">
+<h3 class="anchored" data-anchor-id="parte-5-configuración-y-despliegue-local-de-qgis-server-con-apache-en-osgeo4w">Parte 5: Configuración y despliegue local de QGIS Server con Apache en OSGeo4W</h3>
+<p>Para documentar el proceso de despliegue local de QGIS Server utilizando la distribución nativa de Apache en entornos Windows modernos (OSGeo4W), se debe seguir el protocolo técnico estructurado a continuación.</p>
+<ol type="1">
+<li><strong>Preparación de la estructura de datos cartográficos</strong></li>
+</ol>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Actualización de la ruta de instalación de OSGeo4W
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>La configuración de la guía hace referencia a la ruta <code>D:\Programs\OSGeo4W\</code>, como la ruta de instalación de <code>OSGeo4W</code>.</p>
+<p>Es necesario sustituir este directorio por la ubicación exacta donde se ejecutó la instalación de OSGeo4W en el equipo local (por ejemplo, <code>C:\OSGeo4W\</code> o la ruta personalizada asignada en el sistema operativo).</p>
+</div>
+</div>
+<p>Para asegurar la correcta lectura del proyecto por parte del servidor web, las fuentes de datos vectoriales y el archivo de mapas comprimido deben organizarse dentro del directorio raíz de documentos de Apache (<code>htdocs</code>).</p>
+<ul>
+<li>Crear el directorio del proyecto dentro de la ruta web de Apache:</li>
+</ul>
+<pre class="text"><code>D:\Programs\OSGeo4W\apps\apache\htdocs\proyectos_sig\proyecto_qgis\
+</code></pre>
+<ul>
+<li>Almacenar el archivo de proyecto cartográfico comprimido (<code>.qgz</code>) junto con su geodatabase o subcarpetas de datos en las rutas correspondientes:</li>
+<li><strong>Ruta del proyecto:</strong> <code>.../proyectos_sig/proyecto_qgis/taller_cartografia_qgis.qgz</code></li>
+<li><strong>Ruta de datos vectoriales:</strong> <code>.../proyectos_sig/datos/</code></li>
+</ul>
+<ol start="2" type="1">
+<li><strong>Parametrización del puerto en el servidor web (httpd.conf):</strong></li>
+</ol>
+<p>Debido a que el puerto estándar <code>80</code> suele estar reservado por servicios del sistema operativo o instancias previas de otros servidores web, se debe redefinir el puerto de escucha hacia un canal exclusivo.</p>
+<ul>
+<li>Abrir el archivo de configuración principal de Apache:</li>
+</ul>
+<pre class="text"><code>D:\Programs\OSGeo4W\apps\apache\conf\httpd.conf
+</code></pre>
+<ul>
+<li>Modificar las directivas de inicialización de variables en las líneas superiores del documento para establecer el puerto <code>8082</code>:</li>
+</ul>
+<pre class="text"><code>...
+Define SRVPORT 8082
+...</code></pre>
+<ol start="3" type="1">
+<li><strong>Configuración del alias modular para la versión de largo soporte (qgis-ltr):</strong></li>
+</ol>
+<p>Para permitir que Apache redirija las peticiones geográficas hacia el motor de renderizado de QGIS-LTR, es necesario habilitar y corregir el archivo de configuración modular, asegurando el mapeo del binario <code>qgis_mapserv.fcgi.exe</code> y la eliminación de restricciones globales de ejecución.</p>
+<ul>
+<li>Localizar el archivo de configuración web de QGIS en la ruta de inicialización de Apache:</li>
+</ul>
+<pre class="text"><code>D:\Programs\OSGeo4W\httpd.d\httpd_qgis-ltr.conf
+</code></pre>
+<ul>
+<li><em>Nota:</em> Si el archivo posee una extensión larga debido a configuraciones de clientes previos (ej. <code>.conf.off-qwc-services</code>), se debe crear una copia y renombrarla estrictamente como <code>httpd_qgis-ltr.conf</code>.</li>
+<li>Reemplazar la sección final del archivo correspondiente al <code>Alias</code> y al bloque <code>&lt;Directory&gt;</code> empleando la sintaxis de barras inclinadas (<code>/</code>) requerida por Apache:</li>
+</ul>
+<pre class="text"><code>Alias /qgis-ltr/ "D:/Programs/OSGeo4W/apps/qgis-ltr/bin/"
+
+&lt;Directory "D:/Programs/OSGeo4W/apps/qgis-ltr/bin/"&gt;
+    Options +ExecCGI
+    AddHandler fcgid-script .exe
+    Require all granted
+&lt;/Directory&gt;
+</code></pre>
+<ol start="4" type="1">
+<li><strong>Variables de entorno para la localización de proyectos QGIS en el servidor Web Apache:</strong></li>
+</ol>
+<p>Esta metodología permite definir un directorio base global para los proyectos SIG dentro del archivo de configuración modular de Apache, simplificando la URL al requerir únicamente el nombre del archivo <code>.qgz</code> (variable QGIS_PROJECT_DIR) o inclusive sin requerir el nombre del archivo (variable QGIS_PROJECT_FILE).</p>
+<ul>
+<li>Abrir el archivo de configuración modular: <code>D:\Programs\OSGeo4W\httpd.d\httpd_qgis-ltr.conf</code>.</li>
+<li>Agregar las siguiente directiva al final del bloque de variables <code>DefaultInitEnv</code>:</li>
+</ul>
+<pre class="text"><code>DefaultInitEnv QGIS_PROJECT_DIR "D:/Programs/OSGeo4W/apps/apache/htdocs/proyectos_sig/proyecto_qgis/"
+DefaultInitEnv QGIS_PROJECT_FILE "D:/Programs/OSGeo4W/apps/apache/htdocs/proyectos_sig/proyecto_qgis/taller_cartografia_qgis.qgz"
+</code></pre>
+<ol start="5" type="1">
+<li><strong>Inicialización del entorno geoespacial:</strong></li>
+</ol>
+<p>QGIS Server requiere la configuración de variables de entorno específicas para la correcta carga de dependencias críticas, incluyendo bibliotecas de Qt5, bindings de Python y componentes de GRASS o SAGA. Por este motivo, el servidor web Apache no debe ejecutarse de forma aislada, sino que debe inicializarse a través del entorno de OSGeo4W para heredar la configuración del sistema.</p>
+<ul>
+<li><p>Localizar el acceso directo <strong>OSGeo4W Shell</strong> en el menú de inicio y ejecutarlo con privilegios de administrador.</p></li>
+<li><p>Alternativamente, abrir una ventana de la consola de comandos de Windows (CMD) como Administrador y ejecutar el archivo por lotes de inicialización desde el directorio correspondiente de la instalación local.</p></li>
+</ul>
+<pre class="text"><code>D:\Programs\OSGeo4W\OSGeo4W.bat
+</code></pre>
+<ol start="6" type="1">
+<li><strong>Ejecución del servidor:</strong></li>
+</ol>
+<p>A continuación se presentan las dos opciones técnicas más eficientes para automatizar o simplificar este proceso:</p>
+<p><strong>Opción 1: Invocación directa con carga automática de entorno (Recomendado):</strong></p>
+<ul>
+<li>En la terminal CMD desplagada anteriormente como Administrador, invocar directamente el ejecutable de Apache para iniciar el servidor en primer plano:</li>
+</ul>
+<div class="sourceCode" id="cb12"><pre class="sourceCode cmd code-with-copy"><code class="sourceCode dosbat"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="st">"D:\Programs\OSGeo4W\apps\apache\bin\httpd.exe"</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><em>Nota de operación:</em> La consola se mantendrá abierta y en estado de escucha activa. Mientras esta ventana permanezca en ejecución, el servicio web estará operativo.</li>
+</ul>
+<p><strong>Alternativa a la Opción 1</strong>:</p>
+<p>En lugar de abrir el archivo <code>OSGeo4W.bat</code> para interactuar con la terminal, se puede utilizar el mismo script en modo “no interactivo” para que cargue el entorno geoespacial y ejecute Apache en una sola línea de comando.</p>
+<p>Abra una consola de comandos estándar de Windows (<code>cmd.exe</code>) como Administrador y ejecute:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode cmd code-with-copy"><code class="sourceCode dosbat"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>D:\Programs\OSGeo4W\OSGeo4W.bat <span class="st">"D:\Programs\OSGeo4W\apps\apache\bin\httpd.exe"</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<blockquote class="blockquote">
+<p><strong>Explicación técnica:</strong> El script <code>OSGeo4W.bat</code> está programado para recibir parámetros. Al pasarle la ruta de Apache entre comillas, el script inicializa todas las variables de entorno (<code>PATH</code>, librerías Qt, Python) y lanza inmediatamente el servidor web en segundo plano dentro de esa misma consola, ahorrando la ejecución manual de comandos internos.</p>
+</blockquote>
+<p><strong>Opción 2: Uso del comando nativo de control de servicios de Windows (SCM):</strong> (NO USAR: no está funcionando!)</p>
+<p>Si el servicio quedó registrado correctamente en el sistema tras las depuraciones previas del puerto <code>8082</code> y la limpieza de sintaxis en el archivo <code>httpd_qgis-ltr.conf</code>, no se requiere invocar ningún archivo ejecutable de forma directa. Se puede controlar el demonio HTTP a través del Service Control Manager de Windows.</p>
+<p>Abra la consola de comandos (<code>cmd.exe</code>) como Administrador y ejecute el comando nativo de red:</p>
+<ul>
+<li>Abrir la consola de comandos estándar de Windows (<code>cmd.exe</code>) como <strong>Administrador</strong>.</li>
+<li>Si el servicio no está registrado, desplazarse a <code>D:\Programs\OSGeo4W\bin</code>, ejecutar <code>call o4w_env.bat</code> y luego <code>apache-install.bat</code>.</li>
+<li>Una vez registrado, el servidor web puede controlarse desde cualquier directorio del sistema mediante los comandos de red nativos:</li>
+</ul>
+<div class="sourceCode" id="cb14"><pre class="sourceCode cmd code-with-copy"><code class="sourceCode dosbat"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">:: 1. Desplazarse al directorio de binarios de OSGeo4W</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>d:</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> D:\Programs\OSGeo4W\bin</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co">:: 2. Cargar el entorno de variables de forma temporal para la instalación</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="bu">call</span> <span class="ot">o4w_env.bat</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="co">:: 3. Eliminar el registro antiguo y defectuoso del SCM</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>apache-uninstall.bat</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="co">:: 4. Registrar el servicio en el SCM de Windows con la configuración actual</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>apache-install.bat</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a><span class="co">:: 5. Iniciar el servicio en segundo plano</span></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>net start <span class="st">"Apache OSGeo4W Web Server"</span></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a><span class="co">:: 6. Detener el servicio</span></span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>net stop <span class="st">"Apache OSGeo4W Web Server"</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><em>Nota: Esta opción es la ideal para producción o entornos automatizados, ya que no deja una ventana de consola parpadeando en primer plano y permite que el servidor web corra como un proceso nativo del sistema operativo.</em></p>
+<ol start="7" type="1">
+<li><strong>Verificar servicios OGC publicados</strong></li>
+</ol>
+<ul>
+<li><strong>WMS GetCapabilities con ruta completa:</strong></li>
+</ul>
+<p>Para comprobar la correcta vinculación entre el servidor web Apache, el módulo FastCGI y el motor cartográfico de QGIS, se debe realizar una petición estándar de capacidades (<code>GetCapabilities</code>) desde cualquier navegador web.</p>
+<p>La URL estructurada para el consumo del servicio se compone de la siguiente manera:</p>
+<pre class="text"><code>http://localhost:8082/qgis-ltr/qgis_mapserv.fcgi.exe?MAP=D:\Programs\OSGeo4W\apps\apache\htdocs\proyectos_sig\proyecto_qgis\taller_cartografia_qgis.qgz&amp;SERVICE=WMS&amp;REQUEST=GetCapabilities
+</code></pre>
+<p>Si el canal de comunicación está configurado de forma adecuada, el navegador web compilará y desplegará un documento XML estructurado conteniendo los metadatos de las capas vectoriales, los sistemas de referencia de coordenadas (CRS) soportados y los estilos cartográficos disponibles para su posterior integración en visores web o aplicaciones SIG de escritorio.</p>
+<ul>
+<li><strong>WMS GetCapabilities con ruta relativa:</strong></li>
+</ul>
+<p>La ruta relativa debe darse con respecto a la ubicación de <code>qgis_mapserv.fcgi.exe</code>, es decir <code>D:\Programs\OSGeo4W\apps\qgis-ltr\bin\</code>. Por lo tanto subo dos carpetas <code>../../</code> hasta llegar a la carpeta <code>D:\Programs\OSGeo4W\apps\</code>.</p>
+<pre class="text"><code>http://localhost:8082/qgis-ltr/qgis_mapserv.fcgi.exe?MAP=../../apache/htdocs/proyectos_sig/proyecto_qgis/taller_cartografia_qgis.qgz&amp;SERVICE=WMS&amp;REQUEST=GetCapabilities</code></pre>
+<ul>
+<li><strong>WMS GetCapabilities usando la variable QGIS_PROJECT_DIR definida en Apache:</strong></li>
+</ul>
+<p>Una vez inicializado el entorno, realizar la petición de validación en el navegador web mediante la URL simplificada:</p>
+<pre class="text"><code>http://localhost:8082/qgis-ltr/qgis_mapserv.fcgi.exe?MAP=taller_cartografia_qgis.qgz&amp;SERVICE=WMS&amp;REQUEST=GetCapabilities</code></pre>
+<ul>
+<li><strong>WMS GetCapabilities usando la variable QGIS_PROJECT_FILE definida en Apache:</strong></li>
+</ul>
+<p>Una vez inicializado el entorno, realizar la petición de validación en el navegador web mediante la URL simplificada:</p>
+<pre class="text"><code>http://localhost:8082/qgis-ltr/qgis_mapserv.fcgi.exe?SERVICE=WMS&amp;REQUEST=GetCapabilities</code></pre>
+<blockquote class="blockquote">
+<p><strong>Verificación de éxito:</strong> Si los servicios responden con XML, el despliegue fue exitoso.</p>
+</blockquote>
+<ol start="8" type="1">
+<li><strong>Consumir servicios en cliente QGIS</strong></li>
+</ol>
+<ul>
+<li>En QGIS Desktop, abrir nuevo proyecto.</li>
+<li><code>Layer</code> → <code>Add Layer</code> → <code>Add WMS/WMTS Layer</code>.</li>
+<li>URL: <code>http://localhost:8082/qgis-ltr/qgis_mapserv.fcgi.exe?SERVICE=WMS&amp;REQUEST=GetCapabilities</code></li>
+<li>Hacer clic en <code>Connect</code> y seleccionar las capas deseadas.</li>
+<li>Hacer clic en <code>Add</code>.</li>
+</ul>
+<ol start="9" type="1">
+<li><strong>Consumir servicios OGC en clientes SIG de escritorio</strong></li>
+</ol>
+<p>El motor de QGIS Server procesa e interpreta de forma simultánea diferentes especificaciones del <em>Open Geospatial Consortium</em> (OGC) según los requerimientos del flujo de trabajo (visualización, descarga vectorial o análisis de coberturas). Para consumir estos servicios web desde QGIS Desktop, abra un proyecto nuevo y siga las instrucciones correspondientes a cada protocolo:</p>
+<p><strong>Servicio de mapas web (WMS):</strong></p>
+<p>Indicado para la visualización eficiente de capas cartográficas pre-renderizadas en formato de imagen ráster (PNG/JPEG).</p>
+<ul>
+<li>Acceder a la ruta de menú: <code>Layer</code> → <code>Add Layer</code> → <code>Add WMS/WMTS Layer...</code></li>
+<li>Hacer clic en el botón <code>New</code> para configurar una nueva conexión y asignar un nombre descriptivo.</li>
+<li>Introducir la URL base parametrizada especificando el protocolo WMS:</li>
+</ul>
+<pre class="text"><code>http://localhost:8082/qgis-ltr/qgis_mapserv.fcgi.exe?SERVICE=WMS&amp;REQUEST=GetCapabilities
+</code></pre>
+<ul>
+<li>Presionar el botón <code>Connect</code>, seleccionar el árbol de capas disponibles y hacer clic en <code>Add</code>.</li>
+</ul>
+<p><strong>Servicio de entidades web (WFS):</strong></p>
+<p>Indicado para acceder directamente a las geometrías vectoriales y a sus tablas de atributos asociadas, permitiendo realizar consultas espaciales, edición de datos y vectorización en el cliente local.</p>
+<ul>
+<li>Acceder a la ruta de menú: <code>Layer</code> → <code>Add Layer</code> → <code>Add WFS / OGC API Features Layer...</code></li>
+<li>Hacer clic en el botón <code>New</code> para registrar la conexión.</li>
+<li>Introducir la URL modificando el parámetro de servicio hacia la especificación vector-CGI:</li>
+</ul>
+<pre class="text"><code>http://localhost:8082/qgis-ltr/qgis_mapserv.fcgi.exe?SERVICE=WFS&amp;REQUEST=GetCapabilities
+</code></pre>
+<ul>
+<li>Presionar el botón <code>Connect</code>. El sistema listará las capas en formato de tabla vectorial. Seleccione las entidades requeridas y haga clic en <code>Add</code>.</li>
+</ul>
+<p><em>Capacidades transaccionales (WFS-T):</em></p>
+<p>Si el documento de capacidades (<code>GetCapabilities</code>) expone la operación <code>&lt;ows:Operation name="Transaction"&gt;</code>, el servicio se clasifica como WFS-T. Esto faculta al cliente SIG de escritorio para conmutar el modo de edición (icono del lápiz amarillo) y emplear herramientas geométricas (como la <strong>Herramienta de vértices</strong>) para modificar nodos, crear elementos o borrar entidades. Al guardar la edición, QGIS envía una petición transaccional <code>POST</code> que modifica directamente los archivos físicos o bases de datos espaciales del servidor.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Alternativa de contingencia para servicios sin soporte WFS-T
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Si el servicio es estrictamente de lectura y la consola reporta un fallo de persistencia de datos por parte del proveedor, las ediciones geométricas realizadas se perderán al cerrar la sesión. Para salvar las modificaciones del trazado vectorial de forma local, ejecute el siguiente procedimiento:</p>
+<ol type="1">
+<li>Hacer clic derecho sobre la capa WFS modificada en el <em>Panel de capas</em>.</li>
+<li>Seleccionar la ruta: <code>Export</code> → <code>Save Features As...</code></li>
+<li>Definir el formato de salida como GeoPackage (<code>GPKG</code>) o Shapefile de ESRI.</li>
+<li>Establecer una ruta física local en el disco (ej. <code>.../proyectos_sig/datos/drenajes_corregidos.gpkg</code>) y asignar el sistema de referencia correspondiente (ej. <code>EPSG:9377</code>).</li>
+<li>Asegurar la activación de la casilla <code>Add saved file to map</code> y presionar el botón <code>OK</code>.</li>
+</ol>
+</div>
+</div>
+<p><strong>Servicio de coberturas web (WCS):</strong></p>
+<p>Indicado para la transferencia y análisis de datos geoespaciales ráster (modelos digitales de elevación - DEM, imágenes de satélite o cuadrículas multiespectrales), permitiendo acceder al valor real de los píxeles y no a una simple representación gráfica.</p>
+<ul>
+<li>Acceder a la ruta de menú: <code>Layer</code> → <code>Add Layer</code> → <code>Add WCS Layer...</code></li>
+<li>Hacer clic en el botón <code>New</code> para configurar los parámetros de enlace.</li>
+<li>Introducir la URL base estructurada para la evaluación de celdas ráster:</li>
+</ul>
+<pre class="text"><code>http://localhost:8082/qgis-ltr/qgis_mapserv.fcgi.exe?SERVICE=WCS&amp;REQUEST=GetCapabilities
+</code></pre>
+<ul>
+<li>Presionar el botón <code>Connect</code>, elegir la cobertura de matriz de datos deseada y hacer clic en <code>Add</code>.</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Restricciones de renderizado y consistencia de datos en servicios WCS
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Al consumir capas pre-renderizadas o mapas base (ej. sombreados de relieve o coberturas institucionales) mediante el protocolo WCS, es frecuente que el lienzo despliegue un color plano persistente e inalterable. Esto ocurre porque el servicio WCS transmite matrices de datos puros; si el servidor codifica la capa con valores numéricos constantes por canal (ej. bandas RGB con valores mínimos y máximos idénticos), no existirá variación espectral en el cliente local, invalidando los intentos de estiramiento por histograma o transparencia.</p>
+<p>Para gestionar este comportamiento en el flujo de trabajo, aplique los siguientes criterios de selección técnica:</p>
+<ol type="1">
+<li><strong>Propósito analítico (Uso de WCS):</strong> Restrinja el uso de la conexión WCS exclusivamente para capas de información geográfica primaria que requieran operaciones matemáticas o de superposición en el cliente local, tales como Modelos Digitales de Elevación (DEM) con rangos dinámicos reales, mapas de precipitación o matrices de reflectancia satelital.</li>
+<li><strong>Propósito de visualización (Migración a WMS/WMTS):</strong> Si la capa requiere ser explotada únicamente como fondo cartográfico, mapa base o elemento de referencia visual, descarte la conexión WCS. En su lugar, consuma el servicio a través del protocolo <strong>WMS</strong> (<code>SERVICE=WMS</code>), el cual solicita al servidor Apache el envío de imágenes geo-referenciadas pre-renderizadas (PNG/JPEG), asegurando la conservación inmediata de la simbología, estilos y rampas de color originales sin saturar la memoria del cliente.</li>
+</ol>
+</div>
+</div>
+<blockquote class="blockquote">
+<p><strong>Nota de control de capacidades:</strong> Para que los servicios WFS y WCS expongan las capas de forma correcta en el cliente, verifique previamente en las propiedades del proyecto (<code>Project Properties</code> → <code>QGIS Server</code> → <code>WFS</code> / <code>WCS</code>) que las casillas de verificación <code>Published</code> se encuentren activas para cada una de las coberturas vectoriales o ráster del mapa base.</p>
+</blockquote>
+</section>
+<section id="parte-5-integración-y-generación-del-documento-quarto" class="level3">
+<h3 class="anchored" data-anchor-id="parte-5-integración-y-generación-del-documento-quarto">Parte 5: Integración y generación del documento Quarto</h3>
+<ol type="1">
+<li><strong>Documentar el flujo de trabajo</strong></li>
+</ol>
+<p>Crear un archivo QMD para compilarlo en HTML/PDF.</p>
+<ol start="2" type="1">
+<li><strong>Incluir capturas de pantalla</strong></li>
+</ol>
+<ul>
+<li>Almacenar en <code>imagenes/</code>:
+<ul>
+<li>Configuración de CRS en QGIS.</li>
+<li>Simbología aplicada a las capas.</li>
+<li>Diálogo de exportación qgis2web.</li>
+<li>GetCapabilities de WMS en navegador.</li>
+<li>Aplicación web final con pop-up abierto.</li>
+</ul></li>
+</ul>
+<ol start="3" type="1">
+<li><strong>Compilar documento</strong></li>
+</ol>
+<div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render index.qmd <span class="at">--to</span> html</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render index.qmd <span class="at">--to</span> pdf</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="cuestionario-de-evaluación-y-análisis" class="level2" data-number="35.3">
+<h2 data-number="35.3" class="anchored" data-anchor-id="cuestionario-de-evaluación-y-análisis"><span class="header-section-number">35.3</span> Cuestionario de evaluación y análisis</h2>
+<p>El documento final debe dar respuesta analítica a los siguientes interrogantes técnicos:</p>
+<p><strong>Pregunta 1:</strong> Explique las diferencias arquitectónicas entre qgis2web (renderizado cliente) y QGIS Server (renderizado servidor). ¿En qué casos es preferible cada enfoque en términos de rendimiento, mantenibilidad e interactividad?</p>
+<p><strong>Pregunta 2:</strong> ¿Qué ventajas ofrece la publicación de servicios OGC estándar (WMS, WFS) frente a aplicaciones web propietarias? Considere interoperabilidad, escalabilidad y portabilidad de datos.</p>
+<p><strong>Pregunta 3:</strong> En el contexto de los datos geoespaciales con MAGNA-SIRGAS (EPSG:9377), explique los desafíos de transformación de proyecciones cuando los servicios web requieren Web Mercator (EPSG:3857). ¿Cómo QGIS maneja estas conversiones automáticamente?</p>
+<p><strong>Pregunta 4:</strong> Describa el flujo completo de datos desde un GeoPackage local hasta su consumo en una aplicación web. ¿En qué puntos del flujo se puede perder información o precisión?</p>
+</section>
+<section id="requerimientos-de-entrega-y-reproducibilidad" class="level2" data-number="35.4">
+<h2 data-number="35.4" class="anchored" data-anchor-id="requerimientos-de-entrega-y-reproducibilidad"><span class="header-section-number">35.4</span> Requerimientos de entrega y reproducibilidad</h2>
+<p>La evaluación del taller se fundamenta en la reproducibilidad del flujo de trabajo y la funcionalidad de ambos enfoques de publicación web.</p>
+<section id="estructura-del-documento-quarto-.qmd" class="level3">
+<h3 class="anchored" data-anchor-id="estructura-del-documento-quarto-.qmd">1. Estructura del documento Quarto (.qmd)</h3>
+<p>Estructure el informe técnico de manera que incorpore los imágenes requeridas y responda a los interrogantes planteados en las secciones previas. Adicionalmente, registre las direcciones web correspondientes, según aplique al alcance del despliegue:</p>
+<ul>
+<li>URL del sitio web publicado a través de GitHub Pages.</li>
+<li>URL pública de la aplicación interactiva generada mediante el complemento qgis2web, en caso de emplear un servicio de hospedaje externo.</li>
+<li>URL del punto de enlace (endpoint) del servicio WMS, si la instancia de QGIS Server cuenta con acceso público a través de la red.</li>
+</ul>
+</section>
+<section id="entrega-de-archivos-y-publicación-en-github" class="level3">
+<h3 class="anchored" data-anchor-id="entrega-de-archivos-y-publicación-en-github">2. Entrega de archivos y publicación en GitHub</h3>
+<ul>
+<li><p><strong>Crear repositorio público:</strong> Denominado <code>taller-qgis-cartografia-[apellido_estudiante]</code>.</p></li>
+<li><p><strong>Estructura del repositorio:</strong></p></li>
+</ul>
+<pre class="text"><code>taller-qgis-cartografia-[apellido_estudiante]/
+├── index.qmd
+├── index.html
+├── index.pdf
+├── imagenes/
+│   ├── 01_crs_qgis.png
+│   ├── 02_simbologia_capas.png
+│   ├── 03_qgis2web_export.png
+│   ├── 04_wms_getcapabilities.png
+│   └── 05_mapa_interactivo_popup.png
+├── proyecto_qgis/
+│   └── taller_cartografia_qgis.qgs
+├── qgis2web_output/
+│   ├── index.html
+│   ├── data/
+│   ├── js/
+│   └── css/
+├── .gitignore
+└── README.md
+</code></pre>
+<ul>
+<li><strong>Compilar documento:</strong></li>
+</ul>
+<div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render index.qmd <span class="at">--to</span> html</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render index.qmd <span class="at">--to</span> pdf</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><strong>Versionamiento y carga:</strong></li>
+</ul>
+<div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Flujos QGIS hacia QGIS Server y aplicaciones web interactivas"</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push origin main</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><strong>Activar GitHub Pages:</strong>
+<ul>
+<li>Acceder a Settings del repositorio.</li>
+<li>Seleccionar la sección Pages.</li>
+<li>Configurar Source como Deploy from a branch, seleccionando <code>main</code> y <code>/ (root)</code>.</li>
+<li>La URL pública será: <code>https://[usuario].github.io/taller-qgis-cartografia-[apellido_estudiante]/</code>.</li>
+</ul></li>
+<li><strong>Mecanismo de entrega:</strong>
+<ul>
+<li>URL del repositorio GitHub.</li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="recursos-adicionales" class="level2" data-number="35.5">
+<h2 data-number="35.5" class="anchored" data-anchor-id="recursos-adicionales"><span class="header-section-number">35.5</span> Recursos adicionales</h2>
+<ul>
+<li><a href="https://docs.qgis.org/">QGIS Official Documentation</a></li>
+<li><a href="https://github.com/tomchadwin/qgis2web">qgis2web Plugin GitHub</a></li>
+<li><a href="https://docs.qgis.org/3.28/en/docs/user_manual/working_with_ogc/server/getting_started.html">QGIS Server Documentation</a></li>
+<li><a href="https://docs.qgis.org/3.44/en/docs/server_manual/index.html">QGIS Server Guide/Manual</a></li>
+<li><a href="https://www.ogc.org/standards/">OGC Web Services Standards</a></li>
+<li><a href="https://www.igac.gov.co/en/services/magna-sirgas">MAGNA-SIRGAS Information</a></li>
+<li><a href="https://www.ogc.org/standards/geopackage">GeoPackage Specification</a></li>
+</ul>
+</section>
+<section id="anexo-troubleshooting-común" class="level2" data-number="35.6">
+<h2 data-number="35.6" class="anchored" data-anchor-id="anexo-troubleshooting-común"><span class="header-section-number">35.6</span> Anexo: Troubleshooting común</h2>
+<section id="qgis2web-no-aparece-en-menú-web" class="level3">
+<h3 class="anchored" data-anchor-id="qgis2web-no-aparece-en-menú-web">qgis2web no aparece en menú Web</h3>
+<p>Asegurar que el plugin esté instalado: <code>Plugins</code> → <code>Manage and Install Plugins</code> → buscar “qgis2web” → <code>Install</code> (si no está).</p>
+</section>
+<section id="aplicación-web-qgis2web-no-carga-datos" class="level3">
+<h3 class="anchored" data-anchor-id="aplicación-web-qgis2web-no-carga-datos">Aplicación web qgis2web no carga datos</h3>
+<p>Verificar que el GeoPackage esté en la ruta correcta y que las capas sean válidas en QGIS. Revisar la consola del navegador (F12) para mensajes de error.</p>
+</section>
+<section id="qgis-server-no-responde-a-getcapabilities" class="level3">
+<h3 class="anchored" data-anchor-id="qgis-server-no-responde-a-getcapabilities">QGIS Server no responde a GetCapabilities</h3>
+<p>Verificar que el proyecto <code>.qgs</code> esté guardado y que la ruta sea correcta. Revisar logs de servidor en <code>/var/log/qgis-server/</code> (Linux) o Event Viewer (Windows).</p>
+</section>
+<section id="crs-incompatibles-en-servicios-ogc" class="level3">
+<h3 class="anchored" data-anchor-id="crs-incompatibles-en-servicios-ogc">CRS incompatibles en servicios OGC</h3>
+<p>Asegurar que en <code>Project</code> → <code>Properties</code> → <code>OWS Server</code> → <code>CRS restrictions</code> se incluyan los CRS requeridos (EPSG:9377, EPSG:3857, EPSG:4326).</p>
+</section>
+<section id="transformación-de-proyecciones-causa-desplazamiento-de-datos" class="level3">
+<h3 class="anchored" data-anchor-id="transformación-de-proyecciones-causa-desplazamiento-de-datos">Transformación de proyecciones causa desplazamiento de datos</h3>
+<p>QGIS maneja transformaciones automáticas, pero verificar que los datos origen tengan el CRS correcto asignado. Si hay discrepancias, usar <code>Vector</code> → <code>Data Management Tools</code> → <code>Reproject Layer</code>.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copiado");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copiado");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./58-practica_18_ArcGISPro_OnlineIntegration.html" class="pagination-link" aria-label="Flujos de trabajo desde ArcGIS Pro hacia ArcGIS Online">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">Flujos de trabajo desde ArcGIS Pro hacia ArcGIS Online</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./60-practica_20_Geoserver_OGC.html" class="pagination-link" aria-label="Publicación de servicios OGC estándar con GeoServer">
+        <span class="nav-page-text"><span class="chapter-number">36</span>&nbsp; <span class="chapter-title">Publicación de servicios OGC estándar con GeoServer</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

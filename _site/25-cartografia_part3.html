@@ -1,0 +1,2419 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.550">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Geomática General - 15&nbsp; Planeación y Diseño en Cartografía Digital</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./26-cartografia_part4.html" rel="next">
+<link href="./24-cartografia_part2.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Sin resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+<script src="site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./23-cartografia_part1.html">Cartografía</a></li><li class="breadcrumb-item"><a href="./25-cartografia_part3.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Planeación y Diseño en Cartografía Digital</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Geomática General</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Buscar"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bienvenida</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./00-prefacio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prefacio</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Instalación y Entornos</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-introduccion-entornos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introducción a Entornos de Desarrollo SIG</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-guia_instalacion_A_docker.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Guía de Instalación. Opción A: Docker (Python, R, Julia)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-guia_instalacion_B_qgis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Guía de Instalación. Opción B: QGIS y PyQGIS</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-guia_instalacion_C_ArcGIS.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Guía de Instalación. Opción C: ArcGIS Pro y ArcPy</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Proyecto Final</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10-guia_estructura_proyecto_final.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Guía y Estructura del Proyecto Final</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Sensores Remotos</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./16-sr_fundamentos_introduccion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Fundamentos de sensores remotos: Introducción</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./17-sr_satelites_sensores.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Satélites y sensores</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./18-sr_microondas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Sensores remotos de microondas</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./19-sr_analisis_interpretacion_imagenes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Análisis e interpretación de imágenes</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./20-sr_aplicaciones.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Aplicaciones de los sensores remotos</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./21-sr_glosario.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Glosario de Sensores Remotos</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./22-sr_recursos_adicionales.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Recursos Adicionales de Teledetección</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">Cartografía</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./23-cartografia_part1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Historia de la cartografía y fundamentos de SIG</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./24-cartografia_part2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Enfoques y aplicaciones de la cartografía</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./25-cartografia_part3.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Planeación y Diseño en Cartografía Digital</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./26-cartografia_part4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Métodos avanzados de SIG en cartografía digital</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+ <span class="menu-text">Prácticas</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./41-practica_1_clase2_visualizacion_dinamica.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Visualización y Mapas Dinámicos</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./42-practica_2_clase2_geoportales.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">🌐 Geoportales y Servicios Web</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./43-practica_3_clase3_coordenadas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Sistemas de Coordenadas - ArcGIS Pro</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./44-practica_4_clase4_conversionformatos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Conversión de Formatos (ArcGIS Pro - QGIS)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./45-practica_5_clase6_introduccion_sr_gee.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Introducción a Sensores Remotos y Procesamiento de Imágenes Satelitales con Google Earth Engine</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./46-practica_6_clase7_nasa_worldview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Guía de Exploración: NASA Worldview</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./47-practica_7_clase7_nasa_plugin_qgis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Guía de Instalación y Uso: NASA Earthdata Plugin para QGIS</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./48-practica_8_clase8_gee_conceptos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Fundamentos de programación en GEE y conceptos clave de sensores remotos</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./49-practica_9_mde.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Fundamentos de modelos digitales de elevación y elaboración cartográfica</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./50-practica_10_mde_hydro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Procesamiento hidrológico y morfométrico de modelos digitales de elevación</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./51-practica_11_mde_models.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Model builder (ArcGIS Pro) y Model Designer (QGIS) de productos del MDE</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./52-practica_12_formularios_arcgis_online_ai.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Taller operación en campo usando asistentes de IA en ArcGIS</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./53-practica_13_gnss_allynav_r26.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Levantamiento GNSS usando equipo AllyNav R26: punto geodésico y borde de vía</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./54-practica_14_postproceso_levantamiento_gnss.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Postproceso del levantamiento GNSS</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./55-practica_15_gnss_trimble_da2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">Levantamiento en Campo Usando el Equipo Trimble Catalyst DA2</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./56-practica_16_exactitud_posicional.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Evaluación de exactitud posicional de levantamientos GNSS</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./57-practica_17_qfield.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">Operación en campo mediante QGIS y QField</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./58-practica_18_ArcGISPro_OnlineIntegration.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">Flujos de trabajo desde ArcGIS Pro hacia ArcGIS Online</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./59-practica_19_QGIS_WebApp.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">35</span>&nbsp; <span class="chapter-title">Flujos de trabajo desde QGIS hacia QGIS Server y aplicaciones web</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./60-practica_20_Geoserver_OGC.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">36</span>&nbsp; <span class="chapter-title">Publicación de servicios OGC estándar con GeoServer</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
+ <span class="menu-text">Presentaciones</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./61-presentacion_1_clase1_varios.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">37</span>&nbsp; <span class="chapter-title">Temas por Charlar</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./62-presentacion_2_clase2_geomatica.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">38</span>&nbsp; <span class="chapter-title">¿Qué es la Geomática?</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./63-presentacion_3_clase2_syllabus_evaluacion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">39</span>&nbsp; <span class="chapter-title">Presentación del Curso y Syllabus 2025</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./64-presentacion_4_clase3_coordenadas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">40</span>&nbsp; <span class="chapter-title">Sistemas de Coordenadas</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./65-presentacion_5_clase7_sr_arset.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">41</span>&nbsp; <span class="chapter-title">Sensores Remotos - NASA ARSET</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true">
+ <span class="menu-text">Apéndices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./80-instalacion_herramientas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Resumen instalación de herramientas</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./81-uso_infraestructura_instalada.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Uso de la Infraestructura Instalada</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./82-quarto.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Quarto: Orquestación y Configuración</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./83-docker_desktop.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Docker: Gestión de Contenedores e Imágenes</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./84-git_github.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Git y GitHub: Sincronización Local-Remota</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./85-vscode.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Visual Studio Code (VScode): Extensiones e Interfaz</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./86-windows.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">G</span>&nbsp; <span class="chapter-title">Temas técnicos sobre Windows</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./87-linux_ubuntu.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">H</span>&nbsp; <span class="chapter-title">Temas Técnicos sobre Linux</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./88-python.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">I</span>&nbsp; <span class="chapter-title">Adicionales Sobre Python</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./89-r.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">J</span>&nbsp; <span class="chapter-title">Adicionales Sobre R</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./90-julia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">K</span>&nbsp; <span class="chapter-title">Adicionales Sobre Julia</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./91-qgis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">L</span>&nbsp; <span class="chapter-title">Adicionales Sobre QGIS</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./92-arcgispro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">M</span>&nbsp; <span class="chapter-title">Adicionales sobre ArcGIS Pro</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./93-postgresql.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">N</span>&nbsp; <span class="chapter-title">Adicionales sobre ArcGIS Pro</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./98-errata.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">O</span>&nbsp; <span class="chapter-title">Errata</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./99-referencias.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Referencias Bibliográficas</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Tabla de Contenidos</h2>
+   
+  <ul>
+  <li><a href="#planificación" id="toc-planificación" class="nav-link active" data-scroll-target="#planificación"><span class="header-section-number">15.1</span> Planificación</a>
+  <ul class="collapse">
+  <li><a href="#principios-de-diseño-cartográfico" id="toc-principios-de-diseño-cartográfico" class="nav-link" data-scroll-target="#principios-de-diseño-cartográfico">Principios de diseño cartográfico</a></li>
+  </ul></li>
+  <li><a href="#datos" id="toc-datos" class="nav-link" data-scroll-target="#datos"><span class="header-section-number">15.2</span> Datos</a>
+  <ul class="collapse">
+  <li><a href="#fuentes-oficiales" id="toc-fuentes-oficiales" class="nav-link" data-scroll-target="#fuentes-oficiales">Fuentes oficiales</a></li>
+  <li><a href="#datos-abiertos-open-data" id="toc-datos-abiertos-open-data" class="nav-link" data-scroll-target="#datos-abiertos-open-data">Datos abiertos (Open Data)</a></li>
+  <li><a href="#organización-y-modificación-de-datos" id="toc-organización-y-modificación-de-datos" class="nav-link" data-scroll-target="#organización-y-modificación-de-datos">Organización y modificación de datos</a></li>
+  <li><a href="#modificación-de-datos-generalización-cartográfica" id="toc-modificación-de-datos-generalización-cartográfica" class="nav-link" data-scroll-target="#modificación-de-datos-generalización-cartográfica">Modificación de datos: Generalización cartográfica</a></li>
+  <li><a href="#modificación-de-datos-selección" id="toc-modificación-de-datos-selección" class="nav-link" data-scroll-target="#modificación-de-datos-selección">Modificación de datos: Selección</a></li>
+  <li><a href="#simplificación" id="toc-simplificación" class="nav-link" data-scroll-target="#simplificación">Simplificación</a></li>
+  <li><a href="#suavisado" id="toc-suavisado" class="nav-link" data-scroll-target="#suavisado">Suavisado</a></li>
+  <li><a href="#colapso" id="toc-colapso" class="nav-link" data-scroll-target="#colapso">Colapso</a></li>
+  <li><a href="#agregación" id="toc-agregación" class="nav-link" data-scroll-target="#agregación">Agregación</a></li>
+  </ul></li>
+  <li><a href="#simbología" id="toc-simbología" class="nav-link" data-scroll-target="#simbología"><span class="header-section-number">15.3</span> Simbología</a>
+  <ul class="collapse">
+  <li><a href="#fase-de-simbología-en-el-proceso-de-planificación" id="toc-fase-de-simbología-en-el-proceso-de-planificación" class="nav-link" data-scroll-target="#fase-de-simbología-en-el-proceso-de-planificación">Fase de simbología en el proceso de planificación</a></li>
+  <li><a href="#definición-y-función-de-la-simbología" id="toc-definición-y-función-de-la-simbología" class="nav-link" data-scroll-target="#definición-y-función-de-la-simbología">Definición y función de la simbología</a></li>
+  <li><a href="#tipo-de-simbología-y-sus-dimensiones-visuales" id="toc-tipo-de-simbología-y-sus-dimensiones-visuales" class="nav-link" data-scroll-target="#tipo-de-simbología-y-sus-dimensiones-visuales">Tipo de simbología y sus dimensiones visuales</a></li>
+  <li><a href="#distinción-entre-datos-cualitativos-y-cuantitativos" id="toc-distinción-entre-datos-cualitativos-y-cuantitativos" class="nav-link" data-scroll-target="#distinción-entre-datos-cualitativos-y-cuantitativos">Distinción entre datos cualitativos y cuantitativos</a></li>
+  <li><a href="#clasificación-de-datos-frente-a-datos-no-clasificados" id="toc-clasificación-de-datos-frente-a-datos-no-clasificados" class="nav-link" data-scroll-target="#clasificación-de-datos-frente-a-datos-no-clasificados">Clasificación de datos frente a datos no clasificados</a></li>
+  <li><a href="#clasificación-de-datos-geoespaciales" id="toc-clasificación-de-datos-geoespaciales" class="nav-link" data-scroll-target="#clasificación-de-datos-geoespaciales">Clasificación de datos geoespaciales</a></li>
+  <li><a href="#estrategias-de-simbolización-cuantitativa" id="toc-estrategias-de-simbolización-cuantitativa" class="nav-link" data-scroll-target="#estrategias-de-simbolización-cuantitativa">Estrategias de simbolización cuantitativa</a></li>
+  <li><a href="#el-rol-del-color-en-el-diseño-cartográfico" id="toc-el-rol-del-color-en-el-diseño-cartográfico" class="nav-link" data-scroll-target="#el-rol-del-color-en-el-diseño-cartográfico">El rol del color en el diseño cartográfico</a></li>
+  <li><a href="#ubicación-de-etiquetas-en-entidades-puntuales" id="toc-ubicación-de-etiquetas-en-entidades-puntuales" class="nav-link" data-scroll-target="#ubicación-de-etiquetas-en-entidades-puntuales">Ubicación de etiquetas en entidades puntuales</a></li>
+  <li><a href="#variables-visuales-en-el-etiquetado" id="toc-variables-visuales-en-el-etiquetado" class="nav-link" data-scroll-target="#variables-visuales-en-el-etiquetado">Variables visuales en el etiquetado</a></li>
+  </ul></li>
+  <li><a href="#diseño-de-la-composición-del-mapa-layout" id="toc-diseño-de-la-composición-del-mapa-layout" class="nav-link" data-scroll-target="#diseño-de-la-composición-del-mapa-layout"><span class="header-section-number">15.4</span> Diseño de la composición del mapa (layout)</a>
+  <ul class="collapse">
+  <li><a href="#control-del-peso-visual-y-contraste" id="toc-control-del-peso-visual-y-contraste" class="nav-link" data-scroll-target="#control-del-peso-visual-y-contraste">Control del peso visual y contraste</a></li>
+  <li><a href="#construir-niveles-de-información-visual" id="toc-construir-niveles-de-información-visual" class="nav-link" data-scroll-target="#construir-niveles-de-información-visual">Construir niveles de información visual</a></li>
+  <li><a href="#enfoque-y-equilibrio-balance" id="toc-enfoque-y-equilibrio-balance" class="nav-link" data-scroll-target="#enfoque-y-equilibrio-balance">Enfoque y equilibrio (balance)</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./23-cartografia_part1.html">Cartografía</a></li><li class="breadcrumb-item"><a href="./25-cartografia_part3.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Planeación y Diseño en Cartografía Digital</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Planeación y Diseño en Cartografía Digital</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="planificación" class="level2" data-number="15.1">
+<h2 data-number="15.1" class="anchored" data-anchor-id="planificación"><span class="header-section-number">15.1</span> Planificación</h2>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">graph TD
+    %% Definición de estilos
+    classDef mainNode font-size:14pt,font-weight:bold,fill:#f9f9f9,stroke:#333,stroke-width:2px;
+    classDef questions font-size:12pt,font-style:italic,fill:#ffffff,stroke:#999,stroke-dasharray: 5 5;
+    classDef feedback stroke:#e67e22,stroke-width:2px,stroke-dasharray: 5 5;
+    classDef highlight fill:#fff3cd,stroke:#d4a017,stroke-width:4px;
+
+    %% Nodos principales
+    P(Planificación) --&gt; D(Datos)
+    D --&gt; S(Simbología)
+    S --&gt; L(Compositions)
+    L --&gt; O(Salida)
+
+    %% Lazo de retroalimentación (Ciclo)
+    L -.-&gt;|Refinamiento e iteración| P
+
+    %% Bloques de preguntas vinculados
+    P --- PQ["¿Cómo se utilizará el mapa?&lt;br/&gt;¿Qué tipos de mapas se crearán?"]
+    D --- DQ["¿Qué datos se utilizarán?"]
+    S --- SQ["¿Cómo se simbolizarán los datos?"]
+    L --- LQ["¿Cómo se diseñará la composición?"]
+    O --- OQ["¿Cómo se publicará el mapa?"]
+
+    %% Aplicación de estilos
+    class D,S,L,O mainNode;
+    class DQ,SQ,LQ,OQ questions;
+    class P,PQ highlight;
+    linkStyle 4 stroke:#e67e22,stroke-width:2px,stroke-dasharray: 5 5;
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<ul>
+<li>Cómo será usado el mapa?
+<ul>
+<li>Porqué necesitas el mapa?</li>
+<li>Qué mensaje comunicarás?</li>
+<li>Qué diseño será el más efectivo?</li>
+</ul></li>
+</ul>
+<section id="principios-de-diseño-cartográfico" class="level3">
+<h3 class="anchored" data-anchor-id="principios-de-diseño-cartográfico">Principios de diseño cartográfico</h3>
+<p>El diseño cartográfico no es un proceso meramente estético, sino una disciplina de optimización de la información. Se rige por los siguientes preceptos técnicos:</p>
+<ul>
+<li><strong>Concepto previo a la compilación:</strong> Definir el propósito antes de la carga de datos.</li>
+<li><strong>Máxima información al mínimo costo:</strong> Optimizar la carga cognitiva del usuario.</li>
+<li><strong>Reducción de la complejidad:</strong> Aplicar el principio de simplicidad para evitar la saturación.</li>
+<li><strong>Exclusión de componentes irrelevantes:</strong> Eliminar cualquier elemento que no aporte al objetivo del mapa.</li>
+<li><strong>Organización y disposición:</strong> Estructurar los elementos en un layout coherente.</li>
+</ul>
+<p>Un mapa debe ser capaz de “contar una historia”:</p>
+<ul>
+<li>Evitar que el lector se vea forzado a procesar toda la información de forma simultánea en el primer contacto visual.</li>
+<li>Para ello, es necesario dirigir el ojo del espectador de manera estratégica,</li>
+</ul>
+<!-- ![](images/cartografia/03/img_pag6_1.jpeg){fig-align="center" width="80%"}
+
+![](images/cartografia/03/img_pag6_2.jpeg){fig-align="center" width="80%"} -->
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/03/contar_historia_1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/03/contar_historia_2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
+</figure>
+</div>
+<p>El <strong>canal de comunicación</strong> entre el cartógrafo y el usuario final debe ser claro para asegurar que la transferencia de información geoespacial sea exitosa.</p>
+<!-- ![Canal de comunicación](images/cartografia/03/img_pag7_1.png){fig-align="center" width="80%"} -->
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/03/canal_de_comunicacion.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
+<figcaption>Canal de comunicación</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="datos" class="level2" data-number="15.2">
+<h2 data-number="15.2" class="anchored" data-anchor-id="datos"><span class="header-section-number">15.2</span> Datos</h2>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">graph TD
+    %% Definición de estilos
+    classDef mainNode font-size:14pt,font-weight:bold,fill:#f9f9f9,stroke:#333,stroke-width:2px;
+    classDef questions font-size:12pt,font-style:italic,fill:#ffffff,stroke:#999,stroke-dasharray: 5 5;
+    classDef feedback stroke:#e67e22,stroke-width:2px,stroke-dasharray: 5 5;
+    classDef highlight fill:#fff3cd,stroke:#d4a017,stroke-width:4px;
+
+    %% Nodos principales
+    P(Planificación) --&gt; D(Datos)
+    D --&gt; S(Simbología)
+    S --&gt; L(Composición)
+    L --&gt; O(Salida)
+
+    %% Lazo de retroalimentación (Ciclo)
+    L -.-&gt;|Refinamiento e iteración| P
+
+    %% Bloques de preguntas vinculados
+    P --- PQ["¿Cómo se utilizará el mapa?&lt;br/&gt;¿Qué tipos de mapas se crearán?"]
+    D --- DQ["¿Qué datos se utilizarán?"]
+    S --- SQ["¿Cómo se simbolizarán los datos?"]
+    L --- LQ["¿Cómo se diseñará la composición?"]
+    O --- OQ["¿Cómo se publicará el mapa?"]
+
+    %% Aplicación de estilos
+    class P,S,L,O mainNode;
+    class PQ,SQ,LQ,OQ questions;
+    class D,DQ highlight;
+    linkStyle 4 stroke:#e67e22,stroke-width:2px,stroke-dasharray: 5 5;
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<ul>
+<li>Qué datos usarás?
+<ul>
+<li>Cuáles datos soportan tus objetivos?</li>
+<li>Está disponible el dato?</li>
+<li>Cuál sistema de coordenadas usarás?</li>
+</ul></li>
+</ul>
+<section id="fuentes-oficiales" class="level3">
+<h3 class="anchored" data-anchor-id="fuentes-oficiales">Fuentes oficiales</h3>
+</section>
+<section id="datos-abiertos-open-data" class="level3">
+<h3 class="anchored" data-anchor-id="datos-abiertos-open-data">Datos abiertos (Open Data)</h3>
+</section>
+<section id="organización-y-modificación-de-datos" class="level3">
+<h3 class="anchored" data-anchor-id="organización-y-modificación-de-datos">Organización y modificación de datos</h3>
+<p>La evaluación de la geometría y los atributos depende directamente de la escala de trabajo (escala grande vs.&nbsp;escala pequeña).</p>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout="[[50, 50]]">
+<div class="quarto-layout-row quarto-layout-valign-center">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/03/img_pag14_2.png" class="img-fluid figure-img"></p>
+<figcaption>Escala Pequeña</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/03/img_pag14_4.png" class="img-fluid figure-img"></p>
+<figcaption>Escala Grande</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/03/img_pag14_5.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%"></p>
+</figure>
+</div>
+<p>Organización de datos</p>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout="[[50, 50]]">
+<div class="quarto-layout-row quarto-layout-valign-center">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<p><strong>Capas de mapa base (Basemap layers):</strong> Proporcionan el contexto geográfico</p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<p><strong>Capas operacionales (Operational layers):</strong> Contienen la información temática específica del análisis</p>
+</div>
+</div>
+</div>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout="[[20, 20, 20, 20]]">
+<div class="quarto-layout-row quarto-layout-valign-center">
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: flex-start;">
+<ul>
+<li>Elevación</li>
+<li>Ciudades</li>
+<li>Vías</li>
+</ul>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<p><img src="images/cartografia/03/img_pag15_1.png" class="img-fluid"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<p><img src="images/cartografia/03/img_pag15_2.png" class="img-fluid"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: flex-start;">
+<ul>
+<li>Calidad del aire</li>
+<li>Uso del suelo</li>
+</ul>
+</div>
+</div>
+</div>
+<p>Sistema de coordenadas</p>
+<ul>
+<li><strong>Seleccione un sistema de coordenadas proyectado</strong></li>
+</ul>
+</section>
+<section id="modificación-de-datos-generalización-cartográfica" class="level3">
+<h3 class="anchored" data-anchor-id="modificación-de-datos-generalización-cartográfica">Modificación de datos: Generalización cartográfica</h3>
+<p>La generalización es el proceso de simplificación de la realidad para su representación a escalas menores, manteniendo la esencia de los datos geográficos. Los métodos principales incluyen:</p>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout="[[50, 50]]">
+<div class="quarto-layout-row quarto-layout-valign-center">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/03/img_pag17_4.png" class="img-fluid figure-img"></p>
+<figcaption>Detallado</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/03/img_pag17_2.png" class="img-fluid figure-img"></p>
+<figcaption>Generalizado</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="modificación-de-datos-selección" class="level3">
+<h3 class="anchored" data-anchor-id="modificación-de-datos-selección">Modificación de datos: Selección</h3>
+<p>Proceso de decidir qué entidades se incluyen y cuáles se omiten según la escala y el propósito.</p>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout="[[45, 10, 45]]">
+<div class="quarto-layout-row quarto-layout-valign-center">
+<div class="quarto-layout-cell" style="flex-basis: 45.0%;justify-content: center;">
+<p><img src="images/cartografia/03/img_pag18_4.png" class="img-fluid"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 10.0%;justify-content: flex-start;">
+<p><span style="font-size: 3rem; color: #007bff">→</span></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 45.0%;justify-content: center;">
+<p><img src="images/cartografia/03/img_pag18_2.png" class="img-fluid"></p>
+</div>
+</div>
+</div>
+</section>
+<section id="simplificación" class="level3">
+<h3 class="anchored" data-anchor-id="simplificación">Simplificación</h3>
+<ul>
+<li><strong>Simplificación:</strong> Reducción del número de vértices en una línea o polígono manteniendo su forma básica.</li>
+</ul>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout="[[45, 10, 45]]">
+<div class="quarto-layout-row quarto-layout-valign-center">
+<div class="quarto-layout-cell" style="flex-basis: 45.0%;justify-content: center;">
+<p><img src="images/cartografia/03/img_pag19_5.png" class="img-fluid"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 10.0%;justify-content: flex-start;">
+<p><span style="font-size: 3rem; color: #007bff">→</span></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 45.0%;justify-content: center;">
+<p><img src="images/cartografia/03/img_pag19_4.png" class="img-fluid"></p>
+</div>
+</div>
+</div>
+</section>
+<section id="suavisado" class="level3">
+<h3 class="anchored" data-anchor-id="suavisado">Suavisado</h3>
+<ul>
+<li><strong>Suavizado:</strong> Eliminación de angulosidades para una representación estética y fluida de las líneas.</li>
+</ul>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout="[[45, 10, 45]]">
+<div class="quarto-layout-row quarto-layout-valign-center">
+<div class="quarto-layout-cell" style="flex-basis: 45.0%;justify-content: center;">
+<p><img src="images/cartografia/03/img_pag20_5.png" class="img-fluid"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 10.0%;justify-content: flex-start;">
+<p><span style="font-size: 3rem; color: #007bff">→</span></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 45.0%;justify-content: center;">
+<p><img src="images/cartografia/03/img_pag20_4.png" class="img-fluid"></p>
+</div>
+</div>
+</div>
+</section>
+<section id="colapso" class="level3">
+<h3 class="anchored" data-anchor-id="colapso">Colapso</h3>
+<ul>
+<li><strong>Colapso (Collapsing):</strong> Reducción de la dimensionalidad de una entidad (ej: pasar de un polígono de ciudad a un punto).</li>
+</ul>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout="[[45, 10, 45]]">
+<div class="quarto-layout-row quarto-layout-valign-center">
+<div class="quarto-layout-cell" style="flex-basis: 45.0%;justify-content: center;">
+<p><img src="images/cartografia/03/img_pag21_5.png" class="img-fluid"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 10.0%;justify-content: flex-start;">
+<p><span style="font-size: 3rem; color: #007bff">→</span></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 45.0%;justify-content: center;">
+<p><img src="images/cartografia/03/img_pag21_4.png" class="img-fluid"></p>
+</div>
+</div>
+</div>
+</section>
+<section id="agregación" class="level3">
+<h3 class="anchored" data-anchor-id="agregación">Agregación</h3>
+<ul>
+<li><strong>Agregación (Aggregation):</strong> Agrupamiento de múltiples entidades individuales en una sola unidad mayor.</li>
+</ul>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout="[[45, 10, 45]]">
+<div class="quarto-layout-row quarto-layout-valign-center">
+<div class="quarto-layout-cell" style="flex-basis: 45.0%;justify-content: center;">
+<p><img src="images/cartografia/03/img_pag22_5.png" class="img-fluid"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 10.0%;justify-content: flex-start;">
+<p><span style="font-size: 3rem; color: #007bff">→</span></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 45.0%;justify-content: center;">
+<p><img src="images/cartografia/03/img_pag22_4.png" class="img-fluid"></p>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="simbología" class="level2" data-number="15.3">
+<h2 data-number="15.3" class="anchored" data-anchor-id="simbología"><span class="header-section-number">15.3</span> Simbología</h2>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">graph TD
+    %% Definición de estilos
+    classDef mainNode font-size:14pt,font-weight:bold,fill:#f9f9f9,stroke:#333,stroke-width:2px;
+    classDef questions font-size:12pt,font-style:italic,fill:#ffffff,stroke:#999,stroke-dasharray: 5 5;
+    classDef feedback stroke:#e67e22,stroke-width:2px,stroke-dasharray: 5 5;
+    classDef highlight fill:#fff3cd,stroke:#d4a017,stroke-width:4px;
+
+    %% Nodos principales
+    P(Planificación) --&gt; D(Datos)
+    D --&gt; S(Simbología)
+    S --&gt; L(Composición)
+    L --&gt; O(Salida)
+
+    %% Lazo de retroalimentación (Ciclo)
+    L -.-&gt;|Refinamiento e iteración| P
+
+    %% Bloques de preguntas vinculados
+    P --- PQ["¿Cómo se utilizará el mapa?&lt;br/&gt;¿Qué tipos de mapas se crearán?"]
+    D --- DQ["¿Qué datos se utilizarán?"]
+    S --- SQ["¿Cómo se simbolizarán los datos?"]
+    L --- LQ["¿Cómo se diseñará la composición?"]
+    O --- OQ["¿Cómo se publicará el mapa?"]
+
+    %% Aplicación de estilos
+    class P,D,L,O mainNode;
+    class PQ,DQ,LQ,OQ questions;
+    class S,SQ highlight;
+    linkStyle 4 stroke:#e67e22,stroke-width:2px,stroke-dasharray: 5 5;
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<ul>
+<li>Cómo simbolizarás tus datos?</li>
+<li>¿La naturaleza de los datos es cualitativa o cuantitativa?</li>
+<li>¿Es necesaria la inclusión de etiquetas de texto para complementar la simbología?</li>
+<li>¿Qué tipo de símbolos (puntos, líneas, polígonos) sirven mejor al objetivo del proyecto?</li>
+</ul>
+<section id="fase-de-simbología-en-el-proceso-de-planificación" class="level3">
+<h3 class="anchored" data-anchor-id="fase-de-simbología-en-el-proceso-de-planificación">Fase de simbología en el proceso de planificación</h3>
+<p>Dentro del flujo de trabajo cartográfico, la simbología representa la etapa donde la información técnica de los atributos se traduce en una representación gráfica interpretable. La selección del esquema simbólico depende directamente de la naturaleza de los datos y del objetivo comunicativo del mapa.</p>
+</section>
+<section id="definición-y-función-de-la-simbología" class="level3">
+<h3 class="anchored" data-anchor-id="definición-y-función-de-la-simbología">Definición y función de la simbología</h3>
+<p>La simbología se define como la visualización gráfica de la información de las entidades (<em>features</em>).</p>
+<p>Utiliza variables como:</p>
+<ul>
+<li>el color,</li>
+<li>la forma,</li>
+<li>el tamaño,</li>
+<li>el patrón,</li>
+<li>la orientación,</li>
+<li>otros,</li>
+</ul>
+<p>para codificar atributos que luego serán interpretados por el usuario mediante</p>
+<ul>
+<li>la leyenda del mapa.</li>
+</ul>
+<div class="columns">
+<div class="column" style="width:20%;">
+<p>Parques</p>
+<p><img src="images/cartografia/03/img_pag25_2.png" class="img-fluid" style="width:100.0%"></p>
+</div><div class="column" style="width:10%;">
+<p>&nbsp;</p>
+</div><div class="column" style="width:30%;">
+<p>Aeropuertos</p>
+<div style="display: flex; align-items: center; margin-bottom: 15px;">
+<img src="images/cartografia/03/img_pag25_1.png" class="img-fluid" style="width:30.0%">
+<div style="padding-left: 15px;">
+Internacional
+</div>
+</div>
+<div style="display: flex; align-items: center;">
+<img src="images/cartografia/03/img_pag25_4.png" class="img-fluid" style="width:30.0%">
+<div style="padding-left: 15px;">
+Regional
+</div>
+</div>
+</div><div class="column" style="width:40%;">
+<p>Tráfico Local</p>
+<p><img src="images/cartografia/03/img_pag25_3.png" class="img-fluid" style="width:100.0%"></p>
+</div>
+</div>
+</section>
+<section id="tipo-de-simbología-y-sus-dimensiones-visuales" class="level3">
+<h3 class="anchored" data-anchor-id="tipo-de-simbología-y-sus-dimensiones-visuales">Tipo de simbología y sus dimensiones visuales</h3>
+<!-- ![Ejemplo de aplicación de simbología](images/cartografia/03/img_pag26_1.jpeg) -->
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/03/dimensiones_visuales.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
+<figcaption>Tipo y símbolos usados en mapeo cuantitativo y sus dimensiones visuales. Fuente: Generada por Gemini a partir de una imagen con etiqueta: “Courtesy JP Publications. Modified by the Authors”</figcaption>
+</figure>
+</div>
+<p>La correcta selección y aplicación de variables visuales es fundamental para la transmisión efectiva de la información cartográfica. A continuación se presentan las dimensiones visuales clave utilizadas en la simbología de mapas.</p>
+<section id="tamaño" class="level4">
+<h4 class="anchored" data-anchor-id="tamaño">Tamaño</h4>
+<p>La variación del tamaño de un símbolo se utiliza principalmente para <strong>representar diferencias cuantitativas</strong> (magnitudes o cantidades). Un símbolo más grande representa una mayor cantidad, mientras que uno más pequeño representa una menor. Es esencial mantener un contraste de tamaño proporcional y legible para que el usuario pueda interpretar la escala sin confusión.</p>
+</section>
+<section id="patrón-y-textura" class="level4">
+<h4 class="anchored" data-anchor-id="patrón-y-textura">Patrón y textura</h4>
+<p>El patrón y la textura de los símbolos se emplean para <strong>distinguir categorías o clases</strong> (diferencias cualitativas).</p>
+<ul>
+<li><strong>Patrón:</strong> Se refiere a la forma y disposición de los elementos internos de un símbolo (ej., líneas paralelas, puntos, cuadrículas).</li>
+<li><strong>Textura:</strong> Se refiere a la aspereza o suavidad visual de la superficie del símbolo (ej., granulado, punteado fino). Ambos ayudan a organizar visualmente los elementos en grupos distintos, lo que es útil para diferenciar tipos de uso del suelo, zonas de riesgo o categorías de infraestructura.</li>
+</ul>
+</section>
+<section id="valor-del-color-luminosidad" class="level4">
+<h4 class="anchored" data-anchor-id="valor-del-color-luminosidad">Valor del color (Luminosidad)</h4>
+<p>Esta dimensión se refiere a la <strong>claridad u oscuridad relativa de un color</strong>, independientemente de su tono (es decir que color sea). Se extiende en una escala secuencial desde el <strong>negro hasta el blanco</strong>.</p>
+<p>En el diseño cartográfico, el valor es fundamental para:</p>
+<ol type="1">
+<li><strong>Establecer una jerarquía visual clara.</strong></li>
+<li><strong>Representar escalas secuenciales</strong>, como densidades (ej., mayor cantidad de un fenómeno representada con un valor más oscuro).</li>
+</ol>
+<p>Un contraste de valor adecuado facilita la legibilidad de la información cartográfica.</p>
+</section>
+<section id="saturación-del-color-pureza-o-intensidad" class="level4">
+<h4 class="anchored" data-anchor-id="saturación-del-color-pureza-o-intensidad">Saturación del color (Pureza o Intensidad)</h4>
+<p>Esta dimensión define la <strong>pureza o viveza de un color</strong>. Se refiere a la <strong>cantidad de gris o marrón que se ha mezclado con el tono puro</strong>. Un color completamente saturado no contiene gris ni marrón, es vibrante. Un color con saturación nula (desaturado) es un gris neutro.</p>
+<p>La modulación de la saturación se utiliza para <strong>enfatizar o jerarquizar información sin alterar la claridad relativa</strong> (el valor) de los elementos en una composición cartográfica.</p>
+<blockquote class="blockquote">
+<p>En resumen:</p>
+<ul>
+<li>El valor te dice qué tan claro u oscuro es un color.</li>
+<li>La saturación te dice qué tan puro o intenso es ese color.</li>
+</ul>
+<p>Por ejemplo, si tienes un tono de rojo, puedes ajustar su valor para que sea un rojo más claro (más cercano al blanco) o un rojo más oscuro (más cercano al negro). También puedes ajustar su saturación para que sea un rojo más vibrante (puro) o un rojo más desaturado (mezclado con gris)</p>
+</blockquote>
+</section>
+</section>
+<section id="distinción-entre-datos-cualitativos-y-cuantitativos" class="level3">
+<h3 class="anchored" data-anchor-id="distinción-entre-datos-cualitativos-y-cuantitativos">Distinción entre datos cualitativos y cuantitativos</h3>
+<p>La elección de las variables visuales está supeditada al tipo de datos disponibles en la tabla de atributos: <strong>cualitativos</strong> o <strong>cuantitativos</strong></p>
+<p>A continuación se presenta la síntesis técnica de las diferencias entre los datos cualitativos y cuantitativos aplicada a entornos de investigación:</p>
+<table class="table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Base de comparación</th>
+<th style="text-align: left;">Datos cualitativos</th>
+<th style="text-align: left;">Datos cuantitativos</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Significado</td>
+<td style="text-align: left;">Datos en los que la clasificación de objetos se basa en atributos y propiedades.</td>
+<td style="text-align: left;">Tipo de datos que pueden medirse y expresarse numéricamente.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Metodología de investigación</td>
+<td style="text-align: left;">Exploratoria</td>
+<td style="text-align: left;">Concluyente</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Enfoque</td>
+<td style="text-align: left;">Subjetivo</td>
+<td style="text-align: left;">Objetivo</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Análisis</td>
+<td style="text-align: left;">No estadístico</td>
+<td style="text-align: left;">Estadístico</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Recolección de datos</td>
+<td style="text-align: left;">No estructurada</td>
+<td style="text-align: left;">Estructurada</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Determina</td>
+<td style="text-align: left;">Profundidad de comprensión</td>
+<td style="text-align: left;">Nivel de ocurrencia</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Pregunta</td>
+<td style="text-align: left;">¿Por qué?</td>
+<td style="text-align: left;">¿Cuántos? o ¿Cuánto?</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Muestra</td>
+<td style="text-align: left;">Pequeño número de muestras no representativas.</td>
+<td style="text-align: left;">Gran número de muestras representativas.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Resultado</td>
+<td style="text-align: left;">Desarrolla una comprensión inicial.</td>
+<td style="text-align: left;">Recomienda un curso de acción final.</td>
+</tr>
+</tbody>
+</table>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/03/cualitativas_cuantitativas.jpg" class="img-fluid figure-img"></p>
+<figcaption>Variables cualitativas versus cuantitativas</figcaption>
+</figure>
+</div>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">%%{init: {'theme': 'base', 'themeVariables': { 'fontSize': '18px', 'fontFamily': 'arial'}}}%%
+graph LR
+    %% Nodo raíz
+    A["&lt;b&gt;Datos&lt;/b&gt;"]
+    
+    %% Niveles primarios
+    B1["&lt;b&gt;Cualitativos&lt;/b&gt;&lt;br/&gt;Información descriptiva"]
+    B2["&lt;b&gt;Cuantitativos&lt;/b&gt;&lt;br/&gt;Información numérica"]
+    
+    %% Ejemplo Cualitativo
+    C1["'Bebo café todos los días'"]
+    
+    %% Niveles secundarios Cuantitativos
+    D1["&lt;b&gt;Discretos&lt;/b&gt;&lt;br/&gt;(Contados)"]
+    D2["&lt;b&gt;Continuos&lt;/b&gt;&lt;br/&gt;(Medidos)"]
+    
+    %% Ejemplos Cuantitativos
+    E1["'Bebo 4 cafés todos los días'"]
+    E2["'Bebo 80g de café todos los días'"]
+
+    %% Conexiones
+    A --&gt; B1
+    A --&gt; B2
+    
+    B1 --&gt; C1
+    
+    B2 --&gt; D1
+    B2 --&gt; D2
+    
+    D1 --&gt; E1
+    D2 --&gt; E2
+
+    %% Estilos para legibilidad
+    style A fill:#f5f5f5,stroke:#333,stroke-width:3px
+    style B1 fill:#fff,stroke:#333,stroke-width:2px
+    style B2 fill:#fff,stroke:#333,stroke-width:2px
+    style C1 stroke-dasharray: 5 5
+    style E1 stroke-dasharray: 5 5
+    style E2 stroke-dasharray: 5 5
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>En cartografía digital, esta distinción rige la jerarquía visual:</p>
+<p>Los datos <strong>cualitativos</strong> suelen representarse mediante:</p>
+<ul>
+<li>variaciones de <strong>forma</strong> y <strong>tinte de color</strong> (hue) para diferenciar categorías <strong>sin establecer un orden</strong> de magnitud.</li>
+</ul>
+<p>Los datos cuantitativos requieren el uso de variables visuales <strong>ordenadas</strong> como el:</p>
+<ul>
+<li><strong>tamaño</strong> (símbolos proporcionales) o</li>
+<li>el <strong>valor del color</strong> (luminosidad) para comunicar <strong>gradaciones y cantidades</strong>.</li>
+</ul>
+<section id="caracterización-cualitativa" class="level4">
+<h4 class="anchored" data-anchor-id="caracterización-cualitativa">Caracterización cualitativa</h4>
+<p>Se basa en valores de atributos fijos, generalmente texto o códigos numéricos categóricos. La representación se realiza mediante categorías de valores individuales.</p>
+<ul>
+<li><strong>Variables visuales principales:</strong> Forma y color (tinte).</li>
+<li><strong>Aplicación:</strong> Clasificación por tipos de uso de suelo, tipos de vegetación o divisiones administrativas.</li>
+</ul>
+<!-- ::: {layout="[[15, 50, 20, 15]]" layout-valign="center"}
+
+&nbsp;
+
+![](images/cartografia/03/img_pag28_1.png)
+
+
+![](images/cartografia/03/img_pag28_2.png)
+
+&nbsp;
+
+::: -->
+<p><img src="images/cartografia/03/clasificacion_cualitativa.png" class="img-fluid"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/03/puntos_lineas_areas_cualitativo1.png" class="img-fluid figure-img"></p>
+<figcaption>Simbología de variables cualitativas en puntos, líneas y áreas (1)</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/03/puntos_lineas_areas_cualitativo2.png" class="img-fluid figure-img"></p>
+<figcaption>Simbología de variables cualitativas en puntos, líneas y áreas (2)</figcaption>
+</figure>
+</div>
+</section>
+<section id="caracterización-cuantitativa" class="level4">
+<h4 class="anchored" data-anchor-id="caracterización-cuantitativa">Caracterización cuantitativa</h4>
+<p>Implica el ordenamiento de datos y, opcionalmente, la creación de clases de valores. Los datos suelen provenir de censos, mediciones directas o estadísticas derivadas.</p>
+<ul>
+<li><strong>Variables visuales principales:</strong> Tamaño (para símbolos proporcionales) y valor del color (luminosidad o intensidad).</li>
+<li><strong>Aplicación:</strong> Mapas de densidad de población, niveles de contaminación o volumen de tráfico.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/03/img_pag30_1.jpeg" class="img-fluid figure-img"></p>
+<figcaption>Variables cuantitativas</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/03/puntos_lineas_areas_cuantitativo.png" class="img-fluid figure-img"></p>
+<figcaption>Simbología de variables cuantitativas en puntos, líneas y áreas</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/03/puntos_lineas_areas_cuantitativo2.png" class="img-fluid figure-img"></p>
+<figcaption>Simbología de variables cuantitativas en puntos, líneas y áreas (2)</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="clasificación-de-datos-frente-a-datos-no-clasificados" class="level3">
+<h3 class="anchored" data-anchor-id="clasificación-de-datos-frente-a-datos-no-clasificados">Clasificación de datos frente a datos no clasificados</h3>
+<p>El tratamiento de los datos cuantitativos permite dos aproximaciones principales en el diseño de leyendas:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/03/clasificado_vs_noclasificado.png" class="img-fluid figure-img"></p>
+<figcaption>Datos No Clasificados Versus Clasificados</figcaption>
+</figure>
+</div>
+<section id="datos-no-clasificados" class="level4">
+<h4 class="anchored" data-anchor-id="datos-no-clasificados">Datos no clasificados</h4>
+<p>Asignan un color o símbolo único a cada valor individual presente en el dataset.</p>
+<ul>
+<li><strong>Ventajas:</strong> Minimiza la generalización y permite observar fracturas claras en la distribución de los datos.</li>
+<li><strong>Desventajas:</strong> Dificulta la lectura visual y genera leyendas excesivamente extensas y poco informativas.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/03/img_pag33_1.jpeg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
+<figcaption>Datos No Clasificados</figcaption>
+</figure>
+</div>
+</section>
+<section id="datos-clasificados" class="level4">
+<h4 class="anchored" data-anchor-id="datos-clasificados">Datos clasificados</h4>
+<p>Agrupan los valores en rangos sucesivos y no superpuestos (clases). Cada rango recibe un símbolo específico.</p>
+<ul>
+<li><strong>Ventajas:</strong> Facilita la identificación de patrones y tendencias; genera leyendas con alto valor comunicativo.</li>
+<li><strong>Desventajas:</strong> Introduce procesos de generalización y puede ocultar variaciones o saltos significativos dentro de una misma clase.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/03/img_pag32_4.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
+<figcaption>Datos Clasificados</figcaption>
+</figure>
+</div>
+<p>Para una clasificación técnica estandarizada, se recomienda el uso de 5 clases, aunque el marco metodológico permite un rango de entre 1 y 32 clases dependiendo de la complejidad del fenómeno analizado.</p>
+</section>
+</section>
+<section id="clasificación-de-datos-geoespaciales" class="level3">
+<h3 class="anchored" data-anchor-id="clasificación-de-datos-geoespaciales">Clasificación de datos geoespaciales</h3>
+<p>La clasificación de datos es un proceso crítico en la cartografía temática que permite agrupar observaciones numéricas en categorías discretas. Este procedimiento es fundamental para simplificar la complejidad de los datos y revelar patrones espaciales que de otro modo permanecerían ocultos. Es importante considerar que la elección del método de clasificación puede alterar significativamente la interpretación del mapa, permitiendo incluso sesgar la comunicación visual si no se aplica con rigor estadístico.</p>
+<ul>
+<li>Los valores son ordenados por clases</li>
+<li>Estándar 5 clases; se permiten 1 a 32</li>
+<li>Clases son sucesivas y no se superponen</li>
+<li>Cada valor de rango tiene un símbolo específico</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/03/clasificacion.png" class="img-fluid figure-img"></p>
+<figcaption>Ejemplo de clasificación de altura de vegetación 1</figcaption>
+</figure>
+</div>
+<p>Se puede mentir con un mapa debido a las diferentes formas de clasificación de los datos:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/03/img_pag36_1.jpeg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
+<figcaption>Mentir gracias a la clasificación de los datos</figcaption>
+</figure>
+</div>
+<section id="métodos-de-clasificación-estadística" class="level4">
+<h4 class="anchored" data-anchor-id="métodos-de-clasificación-estadística">Métodos de clasificación estadística</h4>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/03/img_pag37_1.jpeg" class="img-fluid figure-img"></p>
+<figcaption>Métodos para definir intervalos en la clasificación</figcaption>
+</figure>
+</div>
+<p>Existen diversos algoritmos para definir los intervalos de clase, cada uno con implicaciones analíticas distintas:</p>
+<ul>
+<li><strong>Natural breaks (Cortes naturales o Jenks):</strong> Identifica agrupamientos naturales en los datos para <strong>minimizar</strong> la <strong>varianza</strong> <strong>dentro</strong> de las clases y <strong>maximizarla entre</strong> ellas. Es el método más versátil.</li>
+</ul>
+<p>Las clases se fundamentan en agrupaciones naturales de los valores de los datos. En el caso de ArcGIS Pro, este detecta los puntos de quiebre mediante la identificación de agrupaciones y patrones inherentes a la estructura de los datos. Las entidades espaciales se dividen en clases cuyos límites se definen en aquellos puntos donde se presentan saltos significativos en los valores.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/03/img_pag38_1.jpeg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
+<figcaption>Clasificación: Cortes Naturales o Jenks</figcaption>
+</figure>
+</div>
+<ul>
+<li><strong>Equal interval (Intervalos iguales):</strong> Divide el rango de valores en intervalos de igual magnitud. Es ideal para datos cuya distribución es uniforme.</li>
+</ul>
+<p>Este esquema de clasificación divide el rango de valores de los atributos en subrangos de igual magnitud. Por ejemplo, si las entidades poseen valores de atributo en un rango de 0 a 300 y se definen tres clases, cada una representará un intervalo de 100, con rangos de clase de 0-100, 101-200 y 201-300. Este método enfatiza la magnitud de un valor de atributo en relación con otros valores. Como ilustración, permite demostrar que un establecimiento comercial pertenece al grupo que constituye el tercio superior del total de ventas. Su aplicación resulta óptima para rangos de datos conocidos, tales como porcentajes y temperatura.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/03/img_pag39_1.jpeg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
+<figcaption>clasificación: Intervalos iguales</figcaption>
+</figure>
+</div>
+<ul>
+<li><strong>Quantile (Cuantiles):</strong> Asigna el mismo número de unidades cartográficas a cada clase. Es útil para resaltar diferencias en la parte media de la distribución.</li>
+</ul>
+<p>Cada clase contiene un número equivalente de entidades. La clasificación por cuantiles resulta apropiada para datos con una distribución lineal. Debido a que las entidades se agrupan según la cantidad de elementos en cada clase, el mapa resultante puede inducir a interpretaciones erróneas. Existe el riesgo de que entidades con valores similares se asignen a clases adyacentes, o que entidades con valores significativamente distintos se agrupen en la misma categoría. Esta distorsión puede minimizarse mediante el incremento del número de clases.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/03/img_pag40_1.jpeg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
+<figcaption>clasificación: Cuantiles</figcaption>
+</figure>
+</div>
+<ul>
+<li><strong>Standard deviation (Desviación estándar):</strong> Muestra cuánto varían los valores respecto a la media aritmética del conjunto de datos.</li>
+</ul>
+<p>Este esquema de clasificación permite visualizar la medida en que el valor del atributo de una entidad varía respecto a la media aritmética. El software calcula el valor medio y genera los cortes de clase mediante la adición o sustracción sucesiva de la desviación estándar a partir de dicho valor. Una rampa de color bícroma o divergente facilita el énfasis en los valores situados por encima de la media (representados en azul) y por debajo de la misma (representados en rojo).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/03/img_pag41_1.jpeg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
+<figcaption>clasificación: Desviación estándar</figcaption>
+</figure>
+</div>
+</section>
+<section id="selección-del-método-de-clasificación-óptimo" class="level4">
+<h4 class="anchored" data-anchor-id="selección-del-método-de-clasificación-óptimo">Selección del método de clasificación óptimo</h4>
+<p>La determinación del método más adecuado depende de la distribución estadística de los datos (<strong>evaluable mediante el histograma</strong>), el mensaje que se desea comunicar y la estética del producto final.</p>
+<ul>
+<li><strong>Equal interval:</strong> Enfatiza las diferencias en los extremos de los rangos de valores.</li>
+<li><strong>Quantile:</strong> Resalta las diferencias en el centro de la distribución.</li>
+<li><strong>Standard deviation:</strong> Identifica valores atípicos y la dispersión respecto al promedio.</li>
+<li><strong>Natural breaks:</strong> Adecuado para la mayoría de las aplicaciones geográficas generales.</li>
+</ul>
+<table class="table table-hover table-condensed" style="font-size: 14px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+Criterios para la selección de un método de clasificación
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;font-weight: bold;background-color: rgba(242, 242, 242, 255) !important;">
+Criterio
+</th>
+<th style="text-align:center;font-weight: bold;background-color: rgba(242, 242, 242, 255) !important;">
+Intervalos iguales
+</th>
+<th style="text-align:center;font-weight: bold;background-color: rgba(242, 242, 242, 255) !important;">
+Cuantiles
+</th>
+<th style="text-align:center;font-weight: bold;background-color: rgba(242, 242, 242, 255) !important;">
+Desviación estándar
+</th>
+<th style="text-align:center;font-weight: bold;background-color: rgba(242, 242, 242, 255) !important;">
+Cortes naturales
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;width: 35%; font-weight: bold;background-color: rgba(248, 249, 250, 255) !important;">
+Considera la distribución de datos en una recta numérica
+</td>
+<td style="text-align:center;">
+<span style=" font-weight: bold;    color: rgba(114, 28, 36, 255) !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(248, 215, 218, 255) !important;">D</span>
+</td>
+<td style="text-align:center;">
+<span style=" font-weight: bold;    color: rgba(114, 28, 36, 255) !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(248, 215, 218, 255) !important;">D</span>
+</td>
+<td style="text-align:center;">
+<span style=" font-weight: bold;    color: rgba(30, 126, 52, 255) !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(233, 247, 239, 255) !important;">B</span>
+</td>
+<td style="text-align:center;">
+<span style=" font-weight: bold;    color: rgba(21, 87, 36, 255) !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(212, 237, 218, 255) !important;">MB</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 35%; font-weight: bold;background-color: rgba(248, 249, 250, 255) !important;">
+Facilidad de comprensión del concepto
+</td>
+<td style="text-align:center;">
+<span style=" font-weight: bold;    color: rgba(21, 87, 36, 255) !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(212, 237, 218, 255) !important;">MB</span>
+</td>
+<td style="text-align:center;">
+<span style=" font-weight: bold;    color: rgba(21, 87, 36, 255) !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(212, 237, 218, 255) !important;">MB</span>
+</td>
+<td style="text-align:center;">
+<span style=" font-weight: bold;    color: rgba(21, 87, 36, 255) !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(212, 237, 218, 255) !important;">MB</span>
+</td>
+<td style="text-align:center;">
+<span style=" font-weight: bold;    color: rgba(21, 87, 36, 255) !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(212, 237, 218, 255) !important;">MB</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 35%; font-weight: bold;background-color: rgba(248, 249, 250, 255) !important;">
+Facilidad de cálculo
+</td>
+<td style="text-align:center;">
+<span style=" font-weight: bold;    color: rgba(21, 87, 36, 255) !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(212, 237, 218, 255) !important;">MB</span>
+</td>
+<td style="text-align:center;">
+<span style=" font-weight: bold;    color: rgba(21, 87, 36, 255) !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(212, 237, 218, 255) !important;">MB</span>
+</td>
+<td style="text-align:center;">
+<span style=" font-weight: bold;    color: rgba(21, 87, 36, 255) !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(212, 237, 218, 255) !important;">MB</span>
+</td>
+<td style="text-align:center;">
+<span style=" font-weight: bold;    color: rgba(21, 87, 36, 255) !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(212, 237, 218, 255) !important;">MB</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 35%; font-weight: bold;background-color: rgba(248, 249, 250, 255) !important;">
+Facilidad de comprensión de la leyenda
+</td>
+<td style="text-align:center;">
+<span style=" font-weight: bold;    color: rgba(21, 87, 36, 255) !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(212, 237, 218, 255) !important;">MB</span>
+</td>
+<td style="text-align:center;">
+<span style=" font-weight: bold;    color: rgba(114, 28, 36, 255) !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(248, 215, 218, 255) !important;">D</span>
+</td>
+<td style="text-align:center;">
+<span style=" font-weight: bold;    color: rgba(30, 126, 52, 255) !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(233, 247, 239, 255) !important;">B</span>
+</td>
+<td style="text-align:center;">
+<span style=" font-weight: bold;    color: rgba(114, 28, 36, 255) !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(248, 215, 218, 255) !important;">D</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 35%; font-weight: bold;background-color: rgba(248, 249, 250, 255) !important;">
+Valores de la leyenda coinciden con el rango de datos en una clase
+</td>
+<td style="text-align:center;">
+<span style=" font-weight: bold;    color: rgba(114, 28, 36, 255) !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(248, 215, 218, 255) !important;">D</span>
+</td>
+<td style="text-align:center;">
+<span style=" font-weight: bold;    color: rgba(21, 87, 36, 255) !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(212, 237, 218, 255) !important;">MB</span>
+</td>
+<td style="text-align:center;">
+<span style=" font-weight: bold;    color: rgba(114, 28, 36, 255) !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(248, 215, 218, 255) !important;">D</span>
+</td>
+<td style="text-align:center;">
+<span style=" font-weight: bold;    color: rgba(21, 87, 36, 255) !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(212, 237, 218, 255) !important;">MB</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 35%; font-weight: bold;background-color: rgba(248, 249, 250, 255) !important;">
+Aceptable para datos ordinales
+</td>
+<td style="text-align:center;">
+<span style=" font-weight: bold;    color: rgba(114, 28, 36, 255) !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(245, 198, 203, 255) !important;">I</span>
+</td>
+<td style="text-align:center;">
+<span style=" font-weight: bold;    color: rgba(133, 100, 4, 255) !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(255, 243, 205, 255) !important;">A</span>
+</td>
+<td style="text-align:center;">
+<span style=" font-weight: bold;    color: rgba(114, 28, 36, 255) !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(245, 198, 203, 255) !important;">I</span>
+</td>
+<td style="text-align:center;">
+<span style=" font-weight: bold;    color: rgba(114, 28, 36, 255) !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(245, 198, 203, 255) !important;">I</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 35%; font-weight: bold;background-color: rgba(248, 249, 250, 255) !important;">
+Ayuda en la selección del número de clases
+</td>
+<td style="text-align:center;">
+<span style=" font-weight: bold;    color: rgba(114, 28, 36, 255) !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(248, 215, 218, 255) !important;">D</span>
+</td>
+<td style="text-align:center;">
+<span style=" font-weight: bold;    color: rgba(114, 28, 36, 255) !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(248, 215, 218, 255) !important;">D</span>
+</td>
+<td style="text-align:center;">
+<span style=" font-weight: bold;    color: rgba(114, 28, 36, 255) !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(248, 215, 218, 255) !important;">D</span>
+</td>
+<td style="text-align:center;">
+<span style=" font-weight: bold;    color: rgba(30, 126, 52, 255) !important;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: rgba(233, 247, 239, 255) !important;">B</span>
+</td>
+</tr>
+</tbody>
+</table>
+<div style="font-size: 13px; text-align: justify; margin-top: 10px; border-top: 1px solid #dee2e6; padding-top: 5px;">
+<em>Fuente:</em> Slocum, T. A. (1999). Thematic Cartography and Visualization. MB: Muy bueno; B: Bueno; A: Aceptable; D: Deficiente; I: Inaceptable.
+</div>
+</section>
+<section id="definición-del-número-de-clases" class="level4">
+<h4 class="anchored" data-anchor-id="definición-del-número-de-clases">Definición del número de clases</h4>
+<p>El número de categorías debe equilibrar la precisión y la legibilidad. Un exceso de clases dificulta la discriminación de símbolos en la leyenda y en el cuerpo del mapa. Por el contrario, un número insuficiente de clases genera una generalización excesiva que oculta la variabilidad del fenómeno estudiado.</p>
+<div>
+
+</div>
+<div id="impacto-clases" class="quarto-layout-panel" data-layout="[[50, 50]]">
+<div class="quarto-layout-row quarto-layout-valign-center">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="images/cartografia/03/img_pag44_1.jpeg" class="img-fluid"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="images/cartografia/03/img_pag44_2.jpeg" class="img-fluid"></p>
+</div>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-center">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<p>Impacto del número de clases</p>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="estrategias-de-simbolización-cuantitativa" class="level3">
+<h3 class="anchored" data-anchor-id="estrategias-de-simbolización-cuantitativa">Estrategias de simbolización cuantitativa</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/03/metodos_simbolizacion.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+<figcaption>Clasificación: Métodos de simbolización (1)</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/03/metodos_simbolizacion_2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+<figcaption>Clasificación: Métodos de simbolización (2)</figcaption>
+</figure>
+</div>
+<p>La representación de magnitudes requiere métodos que traduzcan valores numéricos en variables visuales escalables:</p>
+<ul>
+<li><strong>Proportional symbols (Símbolos proporcionales):</strong> El tamaño del símbolo varía de forma continua y exacta según el valor del atributo.</li>
+<li><strong>Graduated symbols (Símbolos graduados):</strong> El tamaño varía según rangos de clase predefinidos.</li>
+<li><strong>Graduated colors (Colores graduados):</strong> Utiliza variaciones de luminosidad o intensidad para representar magnitudes (mapas de coropletas).</li>
+<li><strong>Charts (Gráficos):</strong> Integra gráficos de sectores o barras para representar múltiples atributos simultáneamente.</li>
+<li><strong>Dot density (Densidad de puntos):</strong> Representa la frecuencia de un fenómeno mediante la dispersión de puntos en un área.</li>
+<li><strong>Multiple attributes (Múltiple atributos):</strong> Usa información de múltiples campos o atributos para crear la simbología.</li>
+</ul>
+</section>
+<section id="el-rol-del-color-en-el-diseño-cartográfico" class="level3">
+<h3 class="anchored" data-anchor-id="el-rol-del-color-en-el-diseño-cartográfico">El rol del color en el diseño cartográfico</h3>
+<p>El color es uno de los componentes más influyentes del diseño, ya que influencia reacciones psicológicas, evoca emociones, y facilita la categorización rápida de elementos espaciales.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/03/img_pag47_1.jpeg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+<figcaption>Psicología y percepción del color</figcaption>
+</figure>
+</div>
+<section id="percepción-y-psicología-del-color" class="level4">
+<h4 class="anchored" data-anchor-id="percepción-y-psicología-del-color">Percepción y psicología del color</h4>
+<ul>
+<li><p><strong>Colores cálidos (rojo, naranja, amarillo):</strong> Tienden a percibirse como elementos en primer plano y suelen asociarse a valores positivos o de alerta (ej: semáforos).</p>
+<ul>
+<li>Mejores para figuras</li>
+</ul></li>
+<li><p><strong>Colores fríos (violeta, azul, verde):</strong> Tienden a retroceder visualmente.</p>
+<ul>
+<li>Positivo (verde) vs.&nbsp;negativo (rojo)</li>
+</ul></li>
+<li><p><strong>Convenciones técnicas:</strong></p>
+<ul>
+<li>El azul se reserva para la hidrografía</li>
+<li>El verde para la cobertura vegetal o áreas protegidas.</li>
+<li>Elementos similares usan colores similares o seriales</li>
+</ul></li>
+</ul>
+</section>
+<section id="accesibilidad-y-daltonismo" class="level4">
+<h4 class="anchored" data-anchor-id="accesibilidad-y-daltonismo">Accesibilidad y daltonismo</h4>
+<p>Es un imperativo ético y técnico considerar las deficiencias en la percepción del color, las cuales afectan aproximadamente al 7% de la población masculina y al 1% de la población femenina. El diseño debe asegurar que la información sea interpretable incluso en condiciones de daltonismo.</p>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout="[[60, 40]]">
+<div class="quarto-layout-row quarto-layout-valign-center">
+<div class="quarto-layout-cell" style="flex-basis: 60.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/03/img_pag50_2.jpeg" class="img-fluid figure-img"></p>
+<figcaption>Simulación de daltonismo en cartografía</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 40.0%;justify-content: center;">
+<p><img src="images/cartografia/03/img_pag50_1.jpeg" class="img-fluid"></p>
+</div>
+</div>
+</div>
+</section>
+<section id="definición-del-color" class="level4">
+<h4 class="anchored" data-anchor-id="definición-del-color">Definición del color</h4>
+<p>La eficacia de una visualización cartográfica depende de la correcta selección del modelo de color, la cual debe estar alineada con el medio de salida y el propósito del análisis. En la ciencia de datos geoespaciales, la definición técnica del color permite asegurar la reproducibilidad y la claridad en la comunicación de resultados.</p>
+<p>Existen diversos estándares para la especificación numérica de los colores, cada uno optimizado para diferentes contextos de hardware y percepción:</p>
+<ul>
+<li><p><strong>RGB</strong> (Red, Green, Blue): Modelo <strong>aditivo</strong> para visualización en pantalla.</p></li>
+<li><p><strong>CMYK</strong> (Cyan, Magenta, Yellow, Black): Modelo <strong>sustractivo</strong> para procesos de impresión.</p></li>
+<li><p><strong>HSV</strong> (Hue, Saturation, Value): Modelo <strong>perceptual</strong> para la manipulación intuitiva durante el diseño.</p></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/03/modelos_color.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+<figcaption>Modelos de color</figcaption>
+</figure>
+</div>
+</section>
+<section id="rgb" class="level4">
+<h4 class="anchored" data-anchor-id="rgb">RGB</h4>
+<p>Modelo <strong>aditivo</strong> fundamentado en la síntesis de luz. Es el estándar para la representación de datos en monitores, dispositivos móviles y cualquier entorno de visualización digital.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/03/rgb.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:30.0%"></p>
+<figcaption>RGM</figcaption>
+</figure>
+</div>
+</section>
+<section id="cmyk" class="level4">
+<h4 class="anchored" data-anchor-id="cmyk">CMYK</h4>
+<p>Modelo <strong>sustractivo</strong> basado en pigmentos. Su uso es mandatorio para la producción de cartografía física e impresa, donde la fidelidad del color depende de la absorción de luz sobre el sustrato.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/03/cmyk.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:30.0%"></p>
+<figcaption>CMYK</figcaption>
+</figure>
+</div>
+</section>
+<section id="hsv" class="level4">
+<h4 class="anchored" data-anchor-id="hsv">HSV</h4>
+<p>Modelo <strong>perceptual</strong> que organiza el color de acuerdo con la interpretación humana. Es el marco de trabajo más eficiente para el diseño de leyendas y la manipulación de variables visuales en herramientas SIG, ya que permite ajustar de forma independiente el <strong>tinte</strong>, la <strong>intensidad</strong> y la <strong>luminosidad</strong>.</p>
+<p>La caracterización técnica del color se fundamenta en la descomposición de la señal lumínica en tres parámetros independientes que facilitan la jerarquización visual en cartografía temática:</p>
+<ul>
+<li><p><strong>Tinte</strong> (Hue): Indica la longitud de onda dominante del espectro. Es la variable cualitativa primaria para diferenciar coberturas del suelo o entidades discretas.</p></li>
+<li><p><strong>Saturación</strong> (Saturation): Representa el grado de pureza o intensidad cromática. Se utiliza técnicamente para denotar la concentración de un fenómeno espacial sin alterar su matiz.</p></li>
+<li><p><strong>Valor</strong> (Value): Determina la luminosidad relativa, desde la ausencia total de luz hasta la reflexión máxima. Es el eje esencial para la creación de escalas secuenciales en mapas de coropletas.</p></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/03/componentes_del_color_3.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+<figcaption>Dimensiones del color: HSV</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/03/hsv.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
+<figcaption>Dimensiones del color: HSV</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="ubicación-de-etiquetas-en-entidades-puntuales" class="level3">
+<h3 class="anchored" data-anchor-id="ubicación-de-etiquetas-en-entidades-puntuales">Ubicación de etiquetas en entidades puntuales</h3>
+<p>El etiquetado (<em>labeling</em>) constituye el paso final para dotar de semántica al mapa. El etiquetado es un componente crítico que dota de semántica a los elementos geométricos del mapa. La ubicación de estos textos debe seguir reglas de prioridad para evitar solapamientos y asegurar que el lector asocie inequívocamente el nombre con la entidad correspondiente.</p>
+<section id="ubicación-en-entidades-puntuales" class="level4">
+<h4 class="anchored" data-anchor-id="ubicación-en-entidades-puntuales">Ubicación en entidades puntuales</h4>
+<p>Para los puntos, existe una jerarquía de posiciones preferenciales. La posición superior derecha (indicada habitualmente como la posición 1) es la ubicación óptima. Se debe evitar colocar etiquetas directamente sobre el símbolo o en posiciones que dificulten la lectura de otros elementos adyacentes.</p>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout="[[20, 25, 45]]">
+<div class="quarto-layout-row quarto-layout-valign-center">
+<div class="quarto-layout-cell" style="flex-basis: 22.2%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/03/etiquetas_puntos_1.png" class="img-fluid figure-img"></p>
+<figcaption>Posiciones preferenciales</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 27.8%;justify-content: center;">
+<p><img src="images/cartografia/03/etiquetas_puntos_2.png" class="img-fluid"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="images/cartografia/03/etiquetas_puntos_3.png" class="img-fluid"></p>
+</div>
+</div>
+</div>
+</section>
+<section id="ubicación-en-entidades-lineales" class="level4">
+<h4 class="anchored" data-anchor-id="ubicación-en-entidades-lineales">Ubicación en entidades lineales</h4>
+<p>Las etiquetas para líneas (ríos, carreteras, curvas de nivel) deben adherirse a los siguientes principios técnicos:</p>
+<ul>
+<li>Seguir la alineación y curvatura de la entidad lineal.</li>
+<li>Repetir la etiqueta en entidades de gran longitud (como autopistas o fronteras extensas) para facilitar la identificación en diferentes sectores del mapa.</li>
+<li>Seleccionar porciones rectas y horizontales de la línea siempre que sea posible.</li>
+<li>Evitar inclinaciones que resulten en textos “cabeza abajo” o invertidos.</li>
+<li>Posicionar el texto preferiblemente sobre la línea (above line).</li>
+<li>Implementar curvas simples para mantener la legibilidad tipográfica.</li>
+</ul>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout="[[33, 33, 33]]">
+<div class="quarto-layout-row quarto-layout-valign-center">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><img src="images/cartografia/03/img_pag54_2.png" class="img-fluid"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><img src="images/cartografia/03/img_pag54_4.png" class="img-fluid"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><img src="images/cartografia/03/img_pag54_6.png" class="img-fluid"></p>
+</div>
+</div>
+</div>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout="[[50, 50]]">
+<div class="quarto-layout-row quarto-layout-valign-center">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="images/cartografia/03/etiquetado_rios_pobre.png" class="img-fluid"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="images/cartografia/03/etiquetado_rios_buena.png" class="img-fluid"></p>
+</div>
+</div>
+</div>
+<!-- ::: {layout="[[50, 50]]" layout-valign="center"}
+
+![](images/cartografia/03/img_pag55_1.jpeg)
+
+![](images/cartografia/03/img_pag55_2.jpeg)
+
+::: -->
+</section>
+<section id="ubicación-en-entidades-poligonales" class="level4">
+<h4 class="anchored" data-anchor-id="ubicación-en-entidades-poligonales">Ubicación en entidades poligonales</h4>
+<p>El etiquetado de superficies debe comunicar la extensión de la entidad. Las directrices incluyen:</p>
+<ul>
+<li>Utilizar el espaciado entre caracteres (<em>character spacing</em>), el interlineado (<em>leading</em>) y curvas simples para cubrir la extensión del polígono.</li>
+<li>Emplear letras mayúsculas para textos con espaciado expandido.</li>
+<li>Ajustar los espacios entre letras de modo que crucen la entidad de forma equilibrada.</li>
+<li>Asegurar que las letras en palabras muy espaciadas no se confundan con símbolos independientes.</li>
+</ul>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout="[[40, 60]]">
+<div class="quarto-layout-row quarto-layout-valign-center">
+<div class="quarto-layout-cell" style="flex-basis: 40.0%;justify-content: center;">
+<p><img src="images/cartografia/03/img_pag56_2.jpeg" class="img-fluid"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 60.0%;justify-content: center;">
+<p><img src="images/cartografia/03/img_pag56_4.jpeg" class="img-fluid"></p>
+</div>
+</div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/03/etiquetado_poligonos.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
+<figcaption>Reglas de etiquetado de polígonos (1)</figcaption>
+</figure>
+</div>
+<!-- ![Reglas de etiquetado de polígonos (2)](images/cartografia/03/img_pag58_1.jpeg){fig-align="center" width="80%"} -->
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/03/mal_etiquetado_buen_etiquetado_poligonos.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
+<figcaption>Reglas de etiquetado de polígonos (3)</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="variables-visuales-en-el-etiquetado" class="level3">
+<h3 class="anchored" data-anchor-id="variables-visuales-en-el-etiquetado">Variables visuales en el etiquetado</h3>
+<p>La tipografía en cartografía actúa como una variable visual adicional. Se deben gestionar parámetros como el espaciado, el uso de mayúsculas/minúsculas (<em>case</em>), el valor del color (brillo), el tamaño, el peso de la fuente y el tono del color (<em>hue</em>).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/03/variables_visuales_etiquetas.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
+<figcaption>Variables tipográficas</figcaption>
+</figure>
+</div>
+<p>Adicionalmente, se deben considerar aspectos como la organización del texto, la redacción (concisión), la ortografía y el uso de fuentes diferenciadas para distintos tipos de entidades (ej: cursiva para hidrografía).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/03/variables_visuales_etiquetas_2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
+<figcaption>Consideraciones de redacción y fuente</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="diseño-de-la-composición-del-mapa-layout" class="level2" data-number="15.4">
+<h2 data-number="15.4" class="anchored" data-anchor-id="diseño-de-la-composición-del-mapa-layout"><span class="header-section-number">15.4</span> Diseño de la composición del mapa (layout)</h2>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">graph TD
+    %% Definición de estilos
+    classDef mainNode font-size:14pt,font-weight:bold,fill:#f9f9f9,stroke:#333,stroke-width:2px;
+    classDef questions font-size:12pt,font-style:italic,fill:#ffffff,stroke:#999,stroke-dasharray: 5 5;
+    classDef feedback stroke:#e67e22,stroke-width:2px,stroke-dasharray: 5 5;
+    classDef highlight fill:#fff3cd,stroke:#d4a017,stroke-width:4px;
+
+    %% Nodos principales
+    P(Planificación) --&gt; D(Datos)
+    D --&gt; S(Simbología)
+    S --&gt; L(Composición)
+    L --&gt; O(Salida)
+
+    %% Lazo de retroalimentación (Ciclo)
+    L -.-&gt;|Refinamiento e iteración| P
+
+    %% Bloques de preguntas vinculados
+    P --- PQ["¿Cómo se utilizará el mapa?&lt;br/&gt;¿Qué tipos de mapas se crearán?"]
+    D --- DQ["¿Qué datos se utilizarán?"]
+    S --- SQ["¿Cómo se simbolizarán los datos?"]
+    L --- LQ["¿Cómo se diseñará la composición?"]
+    O --- OQ["¿Cómo se publicará el mapa?"]
+
+    %% Aplicación de estilos
+    class P,D,S,O mainNode;
+    class PQ,DQ,SQ,OQ questions;
+    class L,LQ highlight;
+    linkStyle 4 stroke:#e67e22,stroke-width:2px,stroke-dasharray: 5 5;
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>La fase de composición organiza todos los elementos cartográficos (marco de datos, leyenda, escala, norte, títulos) en un lienzo final. Las decisiones de diseño deben responder a preguntas sobre el <strong>tamaño de página</strong>, la <strong>orientación</strong> (vertical u horizontal) y la <strong>naturaleza del producto</strong> (estático o interactivo).</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart LR
+    %% Definición de nodos con etiquetas en Sentence case
+    A("Definir tamaño y&lt;br/&gt;orientación de página")
+    B("Definir marco de datos&lt;br/&gt;(Dataframe)")
+    C("Elegir escala del mapa&lt;br/&gt;(Map scale)")
+    D("Crear cuadrícula&lt;br/&gt;(Grid)")
+    E("Insertar y ubicar&lt;br/&gt;elementos del mapa")
+
+    %% Estructura del flujo
+    A --&gt; B
+    B --&gt; C
+    C --&gt; B
+    C --&gt; D
+    D --&gt; E
+
+    %% Definición de estilos para los pasos del proceso
+    classDef step fill:#ffffff,stroke:#bfbfbf,stroke-width:2px,color:#000000;
+    class A,B,C,D,E step;
+
+    %% Estilo para resaltar el ciclo de iteración técnica en azul oscuro
+    linkStyle 1,2 stroke:#000080,stroke-width:4px;
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<section id="control-del-peso-visual-y-contraste" class="level3">
+<h3 class="anchored" data-anchor-id="control-del-peso-visual-y-contraste">Control del peso visual y contraste</h3>
+<p>El cartógrafo debe gestionar el peso visual para dirigir la atención del usuario hacia la información más importante. El uso del contraste es fundamental para mejorar la legibilidad y separar los diferentes niveles de información visual.</p>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout="[[50, 50]]">
+<div class="quarto-layout-row quarto-layout-valign-center">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/03/img_pag64_1.jpeg" class="img-fluid figure-img"></p>
+<figcaption>Control del peso visual</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/03/img_pag64_2.jpeg" class="img-fluid figure-img"></p>
+<figcaption>Uso del contraste</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout="[[50, 50]]">
+<div class="quarto-layout-row quarto-layout-valign-center">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/03/img_pag65_1.png" class="img-fluid figure-img"></p>
+<figcaption>Control del peso visual</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/03/img_pag65_2.png" class="img-fluid figure-img"></p>
+<figcaption>Uso del contraste</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="construir-niveles-de-información-visual" class="level3">
+<h3 class="anchored" data-anchor-id="construir-niveles-de-información-visual">Construir niveles de información visual</h3>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout="[[50, 50]]">
+<div class="quarto-layout-row quarto-layout-valign-center">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="images/cartografia/03/img_pag66_4.jpeg" class="img-fluid"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="images/cartografia/03/img_pag66_2.jpeg" class="img-fluid"></p>
+</div>
+</div>
+</div>
+</section>
+<section id="enfoque-y-equilibrio-balance" class="level3">
+<h3 class="anchored" data-anchor-id="enfoque-y-equilibrio-balance">Enfoque y equilibrio (balance)</h3>
+<p>Un buen diseño cartográfico logra un equilibrio entre los elementos técnicos y los espacios vacíos, asegurando que el mapa no se perciba saturado ni desorganizado. La jerarquía visual permite que el usuario procese la información de manera estructurada.</p>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout="[[50, 50]]">
+<div class="quarto-layout-row quarto-layout-valign-center">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="images/cartografia/03/img_pag67_1.jpeg" class="img-fluid"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="images/cartografia/03/img_pag67_2.jpeg" class="img-fluid"></p>
+</div>
+</div>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copiado");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copiado");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./24-cartografia_part2.html" class="pagination-link" aria-label="Enfoques y aplicaciones de la cartografía">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Enfoques y aplicaciones de la cartografía</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./26-cartografia_part4.html" class="pagination-link" aria-label="Métodos avanzados de SIG en cartografía digital">
+        <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Métodos avanzados de SIG en cartografía digital</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

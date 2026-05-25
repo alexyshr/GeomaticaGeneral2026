@@ -36,6 +36,12 @@ book:
         - 20-sr_aplicaciones.qmd
         - 21-sr_glosario.qmd
         - 22-sr_recursos_adicionales.qmd
+    - part: "Cartografía"
+      chapters:
+        - 23-cartografia_part1.qmd
+        - 24-cartografia_part2.qmd
+        - 25-cartografia_part3.qmd
+        - 26-cartografia_part4.qmd
     - part: "Prácticas"
       chapters:
         - 41-practica_1_clase2_visualizacion_dinamica.qmd
@@ -55,6 +61,9 @@ book:
         - 55-practica_15_gnss_trimble_da2.qmd
         - 56-practica_16_exactitud_posicional.qmd
         - 57-practica_17_qfield.qmd
+        - 58-practica_18_ArcGISPro_OnlineIntegration.qmd
+        - 59-practica_19_QGIS_WebApp.qmd
+        - 60-practica_20_Geoserver_OGC.qmd
     - part: "Presentaciones"        
       chapters:
         - 61-presentacion_1_clase1_varios.qmd

@@ -1,0 +1,1858 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.550">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Geomática General - 14&nbsp; Enfoques y aplicaciones de la cartografía</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./25-cartografia_part3.html" rel="next">
+<link href="./23-cartografia_part1.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Sin resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+<script src="site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./23-cartografia_part1.html">Cartografía</a></li><li class="breadcrumb-item"><a href="./24-cartografia_part2.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Enfoques y aplicaciones de la cartografía</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Geomática General</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Buscar"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bienvenida</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./00-prefacio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prefacio</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Instalación y Entornos</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-introduccion-entornos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introducción a Entornos de Desarrollo SIG</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-guia_instalacion_A_docker.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Guía de Instalación. Opción A: Docker (Python, R, Julia)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-guia_instalacion_B_qgis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Guía de Instalación. Opción B: QGIS y PyQGIS</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-guia_instalacion_C_ArcGIS.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Guía de Instalación. Opción C: ArcGIS Pro y ArcPy</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Proyecto Final</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10-guia_estructura_proyecto_final.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Guía y Estructura del Proyecto Final</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Sensores Remotos</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./16-sr_fundamentos_introduccion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Fundamentos de sensores remotos: Introducción</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./17-sr_satelites_sensores.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Satélites y sensores</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./18-sr_microondas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Sensores remotos de microondas</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./19-sr_analisis_interpretacion_imagenes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Análisis e interpretación de imágenes</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./20-sr_aplicaciones.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Aplicaciones de los sensores remotos</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./21-sr_glosario.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Glosario de Sensores Remotos</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./22-sr_recursos_adicionales.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Recursos Adicionales de Teledetección</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">Cartografía</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./23-cartografia_part1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Historia de la cartografía y fundamentos de SIG</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./24-cartografia_part2.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Enfoques y aplicaciones de la cartografía</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./25-cartografia_part3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Planeación y Diseño en Cartografía Digital</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./26-cartografia_part4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Métodos avanzados de SIG en cartografía digital</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+ <span class="menu-text">Prácticas</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./41-practica_1_clase2_visualizacion_dinamica.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Visualización y Mapas Dinámicos</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./42-practica_2_clase2_geoportales.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">🌐 Geoportales y Servicios Web</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./43-practica_3_clase3_coordenadas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Sistemas de Coordenadas - ArcGIS Pro</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./44-practica_4_clase4_conversionformatos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Conversión de Formatos (ArcGIS Pro - QGIS)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./45-practica_5_clase6_introduccion_sr_gee.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Introducción a Sensores Remotos y Procesamiento de Imágenes Satelitales con Google Earth Engine</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./46-practica_6_clase7_nasa_worldview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Guía de Exploración: NASA Worldview</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./47-practica_7_clase7_nasa_plugin_qgis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Guía de Instalación y Uso: NASA Earthdata Plugin para QGIS</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./48-practica_8_clase8_gee_conceptos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Fundamentos de programación en GEE y conceptos clave de sensores remotos</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./49-practica_9_mde.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Fundamentos de modelos digitales de elevación y elaboración cartográfica</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./50-practica_10_mde_hydro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Procesamiento hidrológico y morfométrico de modelos digitales de elevación</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./51-practica_11_mde_models.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Model builder (ArcGIS Pro) y Model Designer (QGIS) de productos del MDE</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./52-practica_12_formularios_arcgis_online_ai.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Taller operación en campo usando asistentes de IA en ArcGIS</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./53-practica_13_gnss_allynav_r26.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Levantamiento GNSS usando equipo AllyNav R26: punto geodésico y borde de vía</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./54-practica_14_postproceso_levantamiento_gnss.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Postproceso del levantamiento GNSS</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./55-practica_15_gnss_trimble_da2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">Levantamiento en Campo Usando el Equipo Trimble Catalyst DA2</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./56-practica_16_exactitud_posicional.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Evaluación de exactitud posicional de levantamientos GNSS</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./57-practica_17_qfield.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">Operación en campo mediante QGIS y QField</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./58-practica_18_ArcGISPro_OnlineIntegration.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">Flujos de trabajo desde ArcGIS Pro hacia ArcGIS Online</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./59-practica_19_QGIS_WebApp.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">35</span>&nbsp; <span class="chapter-title">Flujos de trabajo desde QGIS hacia QGIS Server y aplicaciones web</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./60-practica_20_Geoserver_OGC.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">36</span>&nbsp; <span class="chapter-title">Publicación de servicios OGC estándar con GeoServer</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
+ <span class="menu-text">Presentaciones</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./61-presentacion_1_clase1_varios.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">37</span>&nbsp; <span class="chapter-title">Temas por Charlar</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./62-presentacion_2_clase2_geomatica.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">38</span>&nbsp; <span class="chapter-title">¿Qué es la Geomática?</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./63-presentacion_3_clase2_syllabus_evaluacion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">39</span>&nbsp; <span class="chapter-title">Presentación del Curso y Syllabus 2025</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./64-presentacion_4_clase3_coordenadas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">40</span>&nbsp; <span class="chapter-title">Sistemas de Coordenadas</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./65-presentacion_5_clase7_sr_arset.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">41</span>&nbsp; <span class="chapter-title">Sensores Remotos - NASA ARSET</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true">
+ <span class="menu-text">Apéndices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./80-instalacion_herramientas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Resumen instalación de herramientas</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./81-uso_infraestructura_instalada.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Uso de la Infraestructura Instalada</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./82-quarto.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Quarto: Orquestación y Configuración</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./83-docker_desktop.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Docker: Gestión de Contenedores e Imágenes</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./84-git_github.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Git y GitHub: Sincronización Local-Remota</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./85-vscode.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">F</span>&nbsp; <span class="chapter-title">Visual Studio Code (VScode): Extensiones e Interfaz</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./86-windows.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">G</span>&nbsp; <span class="chapter-title">Temas técnicos sobre Windows</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./87-linux_ubuntu.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">H</span>&nbsp; <span class="chapter-title">Temas Técnicos sobre Linux</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./88-python.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">I</span>&nbsp; <span class="chapter-title">Adicionales Sobre Python</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./89-r.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">J</span>&nbsp; <span class="chapter-title">Adicionales Sobre R</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./90-julia.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">K</span>&nbsp; <span class="chapter-title">Adicionales Sobre Julia</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./91-qgis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">L</span>&nbsp; <span class="chapter-title">Adicionales Sobre QGIS</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./92-arcgispro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">M</span>&nbsp; <span class="chapter-title">Adicionales sobre ArcGIS Pro</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./93-postgresql.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">N</span>&nbsp; <span class="chapter-title">Adicionales sobre ArcGIS Pro</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./98-errata.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">O</span>&nbsp; <span class="chapter-title">Errata</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./99-referencias.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Referencias Bibliográficas</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Tabla de Contenidos</h2>
+   
+  <ul>
+  <li><a href="#propósitos-y-utilidad-de-los-mapas" id="toc-propósitos-y-utilidad-de-los-mapas" class="nav-link active" data-scroll-target="#propósitos-y-utilidad-de-los-mapas"><span class="header-section-number">14.1</span> Propósitos y utilidad de los mapas</a></li>
+  <li><a href="#elementos-cartográficos-fundamentales" id="toc-elementos-cartográficos-fundamentales" class="nav-link" data-scroll-target="#elementos-cartográficos-fundamentales"><span class="header-section-number">14.2</span> Elementos cartográficos fundamentales</a>
+  <ul class="collapse">
+  <li><a href="#escala" id="toc-escala" class="nav-link" data-scroll-target="#escala">Escala</a></li>
+  <li><a href="#dirección-y-orientación" id="toc-dirección-y-orientación" class="nav-link" data-scroll-target="#dirección-y-orientación">Dirección y orientación</a></li>
+  <li><a href="#leyenda" id="toc-leyenda" class="nav-link" data-scroll-target="#leyenda">Leyenda</a></li>
+  <li><a href="#fuentes-de-información" id="toc-fuentes-de-información" class="nav-link" data-scroll-target="#fuentes-de-información">Fuentes de información</a></li>
+  <li><a href="#título-y-configuración-de-proyección" id="toc-título-y-configuración-de-proyección" class="nav-link" data-scroll-target="#título-y-configuración-de-proyección">Título y configuración de proyección</a></li>
+  </ul></li>
+  <li><a href="#tipología-cartográfica" id="toc-tipología-cartográfica" class="nav-link" data-scroll-target="#tipología-cartográfica"><span class="header-section-number">14.3</span> Tipología cartográfica</a>
+  <ul class="collapse">
+  <li><a href="#clasificación-de-mapas-temáticos" id="toc-clasificación-de-mapas-temáticos" class="nav-link" data-scroll-target="#clasificación-de-mapas-temáticos">Clasificación de mapas temáticos</a></li>
+  </ul></li>
+  <li><a href="#análisis-de-calidad-cartográfica-buenas-y-malas-prácticas" id="toc-análisis-de-calidad-cartográfica-buenas-y-malas-prácticas" class="nav-link" data-scroll-target="#análisis-de-calidad-cartográfica-buenas-y-malas-prácticas"><span class="header-section-number">14.4</span> Análisis de calidad cartográfica (Buenas y malas prácticas)</a></li>
+  <li><a href="#proceso-de-planificación-cartográfica" id="toc-proceso-de-planificación-cartográfica" class="nav-link" data-scroll-target="#proceso-de-planificación-cartográfica"><span class="header-section-number">14.5</span> Proceso de planificación cartográfica</a>
+  <ul class="collapse">
+  <li><a href="#preguntas-clave-previas-a-la-creación-de-un-mapa" id="toc-preguntas-clave-previas-a-la-creación-de-un-mapa" class="nav-link" data-scroll-target="#preguntas-clave-previas-a-la-creación-de-un-mapa">Preguntas clave previas a la creación de un mapa</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./23-cartografia_part1.html">Cartografía</a></li><li class="breadcrumb-item"><a href="./24-cartografia_part2.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Enfoques y aplicaciones de la cartografía</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Enfoques y aplicaciones de la cartografía</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>La disciplina cartográfica se despliega a través de múltiples enfoques analíticos y de diseño, dependiendo del objetivo de estudio y la audiencia:</p>
+<ul>
+<li><strong>Enfoque analítico:</strong> Utilizado para la evaluación espacial de fenómenos, como el análisis de densidad delictiva urbana.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/02/img_pag1_1.jpeg" class="img-fluid figure-img"></p>
+<figcaption>Mapa de densidad criminal en Portland</figcaption>
+</figure>
+</div>
+<ul>
+<li><strong>Enfoque colaborativo:</strong> Estructurado para la contribución masiva de datos y la respuesta humanitaria rápida (por ejemplo, el equipo humanitario de OpenStreetMap).</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/02/mapeo_colaborativo.png" class="img-fluid figure-img"></p>
+<figcaption>Mapeo colaborativo humanitario: antes versus después</figcaption>
+</figure>
+</div>
+<!-- ::: {layout-ncol=2}
+
+![Mapeo colaborativo humanitario 1](images/cartografia/02/img_pag2_1.jpeg)
+
+![Mapeo colaborativo humanitario 2](images/cartografia/02/img_pag2_2.jpeg)
+
+::: -->
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/02/img_pag2_3.jpeg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:10.0%"></p>
+<figcaption>Humanitarian OpenStreetMap Team</figcaption>
+</figure>
+</div>
+<ul>
+<li><strong>Enfoque de manipulación visual:</strong> La representación geográfica puede ser alterada de forma intencional o técnica. Esto se logra mediante el uso de esquemas de clasificación específicos (como la modificación de rangos de valores o supresión de datos) y la selección de paletas de color.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/02/img_pag3_1.jpeg" class="img-fluid figure-img"></p>
+<figcaption>Manipulación por clasificación de datos</figcaption>
+</figure>
+</div>
+<p>Adicionalmente, la percepción del espacio se ve fuertemente influenciada por la proyección cartográfica seleccionada.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/02/africa_2.jpg" class="img-fluid figure-img"></p>
+<figcaption>Manipulación por proyección espacial</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/02/the_true_size_of_africa.jpg" class="img-fluid figure-img"></p>
+<figcaption>Manipulación por proyección espacial</figcaption>
+</figure>
+</div>
+<section id="propósitos-y-utilidad-de-los-mapas" class="level2" data-number="14.1">
+<h2 data-number="14.1" class="anchored" data-anchor-id="propósitos-y-utilidad-de-los-mapas"><span class="header-section-number">14.1</span> Propósitos y utilidad de los mapas</h2>
+<p>El objetivo principal de la cartografía es la comunicación gráfica y efectiva de información geográfica, asegurando que el producto responda a los requerimientos técnicos de la audiencia.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/02/img_pag5_1.jpeg" class="img-fluid figure-img"></p>
+<figcaption>Comunicación cartográfica interactiva</figcaption>
+</figure>
+</div>
+<p>La cartografía abarca la concepción, producción, diseminación y estudio analítico de los mapas. Funciona como un sistema de comunicación visual para los siguientes propósitos:</p>
+<ul>
+<li>Representación y comunicación estructurada de información espacial.</li>
+<li>Integración de atributos y datos no espaciales (mapas temáticos).</li>
+<li>Facilitación de procesos de análisis espacial complejo.</li>
+</ul>
+</section>
+<section id="elementos-cartográficos-fundamentales" class="level2" data-number="14.2">
+<h2 data-number="14.2" class="anchored" data-anchor-id="elementos-cartográficos-fundamentales"><span class="header-section-number">14.2</span> Elementos cartográficos fundamentales</h2>
+<p>Un documento cartográfico estandarizado requiere la integración de diversos elementos estructurales para garantizar su correcta lectura:</p>
+<ul>
+<li>Distancia y escala</li>
+<li>Dirección u orientación</li>
+<li>Leyenda o cuadro de convenciones</li>
+<li>Fuentes de información (derechos de autor, origen de datos, cartógrafo)</li>
+<li>Título</li>
+<li>Sistema de proyección espacial</li>
+<li>El marco de datos geográfico per se</li>
+</ul>
+<!-- ![Estructura de un mapa estándar](images/cartografia/02/img_pag7_1.png){fig-align="center" width="100%"} -->
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/02/estructura_mapa_estandar.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+<figcaption>Estructura de un mapa estándar</figcaption>
+</figure>
+</div>
+<section id="escala" class="level3">
+<h3 class="anchored" data-anchor-id="escala">Escala</h3>
+<p>La escala matemática representa una proporción o fracción representativa (RF). Un valor de 1:100.000 indica, por ejemplo, que una unidad lineal en el mapa (1 cm) equivale a 100.000 de esas mismas unidades en el terreno.</p>
+<p>La escala se define matemáticamente como la relación de proporcionalidad entre una distancia medida sobre el mapa y su correspondiente magnitud en el terreno. La igualdad fundamental se expresa de la siguiente manera:</p>
+<p><span class="math display">\[E = \frac{d}{D}\]</span></p>
+<p>Donde los componentes de la ecuación representan:</p>
+<ul>
+<li><span class="math inline">\(E\)</span>: Escala (expresada habitualmente como una fracción representativa <span class="math inline">\(1:M\)</span>).</li>
+<li><span class="math inline">\(d\)</span>: Distancia medida en el mapa (unidades lineales).</li>
+<li><span class="math inline">\(D\)</span>: Distancia real en el terreno (en las mismas unidades que <span class="math inline">\(d\)</span>).</li>
+</ul>
+<p>Para determinar el denominador de la escala (<span class="math inline">\(M\)</span>), la relación se reestructura como una fracción representativa:</p>
+<p><span class="math display">\[\frac{1}{M} = \frac{d}{D}\]</span></p>
+<p>Esta constante de proporcionalidad es crítica durante el proceso de planificación, ya que permite definir la resolución espacial necesaria y el nivel de detalle que el marco de datos podrá soportar sin incurrir en errores de legibilidad o sobrecarga de información.</p>
+<p>Dentro de la composición del mapa, se representa frecuentemente mediante barras gráficas o proporciones numéricas directas.</p>
+<!-- ![Ejemplo de barra de escala](images/cartografia/02/img_pag9_1.jpeg){fig-align="center" width="80%"} -->
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/02/escalas.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
+<figcaption>Ejemplo de barra de escala</figcaption>
+</figure>
+</div>
+<p>La clasificación técnica entre “escala pequeña” y “escala grande” define el nivel de generalización del terreno cartografiado:</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">%%{init: {'theme': 'base', 'themeVariables': { 'fontSize': '28px', 'fontFamily': 'arial'}}}%%
+graph TD
+    %% Nodo raíz con fuente maximizada
+    R["Concepto de escala &lt;br/&gt; (1/M = d/D)"]
+    
+    %% Nodos de categorías (Pequeña a la izquierda)
+    EP["Escala pequeña"]
+    EG["Escala grande"]
+
+    %% Ramas Escala Pequeña (Izquierda)
+    EP1["Denominador grande &lt;br/&gt; (Ej. 1:1.000.000)"]
+    EP2["Cobertura geográfica extensa"]
+    EP3["Alto grado de generalización"]
+
+    %% Ramas Escala Grande (Derecha)
+    EG1["Denominador pequeño &lt;br/&gt; (Ej. 1:1.000)"]
+    EG2["Cobertura geográfica reducida"]
+    EG3["Alto nivel de detalle técnico"]
+
+    %% Conexiones jerárquicas
+    R --&gt; EP
+    R --&gt; EG
+    EP --- EP1
+    EP --- EP2
+    EP --- EP3
+    EG --- EG1
+    EG --- EG2
+    EG --- EG3
+
+    %% Estilos directos para asegurar legibilidad y evitar errores de clase
+    style R fill:#f5f5f5,stroke:#333,stroke-width:4px,font-weight:bold,font-size:32px
+    style EP fill:#fff,stroke:#333,stroke-width:2px,font-weight:bold,font-size:28px
+    style EG fill:#fff,stroke:#333,stroke-width:2px,font-weight:bold,font-size:28px
+    style EP1 stroke-dasharray: 5 5,font-size:22px
+    style EP2 stroke-dasharray: 5 5,font-size:22px
+    style EP3 stroke-dasharray: 5 5,font-size:22px
+    style EG1 stroke-dasharray: 5 5,font-size:22px
+    style EG2 stroke-dasharray: 5 5,font-size:22px
+    style EG3 stroke-dasharray: 5 5,font-size:22px
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Escala pequeña (ej. 1:30.000)</th>
+<th style="text-align: left;">Escala grande (ej. 1:1.000)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Representa una gran extensión territorial</td>
+<td style="text-align: left;">Representa una extensión territorial reducida</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Menor grado de detalle topológico</td>
+<td style="text-align: left;">Alto nivel de detalle topológico</td>
+</tr>
+</tbody>
+</table>
+<!-- ![Comparativa visual entre escalas](images/cartografia/02/img_pag11_1.jpeg) -->
+<!-- layout-valign="center" -->
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout-ncol="3">
+<div class="quarto-layout-row quarto-layout-valign-center">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><img src="images/cartografia/02/escala_grande_versus_pequeña1.png" class="img-fluid" style="width:100.0%"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><img src="images/cartografia/02/escala_grande_versus_pequeña2.png" class="img-fluid" style="width:95.0%"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<p><img src="images/cartografia/02/escala_grande_versus_pequeña3.png" class="img-fluid" style="width:95.0%"></p>
+</div>
+</div>
+</div>
+<!-- ![](images/cartografia/02/escala_grande_versus_pequeña.png){fig-align="center" width="60%"} -->
+</section>
+<section id="dirección-y-orientación" class="level3">
+<h3 class="anchored" data-anchor-id="dirección-y-orientación">Dirección y orientación</h3>
+<p>La orientación espacial en el marco de datos suele indicarse mediante una flecha de norte verdadero, o de forma alternativa, utilizando una gratícula (cuadrícula de coordenadas geográficas).</p>
+<!-- ::: {layout-ncol=2}
+![Indicadores de dirección 1](images/cartografia/02/img_pag12_1.jpeg)
+
+![Indicadores de dirección 2](images/cartografia/02/img_pag12_2.png)
+::: -->
+<p><img src="images/cartografia/02/indicador_dirección_1.png" class="img-fluid"></p>
+<p><img src="images/cartografia/02/indicador_dirección_2.png" class="img-fluid"></p>
+<p>En contextos específicos, como el modelado de redes viales urbanas, los sistemas SIG pueden requerir la rotación del marco de datos para alinear las calles de forma ortogonal a la página por motivos estéticos o de diseño. En estos casos, la inclusión de la flecha de norte es obligatoria para indicar la declinación o el desfase angular.</p>
+<!-- ::: {layout-ncol=2 layout-widths="[90, 10]"}
+![Rotación de marco de datos urbano 1](images/cartografia/02/img_pag13_1.jpeg)
+
+![Rotación de marco de datos urbano 2](images/cartografia/02/img_pag13_2.png)
+::: -->
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/02/indicador_dirección_3.png" class="img-fluid figure-img"></p>
+<figcaption>Rotación del mapa para optimizar espacio y mejorar diseño</figcaption>
+</figure>
+</div>
+<p>La necesidad de indicar el norte depende del contexto de publicación:</p>
+<ul>
+<li>Extensión geográfica (a nivel global, el norte superior es un estándar implícito).</li>
+<li>Orientación predeterminada (si el norte no se ubica en la parte superior, debe ser explícito).</li>
+<li>Nivel de conocimiento geográfico de la audiencia objetivo.</li>
+</ul>
+</section>
+<section id="leyenda" class="level3">
+<h3 class="anchored" data-anchor-id="leyenda">Leyenda</h3>
+<p>La leyenda decodifica de manera explícita la simbología utilizada para representar las entidades vectoriales y ráster, siendo un componente indispensable para interpretar categorías y valores temáticos.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/02/img_pag15_1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:65.0%"></p>
+<figcaption>Ejemplo de leyenda cartográfica</figcaption>
+</figure>
+</div>
+</section>
+<section id="fuentes-de-información" class="level3">
+<h3 class="anchored" data-anchor-id="fuentes-de-información">Fuentes de información</h3>
+<p>La declaración formal de fuentes de información, metadatos y derechos de autor proporciona trazabilidad, indicando el origen geométrico y la escala nominal a la cual se capturaron los datos iniciales.</p>
+<!-- ![Declaración de fuentes 1](images/cartografia/02/img_pag16_1.jpeg){fig-align="center" width="100%"} -->
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/02/declaracion_de_fuentes_1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+<figcaption>Declaración de fuentes 1</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/02/img_pag16_2.jpeg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+<figcaption>Declaración de fuentes 2</figcaption>
+</figure>
+</div>
+</section>
+<section id="título-y-configuración-de-proyección" class="level3">
+<h3 class="anchored" data-anchor-id="título-y-configuración-de-proyección">Título y configuración de proyección</h3>
+<p>El título otorga una descripción técnica y estructurada sobre la temática principal y la localización geográfica del proyecto.</p>
+<div id="fig-titulo-proyeccion" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-titulo-proyeccion-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/cartografia/02/img_pag17_1.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-titulo-proyeccion-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;14.1: Título y proyección del documento cartográfico.
+</figcaption>
+</figure>
+</div>
+<p>El mapa diseñado debe integrar de manera explícita la totalidad de la información técnica descrita en la <a href="#fig-geodesia-cartografia" class="quarto-xref">Figura&nbsp;<span>14.2</span></a>, garantizando la correcta inclusión de los datos de la proyección cartográfica y las variables del sistema de referencia vertical.</p>
+<p>La definición de la proyección debe coincidir con los objetivos analíticos y el área de estudio del marco de datos. Esta configuración espacial suele declararse textualmente dentro de los bloques de metadatos o atributos de fuente.</p>
+<!-- ::: {layout="[[25, 10, 65]]" layout-valign="center"}
+
+![](images/cartografia/02/img_pag18_2.jpeg){width="100%"}
+
+::: {style="text-align: center; font-size: 3rem; line-height: 1;"}
+<span style="font-size: 3rem; color: #007bff">→</span>
+:::
+
+![](images/cartografia/02/img_pag18_3.png){width="100%"}
+
+::: -->
+<div id="fig-geodesia-cartografia" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-geodesia-cartografia-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/cartografia/02/geodesia_y_cartografia.png" class="img-fluid figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-geodesia-cartografia-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;14.2: Componentes de proyección y referencia vertical requeridos en el diseño cartográfico. Diagrama de flujo geodésico para la especificación de parámetros en el producto cartográfico final.
+</figcaption>
+</figure>
+</div>
+<p>Desde el rigor geométrico, toda proyección introduce una distorsión sistemática. La escala nominal solo se mantiene real en líneas o puntos tangentes específicos. Las deformaciones pueden comprometer tres variables principales:</p>
+<ul>
+<li>Área y tamaño</li>
+<li>Forma y propiedades angulares</li>
+<li>Distancia y escala</li>
+</ul>
+<p>La elección del sistema proyectado depende enteramente del balance requerido entre área, escala y propósito analítico.</p>
+<!-- ![Tissot's Indicatrix](images/cartografia/02/img_pag19_1.png) -->
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/02/tissot.png" class="img-fluid figure-img"></p>
+<figcaption>Tissot’s Indicatrix</figcaption>
+</figure>
+</div>
+<p>Las propiedades matemáticas de deformación cartográfica también pueden utilizarse de forma retórica. Históricamente, proyecciones cilíndricas conformes (como Mercator) distorsionan exageradamente las geometrías en altas latitudes. Esto ha sido utilizado en representaciones geopolíticas para sobredimensionar visualmente áreas continentales ubicadas cerca de los polos frente a regiones ecuatoriales.</p>
+<ul>
+<li>Durante la Guerra Fría, la cartografía de los Estados Unidos y la URSS se diseñó frecuentemente con el objetivo de enfatizar la amenaza representada por la Unión Soviética y sus aliados. La proyección de Mercator constituyó la elección técnica ideal para los cartógrafos de tendencia anticomunista: debido a la ubicación de la URSS en latitudes boreales tan elevadas, el algoritmo de Mercator distorsiona su superficie, estirándola fuera de toda proporción en comparación con su extensión territorial real.</li>
+</ul>
+<!-- ![Concepto de distorsión cartográfica: La proyección Mercator](images/cartografia/02/img_pag20_1.png) -->
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/02/africa_urss.png" class="img-fluid figure-img"></p>
+<figcaption>Concepto de distorsión cartográfica: La proyección Mercator</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="tipología-cartográfica" class="level2" data-number="14.3">
+<h2 data-number="14.3" class="anchored" data-anchor-id="tipología-cartográfica"><span class="header-section-number">14.3</span> Tipología cartográfica</h2>
+<p>El diseño cartográfico se divide en dos grandes categorías funcionales: los <strong>mapas base</strong> (mapa de referencia) y los <strong>mapas temáticos</strong>.</p>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/02/mapa_referencia_colombia_gemini.png" class="img-fluid figure-img"></p>
+<figcaption>Mapa base (mapa de referencia)</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/02/mapa_tematico_gemini.jpg" class="img-fluid figure-img"></p>
+<figcaption>Mapa temático</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<!-- ![Mapa temático](images/cartografia/02/img_pag21_2.jpeg) -->
+<p>Clasificación general de mapas</p>
+<ul>
+<li><p><strong>Mapas base (mapas de referencia):</strong></p>
+<ul>
+<li>Énfasis en elementos geográficos (features)</li>
+<li>Muchos elementos geográficos en el mapa</li>
+</ul></li>
+<li><p><strong>Mapas temáticos:</strong></p>
+<ul>
+<li>Énfasis en atributos</li>
+<li>Número limitado de atributos</li>
+</ul></li>
+<li><p><strong>Mapas base:</strong> Su objetivo principal es mostrar la ubicación precisa de una variedad de objetos espaciales (geometría y topología). Se caracterizan por presentar múltiples entidades simultáneamente sin destacar un atributo específico. Los mapas topográficos a gran escala son el ejemplo clásico de esta categoría.</p></li>
+</ul>
+<!-- ![Ejemplo de mapa topográfico urbano](images/cartografia/02/img_pag23_2.jpeg){fig-align="center" width="100%"} -->
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/02/mapa_base_urbano.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+<figcaption>Ejemplo de mapa topográfico urbano</figcaption>
+</figure>
+</div>
+<ul>
+<li><strong>Mapas temáticos:</strong> Diseñados con el propósito específico de representar la distribución espacial de un único atributo o fenómeno estadístico (también conocidos como mapas de propósito especial). La geometría base actúa únicamente como marco de referencia para los datos.</li>
+</ul>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/02/img_pag24_1.jpeg" class="img-fluid figure-img"></p>
+<figcaption>Mapa temático de símbolos proporcionales</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/02/coropleta_colombia_gemini.png" class="img-fluid figure-img"></p>
+<figcaption>Mapa de coropleta</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<!-- ![Mapa de coropleta](images/cartografia/02/img_pag24_2.jpeg) -->
+<section id="clasificación-de-mapas-temáticos" class="level3">
+<h3 class="anchored" data-anchor-id="clasificación-de-mapas-temáticos">Clasificación de mapas temáticos</h3>
+<p>Existen múltiples técnicas para representar variables temáticas, dependiendo de la naturaleza de los datos (continuos o discretos, absolutos o relativos):</p>
+<ul>
+<li>Mapas de densidad de puntos (Dot density)</li>
+<li>Mapas de coropletas (Choropleth)</li>
+<li>Símbolos graduados o proporcionales (Graduated / propositional symbol)</li>
+<li>Mapas de flujo (Flow)</li>
+<li>Superficies continuas o mapas isarítmicos (Continuous surface)</li>
+<li>Cartogramas</li>
+</ul>
+<section id="mapas-de-densidad-de-puntos" class="level4">
+<h4 class="anchored" data-anchor-id="mapas-de-densidad-de-puntos">Mapas de densidad de puntos</h4>
+<p>En esta representación, se utilizan símbolos pequeños de tamaño uniforme para enfatizar el patrón espacial de un fenómeno discreto. Cada punto equivale a una cantidad numérica fija. Pueden utilizarse diferentes colores para representar variables múltiples (<strong>mapa multivariado</strong>).</p>
+<ul>
+<li>La ubicación de los puntos dentro de una unidad espacial suele generarse de forma aleatoria por el motor SIG, por lo que no indican la ubicación exacta de la entidad.</li>
+<li>También llamado mapa multivariado</li>
+</ul>
+<!-- ::: {layout-ncol=2}
+
+![Ejemplo mapa de densidad de puntos 1](images/cartografia/02/img_pag25_1.jpeg)
+
+![Ejemplo mapa de densidad de puntos 2](images/cartografia/02/img_pag26_1.jpeg)
+:::
+
+![Ejemplo mapa de densidad de puntos multivariado](images/cartografia/02/img_pag27_1.jpeg) -->
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/02/mapa_densidad_puntos_1.png" class="img-fluid figure-img"></p>
+<figcaption>Ejemplo mapa de densidad de puntos 1</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/02/mapa_densidad_puntos_2.png" class="img-fluid figure-img"></p>
+<figcaption>Ejemplo mapa de densidad de puntos 2</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/02/mapa_densidad_puntos_3.png" class="img-fluid figure-img"></p>
+<figcaption>Ejemplo mapa de densidad de puntos multivariado</figcaption>
+</figure>
+</div>
+</section>
+<section id="mapas-de-coropletas" class="level4">
+<h4 class="anchored" data-anchor-id="mapas-de-coropletas">Mapas de coropletas</h4>
+<p>Las unidades espaciales de agregación de datos (polígonos como censos, municipios o estados) se sombrean con una intensidad proporcional al valor de los datos asociados a esa unidad geométrica. Es vital utilizar esta técnica exclusivamente con datos relativos (tasas, porcentajes, promedios) y no con recuentos absolutos, para evitar el sesgo de área.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/02/mapa_coropletas_dptos_gemini.png" class="img-fluid figure-img"></p>
+<figcaption>Mapa de coropletas 1 y 2: Ilustrativos</figcaption>
+</figure>
+</div>
+<!-- ::: {layout-ncol=2}
+![Mapa de coropletas 1](images/cartografia/02/img_pag28_1.jpeg)
+
+![Mapa de coropletas 2](images/cartografia/02/img_pag28_2.jpeg)
+::: -->
+<p><img src="images/cartografia/02/mapas_coropletas_1.png" class="img-fluid"></p>
+<p><img src="images/cartografia/02/mapas_coropletas_2.png" class="img-fluid"></p>
+<p><img src="images/cartografia/02/mapas_coropletas_3.png" class="img-fluid"></p>
+<p><img src="images/cartografia/02/mapas_coropletas_4.png" class="img-fluid"></p>
+<p><img src="images/cartografia/02/mapa_coropletas_5.png" class="img-fluid"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/02/mapa_coropletas_6.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%"></p>
+</figure>
+</div>
+<!-- ![Mapas de coropletas 3](images/cartografia/02/img_pag29_1.jpeg)
+
+![Mapas de coropletas 4](images/cartografia/02/img_pag30_1.jpeg)
+
+![Mapas de coropletas 5](images/cartografia/02/img_pag30_2.png) -->
+</section>
+<section id="mapas-de-símbolos-graduados-o-proporcionales" class="level4">
+<h4 class="anchored" data-anchor-id="mapas-de-símbolos-graduados-o-proporcionales">Mapas de símbolos graduados o proporcionales</h4>
+<p>Se utilizan para representar magnitudes relativas o absolutas de un fenómeno en ubicaciones específicas. El tamaño del símbolo varía de forma proporcional u ordinal respecto al valor del atributo. Los datos pueden originarse en puntos exactos o agregarse en el centroide de áreas.</p>
+<!-- ![Mapa de símbolos proporcionales 1](images/cartografia/02/img_pag31_1.jpeg){fig-align="center" width="60%"} -->
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/02/mapa_simbolos_graduados_europa_gemini.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%"></p>
+<figcaption>Mapa de símbolos proporcionales 1</figcaption>
+</figure>
+</div>
+<!-- ![Mapas de símbolos proporcionales 2](images/cartografia/02/img_pag32_1.png){fig-align="center" width="100%"} -->
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/02/mapas_de_coropletas_gemini_muertes_carros_es.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+<figcaption>Mapas de símbolos proporcionales 2</figcaption>
+</figure>
+</div>
+<p>En visualizaciones analíticas complejas, es común combinar técnicas, como integrar un mapa base de coropletas y superponer una capa de símbolos proporcionales para mostrar dos variables de forma simultánea.</p>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/02/img_pag33_1.jpeg" class="img-fluid figure-img"></p>
+<figcaption>Mapas de símbolos proporcionales 3</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/02/img_pag33_2.jpeg" class="img-fluid figure-img"></p>
+<figcaption>Mapas de símbolos proporcionales 4</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/02/img_pag34_1.jpeg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
+<figcaption>Coropleta y símbolo proporcional combinados</figcaption>
+</figure>
+</div>
+</section>
+<section id="mapas-de-flujo" class="level4">
+<h4 class="anchored" data-anchor-id="mapas-de-flujo">Mapas de flujo</h4>
+<p>Están diseñados para representar datos lineales que muestran el movimiento o intercambio geográfico entre un origen y un destino (como patrones de migración, rutas marítimas, conectividad de red). El grosor de la línea suele indicar el volumen del flujo.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/02/img_pag35_1.jpeg" class="img-fluid figure-img"></p>
+<figcaption>Ejemplo de mapa de flujo 1</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/02/img_pag36_1.jpeg" class="img-fluid figure-img"></p>
+<figcaption>Ejemplo de mapa de flujo 2</figcaption>
+</figure>
+</div>
+<!-- ![Ejemplo de mapa de flujo 3](images/cartografia/02/img_pag36_2.png) -->
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/02/mapa_de_flujo.png" class="img-fluid figure-img"></p>
+<figcaption>Ejemplo de mapa de flujo 3</figcaption>
+</figure>
+</div>
+<!-- ![Ejemplo de mapa de flujo 4](images/cartografia/02/img_pag37_1.jpeg) -->
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/02/mapa_de_flujo_2.png" class="img-fluid figure-img"></p>
+<figcaption>Ejemplo de mapa de flujo 4</figcaption>
+</figure>
+</div>
+<!-- ![Esquema de mapa de flujo 4](images/cartografia/02/img_pag38_1.png) -->
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/02/mapa_de_flujo_3.png" class="img-fluid figure-img"></p>
+<figcaption>Esquema de mapa de flujo 4</figcaption>
+</figure>
+</div>
+</section>
+<section id="mapas-de-superficie-continua-isarítmicos" class="level4">
+<h4 class="anchored" data-anchor-id="mapas-de-superficie-continua-isarítmicos">Mapas de superficie continua (isarítmicos)</h4>
+<p>Representan variables continuas que poseen un valor en cada ubicación del espacio de estudio (ej. temperatura, elevación, precipitación). Estos mapas se generan mediante interpolación espacial a partir de puntos de muestreo discretos, creando un formato ráster (grid) o líneas de contorno (isolíneas).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/02/mapa_superficie_continua1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%"></p>
+<figcaption>Mapa de superficie continua 1</figcaption>
+</figure>
+</div>
+<!-- ::: {layout="[[10, 60, 20, 10]]" layout-valign="center"}
+
+&nbsp;
+
+![Mapa de superficie continua 1](images/cartografia/02/img_pag39_1.jpeg)
+
+![](images/cartografia/02/img_pag39_2.jpeg)
+
+&nbsp;
+
+::: -->
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout-ncol="2" data-layout-widths="[60, 40]">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/02/img_pag40_1.png" class="img-fluid figure-img"></p>
+<figcaption>Esquema de mapa de superficie continua 2</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/02/img_pag40_2.jpeg" class="img-fluid figure-img"></p>
+<figcaption>Esquema de mapa de superficie continua 3</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/02/img_pag41_1.jpeg" class="img-fluid figure-img"></p>
+<figcaption>Mapa de superficie continua 4</figcaption>
+</figure>
+</div>
+</section>
+<section id="cartogramas" class="level4">
+<h4 class="anchored" data-anchor-id="cartogramas">Cartogramas</h4>
+<p>Un cartograma es una representación donde las áreas de las unidades espaciales se distorsionan geométricamente basándose en el valor de una variable no espacial (por ejemplo, escalar el tamaño de un país según su población o PIB, en lugar de su área física real).</p>
+<!-- ![Ejemplo de cartograma 1](images/cartografia/02/img_pag42_1.jpeg){fig-align="center" width="60%"} -->
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/02/cartograma_1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%"></p>
+<figcaption>Ejemplo de cartograma 1</figcaption>
+</figure>
+</div>
+<!-- ![Ejemplo de cartograma 2: Elecciones USA 2008](images/cartografia/02/img_pag43_1.jpeg){fig-align="center" width="70%"} -->
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/02/cartograma_2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+<figcaption>Ejemplo de cartograma 2</figcaption>
+</figure>
+</div>
+<!-- ![Ejemplo de cartograma 3](images/cartografia/02/img_pag44_1.jpeg){fig-align="center" width="100%"} -->
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/02/cartograma_3.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+<figcaption>Ejemplo de cartograma 3</figcaption>
+</figure>
+</div>
+</section>
+</section>
+</section>
+<section id="análisis-de-calidad-cartográfica-buenas-y-malas-prácticas" class="level2" data-number="14.4">
+<h2 data-number="14.4" class="anchored" data-anchor-id="análisis-de-calidad-cartográfica-buenas-y-malas-prácticas"><span class="header-section-number">14.4</span> Análisis de calidad cartográfica (Buenas y malas prácticas)</h2>
+<p>El diseño deficiente en la clasificación de datos, la elección de paletas de color no secuenciales o divergentes adecuadas, o la omisión de elementos espaciales clave (como el uso de coropletas para totales absolutos), puede generar mapas analíticamente incorrectos.</p>
+<!-- ![Mapa 1. ¿bien diseñado o mal diseñado? ](images/cartografia/02/img_pag46_1.jpeg)
+
+![Mapa 2. ¿bien diseñado o mal diseñado?](images/cartografia/02/img_pag47_1.jpeg){fig-align="center" width="100%"} -->
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/02/mapa_malo.png" class="img-fluid figure-img"></p>
+<figcaption>Mapa 1. ¿bien diseñado o mal diseñado?</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/02/mapa_vinos.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+<figcaption>Mapa 2. ¿bien diseñado o mal diseñado?</figcaption>
+</figure>
+</div>
+<!-- ![Mapa 3. ¿bien diseñado o mal diseñado?](images/cartografia/02/img_pag48_1.jpeg){fig-align="center" width="100%"} -->
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/02/mapa_transporte.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+<figcaption>Mapa 3. ¿bien diseñado o mal diseñado?</figcaption>
+</figure>
+</div>
+<!-- ![Mapa 4. ¿bien diseñado o mal diseñado?](images/cartografia/02/img_pag49_1.jpeg){fig-align="center" width="80%"} -->
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/02/mapa_bueno_o_malo_1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
+<figcaption>Mapa 4. ¿bien diseñado o mal diseñado?</figcaption>
+</figure>
+</div>
+<!-- ![Mapa 5. ¿bien diseñado o mal diseñado?](images/cartografia/02/img_pag50_1.jpeg) -->
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/02/mapa_bueno_o_malo_2.png" class="img-fluid figure-img"></p>
+<figcaption>Mapa 5. ¿bien diseñado o mal diseñado?</figcaption>
+</figure>
+</div>
+<!-- ![Mapa 6. ¿bien diseñado o mal diseñado?](images/cartografia/02/img_pag51_1.jpeg) -->
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/02/mapa_bueno_o_malo_3.png" class="img-fluid figure-img"></p>
+<figcaption>Mapa 6. ¿bien diseñado o mal diseñado?</figcaption>
+</figure>
+</div>
+<!-- ![Mapa 7. ¿bien diseñado o mal diseñado?](images/cartografia/02/img_pag52_1.jpeg) -->
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/02/mapa_bueno_o_malo_4.png" class="img-fluid figure-img"></p>
+<figcaption>Mapa 7. ¿bien diseñado o mal diseñado?</figcaption>
+</figure>
+</div>
+<!-- ![Mapa 8. ¿bien diseñado o mal diseñado?](images/cartografia/02/img_pag53_1.jpeg) -->
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/02/mapa_bueno_o_malo_5.png" class="img-fluid figure-img"></p>
+<figcaption>Mapa 8. ¿bien diseñado o mal diseñado?</figcaption>
+</figure>
+</div>
+<!-- ![Mapa 9. ¿bien diseñado o mal diseñado?](images/cartografia/02/img_pag54_1.jpeg)
+
+![Mapa 10. ¿bien diseñado o mal diseñado?](images/cartografia/02/img_pag54_2.jpeg)
+
+![Mapa 11. ¿bien diseñado o mal diseñado?](images/cartografia/02/img_pag55_1.jpeg)
+
+![Mapa 12. ¿bien diseñado o mal diseñado?](images/cartografia/02/img_pag56_1.jpeg){fig-align="center" width="100%"} -->
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/02/mapa_bueno_o_malo_6.png" class="img-fluid figure-img"></p>
+<figcaption>Mapa 9. ¿bien diseñado o mal diseñado?</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/02/mapa_bueno_o_malo_7.png" class="img-fluid figure-img"></p>
+<figcaption>Mapa 10. ¿bien diseñado o mal diseñado?</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/02/mapa_bueno_o_malo_8.png" class="img-fluid figure-img"></p>
+<figcaption>Mapa 11. ¿bien diseñado o mal diseñado?</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/02/mapa_bueno_o_malo_9.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+<figcaption>Mapa 12. ¿bien diseñado o mal diseñado?</figcaption>
+</figure>
+</div>
+</section>
+<section id="proceso-de-planificación-cartográfica" class="level2" data-number="14.5">
+<h2 data-number="14.5" class="anchored" data-anchor-id="proceso-de-planificación-cartográfica"><span class="header-section-number">14.5</span> Proceso de planificación cartográfica</h2>
+<p>El desarrollo de productos geoespaciales requiere un flujo de trabajo sistemático. Este proceso metodológico asegura la coherencia entre los datos de entrada y la comunicación visual resultante, y se estructura en cinco fases operativas:</p>
+<ul>
+<li>Planificación</li>
+<li>Procesamiento de datos</li>
+<li>Simbología</li>
+<li>Diseño de composición (layout)</li>
+<li>Salida o publicación (output)</li>
+</ul>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">graph TD
+    %% Definición de estilos
+    classDef mainNode font-size:14pt,font-weight:bold,fill:#f9f9f9,stroke:#333,stroke-width:2px;
+    classDef questions font-size:12pt,font-style:italic,fill:#ffffff,stroke:#999,stroke-dasharray: 5 5;
+    classDef feedback stroke:#e67e22,stroke-width:2px,stroke-dasharray: 5 5;
+
+    %% Nodos principales
+    P(Planificación) --&gt; D(Datos)
+    D --&gt; S(Simbología)
+    S --&gt; L(Composición)
+    L --&gt; O(Salida)
+
+    %% Lazo de retroalimentación (Ciclo)
+    L -.-&gt;|Refinamiento e iteración| P
+
+    %% Bloques de preguntas vinculados
+    P --- PQ["¿Cómo se utilizará el mapa?&lt;br/&gt;¿Qué tipos de mapas se crearán?"]
+    D --- DQ["¿Qué datos se utilizarán?"]
+    S --- SQ["¿Cómo se simbolizarán los datos?"]
+    L --- LQ["¿Cómo se diseñará la composición?"]
+    O --- OQ["¿Cómo se publicará el mapa?"]
+
+    %% Aplicación de estilos
+    class P,D,S,L,O mainNode;
+    class PQ,DQ,SQ,LQ,OQ questions;
+    linkStyle 4 stroke:#e67e22,stroke-width:2px,stroke-dasharray: 5 5;
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<section id="preguntas-clave-previas-a-la-creación-de-un-mapa" class="level3">
+<h3 class="anchored" data-anchor-id="preguntas-clave-previas-a-la-creación-de-un-mapa">Preguntas clave previas a la creación de un mapa</h3>
+<p>Durante la etapa inicial de planificación, es mandatorio definir los parámetros técnicos y comunicativos del proyecto respondiendo a los siguientes interrogantes estructurales:</p>
+<p><strong>1. Uso y objetivo del mapa</strong></p>
+<p>Resulta indispensable definir la necesidad real del documento cartográfico, el mensaje exacto que se va a comunicar y el diseño que resultará más efectivo para la interpretación de la audiencia objetivo.</p>
+<p><strong>2. Selección y rigor de los datos</strong></p>
+<p>Se debe evaluar qué conjuntos de datos respaldan el objetivo analítico, verificar la disponibilidad y calidad geométrica de dicha información, y establecer el sistema de coordenadas de referencia que se implementará en el marco de datos.</p>
+<p><strong>3. Diseño de la simbología</strong></p>
+<p>Requiere clasificar la naturaleza de los datos (variables cualitativas frente a cuantitativas), determinar la necesidad de inclusión de etiquetas de texto (labels) y seleccionar las variables visuales (color, tamaño, forma) que mejor modelen la estadística subyacente.</p>
+<p><strong>4. Configuración de la composición (layout)</strong></p>
+<p>Implica definir los parámetros del lienzo: dimensiones exactas de la página, orientación (vertical u horizontal) y la naturaleza del formato (producto estático impreso frente a visualizador en línea interactivo).</p>
+<p><strong>5. Formato de publicación</strong></p>
+<p>Debe establecerse el medio técnico a través del cual se realizará la entrega del producto geoespacial final.</p>
+<p><strong>6. Tipología del producto final</strong></p>
+<p>La escala y complejidad del proyecto determinan el tipo de salida: la generación de una serie cartográfica automatizada (atlas o map series), el despliegue a través de un servicio de mapas web (Web map) o el diseño para impresión en gran formato (Wall map).</p>
+<!-- ![Mapa Web](images/cartografia/02/img_pag65_2.jpeg)
+
+![Series de Mapas](images/cartografia/02/img_pag65_4.jpeg){fig-align="center" width="100%"}
+
+![Mapa de Pared](images/cartografia/02/img_pag65_10.jpeg){fig-align="center" width="100%"} -->
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/02/mapa_web.png" class="img-fluid figure-img"></p>
+<figcaption>Mapa Web</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/02/serie_de_mapas.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+<figcaption>Series de Mapas</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cartografia/02/mapa_de_pared.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+<figcaption>Mapa de Pared</figcaption>
+</figure>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copiado");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copiado");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./23-cartografia_part1.html" class="pagination-link" aria-label="Historia de la cartografía y fundamentos de SIG">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Historia de la cartografía y fundamentos de SIG</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./25-cartografia_part3.html" class="pagination-link" aria-label="Planeación y Diseño en Cartografía Digital">
+        <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Planeación y Diseño en Cartografía Digital</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
