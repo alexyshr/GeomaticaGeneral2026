@@ -97,7 +97,7 @@ mkdir datos imagenes
 * Navegar y seleccionar el archivo `colombia_formatos.gdb`.
 * Verificar la conexión en el árbol de `Catalog`.
 
-![Vinculación de base de datos](data_heavy/taller_cartografia_web/imagenes/vinculacion_gdb.png){fig-align="center" width="30%"}
+![Vinculación de base de datos](images/cartografia/taller_cartografia_web/vinculacion_gdb.png){fig-align="center" width="30%"}
 
 4. **Crear dos mapas independientes**
 
@@ -105,7 +105,7 @@ mkdir datos imagenes
 * Renombrar como `Mapa_Base` (destino de publicación Vector Tiles).
 * Repetir para crear un segundo mapa: `Mapa_Operativo` (destino de publicación Feature Layer).
 
-![Creación de Mapas](data_heavy/taller_cartografia_web/imagenes/creacion_mapas.png){fig-align="center" width="25%"}
+![Creación de Mapas](images/cartografia/taller_cartografia_web/creacion_mapas.png){fig-align="center" width="25%"}
 
 5. **Loguearse con ArcGIS Pro**
 
@@ -116,7 +116,7 @@ En el menú `Project` → `Portals`, presionar el botón `Add Portal`
 * Digite su usuario y su clave y presione `Sign in`
 * En la nueva conexión `https://unalmed.maps.arcgis.com/`, dar clic nuevamente en `...` y seleccionar `Set as Active Portal`.
 
-![Registrar Portal UNALMED en ArcGIS Pro](data_heavy/taller_cartografia_web/imagenes/agregar_portal_unalmed.png){fig-align="center" width="90%"}
+![Registrar Portal UNALMED en ArcGIS Pro](images/cartografia/taller_cartografia_web/agregar_portal_unalmed.png){fig-align="center" width="90%"}
 
 ::: {.callout-note}
 También es posible loguearse a partir del siguiente procedimiento, sin embargo, para poder publicar capas y mapas es necesario registrar el portal y seleccionarlo como activo (procedimiento anterior).
@@ -128,9 +128,9 @@ En la parte superior izquierda de ArcGIS Pro realice el proceso de logueo, tal y
 * Digite su usuario y su clave
 * El sistema le solicitará loguearse nuevamente vía explorador Web, y le enviará un mensaje para continuar con ArcGIS Pro.
 
-![Registro de credenciales en ArcGIS Pro](data_heavy/taller_cartografia_web/imagenes/sign_in_arcgispro_1.png){fig-align="center" width="100%"}
+![Registro de credenciales en ArcGIS Pro](images/cartografia/taller_cartografia_web/sign_in_arcgispro_1.png){fig-align="center" width="100%"}
 
-![Credenciales registradas en ArcGIS Pro](data_heavy/taller_cartografia_web/imagenes/sign_in_arcgispro_2.png){fig-align="center" width="60%"}
+![Credenciales registradas en ArcGIS Pro](images/cartografia/taller_cartografia_web/sign_in_arcgispro_2.png){fig-align="center" width="60%"}
 
 
 ### Parte 2: configuración cartográfica y sistema de referencia
@@ -160,9 +160,9 @@ En la parte superior izquierda de ArcGIS Pro realice el proceso de logueo, tal y
   * Seleccionar de la lista la escala `1:250,000`.
   * **Justificación:** A escalas pequeñas (nacionales), la densidad de drenajes causa saturación gráfica.
 
-![Definición del rango de escala para drenajes](data_heavy/taller_cartografia_web/imagenes/scale_range_drenajes_1.png){fig-align="center" width="100%"}
+![Definición del rango de escala para drenajes](images/cartografia/taller_cartografia_web/scale_range_drenajes_1.png){fig-align="center" width="100%"}
 
-![Efecto del rango de escala para drenajes](data_heavy/taller_cartografia_web/imagenes/scale_range_drenajes_2.png){fig-align="center" width="80%"}
+![Efecto del rango de escala para drenajes](images/cartografia/taller_cartografia_web/scale_range_drenajes_2.png){fig-align="center" width="80%"}
 
 
 * **Para `departamentos`:**
@@ -175,7 +175,7 @@ En la parte superior izquierda de ArcGIS Pro realice el proceso de logueo, tal y
   * Elegir color neutro (gris claro #E0E0E0) con borde gris oscuro (#404040).
   * Transparencia: 10% para permitir visualización de bases cartográficas inferiores.
 
-![Definición de color y transparencia para Departamentos](data_heavy/taller_cartografia_web/imagenes/color_departamentos.png){fig-align="center" width="70%"}
+![Definición de color y transparencia para Departamentos](images/cartografia/taller_cartografia_web/color_departamentos.png){fig-align="center" width="70%"}
 
 
 * **Drenajes:**
@@ -195,7 +195,7 @@ En la parte superior izquierda de ArcGIS Pro realice el proceso de logueo, tal y
 * **Escala de visualización:** Solo visible a zoom 1:1,000,000 y superior (aplicar restricción en `Minimum Scale`). Por ejemplo a escala 1:900,000, la etiqueta debe ser visible.
 * **Nota técnica:** Los estándares de fuente (Arial/Helvetica) garantizan un renderizado consistente en la web.
 
-![Etiquetado para Departamentos](data_heavy/taller_cartografia_web/imagenes/labeling_dptos.png){fig-align="center" width="100%"}
+![Etiquetado para Departamentos](images/cartografia/taller_cartografia_web/labeling_dptos.png){fig-align="center" width="100%"}
 
 
 ### Parte 3: publicación de capas web operativas (Feature layer)
@@ -217,7 +217,7 @@ La publicación en ArcGIS Online desde ArcGIS Pro requiere un portal registrado,
 
 * Seleccione la capa `poblaciones`. Active la Cinta/Pestaña `Share` → `Web Layer` → `Publish Web Layer`.
 
-![Opción para compartir capas Web desde la cinta/pestaña `Share`](data_heavy/taller_cartografia_web/imagenes/share_web_layer_cinta.png){fig-align="center" width="100%"}
+![Opción para compartir capas Web desde la cinta/pestaña `Share`](images/cartografia/taller_cartografia_web/share_web_layer_cinta.png){fig-align="center" width="100%"}
 
 Alternativamente:
 
@@ -225,7 +225,7 @@ Alternativamente:
 
 La siguiente imagen muestra la configuración de la ventana `Share As Web Layer`. Proceda a llenar los campos correspondientes.
 
-![Ventana `Share As Web Layer`](data_heavy/taller_cartografia_web/imagenes/share_web_layer_ventana.png){fig-align="center" width="60%"}
+![Ventana `Share As Web Layer`](images/cartografia/taller_cartografia_web/share_web_layer_ventana.png){fig-align="center" width="60%"}
 
 **Configuración de parámetros generales (Pestaña General)**
 
@@ -259,7 +259,7 @@ Antes de proceder con la validación, es necesario estructurar las capacidades d
 
 * En la pestaña `Content`, de clic en el mensaje `Allow Assignment Of Unique Numeric IDs`, y en la ventana que aparece (Propiedades del Mapa `Mapa_Operativo`), marque la casilla de texto para activar esa opción.
 
-![Opción: `Allow Assignment Of Unique Numeric IDs`](data_heavy/taller_cartografia_web/imagenes/allow_assignment_of_unique_numeric_ids.png){fig-align="center" width="70%"}
+![Opción: `Allow Assignment Of Unique Numeric IDs`](images/cartografia/taller_cartografia_web/allow_assignment_of_unique_numeric_ids.png){fig-align="center" width="70%"}
 
 * En la pestaña `Configuration`, ubíquese sobre la sección `Layer` → `Feature` y haga clic en el ícono del lápiz (`Configure Web Layer Properties`) para establecer las siguientes propiedades operacionales:
   * Habilitar: `Approve for Public Data Collection`
@@ -285,7 +285,7 @@ La correcta configuración de estas restricciones y permisos operacionales prote
 
 * Cambiar a la pestaña `Mapa_Base`, ver siguiente imagen.
 
-![Activar Mapa_Base](data_heavy/taller_cartografia_web/imagenes/activar_mapa_base.png){fig-align="center" width="70%"}
+![Activar Mapa_Base](images/cartografia/taller_cartografia_web/activar_mapa_base.png){fig-align="center" width="70%"}
 
 
 2. **Publicar como Vector Tile Layer**
@@ -302,7 +302,7 @@ La correcta configuración de estas restricciones y permisos operacionales prote
   * **Location:** Seleccionar la carpeta `taller_cartografia_web`.
   * **Sharing Level:** Seleccionar `Everyone (public)`.
 
-![Compartir Mapa_Base como capa `Vector Tile`](data_heavy/taller_cartografia_web/imagenes/share_as_web_layer_mapa_base.png){fig-align="center" width="55%"}
+![Compartir Mapa_Base como capa `Vector Tile`](images/cartografia/taller_cartografia_web/share_as_web_layer_mapa_base.png){fig-align="center" width="55%"}
 
 
 4. **Optimizar niveles de zoom (Tiling scheme)**
@@ -334,7 +334,7 @@ La correcta configuración de estas restricciones y permisos operacionales prote
 
 * Ir a la sección `Content` (Contenido) y verificar la existencia de la `Feature Layer` y la `Vector Tile Layer` publicadas.
 
-![Sección `Content` (Contenido) en ArcGIS Online](data_heavy/taller_cartografia_web/imagenes/mi_contenido_arcgis_online.png
+![Sección `Content` (Contenido) en ArcGIS Online](images/cartografia/taller_cartografia_web/mi_contenido_arcgis_online.png
 ){fig-align="center" width="100%"}
 
 3. **Crear nuevo mapa web**
@@ -342,10 +342,10 @@ La correcta configuración de estas restricciones y permisos operacionales prote
 * Seleccionar `Mapa` (Map) para abrir `Map Viewer`.
 * En el panel izquierdo, hacer clic en `Layers` → `Add`.
 
-![Map Viewer (Visor de Mapa) en ArcGIS Online](data_heavy/taller_cartografia_web/imagenes/map_viewer_add_capa_1.png){fig-align="center" width="100%"}
+![Map Viewer (Visor de Mapa) en ArcGIS Online](images/cartografia/taller_cartografia_web/map_viewer_add_capa_1.png){fig-align="center" width="100%"}
 
 
-![Lista de capas de `Mi Contenido` en ArcGIS Online](data_heavy/taller_cartografia_web/imagenes/map_viewer_add_capa_2.png){fig-align="center" width="70%"}
+![Lista de capas de `Mi Contenido` en ArcGIS Online](images/cartografia/taller_cartografia_web/map_viewer_add_capa_2.png){fig-align="center" width="70%"}
 
 
 4. **Configurar el mapa base personalizado**
@@ -354,11 +354,11 @@ La correcta configuración de estas restricciones y permisos operacionales prote
 * Buscar el `Tile layer (alojado)` llamado `mapa_base_colombia_[apellido_nombre]`, clic en `Añadir` y luego 
 en el símbolo `<` al lado de la etiqueta `Agregar Capa`.
 
-![Agregar `Tile layer (alojado)` en Map Viewer](data_heavy/taller_cartografia_web/imagenes/map_viewer_add_tile_layer.png){fig-align="center" width="45%"}
+![Agregar `Tile layer (alojado)` en Map Viewer](images/cartografia/taller_cartografia_web/map_viewer_add_tile_layer.png){fig-align="center" width="45%"}
 
 * Abrir el menú de opciones (tres puntos horizontales) de la capa cargada y seleccionar `Mover al mapa base` (Move to Basemap).
 
-![Mover un `Tile layer` de `Capas` a `Mapa Base` en el Map Viewer](data_heavy/taller_cartografia_web/imagenes/map_viewer_move_layer_al_mapa_base.png){fig-align="center" width="50%"}
+![Mover un `Tile layer` de `Capas` a `Mapa Base` en el Map Viewer](images/cartografia/taller_cartografia_web/map_viewer_move_layer_al_mapa_base.png){fig-align="center" width="50%"}
 
 * En la pestaña `Mapa base` verificar que el mapa base actual sea el `mapa_base_colombia_[apellido_nombre]`.
 
@@ -387,7 +387,7 @@ en el símbolo `<` al lado de la etiqueta `Agregar Capa`.
 * Desde el `Map Viewer`, hacer clic en el ícono de menú (tres líneas horizontales en la esquina superior izquierda) y seleccionar `Contenido`.
 * En la lista de elementos, seleccionar el mapa `Mapa_Web_Integrado_[Apellido_Nombre]` para abrir la interfaz de `Vista general`.
 
-![Vista General del Mapa Web](data_heavy/taller_cartografia_web/imagenes/vista_general_del_mapa.png){fig-align="center" width="100%"}
+![Vista General del Mapa Web](images/cartografia/taller_cartografia_web/vista_general_del_mapa.png){fig-align="center" width="100%"}
 
 Asegúrese de completar y verificar los siguientes parámetros en el panel lateral de la vista general del mapa, tomando como referencia la configuración técnica establecida en la siguiente imagen:
 
@@ -398,7 +398,7 @@ Asegúrese de completar y verificar los siguientes parámetros en el panel later
 * **Organización del directorio:** Confirmar que el mapa se encuentre alojado de forma correcta dentro de la carpeta correspondiente al proyecto, denominada `taller_cartografia_web`.
 * **Identificador único:** Localizar el campo `Id. de elemento` para extraer el código alfa-numérico único del mapa web, el cual es necesario para la estructuración de la URL final en el reporte.
 
-![Opciones de la Vista general del Mapa Web](data_heavy/taller_cartografia_web/imagenes/opciones_de_la_vista_general_del_mapa.png){fig-align="center" width="50%"}
+![Opciones de la Vista general del Mapa Web](images/cartografia/taller_cartografia_web/opciones_de_la_vista_general_del_mapa.png){fig-align="center" width="50%"}
 
 ## Ejercicios adicionales (opcional)
 
@@ -447,7 +447,7 @@ El documento final (formato Quarto) debe dar respuesta analítica a los siguient
 
 **Pregunta 4:** En el contexto de la interoperabilidad, explique cómo el uso de sistemas de referencia estándar (MAGNA-SIRGAS para almacenamiento local frente a Web Mercator en servicios web) facilita la integración con terceras plataformas.
 
-## Requerimientos de entrega y reproducibilidad
+## Requerimientos de entrega y reproducibilidad (opcional - el trabajo fue en clase 05/25/2026)
 
 La evaluación del taller se fundamenta en la reproducibilidad del flujo de trabajo y la correcta publicación de recursos espaciales. No se aceptarán archivos binarios `.aprx` por correo electrónico.
 

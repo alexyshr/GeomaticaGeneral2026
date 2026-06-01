@@ -235,7 +235,7 @@ mkdir datos proyecto_qgis qgis_server qgis2web_output imagenes
 
 : Clasificación de centros poblados según el Marco Geoestadístico Nacional (DANE) {#tbl-mgn-dane}
 
-![Simbología de Poblaciones](data_heavy/taller_cartografia_qgis/imagenes/simbologia_poblaciones.png){fig-align="center" width="80%"}
+![Simbología de Poblaciones](images/cartografia/taller_cartografia_qgis/simbologia_poblaciones.png){fig-align="center" width="80%"}
 
 4. **Configurar información de atributos (Popup)**
 
@@ -248,10 +248,10 @@ Código: [% "CPOB_CODIGO" %]<br/>
 Ubicación: [% "CPOB_NOMBRE_MPIO" %], [% "CPOB_NOMBRE_DPTO" %]
 ```
 
-![Configuración de Popup Map Tips de la Capa Poblaciones](data_heavy/taller_cartografia_qgis/imagenes/map_tips_poblaciones_1.png){fig-align="center" width="90%"}
+![Configuración de Popup Map Tips de la Capa Poblaciones](images/cartografia/taller_cartografia_qgis/map_tips_poblaciones_1.png){fig-align="center" width="90%"}
 
 
-![Map Tips de la Capa Poblaciones](data_heavy/taller_cartografia_qgis/imagenes/map_tips_poblaciones_2.png){fig-align="center" width="70%"}
+![Map Tips de la Capa Poblaciones](images/cartografia/taller_cartografia_qgis/map_tips_poblaciones_2.png){fig-align="center" width="70%"}
 
 ### Parte 3: Publicación con qgis2web (Aplicación web interactiva)
 
@@ -272,9 +272,9 @@ Ubicación: [% "CPOB_NOMBRE_MPIO" %], [% "CPOB_NOMBRE_DPTO" %]
     * Para cada capa, marcar: "Popups".
     * Configurar qué campos se mostrarán en los pop-ups.
 
-![qgis2web: Panel `Layers and Groups`](data_heavy/taller_cartografia_qgis/imagenes/export_to_web_map_1.png){fig-align="center" width="70%"}
+![qgis2web: Panel `Layers and Groups`](images/cartografia/taller_cartografia_qgis/export_to_web_map_1.png){fig-align="center" width="70%"}
 
-![qgis2web: Panel `Layers and Groups`, opción `Popups`](data_heavy/taller_cartografia_qgis/imagenes/export_to_web_map_7.png){fig-align="center" width="70%"}
+![qgis2web: Panel `Layers and Groups`, opción `Popups`](images/cartografia/taller_cartografia_qgis/export_to_web_map_7.png){fig-align="center" width="70%"}
 
 > Nota: NO es necesario presionar el botón:
 > `Install new browser` (NO INSTALAR)
@@ -289,29 +289,29 @@ Ubicación: [% "CPOB_NOMBRE_MPIO" %], [% "CPOB_NOMBRE_DPTO" %]
     * **Scale:** Rango de zoom: 4-15.
 
 
-![qgis2web: Panel `Appearance`](data_heavy/taller_cartografia_qgis/imagenes/export_to_web_map_2.png){fig-align="center" width="50%"}
+![qgis2web: Panel `Appearance`](images/cartografia/taller_cartografia_qgis/export_to_web_map_2.png){fig-align="center" width="50%"}
 
 * En el panel `Export`:
   * Definir la salida a la carpeta `../data_heavy/taller_cartografia_qgis/qgis2web_output/`
 
-![qgis2web: Panel `Export`](data_heavy/taller_cartografia_qgis/imagenes/export_to_web_map_3.png){fig-align="center" width="70%"}
+![qgis2web: Panel `Export`](images/cartografia/taller_cartografia_qgis/export_to_web_map_3.png){fig-align="center" width="70%"}
 
 
 * En el panel `Settings`:
   * Ver siguiente gráfica
 
-![qgis2web: Panel `Settings`](data_heavy/taller_cartografia_qgis/imagenes/export_to_web_map_4.png){fig-align="center" width="70%"}
+![qgis2web: Panel `Settings`](images/cartografia/taller_cartografia_qgis/export_to_web_map_4.png){fig-align="center" width="70%"}
 
 * En el panel `WIKI`:
   * Existe la guía para usar y configurar `qgis2web`
 
-![qgis2web: Panel `WIKI`](data_heavy/taller_cartografia_qgis/imagenes/export_to_web_map_5.png){fig-align="center" width="70%"}
+![qgis2web: Panel `WIKI`](images/cartografia/taller_cartografia_qgis/export_to_web_map_5.png){fig-align="center" width="70%"}
 
 * Otras opciones:
   
   * **Framework:** seleccionar `Leaflet` (más ligero y rápido).
 
-![qgis2web: Framework y Exportación](data_heavy/taller_cartografia_qgis/imagenes/export_to_web_map_6.png){fig-align="center" width="70%"}
+![qgis2web: Framework y Exportación](images/cartografia/taller_cartografia_qgis/export_to_web_map_6.png){fig-align="center" width="70%"}
 
 
 3. **Exportar la aplicación web**
@@ -354,7 +354,7 @@ En [@sec-osgeo4w] se definió el procedimeinto de instalación de QGIS con OSGeo
 * qwc2: QGIS webclient 2
 * Dependencias adicionales requeridas al seleccionar los paquetes anteriores. Se seleccionan al seleccionar la opción `Install these packages to meet dependencies (RECOMMENDED)`
 
-![Instalar QGIS Server con OSGeo4W](data_heavy/taller_cartografia_qgis/imagenes/install_qgis_server_osgeo4w.png){fig-align="center" width="100%"}
+![Instalar QGIS Server con OSGeo4W](images/cartografia/taller_cartografia_qgis/install_qgis_server_osgeo4w.png){fig-align="center" width="100%"}
 
 * **En Linux (Ubuntu/Debian):**
 
@@ -383,7 +383,7 @@ Esta sección define el encabezado del documento XML de capacidades generales qu
 * **Contact information:** Diligenciar los campos de organización, correo electrónico y responsable técnico para asegurar la trazabilidad del servicio.
 
 ::: {#fig-capabilities}
-![](data_heavy/taller_cartografia_qgis/imagenes/configuracion_service_capabilities_QGIS_Server.png){fig-align="center" width="100%"}
+![](images/cartografia/taller_cartografia_qgis/configuracion_service_capabilities_QGIS_Server.png){fig-align="center" width="100%"}
 
 Configuración de capacidades generales y metadatos del servicio.
 :::
@@ -400,7 +400,7 @@ Esta sección determina las restricciones espaciales y formatos gráficos dispon
   * `EPSG:4326` (WGS 84 / Coordenadas Geográficas).
 
 ::: {#fig-wms}
-![](data_heavy/taller_cartografia_qgis/imagenes/configuracion_WMS_QGIS_Server.png){fig-align="center" width="80%"}
+![](images/cartografia/taller_cartografia_qgis/configuracion_WMS_QGIS_Server.png){fig-align="center" width="80%"}
 
 Restricciones de sistemas de referencia espaciales y extensiones para el protocolo WMS.
 :::
@@ -414,7 +414,7 @@ Esta sección pre-calcula los esquemas de cuadrículas para acelerar el desplieg
 * **Formatos soportados:** Asegurar la disponibilidad de formatos comprimidos con canal alfa activo (`image/png`) para preservar la transparencia entre capas superpuestas.
 
 ::: {#fig-wmts}
-![](data_heavy/taller_cartografia_qgis/imagenes/configuracion_WMTS_QGIS_Server.png){fig-align="center" width="80%"}
+![](images/cartografia/taller_cartografia_qgis/configuracion_WMTS_QGIS_Server.png){fig-align="center" width="80%"}
 
 Definición de capas y formatos de salida para la generación del esquema de teselas web WMTS.
 :::
@@ -428,7 +428,7 @@ Esta sección habilita el acceso directo al formato vectorial y controla los pri
 * **Update / Insert / Delete (WFS-T):** Para activar las capacidades transaccionales (WFS-T) que permitan modificar los vértices de los ríos o polígonos desde clientes externos, active de forma explícita las casillas bajo las columnas `Update`, `Insert` y `Delete` según las restricciones de seguridad deseadas.
 
 ::: {#fig-wfs}
-![](data_heavy/taller_cartografia_qgis/imagenes/configuracion_WFS_OAPIF_QGIS_Server.png){fig-align="center" width="80%"}
+![](images/cartografia/taller_cartografia_qgis/configuracion_WFS_OAPIF_QGIS_Server.png){fig-align="center" width="80%"}
 
 Habilitación de capas vectoriales WFS y asignación de permisos transaccionales para edición.
 :::
@@ -442,7 +442,7 @@ Esta sección faculta la descarga y transmisión de la matriz de datos numérico
 * Verificar que las extensiones geográficas de las coberturas correspondan exactamente a los límites del área de estudio.
 
 ::: {#fig-wcs}
-![](data_heavy/taller_cartografia_qgis/imagenes/configuracion_WCS_QGIS_Server.png){fig-align="center" width="80%"}
+![](images/cartografia/taller_cartografia_qgis/configuracion_WCS_QGIS_Server.png){fig-align="center" width="80%"}
 
 Activación de coberturas y asignación del protocolo WCS para análisis espacial de celdas ráster.
 :::
@@ -787,7 +787,7 @@ El documento final debe dar respuesta analítica a los siguientes interrogantes 
 
 **Pregunta 4:** Describa el flujo completo de datos desde un GeoPackage local hasta su consumo en una aplicación web. ¿En qué puntos del flujo se puede perder información o precisión?
 
-## Requerimientos de entrega y reproducibilidad
+## Requerimientos de entrega y reproducibilidad (opcional - el trabajo será en clase 06/01/2026)
 
 La evaluación del taller se fundamenta en la reproducibilidad del flujo de trabajo y la funcionalidad de ambos enfoques de publicación web.
 
